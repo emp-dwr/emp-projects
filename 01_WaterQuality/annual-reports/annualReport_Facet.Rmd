@@ -17,16 +17,23 @@ library(RColorBrewer)
 library(grid)
 
 # import functions
-source('D-WQ/annualReport_funcs.R')
+source('01_WaterQuality/annual-reports/annualReport_funcs.R')
 ```
 
 ```{r message=FALSE}
+# # import data (revision 7 = 2021)
+fp_wq <- download.file('https://portal.edirepository.org/nis/dataviewer?packageid=edi.458.7&entityid=dfeaee030be901ae00b8c0449ea39e9c',
+              file.path(tempdir(), 'SACSJ_delta_water_quality_1975_2021.csv'), mode='wb')
+
+# data without < RL values: TotAlkalinity, TotAmmonia, TotChloride, DissChloride, TON, TDS
+df_wq <- read_csv(file.path(tempdir(), 'SACSJ_delta_water_quality_1975_2021.csv'), col_types = cols(.default = 'c'))
+
 # import data
-df_wq <- read_csv('D-WQ/Data/EMP_delta_water_quality_1975_2020.csv', col_types = cols(.default = 'c'))
+# df_wq <- read_csv('01_WaterQuality/annual-reports/Data/EMP_delta_water_quality_1975_2020.csv', col_types = cols(.default = 'c'))
 
 # convert month to abbrv
-df_wq$Year <- year(as.Date(df_wq$Date, '%m/%d/%Y'))
-df_wq$Month <- month(as.Date(df_wq$Date, '%m/%d/%Y'))
+df_wq$Year <- year(as.Date(df_wq$Date, '%Y-%m-%d'))
+df_wq$Month <- month(as.Date(df_wq$Date, '%Y-%m-%d'))
 df_wq$Month <- month.abb[df_wq$Month]
 
 # add month-year column
@@ -42,17 +49,23 @@ df_wq$FullGroup <- as.factor(df_wq$FullGroup)
 
 year <- year(Sys.Date())-1
 
-df_wq <- subset(df_wq, Year %in% c(year-1,year),  select = c('Station','Monyear','Region','FullGroup','SpCndSurface_sign','SpCndSurface_val','TurbiditySurface_sign','TurbiditySurface_val','Chla_sign','Chla_val','DissAmmonia_sign','DissAmmonia_val','DissNitrateNitrite_sign','DissNitrateNitrite_val','TotPhos_sign','TotPhos_val'))
+df_wq <- df_wq %>%
+  rename(TurbiditySurface_Val = TurbiditySurface_FNU, SpCndSurface_Val = SpCndSurface, Chla_Val = Chla, DissAmmonia_Val = DissAmmonia,
+         DissNitrateNitrite_Val = DissNitrateNitrite, TotPhos_Val = TotPhos) %>%
+  mutate(TurbiditySurface_Sign = '=',
+         SpCndSurface_Sign = '=')
+
+# df_wq <- subset(df_wq, Year %in% c(year-1,year),  select = c('Station','Monyear','Region','FullGroup','SpCndSurface_sign','SpCndSurface_val','TurbiditySurface_sign','TurbiditySurface_val','Chla_sign','Chla_val','DissAmmonia_sign','DissAmmonia_val','DissNitrateNitrite_sign','DissNitrateNitrite_val','TotPhos_sign','TotPhos_val'))
+
+df_wq <- subset(df_wq, Year %in% c(year-1,year),  select = c('Station','Monyear','Region','FullGroup','SpCndSurface_Sign','SpCndSurface_Val','TurbiditySurface_Sign','TurbiditySurface_Val','Chla_Sign','Chla_Val','DissAmmonia_Sign','DissAmmonia_Val','DissNitrateNitrite_Sign','DissNitrateNitrite_Val','TotPhos_Sign','TotPhos_Val'))
 
 # organize df
 df_wq <- df_wq %>%
   pivot_longer(cols = contains('_'), names_pattern = '(.*)_(.*)', names_to = c('Analyte','Int')) %>%
-  pivot_wider(names_from = Int, values_from = value) %>%
-  rename(Sign = sign, Value = val)
+  pivot_wider(names_from = Int, values_from = value)
 
 df_wq <- subset(df_wq, !is.na(Region))
-df_wq <- subset(df_wq, Value != 'ND')
-df_wq$Value <- as.numeric(df_wq$Value)
+df_wq$Val <- as.numeric(df_wq$Val)
 ```
 
 ```{r}
@@ -73,7 +86,7 @@ df_seg_vert = data.frame(
   x = seg_subset$Monyear,
   xend = seg_subset$Monyear,
   y = 0,
-  yend = seg_subset$Value,
+  yend = seg_subset$Val,
   Analyte = seg_subset$Analyte,
   Station = seg_subset$Station,
   Region = seg_subset$Region,
@@ -84,8 +97,8 @@ df_seg_vert = data.frame(
 df_seg_horz = data.frame(
   x = seg_subset$Monyear-10,
   xend = seg_subset$Monyear+10,
-  y = seg_subset$Value,
-  yend = seg_subset$Value,
+  y = seg_subset$Val,
+  yend = seg_subset$Val,
   Analyte = seg_subset$Analyte,
   Station = seg_subset$Station,
   Region = seg_subset$Region,
@@ -110,10 +123,10 @@ for (i in seq(length(analytes))){
     filter(Analyte == analytes[i])
   
   if (analytes[i] != 'SpCndSurface') {
-    y_max <- max(df_wq_two_filt$Value, na.rm = TRUE)
+    y_max <- max(df_wq_two_filt$Val, na.rm = TRUE)
   } else {
-    y_max_int <- max(df_wq_two_filt[df_wq_two_filt$Region %in% int_delta,]$Value, na.rm = TRUE)
-    y_max_out <- max(df_wq_two_filt[!df_wq_two_filt$Region %in% int_delta,]$Value, na.rm = TRUE)
+    y_max_int <- max(df_wq_two_filt[df_wq_two_filt$Region %in% int_delta,]$Val, na.rm = TRUE)
+    y_max_out <- max(df_wq_two_filt[!df_wq_two_filt$Region %in% int_delta,]$Val, na.rm = TRUE)
   }
 
   out <- by(data = df_wq_two_filt, INDICES = df_wq_two_filt$Region, FUN = function(m) {
@@ -144,16 +157,16 @@ for (i in seq(length(analytes))){
     
     # m <- m %>% complete(Monyear = seq.Date(min(Monyear), max(Monyear), by='month'))
 
-    m$Value <- ifelse(m$Sign == '<', NA, m$Value)
+    m$Val <- ifelse(m$Sign == '<', NA, m$Val)
     
-    if (cur_region == "Central Delta"){
+    if (cur_region == 'Central Delta'){
       colors = rev(brewer.pal(6, 'Blues'))
       
       p <- ggplot() +
         geom_segment(data = df_seg_vert_filt, mapping = aes(x = x, xend = xend, y = y, yend = yend, color = Station), size = .8, lty = 5) +
         geom_segment(data = df_seg_horz_filt, mapping = aes(x = x, xend = xend, y = y, yend = yend, color = Station), size = .8, lineend = 'square') +
-        geom_line(m, mapping = aes(Monyear, Value, group = Station, colour = Station), na.rm = TRUE,  size = 1.1) +
-        geom_point(m, mapping = aes(Monyear, Value, group = Station, colour = Station, shape = Station), na.rm = TRUE, size = 3) +
+        geom_line(m, mapping = aes(Monyear, Val, group = Station, colour = Station), na.rm = TRUE,  size = 1.1) +
+        geom_point(m, mapping = aes(Monyear, Val, group = Station, colour = Station, shape = Station), na.rm = TRUE, size = 3) +
         blank_theme +
         theme(
           axis.text.x = element_text(size = x_ftsize, color = 'white'),
@@ -170,8 +183,8 @@ for (i in seq(length(analytes))){
       p <- ggplot() +
         geom_segment(data = df_seg_vert_filt, mapping = aes(x = x, xend = xend, y = y, yend = yend, color = Station), size = .8, lty = 5) +
         geom_segment(data = df_seg_horz_filt, mapping = aes(x = x, xend = xend, y = y, yend = yend, color = Station), size = .8, lineend = 'square') +
-        geom_line(m, mapping = aes(Monyear, Value, group = Station, colour = Station), na.rm = TRUE, size = 1.1) +
-        geom_point(m, mapping = aes(Monyear, Value, group = Station, colour = Station, shape = Station), na.rm = TRUE, size = 3) +
+        geom_line(m, mapping = aes(Monyear, Val, group = Station, colour = Station), na.rm = TRUE, size = 1.1) +
+        geom_point(m, mapping = aes(Monyear, Val, group = Station, colour = Station, shape = Station), na.rm = TRUE, size = 3) +
         blank_theme +
         theme(
           axis.text.x = element_text(size = x_ftsize, color = 'white'),
@@ -188,8 +201,8 @@ for (i in seq(length(analytes))){
       p <- ggplot() +
         geom_segment(data = df_seg_vert_filt, mapping = aes(x = x, xend = xend, y = y, yend = yend, color = Station), size = .8, lty = 5) +
         geom_segment(data = df_seg_horz_filt, mapping = aes(x = x, xend = xend, y = y, yend = yend, color = Station), size = .8, lineend = 'square') +
-        geom_line(m, mapping = aes(Monyear, Value, group = Station, colour = Station), na.rm = TRUE, size = 1.1) +
-        geom_point(m, mapping = aes(Monyear, Value, group = Station, colour = Station, shape = Station), na.rm = TRUE, size = 3) +
+        geom_line(m, mapping = aes(Monyear, Val, group = Station, colour = Station), na.rm = TRUE, size = 1.1) +
+        geom_point(m, mapping = aes(Monyear, Val, group = Station, colour = Station, shape = Station), na.rm = TRUE, size = 3) +
         blank_theme +
         theme(
           axis.text.x = element_text(size = x_ftsize, color = 'white'),
@@ -200,14 +213,14 @@ for (i in seq(length(analytes))){
         scale_fill_manual(values = colors) +
         ggtitle(cur_region)
       
-    } else if (cur_region == "San Pablo Bay"){
+    } else if (cur_region == 'San Pablo Bay'){
       colors = rev(brewer.pal(8, 'Greens'))
       
       p <- ggplot() +
         geom_segment(data = df_seg_vert_filt, mapping = aes(x = x, xend = xend, y = y, yend = yend, color = Station), size = .8, lty = 5) +
         geom_segment(data = df_seg_horz_filt, mapping = aes(x = x, xend = xend, y = y, yend = yend, color = Station), size = .8, lineend = 'square') +
-        geom_line(m, mapping = aes(Monyear, Value, group = Station, colour = Station), na.rm = TRUE, size = 1.1) +
-        geom_point(m, mapping = aes(Monyear, Value, group = Station, colour = Station, shape = Station), na.rm = TRUE, size = 3) +
+        geom_line(m, mapping = aes(Monyear, Val, group = Station, colour = Station), na.rm = TRUE, size = 1.1) +
+        geom_point(m, mapping = aes(Monyear, Val, group = Station, colour = Station, shape = Station), na.rm = TRUE, size = 3) +
         blank_theme +
         theme(
           axis.text.x = element_text(size = x_ftsize, color = 'white'),
@@ -218,28 +231,28 @@ for (i in seq(length(analytes))){
         scale_fill_manual(values=colors) +
         ggtitle(cur_region)
       
-    } else if (cur_region == "Southern Interior Delta"){
+    } else if (cur_region == 'Southern Interior Delta'){
       colors = rev(brewer.pal(6, 'Reds'))
       
       p <- ggplot() +
         geom_segment(data = df_seg_vert_filt, mapping = aes(x = x, xend = xend, y = y, yend = yend, color = Station), size = .8, lty = 5) +
         geom_segment(data = df_seg_horz_filt, mapping = aes(x = x, xend = xend, y = y, yend = yend, color = Station), size = .8, lineend = 'square') +
-        geom_line(m, mapping = aes(Monyear, Value, group = Station, colour = Station), na.rm = TRUE, size = 1.1) +
-        geom_point(m, mapping = aes(Monyear, Value, group = Station, colour = Station, shape = Station), na.rm = TRUE, size = 3) +
+        geom_line(m, mapping = aes(Monyear, Val, group = Station, colour = Station), na.rm = TRUE, size = 1.1) +
+        geom_point(m, mapping = aes(Monyear, Val, group = Station, colour = Station, shape = Station), na.rm = TRUE, size = 3) +
         blank_theme +
         scale_x_date(labels = date_format('%b-%y'), breaks = m$Monyear) +
         scale_color_manual(values = colors, guide = guide_legend(nrow = 1)) +
         scale_fill_manual(values = colors) +
         ggtitle(cur_region)
       
-    } else if (cur_region == "Suisun & Grizzly Bays"){
+    } else if (cur_region == 'Suisun & Grizzly Bays'){
       colors = rev(brewer.pal(6, 'Purples'))
       
       p <- ggplot() +
         geom_segment(data = df_seg_vert_filt, mapping = aes(x = x, xend = xend, y = y, yend = yend, color = Station), size = .8, lty = 5) +
         geom_segment(data = df_seg_horz_filt, mapping = aes(x = x, xend = xend, y = y, yend = yend, color = Station), size = .8, lineend = 'square') +
-        geom_line(m, mapping = aes(Monyear, Value, group = Station, colour = Station), na.rm = TRUE, size = 1.1) +
-        geom_point(m, mapping = aes(Monyear, Value, group = Station, colour = Station, shape = Station), na.rm = TRUE, size = 3) +
+        geom_line(m, mapping = aes(Monyear, Val, group = Station, colour = Station), na.rm = TRUE, size = 1.1) +
+        geom_point(m, mapping = aes(Monyear, Val, group = Station, colour = Station, shape = Station), na.rm = TRUE, size = 3) +
         blank_theme +
         scale_x_date(labels = date_format('%b-%y'), breaks = m$Monyear) +
         scale_color_manual(values=colors, guide = guide_legend(nrow = 1)) +
@@ -253,11 +266,8 @@ for (i in seq(length(analytes))){
   my_grobs = lapply(out, ggplotGrob)
   
   graph <- marrangeGrob(grobs = out, ncol=2, nrow=3, top=textGrob(plt_names[i],gp=gpar(fontsize=16, fontface='bold')))
-  ggsave(paste('ARGraph_',analytes[i],'.jpg', sep=''), graph, width = 9.5, height = 10.5, unit = 'in') #4.7, 19
+  ggsave(paste('01_WaterQuality/annual-reports/Graphs/ARGraph_',analytes[i],'.jpg', sep=''), graph, width = 9.5, height = 10.5, unit = 'in') #4.7, 19
 }
-```
-```{r}
-m
 ```
 
 
