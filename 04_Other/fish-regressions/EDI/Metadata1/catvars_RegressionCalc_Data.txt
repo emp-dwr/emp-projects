@@ -1,0 +1,12 @@
+attributeName	code	definition
+SpeciesCode	HCH	
+SpeciesCode	SASU	
+CommonName	Sacramento Hitch	
+CommonName	Sacramento Sucker	
+SciName	Lavinia exilicauda exilicauda	
+SciName	Catostomus occidentalis occidentalis	
+Gender	unsexed	
+LengthType	FL	
+Country	USA	
+Locality	Mokelumne River	
+Ref	Jeffres et al. 2006	

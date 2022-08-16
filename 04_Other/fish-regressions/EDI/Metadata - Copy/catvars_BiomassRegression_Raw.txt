@@ -1,0 +1,272 @@
+attributeName	code	definition
+Gender	unsexed	unsexed
+Gender	female	female
+Gender	male	male
+Gender	mixed	mixed
+Gender	juvenile	juvenile
+LengthType	FL	FL
+LengthType	TL	TL
+LengthType	SL	SL
+Country	USA	USA
+Country	Canada	Canada
+Country	Belgium	Belgium
+Country	UK Engld Wal	UK Engld Wal
+Country	Norway	Norway
+Country	France	France
+Country	UK	UK
+Country	Finland	Finland
+Country	Greece	Greece
+Country	Spain	Spain
+Country	Russia	Russia
+Country	Turkey	Turkey
+Country	Poland	Poland
+Country	Portugal	Portugal
+Country	Italy	Italy
+Country	Iran	Iran
+Country	UK Scotland	UK Scotland
+Country	Ukraine	Ukraine
+Country	Japan	Japan
+Country	China	China
+Country	Laos	Laos
+Country	Kenya	Kenya
+Country	Iraq	Iraq
+Country	Philippines	Philippines
+Country	South Africa	South Africa
+Country	SouthKorea	SouthKorea
+Country	Brazil	Brazil
+Country	Montenegro	Montenegro
+Country	Mexico	Mexico
+Country	New Caledonia	New Caledonia
+Country	Croatia	Croatia
+Country	Australia	Australia
+Country	Estonia	Estonia
+Ref	"Kimmerer et al., 2015"	"Kimmerer et al., 2015"
+Ref	"Carlander, 1977"	"Carlander, 1977"
+Ref	"Klassen et al., 2014"	"Klassen et al., 2014"
+Ref	"Carlander, 1969"	"Carlander, 1969"
+Ref	"Bayer, 1980"	"Bayer, 1980"
+Ref	"Verreycken and Belpaire, 2011"	"Verreycken and Belpaire, 2011"
+Ref	"Frost and Smyly, 1952"	"Frost and Smyly, 1952"
+Ref	"Jensen, 1977"	"Jensen, 1977"
+Ref	"Palomares, 1991"	"Palomares, 1991"
+Ref	"Sigler, 1952"	"Sigler, 1952"
+Ref	"Bohling et al., 1991"	"Bohling et al., 1991"
+Ref	"Kleanthidis et al., 1999"	"Kleanthidis et al., 1999"
+Ref	"Papageorgiou et al., 1983"	"Papageorgiou et al., 1983"
+Ref	"Crisp, 1994"	"Crisp, 1994"
+Ref	"Crisp and Beaumont, 1995"	"Crisp and Beaumont, 1995"
+Ref	"Oscoz and Escala, 2005"	"Oscoz and Escala, 2005"
+Ref	"Belyaeva et al., 1989"	"Belyaeva et al., 1989"
+Ref	"Leunda et al., 2006"	"Leunda et al., 2006"
+Ref	"Arslan et al., 2004"	"Arslan et al., 2004"
+Ref	"Chelkowski and Chelkowska, 1995"	"Chelkowski and Chelkowska, 1995"
+Ref	"Maia and Valente, 1999"	"Maia and Valente, 1999"
+Ref	"Adams et al., 2008"	"Adams et al., 2008"
+Ref	"Volta and Giussani, 2010"	"Volta and Giussani, 2010"
+Ref	"Nicola and Almodovar, 2002"	"Nicola and Almodovar, 2002"
+Ref	"Kheyrandish et al., 2010"	"Kheyrandish et al., 2010"
+Ref	"Arslan et al., 2007"	"Arslan et al., 2007"
+Ref	"Treasurer, 1976"	"Treasurer, 1976"
+Ref	"Nowak et al., 2009"	"Nowak et al., 2009"
+Ref	"Yildirim et al., 2012"	"Yildirim et al., 2012"
+Ref	"Ilhan et al., 2012"	"Ilhan et al., 2012"
+Ref	"Li et al., 1990"	"Li et al., 1990"
+Ref	"Yie, 1988"	"Yie, 1988"
+Ref	"Singhanouvong et al., 1996"	"Singhanouvong et al., 1996"
+Ref	"Li, 1998"	"Li, 1998"
+Ref	"Blanco et al., 2003"	"Blanco et al., 2003"
+Ref	"Britton and Harper, 2006"	"Britton and Harper, 2006"
+Ref	"Miranda et al., 2006"	"Miranda et al., 2006"
+Ref	"Andreu-Soler et al., 2006"	"Andreu-Soler et al., 2006"
+Ref	"Szypula et al., 2001"	"Szypula et al., 2001"
+Ref	"Ye et al., 2007"	"Ye et al., 2007"
+Ref	"Garcia, 2010"	"Garcia, 2010"
+Ref	"Winker et al., 2011"	"Winker et al., 2011"
+Ref	"Erguden and Goksu, 2009"	"Erguden and Goksu, 2009"
+Ref	"Huo et al., 2011"	"Huo et al., 2011"
+Ref	"Wang et al., 2012"	"Wang et al., 2012"
+Ref	"Liu et al., 2012"	"Liu et al., 2012"
+Ref	"Ozcan, 2008"	"Ozcan, 2008"
+Ref	"Vilizzi et al., 2013"	"Vilizzi et al., 2013"
+Ref	"Karata et al., 2007"	"Karata et al., 2007"
+Ref	"Lee et al., 2015"	"Lee et al., 2015"
+Ref	"Kim et al., 2015"	"Kim et al., 2015"
+Ref	"Yang et al., 2016"	"Yang et al., 2016"
+Ref	"Sui et al., 2015"	"Sui et al., 2015"
+Ref	"Que et al., 2015"	"Que et al., 2015"
+Ref	"Xie et al., 2015"	"Xie et al., 2015"
+Ref	"Jumawan and Seronay, 2017"	"Jumawan and Seronay, 2017"
+Ref	"Moreno-Valcarcel et al., 2012"	"Moreno-Valcarcel et al., 2012"
+Ref	"Kindong et al., 2018"	"Kindong et al., 2018"
+Ref	"Tarkan et al., 2006"	"Tarkan et al., 2006"
+Ref	"Magnin and Fradette, 1975"	"Magnin and Fradette, 1975"
+Ref	"Bastista-Silva et al., 2015"	"Bastista-Silva et al., 2015"
+Ref	"Harty, 2017"	"Harty, 2017"
+Ref	Pauly et al. 1998	Pauly et al. 1998
+Ref	"Danylchuk and Tonn, 2006"	"Danylchuk and Tonn, 2006"
+Ref	"Verreycken et al., 2011"	"Verreycken et al., 2011"
+Ref	"Esmaeili and Ebrahimi, 2006"	"Esmaeili and Ebrahimi, 2006"
+Ref	"Huo et al., 2012"	"Huo et al., 2012"
+Ref	"Lei et al., 2015"	"Lei et al., 2015"
+Ref	"Sternberg and Cockayne, 2015"	"Sternberg and Cockayne, 2015"
+Ref	"Fan et al., 2015"	"Fan et al., 2015"
+Ref	"Milosevi and Mrdak, 2016"	"Milosevi and Mrdak, 2016"
+Ref	"Ruiz-Campos et al., 2006"	"Ruiz-Campos et al., 2006"
+Ref	"Chadwick, 1976"	"Chadwick, 1976"
+Ref	"Fitch and Schultz, 1978"	"Fitch and Schultz, 1978"
+Ref	Jeffres et al. 2006	Jeffres et al. 2006
+Ref	"Smith et al., 1988"	"Smith et al., 1988"
+Ref	"Vega-Cendejas et al., 2012"	"Vega-Cendejas et al., 2012"
+Ref	"Amador-del Angel et al., 2015"	"Amador-del Angel et al., 2015"
+Ref	"Vega-Cendejas et al., 2017"	"Vega-Cendejas et al., 2017"
+Ref	"Yoda and Kimura, 1996"	"Yoda and Kimura, 1996"
+Ref	"Chauvet, 1999"	"Chauvet, 1999"
+Ref	"Baek et al., 2015"	"Baek et al., 2015"
+Ref	"Schneider et al., 2000"	"Schneider et al., 2000"
+Ref	"Koutrakis and Tsikliras, 2003"	"Koutrakis and Tsikliras, 2003"
+Ref	"Dulcic and Glamuzina, 2006"	"Dulcic and Glamuzina, 2006"
+Ref	"Ozturk and Ikiz, 2004"	"Ozturk and Ikiz, 2004"
+Ref	"Gallardo-Cabello, 1985"	"Gallardo-Cabello, 1985"
+Ref	"Childress et al., 1980"	"Childress et al., 1980"
+Ref	"Rodriguez-Romero et al., 2009"	"Rodriguez-Romero et al., 2009"
+Ref	"Gunderson and Dygert, 1988"	"Gunderson and Dygert, 1988"
+Ref	"Bond and Erickson, 1993"	"Bond and Erickson, 1993"
+Ref	"Bond , 1982"	"Bond , 1982"
+Ref	"Fadeev, 2005"	"Fadeev, 2005"
+Ref	"Deacon and Keast, 1987"	"Deacon and Keast, 1987"
+Ref	"Pidgeon, 1981"	"Pidgeon, 1981"
+Ref	Kwain 1981	Kwain 1981
+Ref	"Treer et al., 2008"	"Treer et al., 2008"
+Ref	"Saat et al., 2003"	"Saat et al., 2003"
+Ref	"Wilhelms, 2013"	"Wilhelms, 2013"
+Ref	"IGFA, 2009"	"IGFA, 2009"
+Ref	"Stephenson and Momot, 1991"	"Stephenson and Momot, 1991"
+Ref	"Kolander et al., 1993"	"Kolander et al., 1993"
+Ref	"Devine et al., 2005"	"Devine et al., 2005"
+Ref	"Carlander, 1953"	"Carlander, 1953"
+Ref	"Morgan and Gerlach, 1950"	"Morgan and Gerlach, 1950"
+Ref	"Mansueti, 1961"	"Mansueti, 1961"
+Ref	"Bond, 1982"	"Bond, 1982"
+Ref	"Kwak and Park, 2016"	"Kwak and Park, 2016"
+Ref	"Velazquez-Velazquez et al., 2015"	"Velazquez-Velazquez et al., 2015"
+Ref	"Isaacson, 1964"	"Isaacson, 1964"
+Ref	"Devore et al., 1995"	"Devore et al., 1995"
+Ref	"Brennan and Cailliet, 1991"	"Brennan and Cailliet, 1991"
+Ref	"Murie et al., 2009"	"Murie et al., 2009"
+Ref	"Yoon et al., 2012"	"Yoon et al., 2012"
+RefNo	3993	3993
+RefNo	96646	96646
+RefNo	3672	3672
+RefNo	93899	93899
+RefNo	88166	88166
+RefNo	1136	1136
+RefNo	1776	1776
+RefNo	1883	1883
+RefNo	2939	2939
+RefNo	4580	4580
+RefNo	6281	6281
+RefNo	27610	27610
+RefNo	27724	27724
+RefNo	41325	41325
+RefNo	44580	44580
+RefNo	55769	55769
+RefNo	56523	56523
+RefNo	71904	71904
+RefNo	90364	90364
+RefNo	91205	91205
+RefNo	91210	91210
+RefNo	91212	91212
+RefNo	91325	91325
+RefNo	91501	91501
+RefNo	91538	91538
+RefNo	91541	91541
+RefNo	91547	91547
+RefNo	91566	91566
+RefNo	91718	91718
+RefNo	94844	94844
+RefNo	6158	6158
+RefNo	7029	7029
+RefNo	37771	37771
+RefNo	37798	37798
+RefNo	50467	50467
+RefNo	57989	57989
+RefNo	59097	59097
+RefNo	59098	59098
+RefNo	59113	59113
+RefNo	74975	74975
+RefNo	85823	85823
+RefNo	88006	88006
+RefNo	88163	88163
+RefNo	88165	88165
+RefNo	93874	93874
+RefNo	94847	94847
+RefNo	95297	95297
+RefNo	95864	95864
+RefNo	95967	95967
+RefNo	101569	101569
+RefNo	107959	107959
+RefNo	108468	108468
+RefNo	111108	111108
+RefNo	111347	111347
+RefNo	111646	111646
+RefNo	114975	114975
+RefNo	115878	115878
+RefNo	118093	118093
+RefNo	59105	59105
+RefNo	997	997
+RefNo	111720	111720
+RefNo	117871	117871
+RefNo	30504	30504
+RefNo	58435	58435
+RefNo	59087	59087
+RefNo	89110	89110
+RefNo	101562	101562
+RefNo	111107	111107
+RefNo	111343	111343
+RefNo	115170	115170
+RefNo	59092	59092
+RefNo	72146	72146
+RefNo	4436	4436
+RefNo	9990	9990
+RefNo	4898	4898
+RefNo	95265	95265
+RefNo	111768	111768
+RefNo	118196	118196
+RefNo	13647	13647
+RefNo	33586	33586
+RefNo	107957	107957
+RefNo	50932	50932
+RefNo	59118	59118
+RefNo	75157	75157
+RefNo	1658	1658
+RefNo	54657	54657
+RefNo	86316	86316
+RefNo	4511	4511
+RefNo	12624	12624
+RefNo	33394	33394
+RefNo	56527	56527
+RefNo	6085	6085
+RefNo	13427	13427
+RefNo	37041	37041
+RefNo	85455	85455
+RefNo	52095	52095
+RefNo	106276	106276
+RefNo	83530	83530
+RefNo	5732	5732
+RefNo	12312	12312
+RefNo	120684	120684
+RefNo	3527	3527
+RefNo	1244	1244
+RefNo	11511	11511
+RefNo	108768	108768
+RefNo	102977	102977
+RefNo	4527	4527
+RefNo	34045	34045
+RefNo	52324	52324
+RefNo	85769	85769
+RefNo	112072	112072
+Source	Paper	scientific paper
+Source	DB	database (fishbase.us)
+Source	Calc	calculated
+Source	Paper (Blackside Darter)	"used values, sourced from a paper, for blackside darter"
+Source	Paper (Golden Shiner)	"used values, sourced from a paper, for golden shiner"

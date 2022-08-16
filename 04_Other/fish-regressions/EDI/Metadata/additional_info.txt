@@ -1,0 +1,6 @@
+﻿The \"refNo column\" in the raw dataset refers to the reference ID number assigned to the reference by fishbase.us, the database where the reference is pulled from. This can be used to find a full citation for the reference.
+
+The methods used for measuring fish length are:
+FL = fork length
+TL = total length
+SL = standard length

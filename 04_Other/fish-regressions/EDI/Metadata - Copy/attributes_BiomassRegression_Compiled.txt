@@ -1,0 +1,15 @@
+attributeName	attributeDefinition	class	unit	dateTimeFormatString	missingValueCode	missingValueCodeExplanation
+SpeciesCode	the species code for each fish	character				
+CommonName	the common name of each fish species	character				
+SciName	the scientific name of each fish species	character				
+a_cm_g	"the a regression paramter in (cm,g)"	numeric	gramCentimeter			
+b	the b regression pamater	numeric	dimensionless			
+SD_log10_a	the standard deviation of the log10(a)	numeric	dimensionless			
+SD_b	the standard deviation of b	numeric	dimensionless			
+SD_log10_W	the standard deviation of the log10(W)	numeric	dimensionless			
+n_Studies	the number of studies used to calculate the regression paramters	numeric	dimensionless			
+n_Fish	the total number of fish from all the studies used to calculate the regression parameters	numeric	dimensionless			
+LengthType	the method used for measuring the fish	categorical				
+Gender	the gender of the fish	categorical				
+Country	the country of origin of the fish used in the study	character				
+Source	"whether the value was determined via the database, a peer-reviewed paper, or calculated by hand using data from a paper"	categorical				

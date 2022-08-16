@@ -1,0 +1,20 @@
+attributeName	attributeDefinition	class	unit	dateTimeFormatString	missingValueCode	missingValueCodeExplanation
+SpeciesCode	the species code for each fish	character				
+CommonName	the common name of each fish species	character				
+SciName	the scientific name of each fish species	character				
+a	"the a regression paramter in (cm,g)"	numeric	gramCentimeter			
+b	the b regression pamater	numeric	dimensionless			
+Weight	"the weight penality given to the study when calculating the average regression parameters; if only one study was used, it's weight = 1"	numeric	dimensionless			
+Gender	the gender of the fish	categorical				
+Lmin	the minimum length of the fish used in the study	numeric	centimeter			
+Lmax	the maximum length of the fish used in the study	numeric	centimeter			
+LengthType	the method used for measuring the fish	categorical				
+r2	the r2 value of the regression line used to calculate the parameters	numeric	dimensionless			
+ln_a_pVal	the p-value for the ln(a) of the regression line used to calculate the parameters	numeric	dimensionless			
+b_pVal	the p-value for the b of the regression line used to calculate the parameters	numeric	dimensionless			
+n	the total number of fish from all the studies used to calculate the regression parameters	numeric	dimensionless			
+Country	the country of origin of the fish used in the study	categorical				
+Locality	the locality of the fish used in the study	character				
+Ref	the reference for the study that the regression parameters came from	categorical				
+RefNo	the reference ID number assigned to the reference by fishbase.us	categorical				
+Source	"whether the value was determined via the database, a peer-reviewed paper, or calculated by hand using data from a paper"	categorical				

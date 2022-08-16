@@ -1,0 +1,234 @@
+Analyte,Year,Month,Station,Region,Sign,Value,min_yr,max_yr,mean_yr
+Chla,2020,Jul,C10A,Southern Interior Delta,=,32.5,0.53,32.5,2.864790698
+Chla,2020,Nov,C3A,Northern Interior Bay,=,0.53,0.53,32.5,2.864790698
+Chla,2020,Mar,NZ325,San Pablo Bay,=,0.53,0.53,32.5,2.864790698
+Chla,2019,Jul,C10A,Southern Interior Delta,=,38.1,0.05,38.1,2.217083333
+Chla,2019,Jun,D26,Central Delta,<,0.05,0.05,38.1,2.217083333
+Chla,2019,Sep,D26,Central Delta,<,0.05,0.05,38.1,2.217083333
+DissAmmonia,2020,Jan,C10A,Southern Interior Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Feb,C10A,Southern Interior Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Mar,C10A,Southern Interior Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Jun,C10A,Southern Interior Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Jul,C10A,Southern Interior Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Aug,C10A,Southern Interior Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Sep,C10A,Southern Interior Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Oct,C10A,Southern Interior Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Nov,C10A,Southern Interior Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Dec,C10A,Southern Interior Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Mar,C3A,Northern Interior Bay,=,0.7,0.05,0.7,0.105367713
+DissAmmonia,2020,Jun,C3A,Northern Interior Bay,=,0.7,0.05,0.7,0.105367713
+DissAmmonia,2020,Jan,C9,Southern Interior Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Feb,C9,Southern Interior Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Jun,C9,Southern Interior Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Jul,C9,Southern Interior Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Aug,C9,Southern Interior Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Sep,C9,Southern Interior Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Oct,C9,Southern Interior Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Nov,C9,Southern Interior Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Dec,C9,Southern Interior Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Jun,D10,Confluence,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Jul,D10,Confluence,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Aug,D10,Confluence,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Oct,D10,Confluence,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Jun,D12,Confluence,=,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Jul,D12,Confluence,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Aug,D12,Confluence,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Sep,D12,Confluence,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Oct,D12,Confluence,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Jan,D16,Central Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Feb,D16,Central Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Jun,D16,Central Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Jul,D16,Central Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Aug,D16,Central Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Sep,D16,Central Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Oct,D16,Central Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Nov,D16,Central Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Jan,D19,Central Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Mar,D19,Central Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Jun,D19,Central Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Jul,D19,Central Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Aug,D19,Central Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Sep,D19,Central Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Oct,D19,Central Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Nov,D19,Central Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Dec,D19,Central Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Jul,D22,Confluence,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Aug,D22,Confluence,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Oct,D22,Confluence,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Jun,D26,Central Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Oct,D26,Central Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Nov,D26,Central Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Jan,D28A,Central Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Mar,D28A,Central Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Jun,D28A,Central Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Jul,D28A,Central Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Aug,D28A,Central Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Sep,D28A,Central Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Oct,D28A,Central Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Nov,D28A,Central Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Dec,D28A,Central Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Jun,D4,Confluence,=,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Jul,D4,Confluence,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Aug,D4,Confluence,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Oct,D4,Confluence,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Mar,D41,San Pablo Bay,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Jun,D41,San Pablo Bay,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Jul,D41,San Pablo Bay,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Oct,D41,San Pablo Bay,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Jun,D41A,San Pablo Bay,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Jul,D41A,San Pablo Bay,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Aug,D41A,San Pablo Bay,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Sep,D41A,San Pablo Bay,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Oct,D41A,San Pablo Bay,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Jul,D6,San Pablo Bay,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Jun,D7,Suisun & Grizzly Bays,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Jul,D7,Suisun & Grizzly Bays,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Aug,D7,Suisun & Grizzly Bays,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Oct,D7,Suisun & Grizzly Bays,=,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Jun,D8,Suisun & Grizzly Bays,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Jul,D8,Suisun & Grizzly Bays,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Aug,D8,Suisun & Grizzly Bays,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Jan,MD10A,Southern Interior Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Feb,MD10A,Southern Interior Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Mar,MD10A,Southern Interior Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Jun,MD10A,Southern Interior Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Jul,MD10A,Southern Interior Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Aug,MD10A,Southern Interior Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Sep,MD10A,Southern Interior Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Oct,MD10A,Southern Interior Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Nov,MD10A,Southern Interior Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Oct,NZ002,San Pablo Bay,=,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Jul,NZ032,Suisun & Grizzly Bays,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Aug,NZ032,Suisun & Grizzly Bays,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Oct,NZ325,San Pablo Bay,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Feb,P8,Southern Interior Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Jun,P8,Southern Interior Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Jul,P8,Southern Interior Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Aug,P8,Southern Interior Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Oct,P8,Southern Interior Delta,=,0.05,0.05,0.7,0.105367713
+DissAmmonia,2020,Nov,P8,Southern Interior Delta,<,0.05,0.05,0.7,0.105367713
+DissAmmonia,2019,Mar,C10A,Southern Interior Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Apr,C10A,Southern Interior Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,May,C10A,Southern Interior Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Jun,C10A,Southern Interior Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Jul,C10A,Southern Interior Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Aug,C10A,Southern Interior Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Sep,C10A,Southern Interior Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Nov,C3A,Northern Interior Bay,=,0.75,0.05,0.75,0.117083333
+DissAmmonia,2019,Mar,C9,Southern Interior Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Apr,C9,Southern Interior Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,May,C9,Southern Interior Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Jun,C9,Southern Interior Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Jul,C9,Southern Interior Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Aug,C9,Southern Interior Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Sep,C9,Southern Interior Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Mar,D10,Confluence,=,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Apr,D10,Confluence,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,May,D10,Confluence,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Jun,D10,Confluence,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Jul,D10,Confluence,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Aug,D10,Confluence,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Sep,D10,Confluence,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Apr,D12,Confluence,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Jun,D12,Confluence,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Jul,D12,Confluence,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Aug,D12,Confluence,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Sep,D12,Confluence,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,May,D16,Central Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Jun,D16,Central Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Jul,D16,Central Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Aug,D16,Central Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Sep,D16,Central Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Apr,D19,Central Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,May,D19,Central Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Jun,D19,Central Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Jul,D19,Central Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Aug,D19,Central Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Sep,D19,Central Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Mar,D22,Confluence,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Apr,D22,Confluence,=,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Apr,D26,Central Delta,=,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Jun,D26,Central Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Mar,D28A,Central Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Apr,D28A,Central Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,May,D28A,Central Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Jun,D28A,Central Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Jul,D28A,Central Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Aug,D28A,Central Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Sep,D28A,Central Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Jun,D4,Confluence,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Jul,D4,Confluence,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Aug,D4,Confluence,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Sep,D4,Confluence,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Apr,D41,San Pablo Bay,=,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Aug,D41A,San Pablo Bay,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Sep,D41A,San Pablo Bay,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Mar,D6,San Pablo Bay,=,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Jun,D6,San Pablo Bay,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Aug,D6,San Pablo Bay,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Mar,D7,Suisun & Grizzly Bays,=,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Apr,D7,Suisun & Grizzly Bays,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,May,D7,Suisun & Grizzly Bays,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Jun,D7,Suisun & Grizzly Bays,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Aug,D7,Suisun & Grizzly Bays,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Apr,D8,Suisun & Grizzly Bays,=,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,May,D8,Suisun & Grizzly Bays,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Jun,D8,Suisun & Grizzly Bays,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Jul,D8,Suisun & Grizzly Bays,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Aug,D8,Suisun & Grizzly Bays,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Sep,D8,Suisun & Grizzly Bays,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Mar,MD10A,Southern Interior Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Apr,MD10A,Southern Interior Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,May,MD10A,Southern Interior Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Jun,MD10A,Southern Interior Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Jul,MD10A,Southern Interior Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Aug,MD10A,Southern Interior Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Sep,MD10A,Southern Interior Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Aug,NZ004,San Pablo Bay,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Jun,NZ032,Suisun & Grizzly Bays,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Jul,NZ032,Suisun & Grizzly Bays,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Aug,NZ032,Suisun & Grizzly Bays,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Sep,NZ032,Suisun & Grizzly Bays,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Mar,P8,Southern Interior Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Apr,P8,Southern Interior Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,May,P8,Southern Interior Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Jun,P8,Southern Interior Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Aug,P8,Southern Interior Delta,<,0.05,0.05,0.75,0.117083333
+DissAmmonia,2019,Sep,P8,Southern Interior Delta,<,0.05,0.05,0.75,0.117083333
+DissNitrateNitrite,2020,Mar,D10,Confluence,=,0.013,0.013,3.25,0.429834081
+DissNitrateNitrite,2020,Oct,P8,Southern Interior Delta,=,3.25,0.013,3.25,0.429834081
+DissNitrateNitrite,2019,Jul,D28A,Central Delta,=,0.05,0.05,15,1.469975352
+DissNitrateNitrite,2019,Oct,D41,San Pablo Bay,<,15,0.05,15,1.469975352
+DissNitrateNitrite,2019,Nov,D41,San Pablo Bay,<,15,0.05,15,1.469975352
+DissNitrateNitrite,2019,Dec,D41,San Pablo Bay,<,15,0.05,15,1.469975352
+DissNitrateNitrite,2019,Oct,D41A,San Pablo Bay,<,15,0.05,15,1.469975352
+DissNitrateNitrite,2019,Nov,D41A,San Pablo Bay,<,15,0.05,15,1.469975352
+DissNitrateNitrite,2019,Dec,D41A,San Pablo Bay,<,15,0.05,15,1.469975352
+DissNitrateNitrite,2019,Nov,D6,San Pablo Bay,<,15,0.05,15,1.469975352
+DissNitrateNitrite,2019,Dec,D6,San Pablo Bay,<,15,0.05,15,1.469975352
+DissNitrateNitrite,2019,May,MD10A,Southern Interior Delta,<,0.05,0.05,15,1.469975352
+DissNitrateNitrite,2019,Jun,MD10A,Southern Interior Delta,<,0.05,0.05,15,1.469975352
+DissNitrateNitrite,2019,Oct,NZ002,San Pablo Bay,<,0.05,0.05,15,1.469975352
+DissNitrateNitrite,2019,Nov,NZ002,San Pablo Bay,<,15,0.05,15,1.469975352
+DissNitrateNitrite,2019,Dec,NZ002,San Pablo Bay,<,15,0.05,15,1.469975352
+DissNitrateNitrite,2019,Oct,NZ004,San Pablo Bay,<,15,0.05,15,1.469975352
+DissNitrateNitrite,2019,Nov,NZ004,San Pablo Bay,<,15,0.05,15,1.469975352
+DissNitrateNitrite,2019,Dec,NZ004,San Pablo Bay,<,15,0.05,15,1.469975352
+DissNitrateNitrite,2019,Oct,NZ325,San Pablo Bay,<,15,0.05,15,1.469975352
+DissNitrateNitrite,2019,Nov,NZ325,San Pablo Bay,<,15,0.05,15,1.469975352
+DissNitrateNitrite,2019,Dec,NZ325,San Pablo Bay,<,15,0.05,15,1.469975352
+SpCndSurface,2020,Jul,C3A,Northern Interior Bay,=,132,132,45349,11310.12825
+SpCndSurface,2020,Nov,D41,San Pablo Bay,=,45349,132,45349,11310.12825
+SpCndSurface,2019,Jun,C10A,Southern Interior Delta,=,77.8,77.8,41956,6702.539583
+SpCndSurface,2019,Nov,D41,San Pablo Bay,=,41956,77.8,41956,6702.539583
+TotPhos,2020,Dec,D28A,Central Delta,=,0.04,0.04,0.49,0.104737327
+TotPhos,2020,Sep,P8,Southern Interior Delta,=,0.49,0.04,0.49,0.104737327
+TotPhos,2019,Jun,C3A,Northern Interior Bay,=,0.04,0.04,1.02,0.097052083
+TotPhos,2019,May,D19,Central Delta,=,0.04,0.04,1.02,0.097052083
+TotPhos,2019,Jun,D22,Confluence,=,0.04,0.04,1.02,0.097052083
+TotPhos,2019,Apr,NZ002,San Pablo Bay,=,1.02,0.04,1.02,0.097052083
+TotPhos,2019,May,NZ068,Northern Interior Bay,=,0.04,0.04,1.02,0.097052083
+TurbiditySurface,2020,Mar,D19,Central Delta,=,0.3,0.3,41.4,9.8
+TurbiditySurface,2020,Nov,D7,Suisun & Grizzly Bays,=,41.4,0.3,41.4,9.8
+TurbiditySurface,2019,Apr,MD10A,Southern Interior Delta,=,0.3,0.3,142.3,19.55885417
+TurbiditySurface,2019,Feb,NZ325,San Pablo Bay,=,142.3,0.3,142.3,19.55885417

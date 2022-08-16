@@ -1,0 +1,5 @@
+analyte,region,date,n,n.cen,median,mean,sd,RL
+chla,Southern Interior Delta,5/4/2019,0,1.04,1.2275,0.29101833,NA,NA
+dissAmmonia,Suisun & Grizzly Bays,7/1/2019,4,2,NA,0.0515,0.001224745,NA
+dissNitrateNitrite,Northern Interior Delta,6/1/2019,2,0,NA,0.115,0.035355339,NA
+totPhos,Central Delta,12/1/2019,4,2,0.042,0.0435,0.003,0.1

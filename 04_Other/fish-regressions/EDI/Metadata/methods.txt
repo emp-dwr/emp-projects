@@ -1,0 +1,18 @@
+﻿Data Collection Methods
+
+Data was collected one of three ways:
+1. Via the fishbase.us database. The raw data obtained from all studies for a given fish species were recorded in addition to the average values for the regression parameters. The average values were calculated by the database. The data from each study was given a weight penalty based on how reliable the study was (the \"weight\" column in the raw dataset). This weight factor was determined by the database. If only one study was used, the study weight was one.
+2. Via studies that already published the regression parameters but were not on the fishbase.us database.
+3. Manually calculated using length-weight data from a peer-reviewed study. This was done in R.
+
+Since the a regression parameter is dependent on the length and weight units, data transformation was required if a paper did not use the same units as this dataset. The equations used to accomplish this were:
+a(mm,g) = 10^intercept		- intercept from the equation log(W) = log(a) + b*log(L)
+a(cm,g) = a(mm,g)*10^b		- equation from fishbase.de
+a(cm,g) = a(mm,mg)*10^b/1000	- equation from fishbase.de 
+
+All studies are properly referenced in the raw dataset.
+
+
+QA/QC
+
+Data entries were checked by a fellow Department of Water Resources scientist.

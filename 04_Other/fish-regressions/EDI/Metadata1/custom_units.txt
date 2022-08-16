@@ -1,0 +1,2 @@
+id	unitType	parentSI	multiplierToSI	description
+gramCentimeter	weightMass	kilogramMeter	100000	grams-centimeter

@@ -1,0 +1,731 @@
+```{r Info}
+#Particle Size Study Analyses
+#conduct statistical analyses on particle size data
+#output: stats
+#questions: sarah.perry@water.ca.gov
+```
+
+```{r Inputs}
+#~~~~~~~~~~~~#
+#~~~Inputs~~~#
+#~~~~~~~~~~~~#
+excelPsDat <- 'C:/R/ParticleSize/PSD Data.xlsx'
+excelWqDat <- 'C:/R/ParticleSize/WQData_0318-0619.xlsx'
+```
+
+```{r Setup_Pt1, warning = FALSE, message = FALSE}
+#~~~~~~~~~~~#
+#~~~Setup~~~#
+#~~~~~~~~~~~#
+#~~~Import Data~~~#
+#import packages
+library(RColorBrewer)
+library(reticulate)
+library(tidyverse)
+library(scales)
+library(readxl)
+library(vegan)
+library(zoo)
+
+#initialize python env for later
+use_condaenv('rStudio')
+
+#import data (ignore errors)
+psRawDat <-
+  read_excel(
+  excelPsDat,
+  sheet = 'PSD Data',
+  col_names = T
+  )
+
+medRawDat <-
+  read_excel(
+  excelPsDat,
+  sheet = 'Median Data',
+  col_names = T
+  )
+
+wqRawDat <-
+  read_excel(
+  excelWqDat,
+  col_names = T
+  )
+
+#~~~Cleanup PS Data~~~#
+#rename columns
+colnames(medRawDat)[colnames(medRawDat)=='Median Particle Diameter, 50th percentile (um)'] <- 'Median (um)'
+
+#remove C10A-Oct b/c extreme outlier, and D41A for insufficient data
+psRawDat <- psRawDat[!(psRawDat$Station == 'C3A' & psRawDat$Month == 10),]
+psRawDat <- psRawDat[!(psRawDat$Station == 'D41A'),]
+
+#add date col
+psRawDat$Date <-
+  as.yearmon(paste(psRawDat$Year, psRawDat$Month), '%Y %m') %>%
+  as.Date() %>%
+  format(., '%Y-%m')
+
+medRawDat$Date <-
+  as.yearmon(paste(medRawDat$Year, medRawDat$Month), '%Y %m') %>%
+  as.Date() %>%
+  format(., '%Y-%m')
+
+#convert numerical months to abbreviations
+psRawDat$Month <- month.abb[psRawDat$Month]
+
+medRawDat$Month <- month.abb[medRawDat$Month]
+
+#add season col
+psRawDat <- psRawDat %>%
+  mutate(
+    Season =
+      case_when(
+        Month == 'Mar' | Month == 'Apr' | Month == 'May' ~ 'Spring',
+        Month == 'Jun' | Month == 'Jul' | Month == 'Aug' ~ 'Summer',
+        Month == 'Sep' | Month == 'Oct' | Month == 'Nov' ~ 'Fall',
+        Month == 'Dec' | Month == 'Jan' | Month == 'Feb'~ 'Winter'
+        )
+  )
+
+#add a combined kurtosis/skew col
+psRawDat$`Kurtosis Skew` <- paste(psRawDat$Kurtosis, psRawDat$Skew, sep = ' - ')
+
+#add a binned median col
+medBinRawDat <- medRawDat %>%
+  mutate(
+    `Median Bin` =
+      case_when(
+        `Median (um)` >= 0 & `Median (um)` < 1 ~ 'Colloid (0-1)',
+        `Median (um)` >= 1 & `Median (um)` < 4 ~ 'Clay (1-4)',
+        `Median (um)` >= 4 & `Median (um)` < 16 ~ 'Fine Silt (4-16)',
+        `Median (um)` >= 16 & `Median (um)` < 62 ~ 'Coarse Silt (16-62)',
+        `Median (um)` >= 62 & `Median (um)` <= 2100 ~ 'Sand and Coarser (>62)',
+        )
+  )
+
+#change to wide
+psWideDat <- psRawDat %>%
+  spread(.,'Diameter (um)','Inc Weight %')
+
+#~~~Cleanup WQ Data~~~#
+#remove/rename columns
+wqRawDat <- wqRawDat[c('Short Station Name','Collection Date','Analyte','Result')]
+names(wqRawDat) <- c('Station','Date','Analyte','Result')
+
+#remove unnecessary rows
+wqRawDat <-
+  wqRawDat[!(wqRawDat$Analyte == 'Weather Observations' |
+               wqRawDat$Analyte == 'Field Notes'),]
+```
+
+```{python Setup_Pt2}
+#import packages
+import pandas as pd
+import numpy as np
+
+#set df variable
+dfWQ = r.wqRawDat
+
+#clean up result column
+dfWQ['Result'] = dfWQ['Result'].astype(str)
+dfWQ['Result'] = dfWQ['Result'].str.strip('null')
+dfWQ['Result'] = dfWQ['Result'].replace('a', np.nan)
+dfWQ['Result'] = dfWQ['Result'].replace('< R.L.', np.nan)
+dfWQ['Result'] = dfWQ['Result'].astype(float)
+
+#if there's duplicate analyses, value = mean(values)
+dfWQ = dfWQ.groupby(['Station','Date','Analyte'], as_index = False).mean()
+```
+
+```{r Setup_Pt3}
+#assign python variable to r
+wqLongDat = py$dfWQ
+
+#normalize station codes b/w dfs (inefficient code :/)
+for (i in 1:nrow(wqLongDat)) {
+  wqLongDat['Station'][i,] <-
+    strsplit(wqLongDat['Station'][i,][[1]]," ")[[1]][1]
+}
+
+#format date as year-month
+wqLongDat <-
+  wqLongDat %>%
+  mutate(Date = format(Date, '%Y-%m'))
+
+#convert df to wide
+wqWideDat <- wqLongDat %>%
+  spread(.,'Analyte','Result')
+
+#filter out unused columns
+wqWideDat <- subset(wqWideDat, select = -c(`Field Microcystis aeruginosa`, `Field North Latitude`, `Field West Longitude`, `Field Wind Velocity`, `Field (Bottom) Chlorophyll Fluorescence`, `Field Chlorophyll Fluorescence`, `Field Air Temperature`))
+
+#~~~Merge PS/WQ dfs~~~#
+#merge dfs
+wqPSDat <- merge(wqWideDat, psWideDat, by = c('Station','Date'))
+
+wqPSMedDat <- merge(medBinRawDat, wqPSDat, by = c('Station','Date','Month','Year','Skew','Kurtosis'), no.dups = FALSE)
+
+#~~~Create Output Directory~~~#
+fpOutput <- paste(getwd(), '/Output/', sep = '')
+dir.create(file.path(fpOutput), showWarnings = F)
+```
+
+```{r Bar Graphs}
+#~~~~~~~~~~~~~~~~~#
+#~~~~Bar Graphs~~~#
+#~~~~~~~~~~~~~~~~~#
+#~~~Clean Up Dataframe~~~#
+#adding bin label column to dataset
+psBinRawDat <- psRawDat %>%
+  mutate(
+    Bin =
+      case_when(
+        `Diameter (um)` >= 0 & `Diameter (um)` < 1 ~ 'Colloid (0-1)',
+        `Diameter (um)` >= 1 & `Diameter (um)` < 4 ~ 'Clay (1-4)',
+        `Diameter (um)` >= 4 & `Diameter (um)` < 16 ~ 'Fine Silt (4-16)',
+        `Diameter (um)` >= 16 & `Diameter (um)` < 62 ~ 'Coarse Silt (16-62)',
+        `Diameter (um)` >= 62 & `Diameter (um)` <= max(psRawDat$`Diameter (um)`) ~ 'Sand and Coarser (>62)',
+        )
+  )
+
+#aggregating (summing) incremental weights by bin
+psBinDat <- 
+  aggregate(
+    x = psBinRawDat$`Inc Weight %`,
+    by = list(psBinRawDat$Station, psBinRawDat$Date, psBinRawDat$Year, psBinRawDat$Month, psBinRawDat$Bin),
+    FUN = 'sum'
+    )
+#rename cols
+names(psBinDat)<-c('Station', 'Date', 'Year', 'Month', 'Bin', 'Inc')
+
+#~Add Turbidity Data~#
+#grab turbidity data
+turbidDat <- wqWideDat[c('Station','Date','Field Turbidity')]
+
+#merge with binned df
+psTurbidDat <- merge(psBinDat, turbidDat, by = c('Station', 'Date'))
+
+#create scaled column for plotting purposes
+psTurbidDat$`Turbidity Scaled` <- psTurbidDat$`Field Turbidity`/max(psTurbidDat$`Field Turbidity`)
+
+#~~~Plot~~~#
+binColors <- c('#1b9e77','#d95f02','#7570b3','#e7298a','#66a61e')#c('#984ea3','#1b9e77','#e7298a','#ff7f00','#66a61e')
+
+#renaming columns
+names(psBinDat)<-c('Station', 'Date', 'Year', 'Month', 'Bin', 'Inc')
+
+#grab list of dates for plotting
+dateLabels <- unique(psBinDat$Date)
+
+#facet graph
+binFacet <-
+  ggplot(psTurbidDat) +
+  geom_bar(
+    aes(
+      y = Inc,
+      x = Date,
+      fill = factor(Bin, levels = c('Colloid (0-1)', 'Clay (1-4)', 'Fine Silt (4-16)', 'Coarse Silt (16-62)', 'Sand and Coarser (>62)')
+                    )
+      ),
+    stat='identity',
+    position = position_fill(reverse = TRUE)
+    ) + 
+  geom_line(
+    aes(y = `Turbidity Scaled`, x = Date, group = 1),
+    size = 1.3,
+    color = 'black'
+    ) +
+  # geom_point(
+  #   aes(y = `Turbidity Scaled`, x = Date, group = 1),
+  #   size = 1.3
+  #   ) +
+  facet_wrap(
+    ~ Station,
+    ncol=3,
+    ) +
+  scale_x_discrete(
+    breaks = dateLabels,
+    labels = dateLabels
+    ) +
+  scale_y_continuous(
+    expand = expand_scale(mult=c(0, 0.03)),
+    labels = scales::percent_format(),
+    'PSD (Relative Wt %)',
+    sec.axis = sec_axis(~ .*max(psTurbidDat$`Field Turbidity`), name = 'Turbidity (NTU)')
+    ) +
+  scale_fill_manual(values = binColors) +
+  xlab('Date') +
+  guides(fill = guide_legend(
+    #reverse = TRUE,
+    title.position = 'top',
+    title.hjust = 0.5,
+    title = expression(paste('Particle Size Bins (',mu,'m)', sep = '')))
+    ) +
+  ggtitle('Particle Size Distribution') +
+  theme_bw() + theme(
+    panel.border = element_rect(color = 'black'),
+    panel.grid.major = element_blank(),
+    #panel.grid.minor = element_blank(),
+    axis.line = element_line(color = 'black'),
+    axis.text = element_text(color = 'black'),
+    text = element_text(size = 12),
+    axis.title.x = element_text(size = 15),
+    axis.title.y = element_text(size = 15),
+    axis.text.x = element_text(angle = -45, vjust = 0.5, hjust = 0),
+    plot.title = element_text(size = 15, face = 'bold'),
+    legend.position = 'bottom'
+    )
+
+#path for saving plot
+binPath <- paste(fpOutput,'binSizes.png', sep = '')
+
+#save
+# ggsave(
+#   binPath,
+#   width = 8,
+#   height = 10,
+#   units = 'in'
+#   )
+
+plot(binFacet)
+
+```
+
+```{r Timeseries_Graphs}
+#~~~~~~~~~~~~~~~~~~~~~~~#
+#~~~Timeseries Graphs~~~#
+#~~~~~~~~~~~~~~~~~~~~~~~#
+#grab list of stations for median particle size
+stations <- unique(medRawDat$Station)
+
+wqMedDat <- merge(medRawDat, wqWideDat, by = c('Station','Date'))
+
+#create graphs
+for (stat in stations) {
+  #filter df by station
+  filtDat <-
+    wqMedDat %>%
+    filter(Station == stat)
+  
+  #graph timeseries plot
+  medPlt <-
+    ggplot(filtDat, aes(x = Date, y = `Median (um)`)) +
+    geom_point(size = 3) +
+    ggtitle(paste(stat,'Median Particle Size')) +
+    theme_bw()
+
+  plot(medPlt)
+  
+  #create file name for saving
+  plotNameMed <- paste(fpOutput, 'medianPS_',stat,'.png', sep = '')
+
+  # save
+  # ggsave(
+  #   plotNameMed,
+  #   width = 9,
+  #   height = 7)
+}
+```
+```{r}
+unique(psMDS_xy$`Kurtosis Skew`)
+
+
+```
+
+```{r NMDS}
+#~~~~~~~~~~~~~~~#
+#~~~NMDS Plot~~~#
+#~~~~~~~~~~~~~~~#
+#~~~nMDS Analysis~~~~#
+#calculate MDS
+psMDS <- metaMDS(
+  comm = wqPSMedDat[29:length(wqPSMedDat)], #28 on are numeric cols
+  distance = 'bray',
+  trace = F,
+  autotransform = F
+  )
+
+#grab xy coords for PS data, added relevant columns to df
+psMDS_points <- data.frame(psMDS$points)
+psMDS_xy <- cbind(psMDS_points,wqPSMedDat[1:28])
+
+#fix kurotosis - skew names
+psMDS_xy <- psMDS_xy %>%
+  mutate(
+    `Kurtosis Skew` =
+      case_when(
+        `Kurtosis Skew` == 'mesokurtic - finely skewed' ~ 'M - FS',
+        `Kurtosis Skew` == 'mesokurtic - near symmetrical' ~ 'M - NS',
+        `Kurtosis Skew` == 'lepokurtic - finely skewed' ~ 'L - FS',
+        `Kurtosis Skew` == 'platykurtic - finely skewed' ~ 'P - FS',
+        `Kurtosis Skew` == 'mesokurtic - strongly fine skewed' ~ 'M - SFS',
+        `Kurtosis Skew` == 'lepokurtic - strongly fine skewed' ~ 'M - SFS',
+        `Kurtosis Skew` == 'very platykurtic - strongly fine skewed' ~ 'VP - SFS',
+        `Kurtosis Skew` == 'platykurtic - near symmetrical' ~ 'P - NS',
+        `Kurtosis Skew` == 'platykurtic - strongly fine skewed' ~ 'P - SFS',
+        `Kurtosis Skew` == 'lepokurtic - strongly finely skewed' ~ 'L - SFS',
+        `Kurtosis Skew` == 'very platykurtic - finely skewed' ~ 'VP - FS',
+        `Kurtosis Skew` == 'very platykurtic - strongly coarse skewed' ~ 'VP - SCS',
+        `Kurtosis Skew` == 'very platykurtic - coarse skewed' ~ 'VP - CS',
+        )
+  )
+
+#grab stress value
+psStress <- round(psMDS$stress,3)
+
+#convert vari to factor for plotting
+variFactor <- as.factor(psMDS_xy$`Kurtosis Skew`)
+
+#~~~Plotting/Ordisurf/Envfit~~~#
+#create colors for plot
+colorCount <- nlevels(variFactor)
+paletteFunc <- colorRampPalette(brewer.pal(colorCount, 'Accent')) #c('#1b9e77','#ff7f00','#984ea3','#e7298a'))
+pltColors <- paletteFunc(colorCount)
+
+#grab names of environmental variables for plotting
+wqVaris <- colnames(wqWideDat[3:length(wqWideDat)])
+
+#set parameters for graphing purposes
+par(xpd = NA, mar = par()$mar + c(2.5, 0, 1, 0), mgp=c(2,1,0))
+
+for (vari in wqVaris) {
+  #fix up variable name for saving
+  variName <- gsub("(","", vari, fixed = TRUE)
+  variName <- gsub(")","", variName, fixed = TRUE)
+  variName <- gsub(" ","", variName, fixed = TRUE)
+  
+  #path for saving plot
+  pltPath <- paste(fpOutput,'both_medSize_',variName,'.png', sep = '')
+  
+  #calculate envfit
+  variFit <- envfit(
+    psMDS ~ as.double(wqPSMedDat[[vari]]),
+    na.rm = TRUE,
+    p.max = 0.05
+    )
+  
+  #~~~plot~~#
+  #plot nmds points
+  plot(
+    psMDS_xy$MDS1, psMDS_xy$MDS2,
+    xlab = 'NMDS1', ylab = 'NMDS2',
+    pch = 21,
+    cex = 2,
+    lwd = 2,
+    bg = pltColors[variFactor],
+    col = 'black',
+    #main = vari,
+    asp = 1
+    )
+  
+  # #plot envfit
+  # plot(
+  #   variFit,
+  #   labels = ''
+  #   )
+  
+  #calc/plot ordisurf
+  ordi <-
+    ordisurf(
+    psMDS, as.double(wqPSMedDat[[vari]]),
+    add = TRUE,
+    col = 'black',
+    labcex = 0.8,
+    lwd.cl = 1.95)
+  
+  #add legend
+  legend(
+    "bottomright",# inset=c(-0.15,-0.55),
+    legend = rev(levels(variFactor)),
+    col = rev(pltColors),
+    pch = 19,
+    cex = 1,
+    ncol = 6
+  )
+
+  # save/close plot
+  dev.copy(png, pltPath)
+  dev.off()
+  break
+# 
+#   print(' ')
+#   print('~~~~')
+#   print(variName)
+#   print('~~~~')
+#   print(' ')  
+#     print('~~~~')
+#   print('envfit')
+#   print('~~~~')
+#   print(' ')  
+#   print(variFit)
+#   print(' ')
+#   print('~~~~')
+#   print('ordisurf')
+#   print('~~~~')
+#   print(' ')
+#   print(summary(ordi))
+}
+```
+
+```{r NMDS Split}
+#subset out points from the "lower" of the two populations (MDS1 < 1)
+wqDat_Points <- cbind(wqPSMedDat,psMDS_points)
+lowerDat_Points <- subset(wqDat_Points, wqDat_Points$MDS1 <= 1.0)
+lowerDat <- subset(lowerDat_Points, select = -c(MDS1, MDS2))
+
+#calculate MDS
+psMDS_lower <- metaMDS(
+  comm = lowerDat[29:length(lowerDat)], #28 on are numeric cols
+  distance = 'bray',
+  trace = F,
+  autotransform = F
+  )
+
+psMDS_lowerPoints <- data.frame(psMDS_lower$points)
+psMDS_lower_xy <- cbind(psMDS_lowerPoints,lowerDat[1:28])
+
+#grab stress value
+psStress <- round(psMDS_lower$stress,3)
+
+#convert vari to factor for plotting
+variFactor <- as.factor(lowerDat$`Kurtosis Skew`)
+
+#~~~Plotting/Ordisurf/Envfit~~~#
+#create colors for plot
+colorCount <- nlevels(variFactor)
+paletteFunc <- colorRampPalette(brewer.pal(colorCount, 'Accent'))
+pltColors <- paletteFunc(colorCount)
+
+#grab names of environmental variables for plotting
+wqVaris <- colnames(wqWideDat[3:length(wqWideDat)])
+
+#set parameters for graphing purposes
+par(xpd = NA, mar = par()$mar + c(2.5, 0, 1, 0), mgp=c(2,1,0))
+
+for (vari in wqVaris) {
+  #fix up variable name for saving
+  variName <- gsub("(","", vari, fixed = TRUE)
+  variName <- gsub(")","", variName, fixed = TRUE)
+  variName <- gsub(" ","", variName, fixed = TRUE)
+  
+  #path for saving plot
+  pltPath <- paste(fpOutput,'upper_kurSkew_',variName,'.png', sep = '')
+  
+  #calculate envfit
+  variFit <- envfit(
+    psMDS_lower ~ as.double(lowerDat[[vari]]),
+    na.rm = TRUE,
+    p.max = 0.05
+    )
+  
+  #~~~plot~~#
+  #plot nmds points
+  plot(
+    psMDS_lower_xy$MDS1, psMDS_lower_xy$MDS2,
+    xlab = 'NMDS1', ylab = 'NMDS2',
+    pch = 21,
+    cex = 1.6,
+    lwd = 2,
+    bg = pltColors[variFactor],
+    col = 'black',
+    main = vari,
+    # sub = psStress,
+    asp = 1
+    )
+  
+  #plot envfit
+  plot(
+    variFit,
+    labels = ''
+    )
+  
+  #calc/plot ordisurf
+  ordi <- ordisurf(
+    psMDS_lower, as.double(lowerDat[[vari]]),
+    add = TRUE,
+    col = 'black',
+    labcex = 0.8,
+    lwd.cl = 1.95)
+  # 
+  #add legend
+  # legend(
+  #   "bottomright", inset=c(-0.15,-0.55),
+  #   legend = levels(variFactor),
+  #   col = pltColors,
+  #   pch = 19,
+  #   ncol = 5
+  # )
+  
+  #save/close plot
+  dev.copy(png, pltPath)
+  dev.off()
+  
+  print(' ')
+  print('~~~~')
+  print(variName)
+  print('~~~~')
+  print(' ')
+  print('~~~~')
+  print('envfit')
+  print('~~~~')
+  print(' ')  
+  print(variFit)
+  print(' ')
+  print('~~~~')
+  print('ordisurf')
+  print('~~~~')
+  print(' ')
+  print(summary(ordi))
+  #print(summary(ordisurf(psMDS_lower, as.double(lowerDat[[vari]]))))
+}
+
+```
+
+```{r CA}
+#calculate CA
+psCCA <- decorana(wqPSMedDat[29:length(wqPSMedDat)])
+
+#set parameters for graphing purposes
+par(xpd = NA, mar = par()$mar + c(2.5, 0, 1, 0), mgp=c(2,1,0))
+
+for (vari in wqVaris) {
+  #fix up variable name for saving
+  variName <- gsub("(","", vari, fixed = TRUE)
+  variName <- gsub(")","", variName, fixed = TRUE)
+  variName <- gsub(" ","", variName, fixed = TRUE)
+  
+  #path for saving plot
+  pltPath <- paste(fpOutput,'ca_',variName,'.png', sep = '')
+  
+  #calculate envfit
+  variFit <- envfit(
+    psCCA ~ as.double(wqPSMedDat[[vari]]),
+    na.rm = TRUE,
+    p.max = 0.05
+    )
+  
+  #~~~plot~~#
+  #plot CA points
+  boop <- plot(
+    psCCA,
+    pch = 19,
+    #scaling = 1,
+    #xlim = c(-2,2),
+    #ylim = c(-3,1),
+    main = vari
+    )
+  
+  identify(boop,'species',2)
+  
+  #specid(psCCA,wqPSMedDat[29:length(wqPSMedDat)])
+  #plot envfit
+  # plot(
+  #   variFit,
+  #   labels = ''
+  #   )
+  
+  # #calc/plot ordisurf
+  # ordisurf(
+  #   psMDS, as.double(wqPSMedDat[[vari]]),
+  #   add = TRUE,
+  #   col = 'green',
+  #   labcex = 0.8,
+  #   lwd.cl = 1.95
+  #   )
+  # 
+  #add legend
+  # legend(
+  #   "bottomright", inset=c(0.25,-0.55),
+  #   legend = levels(monthFactor),
+  #   col = pltColors,
+  #   pch = 19, 
+  #   ncol = 5
+  # )
+  
+  #save/close plot
+  # dev.copy(png, pltPath)
+  # dev.off()
+}
+
+# psCCA <- cca(wqPSDat[5:psColNum])
+# plot(psCCA)
+```
+
+```{r}
+screeplot(psCCA, bstick = TRUE, npcs = length(psCCA$CA$eig))
+```
+```{r CCA}
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+#~~~Correspondence Analysis~~~#
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+
+#calculate CA
+psCCA <- cca(wqPSMedDat[29:length(wqPSMedDat)])
+
+#set parameters for graphing purposes
+par(xpd = NA, mar = par()$mar + c(2.5, 0, 1, 0), mgp=c(2,1,0))
+
+for (vari in wqVaris) {
+  #fix up variable name for saving
+  variName <- gsub("(","", vari, fixed = TRUE)
+  variName <- gsub(")","", variName, fixed = TRUE)
+  variName <- gsub(" ","", variName, fixed = TRUE)
+  
+  #path for saving plot
+  pltPath <- paste(fpOutput,'ca_',variName,'.png', sep = '')
+  
+  #calculate envfit
+  variFit <- envfit(
+    psCCA ~ as.double(wqPSMedDat[[vari]]),
+    na.rm = TRUE,
+    p.max = 0.05
+    )
+  
+  #~~~plot~~#
+  #plot CA points
+  boop <- plot(
+    psCCA,
+    pch = 19,
+    scaling = 1,
+    #xlim = c(-2,2),
+    #ylim = c(-3,1),
+    main = vari
+    )
+  
+  #plot envfit
+  plot(
+    variFit,
+    labels = ''
+    )
+  
+  #calc/plot ordisurf
+  ordisurf(
+    psMDS, as.double(wqPSMedDat[[vari]]),
+    add = TRUE,
+    col = 'green',
+    labcex = 0.8,
+    lwd.cl = 1.95
+    )
+  
+  #add legend
+  # legend(
+  #   "bottomright", inset=c(0.25,-0.55),
+  #   legend = levels(monthFactor),
+  #   col = pltColors,
+  #   pch = 19, 
+  #   ncol = 5
+  # )
+  
+  #save/close plot
+  dev.copy(png, pltPath)
+  dev.off()
+}
+
+# psCCA <- cca(wqPSDat[5:psColNum])
+# plot(psCCA)
+```
+
+```{r}
+screeplot(psCCA, bstick = TRUE, npcs = length(psCCA$CA$eig))
+```
+

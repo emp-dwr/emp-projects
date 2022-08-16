@@ -1,0 +1,137 @@
+## Title: EMLassemblyline template for EDI
+## Purpose: a template to create relevant metadata for EDI datasets
+
+Instructions are not exhaustive, use in conjunction with "DIY Instructions EMLassemblyLine in R.docx"
+
+```{r}
+# load packages
+library(EMLassemblyline)
+```
+
+## Variables
+Set the variables that will be referenced throughout the notebook.
+
+```{r Variables}
+datPath <- 'C:/R/FishRegressions/EDI/Data'
+
+# path to empty folder to populate metadata files in
+metaDatPath <- 'C:/R/FishRegressions/EDI/Metadata'
+
+# path to empty folder to populate EML files
+emlPath <- 'C:/R/FishRegressions/EDI/EML'
+
+# name(s) of dataset files
+datTables <- c('BiomassRegression_Compiled.csv',
+               'BiomassRegression_Raw.csv') 
+
+# define which license to use
+ediLicense = 'CC0'
+
+# define which keywordThesasurs are used
+thesauruses = c('lter')
+```
+
+## Metadata
+Create the metadata templates.
+
+```{r Create Metadata Templates}
+# create core metadata templates
+template_core_metadata(
+  metaDatPath,
+  license = ediLicense,
+  file.type = '.txt',
+  write.file = TRUE
+  )
+
+# create attribute tables for data tables; will be placed with other metadata
+template_table_attributes(
+  path = metaDatPath,
+  data.path = datPath,
+  data.table = datTables,
+  write.file = TRUE
+  )
+
+# create categorical codes for categorical variables
+template_categorical_variables(
+    path = metaDatPath,
+    data.path = datPath,
+    write.file = TRUE
+    )
+```
+
+## Edit Metadata Files
+Note: for all metadata .txt files, do not use special characters.
+
+1) Open "abstract.txt" and type out abstract.
+
+2) Open "methods.txt" and add in methods.
+
+3) Open "additional_info.txt" and add any additional info not covered in the abstract/methods.
+
+4) Open "personnel.txt" and enter relevant information.
+
+5) Open "keywords.txt" and add in keywords (can be multiple words, hit enter after each entry). Can use keywords from a controlled vocabulary, such as LTER (https://vocab.lternet.edu/vocab/vocab/index.php), or write your own. Leave "keywordThesaurus" blank. Once finished, run the code below to autopopulate "keywordThesaurus" for all keywords that are from LTER.
+
+```{r KeywordThesarus}
+# validate thesarus keywords
+for (thesaurus in thesauruses) {
+  EDIutils::validate_keywords(
+    path = metaDatPath,
+    cv = thesaurus
+    )
+}
+```
+
+6a) Add units to template attribute tables. These files are stored in the the metadata path and start with "attributes_". Replace !insert units here! with correct units; if there are none, use "dimensionless". View the dictionary below for list of standard units.
+
+```{r Unit Dictionary}
+view_unit_dictionary()
+```
+
+If the unit is not in this directory:
+6b) Create the unit under "custom_units.txt".
+
+7) Add geographic coverage. If data contains lat/lon values, run the code below. If not:
+- create a file in the metadata folder called "geographic_coverage.txt". Treat it as a tab-delimited file.
+- add column headers: geographicDescription, nwestBoundingCoordinate, eastBoundingCoordinate, northBoundingCoordinate, southBoundingCoordinate
+
+```{r}
+extract_geocoverage(
+  path = metaDatPath,
+  data.path = datPath,
+  data.file = 'name',
+  lat.col = "lake_latitude",
+  lon.col = "lake_longitude",
+  site.col = "lake_name"
+  )
+```
+
+
+## Make EML
+Edit the parameters in this code as needed.
+
+```{r}
+# Run this function
+make_eml(path = metaDatPath, # path to metadata
+         data.path = datPath, # path to data
+         eml.path = emlPath,
+         dataset.title = 'Synthesized Dataset of Length-Weight Regression Coefficients for Delta Fish',
+         data.table = datTables,
+         data.table.name = c('Biomass Regressions - Compiled Data','Biomass Regressions - Raw Data'),
+         data.table.description = c('Average values for the length-weight regression parameters, separated by length type.', 
+                                    'Raw data used to calculate the average length-weight regression parameters.'),
+         data.table.quote.character = c('\"', '\"'),
+         other.entity = c('RegressionCalc_Data.csv','RegressionCalc_Code.R'),
+         other.entity.name = c('Regression Calculations - Data','Regression Calculations - Code'),
+         other.entity.description = c('The raw data used to calculate the parameters for fish species not found in the database or literature (the "calc" source in the compiled dataset).', 'The code used to calculate the parameters for fish species not found in the database or literature (the "calc" source in the compiled dataset).'),
+         temporal.coverage = c('1950-01-01', '2018-12-31'),
+         geographic.description = 'San Francisco Bay-Delta',
+         geographic.coordinates = c('38.369', '-121.262', '37.678', '-122.503'), # north east south west
+         maintenance.description = 'completed',
+         write.file = TRUE,
+         user.id = 'sperry',
+         user.domain = 'EDI',
+         package.id = 'edi.508.1'
+         )
+```
+

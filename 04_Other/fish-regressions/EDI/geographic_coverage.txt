@@ -1,0 +1,2 @@
+geographicDescription	westBoundingCoordinate	eastBoundingCoordinate	northBoundingCoordinate	southBoundingCoordinate
+San Francisco Bay-Delta	-122.503	-121.262	38.369	37.678

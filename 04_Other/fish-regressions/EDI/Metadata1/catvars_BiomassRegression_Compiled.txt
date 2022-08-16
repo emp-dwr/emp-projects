@@ -1,0 +1,29 @@
+attributeName	code	definition
+LengthType	FL	
+LengthType	FL TL SL	
+LengthType	SL	
+LengthType	TL	
+LengthType	TL SL	
+LengthType	FL TL	
+LengthType	FL TL SL undefined	
+LengthType	TL SL undefined	
+LengthType	SL undefined	
+LengthType	undefined	
+LengthType	FL undefined	
+LengthType	FL TL undefined	
+Gender	unsexed	
+Gender	unsexed female male	
+Gender	mixed	
+Gender	unsexed mixed female male juvenile	
+Gender	unsexed mixed	
+Gender	unsexed mixed female male	
+Gender	male	
+Gender	unsexed mixed juvenile	
+Gender	undefined	
+Gender	juvenile	
+Gender	unsexed juvenile	
+Source	Paper	
+Source	DB	
+Source	Calc	
+Source	Paper (Blackside Darter)	
+Source	Paper (Golden Shiner)	

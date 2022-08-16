@@ -1,0 +1,109 @@
+SpeciesCode,CommonName,SciName,a_cm_g,b,SD_log10_a,SD_b,SD_log10_W,n_Studies,Flag_n_Fish,n_Fish,LengthType,Gender,Country,Source
+AMS,American Shad,Alosa sapidissima,0.0091,3.09,,0.06,,1,,113,FL,unsexed,USA,Paper
+BGS,Bluegill,Lepomis macrochirus,0.0117,3.25,0.17,0.1353,0,2,,1536,FL,unsexed,USA,DB
+BGS,Bluegill,Lepomis macrochirus,0.0155,3.16,0.2939,0.2107,0.1575,39,>,100178,FL TL SL,unsexed,USA,DB
+BGS,Bluegill,Lepomis macrochirus,0.0309,3.1,0.1688,0.1581,0,11,,4471,SL,unsexed,USA,DB
+BGS,Bluegill,Lepomis macrochirus,0.0117,3.18,0.2492,0.2283,0.064,26,>,95707,TL,unsexed,USA,DB
+BKB,Black Bullhead,Ameiurus melas,0.0417,2.87,0.1054,0.0548,0,3,,1066,SL,unsexed,USA,DB
+BKB,Black Bullhead,Ameiurus melas,0.01,3.11,0.2124,0.1766,0.0173,8,>,2787,TL,unsexed,USA,DB
+BKB,Black Bullhead,Ameiurus melas,0.0141,3.05,0.3266,0.1889,0.1449,11,>,3853,TL SL,unsexed,USA,DB
+BKS,Black Crappie,Pomoxis nigromaculatus,0.0112,3.08,0.1054,0.0781,0,11,>,2214,TL,unsexed female male,USA,DB
+BPF,Bay Pipefish,Syngnathus leptorhynchus,0.0002,3.12,,,,1,,57,TL,mixed,USA,DB
+BRB,Brown Bullhead,Ameiurus nebulosus,0.0126,3,0.198,0.14,0,4,>,68818,FL TL,unsexed,Belgium USA,DB
+BRB,Brown Bullhead,Ameiurus nebulosus,0.0135,2.98,0.2057,0.1411,0,3,,68818,TL,unsexed,Belgium USA,DB
+BRB,Brown Bullhead,Ameiurus nebulosus,0.00909,3.13,,,,1,,,FL,unsexed,undefined,DB
+BT,Brown Trout,Salmo trutta,0.01,3.03,0.2484,0.1575,0,63,>,13005,FL TL SL undefined,unsexed mixed female male juvenile,Belgium Finland France Greece Iran Italy Norway Poland Portugal Russia Spain Turkey UK Ukraine USA,DB
+BT,Brown Trout,Salmo trutta,0.0065,3.14,0.2066,0.1311,0,21,>,3490,TL,unsexed mixed,Belgium Iran Italy Norway Russia Spain Turkey Ukraine USA ,DB
+BT,Brown Trout,Salmo trutta,0.0141,2.96,0.1517,0.1345,0,28,>,4521,FL,unsexed mixed female male juvenile,Protugal Spain Turkey UK ,DB
+BT,Brown Trout,Salmo trutta,0.0085,2.95,0.3442,0,0,2,,1460,SL,unsexed mixed,Greece USA,DB
+C,Common Carp,Cyprinus carpio,0.0269,2.89,0.3544,0.2249,0,176,>,74803,FL TL SL undefined,unsexed mixed female male,Belgium China Greece Iraq Japan Kenya Laos Philippines Russia SouthAfrica SouthKorea Spain Turkey USA,DB
+C,Common Carp,Cyprinus carpio,0.0195,2.96,0.34,0.198,0,59,>,42628,TL,unsexed mixed female male,Belgium China Greece Iraq Japan Philippines SouthKorea Spain Turkey USA,DB
+C,Common Carp,Cyprinus carpio,0.0316,2.84,0.351,0.2377,0,104,>,30911,FL,unsexed mixed female male,China Kenya Laos Russia SouthAfrica Spain Turkey USA,DB
+C,Common Carp,Cyprinus carpio,0.0339,2.94,0.164,0.1131,0,11,>,1264,SL,unsexed mixed female male,China Philippines USA,DB
+CHC,Channel Catfish,Ictalurus punctatus,0.0054,3.29,,,,1,,13,SL,unsexed,Brazil,DB
+CHC,Channel Catfish,Ictalurus punctatus,0.0024,3.35,0.375,0.2362,0,11,>,1969,TL,unsexed mixed female male,USA,DB
+CHC,Channel Catfish,Ictalurus punctatus,0.0026,3.34,0.3621,0.222,0,13,>,1982,TL SL undefined,unsexed mixed female male,Brazil Canada USA,DB
+CHG,Chameleon Goby,Tridentiger trigonocephalus,0.01644,3,,,,1,,1,TL,unsexed,undefined,DB
+CHN,Chinook Salmon,Oncorhynchus tshawytscha,0.005,3.44,,0.12,,1,,68,FL,unsexed,USA,Paper
+DSM,Delta Smelt,Hypomesus transpacificus,0.0043,3.38,,0.09,,1,,113,FL,unsexed,USA,Paper
+FHM,Fathead Minnow,Pimephales promelas,0.0089,3.13,0.2715,0.3511,0,8,>,43,TL,unsexed female male,Canada Belgium,DB
+GF,Gold Fish,Carassius auratus,0.027,3.07,0.0715,0.07,,1,,306,SL,unsexed,China,DB
+GF,Gold Fish,Carassius auratus,0.0141,3.06,0.1808,0.1342,0.0943,17,,253468,FL TL SL,unsexed mixed female male,China  Iran Montenegro SouthKorea Spain USA undefined,DB
+GF,Gold Fish,Carassius auratus,0.0132,3.06,0.1729,0.1432,0.0539,15,,253062,TL,unsexed mixed female male,China Iran Montenegro SouthKorea Spain USA undefined,DB
+GF,Gold Fish,Carassius auratus,0.0193,3.04,,,,1,,92,FL,unsexed,Spain,DB
+GSF,Green Sunfish,Lepomis cyanellus,0.0148,3.15,0.2156,0.1105,0.1281,4,,2023,TL,unsexed,Mexico USA,DB
+GSF,Green Sunfish,Lepomis cyanellus,0.0269,3.11,0.1058,0.1015,0.0269,5,,2027,SL,unsexed mixed,Mexico USA,DB
+GSF,Green Sunfish,Lepomis cyanellus,0.02,3.13,0.2124,0.1082,0.1435,9,,4050,TL SL,unsexed mixed,Mexico USA,DB
+GSN,Golden Shiner,Notemigonus crysoleucas,0.00972,3.294,,,,1,,,SL,unsexed female male,Canada USA,DB
+GSN,Golden Shiner,Notemigonus crysoleucas,0.0288,2.81,0.2478,0.2553,0,3,>,164,SL undefined,unsexed female male,USA Canada,DB
+GST,Green Sturgeon,Acipenser medirostris,0.00593,3,1,,,1,,1,TL,male,undefined,DB
+HCH,Sacramento Hitch,Lavinia exilicauda exilicauda,0.0319,2.758,,,,1,,6,FL,unsexed,USA,Calc
+HH,Hardhead,Ariopsis felis,0.0117,3.05,0.228,0.201,0,2,,1065,SL,unsexed,Mexico,DB
+HH,Hardhead,Ariopsis felis,0.0076,3.18,0.3013,0.2154,0.0583,4,>,1230,TL SL undefined,unsexed,Mexico,DB
+HH,Hardhead,Ariopsis felis,0.0028,3.447,0.2167,0.155,,1,,64,TL,unsexed,Mexico,DB
+JSM,Jacksmelt,Atherinopsis californiensis,0.01,2.92,,,0,1,,30,TL,unsexed,Mexico,DB
+LFS,Longfin Smelt,Spirinchus thaleichthys,0.0024,3.69,,0.08,,1,,117,FL,unsexed,USA,Paper
+LMB,Largemouth Bass,Micropterus salmoides,0.0087,3.14,0.2243,0.1546,0,47,>,17414,TL,unsexed mixed juvenile,SouthKorea Spain USA,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.0219,3.04,0.1131,0.0707,0,9,>,1003,SL,unsexed,Japan USA,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.0105,3.11,0.251,0.1523,0,70,>,19994,FL TL SL,unsexed mixed,Japan Kenya NewCaledonia Spain SouthKorea USA ,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.012,3.07,0.2054,0.1584,0,14,>,1577,FL,unsexed,Kenya NewCaledonia Spain USA ,DB
+LP,Bigscale Logperch,Percina macrolepida,0.0056,3.236,,,,1,,,undefined,undefined,USA,Paper (Blackside Darter)
+MQF,Mosquito Fish,Gambusia affinis,0.0055,3.12,0.2755,0.2983,0,4,,917,TL,unsexed mixed female male,Croatia Greece Turkey,DB
+MQF,Mosquito Fish,Gambusia affinis,0.01,3.37,,,,1,,860,SL,mixed,Mexico,DB
+MQF,Mosquito Fish,Gambusia affinis,0.0081,3.18,0.1936,0.2232,0,14,,5829,TL SL undefined,unsexed mixed female male,Croatia Greece Mexico Turkey ,DB
+MSS,Inland Mississippi Silverside,Menidia beryllina subspecies,0.007,2.87,,0.03,,1,,1181,FL,unsexed,USA,Paper
+NAN,Northern Anchovy,Engraulis mordax,0.011,2.86,,,0,1,,71,TL,unsexed,Mexico,DB
+NAN,Northern Anchovy,Engraulis mordax,0.0076,3.01,0.2083,0.06,0,2,>,23,SL,unsexed,USA,DB
+NAN,Northern Anchovy,Engraulis mordax,0.0087,2.95,0.1794,0.0849,0,3,>,94,TL SL,unsexed,Mexico USA,DB
+PAH,Pacific Herring,Clupea pallasii,0.0046,3.22,0.2166,0.1766,0.086,4,>,228,FL,unsexed mixed female male,Canada Russia,DB
+PAH,Pacific Herring,Clupea pallasii,0.0066,3.14,0.3537,0.2147,0.1229,5,>,464,FL undefined,unsexed mixed female male,Canada Russia USA,DB
+PKN,Pumpkinseed,Lepomis gibbosus,0.0156,2.98,,,,1,,41,FL,unsexed,Spain,DB
+PKN,Pumpkinseed,Lepomis gibbosus,0.0129,3.16,0.0787,0.09,0,5,,5347,TL,unsexed mixed,Belgium Spain USA,DB
+PKN,Pumpkinseed,Lepomis gibbosus,0.0107,3.17,0.1706,0.1196,0,8,,5684,FL TL undefined,unsexed,Belgium Canada Spain USA ,DB
+PMP,Plainfin Midshipman,Porichthys notatus,0.008,3.047,,,,1,,121,TL,unsexed,Mexico,DB
+PRS,Prickly Sculpin,Cottus asper subspecies,0.007,3.3,,0.03,,1,,564,FL,unsexed,USA,Paper
+PSS,Pacific Staghorn Sculpin,Leptocottus armatus,0.04,2.82,,,,1,,18,SL,mixed,Mexico,DB
+RBT,Rainbow Trout (Steel Head),Oncorhynchus mykiss,0.0112,3.02,0.2225,0.1432,0,7,>,830,FL TL,unsexed mixed,Australia Belgium Canada Croatia Iran Turkey ,DB
+RBT,Rainbow Trout (Steel Head),Oncorhynchus mykiss,0.0107,3.03,0.2782,0.1749,0,4,>,247,TL,unsexed mixed,Belgium Croatia Iran Turkey,DB
+RBT,Rainbow Trout (Steel Head),Oncorhynchus mykiss,0.0117,3,0.05,0.0574,0,3,,583,FL,unsexed,Australia Canada USA,DB
+RES,Redear Sunfish,Lepomis microlophus,0.0301,3.03,0.0504,0.1,,1,,69,SL,juvenile,USA,DB
+RES,Redear Sunfish,Lepomis microlophus,0.05105,2.712,,,,1,,,FL,unsexed,USA,DB
+RES,Redear Sunfish,Lepomis microlophus,0.0151,3.08,0.1281,0.1,0.0245,8,>,5971,TL,unsexed,USA,DB
+RES,Redear Sunfish,Lepomis microlophus,0.0186,3.04,0.2066,0.1386,0.086,10,>,6040,FL TL SL,unsexed juvenile,USA,DB
+RFS,Riffle Sculpin,Cottus gulosus,3.25202,0.008974081,,,,1,,,undefined,undefined,USA,Paper
+RL,River Lamprey,Lampetra fluviatilis,0.0007,3.25,0.1732,0.1082,0.0346,2,,185,TL,unsexed,Estonia NorthSea,DB
+RSN,Red Shiner,Cyprinella lutrensis,0.00683,3.08217,,,,1,,,undefined,undefined,USA,Paper (Golden Shiner)
+SAPM,Sacramento Pikeminnow,Ptychocheilus grandis,0.0065,3,,,,1,,2,TL,unsexed,USA,DB
+SASU,Sacramento Sucker,Catostomus occidentalis occidentalis,0.0253,2.82,,,,1,,6,FL,unsexed,USA,Calc
+SHM,Shimofuri Goby,Tridentiger bifasciatus,0.005,3.47,,0.25,,1,,45,FL,unsexed,USA,Paper
+SMB,Smallmouth Bass,Micropterus dolomieu,0.01005,3.125,,,,1,,,FL,unsexed,USA,DB
+SMB,Smallmouth Bass,Micropterus dolomieu,0.0166,3.13,0.1584,0.1356,0,5,>,620,SL,unsexed,USA,DB
+SMB,Smallmouth Bass,Micropterus dolomieu,0.012,3.04,0.2098,0.1338,0,16,>,10893,TL,unsexed juvenile,USA,DB
+SMB,Smallmouth Bass,Micropterus dolomieu,0.0129,3.06,0.2,0.1338,0,23,>,11606,FL TL SL undefined,unsexed,Canada USA,DB
+SPB,Spotted Bass,Micropterus punctulatus,0.011,3.22,0.1217,0.01,0,3,,1015,SL,unsexed,USA,DB
+SPB,Spotted Bass,Micropterus punctulatus,0.0078,3.14,0.1245,0.0933,0.0141,3,,14415,TL,unsexed,USA,DB
+SPB,Spotted Bass,Micropterus punctulatus,0.0091,3.18,0.1439,0.0768,0.15,6,,15430,TL SL,unsexed,USA,DB
+SPLT,Sacramento Splittail,Pogonichthys macrolepidotus,0.0056,3.27,,0.02,,1,,694,FL,unsexed,USA,Paper
+STB,Striped Bass,Morone saxatilis,0.0065,3.09,0.1245,0.136,0,3,,,TL,unsexed female male,USA,DB
+STF,Starry Flounder,Platichthys stellatus,0.0079,3.17,0.255,0.1353,1.2524,4,,971,TL,unsexed,Canada Russia SouthKorea undefined,DB
+TFS,Threadfin Shad,Dorosoma petenense,0.036,2.63,,,,1,,881,SL,unsexed,Mexico,DB
+TFS,Threadfin Shad,Dorosoma petenense,0.0087,2.98,0.2352,0.18,0.01,2,,308874,TL,unsexed,USA,DB
+TFS,Threadfin Shad,Dorosoma petenense,0.0151,2.84,0.3545,0.2211,0.0742,3,,309755,TL SL,unsexed,Mexico USA,DB
+TP,Tule Perch,Hysterocarpus traskii traskii,0.0204,3.03,,,,1,,243,FL,unsexed,USA,Paper
+TSM,Top Smelt,Atherinops affinis,0.04,2.5,,,0,1,,198,TL,unsexed,Mexico,DB
+TSS,Threespine Stickleback,Gasterosteus aculeatus,0.0089,3.14,0.2621,0.3288,0,4,,30097,TL,unsexed,Belgium Iran Turkey undefined,DB
+W,Warmouth,Lepomis gulosus,0.0316,3.09,0.048,0.0447,0,2,,942,SL,unsexed,USA,DB
+W,Warmouth,Lepomis gulosus,0.0151,3.14,0.0648,0.0616,0,2,,4063,TL,unsexed,USA,DB
+W,Warmouth,Lepomis gulosus,0.0219,3.12,0.1732,0.0592,0,4,,5005,TL SL,unsexed,USA,DB
+WCK,White Croaker,Genyonemus lineatus,0.0272,2.943,,,,1,,1357,SL,unsexed,USA,DB
+WHC,White Catfish,Ameiurus catus,0.01403,3.006,,,,,,,FL,unsexed,USA,DB
+WHC,White Catfish,Ameiurus catus,0.0129,3.01,0.0332,0,0.0316,2,>,137,FL TL,unsexed,USA,DB
+WHC,White Catfish,Ameiurus catus,0.01202,3.01,,,,,,137,TL,unsexed,USA,DB
+WHS,White Crappie,Pomoxis annularis,0.0234,3,0.1418,0.1212,0,7,>,5118,SL,unsexed,USA,DB
+WHS,White Crappie,Pomoxis annularis,0.0076,3.18,0.3306,0.2352,0,30,>,6783,TL,unsexed,USA,DB
+WHS,White Crappie,Pomoxis annularis,0.0095,3.15,0.36,0.2298,0,37,>,11901,TL SL,unsexed,USA,DB
+WST,White Sturgeon,Acipenser transmontanus,0.0023,3.21,0.0775,0.02,0.1204,2,,5346,FL,unsexed,USA,DB
+YEB,Yellow Bullhead,Ameiurus natalis,0.0207,3,,,,1,,32,SL,unsexed,USA,DB
+YEB,Yellow Bullhead,Ameiurus natalis,0.0331,2.8,0.0245,0.1183,0,2,,515,TL,unsexed,USA,DB
+YEB,Yellow Bullhead,Ameiurus natalis,0.0282,2.87,0.101,0.1349,0.0574,3,,547,TL SL,unsexed,USA,DB
+YFG,Yellowfin Goby,Acanthogobius flavimanus,0.00878,2.869,0.0514,0.276,,1,,122,TL,unsexed,SouthKorea,DB

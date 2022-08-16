@@ -1,0 +1,213 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+```{r}
+#L:W Regession Graphs
+#create relevant graphics for L:W regression poster
+#contact: sarah.perry@water.ca.gov
+```
+
+```{r}
+#import packages
+library(ggplot2)
+library(tidyverse)
+library(maps)
+library(mapproj)
+library(egg)
+library(grid)
+# library(sf)
+# library(rnaturalearth)
+```
+
+```{r}
+#import data
+rawDat <- read_csv('C:/R/FishRegressions/BiomassRegression_RawEdited.csv')
+compDat <- read_csv('C:/R/FishRegressions/BiomassRegression_CompiledEdited.csv')
+countryCoords <- read_csv('C:/R/FishRegressions/countryCoords.csv')
+
+#output filepath
+fpOutput <- 'C:/R/FishRegressions/plots/'
+```
+
+```{r}
+countryDat <- data.frame(table(rawDat$Country))
+countryDat <- countryDat %>% rename(Country = Var1)
+
+countryCoords <- merge(countryDat, countryCoords, by = 'Country')
+```
+
+
+```{r World Bubble Map}
+world <- map_data('world')
+
+ggplot(fill = 'blue') +
+  #plot world
+  geom_polygon(
+    data = world,
+    aes(x = long, y = lat, group = group),
+    fill = '#ede4cc'
+    ) +
+  borders('world') +
+  ylim(-61.7,90) +
+  #coord_map() +
+  #theme_void() +
+  theme(
+    panel.background = element_rect(fill = 'white'),#'#e6f5fc'),
+    plot.background = element_rect(fill = 'white'),#'#e6f5fc'),
+    panel.border = element_blank(),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    axis.title.x=element_blank(),
+    axis.text.x=element_blank(),
+    axis.ticks.x=element_blank(),
+    axis.title.y=element_blank(),
+    axis.text.y=element_blank(),
+    axis.ticks.y = element_blank()
+) +
+  #plot data
+  geom_point(
+    data = countryCoords,
+    aes(x = lon, y = lat, size = Freq, pch = 21, fill = '#edf7f7', color = 'black')
+    ) +
+  #aesthetics
+  scale_shape_identity() +
+  scale_color_identity() +
+  scale_fill_identity() +
+  theme(legend.position = 'none') +
+  scale_size(name = 'Frequency', range = c(5,15)) +
+  geom_text(data = countryCoords, aes(x = lon, y = lat, label = Freq))
+
+  #save
+ggsave(
+  paste(fpOutput, 'worldMap.png', sep = ''),
+  width = 9,
+  height = 5
+)
+```
+
+
+```{r echo = FALSE}
+compareDat <- read_csv('C:/R/FishRegressions/EDI/Data/fishComparison.csv')
+
+p <- ggplot(data = data.frame(x = 0), mapping = aes(x = x))
+
+func1 <- function(x) 0.0091*x^3.09
+func2 <- function(x) 0.0105*x^3.0222
+func3 <- function(x) 0.00878*x^2.869
+func4 <- function(x) 0.016554*x^2.7004
+func5 <- function(x) 0.0100*x^3.015
+func6 <- function(x) 0.0065*x^3.09
+
+p +
+  stat_function(fun = func1,size = 1.2, color = 'red') +
+  stat_function(fun = func2, color = 'red', size = 1.2, linetype = 'dashed') +
+  stat_function(fun = func3, color = 'blue', size = 1.4) +
+  stat_function(fun = func4, color = 'blue', size = 1.4, linetype = 'dashed') +
+  theme_bw() +
+  theme(panel.grid.minor = element_blank(),
+        panel.border = element_blank(),
+        panel.grid.major = element_blank(),
+        axis.line = element_line(color = 'black'),
+        axis.text.x = element_text(size = 13, color = 'black'),
+        axis.text.y = element_text(size = 13, color = 'black'),
+        axis.title.x = element_text(size = 15),
+        axis.title.y = element_text(size = 15)) +
+  xlab('Length (cm)') +
+  ylab('Weight (g)') +
+  scale_x_continuous(limits = c(0,20), expand = c(0.03, 0)) +
+  scale_y_continuous(expand = c(0.05, 0)) +
+  geom_text(x=13.7, y=66, label='American Shad',size = 4.6, fontface = 'bold') +
+  geom_text(x=17.3, y=13, label='Yellowfin Goby', size = 4.6, fontface = 'bold')
+  # stat_function(fun = func5, color = 'red', size = 1.4, ) +
+  # stat_function(fun = func6, color = 'red', size = 1.4, linetype = 'dashed') +
+  #xlim(0,20)
+
+ggsave(paste(fpOutput,'comparison.png',sep = ''), width = 8, height = 5)
+
+```
+
+```{r}
+compDat
+```
+
+```{r}
+# Heatmap 
+pltStudies <- ggplot(compDat, aes(`Length Measurement`,`Species Name`, fill= n_Studies)) + 
+  geom_tile(color = 'black', size = 1.01) +
+  scale_fill_distiller(
+    name = '# of Studies',
+    trans ='log',
+    palette = 'YlOrBr',
+    direction = 'horizontal',
+    breaks = c(1,5,20,90),
+    labels = c(1,5,20,90),
+    guide = guide_colorbar(frame.colour = 'black', ticks.colour = 'black', frame.linewidth = 2, ticks.linewidth = 2)) +
+  scale_x_discrete(position = 'top') +
+  scale_y_discrete(limits = unique(rev(compDat$`Species Name`))) +
+  theme_bw() +
+  theme(
+    panel.border = element_rect(color = 'black', size = 2),
+    axis.text.x = element_text(size = 14, color = 'black'),#, face = 'bold'),
+    axis.text.y = element_text(size = 14, color = 'black'),#, face = 'bold'),
+    axis.title.y = element_blank(),#element_text(size = 18, color = 'black', face = 'bold'),
+    axis.title.x = element_text(size = 18, color = 'white', face = 'bold'),
+    legend.position = 'bottom',
+    legend.title = element_text(size = 18),
+    legend.title.align = 0.5,
+    legend.key.size = unit(0.4, 'in'),
+    legend.text = element_text(size = 14, colour = 'black'),
+    panel.grid.major = element_blank(),
+    plot.margin = unit(c(1,-0.002,1,1), 'in')
+  ) 
+  
+pltStudies <-  set_panel_size(pltStudies,
+                 width  = unit(4, 'in'),
+                height = unit(13.5, 'in'))
+
+pltFish <- ggplot(compDat, aes(`Length Measurement`, `Species Name`, fill= n_Fish)) + 
+  geom_tile(color = 'black', size = 1.01) +
+  scale_fill_distiller(
+    name = '# of Fish',
+    trans ='log',
+    palette = 'YlGnBu',
+    direction = 'horizontal',
+    breaks = c(1,10,1000,100000),
+    labels = c(1,10,1000,100000),
+    guide = guide_colorbar(frame.colour = 'black', ticks.colour = 'black', frame.linewidth = 2, ticks.linewidth = 2)) +
+  scale_x_discrete(position = 'top') +
+  scale_y_discrete(limits = unique(rev(compDat$`Species Name`))) +
+  theme_bw() +
+  theme(
+    axis.ticks.y = element_blank(),
+    panel.border = element_rect(color = 'black', size = 2),
+    axis.text.x = element_text(size = 14, color = 'black'),
+    axis.text.y = element_blank(),
+    axis.title.y = element_blank(),
+    axis.title.x = element_text(size = 18, color = 'white', face = 'bold'),
+    legend.position = 'bottom',
+    legend.title = element_text(size = 18),
+    legend.title.align = 0.5,
+    legend.key.size = unit(0.4, 'in'),
+    legend.key = element_rect(fill = 'white', color = 'black'),
+    legend.text = element_text(size = 14, colour = 'black'),
+    panel.grid.major = element_blank(),
+    plot.margin = unit(c(1,1,1,-0.002), 'in')
+  ) 
+
+pltFish <-  set_panel_size(pltFish,
+                 width  = unit(4, 'in'),
+                height = unit(13.5, 'in'))
+
+pltComb <- arrangeGrob(
+  pltStudies,
+  pltFish,
+  ncol = 2,
+  top = textGrob('Length Measurement', gp = gpar(fontsize = 18, fontface = 'bold'), hjust = 0.32, vjust = 1)
+  )
+
+ggsave(filename = paste(fpOutput,'heatmap.png',sep = ''), plot = pltComb, width = 13.5, height = 15.2)
+```
+
+

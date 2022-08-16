@@ -1,0 +1,591 @@
+SpeciesCode,CommonName,SciName,a,b,Weight,Gender,Lmin,Lmax,LengthType,r2,ln_a_pVal,b_pVal,n,Country,Locality,Ref,RefNo,Source
+AMS,American Shad,Alosa sapidissima,0.0091,3.09,1,unsexed,,,FL,,,,113,USA,San Francisco Bay-Delta,"Kimmerer et al., 2015",,Paper
+BGS,Bluegill,Lepomis macrochirus,0.00348,3.64,0.7,unsexed,10.2,25.1,TL,,,,1009,USA,Upper Mississippi River,"Carlander, 1977",3993,DB
+BGS,Bluegill,Lepomis macrochirus,0.00483,3.534,0.7,unsexed,6.4,21.6,TL,,,,1146,USA,"Iowa, ponds","Carlander, 1977",3993,DB
+BGS,Bluegill,Lepomis macrochirus,0.00502,3.51,0.7,unsexed,11.2,19.3,TL,,,,16,USA,"Kimberly Pond, Iowa","Carlander, 1977",3993,DB
+BGS,Bluegill,Lepomis macrochirus,0.00568,3.47,0.7,unsexed,11.4,16.8,TL,,,,16,USA,"Ross Pond, Iowa","Carlander, 1977",3993,DB
+BGS,Bluegill,Lepomis macrochirus,0.00701,3.436,0.7,unsexed,9.9,16,TL,,,,24,USA,"Ardmore City Lake, Oklahoma","Carlander, 1977",3993,DB
+BGS,Bluegill,Lepomis macrochirus,0.00718,3.371,0.7,unsexed,2.8,25.4,TL,,,,1146,USA,"Alanconnie Lake, Pennsylvania","Carlander, 1977",3993,DB
+BGS,Bluegill,Lepomis macrochirus,0.00762,3.4,0.6,unsexed,,,FL,,,,1198,USA,"Sutherland Lake, California","Carlander, 1977",3993,DB
+BGS,Bluegill,Lepomis macrochirus,0.00764,3.333,0.7,unsexed,5.1,28,TL,,,,3617,USA,Oklahoma,"Carlander, 1977",3993,DB
+BGS,Bluegill,Lepomis macrochirus,0.00885,3.183,0.6,unsexed,,,TL,,,,191,USA,"Flora Lake, Wisconsin, 1956","Carlander, 1977",3993,DB
+BGS,Bluegill,Lepomis macrochirus,0.00909,3.281,0.7,unsexed,12.7,23.5,TL,,,,109,USA,"Chickasaw Lake, Oklahoma","Carlander, 1977",3993,DB
+BGS,Bluegill,Lepomis macrochirus,0.0102,3.2,0.7,unsexed,10.2,17.8,TL,,,,16,USA,"Sparks Pond, Iowa","Carlander, 1977",3993,DB
+BGS,Bluegill,Lepomis macrochirus,0.0102,3.25,0.7,unsexed,3.8,20.8,TL,,,,567,USA,"Kentucky, ponds","Carlander, 1977",3993,DB
+BGS,Bluegill,Lepomis macrochirus,0.0113,3.209,0.7,unsexed,5.1,20.1,TL,,,,193,USA,"Iowa, ponds","Carlander, 1977",3993,DB
+BGS,Bluegill,Lepomis macrochirus,0.0119,3.156,0.7,unsexed,4.3,18.5,TL,,,,214,USA,"Ike Lake, Iowa","Carlander, 1977",3993,DB
+BGS,Bluegill,Lepomis macrochirus,0.01312,3.102,0.7,unsexed,10.2,25.4,TL,,,,371,USA,"Jewett Lake, Michigan","Carlander, 1977",3993,DB
+BGS,Bluegill,Lepomis macrochirus,0.0139,3.447,0.7,unsexed,4.4,22.1,SL,,,,844,USA,"Clear Lake, Iowa","Carlander, 1977",3993,DB
+BGS,Bluegill,Lepomis macrochirus,0.0146,3.256,0.6,unsexed,,,TL,,,,124,USA,"Par Pond (heated area), South Carolina","Carlander, 1977",3993,DB
+BGS,Bluegill,Lepomis macrochirus,0.0149,3.109,0.6,unsexed,,,TL,,,,56,USA,"Par Pond (central area), South Carolina","Carlander, 1977",3993,DB
+BGS,Bluegill,Lepomis macrochirus,0.0152,3.07,0.7,unsexed,5.1,17,TL,,,,82212,USA,Alabama,"Carlander, 1977",3993,DB
+BGS,Bluegill,Lepomis macrochirus,0.0156,3.06,0.7,unsexed,11.7,17,TL,,,,16,USA,"Huffacker Pond, Iowa","Carlander, 1977",3993,DB
+BGS,Bluegill,Lepomis macrochirus,0.0159,3.076,0.7,unsexed,4.1,20.1,TL,,,,241,USA,"Ahquabi Lake, Iowa","Carlander, 1977",3993,DB
+BGS,Bluegill,Lepomis macrochirus,0.0167,3.129,0.7,unsexed,3,19,FL,,,,338,USA,"Folson Lake, California","Carlander, 1977",3993,DB
+BGS,Bluegill,Lepomis macrochirus,0.0169,3.325,0.7,unsexed,6.5,15.5,SL,,,,111,USA,"Crab Orchard Lake, Illinois","Carlander, 1977",3993,DB
+BGS,Bluegill,Lepomis macrochirus,0.0171,2.989,0.6,unsexed,,,TL,,,,191,USA,"Flora Lake, Wisconsin, 1952","Carlander, 1977",3993,DB
+BGS,Bluegill,Lepomis macrochirus,0.0178,3.064,0.7,unsexed,6.4,18,TL,,,,,USA,"Ft. Randall Lake, South Dakota","Carlander, 1977",3993,DB
+BGS,Bluegill,Lepomis macrochirus,0.0203,2.95,0.7,unsexed,10.2,21,TL,,,,214,USA,"Rod & Gun Club Lake, Oklahoma","Carlander, 1977",3993,DB
+BGS,Bluegill,Lepomis macrochirus,0.0219,2.95,0.7,unsexed,17.1,22.5,TL,,,,2150,USA,Alabama,"Carlander, 1977",3993,DB
+BGS,Bluegill,Lepomis macrochirus,0.0255,2.924,0.6,unsexed,,,TL,,,,50,USA,Rhode Island,"Carlander, 1977",3993,DB
+BGS,Bluegill,Lepomis macrochirus,0.0284,3.165,0.7,unsexed,2.5,13,SL,,,,228,USA,"North Lake, Texas","Carlander, 1977",3993,DB
+BGS,Bluegill,Lepomis macrochirus,0.0289,3.112,0.7,unsexed,3,15.9,SL,,,,188,USA,"Illinois, lower ponds","Carlander, 1977",3993,DB
+BGS,Bluegill,Lepomis macrochirus,0.0297,2.69,0.7,unsexed,9.9,13,TL,,,,16,USA,"McLain pond, Iowa","Carlander, 1977",3993,DB
+BGS,Bluegill,Lepomis macrochirus,0.0306,3.133,0.7,unsexed,2.5,12.5,SL,,,,671,USA,"Lake Nasworthy, Texas","Carlander, 1977",3993,DB
+BGS,Bluegill,Lepomis macrochirus,0.0317,3.086,0.6,unsexed,,,SL,,,,1446,USA,"Lake of the Ozarks, Missouri","Carlander, 1977",3993,DB
+BGS,Bluegill,Lepomis macrochirus,0.0357,2.798,0.7,unsexed,9.9,18.5,TL,,,,266,USA,"Canton Lake, Oklahoma","Carlander, 1977",3993,DB
+BGS,Bluegill,Lepomis macrochirus,0.0359,3.018,0.7,unsexed,2,13,SL,,,,259,USA,"Lake Bastrop, Texas","Carlander, 1977",3993,DB
+BGS,Bluegill,Lepomis macrochirus,0.0414,2.94,0.7,unsexed,3,15.9,SL,,,,50,USA,"Illinois, upper ponds","Carlander, 1977",3993,DB
+BGS,Bluegill,Lepomis macrochirus,0.046,3.005,0.7,unsexed,2.4,13,SL,,,,420,USA,"Lake Colorado City, Texas","Carlander, 1977",3993,DB
+BGS,Bluegill,Lepomis macrochirus,0.0585,2.935,0.7,unsexed,2.6,19.1,SL,,,,228,USA,"West Okoboji Lake, Iowa","Carlander, 1977",3993,DB
+BGS,Bluegill,Lepomis macrochirus,0.03,2.94,0.94,unsexed,1.6,4.4,SL,0.943,,,26,USA,"Everglades, Florida / 2005-2012","Klassen et al., 2014",96646,DB
+BKB,Black Bullhead,Ameiurus melas,0.00419,3.414,0.7,unsexed,7.6,25.4,TL,,,,244,USA,"Iowa, ponds","Carlander, 1969",3672,DB
+BKB,Black Bullhead,Ameiurus melas,0.00594,3.326,0.7,unsexed,7.6,22.9,TL,,,,123,USA,"Williams Lake, Iowa","Carlander, 1969",3672,DB
+BKB,Black Bullhead,Ameiurus melas,0.00818,3.18,0.7,unsexed,4.6,39.4,TL,,,,,USA,Oklahoma,"Carlander, 1969",3672,DB
+BKB,Black Bullhead,Ameiurus melas,0.00912,3.14,0.7,unsexed,2.5,12.7,TL,,,,2049,USA,Alabama,"Carlander, 1969",3672,DB
+BKB,Black Bullhead,Ameiurus melas,0.01161,3.06,0.7,unsexed,7.6,27.9,TL,,,,243,USA,"Marion County, Iowa, farm ponds","Carlander, 1969",3672,DB
+BKB,Black Bullhead,Ameiurus melas,0.0151,2.977,0.7,unsexed,15.5,24.6,TL,,,,128,USA,Oklahoma,"Carlander, 1969",3672,DB
+BKB,Black Bullhead,Ameiurus melas,0.0164,2.924,0.7,unsexed,12.7,30.5,TL,,,,,USA,"Lake Butte des Mortes, Wisconsin, 1959","Carlander, 1969",3672,DB
+BKB,Black Bullhead,Ameiurus melas,0.0188,2.887,0.7,unsexed,5.1,30.5,TL,,,,,USA,"Ft. Randall Reservoir, South Dakota","Carlander, 1969",3672,DB
+BKB,Black Bullhead,Ameiurus melas,0.03133,2.935,0.6,unsexed,,,SL,,,,441,USA,"Little Wall Lake, Iowa","Carlander, 1969",3672,DB
+BKB,Black Bullhead,Ameiurus melas,0.0399,2.86,0.6,unsexed,,,SL,,,,66,USA,"Clear Lake, Iowa, 1950","Carlander, 1969",3672,DB
+BKB,Black Bullhead,Ameiurus melas,0.0565,2.801,0.6,unsexed,,,SL,,,,559,USA,"Clear Lake, Iowa, 1951","Carlander, 1969",3672,DB
+BKS,Black Crappie,Pomoxis nigromaculatus,0.0154,2.993,0.6,female,,,TL,,,,35,USA,"Lewis and Clark Lake, South Dakota","Carlander, 1977",3993,DB
+BKS,Black Crappie,Pomoxis nigromaculatus,0.00762,3.192,0.6,male,,,TL,,,,30,USA,"Lewis and Clark Lake, South Dakota","Carlander, 1977",3993,DB
+BKS,Black Crappie,Pomoxis nigromaculatus,0.00764,3.177,0.6,unsexed,,,TL,,,,64,USA,"Ardmore City Lake, Oklahoma","Carlander, 1977",3993,DB
+BKS,Black Crappie,Pomoxis nigromaculatus,0.00883,3.198,0.7,unsexed,9.5,39.4,TL,,,,318,USA,"Oahe Lake, South Dakota","Carlander, 1977",3993,DB
+BKS,Black Crappie,Pomoxis nigromaculatus,0.00897,3.143,0.7,unsexed,5.6,23.5,TL,,,,82,USA,"Ahquabi Lake, Iowa","Carlander, 1977",3993,DB
+BKS,Black Crappie,Pomoxis nigromaculatus,0.0114,3.075,0.6,unsexed,,,TL,,,,1229,USA,"Lewis and Clark Lake, South Dakota","Carlander, 1977",3993,DB
+BKS,Black Crappie,Pomoxis nigromaculatus,0.0123,3.08,0.7,unsexed,13.4,34.3,TL,,,,36,USA,"Red Rock Lake, Iowa","Carlander, 1977",3993,DB
+BKS,Black Crappie,Pomoxis nigromaculatus,0.0133,2.97,0.7,unsexed,2.5,36,TL,,,,,USA,Alabama,"Carlander, 1977",3993,DB
+BKS,Black Crappie,Pomoxis nigromaculatus,0.0137,3.044,0.6,unsexed,,,TL,,,,13,USA,"Par Pond, South Carolina","Carlander, 1977",3993,DB
+BKS,Black Crappie,Pomoxis nigromaculatus,0.0137,3.066,0.7,unsexed,11.5,30,TL,,,,303,USA,"Spirit Lake, Iowa","Carlander, 1977",3993,DB
+BKS,Black Crappie,Pomoxis nigromaculatus,0.0138,3.001,0.7,unsexed,10,28,TL,,,,104,USA,"Chickasaw Lake, Oklahoma","Carlander, 1977",3993,DB
+BPF,Bay Pipefish,Syngnathus leptorhynchus,0.0002,3.12,1,mixed,6.8,38.5,TL,,,,57,USA,"Yaquina estuary, Oregon","Bayer, 1980",93899,DB
+BRB,Brown Bullhead,Ameiurus nebulosus,0.00909,3.125,0.5,unsexed,,,FL,,,,,Canada,"Lake Jesse, Nova Scotia","Carlander, 1969",3672,DB
+BRB,Brown Bullhead,Ameiurus nebulosus,0.01009,3.065,0.7,unsexed,15.2,29.2,TL,,,,1634,USA,"Lake Butte des Mortes, Wisconsin, 1959","Carlander, 1969",3672,DB
+BRB,Brown Bullhead,Ameiurus nebulosus,0.0282,2.76,0.7,unsexed,5.1,48.3,TL,,,,66443,USA,Alabama,"Carlander, 1969",3672,DB
+BRB,Brown Bullhead,Ameiurus nebulosus,0.0099,3.073,0.98,unsexed,4,29.3,TL,0.98,,,741,Belgium,"Flanders (Yser, Scheldt and Meuse drainage basin), 1992-2009","Verreycken and Belpaire, 2011",88166,DB
+BT,Brown Trout,Salmo trutta,0.011,3,0.5,unsexed,,,,,,,,UK Engld Wal,Lake District,"Frost and Smyly, 1952",1136,DB
+BT,Brown Trout,Salmo trutta,0.00549,3.122,0.98,unsexed,,,TL,0.98,,,806,Norway,"Lake vre Heimdalsvatn, 1969","Jensen, 1977",1776,DB
+BT,Brown Trout,Salmo trutta,0.0107,3.003,0.5,unsexed,,,,,,,,USA,New York,"Palomares, 1991",1883,DB
+BT,Brown Trout,Salmo trutta,0.012,2.985,0.5,unsexed,,,,,,,,France,Viau River,"Palomares, 1991",2939,DB
+BT,Brown Trout,Salmo trutta,0.015,2.914,0.5,unsexed,,,,,,,,France,,"Carlander, 1969",2939,DB
+BT,Brown Trout,Salmo trutta,0.00585,3.189,0.5,unsexed,,,TL,,,,,USA,New York,"Carlander, 1969",3672,DB
+BT,Brown Trout,Salmo trutta,0.0108,3.003,0.5,unsexed,,,TL,,,,,USA,New York,"Carlander, 1969",3672,DB
+BT,Brown Trout,Salmo trutta,0.01127,2.96,0.6,unsexed,,,TL,,,,1003,USA,"Pigeon River, Michigan","Carlander, 1969",3672,DB
+BT,Brown Trout,Salmo trutta,0.0132,2.92,0.5,unsexed,,,FL,,,,,UK,"Llyn Tegid, Wales","Sigler, 1952",3672,DB
+BT,Brown Trout,Salmo trutta,0.0201,2.96,0.6,unsexed,,,SL,,,,386,USA,"Logan River, Utah","Bohling et al., 1991",3672,DB
+BT,Brown Trout,Salmo trutta,0.022,2.96,0.6,unsexed,,,,,,,286,USA,"Logan River, Utah","Kleanthidis et al., 1999",4580,DB
+BT,Brown Trout,Salmo trutta,0.00469,3.227,1,unsexed,,,,0.996,,,174,Finland,"Bay of Bothnia, Baltic Sea","Papageorgiou et al., 1983",6281,DB
+BT,Brown Trout,Salmo trutta,0.0041,2.95,0.7,mixed,4.1,24,SL,,,,1074,Greece,"Aspropotamus Stream, 1981-82","Crisp, 1994",27610,DB
+BT,Brown Trout,Salmo trutta,0.00415,2.95,0.6,mixed,,,,,,,1074,Greece,Aspropotamos stream (March 1981- February 1982),"Crisp, 1994",27724,DB
+BT,Brown Trout,Salmo trutta,0.0115,3.009,0.7,female,12,35.2,,,,,1000,UK,River Tees and tributaries,"Crisp and Beaumont, 1995",41325,DB
+BT,Brown Trout,Salmo trutta,0.0141,2.913,0.7,female,12,38.6,,,,,1000,UK,Cow Green reservoir,"Crisp and Beaumont, 1995",41325,DB
+BT,Brown Trout,Salmo trutta,0.00621,3.495,0.98,juvenile,,,FL,0.977,,,,UK Engld Wal,Trout Beck system,"Crisp and Beaumont, 1995",44580,DB
+BT,Brown Trout,Salmo trutta,0.01303,2.9157,0.93,juvenile,,,FL,0.934,,,,UK Engld Wal,Trout Beck system,"Crisp and Beaumont, 1995",44580,DB
+BT,Brown Trout,Salmo trutta,0.0131,2.905,0.97,juvenile,,,FL,0.97,,,,UK Engld Wal,Trout Beck system,"Crisp and Beaumont, 1995",44580,DB
+BT,Brown Trout,Salmo trutta,0.0107,3.013,0.99,unsexed,,,FL,0.988,,,,UK Engld Wal,Trout Beck system,"Crisp and Beaumont, 1995",44580,DB
+BT,Brown Trout,Salmo trutta,0.0154,2.8903,0.99,unsexed,,,FL,0.994,,,,UK Engld Wal,Trout Beck system,"Crisp and Beaumont, 1995",44580,DB
+BT,Brown Trout,Salmo trutta,0.0252,2.674,0.99,unsexed,,,FL,0.988,,,,UK Engld Wal,Trout Beck system,"Crisp and Beaumont, 1995",44580,DB
+BT,Brown Trout,Salmo trutta,0.0074,3.164,0.99,mixed,2.8,31,TL,0.988,,,225,Spain,"Larraun River, Navarra, 1996-98 (August)","Oscoz and Escala, 2005",55769,DB
+BT,Brown Trout,Salmo trutta,0.0036,3.27779,0.97,mixed,82,130,TL,0.971,,,,Russia,Caspian Sea/1916-1977,"Belyaeva et al., 1989",56523,DB
+BT,Brown Trout,Salmo trutta,0.005,3.238,0.98,mixed,14.7,30.7,TL,0.984,,,25,Spain,"middle Gaillego River, Huesa Province, 2005 (September)","Leunda et al., 2006",71904,DB
+BT,Brown Trout,Salmo trutta,0.0052,3.216,0.99,mixed,10.5,33.4,TL,0.986,,,18,Spain,"middle Cinca, Huesa Province, 2004 (June; August)","Leunda et al., 2006",71904,DB
+BT,Brown Trout,Salmo trutta,0.0097,3.036,0.99,mixed,5.5,23.4,TL,0.99,,,49,Spain,,"Leunda et al., 2006",71904,DB
+BT,Brown Trout,Salmo trutta,0.0107,2.996,0.99,mixed,4.8,22.2,TL,0.992,,,49,Spain,"Irues River, Cinca, Huesa Province, 2004 (June; August)","Leunda et al., 2006",71904,DB
+BT,Brown Trout,Salmo trutta,0.0111,3.01,0.99,unsexed,4.8,51.8,TL,0.99,,,776,Belgium,"Flanders (Yser, Scheldt and Meuse drainage basin), 1992-2009","Verreycken and Belpaire, 2011",88166,DB
+BT,Brown Trout,Salmo trutta,0.0141,2.96,0.6,female,,,FL,,,,250,Turkey,Kan Stream / 2001,"Arslan et al., 2004",90364,DB
+BT,Brown Trout,Salmo trutta,0.0147,2.96,0.6,male,,,FL,,,,239,Turkey,Kan Stream / 2001,"Arslan et al., 2004",90364,DB
+BT,Brown Trout,Salmo trutta,0.0112,3.04,0.6,mixed,,,FL,,,,100,Turkey,"Kan Stream / summer, 2001","Arslan et al., 2004",90364,DB
+BT,Brown Trout,Salmo trutta,0.0124,3.01,0.6,mixed,,,FL,,,,130,Turkey,"Kan Stream / spring, 2001","Arslan et al., 2004",90364,DB
+BT,Brown Trout,Salmo trutta,0.0141,2.97,0.6,mixed,,,FL,,,,509,Turkey,Kan Stream / 2001,"Arslan et al., 2004",90364,DB
+BT,Brown Trout,Salmo trutta,0.016,2.89,0.6,mixed,,,FL,,,,133,Turkey,"Kan Stream / winter, 2001","Arslan et al., 2004",90364,DB
+BT,Brown Trout,Salmo trutta,0.017,2.91,0.6,mixed,,,FL,,,,149,Turkey,"Kan Stream / fall, 2001","Arslan et al., 2004",90364,DB
+BT,Brown Trout,Salmo trutta,0.00675,3.142,0.5,unsexed,,,,,,,,Poland,Osowka river,"Chelkowski and Chelkowska, 1995",91205,DB
+BT,Brown Trout,Salmo trutta,0.0123,2.951,0.5,unsexed,,,,,,,,Poland,Osowka river,"Chelkowski and Chelkowska, 1995",91205,DB
+BT,Brown Trout,Salmo trutta,0.0299,2.586,0.5,unsexed,,,,,,,,Poland,"Gowienica River, 1980-84","Chelkowski and Chelkowska, 1995",91205,DB
+BT,Brown Trout,Salmo trutta,0.0118,3,0.98,unsexed,,,FL,0.98,,,93,Portugal,"Tamente, Lima river system","Maia and Valente, 1999",91210,DB
+BT,Brown Trout,Salmo trutta,0.0119,2.99,0.98,unsexed,,,FL,0.98,,,122,Portugal,"Labruja, Lima river system, 1995-97","Maia and Valente, 1999",91210,DB
+BT,Brown Trout,Salmo trutta,0.0124,2.95,0.98,unsexed,,,FL,0.98,,,21,Portugal,"Froufe, Lima river system","Maia and Valente, 1999",91210,DB
+BT,Brown Trout,Salmo trutta,0.0134,2.94,0.98,unsexed,,,FL,0.98,,,524,Portugal,"Trovela, Lima river system","Maia and Valente, 1999",91210,DB
+BT,Brown Trout,Salmo trutta,0.0137,2.93,0.98,unsexed,,,FL,0.98,,,646,Portugal,Lima river system,"Maia and Valente, 1999",91210,DB
+BT,Brown Trout,Salmo trutta,0.0151,2.92,0.98,unsexed,,,FL,0.98,,,1008,Portugal,"Vade, Lima river system, 1995-97","Maia and Valente, 1999",91210,DB
+BT,Brown Trout,Salmo trutta,0.00981,2.9581,0.97,unsexed,3.5,69,TL,0.971,,,,USA,GMUG National Forest / 2000-2007,"Adams et al., 2008",91212,DB
+BT,Brown Trout,Salmo trutta,0.00434,3.217,0.98,unsexed,18.2,105.5,TL,0.984,,,211,Italy,"Lago Maggiore, 2000-2009","Volta and Giussani, 2010",91325,DB
+BT,Brown Trout,Salmo trutta,0.01585,2.88,0.97,female,,,FL,0.97,,,,Spain,central Spain,"Nicola and Almodovar, 2002",91501,DB
+BT,Brown Trout,Salmo trutta,0.01445,2.94,0.98,male,,,FL,0.98,,,,Spain,central Spain,"Nicola and Almodovar, 2002",91501,DB
+BT,Brown Trout,Salmo trutta,0.00265,3.2,0.97,unsexed,,,TL,0.97,,,35,Iran,"Lar, Mazandaran province","Kheyrandish et al., 2010",91538,DB
+BT,Brown Trout,Salmo trutta,0.00282,3.4,0.93,unsexed,,,TL,0.93,,,25,Iran,"Rigcheshme, Mazandaran province","Kheyrandish et al., 2010",91538,DB
+BT,Brown Trout,Salmo trutta,0.00344,3.4,0.97,unsexed,,,TL,0.97,,,9,Iran,"Khojirood, Mazandaran porvince","Kheyrandish et al., 2010",91538,DB
+BT,Brown Trout,Salmo trutta,0.00534,3.2,0.98,unsexed,,,TL,0.98,,,41,Iran,"Shirinrood, Mazandaran province","Kheyrandish et al., 2010",91538,DB
+BT,Brown Trout,Salmo trutta,0.00854,3.1,0.99,unsexed,,,TL,0.99,,,31,Iran,"Pajimiane, Mazandaran province","Kheyrandish et al., 2010",91538,DB
+BT,Brown Trout,Salmo trutta,0.00916,3,0.95,unsexed,,,TL,0.95,,,30,Iran,"Kelyare, Mazandaran province","Kheyrandish et al., 2010",91538,DB
+BT,Brown Trout,Salmo trutta,0.015,2.932,0.7,mixed,6,23,FL,,,,163,Turkey,"Aksu Stream (alt: 2800-2900 m), 2002","Arslan et al., 2007",91541,DB
+BT,Brown Trout,Salmo trutta,0.06918,2.82,0.6,mixed,,,FL,,,,158,UK Scotland,Loch of Strathbeg / 1973,"Treasurer, 1976",91547,DB
+BT,Brown Trout,Salmo trutta,0.008,3.106,1,mixed,6.5,23,TL,0.997,,,63,Ukraine,"Strwiaz River, Dniester River / 2008","Nowak et al., 2009",91566,DB
+BT,Brown Trout,Salmo trutta,0.011,3.07,0.99,unsexed,,,FL,0.99,,,25,Turkey,,"Yildirim et al., 2012",91718,DB
+BT,Brown Trout,Salmo trutta,0.012,3.04,0.99,unsexed,,,FL,0.99,,,38,Turkey,"Koyun Lake, 2002","Yildirim et al., 2012",91718,DB
+BT,Brown Trout,Salmo trutta,0.015,2.93,0.99,unsexed,,,FL,0.99,,,163,Turkey,"Aksu Stream, Upper Coruh River, 2002 (Aug.)","Yildirim et al., 2012",91718,DB
+BT,Brown Trout,Salmo trutta,0.016,2.93,0.99,unsexed,,,FL,0.99,,,50,Turkey,"Kuzu Lake, 2002","Yildirim et al., 2012",91718,DB
+BT,Brown Trout,Salmo trutta,0.0126,2.984,0.99,unsexed,6,25.4,TL,0.99,,,94,Turkey,Biga Peninsula / 2000-2001.,"Ilhan et al., 2012",94844,DB
+C,Common Carp,Cyprinus carpio,0.00178,3.477,0.7,female,29,81.3,TL,,,,74,USA,"Des Moines River, Iowa, 1961","Carlander, 1969",3672,
+C,Common Carp,Cyprinus carpio,0.00242,3.467,0.7,female,40.6,58.7,TL,,,,17,USA,"Izaak Walton Lake, Iowa, 1962","Carlander, 1969",3672,
+C,Common Carp,Cyprinus carpio,0.0366,2.746,0.7,female,24.1,82.8,TL,,,,165,USA,"Clear Lake, Iowa","Carlander, 1969",3672,
+C,Common Carp,Cyprinus carpio,0.0481,2.664,0.7,female,36.6,54.4,TL,,,,78,USA,"Izaak Walton Lake, Iowa, 1961","Carlander, 1969",3672,
+C,Common Carp,Cyprinus carpio,0.00329,3.34,0.7,male,45.2,52.3,TL,,,,6,USA,"Izaak Walton Lake, Iowa, 1962","Carlander, 1969",3672,
+C,Common Carp,Cyprinus carpio,0.00447,3.253,0.7,male,27.2,76.4,TL,,,,99,USA,"Des Moines River, Iowa, 1961","Carlander, 1969",3672,
+C,Common Carp,Cyprinus carpio,0.0333,2.746,0.7,male,19.6,76.2,TL,,,,133,USA,"Clear Lake, Iowa","Carlander, 1969",3672,
+C,Common Carp,Cyprinus carpio,0.0481,2.664,0.7,male,37.6,53.8,TL,,,,53,USA,"Izaak Walton Lake, Iowa, 1961","Carlander, 1969",3672,
+C,Common Carp,Cyprinus carpio,0.00603,3.21,0.7,unsexed,31.5,57,TL,,,,88,Japan,"Shioda Plain, Nagano Prefecture","Carlander, 1969",3672,
+C,Common Carp,Cyprinus carpio,0.01,3.07,0.7,unsexed,35.6,77,TL,,,,352,USA,Alabama,"Carlander, 1969",3672,
+C,Common Carp,Cyprinus carpio,0.0122,3.025,0.7,unsexed,18,77,TL,,,,517,USA,"Des Moines River, Iowa, 1958","Carlander, 1969",3672,
+C,Common Carp,Cyprinus carpio,0.0164,2.938,0.7,unsexed,25,43.8,TL,,,,98,Japan,"Shioda Plain, Nagano Prefecture","Carlander, 1969",3672,
+C,Common Carp,Cyprinus carpio,0.0173,3.015,0.7,unsexed,16.5,36.5,TL,,,,67,Japan,"Shioda Plain, Nagano Prefecture","Carlander, 1969",3672,
+C,Common Carp,Cyprinus carpio,0.0206,2.894,0.5,unsexed,,,TL,,,,,USA,"Salt River, Missouri","Carlander, 1969",3672,
+C,Common Carp,Cyprinus carpio,0.0212,3.041,0.7,unsexed,16.9,53.9,SL,,,,109,USA,"Bear Lake, Utah","Carlander, 1969",3672,
+C,Common Carp,Cyprinus carpio,0.0259,2.888,0.7,unsexed,19,44.5,FL,,,,53,USA,"Salt Springs Valley Reservoir, California","Carlander, 1969",3672,
+C,Common Carp,Cyprinus carpio,0.0277,2.759,0.7,unsexed,13,41.4,TL,,,,31,Japan,"Shioda Plain, Nagano Prefecture","Carlander, 1969",3672,
+C,Common Carp,Cyprinus carpio,0.0297,2.914,0.7,unsexed,12.5,73,SL,,,,,USA,"Clear Lake, Utah","Carlander, 1969",3672,
+C,Common Carp,Cyprinus carpio,0.0298,2.914,0.7,unsexed,12.5,73,SL,,,,,USA,"Clear Lake, Utah","Carlander, 1969",3672,
+C,Common Carp,Cyprinus carpio,0.0314,2.736,0.7,unsexed,12.7,45.7,TL,,,,,USA,"Ft. Randall Lake, South Dakota","Carlander, 1969",3672,
+C,Common Carp,Cyprinus carpio,0.0404,2.876,0.7,unsexed,6.8,40.8,SL,,,,191,USA,"Cache Valley, Utah","Carlander, 1969",3672,
+C,Common Carp,Cyprinus carpio,0.0479,2.63,0.7,unsexed,2.5,35.5,TL,,,,31344,USA,Alabama,"Carlander, 1969",3672,
+C,Common Carp,Cyprinus carpio,0.0882,2.687,0.91,unsexed,,,,0.914,,,,China,"Xin'anjiang Reservoir, 1984-87; 1988","Li et al., 1990",6158,
+C,Common Carp,Cyprinus carpio,0.041,2.959,0.5,unsexed,,,,,,,,China,"Dongjiang River, Guangdon, 1981-82","Yie, 1988",7029,
+C,Common Carp,Cyprinus carpio,0.014,2.99,0.6,female,,,TL,,,,34,Greece,"Lake Vistonis, 1973","Kleanthidis et al., 1999",27610,
+C,Common Carp,Cyprinus carpio,0.0474,2.65,0.6,male,,,TL,,,,21,Greece,"Lake Vistonis, 1973","Kleanthidis et al., 1999",27610,
+C,Common Carp,Cyprinus carpio,0.0214,3.012,0.98,unsexed,8.4,47,FL,0.976,,,55,Laos,Mekong River at Hoo Som Yai on the Great Fault Line,"Singhanouvong et al., 1996",37771,
+C,Common Carp,Cyprinus carpio,0.0179,3.21,0.59,female,,,SL,0.593,,,,China,China,"Li, 1998",37798,
+C,Common Carp,Cyprinus carpio,0.0772,2.74,0.91,female,,,SL,0.908,,,,China,China,"Li, 1998",37798,
+C,Common Carp,Cyprinus carpio,0.0489,2.88,0.97,male,,,SL,0.968,,,,China,China,"Li, 1998",37798,
+C,Common Carp,Cyprinus carpio,0.029,3.06,0.99,mixed,,,SL,0.992,,,,China,China,"Li, 1998",37798,
+C,Common Carp,Cyprinus carpio,0.016,3.04,0.98,unsexed,,,TL,0.98,,,10,Spain,"Lake Albufera, 2002 (spring)","Blanco et al., 2003",50467,
+C,Common Carp,Cyprinus carpio,0.053,2.65,0.98,unsexed,,,TL,0.978,,,112,Spain,"Lake Albufera, 2000 (summer)","Blanco et al., 2003",50467,
+C,Common Carp,Cyprinus carpio,0.025,2.9365,0.99,mixed,12,59,FL,0.992,,,,Russia,Atrek river/1972-1982,"Belyaeva et al., 1989",56523,
+C,Common Carp,Cyprinus carpio,0.0147,3.108,0.98,unsexed,5.8,55.2,FL,0.98,,,132,Kenya,"Lake Naivasha, 2004-05","Britton and Harper, 2006",57989,
+C,Common Carp,Cyprinus carpio,0.012,3.07,0.99,mixed,7.1,59,TL,0.994,,,43,Spain,"Araquil River, Navarra, 1993-96 (summer)","Miranda et al., 2006",59097,
+C,Common Carp,Cyprinus carpio,0.0184,3.01,0.99,unsexed,1.7,56,FL,0.994,,,614,Spain,"Segura River basin (resevoirs), 2000-2004","Andreu-Soler et al., 2006",59098,
+C,Common Carp,Cyprinus carpio,0.004,3.458,0.5,unsexed,,,TL,,,,,Iraq,"Lake Razzazah, 1982","Szypula et al., 2001",59113,
+C,Common Carp,Cyprinus carpio,0.0086,3.152,0.5,unsexed,,,TL,,,,,Iraq,"Lake Tharthar, 1982","Szypula et al., 2001",59113,
+C,Common Carp,Cyprinus carpio,0.0149,2.966,0.99,mixed,12.4,82.3,TL,0.986,,,315,China,"Lake Niushan, Yangtze River, 2002-2004","Ye et al., 2007",74975,
+C,Common Carp,Cyprinus carpio,0.037,2.89,0.97,unsexed,5.8,6,SL,0.97,,,467,Philippines,Candaba wetlands / 2007-2008,"Garcia, 2010",85823,
+C,Common Carp,Cyprinus carpio,0.0357,2.829,0.97,mixed,,,FL,0.97,,,275,South Africa,"Lake Gariep, Orange River, 2006-2008","Winker et al., 2011",88006,
+C,Common Carp,Cyprinus carpio,0.026,2.9,0.99,mixed,11.2,71.5,TL,0.988,,,105,Turkey,"Seyhan Dam, 2006-2007","Erguden and Goksu, 2009",88163,
+C,Common Carp,Cyprinus carpio,0.085,2.709,0.99,unsexed,20,51.2,TL,0.986,,,18,China,"Ergis River, 2017","Huo et al., 2011",88165,
+C,Common Carp,Cyprinus carpio,0.0173,2.993,0.99,unsexed,2.1,87,TL,0.99,,,2158,Belgium,"Flanders (Yser, Scheldt and Meuse drainage basin), 1992-2009","Verreycken and Belpaire, 2011",88166,
+C,Common Carp,Cyprinus carpio,0.014,3.07,1,unsexed,9.2,61.5,FL,0.997,,,43,China,"Tian-e-zhou Oxbow, Yangtze River, Mar 2010-May 2011","Wang et al., 2012",93874,
+C,Common Carp,Cyprinus carpio,0.0247,2.86,0.98,unsexed,15.6,64,TL,0.984,,,20,China,Xingkai Lake / 2007.,"Liu et al., 2012",94847,
+C,Common Carp,Cyprinus carpio,0.021,3.112,0.98,unsexed,20,35.2,TL,0.983,,,95,Turkey,"Hatay Province, 2003","Ozcan, 2008",95297,
+C,Common Carp,Cyprinus carpio,0.0026,3.5672,0.99,female,18.6,50.8,FL,0.993,,,55,Turkey,"Lake Sera, 1986","Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0103,2.8497,0.7,female,8.3,40.5,FL,,,,96,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0145,3.0434,0.7,female,16.6,68.1,FL,,,,192,Turkey,"Sakarya River, 1988-89","Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.01479,3.1022,0.99,female,20.7,36,FL,0.994,,,110,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.01861,2.93826,0.7,female,17,61.5,FL,,,,222,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0202,2.991,0.99,female,11.3,42.5,FL,0.992,,,65,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.024,3.02,0.91,female,12.8,47.9,FL,0.91,,,189,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.02455,2.887,0.98,female,20.5,61,FL,0.975,,,36,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.02456,2.9133,1,female,23,63.5,FL,0.999,,,172,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.02523,2.83045,0.7,female,19,76,FL,,,,470,Turkey,"Lake Mogan, 1982-84","Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0258,2.8676,0.7,female,10.5,49.4,FL,,,,369,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.026,2.9242,1,female,13.24,70.4,FL,0.997,,,64,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0271,2.898,0.97,female,28.7,44.3,TL,0.97,,,30,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0278,2.8539,1,female,11.3,44.6,TL,0.996,,,557,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0282,2.874,0.7,female,19,46,FL,,,,121,Turkey,"Lake Liman, 2002-2005","Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.029,2.3078,0.7,female,14.2,55,FL,,,,423,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0292,2.896,0.98,female,16,75,TL,0.98,,,48,Turkey,"Derbent Reservoir, 2003-04","Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0301,2.989,0.99,female,10.4,44.3,FL,0.986,,,159,Turkey,"Karasu Stream, 2007-08","Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0316,2.866,0.99,female,21.1,77.6,TL,0.99,,,77,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0328,2.838,0.98,female,23.8,52.4,FL,0.98,,,81,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0399,2.67441,0.7,female,13,59.1,FL,,,,123,Turkey,"Apa Reservoir, 1981","Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.04143,2.75415,0.7,female,13,69,FL,,,,418,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0469,2.81,0.93,female,19,77,TL,0.929,,,133,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0545,2.737,0.9,female,12.7,61.7,FL,0.895,,,139,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.05589,2.66,0.7,female,12.7,56.3,FL,,,,219,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.06619,2.62298,0.7,female,16.7,68.6,FL,,,,212,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0783,2.58798,0.7,female,8,69,FL,,,,738,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.1299,2.30576,0.7,female,10,41.5,FL,,,,326,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.13395,2.50804,0.7,female,9,76,FL,,,,233,Turkey,"Lake Eber, 1978","Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.2218,2.2674,0.7,female,19,46,FL,,,,137,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.22338,2.38775,0.7,female,11,65,FL,,,,129,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0041,3.438,0.99,male,17.9,47.5,FL,0.993,,,47,Turkey,"Lake Sera, 1986","Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0085,2.8534,0.7,male,8.5,38.9,FL,,,,115,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.01399,2.99196,0.7,male,16.3,60.5,FL,,,,200,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0236,2.943,0.99,male,13.3,45.4,FL,0.992,,,83,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0243,2.8874,0.7,male,10.5,46,FL,,,,324,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0247,3.0204,0.7,male,17.4,67.5,FL,,,,155,Turkey,"Sakarya River, 1988-89","Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.02492,2.9223,1,male,23.2,65.5,FL,0.999,,,201,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0253,2.9233,0.99,male,13.74,44.24,FL,0.993,,,55,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0259,2.923,0.87,male,36.3,60,TL,0.87,,,49,Turkey,"Derbent Reservoir, 2003-04","Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.026,3.01,0.84,male,13.1,42.5,FL,0.84,,,162,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0262,2.914,0.99,male,20.1,53.2,FL,0.992,,,52,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.02644,2.81335,0.7,male,19,76,FL,,,,446,Turkey,"Lake Mogan, 1982-84","Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.028,2.8213,0.7,male,14.3,53,FL,,,,365,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0287,2.888,0.99,male,10.7,38.4,FL,0.986,,,123,Turkey,"Karasu Stream, 2007-08","Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0289,2.863,0.7,male,21,41,FL,,,,141,Turkey,"Lake Liman, 2002-2005","Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0345,2.7779,1,male,10.8,43.1,FL,0.998,,,507,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0356,2.892,0.99,male,18.3,50.4,FL,0.986,,,152,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.03619,2.78298,0.7,male,10,81,FL,,,,218,Turkey,"Lake Eber, 1978","Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0378,2.802,0.97,male,22.5,52,FL,0.97,,,74,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0415,2.778,0.99,male,22.9,69.6,TL,0.99,,,65,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0421,2.761,0.99,male,24.8,35.8,TL,0.99,,,6,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0542,2.6928,1,male,21.9,37.8,FL,0.997,,,207,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.06264,2.64583,0.7,male,12,70,FL,,,,397,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0642,2.5812,0.7,male,15.5,56.4,FL,,,,119,Turkey,"Apa Reservoir, 1981","Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.07346,2.6,0.7,male,11.8,57.4,FL,,,,237,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0745,2.5837,0.7,male,19.5,41,FL,,,,136,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.1545,2.39531,0.7,male,8,66,FL,,,,807,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.1641,2.30578,0.7,male,9.5,42.8,FL,,,,284,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.21335,2.37448,0.7,male,10,56,FL,,,,139,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0034,3.4847,0.98,mixed,17.9,50.8,FL,0.978,,,102,Turkey,"Lake Sera, 1986","Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0096,2.8523,0.7,mixed,8.3,40.5,FL,,,,211,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0128,2.928,1,mixed,8.9,55.8,FL,0.995,,,182,Turkey,"Karasu Stream, 1994-96","Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0131,2.9798,0.7,mixed,16.6,68.1,FL,,,,347,Turkey,"Sakarya River, 1988-89","Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0149,3.14,0.99,mixed,12.8,84,TL,0.986,,,51,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.01632,2.37603,0.7,mixed,9.5,67.7,FL,,,,611,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0174,3.0372,0.98,mixed,10.94,28.54,FL,0.983,,,92,Turkey,"Kemer Reservoir, 2006","Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.01952,2.94036,0.7,mixed,10.9,44.5,FL,,,,130,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.02041,2.96248,0.7,mixed,8.3,60.3,FL,,,,634,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0215,3.0226,0.97,mixed,11.7,63.8,FL,0.967,,,633,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0218,2.967,0.99,mixed,13.3,45.4,FL,0.992,,,148,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.022,2.939,0.99,mixed,9.5,61,FL,0.994,,,321,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0221,2.952,0.99,mixed,10.4,44.3,FL,0.987,,,297,Turkey,"Karasu Stream, 2007-08","Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0229,2.969,1,mixed,8.1,48.2,FL,0.997,,,212,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0229,2.9973,1,mixed,16,37.8,FL,0.998,,,317,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.024,2.972,0.7,mixed,13.5,54.3,FL,,,,549,Turkey,"Seyhan Reservoir, 1986","Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.02429,2.9224,1,mixed,17.5,65.5,FL,0.999,,,373,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0245,2.952,1,mixed,9,70.4,FL,0.996,,,108,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.025,3.01,0.87,mixed,12.8,47.9,FL,0.87,,,351,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0252,2.8739,0.7,mixed,10.5,49.4,FL,,,,693,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0255,3.0292,0.98,mixed,16.8,45.4,FL,0.98,,,373,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.02573,2.82366,0.7,mixed,19,76,TL,,,,916,Turkey,"Lake Mogan, 1982-84","Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0272,2.895,0.98,mixed,24.8,44.3,TL,0.98,,,36,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0272,2.9631,0.98,mixed,10.5,61.9,FL,0.981,,,283,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0277,2.888,0.99,mixed,8,24.3,FL,0.994,,,288,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.02792,2.989,0.99,mixed,8.4,24.5,FL,0.99,,,157,Turkey,"Lake Marmara, 1990-91","Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0281,2.8438,1,mixed,10.8,44.6,FL,0.999,,,1064,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0283,2.871,0.7,mixed,19,46,FL,,,,262,Turkey,"Lake Liman, 2002-2005","Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0283,2.9814,0.96,mixed,11.5,71.5,FL,0.96,,,796,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.029,2.894,0.97,mixed,16,75,TL,0.97,,,97,Turkey,"Derbent Reservoir, 2003-04","Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0298,3.202,1,mixed,10.2,30.3,FL,0.996,,,184,Turkey,"Karasu Stream, 1993-94","Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.031,2.7862,0.7,mixed,14.3,55,FL,,,,788,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.034,2.83,0.99,mixed,14.2,48.8,TL,0.986,,,12,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0349,2.822,0.97,mixed,22.5,52.4,FL,0.97,,,155,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0357,2.825,0.99,mixed,21.1,77.6,TL,0.99,,,142,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0396,2.847,0.95,mixed,8.2,61.7,FL,0.951,,,328,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0411,2.8439,0.94,mixed,19,77,TL,0.944,,,281,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0425,2.79,0.99,mixed,16.8,45.5,TL,0.989,,,170,Turkey,"Lake Sapanca, 2002-2003","Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0547,2.6654,0.95,mixed,15.5,46,FL,0.954,,,434,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.05652,2.67619,0.7,mixed,30,66,FL,,,,150,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.057,2.6713,0.7,mixed,13,70,FL,,,,815,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.06313,2.61012,0.7,mixed,9,81,FL,,,,451,Turkey,"Lake Eber, 1978","Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.064,2.6144,0.7,mixed,8.5,72.2,FL,,,,776,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0658,2.676,0.5,mixed,,,FL,,,,,Turkey,"Seyhan Reservoir, 1975-76","Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.07303,2.69,0.7,mixed,11.8,57.4,FL,,,,456,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.077,2.5683,0.7,mixed,8,69,FL,,,,717,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.09585,2.53111,0.7,mixed,8,69,FL,,,,1545,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.105,2.5164,0.7,mixed,8,69,FL,,,,698,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.11934,2.48022,0.7,mixed,14.5,68.6,FL,,,,399,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.1506,2.48873,0.7,mixed,9.5,42.8,FL,,,,610,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.16395,2.40804,0.7,mixed,14.5,67,FL,,,,187,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.2163,2.38281,0.7,mixed,10,65,FL,,,,268,Turkey,,"Vilizzi et al., 2013",95864,
+C,Common Carp,Cyprinus carpio,0.0053,3.2771,0.6,female,,,TL,,,,127,Turkey,"Almus Dam Lake, Tokat Province, 2002-03","Karata et al., 2007",95967,
+C,Common Carp,Cyprinus carpio,0.007,3.2136,0.6,female,,,TL,,,,180,Turkey,"Almus Dam Lake, Tokat Province, 2002-03","Karata et al., 2007",95967,
+C,Common Carp,Cyprinus carpio,0.00486,3.3191,0.94,mixed,14,36,TL,0.944,,,307,Turkey,"Almus Dam Lake, Tokat Province, 2002-03","Karata et al., 2007",95967,
+C,Common Carp,Cyprinus carpio,0.0123,3,0.98,unsexed,9.8,59.3,TL,0.982,,,141,SouthKorea,Nakdong River / 2010-2013,"Lee et al., 2015",101569,
+C,Common Carp,Cyprinus carpio,0.01316,2.98,1,unsexed,7.4,32.4,TL,0.996,,,51,SouthKorea,Saemangeum Reservoir / 2013,"Kim et al., 2015",107959,
+C,Common Carp,Cyprinus carpio,0.0254,3.01,0.97,unsexed,5.8,40.5,SL,0.969,,,497,China,Wujiang River / 2006-2014,"Yang et al., 2016",108468,
+C,Common Carp,Cyprinus carpio,0.012,3.07,0.97,unsexed,12.25,28.18,TL,0.974,,,16,China,Ili River / 2006,"Sui et al., 2015",111108,
+C,Common Carp,Cyprinus carpio,0.01237,3.03,0.99,unsexed,10.4,47.2,TL,0.987,,,22,China,Hongshui River / 2009-2013,"Que et al., 2015",111347,
+C,Common Carp,Cyprinus carpio,0.011,3.1,0.99,unsexed,5.9,30,TL,0.994,,,33,China,Xieshui River / 2007-2008,"Xie et al., 2015",111646,
+C,Common Carp,Cyprinus carpio,0.026,3.02,0.97,unsexed,11.4,58,TL,0.968,,,320,Philippines,Agusan Marsh / 2011,"Jumawan and Seronay, 2017",114975,
+C,Common Carp,Cyprinus carpio,0.013,3.17,0.98,mixed,1.7,22.5,TL,0.984,,,2628,Spain,,"Moreno-Valcarcel et al., 2012",115878,
+C,Common Carp,Cyprinus carpio,0.054,2.75,0.84,mixed,5.5,69,FL,0.84,,,,China,"Dianshan Lake, 2013-2013","Kindong et al., 2018",118093,
+C,Common Carp,Cyprinus carpio,0.0105,3.14,0.99,unsexed,12.8,84,TL,0.986,,,51,Turkey,,"Tarkan et al., 2006",59105,
+C,Common Carp,Cyprinus carpio,0.025,2.83,0.99,unsexed,14.2,48.8,TL,0.986,,,12,Turkey,"Lake Iznik, Marmara, Oct. 2003-Aug. 2004 (Oct.-Aug.)","Tarkan et al., 2006",59105,
+C,Common Carp,Cyprinus carpio,0.0311,2.79,0.99,unsexed,16.8,45.5,TL,0.989,,,17,Turkey,"Lake Sapanca, Marmara, Jan. 2002-May 2008","Tarkan et al., 2006",59105,
+C,Common Carp,Cyprinus carpio,0.037,2.89,0.97,unsexed,5.8,60,SL,0.97,,,,Philippines,"Pampanga River, Candaba, 2007-2008","Garcia, 2010",85823,
+CHC,Channel Catfish,Ictalurus punctatus,0.00331,3.166,0.5,unsexed,,,,,,,,Canada,"St. Laurent River, Quebec","Magnin and Fradette, 1975",997,DB
+CHC,Channel Catfish,Ictalurus punctatus,0.00075,3.658,0.92,female,,,TL,0.921,,,,USA,"Watts Bar Lake, Tennessee","Carlander, 1969",3672,DB
+CHC,Channel Catfish,Ictalurus punctatus,0.00064,3.739,0.88,male,,,TL,0.884,,,,USA,"Watts Bar Lake, Tennessee","Carlander, 1969",3672,DB
+CHC,Channel Catfish,Ictalurus punctatus,0.0008,3.66,0.5,unsexed,,,TL,,,,,USA,"Mississippi River, Iowa","Carlander, 1969",3672,DB
+CHC,Channel Catfish,Ictalurus punctatus,0.00289,3.3,0.7,unsexed,20.3,55.9,TL,,,,,USA,"Salt River, Missouri","Carlander, 1969",3672,DB
+CHC,Channel Catfish,Ictalurus punctatus,0.00292,3.256,0.7,unsexed,17.8,61,TL,,,,278,USA,"Georgia, rivers","Carlander, 1969",3672,DB
+CHC,Channel Catfish,Ictalurus punctatus,0.00539,3.133,0.99,unsexed,7.6,66,TL,0.986,,,558,USA,"Des Moines River, Iowa, 1955-56","Carlander, 1969",3672,DB
+CHC,Channel Catfish,Ictalurus punctatus,0.00571,3.132,0.7,unsexed,17.8,55.9,TL,,,,988,USA,"Georgia, rivers","Carlander, 1969",3672,DB
+CHC,Channel Catfish,Ictalurus punctatus,0.0111,2.956,0.6,unsexed,,,TL,,,,145,USA,Lake Erie,"Carlander, 1969",3672,DB
+CHC,Channel Catfish,Ictalurus punctatus,0.0054,3.29,0.96,unsexed,22.5,48.2,SL,0.96,,,13,Brazil,Iguatemi River / 2006-2008,"Bastista-Silva et al., 2015",111720,DB
+CHC,Channel Catfish,Ictalurus punctatus,0.00246,3.321,0.7,mixed,17.4,65.2,TL,,,,,USA,"Ft. Loudoun Lake, Tennessee River","Harty, 2017",117871,DB
+CHC,Channel Catfish,Ictalurus punctatus,0.00254,3.321,0.7,mixed,22.7,67.3,TL,,,,,USA,"Chickamauga Lake, Tennessee River","Harty, 2017",117871,DB
+CHC,Channel Catfish,Ictalurus punctatus,0.00269,3.321,0.7,mixed,21.4,65.5,TL,,,,,USA,"Kentucky Lake, Tennessee River","Harty, 2017",117871,DB
+CHG,Chameleon Goby,Tridentiger trigonocephalus,0.01644,3,0,unsexed,2.3,2.3,TL,,,,1,,,Pauly et al. 1998,30504,DB
+CHN,Chinook Salmon,Oncorhynchus tshawytscha,0.005,3.44,1,unsexed,,,FL,,,,68,USA,San Francisco Bay-Delta,"Kimmerer et al., 2015",,Paper
+DSM,Delta Smelt,Hypomesus transpacificus,0.0043,3.38,1,unsexed,,,FL,,,,113,USA,San Francisco Bay-Delta,"Kimmerer et al., 2015",,Paper
+FHM,Fathead Minnow,Pimephales promelas,0.0117,2.96,0.5,female,,,TL,,,,,Canada,"W. Canada, boreal plains lake), 1995-99","Danylchuk and Tonn, 2006",58435,DB
+FHM,Fathead Minnow,Pimephales promelas,0.0182,2.83,0.5,female,,,TL,,,,,Canada,"W. Canada, boreal plains lake), 1995-99","Danylchuk and Tonn, 2006",58435,DB
+FHM,Fathead Minnow,Pimephales promelas,0.0239,2.43,0.5,female,,,TL,,,,,Canada,"W. Canada, boreal plains lake), 1995-99","Danylchuk and Tonn, 2006",58435,DB
+FHM,Fathead Minnow,Pimephales promelas,0.00389,3.6,0.5,male,,,TL,,,,,Canada,"W. Canada, boreal plains lake), 1995-99","Danylchuk and Tonn, 2006",58435,DB
+FHM,Fathead Minnow,Pimephales promelas,0.00398,3.52,0.5,male,,,TL,,,,,Canada,"W. Canada, boreal plains lake), 1995-99","Danylchuk and Tonn, 2006",58435,DB
+FHM,Fathead Minnow,Pimephales promelas,0.00537,3.3,0.5,male,,,TL,,,,,Canada,"W. Canada, boreal plains lake), 1995-99","Danylchuk and Tonn, 2006",58435,DB
+FHM,Fathead Minnow,Pimephales promelas,0.0138,2.99,0.5,male,,,TL,,,,,Canada,"W. Canada, boreal plains lake), 1995-99","Danylchuk and Tonn, 2006",58435,DB
+FHM,Fathead Minnow,Pimephales promelas,0.0074,3.288,0.85,unsexed,5.7,8.3,TL,0.85,,,43,Belgium,"Flanders (Yser, Scheldt and Meuse drainage basin), 1992-2009","Verreycken et al., 2011",88166,DB
+GF,Gold Fish,Carassius auratus,0.0234,2.9,0.7,unsexed,1.5,40.6,TL,,,,251236,USA,Alabama,"Carlander, 1969",3672,DB
+GF,Gold Fish,Carassius auratus,0.0245,2.732,0.6,unsexed,,,TL,,,,132,USA,Iowa,"Carlander, 1969",3672,DB
+GF,Gold Fish,Carassius auratus,0.0149,3.047,0.91,mixed,7.32,10.6,TL,0.908,,,41,Iran,,"Esmaeili and Ebrahimi, 2006",59087,DB
+GF,Gold Fish,Carassius auratus,0.007,3.336,0.97,mixed,7.3,23,TL,0.974,,,44,Spain,"Arga River, Navarra, 1993-96 (summer)","Miranda et al., 2006",59097,DB
+GF,Gold Fish,Carassius auratus,0.0193,3.04,1,unsexed,2.6,18,FL,0.996,,,92,Spain,"Segura River basin (reservoirs), 2000-2004","Andreu-Soler et al., 2006",59098,DB
+GF,Gold Fish,Carassius auratus,0.0125,3.087,0.99,female,7.7,22.3,TL,0.988,,,215,China,"Lake Niushan, Yangtze River, 2002-2004","Ye et al., 2007",74975,DB
+GF,Gold Fish,Carassius auratus,0.011,3.127,0.99,male,7.7,22.3,TL,0.99,,,150,China,"Lake Niushan, Yangtze River, 2002-2004","Ye et al., 2007",74975,DB
+GF,Gold Fish,Carassius auratus,0.0109,3.15,0.99,unsexed,3.3,30.7,TL,0.989,,,155,China,"Tarim River, 2009-10","Huo et al., 2012",89110,DB
+GF,Gold Fish,Carassius auratus,0.027,3.07,0.96,unsexed,4.8,16.2,SL,0.963,,,306,China,"Tian-e-zhou Oxbow, Yangtze River, Mar 2010-May 2011","Wang et al., 2012",93874,DB
+GF,Gold Fish,Carassius auratus,0.00958,3.19,0.99,unsexed,5,16.1,TL,0.993,,,104,China,Xiangjiang River / 2010,"Lei et al., 2015",101562,DB
+GF,Gold Fish,Carassius auratus,0.01049,3.14,1,unsexed,4.2,27.9,TL,0.996,,,490,SouthKorea,Saemangeum Reservoir / 2013,"Kim et al., 2015",107959,DB
+GF,Gold Fish,Carassius auratus,0.0318,2.834,0.99,unsexed,8.5,34.1,TL,0.99,,,20,,Lake Eyre basin / 2012,"Sternberg and Cockayne, 2015",111107,DB
+GF,Gold Fish,Carassius auratus,0.021,2.86,0.97,unsexed,7.02,17.26,TL,0.973,,,17,China,Ili River / 2006,"Sui et al., 2015",111108,DB
+GF,Gold Fish,Carassius auratus,0.0143,3.08,0.97,unsexed,2.45,28.31,TL,0.967,,,218,China,"Lhasa River basin, Tibet / 2010, 2014","Fan et al., 2015",111343,DB
+GF,Gold Fish,Carassius auratus,0.00994,3.11,0.99,unsexed,6.6,27.2,TL,0.989,,,59,China,Hongshui River / 2009-2013,"Que et al., 2015",111347,DB
+GF,Gold Fish,Carassius auratus,0.013,3.06,0.99,unsexed,4.1,14.4,TL,0.987,,,141,China,Xieshui River / 2007-2008,"Xie et al., 2015",111646,DB
+GF,Gold Fish,Carassius auratus,0.01,3.107,0.99,unsexed,6.3,38.9,TL,0.992,,,40,Montenegro,Skadar Lake /2010-2014,"Milosevi and Mrdak, 2016",115170,DB
+GSF,Green Sunfish,Lepomis cyanellus,0.00922,3.2345,0.7,unsexed,4.6,26.7,TL,,,,1631,USA,Oklahoma,"Carlander, 1977",3993,DB
+GSF,Green Sunfish,Lepomis cyanellus,0.0102,3.29,0.7,unsexed,5.3,19,TL,,,,290,USA,"Ike Lake, Marion County, Iowa","Carlander, 1977",3993,DB
+GSF,Green Sunfish,Lepomis cyanellus,0.013,3.093,0.7,unsexed,11.2,20.6,TL,,,,64,USA,"Ardemore City Lake, Oklahoma","Carlander, 1977",3993,DB
+GSF,Green Sunfish,Lepomis cyanellus,0.0199,3.19,0.7,unsexed,5.5,19.9,SL,,,,83,USA,"Hutchins and Clear River, Illinois","Carlander, 1977",3993,DB
+GSF,Green Sunfish,Lepomis cyanellus,0.0239,3.2,0.6,unsexed,,,SL,,,,402,USA,Northern Utah,"Carlander, 1977",3993,DB
+GSF,Green Sunfish,Lepomis cyanellus,0.0252,3.169,0.6,unsexed,,,SL,,,,426,USA,"Little Wall Lake, Iowa","Carlander, 1977",3993,DB
+GSF,Green Sunfish,Lepomis cyanellus,0.04104,2.948,0.6,unsexed,,,SL,,,,1078,USA,"Lake of the Ozarks (Niangua arm), Missouri","Carlander, 1977",3993,DB
+GSF,Green Sunfish,Lepomis cyanellus,0.03,3.02,0.7,mixed,3.5,13.5,SL,,,,38,Mexico,"coastal streams' mouths, northwestern Baja California, 1983-97","Ruiz-Campos et al., 2006",59092,DB
+GSF,Green Sunfish,Lepomis cyanellus,0.03,3.02,1,unsexed,3.5,13.5,TL,1,,,38,Mexico,northwestern Baja California / 1983 - 1997,"Ruiz-Campos et al., 2006",72146,DB
+GSN,Golden Shiner,Notemigonus crysoleucas,0.00972,3.294,0.5,unsexed,,,SL,,,,,USA,"East Lake, Iowa","Carlander, 1969",3672,DB
+GSN,Golden Shiner,Notemigonus crysoleucas,0.0331,2.75,0.97,female,,,,0.97,,,38,Canada,Red Deer Lake,"Chadwick, 1976",4436,DB
+GSN,Golden Shiner,Notemigonus crysoleucas,0.0447,2.61,0.98,male,,,,0.98,,,44,Canada,Red Deer Lake,"Chadwick, 1976",4436,DB
+GST,Green Sturgeon,Acipenser medirostris,0.00593,3,1,male,163,163,TL,,,,1,,,"Fitch and Schultz, 1978",9990,DB
+HCH,Sacramento Hitch,Lavinia exilicauda exilicauda,0.0319,2.758,1,unsexed,,,FL,0.97,0.008338278,0.000330686,6,USA,Mokelumne River,Jeffres et al. 2006,,Calc
+HH,Hardhead,Ariopsis felis,0.00814,3.196,0.99,unsexed,,,,0.992,,,101,Mexico,"Cuidad del Carmen, Campeche","Smith et al., 1988",4898,DB
+HH,Hardhead,Ariopsis felis,0.007,3.249,0.99,unsexed,3.1,28,SL,0.99,,,834,Mexico,"Celestun lagoon, Yucatan, 1990-2006","Vega-Cendejas et al., 2012",95265,DB
+HH,Hardhead,Ariopsis felis,0.0028,3.4469,0.97,unsexed,15,23.8,TL,0.97,,,64,Mexico,"Terminos Lagoon, Campeche / 2006-2008","Amador-del Angel et al., 2015",111768,DB
+HH,Hardhead,Ariopsis felis,0.02,2.847,0.98,unsexed,1.4,35.3,SL,0.975,,,231,Mexico,Yucatan / 2004-2005.,"Vega-Cendejas et al., 2017",118196,DB
+JSM,Jacksmelt,Atherinopsis californiensis,0.01,2.92,1,unsexed,2,7.8,TL,0.99,,,30,Mexico,northwestern Baja California / 1983-1997,"Ruiz-Campos et al., 2006",72146,DB
+LFS,Longfin Smelt,Spirinchus thaleichthys,0.0024,3.69,1,unsexed,,,FL,,,,117,USA,San Francisco Bay-Delta,"Kimmerer et al., 2015",,Paper
+LMB,Largemouth Bass,Micropterus salmoides,0.0226,2.773,0.5,juvenile,,,TL,,,,,USA,"Alabama, pond","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.00239,3.483,0.5,unsexed,,,TL,,,,,USA,"Bull Shoals Lake, Arizona, 1968","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.00279,3.462,0.5,unsexed,,,TL,,,,,USA,"Bull Shoals Lake, Arizona, 1970","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.00359,3.33,0.7,unsexed,11.7,44.7,TL,,,,72,USA,"Ike Lake, Iowa","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.00403,3.378,0.5,unsexed,,,TL,,,,,USA,"Beaver Lake, Arizona, 1969","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.0041,3.344,0.5,unsexed,,,TL,,,,,USA,"Beaver Lake, Arizona, 1970","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.0041,3.378,0.7,unsexed,12.5,53,TL,,,,50,USA,"Elephante Butte Lake, New Mexico","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.00479,3.309,0.5,unsexed,,,TL,,,,,USA,"Bull Shoals Lake, Arizona, 1969","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.00489,3.358,0.5,unsexed,,,FL,,,,,USA,"Sutherland Lake, California, 1959","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.00499,3.285,0.7,unsexed,21.6,62.7,TL,,,,64,USA,"Blue Cypress Lake, Florida","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.00515,3.274,0.7,unsexed,12.7,51.8,TL,,,,577,USA,"Cumberland Lake, Kentucky","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.00549,3.32,0.7,unsexed,24,40,TL,,,,,USA,"Big Creek Reservoir, Iowa","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.00562,3.222,0.6,unsexed,,,TL,,,,119,USA,"Flora Lake, Wisconsin, 1952","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.00601,3.248,0.7,unsexed,5.1,61,TL,,,,3174,USA,Oklahoma,"Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.00604,3.25,0.7,unsexed,15,55.9,TL,,,,93,USA,"Florida, Canals","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.00612,3.308,0.5,unsexed,,,FL,,,,,USA,"Sutherland Lake, California, 1958","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.00625,3.244,0.5,unsexed,,,TL,,,,,USA,"Red Haw Lake, Iowa, 1972","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.00634,3.292,0.7,unsexed,1,12.9,TL,,,,1691,USA,"Powell Lake, Utah, 1969","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.00664,3.239,0.5,unsexed,,,TL,,,,,USA,"Green Valley Lake, Iowa, 1971","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.00695,3.216,0.5,unsexed,,,TL,,,,,USA,"Red Haw Lake, Iowa, 1971","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.00752,3.163,0.7,unsexed,5.6,55.1,TL,,,,688,USA,"Alanconnie Lake, Pennsylvania","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.00794,3.16,0.7,unsexed,27.5,53.3,TL,,,,490,USA,Alabama,"Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.00847,3.165,0.5,unsexed,,,TL,,,,,USA,"Bobwhite Lake, Iowa, 1973","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.00865,3.136,0.7,unsexed,9.7,44.5,TL,,,,257,USA,"Iowa, ponds","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.00869,3.131,0.6,unsexed,,,TL,,,,50,USA,Rhode Island,"Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.00869,3.163,0.7,unsexed,11,43,FL,,,,,USA,"Folsom Lake, California","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.00933,3.069,0.7,unsexed,8.4,54.6,TL,,,,185,USA,"Lake Fort Smith, Arkansas","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.00939,3.094,0.7,unsexed,12.5,41,TL,,,,,USA,"Clearwater Lake, Missouri","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.00943,3.084,0.6,unsexed,,,TL,,,,119,USA,"Flora Lake, Wisconsin, 1956","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.00944,3.113,0.7,unsexed,5.1,30.5,TL,,,,34,USA,"Iowa, ponds","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.00955,3.174,0.5,unsexed,,,FL,,,,,USA,"Sutherland Lake, California, 1960","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.0102,3.039,0.7,unsexed,1,12.9,TL,,,,1019,USA,"Powell Lake, Utah, 1968","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.0111,3.108,0.7,unsexed,8.6,47.5,TL,,,,104,USA,"Canton Lake, Oklahoma, 1951","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.0112,3.19,0.6,unsexed,,,TL,,,,489,USA,"Florida, pond 2","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.0117,3.05,0.6,unsexed,,,TL,,,,111,USA,"Florida, pond 3","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.0118,3.076,0.5,unsexed,,,FL,,,,,USA,"Salt Springs Valley Reservoir, California","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.01202,3.07,0.6,unsexed,,,TL,,,,477,USA,"Florida, pond 1","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.0124,3.041,0.7,unsexed,1.5,29.6,FL,,,,482,USA,"Lake Wier, Florida","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.0124,3.062,0.6,unsexed,,,FL,,,,359,USA,"Reuter Pond, California","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.0124,3.091,0.7,unsexed,5.1,53,TL,,,,172,USA,"Clear Lake, Iowa","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.0125,3.187,0.6,unsexed,,,SL,,,,378,USA,"Back Bay, Virginia","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.0135,3.03,0.5,unsexed,,,TL,,,,,USA,"Florida, pond 5","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.0138,3.07,0.6,unsexed,,,TL,,,,257,USA,"Florida, pond 4","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.0142,3.019,0.5,unsexed,,,TL,,,,,USA,"Bobwhite Lake, Iowa, 1971","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.0144,2.96,0.7,unsexed,5.1,25.4,TL,,,,5984,USA,Alabama,"Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.0147,3.01,0.5,unsexed,,,TL,,,,,USA,"Bobwhite Lake, Iowa, 1972","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.0155,2.983,0.6,unsexed,,,FL,,,,357,USA,"Applegate Pond, California","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.0155,3.037,0.5,unsexed,,,FL,,,,,USA,"Big Sage Lake, California","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.0162,2.932,0.6,unsexed,,,FL,,,,93,USA,"Porter Pond, California","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.0173,3.115,0.5,unsexed,,,SL,,,,,USA,"Norris Reservoir, Tennessee","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.0191,3.058,0.7,unsexed,6,43.9,SL,,,,64,USA,"East Lake, Iowa","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.0193,3.075,0.7,unsexed,9.6,29.1,SL,,,,62,USA,"Red Haw Lake, Iowa","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.0196,2.809,0.7,unsexed,12.5,28,TL,,,,29,USA,"Chicksaw Lake, Oklahoma","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.0196,2.912,0.5,unsexed,,,TL,,,,,USA,"Red Haw Lake, Iowa, 1973","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.0204,3.06,0.7,unsexed,4.1,45.9,SL,,,,466,USA,"Utah, northern","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.0209,2.9,0.7,unsexed,17,29,TL,,,,,USA,"Big Creek Reservoir, Iowa","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.0233,2.993,0.5,unsexed,,,SL,,,,,USA,Michigan,"Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.0282,2.95,0.7,unsexed,1.8,24.2,SL,,,,33,USA,"Silver Springs, Florida","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.0361,2.781,0.5,unsexed,,,TL,,,,,USA,"Green Valley Lake, Iowa, 1973","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.0385,2.727,0.5,unsexed,,,FL,,,,,USA,"Lower Susan River, California","Carlander, 1977",3993,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.024,2.999,0.99,unsexed,,,SL,0.986,,,,Japan,Lake Shorenji,"Yoda and Kimura, 1996",13647,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.0317,2.961,0.99,unsexed,,,SL,0.992,,,,Japan,Lake Nishinoko,"Yoda and Kimura, 1996",13647,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.022,2.85,0.96,unsexed,20,48,FL,0.955,,,171,New Caledonia,"Yate Lake, 1992-97","Chauvet, 1999",33586,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.0083,3.225,0.98,unsexed,6.1,46.5,FL,0.98,,,89,Kenya,"Lake Naivasha, 2004-05","Britton and Harper, 2006",57989,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.0104,3.11,0.99,unsexed,5.5,46.5,FL,0.994,,,26,Spain,"Segura River basin (reservoirs), 2000-2004","Andreu-Soler et al., 2006",59098,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.0107,3.061,0.99,mixed,10.3,14.5,TL,0.992,,,6,Spain,"lower Cinca, Huesa Province, 2004 (June; August)","Leunda et al., 2006",71904,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.012,3.01,0.98,unsexed,5.1,43.2,TL,0.98,,,374,SouthKorea,Nakdong River / 2010-2013,"Lee et al., 2015",101569,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.0087,3.09,0.99,unsexed,5.5,44.2,TL,0.989,,,386,SouthKorea,Daechung Reservoir / 2010-2013,"Baek et al., 2015",107957,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.00877,3.12,0.99,unsexed,7.6,39.1,TL,0.989,,,12,SouthKorea,Saemangeum Reservoir / 2013,"Kim et al., 2015",107959,DB
+LMB,Largemouth Bass,Micropterus salmoides,0.008,3.27,0.99,mixed,5.9,29,TL,0.985,,,331,Spain,,"Moreno-Valcarcel et al., 2012",115878,DB
+LP,Bigscale Logperch,Percina macrolepida,0.0056,3.236,1,,,,,,,,,USA,Michigan,"Schneider et al., 2000",,Paper (Blackside Darter)
+MQF,Mosquito Fish,Gambusia affinis,0.0072,3.158,0.98,unsexed,2.3,2.9,TL,0.982,,,4,Greece,"Porto-Lagos, NE Aegean, 1988-90","Koutrakis and Tsikliras, 2003",50932,DB
+MQF,Mosquito Fish,Gambusia affinis,0.0084,3.382,0.97,unsexed,1,5.1,TL,0.972,,,671,Greece,"Rihios estuary, NW Aegean, 1997-99","Koutrakis and Tsikliras, 2003",50932,DB
+MQF,Mosquito Fish,Gambusia affinis,0.01,3.37,0.7,mixed,1.3,3.9,SL,,,,860,Mexico,"coastal streams' mouths, northwestern Baja California, 1983-97","Ruiz-Campos et al., 2006",59092,DB
+MQF,Mosquito Fish,Gambusia affinis,0.0082,3.31,0.98,unsexed,1.4,4.1,TL,0.977,,,27,Croatia,"River Neretva estuary, middle Adriatic, 2000-2004","Dulcic and Glamuzina, 2006",59118,DB
+MQF,Mosquito Fish,Gambusia affinis,0.00919,3.2303,0.98,female,,,,0.982,,,574,Turkey,Fethiye-Akgol (1998-1999),"Ozturk and Ikiz, 2004",75157,DB
+MQF,Mosquito Fish,Gambusia affinis,0.00924,3.3014,0.98,female,,,,0.975,,,450,Turkey,Ortaca (1998-1999),"Ozturk and Ikiz, 2004",75157,DB
+MQF,Mosquito Fish,Gambusia affinis,0.00951,3.2351,0.97,female,,,,0.971,,,488,Turkey,Dalaman (1998-1999),"Ozturk and Ikiz, 2004",75157,DB
+MQF,Mosquito Fish,Gambusia affinis,0.00728,3.3475,0.89,male,,,,0.894,,,194,Turkey,Dalaman (1998-1999),"Ozturk and Ikiz, 2004",75157,DB
+MQF,Mosquito Fish,Gambusia affinis,0.01008,3.0061,0.85,male,,,,0.845,,,131,Turkey,Fethiye-Akgol (1998-1999),"Ozturk and Ikiz, 2004",75157,DB
+MQF,Mosquito Fish,Gambusia affinis,0.01496,2.6737,0.66,male,,,,0.661,,,189,Turkey,Ortaca (1998-1999),"Ozturk and Ikiz, 2004",75157,DB
+MQF,Mosquito Fish,Gambusia affinis,0.00835,3.2741,0.97,mixed,,,,0.965,,,682,Turkey,Dalaman (1998-1999),"Ozturk and Ikiz, 2004",75157,DB
+MQF,Mosquito Fish,Gambusia affinis,0.0096,3.2685,0.95,mixed,,,,0.949,,,639,Turkey,Ortaca (1998-1999),"Ozturk and Ikiz, 2004",75157,DB
+MQF,Mosquito Fish,Gambusia affinis,0.00966,3.17,0.98,mixed,,,,0.977,,,705,Turkey,Fethiye-Akgol (1998-1999),"Ozturk and Ikiz, 2004",75157,DB
+MQF,Mosquito Fish,Gambusia affinis,0.0018,2.61,0.92,mixed,1,3.9,TL,0.917,,,215,Turkey,"Seyhan Dam, 2006-2012","Erguden and Goksu, 2009",88163,DB
+NAN,Northern Anchovy,Engraulis mordax,0.0117,2.95,0.7,unsexed,6.5,13.5,SL,,,,,Mexico,Baja California,"Gallardo-Cabello, 1985",1658,DB
+NAN,Northern Anchovy,Engraulis mordax,0.00447,3.07,0.6,unsexed,,,SL,,,,23,USA,"off Southern California, 1971-78","Childress et al., 1980",54657,DB
+NAN,Northern Anchovy,Engraulis mordax,0.011,2.86,0.92,unsexed,7,15,TL,0.915,,,71,Mexico,Baja California Sur / 2004 - 2006,"Rodriguez-Romero et al., 2009",86316,DB
+PAH,Pacific Herring,Clupea pallasii,0.0238,2.862,0.97,unsexed,,,,0.97,,,236,USA,"North Puget Sound, Washington","Gunderson and Dygert, 1988",4511,DB
+PAH,Pacific Herring,Clupea pallasii,0.00448,3.127,0.98,unsexed,16.9,32.7,FL,0.978,,,82,Canada,"Liverpool Bay (69°50'N, 130°20'W), 1991","Bond and Erickson, 1993",12624,DB
+PAH,Pacific Herring,Clupea pallasii,0.00317,3.374,0.7,female,15.5,33.6,FL,,,,77,Canada,"Tuktoyaktuk Harbour, Northwest Territories","Bond , 1982",33394,DB
+PAH,Pacific Herring,Clupea pallasii,0.00253,3.463,0.7,male,16.3,33,FL,,,,69,Canada,"Tuktoyaktuk Harbour, Northwest Territories","Bond , 1982",33394,DB
+PAH,Pacific Herring,Clupea pallasii,0.0093,3.0222,0.99,mixed,19,31,FL,0.989,,,,Russia,Sea of Okhotsk,"Fadeev, 2005",56527,DB
+PKN,Pumpkinseed,Lepomis gibbosus,0.0103,3.238,0.7,unsexed,5.5,20,TL,,,,331,USA,"Horseshoe Lake, Montana","Carlander, 1977",3993,DB
+PKN,Pumpkinseed,Lepomis gibbosus,0.0112,3.262,0.7,unsexed,3,22.1,TL,,,,629,USA,"Alanconnie Lake, Pennsylvania","Carlander, 1977",3993,DB
+PKN,Pumpkinseed,Lepomis gibbosus,0.0136,3.123,0.6,unsexed,,,TL,,,,17,USA,"Flora Lake, Wisconsin, 1952","Carlander, 1977",3993,DB
+PKN,Pumpkinseed,Lepomis gibbosus,0.00514,3.321,0.99,unsexed,,,,,,0.99,152,Canada,"Lower Beverly Lake, Ontario","Deacon and Keast, 1987",6085,DB
+PKN,Pumpkinseed,Lepomis gibbosus,0.00737,3.262,0.98,unsexed,,,,,,0.982,144,Canada,"Upper Beverly Lake, Ontario","Deacon and Keast, 1987",6085,DB
+PKN,Pumpkinseed,Lepomis gibbosus,0.0156,2.98,0.99,unsexed,4.8,8.8,FL,,,0.994,41,Spain,"Segura River basin (main watercourse), 2000-2004","Andreu-Soler et al., 2006",59098,DB
+PKN,Pumpkinseed,Lepomis gibbosus,0.012,3.182,0.98,unsexed,1.7,20.7,TL,,,0.98,4306,Belgium,"Flanders (Yser, Scheldt and Meuse drainage basin), 1992-2009","Verreycken et al., 2011",88166,DB
+PKN,Pumpkinseed,Lepomis gibbosus,0.017,3.02,0.97,mixed,1.5,10.7,TL,,,0.972,64,Spain,,"Moreno-Valcarcel et al., 2012",115878,DB
+PMP,Plainfin Midshipman,Porichthys notatus,0.008,3.047,1,unsexed,8.3,25.5,TL,0.933,,,121,Mexico,Baja California Sur / 2004 - 2006,"Rodriguez-Romero et al., 2009",86316,DB
+PRS,Prickly Sculpin,Cottus asper subspecies,0.007,3.3,1,unsexed,,,FL,,,,564,USA,San Francisco Bay-Delta,"Kimmerer et al., 2015",,Paper
+PSS,Pacific Staghorn Sculpin,Leptocottus armatus,0.04,2.82,1,mixed,4.5,13.5,SL,,,,18,Mexico,"coastal streams' mouths, northwestern Baja California, 1983-97","Ruiz-Campos et al., 2006",59092,DB
+RBT,Rainbow Trout (Steel Head),Oncorhynchus mykiss,0.0101,3.063,0.7,unsexed,32.5,69.1,FL,,,,484,USA,"Sacramento River, California","Carlander, 1969",3672,DB
+RBT,Rainbow Trout (Steel Head),Oncorhynchus mykiss,0.0118,3.006,1,unsexed,16.5,34.8,FL,0.998,,,3,Australia,"Guy Fawkes River, New South Wales","Pidgeon, 1981",13427,DB
+RBT,Rainbow Trout (Steel Head),Oncorhynchus mykiss,0.0137,2.911,0.6,unsexed,,,FL,,,,96,Canada,"Stokely Creek, eastern Lake Superior",Kwain 1981,37041,DB
+RBT,Rainbow Trout (Steel Head),Oncorhynchus mykiss,0.0089,3.096,0.91,mixed,33,65,TL,0.908,,,111,Iran,,"Esmaeili and Ebrahimi, 2006",59087,DB
+RBT,Rainbow Trout (Steel Head),Oncorhynchus mykiss,0.0168,2.903,1,unsexed,20.35,43.28,TL,0.999,,,,Croatia,freshwaters,"Treer et al., 2008",85455,DB
+RBT,Rainbow Trout (Steel Head),Oncorhynchus mykiss,0.004,3.29,0.92,mixed,24.4,35.7,TL,0.92,,,39,Turkey,"Seyhan Dam, 2006-2015","Erguden and Goksu, 2009",88163,DB
+RBT,Rainbow Trout (Steel Head),Oncorhynchus mykiss,0.0209,2.843,0.98,unsexed,12,62.5,TL,0.98,,,97,Belgium,"Flanders (Yser, Scheldt and Meuse drainage basin), 1992-2009","Verreycken et al., 2011",88166,DB
+RES,Redear Sunfish,Lepomis microlophus,0.00859,3.258,0.7,unsexed,6.1,30.6,TL,,,,1567,USA,Oklahoma,"Carlander, 1977",3993,DB
+RES,Redear Sunfish,Lepomis microlophus,0.0124,3.154,0.7,unsexed,13.5,25.4,TL,,,,28,USA,"Canal Area, Florida","Carlander, 1977",3993,DB
+RES,Redear Sunfish,Lepomis microlophus,0.0137,3.119,0.7,unsexed,13.5,25.7,TL,,,,,USA,"Blue Cypress lake and Canal, Florida","Carlander, 1977",3993,DB
+RES,Redear Sunfish,Lepomis microlophus,0.0149,3.089,0.7,unsexed,16.5,25.7,TL,,,,40,USA,"Blue Cypress Lake, Florida","Carlander, 1977",3993,DB
+RES,Redear Sunfish,Lepomis microlophus,0.0155,3.11,0.7,unsexed,12.7,27.9,TL,,,,73,USA,"Chickasaw Lake, Oklahoma","Carlander, 1977",3993,DB
+RES,Redear Sunfish,Lepomis microlophus,0.0175,3.006,0.7,unsexed,10.2,25.4,TL,,,,247,USA,"Rod and Gun Club Lake, Oklahoma","Carlander, 1977",3993,DB
+RES,Redear Sunfish,Lepomis microlophus,0.0218,2.96,0.7,unsexed,5.1,25.4,TL,,,,3937,USA,Alabama,"Carlander, 1977",3993,DB
+RES,Redear Sunfish,Lepomis microlophus,0.0229,2.936,0.7,unsexed,10.2,14.5,TL,,,,79,USA,"Ardmore City Lake, Oklahoma","Carlander, 1977",3993,DB
+RES,Redear Sunfish,Lepomis microlophus,0.0301,3.03,0.98,juvenile,1.1,6,SL,0.981,,,69,USA,"Everglades, Florida / 2005-2012","Klassen et al., 2014",96646,DB
+RFS,Riffle Sculpin,Cottus gulosus,3.25202,0.008974081,1,,,,,,,,,USA,Michigan,"Schneider et al., 2000",,Paper
+RL,River Lamprey,Lampetra fluviatilis,0.00111,3.141,0.97,mixed,31,45,TL,0.97,,,7,Estonia,,"Saat et al., 2003",52095,DB
+RL,River Lamprey,Lampetra fluviatilis,0.0005,3.3567,0.97,unsexed,9.25,38.75,TL,0.966,,,178,,North Sea / 1955-2007,"Wilhelms, 2013",106276,DB
+RSN,Red Shiner,Cyprinella lutrensis,0.00683,3.08217,1,,,,,,,,,USA,Michigan,"Schneider et al., 2000",,Paper (Golden Shiner)
+SAPM,Sacramento Pikeminnow,Ptychocheilus grandis,0.0065,3,1,unsexed,66,69.9,TL,,,,2,USA,"Shasta Lake, California","IGFA, 2009",83530,DB
+SASU,Sacramento Sucker,Catostomus occidentalis occidentalis,0.0253,2.82,1,unsexed,,,FL,0.961,0.025119874,0.00057751,6,USA,Mokelumne River,Jeffres et al. 2006,,Calc
+SHM,Shimofuri Goby,Tridentiger bifasciatus,0.005,3.47,1,unsexed,,,FL,,,,45,USA,San Francisco Bay-Delta,"Kimmerer et al., 2015",,Paper
+SMB,Smallmouth Bass,Micropterus dolomieu,0.0334,2.701,0.5,juvenile,,,TL,,,,,USA,Tadenac Lake,"Carlander, 1977",3993,DB
+SMB,Smallmouth Bass,Micropterus dolomieu,0.00339,3.372,0.5,unsexed,,,TL,,,,,USA,Rhode Island,"Carlander, 1977",3993,DB
+SMB,Smallmouth Bass,Micropterus dolomieu,0.00908,3.356,0.7,unsexed,12.7,48.8,SL,,,,537,USA,Lake Michigan,"Carlander, 1977",3993,DB
+SMB,Smallmouth Bass,Micropterus dolomieu,0.00967,3.105,0.6,unsexed,,,TL,,,,144,USA,"Ozark streams (lower river), Missouri","Carlander, 1977",3993,DB
+SMB,Smallmouth Bass,Micropterus dolomieu,0.01005,3.125,0.5,unsexed,,,FL,,,,,USA,"Folsom Lake, California","Carlander, 1977",3993,DB
+SMB,Smallmouth Bass,Micropterus dolomieu,0.0105,3.076,0.6,unsexed,,,TL,,,,290,USA,"Ozark streams (middle river), Missouri","Carlander, 1977",3993,DB
+SMB,Smallmouth Bass,Micropterus dolomieu,0.0105,3.077,0.6,unsexed,,,TL,,,,934,USA,"Ozark streams , Missouri","Carlander, 1977",3993,DB
+SMB,Smallmouth Bass,Micropterus dolomieu,0.0106,3.077,0.5,unsexed,,,TL,,,,,USA,Missouri,"Carlander, 1977",3993,DB
+SMB,Smallmouth Bass,Micropterus dolomieu,0.0121,3.205,0.5,unsexed,,,TL,,,,,USA,Tadenac Lake,"Carlander, 1977",3993,DB
+SMB,Smallmouth Bass,Micropterus dolomieu,0.0124,3.016,0.5,unsexed,,,TL,,,,,USA,"Big Piney River, Missouri","Carlander, 1977",3993,DB
+SMB,Smallmouth Bass,Micropterus dolomieu,0.0128,2.996,0.5,unsexed,,,TL,,,,,USA,"Black River, Missouri","Carlander, 1977",3993,DB
+SMB,Smallmouth Bass,Micropterus dolomieu,0.01282,2.996,0.5,unsexed,,,TL,,,,,USA,"Black River, Missouri","Carlander, 1977",3993,DB
+SMB,Smallmouth Bass,Micropterus dolomieu,0.0132,3,0.7,unsexed,27,48.5,TL,,,,26,USA,Alabama,"Carlander, 1977",3993,DB
+SMB,Smallmouth Bass,Micropterus dolomieu,0.0142,2.95,0.7,unsexed,5.1,26,TL,,,,1742,USA,Alabama,"Carlander, 1977",3993,DB
+SMB,Smallmouth Bass,Micropterus dolomieu,0.0169,3.096,0.7,unsexed,7.6,42.9,TL,,,,220,USA,"Des Moines River, Iowa","Carlander, 1977",3993,DB
+SMB,Smallmouth Bass,Micropterus dolomieu,0.01701,2.917,0.7,unsexed,12.7,41.1,TL,,,,491,USA,"Little Miami River, Ohio","Carlander, 1977",3993,DB
+SMB,Smallmouth Bass,Micropterus dolomieu,0.0172,3.08,0.5,unsexed,,,SL,,,,,USA,"Norris Reservoir, Tennessee","Carlander, 1977",3993,DB
+SMB,Smallmouth Bass,Micropterus dolomieu,0.01845,3.094,0.5,unsexed,,,SL,,,,,USA,Iowa streams,"Carlander, 1977",3993,DB
+SMB,Smallmouth Bass,Micropterus dolomieu,0.0212,3.052,0.5,unsexed,,,SL,,,,,USA,Michigan,"Carlander, 1977",3993,DB
+SMB,Smallmouth Bass,Micropterus dolomieu,0.02401,2.995,0.6,unsexed,,,SL,,,,83,USA,"Claytor Lake, Virginia","Carlander, 1977",3993,DB
+SMB,Smallmouth Bass,Micropterus dolomieu,0.0114,3.09,0.6,unsexed,,,,,,,93,Canada,"Kaministiquia River, Ontario","Stephenson and Momot, 1991",5732,DB
+SMB,Smallmouth Bass,Micropterus dolomieu,0.00469,3.2,0.6,unsexed,15,,TL,,,,6731,USA,(50 populations),"Kolander et al., 1993",12312,DB
+SMB,Smallmouth Bass,Micropterus dolomieu,0.01778,2.97,0.98,unsexed,,,TL,0.98,,,315,USA,"Chequamegon Bay, Lake Superior / 1998-2001.","Devine et al., 2005",120684,DB
+SPB,Spotted Bass,Micropterus punctulatus,0.00738,3.224,0.7,unsexed,4.5,39.6,SL,,,,357,USA,"Claytor Lake, Virginia","Carlander, 1953",3527,DB
+SPB,Spotted Bass,Micropterus punctulatus,0.00521,3.271,0.7,unsexed,12.7,40.4,TL,,,,371,USA,"Cumberland Lake, Kentucky","Carlander, 1977",3993,DB
+SPB,Spotted Bass,Micropterus punctulatus,0.00871,3.09,0.7,unsexed,5.1,26,TL,,,,13867,USA,Alabama,"Carlander, 1977",3993,DB
+SPB,Spotted Bass,Micropterus punctulatus,0.0102,3.06,0.7,unsexed,27,46,TL,,,,177,USA,Alabama,"Carlander, 1977",3993,DB
+SPB,Spotted Bass,Micropterus punctulatus,0.0124,3.224,0.7,unsexed,4.5,39.6,SL,,,,357,USA,"Claytor Lake, Virginia","Carlander, 1977",3993,DB
+SPB,Spotted Bass,Micropterus punctulatus,0.0141,3.203,0.7,unsexed,7,37.2,SL,,,,301,USA,"Norris Lake, Tennessee","Carlander, 1977",3993,DB
+SPLT,Sacramento Splittail,Pogonichthys macrolepidotus,0.0056,3.27,1,unsexed,,,FL,,,,694,USA,San Francisco Bay-Delta,"Kimmerer et al., 2015",,Paper
+STB,Striped Bass,Morone saxatilis,0.00945,2.907,0.5,unsexed,,,TL,,,,,USA,"Coos Bay, Oregon, 1949-50","Morgan and Gerlach, 1950",1244,DB
+STB,Striped Bass,Morone saxatilis,0.00614,3.153,0.5,female,,,TL,,,,,USA,Chesapeake Bay,"Mansueti, 1961",11511,DB
+STB,Striped Bass,Morone saxatilis,0.00472,3.224,0.5,male,,,TL,,,,,USA,Chesapeake Bay,"Mansueti, 1961",11511,DB
+STF,Starry Flounder,Platichthys stellatus,0.00506,3.269,0.7,unsexed,19.5,37,TL,,,,161,Canada,"Tuktoyaktuk Harbour, Northwest Territories","Bond, 1982",33394,DB
+STF,Starry Flounder,Platichthys stellatus,0.00359,3.3433,0.7,mixed,27,64,TL,,,,263,,Br. Columbia,"Fadeev, 2005",56527,DB
+STF,Starry Flounder,Platichthys stellatus,0.01531,2.9993,0.7,mixed,22,51,TL,,,,297,Russia,Sea of Japan,"Fadeev, 2005",56527,DB
+STF,Starry Flounder,Platichthys stellatus,0.0121,3.081,0.96,unsexed,17.6,48.5,TL,0.96,,,250,SouthKorea,Gyeongsangbuk-do coast / 2011-2012,"Kwak and Park, 2016",108768,DB
+TFS,Threadfin Shad,Dorosoma petenense,0.00501,3.16,0.7,unsexed,15,33,TL,,,,5019,USA,Alabama,"Carlander, 1969",3672,DB
+TFS,Threadfin Shad,Dorosoma petenense,0.0148,2.8,0.7,unsexed,5.1,12.7,TL,,,,303855,USA,Alabama,"Carlander, 1969",3672,DB
+TFS,Threadfin Shad,Dorosoma petenense,0.036,2.63,0.91,unsexed,4.6,11.5,SL,0.913,,,881,Mexico,"Grijalva River in Chiapas / 2006, 2009","Velazquez-Velazquez et al., 2015",102977,DB
+TP,Tule Perch,Hysterocarpus traskii traskii,0.022,3.03,1,unsexed,,,FL,,,,243,USA,San Francisco Bay-Delta,"Kimmerer et al., 2015",,Paper
+TSM,Top Smelt,Atherinops affinis,0.04,2.5,1,unsexed,4.4,17.7,TL,0.97,,,198,Mexico,northwestern Baja California / 1983-1997,"Ruiz-Campos et al., 2006",72146,DB
+TSS,Threespine Stickleback,Gasterosteus aculeatus,0.0044,3.544,0.88,mixed,4.3,8.2,TL,0.884,,,500,Iran,,"Esmaeili and Ebrahimi, 2006",59087,DB
+TSS,Threespine Stickleback,Gasterosteus aculeatus,0.0068,3.26,0.96,unsexed,2.1,8.2,TL,0.958,,,262,Turkey,"Lake Iznik, Marmara, Oct. 2003-Aug. 2004 (Oct.-Aug.)","Tarkan et al., 2006",59105,DB
+TSS,Threespine Stickleback,Gasterosteus aculeatus,0.0105,3.049,0.9,unsexed,1.5,10,TL,0.9,,,29213,Belgium,"Flanders (Yser, Scheldt and Meuse drainage basin), 1992-2009","Verreycken et al., 2011",88166,DB
+TSS,Threespine Stickleback,Gasterosteus aculeatus,0.0239,2.6111,0.76,unsexed,3.75,8.5,TL,0.762,,,122,,North Sea / 1994-2008,"Wilhelms, 2013",106276,DB
+W,Warmouth,Lepomis gulosus,0.0129,3.204,0.7,unsexed,5.3,20.6,TL,,,,203,USA,"Ahquabi Lake, Iowa","Carlander, 1977",3993,DB
+W,Warmouth,Lepomis gulosus,0.0174,3.08,0.7,unsexed,5.1,21.5,TL,,,,3860,USA,Alabama,"Carlander, 1977",3993,DB
+W,Warmouth,Lepomis gulosus,0.0285,3.138,0.7,unsexed,5,21,SL,,,,76,USA,"Red Haw Lake, Iowa","Carlander, 1977",3993,DB
+W,Warmouth,Lepomis gulosus,0.0355,3.049,0.7,unsexed,8.1,20.8,SL,,,,866,USA,Illinois,"Carlander, 1977",3993,DB
+WCK,White Croaker,Genyonemus lineatus,0.0272,2.943,1,unsexed,4.1,30.4,SL,,,,1357,USA,California,"Isaacson, 1964",4527,DB
+WHC,White Catfish,Ameiurus catus,0.01202,3.01,0.7,unsexed,2.5,40.6,TL,,,,137,USA,Alabama,"Carlander, 1969",3672,DB
+WHC,White Catfish,Ameiurus catus,0.01403,3.006,0.7,unsexed,10,48.3,FL,,,,,USA,"Pine Flat Lake, California","Carlander, 1969",3672,DB
+WHS,White Crappie,Pomoxis annularis,0.00099,3.847,0.5,unsexed,,,TL,,,,,USA,"White River Sec. C, Petersburg, Indiana, 1969","Carlander, 1977",3993,DB
+WHS,White Crappie,Pomoxis annularis,0.00229,3.52,0.7,unsexed,16,31.2,TL,,,,33,USA,"Ratburn Lake, 1972","Carlander, 1977",3993,DB
+WHS,White Crappie,Pomoxis annularis,0.00309,3.457,0.5,unsexed,,,TL,,,,,USA,"Kentucky Lake, Tennessee","Carlander, 1977",3993,DB
+WHS,White Crappie,Pomoxis annularis,0.00329,3.43,0.7,unsexed,10.2,34.3,TL,,,,259,USA,Upper Mississippi River,"Carlander, 1977",3993,DB
+WHS,White Crappie,Pomoxis annularis,0.00348,3.413,0.5,unsexed,,,TL,,,,,USA,"Blackwell Lake, Oklahoma","Carlander, 1977",3993,DB
+WHS,White Crappie,Pomoxis annularis,0.00375,3.346,0.7,unsexed,11,36,TL,,,,540,USA,"Cumberland Lake, Kentucky","Carlander, 1977",3993,DB
+WHS,White Crappie,Pomoxis annularis,0.00404,3.369,0.7,unsexed,13.5,35,TL,,,,,USA,"Coralville Lake, Iowa, 1968","Carlander, 1977",3993,DB
+WHS,White Crappie,Pomoxis annularis,0.00434,3.369,0.7,unsexed,7.6,27.5,TL,,,,,USA,Oklahoma,"Carlander, 1977",3993,DB
+WHS,White Crappie,Pomoxis annularis,0.00506,3.299,0.7,unsexed,8.4,38.6,TL,,,,3319,USA,Missouri,"Carlander, 1977",3993,DB
+WHS,White Crappie,Pomoxis annularis,0.00561,3.298,0.7,unsexed,13.5,35,TL,,,,,USA,"Coralville Lake, Iowa, 1969","Carlander, 1977",3993,DB
+WHS,White Crappie,Pomoxis annularis,0.00561,3.31,0.7,unsexed,6,24,TL,,,,,USA,"Ft. Randall Lake, South Dakota","Carlander, 1977",3993,DB
+WHS,White Crappie,Pomoxis annularis,0.00604,3.213,0.6,unsexed,,,TL,,,,301,USA,"Lewis and Clark Lake, South Dakota","Carlander, 1977",3993,DB
+WHS,White Crappie,Pomoxis annularis,0.00615,3.267,0.7,unsexed,12.5,32,TL,,,,150,USA,"Decatur Lake, Iowa","Carlander, 1977",3993,DB
+WHS,White Crappie,Pomoxis annularis,0.00669,3.26,0.7,unsexed,7.5,35,TL,,,,799,USA,"Canton Lake, Oklahoma","Carlander, 1977",3993,DB
+WHS,White Crappie,Pomoxis annularis,0.00695,3.177,0.7,unsexed,14.7,20.6,TL,,,,105,USA,"Iowa, pond 6","Carlander, 1977",3993,DB
+WHS,White Crappie,Pomoxis annularis,0.00748,3.205,0.7,unsexed,8.9,28.4,TL,,,,156,USA,"Iowa, ponds","Carlander, 1977",3993,DB
+WHS,White Crappie,Pomoxis annularis,0.00753,3.114,0.7,unsexed,10,24,TL,,,,174,USA,"Rod and Gun Club Lake, Oklahoma","Carlander, 1977",3993,DB
+WHS,White Crappie,Pomoxis annularis,0.00794,3.208,0.7,unsexed,9.7,28.4,TL,,,,52,USA,"Iowa, pond 2","Carlander, 1977",3993,DB
+WHS,White Crappie,Pomoxis annularis,0.00923,3.118,0.5,unsexed,,,TL,,,,,USA,Oklahoma,"Carlander, 1977",3993,DB
+WHS,White Crappie,Pomoxis annularis,0.00991,3.087,0.6,unsexed,,,TL,,,,392,USA,"Lewis and Clark Lake, South Dakota","Carlander, 1977",3993,DB
+WHS,White Crappie,Pomoxis annularis,0.0123,3.23,0.7,unsexed,6,33.9,SL,,,,200,USA,"Claytor Lake, Virginia","Carlander, 1977",3993,DB
+WHS,White Crappie,Pomoxis annularis,0.0126,3.02,0.7,unsexed,16.4,31.5,TL,,,,27,USA,"Rathburn Lake, Iowa, 1973","Carlander, 1977",3993,DB
+WHS,White Crappie,Pomoxis annularis,0.0132,3.028,0.7,unsexed,12.5,29,TL,,,,54,USA,"Rod and Gun Club Lake, Oklahoma","Carlander, 1977",3993,DB
+WHS,White Crappie,Pomoxis annularis,0.0159,2.999,0.5,unsexed,,,TL,,,,,USA,"White River Sec. C, Petersburg, Indiana, 1970","Carlander, 1977",3993,DB
+WHS,White Crappie,Pomoxis annularis,0.0171,2.91,0.7,unsexed,13.5,35,TL,,,,,USA,"Coralville Lake, Iowa, 1964","Carlander, 1977",3993,DB
+WHS,White Crappie,Pomoxis annularis,0.0187,3.065,0.7,unsexed,11.1,34.1,TL,,,,259,USA,"Oahe Lake, South Dakota","Carlander, 1977",3993,DB
+WHS,White Crappie,Pomoxis annularis,0.0193,2.904,0.5,unsexed,,,TL,,,,,USA,"White River Sec. B, Petersburg, Indiana, 1969","Carlander, 1977",3993,DB
+WHS,White Crappie,Pomoxis annularis,0.0204,3.007,0.5,unsexed,,,SL,,,,,USA,"Crab Orchard Lake, Illinois","Carlander, 1977",3993,DB
+WHS,White Crappie,Pomoxis annularis,0.02104,2.776,0.7,unsexed,4.8,34,TL,,,,163,USA,"Ft. Smith Lake, Arkansas","Carlander, 1977",3993,DB
+WHS,White Crappie,Pomoxis annularis,0.0212,2.877,0.5,unsexed,,,TL,,,,,USA,"White River Sec. B, Petersburg, Indiana, 1970","Carlander, 1977",3993,DB
+WHS,White Crappie,Pomoxis annularis,0.0226,3.057,0.7,unsexed,6,20.9,SL,,,,46,USA,"Illinois, lower pond","Carlander, 1977",3993,DB
+WHS,White Crappie,Pomoxis annularis,0.0233,3.014,0.7,unsexed,6,20.9,SL,,,,26,USA,"Illinois, upper pond","Carlander, 1977",3993,DB
+WHS,White Crappie,Pomoxis annularis,0.0252,2.957,0.6,unsexed,,,SL,,,,3633,USA,"Meridian Lake, Texas, 1969","Carlander, 1977",3993,DB
+WHS,White Crappie,Pomoxis annularis,0.0277,2.783,0.5,unsexed,,,TL,,,,,USA,"White River Sec. A, Petersburg, Indiana, 1969","Carlander, 1977",3993,DB
+WHS,White Crappie,Pomoxis annularis,0.0317,2.882,0.7,unsexed,10,30,SL,,,,1000,USA,"Meridian State Park Lake, Texas, 1968","Carlander, 1977",3993,DB
+WHS,White Crappie,Pomoxis annularis,0.0356,2.842,0.7,unsexed,15,32,SL,,,,213,USA,"Meridian State Park Lake, Texas, 1970","Carlander, 1977",3993,DB
+WHS,White Crappie,Pomoxis annularis,0.0376,2.673,0.5,unsexed,,,TL,,,,,USA,"White River Sec. A, Petersburg, Indiana, 1970","Carlander, 1977",3993,DB
+WST,White Sturgeon,Acipenser transmontanus,0.00285,3.23,0.7,unsexed,54,263,FL,,,,5222,USA,Lower Columbia River.,"Devore et al., 1995",34045,DB
+WST,White Sturgeon,Acipenser transmontanus,0.00199,3.19,0.94,mixed,,,FL,0.939,,,124,USA,California,"Brennan and Cailliet, 1991",52324,DB
+YEB,Yellow Bullhead,Ameiurus natalis,0.0355,2.66,0.7,unsexed,2.5,35.6,TL,,,,371,USA,Alabama,"Carlander, 1969",3672,DB
+YEB,Yellow Bullhead,Ameiurus natalis,0.0318,2.9004,0.97,unsexed,9.7,29.8,TL,0.97,,,144,USA,"Everglades, southern Florida, 2000-2005","Murie et al., 2009",85769,DB
+YEB,Yellow Bullhead,Ameiurus natalis,0.0207,3,0.94,unsexed,3.5,8.7,SL,0.936,,,32,USA,"Everglades, Florida / 2005-2012","Klassen et al., 2014",96646,DB
+YFG,Yellowfin Goby,Acanthogobius flavimanus,0.00878,2.869,0.99,unsexed,5.2,22.5,TL,0.991,,,122,SouthKorea,Suer River estuary / 2009-2010,"Yoon et al., 2012",112072,DB

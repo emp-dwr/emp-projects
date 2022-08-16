@@ -1,0 +1,136 @@
+```{r}
+library(tidyverse)
+library(lubridate)
+'%!in%' <- function(x,y)!('%in%'(x,y))
+
+my_cols <- function(..., .default = col_guess()) {
+  dots <- enexprs(...)
+  colargs <- flatten_chr(unname(
+    imap(dots, ~ {
+      colnames <- syms(.x)
+      colnames <- colnames[colnames != sym("c")]
+      coltypes <- rep_along(colnames, .y)
+      purrr::set_names(coltypes, colnames)
+    })
+  ))
+  cols(!!!colargs, .default = .default)
+}
+```
+
+```{r}
+df_edi <- read_csv('data/edi_2010-2021.csv', col_types = cols(DissBromide = 'd')) # 'data/edi-updates-22/SACSJ_delta_water_quality_1975_2021_EDI.csv')
+df_lab <- read_csv('data/data_lab.csv')
+df_old <- read_csv('data/data_old_v2.csv') # old EDI data
+```
+
+```{r}
+# fix dates
+df_lab <- df_lab %>% rename(Date = SampleDate, Station = StationCode)
+df_edi$Date <- as.Date(df_edi$Date, format = '%m/%d/%Y')
+df_lab$Date <- mdy(df_lab$Date)
+
+# fix up lab data
+df_lab$ResultPrefix[is.na(df_lab$ResultPrefix)] <- '='
+
+test <- df_lab[df_lab$ConstituentName %in% c('TSS', 'VSS', 'TDS'),]
+
+test <- df_lab %>%
+  mutate(case_when(ConstituentName == '' ~ 'unknown',
+                   TRUE ~ ConstituentName))
+
+test2 <- test %>% pivot_wider(id_cols = c(Project, SubProject, Station, Date, Depth,  UnitName, ReportingLimit, Group, LabAnalysisRemarks,  ResultPrefix),
+                                 names_from = c(ConstituentName), values_from = c(Result), values_fn = list)
+
+
+
+# df_edi <- df_edi %>% rename(Result_TSS = TSS, Result_VSS = VSS, Result_TDS = TDS)
+# df_edi$dc <- paste(df_edi$Result_TDS, df_edi$Result_TSS, df_edi$Result_VSS, df_edi$Date, df_edi$Station)
+# df_lab$dc <- paste(df_lab$Result_TDS, df_lab$Result_TSS, df_lab$Result_VSS, df_lab$Date, df_lab$Station)
+
+# z <- inner_join(df_lab,df_edi, by = 'dc')
+# df_lab[c('Result_TSS','Result_VSS','Result_TDS')]
+
+df_dupes <- df_edi[duplicated(df_edi[1:3]),]
+
+# write_csv(df_labcomp, 'test.csv')
+r <- df_lab[df_lab$SampleDate == '12/4/1985' & df_lab$StationCode == 'D16',]
+```
+
+check only date difs are for 2021
+```{r}
+df_old$Date <- df_old$Date %>% as.Date(format = '%m/%d/%Y')
+# df_edi$Date[df_edi$Date %!in% df_old$Date]
+# df_old$Date[df_old$Date %!in% df_edi$Date]
+```
+Compare matching col data (-TSS, VSS, TDS)
+```{r}
+df_old <- df_old %>% select(-c('TSS','VSS','TDS','Weather', "SampleDescription", 'TurbiditySurface','TurbidityBottom'))
+
+# df_edi$DissBromide <- as.numeric(df_edi$DissBromide)
+df_edicheck <- df_edi %>%
+  mutate(
+    Chla = case_when(Chla_Sign == '<' ~ as.numeric(NA),
+                     TRUE ~ Chla),
+    Pheophytin = case_when(Pheophytin_Sign == '<' ~ as.numeric(NA),
+                     TRUE ~ Pheophytin),
+    DissAmmonia = case_when(DissAmmonia_Sign == '<' ~ as.numeric(NA),
+                     TRUE ~ DissAmmonia),
+    DissBromide = case_when(DissBromide_Sign == '<' ~ as.numeric(NA),
+                     TRUE ~ DissBromide),
+    DissCalcium = case_when(DissCalcium_Sign == '<' ~ as.numeric(NA),
+                     TRUE ~ DissCalcium),
+    DissNitrateNitrite = case_when(DissNitrateNitrite_Sign == '<' ~ as.numeric(NA),
+                     TRUE ~ DissNitrateNitrite),
+    TOC = case_when(TOC_Sign == '<' ~ as.numeric(NA),
+                     TRUE ~ TOC),
+    DOC = case_when(DOC_Sign == '<' ~ as.numeric(NA),
+                     TRUE ~ DOC),
+    DON = case_when(DON_Sign == '<' ~ as.numeric(NA),
+                     TRUE ~ DON),
+    DissOrthophos = case_when(DissOrthophos_Sign == '<' ~ as.numeric(NA),
+                     TRUE ~ DissOrthophos),
+    TotPhos = case_when(TotPhos_Sign == '<' ~ as.numeric(NA),
+                     TRUE ~ TotPhos),
+    DissSilica = case_when(DissSilica_Sign == '<' ~ as.numeric(NA),
+                     TRUE ~ DissSilica),
+    TSS = case_when(TSS_Sign == '<' ~ as.numeric(NA),
+                     TRUE ~ TSS),
+    VSS = case_when(VSS_Sign == '<' ~ as.numeric(NA),
+                     TRUE ~ VSS),
+    TKN = case_when(TKN_Sign == '<' ~ as.numeric(NA),
+                     TRUE ~ TKN),
+    )
+
+df_edicheck <- df_edicheck %>% select("Station", "Date", "Time", "FieldNotes", "AirTemp", "WindVelocity",
+                                 "WindDirection", "NorthLat", "WestLong", "Chla", "Pheophytin", "TotAlkalinity", "TotAmmonia", "DissAmmonia",
+                                 "DissBromide", "DissCalcium", "TotChloride", "DissChloride", "DissNitrateNitrite", "DOC", "TOC", "DON",
+                                 "TON", "DissOrthophos", "TotPhos", "DissSilica", "TKN", "Depth", "Secchi", "Microcystis",
+                                 "LightExtinction", "SpCndSurface", "DOSurface", "DOpercentSurface", "WTSurface", "pHSurface", "SpCndBottom",
+                                 "DOBottom", "DOpercentBottom", "WTBottom", "pHBottom")
+
+df_old[,10:28] <- lapply(df_old[,10:28], as.numeric)
+df_edicheck <- df_edicheck %>% filter(year(Date) != '2021')
+
+df_difsold <- anti_join(df_old, df_edicheck)
+df_difsedi <- anti_join(df_edicheck, df_old)
+```
+
+Check the TSS/VSS/TDS data
+```{r}
+# df_edisel <- df_edi %>% select(c('Station','Date','TDS','TSS','VSS'))
+# df_labsel <- df_lab %>% rename('TDS' = 'Result_TDS', 'TSS' = 'Result_TSS', 'VSS' = 'Result_VSS') %>% select(c('Station','Date','TDS','TSS','VSS'))
+# test <- anti_join(df_edisel, dflabsel)
+```
+
+
+```{r}
+# write_csv(df_difsold, 'data/df_oldonly.csv') # record of what's added in
+# write_csv(df_lab, 'df_lab.csv')
+```
+
+```{r}
+x <- test[4:length(test)]
+write_csv(test,'test.csv')
+```
+
+

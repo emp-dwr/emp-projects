@@ -1,0 +1,12 @@
+attributeName	attributeDefinition	class	unit	dateTimeFormatString	missingValueCode	missingValueCodeExplanation
+SpeciesCode	the species code for each fish	character				
+CommonName	the common name of each fish species	character				
+SciName	the scientific name of each fish species	character				
+Length_cm	the length of the fish	numeric	centimeter			
+Weight_g	the weight of the fish	numeric	gram			
+Gender	the gender of the fish	categorical				
+LengthType	the method used for measuring the fish	categorical				
+n	the number of fish	numeric	dimensionless			
+Country	the country of origin of the fish used in the study	character				
+Locality	the locality of the fish used in the study	character				
+Ref	the reference for the study that the regression parameters came from	character				

@@ -1,0 +1,148 @@
+```{r}
+# ---
+# EDIT THIS
+# ---
+
+# declare filename for fluoroprobe data (.txt)
+fn_fl <- 'May 2022 Sacramento River.txt'
+
+# declare filename for water quality data (.csv)
+fn_wq <- 'MOPED May 2022 Sacramento River.csv'
+```
+
+```{r}
+# ---
+# CODE STARTS HERE
+# ---
+
+# import packages
+library(tidyverse)
+library(lubridate)
+library(deltamapr)
+library(readxl)
+library(sf)
+library(sp)
+source('functions/region_assign_funcs.R')
+
+# read in data
+year <- str_extract(fn_fl, '\\d{4}')
+fp_fl <- abs_path(paste0(year,'/',fn_fl), type = 'fluoro')
+df_fl <- read_tsv(fp_fl)
+
+# remove first row and save for later
+first_row <- df_fl[1,]
+df_fl <- df_fl[-1,]
+
+# change col types to relevant ones
+df_fl$`Date/Time` <- as.POSIXct(df_fl$`Date/Time`, format = '%m/%d/%Y %H:%M:%S')
+df_fl <- df_fl %>% mutate_if(is.character,as.numeric)
+
+# round to nearest 10 mins and calc average
+df_fl <- df_fl %>%
+  mutate(`Date/Time` = round_date(`Date/Time`, unit='10 minutes')) %>%
+  group_by(`Date/Time`) %>%
+  summarize_all(~round(mean(., na.rm = TRUE),2))
+
+# convert date/time col back to character
+df_fl$`Date/Time` <- as.character(df_fl$`Date/Time`)
+
+# clean up col names
+colnames(df_fl) <- paste(colnames(df_fl), first_row, sep='_')
+colnames(df_fl) <- colnames(df_fl) %>% str_replace('_1_', '_')
+colnames(df_fl) <- colnames(df_fl) %>% str_replace('�g', 'ug')
+colnames(df_fl) <- colnames(df_fl) %>% str_replace('�C', 'degC')
+df_fl <- df_fl %>% rename(DateTime = `Date/Time_date`, Temp_degC = `Temp. Sample_degC`)
+
+# keep relevant columns
+keep_cols <- c('Green Algae...2_ug/l','Bluegreen...3_ug/l','Diatoms...4_ug/l','Cryptophyta...5_ug/l','Green Algae...14_cells/ml','Bluegreen...15_cells/ml',
+               'Diatoms...16_cells/ml','Cryptophyta...17_cells/ml','Temp_degC','DateTime')
+
+df_fl <- subset(df_fl, select = keep_cols)
+
+df_fl <- df_fl %>%
+  mutate(Year = year(df_fl$DateTime),
+         Month = month.abb[month(df_fl$DateTime)],
+         Date = as.Date(df_fl$DateTime, format = '%Y-%m-%d %H:%M:%S'),
+         Hour = paste0(hour(df_fl$DateTime),':00'))
+
+# read in wq data
+fp_wq <- abs_path(paste0(year,'/',fn_wq), type = 'MOPED')
+df_wq <- read_csv(fp_wq, skip = 2)
+
+# clean up
+if(length(unique(df_wq$Extension[!is.na(df_wq$Extension)])) > 1) stop('ERROR: more than one extension value in wq data')
+run_name <- unique(df_wq$Extension[!is.na(df_wq$Extension)])
+
+df_wq$TimeStamp <- parse_date_time(df_wq$TimeStamp, c('mdY HMS', 'mdY HM'))
+df_wq$TimeStamp <- as.POSIXct(df_wq$TimeStamp, format = '%m/%d/%Y %H:%M:%S')
+
+df_wq <- df_wq %>%
+  subset(select = c(Longitude, Latitude, TimeStamp)) %>%
+  mutate(TimeStamp = round_date(TimeStamp, unit='10 minutes')) %>%
+  group_by(TimeStamp) %>%
+  summarize_all(~mean(., na.rm = TRUE)) %>%
+  rename(DateTime = TimeStamp)
+
+# set run abbv
+df_names <- read_csv('supp_files/run_names.csv')
+run_name <- plyr::mapvalues(run_name, 
+          df_names$LongName, 
+          to=df_names$ShortName)
+
+# convert date/time col back to character
+df_wq$DateTime <- as.character(df_wq$DateTime)
+
+# combine fl and wq dfs
+df_comb <- left_join(df_fl, df_wq, by = 'DateTime')
+df_comb <- df_comb %>% filter(!is.na(Longitude) | !is.na(Latitude))
+
+# add label col
+df_comb$Label <- paste(df_comb$Month, df_comb$Year, run_name, row_number(df_comb$Month))
+df_comb <- df_comb %>% relocate(Label)
+
+#import delta sf
+sf_delta <- R_EDSM_Subregions_Mahardja
+
+# convert wq to spdf
+coords <- df_comb[,c('Longitude', 'Latitude')]
+data   <- subset(df_comb, select = -c(Latitude, Longitude))
+crs    <- CRS('+init=epsg:4326 +proj=longlat')
+spdf_wq <- SpatialPointsDataFrame(coords = coords,
+                               data = data, 
+                               proj4string = crs)
+
+# convert delta to spdf
+spdf_delta <- as(sf_delta, 'Spatial')
+spdf_delta <- spTransform(spdf_delta, CRS('+init=epsg:4326 +proj=longlat'))
+
+# add subregion to df
+col_sr <- sp::over(spdf_wq, spdf_delta[,'SubRegion'])
+spdf_wq$SubRegion <- col_sr$SubRegion
+
+# convert to shapefile
+sf_wq <- st_as_sf(spdf_wq)
+sf_wq <- st_transform(sf_wq, st_crs = sf_delta)
+sf_wq <- sf_wq %>% filter(!is.na(SubRegion))
+
+# check data
+ggplot() +
+  geom_sf(data = sf_delta) +
+  geom_sf(data = sf_wq, color = 'red')
+
+# clean up regions in final df
+df_final <- as_tibble(sf_wq)
+df_regions <- read_csv('supp_files/regions_fluoro.csv')
+df_final <- left_join(df_final, df_regions, 'SubRegion')
+
+df_final <- df_final %>%
+  subset(select = -c(geometry, SubRegion))
+
+# export
+fn_exp <- str_remove(fn_fl, '.txt')
+year <- str_extract(fn_fl, '\\d{4}')
+create_fl_dir(year)
+
+fp_exp <- abs_path(paste0(fn_exp,'_summary.csv'), type = 'export', year = year)
+write_csv(df_final, fp_exp)
+```
+

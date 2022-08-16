@@ -1,0 +1,7 @@
+keyword	keywordThesaurus
+aquatic ecosystems	LTER Controlled Vocabulary
+ecology	LTER Controlled Vocabulary
+fish	LTER Controlled Vocabulary
+biomass	LTER Controlled Vocabulary
+San Francisco Delta	
+length weight regressions	

@@ -1,0 +1,323 @@
+attributeName	code	definition
+SpeciesCode	AMS	
+SpeciesCode	BGS	
+SpeciesCode	BKB	
+SpeciesCode	BKS	
+SpeciesCode	BPF	
+SpeciesCode	BRB	
+SpeciesCode	BT	
+SpeciesCode	C	
+SpeciesCode	CHC	
+SpeciesCode	CHG	
+SpeciesCode	CHN	
+SpeciesCode	DSM	
+SpeciesCode	FHM	
+SpeciesCode	GF	
+SpeciesCode	GSF	
+SpeciesCode	GSN	
+SpeciesCode	GST	
+SpeciesCode	HCH	
+SpeciesCode	HH	
+SpeciesCode	JSM	
+SpeciesCode	LFS	
+SpeciesCode	LMB	
+SpeciesCode	LP	
+SpeciesCode	MQF	
+SpeciesCode	NAN	
+SpeciesCode	PAH	
+SpeciesCode	PKN	
+SpeciesCode	PMP	
+SpeciesCode	PRS	
+SpeciesCode	PSS	
+SpeciesCode	RBT	
+SpeciesCode	RES	
+SpeciesCode	RFS	
+SpeciesCode	RL	
+SpeciesCode	RSN	
+SpeciesCode	SAPM	
+SpeciesCode	SASU	
+SpeciesCode	SHM	
+SpeciesCode	SMB	
+SpeciesCode	SPB	
+SpeciesCode	SPLT	
+SpeciesCode	STB	
+SpeciesCode	STF	
+SpeciesCode	TFS	
+SpeciesCode	TP	
+SpeciesCode	TSM	
+SpeciesCode	TSS	
+SpeciesCode	W	
+SpeciesCode	WCK	
+SpeciesCode	WHC	
+SpeciesCode	WHS	
+SpeciesCode	WST	
+SpeciesCode	YEB	
+SpeciesCode	YFG	
+CommonName	American Shad	
+CommonName	Bluegill	
+CommonName	Black Bullhead	
+CommonName	Black Crappie	
+CommonName	Bay Pipefish	
+CommonName	Brown Bullhead	
+CommonName	Brown Trout	
+CommonName	Common Carp	
+CommonName	Channel Catfish	
+CommonName	Chameleon Goby	
+CommonName	Chinook Salmon	
+CommonName	Delta Smelt	
+CommonName	Fathead Minnow	
+CommonName	Gold Fish	
+CommonName	Green Sunfish	
+CommonName	Golden Shiner	
+CommonName	Green Sturgeon	
+CommonName	Sacramento Hitch	
+CommonName	Hardhead	
+CommonName	Jacksmelt	
+CommonName	Longfin Smelt	
+CommonName	Largemouth Bass	
+CommonName	Bigscale Logperch	
+CommonName	Mosquito Fish	
+CommonName	Northern Anchovy	
+CommonName	Pacific Herring	
+CommonName	Pumpkinseed	
+CommonName	Plainfin Midshipman	
+CommonName	Prickly Sculpin	
+CommonName	Pacific Staghorn Sculpin	
+CommonName	Rainbow Trout (Steel Head)	
+CommonName	Redear Sunfish	
+CommonName	Riffle Sculpin	
+CommonName	River Lamprey	
+CommonName	Red Shiner	
+CommonName	Sacramento Pikeminnow	
+CommonName	Sacramento Sucker	
+CommonName	Shimofuri Goby	
+CommonName	Smallmouth Bass	
+CommonName	Spotted Bass	
+CommonName	Sacramento Splittail	
+CommonName	Striped Bass	
+CommonName	Starry Flounder	
+CommonName	Threadfin Shad	
+CommonName	Tule Perch	
+CommonName	Top Smelt	
+CommonName	Threespine Stickleback	
+CommonName	Warmouth	
+CommonName	White Croaker	
+CommonName	White Catfish	
+CommonName	White Crappie	
+CommonName	White Sturgeon	
+CommonName	Yellow Bullhead	
+CommonName	Yellowfin Goby	
+SciName	Alosa sapidissima	
+SciName	Lepomis macrochirus	
+SciName	Ameiurus melas	
+SciName	Pomoxis nigromaculatus	
+SciName	Syngnathus leptorhynchus	
+SciName	Ameiurus nebulosus	
+SciName	Salmo trutta	
+SciName	Cyprinus carpio	
+SciName	Ictalurus punctatus	
+SciName	Tridentiger trigonocephalus	
+SciName	Oncorhynchus tshawytscha	
+SciName	Hypomesus transpacificus	
+SciName	Pimephales promelas	
+SciName	Carassius auratus	
+SciName	Lepomis cyanellus	
+SciName	Notemigonus crysoleucas	
+SciName	Acipenser medirostris	
+SciName	Lavinia exilicauda exilicauda	
+SciName	Ariopsis felis	
+SciName	Atherinopsis californiensis	
+SciName	Spirinchus thaleichthys	
+SciName	Micropterus salmoides	
+SciName	Percina macrolepida	
+SciName	Gambusia affinis	
+SciName	Engraulis mordax	
+SciName	Clupea pallasii	
+SciName	Lepomis gibbosus	
+SciName	Porichthys notatus	
+SciName	Cottus asper subspecies	
+SciName	Leptocottus armatus	
+SciName	Oncorhynchus mykiss	
+SciName	Lepomis microlophus	
+SciName	Cottus gulosus	
+SciName	Lampetra fluviatilis	
+SciName	Cyprinella lutrensis	
+SciName	Ptychocheilus grandis	
+SciName	Catostomus occidentalis occidentalis	
+SciName	Tridentiger bifasciatus	
+SciName	Micropterus dolomieu	
+SciName	Micropterus punctulatus	
+SciName	Pogonichthys macrolepidotus	
+SciName	Morone saxatilis	
+SciName	Platichthys stellatus	
+SciName	Dorosoma petenense	
+SciName	Hysterocarpus traskii traskii	
+SciName	Atherinops affinis	
+SciName	Gasterosteus aculeatus	
+SciName	Lepomis gulosus	
+SciName	Genyonemus lineatus	
+SciName	Ameiurus catus	
+SciName	Pomoxis annularis	
+SciName	Acipenser transmontanus	
+SciName	Ameiurus natalis	
+SciName	Acanthogobius flavimanus	
+Gender	unsexed	
+Gender	female	
+Gender	male	
+Gender	mixed	
+Gender	juvenile	
+LengthType	FL	
+LengthType	TL	
+LengthType	SL	
+Country	USA	
+Country	Canada	
+Country	Belgium	
+Country	UK Engld Wal	
+Country	Norway	
+Country	France	
+Country	UK	
+Country	Finland	
+Country	Greece	
+Country	Spain	
+Country	Russia	
+Country	Turkey	
+Country	Poland	
+Country	Portugal	
+Country	Italy	
+Country	Iran	
+Country	UK Scotland	
+Country	Ukraine	
+Country	Japan	
+Country	China	
+Country	Laos	
+Country	Kenya	
+Country	Iraq	
+Country	Philippines	
+Country	South Africa	
+Country	SouthKorea	
+Country	Brazil	
+Country	Montenegro	
+Country	Mexico	
+Country	New Caledonia	
+Country	Croatia	
+Country	Australia	
+Country	Estonia	
+Ref	Kimmerer et al., 2015	
+Ref	Carlander, 1977	
+Ref	Klassen et al., 2014	
+Ref	Carlander, 1969	
+Ref	Bayer, 1980	
+Ref	Verreycken and Belpaire, 2011	
+Ref	Frost and Smyly, 1952	
+Ref	Jensen, 1977	
+Ref	Palomares, 1991	
+Ref	Sigler, 1952	
+Ref	Bohling et al., 1991	
+Ref	Kleanthidis et al., 1999	
+Ref	Papageorgiou et al., 1983	
+Ref	Crisp, 1994	
+Ref	Crisp and Beaumont, 1995	
+Ref	Oscoz and Escala, 2005	
+Ref	Belyaeva et al., 1989	
+Ref	Leunda et al., 2006	
+Ref	Arslan et al., 2004	
+Ref	Chelkowski and Chelkowska, 1995	
+Ref	Maia and Valente, 1999	
+Ref	Adams et al., 2008	
+Ref	Volta and Giussani, 2010	
+Ref	Nicola and Almodovar, 2002	
+Ref	Kheyrandish et al., 2010	
+Ref	Arslan et al., 2007	
+Ref	Treasurer, 1976	
+Ref	Nowak et al., 2009	
+Ref	Yildirim et al., 2012	
+Ref	Ilhan et al., 2012	
+Ref	Li et al., 1990	
+Ref	Yie, 1988	
+Ref	Singhanouvong et al., 1996	
+Ref	Li, 1998	
+Ref	Blanco et al., 2003	
+Ref	Britton and Harper, 2006	
+Ref	Miranda et al., 2006	
+Ref	Andreu-Soler et al., 2006	
+Ref	Szypula et al., 2001	
+Ref	Ye et al., 2007	
+Ref	Garcia, 2010	
+Ref	Winker et al., 2011	
+Ref	Erguden and Goksu, 2009	
+Ref	Huo et al., 2011	
+Ref	Wang et al., 2012	
+Ref	Liu et al., 2012	
+Ref	Ozcan, 2008	
+Ref	Vilizzi et al., 2013	
+Ref	Karata et al., 2007	
+Ref	Lee et al., 2015	
+Ref	Kim et al., 2015	
+Ref	Yang et al., 2016	
+Ref	Sui et al., 2015	
+Ref	Que et al., 2015	
+Ref	Xie et al., 2015	
+Ref	Jumawan and Seronay, 2017	
+Ref	Moreno-Valcarcel et al., 2012	
+Ref	Kindong et al., 2018	
+Ref	Tarkan et al., 2006	
+Ref	Magnin and Fradette, 1975	
+Ref	Bastista-Silva et al., 2015	
+Ref	Harty, 2017	
+Ref	Pauly et al. 1998	
+Ref	Danylchuk and Tonn, 2006	
+Ref	Verreycken et al., 2011	
+Ref	Esmaeili and Ebrahimi, 2006	
+Ref	Huo et al., 2012	
+Ref	Lei et al., 2015	
+Ref	Sternberg and Cockayne, 2015	
+Ref	Fan et al., 2015	
+Ref	Milosevi and Mrdak, 2016	
+Ref	Ruiz-Campos et al., 2006	
+Ref	Chadwick, 1976	
+Ref	Fitch and Schultz, 1978	
+Ref	Jeffres et al. 2006	
+Ref	Smith et al., 1988	
+Ref	Vega-Cendejas et al., 2012	
+Ref	Amador-del Angel et al., 2015	
+Ref	Vega-Cendejas et al., 2017	
+Ref	Yoda and Kimura, 1996	
+Ref	Chauvet, 1999	
+Ref	Baek et al., 2015	
+Ref	Schneider et al., 2000	
+Ref	Koutrakis and Tsikliras, 2003	
+Ref	Dulcic and Glamuzina, 2006	
+Ref	Ozturk and Ikiz, 2004	
+Ref	Gallardo-Cabello, 1985	
+Ref	Childress et al., 1980	
+Ref	Rodriguez-Romero et al., 2009	
+Ref	Gunderson and Dygert, 1988	
+Ref	Bond and Erickson, 1993	
+Ref	Bond , 1982	
+Ref	Fadeev, 2005	
+Ref	Deacon and Keast, 1987	
+Ref	Pidgeon, 1981	
+Ref	Kwain 1981	
+Ref	Treer et al., 2008	
+Ref	Saat et al., 2003	
+Ref	Wilhelms, 2013	
+Ref	IGFA, 2009	
+Ref	Stephenson and Momot, 1991	
+Ref	Kolander et al., 1993	
+Ref	Devine et al., 2005	
+Ref	Carlander, 1953	
+Ref	Morgan and Gerlach, 1950	
+Ref	Mansueti, 1961	
+Ref	Bond, 1982	
+Ref	Kwak and Park, 2016	
+Ref	Velazquez-Velazquez et al., 2015	
+Ref	Isaacson, 1964	
+Ref	Devore et al., 1995	
+Ref	Brennan and Cailliet, 1991	
+Ref	Murie et al., 2009	
+Ref	Yoon et al., 2012	
+Source	Paper	
+Source	DB	
+Source	Calc	
+Source	Paper (Blackside Darter)	
+Source	Paper (Golden Shiner)	

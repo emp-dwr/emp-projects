@@ -1,0 +1,81 @@
+```{r}
+library(tidyverse)
+library(lubridate)
+'%!in%' <- function(x,y)!('%in%'(x,y))
+```
+
+```{r}
+df_edi <- read_csv('data/edi_1975-2021.csv', col_types = cols(DissBromide = 'd')) # 'data/edi-updates-22/SACSJ_delta_water_quality_1975_2021_EDI.csv')
+df_lab <- read_csv('data/data_lab_v2.csv')
+df_old <- read_csv('data/data_old_v2.csv') # old EDI data
+```
+
+Check TDS/TSS/VSS data -- EDI data matches with lab data (and old data, when applicable)
+```{r}
+# fix dates
+df_lab <- df_lab %>% rename(Date = SampleDate, Station = StationCode)
+df_edi$Date <- as.Date(df_edi$Date, format = '%m/%d/%Y')
+df_lab$Date <- mdy(df_lab$Date)
+
+# fix up lab data
+df_lab$ResultPrefix[is.na(df_lab$ResultPrefix)] <- '='
+df_lab$ConstituentName[df_lab$ConstituentName == 'Solids (Total Dissolved)'] <- 'TDS'
+df_lab$ConstituentName[df_lab$ConstituentName == 'Solids (Total Suspended)'] <- 'TSS'
+df_lab$ConstituentName[df_lab$ConstituentName == 'Solids (Volatile Suspended)'] <- 'VSS'
+df_lab <- df_lab[df_lab$ConstituentName %in% c('TSS', 'VSS', 'TDS'),]
+df_lab <- df_lab[df_lab$Depth == 3,]
+df_lab <- df_lab[!duplicated(df_lab),]
+df_lab <- df_lab[!duplicated(df_lab[1:6]),]
+df_lab <- df_lab %>% filter(Date < '1997-12-04')
+
+df_lab <- df_lab %>%
+  pivot_wider(
+    id_cols = c(Station, Date, Depth),
+    names_from = c(ConstituentName), values_from = c(Result, ResultPrefix)
+    ) %>%
+  rename(TSS = Result_TSS, TDS = Result_TDS, VSS = Result_VSS, TDS_Sign = ResultPrefix_TDS, TSS_Sign = ResultPrefix_TSS, VSS_Sign = ResultPrefix_VSS) %>%
+  select(Station, Date, TDS_Sign, TDS, TSS_Sign, TSS, VSS_Sign, VSS)  
+
+df_editest <- df_edi %>% select(Station, Date, TDS_Sign, TDS, TSS_Sign, TSS, VSS_Sign, VSS)  
+
+df_check <- merge(df_lab, df_editest, by = c('Station','Date'), all.x = TRUE, suffixes = c('.lab','.edi'))
+
+df_TDS <- df_check[df_check$TDS.lab != df_check$TDS.edi & !is.na(df_check$TDS.lab != df_check$TDS.edi),] %>%
+  select(Station, Date, TDS_Sign.lab, TDS.lab, TDS_Sign.edi, TDS.edi)
+df_TSS <- df_check[df_check$TSS.lab != df_check$TSS.edi & !is.na(df_check$TSS.lab != df_check$TSS.edi),] %>%
+    select(Station, Date, TSS_Sign.lab, TSS.lab, TSS_Sign.edi, TSS.edi)
+df_VSS <- df_check[df_check$VSS.lab != df_check$VSS.edi & !is.na(df_check$VSS.lab != df_check$VSS.edi),] %>%
+    select(Station, Date, VSS_Sign.lab, VSS.lab, VSS_Sign.edi, VSS.edi)
+```
+
+check only date difs are for 2021 (old and EDI)
+```{r}
+df_old$Date <- df_old$Date %>% as.Date(format = '%m/%d/%Y')
+df_edi$Date[df_edi$Date %!in% df_old$Date]
+df_old$Date[df_old$Date %!in% df_edi$Date]
+```
+
+Check 2019 Ammonia Units
+```{r}
+df_amm <- df_edi[(year(df_edi$Date) >= 2018 & year(df_edi$Date) <= 2021),]
+df_amm <- df_amm %>% filter(Station %in% c('C10A','C3A','D19','D8','NZ002'))
+df_amm <- df_amm %>%
+  mutate(
+    TA = case_when(Date >= '2019-03-01' & Date <= '2020-10-30' ~ 'TA',
+              TRUE ~ 'Bryte')
+  )
+
+ggplot(df_amm) +
+  geom_point(aes(Date, DissAmmonia, color = TA, shape = Station))
+```
+```{r}
+df_amm_test <- df_amm %>%
+  mutate(
+    DissAmmonia = case_when(TA == 'TA' ~ DissAmmonia/4.4,
+                            TRUE ~ DissAmmonia)
+  )
+
+ggplot(df_amm_test) +
+  geom_point(aes(Date, DissAmmonia, color = TA, shape = Station))
+```
+

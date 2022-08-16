@@ -1,0 +1,5 @@
+givenName	middleInitial	surName	organizationName	electronicMailAddress	userId	projectTitle	fundingAgency	fundingNumber	role
+Sarah	E	Perry	California Department of Water Resources	Sarah.Perry@water.ca.gov	0000-0002-3708-6675				creator
+Pascale		Goertler	Delta Stewardship Council	Pascale.Goertler@deltacouncil.ca.gov	0000-0001-6259-5108				PI
+Caitlin	A	Miller	California Department of Water Resources	Caitlin.Miller@water.ca.gov					QA/QC
+Contact		California Department of Water Resources	Sarah.Perry@water.ca.gov						contact

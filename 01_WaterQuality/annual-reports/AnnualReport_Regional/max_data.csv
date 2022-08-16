@@ -1,0 +1,5 @@
+analyte,region,date,n,n.cen,median,mean,sd,RL
+chla,Southern Interior Delta,7/4/2019,4,0,4.06,11.92,17.50698146,NA
+dissAmmonia,Northern Interior Delta,11/1/2019,2,0,NA,0.53,0.311126984,NA
+dissNitrateNitrite,Southern Interior Delta,1/1/2019,4,0,0.96,2.0475,1.338590677,NA
+totPhos,San Pablo Bay,4/1/2019,6,0,0.08,0.23333333,0.385417523,NA

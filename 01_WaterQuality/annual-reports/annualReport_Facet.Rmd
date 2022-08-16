@@ -1,0 +1,263 @@
+```{r}
+# Title: D-WQ Annual Report Graphs
+# Purpose: Generate graphs for D-WQ annual reports
+# Author: Sarah Perry
+# Contact: sarah.perry@water.ca.gov
+```
+
+```{r warning=FALSE, message=FALSE}
+# import packages
+library(zoo)
+library(scales)
+library(tidyverse)
+library(lubridate)
+library(NADA)
+library(gridExtra)
+library(RColorBrewer)
+library(grid)
+
+# import functions
+source('D-WQ/annualReport_funcs.R')
+```
+
+```{r message=FALSE}
+# import data
+df_wq <- read_csv('D-WQ/Data/EMP_delta_water_quality_1975_2020.csv', col_types = cols(.default = 'c'))
+
+# convert month to abbrv
+df_wq$Year <- year(as.Date(df_wq$Date, '%m/%d/%Y'))
+df_wq$Month <- month(as.Date(df_wq$Date, '%m/%d/%Y'))
+df_wq$Month <- month.abb[df_wq$Month]
+
+# add month-year column
+df_wq$Monyear <- paste(df_wq$Month,df_wq$Year, sep = ' ')
+df_wq$Monyear <- my(df_wq$Monyear)
+
+# assign regions
+df_wq <- assign_regions(df_wq)
+
+# add 'full group' column (ie. region + month-year)
+df_wq$FullGroup <- paste(df_wq$Region,df_wq$Monyear, sep = ' - ')
+df_wq$FullGroup <- as.factor(df_wq$FullGroup)
+
+year <- year(Sys.Date())-1
+
+df_wq <- subset(df_wq, Year %in% c(year-1,year),  select = c('Station','Monyear','Region','FullGroup','SpCndSurface_sign','SpCndSurface_val','TurbiditySurface_sign','TurbiditySurface_val','Chla_sign','Chla_val','DissAmmonia_sign','DissAmmonia_val','DissNitrateNitrite_sign','DissNitrateNitrite_val','TotPhos_sign','TotPhos_val'))
+
+# organize df
+df_wq <- df_wq %>%
+  pivot_longer(cols = contains('_'), names_pattern = '(.*)_(.*)', names_to = c('Analyte','Int')) %>%
+  pivot_wider(names_from = Int, values_from = value) %>%
+  rename(Sign = sign, Value = val)
+
+df_wq <- subset(df_wq, !is.na(Region))
+df_wq <- subset(df_wq, Value != 'ND')
+df_wq$Value <- as.numeric(df_wq$Value)
+```
+
+```{r}
+reg_order_two <- c('Central Delta','Northern Interior Delta','Southern Interior Delta','Confluence','San Pablo Bay','Suisun & Grizzly Bays')
+df_wq_two <- df_wq %>%
+  mutate(Region = factor(Region, levels = reg_order_two)) %>%
+  arrange(Region)
+```
+
+```{r 2x2}
+analytes <- unique(df_wq_two$Analyte)
+
+#create segment subset
+seg_subset <-subset(df_wq_two, df_wq_two$Sign == '<')
+
+#create segment df
+df_seg_vert = data.frame(
+  x = seg_subset$Monyear,
+  xend = seg_subset$Monyear,
+  y = 0,
+  yend = seg_subset$Value,
+  Analyte = seg_subset$Analyte,
+  Station = seg_subset$Station,
+  Region = seg_subset$Region,
+  stringsAsFactors = FALSE
+)
+
+# create segment df
+df_seg_horz = data.frame(
+  x = seg_subset$Monyear-10,
+  xend = seg_subset$Monyear+10,
+  y = seg_subset$Value,
+  yend = seg_subset$Value,
+  Analyte = seg_subset$Analyte,
+  Station = seg_subset$Station,
+  Region = seg_subset$Region,
+  stringsAsFactors = FALSE
+)
+
+# define plot elements
+y_ftsize <- 2
+x_ftsize <- 1
+int_delta <- c('Central Delta','Southern Interior Delta','Northern Interior Delta')
+plt_names <- c(paste('Specific Conductance ', '(\u03bc', 'S/cm)', sep = ''),
+               'Turbidity (NTU)',
+               paste('Chlorophyll ','\u03b1 (\u03bc','g/L)', sep = ''),
+               'Dissolved Ammonia (mg/L)',
+               'Dissolved Nitrate+Nitrite (mg/L)',
+               'Total Phosphorus (mg/L)')
+               
+
+for (i in seq(length(analytes))){
+  df_wq_two_filt <-
+    df_wq_two %>%
+    filter(Analyte == analytes[i])
+  
+  if (analytes[i] != 'SpCndSurface') {
+    y_max <- max(df_wq_two_filt$Value, na.rm = TRUE)
+  } else {
+    y_max_int <- max(df_wq_two_filt[df_wq_two_filt$Region %in% int_delta,]$Value, na.rm = TRUE)
+    y_max_out <- max(df_wq_two_filt[!df_wq_two_filt$Region %in% int_delta,]$Value, na.rm = TRUE)
+  }
+
+  out <- by(data = df_wq_two_filt, INDICES = df_wq_two_filt$Region, FUN = function(m) {
+    m <- droplevels(m)
+    cur_region = as.character(unique(m$Region[[1]]))
+    
+    if (analytes[i] == 'SpCndSurface') {
+      if(cur_region %in% int_delta) {
+        y_max <- y_max_int
+        } else {
+          y_max <- y_max_out
+        }
+    }
+
+    df_seg_vert_filt <- df_seg_vert %>%
+      filter(Analyte == analytes[i],
+             Region == cur_region)
+    
+    df_seg_horz_filt <- df_seg_horz %>% 
+      filter(Analyte == analytes[i],
+             Region == cur_region)
+    
+    df_seg_vert_filt$yend[df_seg_vert_filt$yend > y_max] <- y_max
+    
+    if (analytes[i] == 'SpCndSurface') {
+
+    }
+    
+    # m <- m %>% complete(Monyear = seq.Date(min(Monyear), max(Monyear), by='month'))
+
+    m$Value <- ifelse(m$Sign == '<', NA, m$Value)
+    
+    if (cur_region == "Central Delta"){
+      colors = rev(brewer.pal(6, 'Blues'))
+      
+      p <- ggplot() +
+        geom_segment(data = df_seg_vert_filt, mapping = aes(x = x, xend = xend, y = y, yend = yend, color = Station), size = .8, lty = 5) +
+        geom_segment(data = df_seg_horz_filt, mapping = aes(x = x, xend = xend, y = y, yend = yend, color = Station), size = .8, lineend = 'square') +
+        geom_line(m, mapping = aes(Monyear, Value, group = Station, colour = Station), na.rm = TRUE,  size = 1.1) +
+        geom_point(m, mapping = aes(Monyear, Value, group = Station, colour = Station, shape = Station), na.rm = TRUE, size = 3) +
+        blank_theme +
+        theme(
+          axis.text.x = element_text(size = x_ftsize, color = 'white'),
+          axis.ticks.x = element_blank()
+        ) +
+        scale_x_date(labels = date_format('%b-%y'), breaks = m$Monyear) +
+        scale_color_manual(values = colors, guide = guide_legend(nrow = 1)) +
+        scale_fill_manual(values = colors) +
+        ggtitle(cur_region)
+      
+    } else if (cur_region == 'Confluence'){
+      colors = rev(brewer.pal(6, 'Oranges'))
+      
+      p <- ggplot() +
+        geom_segment(data = df_seg_vert_filt, mapping = aes(x = x, xend = xend, y = y, yend = yend, color = Station), size = .8, lty = 5) +
+        geom_segment(data = df_seg_horz_filt, mapping = aes(x = x, xend = xend, y = y, yend = yend, color = Station), size = .8, lineend = 'square') +
+        geom_line(m, mapping = aes(Monyear, Value, group = Station, colour = Station), na.rm = TRUE, size = 1.1) +
+        geom_point(m, mapping = aes(Monyear, Value, group = Station, colour = Station, shape = Station), na.rm = TRUE, size = 3) +
+        blank_theme +
+        theme(
+          axis.text.x = element_text(size = x_ftsize, color = 'white'),
+          axis.ticks.x = element_blank()
+        ) +
+        scale_x_date(labels = date_format('%b-%y'), breaks = m$Monyear) +
+        scale_color_manual(values=colors, guide = guide_legend(nrow = 1)) +
+        scale_fill_manual(values=colors) +
+        ggtitle(cur_region)
+            
+    }else if (cur_region == 'Northern Interior Delta'){
+      colors = rev(brewer.pal(4, 'Greys'))
+      
+      p <- ggplot() +
+        geom_segment(data = df_seg_vert_filt, mapping = aes(x = x, xend = xend, y = y, yend = yend, color = Station), size = .8, lty = 5) +
+        geom_segment(data = df_seg_horz_filt, mapping = aes(x = x, xend = xend, y = y, yend = yend, color = Station), size = .8, lineend = 'square') +
+        geom_line(m, mapping = aes(Monyear, Value, group = Station, colour = Station), na.rm = TRUE, size = 1.1) +
+        geom_point(m, mapping = aes(Monyear, Value, group = Station, colour = Station, shape = Station), na.rm = TRUE, size = 3) +
+        blank_theme +
+        theme(
+          axis.text.x = element_text(size = x_ftsize, color = 'white'),
+          axis.ticks.x = element_blank()
+        ) +
+        scale_x_date(labels = date_format('%b-%y'), breaks = m$Monyear) +
+        scale_color_manual(values = colors, guide = guide_legend(nrow = 1)) +
+        scale_fill_manual(values = colors) +
+        ggtitle(cur_region)
+      
+    } else if (cur_region == "San Pablo Bay"){
+      colors = rev(brewer.pal(8, 'Greens'))
+      
+      p <- ggplot() +
+        geom_segment(data = df_seg_vert_filt, mapping = aes(x = x, xend = xend, y = y, yend = yend, color = Station), size = .8, lty = 5) +
+        geom_segment(data = df_seg_horz_filt, mapping = aes(x = x, xend = xend, y = y, yend = yend, color = Station), size = .8, lineend = 'square') +
+        geom_line(m, mapping = aes(Monyear, Value, group = Station, colour = Station), na.rm = TRUE, size = 1.1) +
+        geom_point(m, mapping = aes(Monyear, Value, group = Station, colour = Station, shape = Station), na.rm = TRUE, size = 3) +
+        blank_theme +
+        theme(
+          axis.text.x = element_text(size = x_ftsize, color = 'white'),
+          axis.ticks.x = element_blank()
+        ) +
+        scale_x_date(labels = date_format('%b-%y'), breaks = m$Monyear) +
+        scale_color_manual(values=colors, guide = guide_legend(nrow = 1)) +
+        scale_fill_manual(values=colors) +
+        ggtitle(cur_region)
+      
+    } else if (cur_region == "Southern Interior Delta"){
+      colors = rev(brewer.pal(6, 'Reds'))
+      
+      p <- ggplot() +
+        geom_segment(data = df_seg_vert_filt, mapping = aes(x = x, xend = xend, y = y, yend = yend, color = Station), size = .8, lty = 5) +
+        geom_segment(data = df_seg_horz_filt, mapping = aes(x = x, xend = xend, y = y, yend = yend, color = Station), size = .8, lineend = 'square') +
+        geom_line(m, mapping = aes(Monyear, Value, group = Station, colour = Station), na.rm = TRUE, size = 1.1) +
+        geom_point(m, mapping = aes(Monyear, Value, group = Station, colour = Station, shape = Station), na.rm = TRUE, size = 3) +
+        blank_theme +
+        scale_x_date(labels = date_format('%b-%y'), breaks = m$Monyear) +
+        scale_color_manual(values = colors, guide = guide_legend(nrow = 1)) +
+        scale_fill_manual(values = colors) +
+        ggtitle(cur_region)
+      
+    } else if (cur_region == "Suisun & Grizzly Bays"){
+      colors = rev(brewer.pal(6, 'Purples'))
+      
+      p <- ggplot() +
+        geom_segment(data = df_seg_vert_filt, mapping = aes(x = x, xend = xend, y = y, yend = yend, color = Station), size = .8, lty = 5) +
+        geom_segment(data = df_seg_horz_filt, mapping = aes(x = x, xend = xend, y = y, yend = yend, color = Station), size = .8, lineend = 'square') +
+        geom_line(m, mapping = aes(Monyear, Value, group = Station, colour = Station), na.rm = TRUE, size = 1.1) +
+        geom_point(m, mapping = aes(Monyear, Value, group = Station, colour = Station, shape = Station), na.rm = TRUE, size = 3) +
+        blank_theme +
+        scale_x_date(labels = date_format('%b-%y'), breaks = m$Monyear) +
+        scale_color_manual(values=colors, guide = guide_legend(nrow = 1)) +
+        scale_fill_manual(values=colors) +
+        ggtitle(cur_region)
+        
+    }
+  }
+  )
+  # test <- ggarrange(out, ncol = 3, nrow = 2)
+  my_grobs = lapply(out, ggplotGrob)
+  
+  graph <- marrangeGrob(grobs = out, ncol=2, nrow=3, top=textGrob(plt_names[i],gp=gpar(fontsize=16, fontface='bold')))
+  ggsave(paste('ARGraph_',analytes[i],'.jpg', sep=''), graph, width = 9.5, height = 10.5, unit = 'in') #4.7, 19
+}
+```
+```{r}
+m
+```
+
+

@@ -1,0 +1,146 @@
+```{r}
+# Title: D-WQ Annual Report Stats
+# Purpose: Generate stats for D-WQ annual reports
+# Author: Sarah Perry
+# Contact: sarah.perry@water.ca.gov
+```
+
+```{r warning=FALSE, message=FALSE}
+# import packages
+library(zoo)
+library(scales)
+library(tidyverse)
+library(lubridate)
+library(NADA)
+
+# import functions
+source('D-WQ/annualReport_funcs.R')
+```
+
+```{r message=FALSE}
+# import data
+df_wq <- read_csv('D-WQ/Data/EMP_delta_water_quality_1975_2020.csv', col_types = cols(.default = 'c'))
+
+# convert month to abbrv
+df_wq$Year <- year(as.Date(df_wq$Date, '%m/%d/%Y'))
+df_wq$Month <- month(as.Date(df_wq$Date, '%m/%d/%Y'))
+df_wq$Month <- month.abb[df_wq$Month]
+
+# add month-year column
+df_wq$Monyear <- paste(df_wq$Month,df_wq$Year, sep = ' ')
+
+# assign regions
+df_wq <- assign_regions(df_wq)
+
+# add 'full group' column (ie. region + month-year)
+df_wq$FullGroup <- paste(df_wq$Region,df_wq$Monyear, sep = ' - ')
+df_wq$FullGroup <- as.factor(df_wq$FullGroup)
+
+year <- year(Sys.Date())-1
+
+df_wq <- subset(df_wq, Year %in% c(year-1,year),  select = c('Station','Monyear','Region','FullGroup','SpCndSurface_sign','SpCndSurface_val','TurbiditySurface_sign','TurbiditySurface_val','Chla_sign','Chla_val','DissAmmonia_sign','DissAmmonia_val','DissNitrateNitrite_sign','DissNitrateNitrite_val','TotPhos_sign','TotPhos_val'))
+
+# organize df
+df_wq <- df_wq %>%
+  pivot_longer(cols = contains('_'), names_pattern = '(.*)_(.*)', names_to = c('Analyte','Int')) %>%
+  pivot_wider(names_from = Int, values_from = value) %>%
+  rename(Sign = sign, Value = val)
+
+df_wq <- subset(df_wq, !is.na(Region))
+df_wq <- subset(df_wq, Value != 'ND')
+df_wq$Value <- as.numeric(df_wq$Value)
+df_wq$Sign <- ifelse(df_wq$Sign == '<', TRUE, FALSE)
+```
+
+```{r}
+# create csv files of stats
+analytes <- unique(df_wq$Analyte)
+df_list <- list()
+df_sum_list <- list()
+
+
+for (i in seq(analytes)){
+  df_wq_sub <- df_wq %>%
+    filter(Analyte == analytes[i])
+
+  # define vectors for cenfit function
+  obs <- df_wq_sub$Value
+  censored <- df_wq_sub$Sign
+  groups <- df_wq_sub$FullGroup
+
+  # create cenfit df
+  cen_dat <- cenfit(obs, censored, groups)
+  df_temp <- censtats(cen_dat)
+  df_temp$analyte <- analytes[i]
+  df_list[[i]] <- df_temp
+}
+
+df_censtats <- do.call(rbind, df_list)
+
+# clean up df
+df_censtats$mean[df_censtats$mean == 0.00000000] <- NA
+df_censtats$sd[df_censtats$sd == 0.00000000] <- NA
+
+# find sum stats
+# df_sum <- df_censtats %>%
+#   separate(date, c('month', 'year'), ' ') %>%
+#   group_by(analyte, year) %>%
+#   mutate(min_yr = min(mean, na.rm = TRUE),
+#          mean_yr = mean(mean, na.rm = TRUE),
+#          max_yr = max(mean, na.rm = TRUE)) %>%
+#   filter(mean == min_yr | mean == mean_yr | mean == max_yr) %>%
+#   ungroup() %>% 
+#   subset(select = c('analyte','year','month','region','mean','min_yr','max_yr','mean_yr'))
+
+# find sum stats
+df_sum <- df_wq %>%
+  separate(Monyear, c('Month', 'Year'), ' ') %>%
+  group_by(Analyte, Year) %>%
+  mutate(min_yr = min(Value, na.rm = TRUE),
+         mean_yr = mean(Value, na.rm = TRUE),
+         max_yr = max(Value, na.rm = TRUE)) %>%
+  filter(Value == min_yr | Value == mean_yr | Value == max_yr) %>%
+  ungroup() %>% 
+  subset(select = c('Analyte','Year','Month','Station','Region','Sign','Value','min_yr','max_yr','mean_yr'))
+
+df_sum$Sign <- ifelse(df_sum$Sign == TRUE, '<', '=')
+
+test <- df_sum %>%
+  pivot_wider(cols = c('month','region'), names_pattern = '(.*)_(.*)', names_to = c('Analyte','Int'))
+
+# write csvs
+write_csv(df_censtats, paste0('D-WQ/',year-1,'-',year,'_annualReport_allStats.csv'))
+write_csv(df_sum, paste0('D-WQ/',year-1,'-',year,'_annualReport_sumStats.csv'))
+```
+
+```{r warning=FALSE, message=FALSE}
+# analyte_dat <- read_csv('C:/R/AnnualReport/DissNitrateNitrite.csv')
+# 
+# #fix dates
+# analyte_dat$monyear <- as.Date(strptime(analyte_dat$date, '%m/%d/%Y'),'%b-%y')
+# 
+# #create segment subset
+# seg_subset <-subset(analyte_dat, is.na(analyte_dat$mean))
+# 
+# #create segment df
+# seg_dat = data.frame(
+#   x = seg_subset$monyear,
+#   xend = seg_subset$monyear,
+#   y = 0,
+#   yend = seg_subset$RL,
+#   region = seg_subset$region
+#   
+# 
+# )
+# 
+# analyte_dat
+```
+
+```{r Useful Funcs}
+# showMethods(class=class(cen_dat), where=search())
+# 
+# selectMethod(show, class(cen_dat))
+# 
+# map_df(boop, ~as.data.frame(.x), .id="id")
+```
+

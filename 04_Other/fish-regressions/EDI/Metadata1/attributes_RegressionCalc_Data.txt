@@ -1,0 +1,12 @@
+attributeName	attributeDefinition	class	unit	dateTimeFormatString	missingValueCode	missingValueCodeExplanation
+SpeciesCode		categorical				
+CommonName		categorical				
+SciName		categorical				
+Length_cm		numeric	!Add units here!			
+Weight_g		numeric	!Add units here!			
+Gender		categorical				
+LengthType		categorical				
+n		numeric	!Add units here!			
+Country		categorical				
+Locality		categorical				
+Ref		categorical				

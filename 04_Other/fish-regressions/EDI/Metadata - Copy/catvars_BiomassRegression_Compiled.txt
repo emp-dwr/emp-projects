@@ -1,0 +1,29 @@
+attributeName	code	definition
+LengthType	FL	fork length
+LengthType	FL TL SL	fork length total length standard length
+LengthType	SL	standard length
+LengthType	TL	total length
+LengthType	TL SL	total length standard length
+LengthType	FL TL	fork length total length
+LengthType	FL TL SL undefined	fork length total length standard length undefined
+LengthType	TL SL undefined	total length standard length undefined
+LengthType	SL undefined	standard length undefined
+LengthType	undefined	undefined
+LengthType	FL undefined	fork length undefined
+LengthType	FL TL undefined	fork length total length undefined
+Gender	unsexed	unsexed
+Gender	unsexed female male	unsexed female male
+Gender	mixed	mixed
+Gender	unsexed mixed female male juvenile	unsexed mixed female male juvenile
+Gender	unsexed mixed	unsexed mixed
+Gender	unsexed mixed female male	unsexed mixed female male
+Gender	male	male
+Gender	unsexed mixed juvenile	unsexed mixed juvenile
+Gender	undefined	undefined
+Gender	juvenile	juvenile
+Gender	unsexed juvenile	unsexed juvenile
+Source	Paper	scientific paper
+Source	DB	database (fishbase.us)
+Source	Calc	calculated
+Source	Paper (Blackside Darter)	"used values, sourced from a paper, for blackside darter"
+Source	Paper (Golden Shiner)	"used values, sourced from a paper, for golden shiner"

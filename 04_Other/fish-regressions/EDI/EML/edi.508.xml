@@ -1,0 +1,2035 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eml:eml xmlns:eml="https://eml.ecoinformatics.org/eml-2.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.2" packageId="edi.508" xsi:schemaLocation="eml://ecoinformatics.org/eml-2.2.0  https://nis.lternet.edu/schemas/EML/eml-2.2.0/xsd/eml.xsd" system="edi">
+  <access authSystem="https://pasta.edirepository.org/authentication" order="allowFirst" scope="document">
+    <allow>
+      <principal>uid=sperry,o=EDI,dc=edirepository,dc=org</principal>
+      <permission>all</permission>
+    </allow>
+    <allow>
+      <principal>public</principal>
+      <permission>read</permission>
+    </allow>
+  </access>
+  <dataset>
+    <title>Synthesized Dataset of Length-Weight Regression Coefficients for Delta Fish</title>
+    <creator>
+      <individualName>
+        <givenName>Sarah</givenName>
+        <givenName>E</givenName>
+        <surName>Perry</surName>
+      </individualName>
+      <organizationName>California Department of Water Resources</organizationName>
+      <electronicMailAddress>Sarah.Perry@water.ca.gov</electronicMailAddress>
+      <userId directory="https://orcid.org">https://orcid.org/0000-0002-3708-6675</userId>
+    </creator>
+    <associatedParty>
+      <individualName>
+        <givenName>Caitlin</givenName>
+        <givenName>A</givenName>
+        <surName>Miller</surName>
+      </individualName>
+      <organizationName>California Department of Water Resources</organizationName>
+      <electronicMailAddress>Caitlin.Miller@water.ca.gov</electronicMailAddress>
+      <role>Qa/Qc</role>
+    </associatedParty>
+    <pubDate>2020-04-28</pubDate>
+    <abstract>
+      <para>
+  This dataset is a compilation of length-weight regression coefficients
+  for fish species commonly found in the freshwater tidal habitats of
+  the San Francisco Estuary. This effort was born out of the Delta Smelt
+  Resiliency Strategy Aquatic Weed Control Action study, which, in order
+  to calculate fish biomass, needed to calculate individual fish weights
+  from their measured lengths. The Aquatic Weed Control study was
+  supported by Interagency Ecological Program through the Endangered
+  Species Act and is included in the Interagency Ecological Program
+  2017-2019 workplan. Weight is estimated from length using the
+  exponential function W=a</para>
+      <para>
+        <emphasis>L^b. These can be calculated using
+  the linear regression of the log-transformed equation
+  (log⁡(W)=log⁡(a)+b</emphasis>
+      </para>
+      <para>log(L)). This dataset provides the
+  species-specific a and b parameters. Associated publication(s) and
+  relevant metadata information are included. Data was obtained either
+  via database (fishbase.us) or peer-reviewed scientific papers.
+</para>
+    </abstract>
+    <keywordSet>
+      <keyword>aquatic ecosystems</keyword>
+      <keyword>ecology</keyword>
+      <keyword>fish</keyword>
+      <keyword>biomass</keyword>
+      <keywordThesaurus>LTER Controlled Vocabulary</keywordThesaurus>
+    </keywordSet>
+    <keywordSet>
+      <keyword>San Francisco Delta</keyword>
+      <keyword>length weight regressions</keyword>
+    </keywordSet>
+    <additionalInfo>
+      <para>
+  The </para>
+      <para>
+        <quote>refNo</quote>
+      </para>
+      <para> column in the raw dataset refers to the
+  reference ID number assigned to the reference by fishbase.us, the
+  database where the reference is pulled from. This can be used to find
+  a full citation for the reference.
+</para>
+      <para>
+  The methods used for measuring fish length are: FL = fork length TL =
+  total length SL = standard length
+</para>
+    </additionalInfo>
+    <intellectualRights>
+      <para>
+  This data package is released to the "public domain" under
+  Creative Commons CC0 1.0 "No Rights Reserved" (see:
+  https://creativecommons.org/publicdomain/zero/1.0/). It is considered
+  professional etiquette to provide attribution of the original work if
+  this data package is shared in whole or by individual components. A
+  generic citation is provided for this data package on the website
+  https://portal.edirepository.org (herein "website") in the
+  summary metadata page. Communication (and collaboration) with the
+  creators of this data package is recommended to prevent duplicate
+  research or publication. This data package (and its components) is
+  made available "as is" and with no warranty of accuracy or
+  fitness for use. The creators of this data package and the website
+  shall not be liable for any damages resulting from misinterpretation
+  or misuse of the data package or its components. Periodic updates of
+  this data package may be available from the website. Thank you.
+</para>
+    </intellectualRights>
+    <coverage>
+      <geographicCoverage>
+        <geographicDescription>San Francisco Bay-Delta</geographicDescription>
+        <boundingCoordinates>
+          <westBoundingCoordinate>-122.503</westBoundingCoordinate>
+          <eastBoundingCoordinate>-121.262</eastBoundingCoordinate>
+          <northBoundingCoordinate>38.369</northBoundingCoordinate>
+          <southBoundingCoordinate>37.678</southBoundingCoordinate>
+        </boundingCoordinates>
+      </geographicCoverage>
+      <temporalCoverage>
+        <rangeOfDates>
+          <beginDate>
+            <calendarDate>1950-01-01</calendarDate>
+          </beginDate>
+          <endDate>
+            <calendarDate>2018-12-31</calendarDate>
+          </endDate>
+        </rangeOfDates>
+      </temporalCoverage>
+    </coverage>
+    <maintenance>
+      <description>completed</description>
+    </maintenance>
+    <contact>
+      <individualName>
+        <givenName>Contact</givenName>
+        <surName>California Department of Water Resources</surName>
+      </individualName>
+      <organizationName>Sarah.Perry@water.ca.gov</organizationName>
+    </contact>
+    <methods>
+      <methodStep>
+        <description>
+          <para>
+  Data Collection Methods
+</para>
+          <para>
+  Data was collected one of three ways: 1. Via the fishbase.us database.
+  The raw data obtained from all studies for a given fish species were
+  recorded in addition to the average values for the regression
+  parameters. The average values were calculated by the database. The
+  data from each study was given a weight penalty based on how reliable
+  the study was (the </para>
+          <para>
+            <quote>weight</quote>
+          </para>
+          <para> column in the raw dataset).
+  This weight factor was determined by the database. If only one study
+  was used, the study weight was one. 2. Via studies that already
+  published the regression parameters but were not on the fishbase.us
+  database. 3. Manually calculated using length-weight data from a
+  peer-reviewed study. This was done in R.
+</para>
+          <para>
+  Since the a regression parameter is dependent on the length and weight
+  units, data transformation was required if a paper did not use the
+  same units as this dataset. The equations used to accomplish this
+  were: a(mm,g) = 10^intercept - intercept from the equation log(W) =
+  log(a) + b</para>
+          <para>
+            <emphasis>log(L) a(cm,g) = a(mm,g)</emphasis>
+          </para>
+          <para>10^b - equation
+  from fishbase.de a(cm,g) = a(mm,mg)*10^b/1000 - equation from
+  fishbase.de
+</para>
+          <para>
+  All studies are properly referenced in the raw dataset.
+</para>
+          <para>
+  QA/QC
+</para>
+          <para>
+  Data entries were checked by a fellow Department of Water Resources
+  scientist.
+</para>
+        </description>
+      </methodStep>
+    </methods>
+    <project>
+      <title>No project title to report</title>
+      <personnel>
+        <individualName>
+          <givenName>Pascale</givenName>
+          <surName>Goertler</surName>
+        </individualName>
+        <organizationName>Delta Stewardship Council</organizationName>
+        <electronicMailAddress>Pascale.Goertler@deltacouncil.ca.gov</electronicMailAddress>
+        <userId directory="https://orcid.org">https://orcid.org/0000-0001-6259-5108</userId>
+        <role>Principal Investigator</role>
+      </personnel>
+      <funding>No funding to report</funding>
+    </project>
+    <dataTable>
+      <entityName>Biomass Regressions - Compiled Data</entityName>
+      <entityDescription>Average values for the length-weight regression parameters, separated by length type.</entityDescription>
+      <physical>
+        <objectName>BiomassRegression_Compiled.csv</objectName>
+        <size unit="bytes">11461</size>
+        <authentication method="MD5">03a832ea30e4550915d3769a52405531</authentication>
+        <dataFormat>
+          <textFormat>
+            <numHeaderLines>1</numHeaderLines>
+            <recordDelimiter>\r\n</recordDelimiter>
+            <attributeOrientation>column</attributeOrientation>
+            <simpleDelimited>
+              <fieldDelimiter>,</fieldDelimiter>
+              <quoteCharacter>"</quoteCharacter>
+            </simpleDelimited>
+          </textFormat>
+        </dataFormat>
+      </physical>
+      <attributeList>
+        <attribute>
+          <attributeName>SpeciesCode</attributeName>
+          <attributeDefinition>the species code for each fish</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>the species code for each fish</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>CommonName</attributeName>
+          <attributeDefinition>the common name of each fish species</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>the common name of each fish species</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>SciName</attributeName>
+          <attributeDefinition>the scientific name of each fish species</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>the scientific name of each fish species</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>a_cm_g</attributeName>
+          <attributeDefinition>the a regression paramter in (cm,g)</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>gramCentimeter</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">2e-04</minimum>
+                  <maximum exclusive="false">3.25202</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>b</attributeName>
+          <attributeDefinition>the b regression pamater</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>dimensionless</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">0.008974081</minimum>
+                  <maximum exclusive="false">3.69</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>SD_log10_a</attributeName>
+          <attributeDefinition>the standard deviation of the log10(a)</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>dimensionless</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">0.0245</minimum>
+                  <maximum exclusive="false">1</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>SD_b</attributeName>
+          <attributeDefinition>the standard deviation of b</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>dimensionless</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">0</minimum>
+                  <maximum exclusive="false">0.3511</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>SD_log10_W</attributeName>
+          <attributeDefinition>the standard deviation of the log10(W)</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>dimensionless</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">0</minimum>
+                  <maximum exclusive="false">1.2524</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>n_Studies</attributeName>
+          <attributeDefinition>the number of studies used to calculate the regression paramters</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>dimensionless</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>natural</numberType>
+                <bounds>
+                  <minimum exclusive="false">1</minimum>
+                  <maximum exclusive="false">176</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>Flag_n_Fish</attributeName>
+          <attributeDefinition>data flag for fish</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <enumeratedDomain>
+                  <codeDefinition>
+                    <code>&gt;</code>
+                    <definition>greater than this number of fish</definition>
+                  </codeDefinition>
+                </enumeratedDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>n_Fish</attributeName>
+          <attributeDefinition>the total number of fish from all the studies used to calculate the regression parameters</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>dimensionless</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>natural</numberType>
+                <bounds>
+                  <minimum exclusive="false">1</minimum>
+                  <maximum exclusive="false">309755</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>LengthType</attributeName>
+          <attributeDefinition>the method used for measuring the fish</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <enumeratedDomain>
+                  <codeDefinition>
+                    <code>FL</code>
+                    <definition>fork length</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>FL TL SL</code>
+                    <definition>fork length total length standard length</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>SL</code>
+                    <definition>standard length</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>TL</code>
+                    <definition>total length</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>TL SL</code>
+                    <definition>total length standard length</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>FL TL</code>
+                    <definition>fork length total length</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>FL TL SL undefined</code>
+                    <definition>fork length total length standard length undefined</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>TL SL undefined</code>
+                    <definition>total length standard length undefined</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>SL undefined</code>
+                    <definition>standard length undefined</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>undefined</code>
+                    <definition>undefined</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>FL undefined</code>
+                    <definition>fork length undefined</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>FL TL undefined</code>
+                    <definition>fork length total length undefined</definition>
+                  </codeDefinition>
+                </enumeratedDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>Gender</attributeName>
+          <attributeDefinition>the gender of the fish</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <enumeratedDomain>
+                  <codeDefinition>
+                    <code>unsexed</code>
+                    <definition>unsexed</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>unsexed female male</code>
+                    <definition>unsexed female male</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>mixed</code>
+                    <definition>mixed</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>unsexed mixed female male juvenile</code>
+                    <definition>unsexed mixed female male juvenile</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>unsexed mixed</code>
+                    <definition>unsexed mixed</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>unsexed mixed female male</code>
+                    <definition>unsexed mixed female male</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>male</code>
+                    <definition>male</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>unsexed mixed juvenile</code>
+                    <definition>unsexed mixed juvenile</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>undefined</code>
+                    <definition>undefined</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>juvenile</code>
+                    <definition>juvenile</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>unsexed juvenile</code>
+                    <definition>unsexed juvenile</definition>
+                  </codeDefinition>
+                </enumeratedDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>Country</attributeName>
+          <attributeDefinition>the country of origin of the fish used in the study</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>the country of origin of the fish used in the study</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>Source</attributeName>
+          <attributeDefinition>whether the value was determined via the database, a peer-reviewed paper, or calculated by hand using data from a paper</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <enumeratedDomain>
+                  <codeDefinition>
+                    <code>Paper</code>
+                    <definition>scientific paper</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>DB</code>
+                    <definition>database (fishbase.us)</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Calc</code>
+                    <definition>calculated</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Paper (Blackside Darter)</code>
+                    <definition>used values, sourced from a paper, for blackside darter</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Paper (Golden Shiner)</code>
+                    <definition>used values, sourced from a paper, for golden shiner</definition>
+                  </codeDefinition>
+                </enumeratedDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+        </attribute>
+      </attributeList>
+      <numberOfRecords>108</numberOfRecords>
+    </dataTable>
+    <dataTable>
+      <entityName>Biomass Regressions - Raw Data</entityName>
+      <entityDescription>Raw data used to calculate the average length-weight regression parameters.</entityDescription>
+      <physical>
+        <objectName>BiomassRegression_Raw.csv</objectName>
+        <size unit="bytes">79497</size>
+        <authentication method="MD5">6191b707b86e402efc6906845a064823</authentication>
+        <dataFormat>
+          <textFormat>
+            <numHeaderLines>1</numHeaderLines>
+            <recordDelimiter>\r\n</recordDelimiter>
+            <attributeOrientation>column</attributeOrientation>
+            <simpleDelimited>
+              <fieldDelimiter>,</fieldDelimiter>
+              <quoteCharacter>"</quoteCharacter>
+            </simpleDelimited>
+          </textFormat>
+        </dataFormat>
+      </physical>
+      <attributeList>
+        <attribute>
+          <attributeName>SpeciesCode</attributeName>
+          <attributeDefinition>the species code for each fish</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>the species code for each fish</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>CommonName</attributeName>
+          <attributeDefinition>the common name of each fish species</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>the common name of each fish species</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>SciName</attributeName>
+          <attributeDefinition>the scientific name of each fish species</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>the scientific name of each fish species</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>a</attributeName>
+          <attributeDefinition>the a regression paramter in (cm,g)</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>gramCentimeter</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">2e-04</minimum>
+                  <maximum exclusive="false">3.25202</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>b</attributeName>
+          <attributeDefinition>the b regression pamater</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>dimensionless</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">0.008974081</minimum>
+                  <maximum exclusive="false">3.847</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>Weight</attributeName>
+          <attributeDefinition>the weight penality given to the study when calculating the average regression parameters; if only one study was used, it's weight = 1</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>dimensionless</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">0</minimum>
+                  <maximum exclusive="false">1</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>Gender</attributeName>
+          <attributeDefinition>the gender of the fish</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <enumeratedDomain>
+                  <codeDefinition>
+                    <code>unsexed</code>
+                    <definition>unsexed</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>female</code>
+                    <definition>female</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>male</code>
+                    <definition>male</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>mixed</code>
+                    <definition>mixed</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>juvenile</code>
+                    <definition>juvenile</definition>
+                  </codeDefinition>
+                </enumeratedDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>Lmin</attributeName>
+          <attributeDefinition>the minimum length of the fish used in the study</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>centimeter</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">1</minimum>
+                  <maximum exclusive="false">163</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>Lmax</attributeName>
+          <attributeDefinition>the maximum length of the fish used in the study</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>centimeter</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">2.3</minimum>
+                  <maximum exclusive="false">263</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>LengthType</attributeName>
+          <attributeDefinition>the method used for measuring the fish</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <enumeratedDomain>
+                  <codeDefinition>
+                    <code>FL</code>
+                    <definition>FL</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>TL</code>
+                    <definition>TL</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>SL</code>
+                    <definition>SL</definition>
+                  </codeDefinition>
+                </enumeratedDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>r2</attributeName>
+          <attributeDefinition>the r2 value of the regression line used to calculate the parameters</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>dimensionless</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">0.593</minimum>
+                  <maximum exclusive="false">1</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>ln_a_pVal</attributeName>
+          <attributeDefinition>the p-value for the ln(a) of the regression line used to calculate the parameters</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>dimensionless</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">0.008338278</minimum>
+                  <maximum exclusive="false">0.025119874</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>b_pVal</attributeName>
+          <attributeDefinition>the p-value for the b of the regression line used to calculate the parameters</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>dimensionless</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">0.000330686</minimum>
+                  <maximum exclusive="false">0.994</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>n</attributeName>
+          <attributeDefinition>the total number of fish from all the studies used to calculate the regression parameters</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>dimensionless</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>natural</numberType>
+                <bounds>
+                  <minimum exclusive="false">1</minimum>
+                  <maximum exclusive="false">303855</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>&gt;</code>
+            <codeExplanation>greater than</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>Country</attributeName>
+          <attributeDefinition>the country of origin of the fish used in the study</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <enumeratedDomain>
+                  <codeDefinition>
+                    <code>USA</code>
+                    <definition>USA</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Canada</code>
+                    <definition>Canada</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Belgium</code>
+                    <definition>Belgium</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>UK Engld Wal</code>
+                    <definition>UK Engld Wal</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Norway</code>
+                    <definition>Norway</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>France</code>
+                    <definition>France</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>UK</code>
+                    <definition>UK</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Finland</code>
+                    <definition>Finland</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Greece</code>
+                    <definition>Greece</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Spain</code>
+                    <definition>Spain</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Russia</code>
+                    <definition>Russia</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Turkey</code>
+                    <definition>Turkey</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Poland</code>
+                    <definition>Poland</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Portugal</code>
+                    <definition>Portugal</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Italy</code>
+                    <definition>Italy</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Iran</code>
+                    <definition>Iran</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>UK Scotland</code>
+                    <definition>UK Scotland</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Ukraine</code>
+                    <definition>Ukraine</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Japan</code>
+                    <definition>Japan</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>China</code>
+                    <definition>China</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Laos</code>
+                    <definition>Laos</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Kenya</code>
+                    <definition>Kenya</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Iraq</code>
+                    <definition>Iraq</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Philippines</code>
+                    <definition>Philippines</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>South Africa</code>
+                    <definition>South Africa</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>SouthKorea</code>
+                    <definition>SouthKorea</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Brazil</code>
+                    <definition>Brazil</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Montenegro</code>
+                    <definition>Montenegro</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Mexico</code>
+                    <definition>Mexico</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>New Caledonia</code>
+                    <definition>New Caledonia</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Croatia</code>
+                    <definition>Croatia</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Australia</code>
+                    <definition>Australia</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Estonia</code>
+                    <definition>Estonia</definition>
+                  </codeDefinition>
+                </enumeratedDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>Locality</attributeName>
+          <attributeDefinition>the locality of the fish used in the study</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>the locality of the fish used in the study</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>Ref</attributeName>
+          <attributeDefinition>the reference for the study that the regression parameters came from</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <enumeratedDomain>
+                  <codeDefinition>
+                    <code>Kimmerer et al., 2015</code>
+                    <definition>Kimmerer et al., 2015</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Carlander, 1977</code>
+                    <definition>Carlander, 1977</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Klassen et al., 2014</code>
+                    <definition>Klassen et al., 2014</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Carlander, 1969</code>
+                    <definition>Carlander, 1969</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Bayer, 1980</code>
+                    <definition>Bayer, 1980</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Verreycken and Belpaire, 2011</code>
+                    <definition>Verreycken and Belpaire, 2011</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Frost and Smyly, 1952</code>
+                    <definition>Frost and Smyly, 1952</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Jensen, 1977</code>
+                    <definition>Jensen, 1977</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Palomares, 1991</code>
+                    <definition>Palomares, 1991</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Sigler, 1952</code>
+                    <definition>Sigler, 1952</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Bohling et al., 1991</code>
+                    <definition>Bohling et al., 1991</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Kleanthidis et al., 1999</code>
+                    <definition>Kleanthidis et al., 1999</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Papageorgiou et al., 1983</code>
+                    <definition>Papageorgiou et al., 1983</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Crisp, 1994</code>
+                    <definition>Crisp, 1994</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Crisp and Beaumont, 1995</code>
+                    <definition>Crisp and Beaumont, 1995</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Oscoz and Escala, 2005</code>
+                    <definition>Oscoz and Escala, 2005</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Belyaeva et al., 1989</code>
+                    <definition>Belyaeva et al., 1989</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Leunda et al., 2006</code>
+                    <definition>Leunda et al., 2006</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Arslan et al., 2004</code>
+                    <definition>Arslan et al., 2004</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Chelkowski and Chelkowska, 1995</code>
+                    <definition>Chelkowski and Chelkowska, 1995</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Maia and Valente, 1999</code>
+                    <definition>Maia and Valente, 1999</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Adams et al., 2008</code>
+                    <definition>Adams et al., 2008</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Volta and Giussani, 2010</code>
+                    <definition>Volta and Giussani, 2010</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Nicola and Almodovar, 2002</code>
+                    <definition>Nicola and Almodovar, 2002</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Kheyrandish et al., 2010</code>
+                    <definition>Kheyrandish et al., 2010</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Arslan et al., 2007</code>
+                    <definition>Arslan et al., 2007</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Treasurer, 1976</code>
+                    <definition>Treasurer, 1976</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Nowak et al., 2009</code>
+                    <definition>Nowak et al., 2009</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Yildirim et al., 2012</code>
+                    <definition>Yildirim et al., 2012</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Ilhan et al., 2012</code>
+                    <definition>Ilhan et al., 2012</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Li et al., 1990</code>
+                    <definition>Li et al., 1990</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Yie, 1988</code>
+                    <definition>Yie, 1988</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Singhanouvong et al., 1996</code>
+                    <definition>Singhanouvong et al., 1996</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Li, 1998</code>
+                    <definition>Li, 1998</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Blanco et al., 2003</code>
+                    <definition>Blanco et al., 2003</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Britton and Harper, 2006</code>
+                    <definition>Britton and Harper, 2006</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Miranda et al., 2006</code>
+                    <definition>Miranda et al., 2006</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Andreu-Soler et al., 2006</code>
+                    <definition>Andreu-Soler et al., 2006</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Szypula et al., 2001</code>
+                    <definition>Szypula et al., 2001</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Ye et al., 2007</code>
+                    <definition>Ye et al., 2007</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Garcia, 2010</code>
+                    <definition>Garcia, 2010</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Winker et al., 2011</code>
+                    <definition>Winker et al., 2011</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Erguden and Goksu, 2009</code>
+                    <definition>Erguden and Goksu, 2009</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Huo et al., 2011</code>
+                    <definition>Huo et al., 2011</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Wang et al., 2012</code>
+                    <definition>Wang et al., 2012</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Liu et al., 2012</code>
+                    <definition>Liu et al., 2012</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Ozcan, 2008</code>
+                    <definition>Ozcan, 2008</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Vilizzi et al., 2013</code>
+                    <definition>Vilizzi et al., 2013</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Karata et al., 2007</code>
+                    <definition>Karata et al., 2007</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Lee et al., 2015</code>
+                    <definition>Lee et al., 2015</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Kim et al., 2015</code>
+                    <definition>Kim et al., 2015</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Yang et al., 2016</code>
+                    <definition>Yang et al., 2016</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Sui et al., 2015</code>
+                    <definition>Sui et al., 2015</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Que et al., 2015</code>
+                    <definition>Que et al., 2015</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Xie et al., 2015</code>
+                    <definition>Xie et al., 2015</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Jumawan and Seronay, 2017</code>
+                    <definition>Jumawan and Seronay, 2017</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Moreno-Valcarcel et al., 2012</code>
+                    <definition>Moreno-Valcarcel et al., 2012</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Kindong et al., 2018</code>
+                    <definition>Kindong et al., 2018</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Tarkan et al., 2006</code>
+                    <definition>Tarkan et al., 2006</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Magnin and Fradette, 1975</code>
+                    <definition>Magnin and Fradette, 1975</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Bastista-Silva et al., 2015</code>
+                    <definition>Bastista-Silva et al., 2015</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Harty, 2017</code>
+                    <definition>Harty, 2017</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Pauly et al. 1998</code>
+                    <definition>Pauly et al. 1998</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Danylchuk and Tonn, 2006</code>
+                    <definition>Danylchuk and Tonn, 2006</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Verreycken et al., 2011</code>
+                    <definition>Verreycken et al., 2011</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Esmaeili and Ebrahimi, 2006</code>
+                    <definition>Esmaeili and Ebrahimi, 2006</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Huo et al., 2012</code>
+                    <definition>Huo et al., 2012</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Lei et al., 2015</code>
+                    <definition>Lei et al., 2015</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Sternberg and Cockayne, 2015</code>
+                    <definition>Sternberg and Cockayne, 2015</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Fan et al., 2015</code>
+                    <definition>Fan et al., 2015</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Milosevi and Mrdak, 2016</code>
+                    <definition>Milosevi and Mrdak, 2016</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Ruiz-Campos et al., 2006</code>
+                    <definition>Ruiz-Campos et al., 2006</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Chadwick, 1976</code>
+                    <definition>Chadwick, 1976</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Fitch and Schultz, 1978</code>
+                    <definition>Fitch and Schultz, 1978</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Jeffres et al. 2006</code>
+                    <definition>Jeffres et al. 2006</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Smith et al., 1988</code>
+                    <definition>Smith et al., 1988</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Vega-Cendejas et al., 2012</code>
+                    <definition>Vega-Cendejas et al., 2012</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Amador-del Angel et al., 2015</code>
+                    <definition>Amador-del Angel et al., 2015</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Vega-Cendejas et al., 2017</code>
+                    <definition>Vega-Cendejas et al., 2017</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Yoda and Kimura, 1996</code>
+                    <definition>Yoda and Kimura, 1996</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Chauvet, 1999</code>
+                    <definition>Chauvet, 1999</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Baek et al., 2015</code>
+                    <definition>Baek et al., 2015</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Schneider et al., 2000</code>
+                    <definition>Schneider et al., 2000</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Koutrakis and Tsikliras, 2003</code>
+                    <definition>Koutrakis and Tsikliras, 2003</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Dulcic and Glamuzina, 2006</code>
+                    <definition>Dulcic and Glamuzina, 2006</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Ozturk and Ikiz, 2004</code>
+                    <definition>Ozturk and Ikiz, 2004</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Gallardo-Cabello, 1985</code>
+                    <definition>Gallardo-Cabello, 1985</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Childress et al., 1980</code>
+                    <definition>Childress et al., 1980</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Rodriguez-Romero et al., 2009</code>
+                    <definition>Rodriguez-Romero et al., 2009</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Gunderson and Dygert, 1988</code>
+                    <definition>Gunderson and Dygert, 1988</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Bond and Erickson, 1993</code>
+                    <definition>Bond and Erickson, 1993</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Bond , 1982</code>
+                    <definition>Bond , 1982</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Fadeev, 2005</code>
+                    <definition>Fadeev, 2005</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Deacon and Keast, 1987</code>
+                    <definition>Deacon and Keast, 1987</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Pidgeon, 1981</code>
+                    <definition>Pidgeon, 1981</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Kwain 1981</code>
+                    <definition>Kwain 1981</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Treer et al., 2008</code>
+                    <definition>Treer et al., 2008</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Saat et al., 2003</code>
+                    <definition>Saat et al., 2003</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Wilhelms, 2013</code>
+                    <definition>Wilhelms, 2013</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>IGFA, 2009</code>
+                    <definition>IGFA, 2009</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Stephenson and Momot, 1991</code>
+                    <definition>Stephenson and Momot, 1991</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Kolander et al., 1993</code>
+                    <definition>Kolander et al., 1993</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Devine et al., 2005</code>
+                    <definition>Devine et al., 2005</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Carlander, 1953</code>
+                    <definition>Carlander, 1953</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Morgan and Gerlach, 1950</code>
+                    <definition>Morgan and Gerlach, 1950</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Mansueti, 1961</code>
+                    <definition>Mansueti, 1961</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Bond, 1982</code>
+                    <definition>Bond, 1982</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Kwak and Park, 2016</code>
+                    <definition>Kwak and Park, 2016</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Velazquez-Velazquez et al., 2015</code>
+                    <definition>Velazquez-Velazquez et al., 2015</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Isaacson, 1964</code>
+                    <definition>Isaacson, 1964</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Devore et al., 1995</code>
+                    <definition>Devore et al., 1995</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Brennan and Cailliet, 1991</code>
+                    <definition>Brennan and Cailliet, 1991</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Murie et al., 2009</code>
+                    <definition>Murie et al., 2009</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Yoon et al., 2012</code>
+                    <definition>Yoon et al., 2012</definition>
+                  </codeDefinition>
+                </enumeratedDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>RefNo</attributeName>
+          <attributeDefinition>the reference ID number assigned to the reference by fishbase.us</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <enumeratedDomain>
+                  <codeDefinition>
+                    <code>3993</code>
+                    <definition>3993</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>96646</code>
+                    <definition>96646</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>3672</code>
+                    <definition>3672</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>93899</code>
+                    <definition>93899</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>88166</code>
+                    <definition>88166</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>1136</code>
+                    <definition>1136</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>1776</code>
+                    <definition>1776</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>1883</code>
+                    <definition>1883</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>2939</code>
+                    <definition>2939</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>4580</code>
+                    <definition>4580</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>6281</code>
+                    <definition>6281</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>27610</code>
+                    <definition>27610</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>27724</code>
+                    <definition>27724</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>41325</code>
+                    <definition>41325</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>44580</code>
+                    <definition>44580</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>55769</code>
+                    <definition>55769</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>56523</code>
+                    <definition>56523</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>71904</code>
+                    <definition>71904</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>90364</code>
+                    <definition>90364</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>91205</code>
+                    <definition>91205</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>91210</code>
+                    <definition>91210</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>91212</code>
+                    <definition>91212</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>91325</code>
+                    <definition>91325</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>91501</code>
+                    <definition>91501</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>91538</code>
+                    <definition>91538</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>91541</code>
+                    <definition>91541</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>91547</code>
+                    <definition>91547</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>91566</code>
+                    <definition>91566</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>91718</code>
+                    <definition>91718</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>94844</code>
+                    <definition>94844</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>6158</code>
+                    <definition>6158</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>7029</code>
+                    <definition>7029</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>37771</code>
+                    <definition>37771</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>37798</code>
+                    <definition>37798</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>50467</code>
+                    <definition>50467</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>57989</code>
+                    <definition>57989</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>59097</code>
+                    <definition>59097</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>59098</code>
+                    <definition>59098</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>59113</code>
+                    <definition>59113</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>74975</code>
+                    <definition>74975</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>85823</code>
+                    <definition>85823</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>88006</code>
+                    <definition>88006</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>88163</code>
+                    <definition>88163</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>88165</code>
+                    <definition>88165</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>93874</code>
+                    <definition>93874</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>94847</code>
+                    <definition>94847</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>95297</code>
+                    <definition>95297</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>95864</code>
+                    <definition>95864</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>95967</code>
+                    <definition>95967</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>101569</code>
+                    <definition>101569</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>107959</code>
+                    <definition>107959</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>108468</code>
+                    <definition>108468</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>111108</code>
+                    <definition>111108</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>111347</code>
+                    <definition>111347</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>111646</code>
+                    <definition>111646</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>114975</code>
+                    <definition>114975</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>115878</code>
+                    <definition>115878</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>118093</code>
+                    <definition>118093</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>59105</code>
+                    <definition>59105</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>997</code>
+                    <definition>997</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>111720</code>
+                    <definition>111720</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>117871</code>
+                    <definition>117871</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>30504</code>
+                    <definition>30504</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>58435</code>
+                    <definition>58435</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>59087</code>
+                    <definition>59087</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>89110</code>
+                    <definition>89110</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>101562</code>
+                    <definition>101562</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>111107</code>
+                    <definition>111107</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>111343</code>
+                    <definition>111343</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>115170</code>
+                    <definition>115170</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>59092</code>
+                    <definition>59092</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>72146</code>
+                    <definition>72146</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>4436</code>
+                    <definition>4436</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>9990</code>
+                    <definition>9990</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>4898</code>
+                    <definition>4898</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>95265</code>
+                    <definition>95265</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>111768</code>
+                    <definition>111768</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>118196</code>
+                    <definition>118196</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>13647</code>
+                    <definition>13647</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>33586</code>
+                    <definition>33586</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>107957</code>
+                    <definition>107957</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>50932</code>
+                    <definition>50932</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>59118</code>
+                    <definition>59118</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>75157</code>
+                    <definition>75157</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>1658</code>
+                    <definition>1658</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>54657</code>
+                    <definition>54657</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>86316</code>
+                    <definition>86316</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>4511</code>
+                    <definition>4511</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>12624</code>
+                    <definition>12624</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>33394</code>
+                    <definition>33394</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>56527</code>
+                    <definition>56527</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>6085</code>
+                    <definition>6085</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>13427</code>
+                    <definition>13427</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>37041</code>
+                    <definition>37041</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>85455</code>
+                    <definition>85455</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>52095</code>
+                    <definition>52095</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>106276</code>
+                    <definition>106276</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>83530</code>
+                    <definition>83530</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>5732</code>
+                    <definition>5732</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>12312</code>
+                    <definition>12312</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>120684</code>
+                    <definition>120684</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>3527</code>
+                    <definition>3527</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>1244</code>
+                    <definition>1244</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>11511</code>
+                    <definition>11511</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>108768</code>
+                    <definition>108768</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>102977</code>
+                    <definition>102977</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>4527</code>
+                    <definition>4527</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>34045</code>
+                    <definition>34045</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>52324</code>
+                    <definition>52324</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>85769</code>
+                    <definition>85769</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>112072</code>
+                    <definition>112072</definition>
+                  </codeDefinition>
+                </enumeratedDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>Source</attributeName>
+          <attributeDefinition>whether the value was determined via the database, a peer-reviewed paper, or calculated by hand using data from a paper</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <enumeratedDomain>
+                  <codeDefinition>
+                    <code>Paper</code>
+                    <definition>scientific paper</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>DB</code>
+                    <definition>database (fishbase.us)</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Calc</code>
+                    <definition>calculated</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Paper (Blackside Darter)</code>
+                    <definition>used values, sourced from a paper, for blackside darter</definition>
+                  </codeDefinition>
+                  <codeDefinition>
+                    <code>Paper (Golden Shiner)</code>
+                    <definition>used values, sourced from a paper, for golden shiner</definition>
+                  </codeDefinition>
+                </enumeratedDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+        </attribute>
+      </attributeList>
+      <numberOfRecords>590</numberOfRecords>
+    </dataTable>
+    <otherEntity>
+      <entityName>RegressionCalc_Data.csv</entityName>
+      <entityDescription>The raw data used to calculate the parameters for fish species not found in the database or literature (the "calc" source in the compiled dataset).</entityDescription>
+      <physical>
+        <objectName>RegressionCalc_Data.csv</objectName>
+        <size unit="bytes">1510</size>
+        <authentication method="MD5">8feefd41333dd191e8f6082be45ac524</authentication>
+        <dataFormat>
+          <externallyDefinedFormat>
+            <formatName>unknown</formatName>
+          </externallyDefinedFormat>
+        </dataFormat>
+      </physical>
+      <entityType>unknown</entityType>
+    </otherEntity>
+    <otherEntity>
+      <entityName>RegressionCalc_Code.R</entityName>
+      <entityDescription>The code used to calculate the parameters for fish species not found in the database or literature (the "calc" source in the compiled dataset).</entityDescription>
+      <physical>
+        <objectName>RegressionCalc_Code.R</objectName>
+        <size unit="bytes">3461</size>
+        <authentication method="MD5">4ca2159131f61de5468b0f8a00c4385b</authentication>
+        <dataFormat>
+          <externallyDefinedFormat>
+            <formatName>unknown</formatName>
+          </externallyDefinedFormat>
+        </dataFormat>
+      </physical>
+      <entityType>unknown</entityType>
+    </otherEntity>
+  </dataset>
+  <additionalMetadata>
+    <metadata>
+      <unitList>
+        <unit id="gramCentimeter" multiplierToSI="100000" name="gramCentimeter" parentSI="kilogramMeter" unitType="weightMass">
+          <description>grams-centimeter</description>
+        </unit>
+      </unitList>
+    </metadata>
+  </additionalMetadata>
+</eml:eml>

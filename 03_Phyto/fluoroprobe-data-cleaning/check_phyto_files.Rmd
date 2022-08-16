@@ -1,0 +1,90 @@
+Check Phyto Data
+~~~~~~~~~~~~~~~~
+
+Edit section below
+---
+Define the File
+---
+```{r}
+# ---
+# EDIT THIS
+# ---
+
+# declare filename for phyto data, grabbed from EMP sharepoint
+fn_phyto <- '20140912 CADWR PHYTOS - OUTPUT (REVISED).xls' # .xlsx/.xls for BSA, .csv for EA
+type <- 'BSA' # BSA or ecoanalysts
+```
+
+For all code below, run but don't edit
+---
+Read In Files
+---
+```{r}
+# read in packages
+library(tidyverse)
+library(lubridate)
+source('functions/phyto_checks_funcs.R')
+
+# read in data
+fp_phyto <- abs_path(fn_phyto, type)
+df_phyto <- read_file(fp_phyto, type)
+```
+
+---
+Check Station Names
+---
+```{r}
+# check station codes in ascending order
+check_codes(df_phyto, type)
+```
+
+---
+Check Dates
+---
+```{r}
+# check year and month
+check_dates(df_phyto, type)
+```
+
+---
+Check Times
+---
+```{r}
+check_times(df_phyto, type)
+```
+
+
+---
+Check Phyto Counts
+---
+```{r}
+# check counts of natural units & number of cells (BSA) or unit abund & cells/unit
+check_counts(df_phyto, type)
+```
+
+---
+Check Names
+---
+```{r}
+# check if taxon and genus/species match, ignoring cf. (BSA) or (single cell) & () (EA)
+check_taxa(df_phyto, type)
+```
+
+
+```{r}
+# check genus
+check_genus(df_phyto, type)
+```
+
+```{r}
+# check species
+check_species(df_phyto, type)
+```
+
+---
+Check Shape
+---
+```{r}
+check_shape(df_phyto, type)
+```
+

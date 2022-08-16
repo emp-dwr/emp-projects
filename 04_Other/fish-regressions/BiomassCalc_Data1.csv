@@ -1,0 +1,38 @@
+﻿SpeciesCode,CommonName,SciName,Length_cm,Weight_g,Sex,LengthType,n,Country,Locality,Ref
+AMS,American Shad,Alosa sapidissima,45.2,1580,unsexed,FL,31,Canada,St John Harbor,"Carscadden and Leggett, 1974"
+AMS,American Shad,Alosa sapidissima,45.7,1647,unsexed,FL,51,Canada,St John Harbor,"Carscadden and Leggett, 1974"
+AMS,American Shad,Alosa sapidissima,47.6,1949,unsexed,FL,52,Canada,St John Harbor,"Carscadden and Leggett, 1974"
+AMS,American Shad,Alosa sapidissima,48,1965,unsexed,FL,34,Canada,St John Harbor,"Carscadden and Leggett, 1974"
+AMS,American Shad,Alosa sapidissima,44.6,1399,unsexed,FL,59,Canada,St John Harbor,"Carscadden and Leggett, 1974"
+AMS,American Shad,Alosa sapidissima,45.3,1437,unsexed,FL,126,Canada,St John Harbor,"Carscadden and Leggett, 1974"
+AMS,American Shad,Alosa sapidissima,46.9,1604,unsexed,FL,167,Canada,St John Harbor,"Carscadden and Leggett, 1974"
+AMS,American Shad,Alosa sapidissima,48.7,1821,unsexed,FL,90,Canada,St John Harbor,"Carscadden and Leggett, 1974"
+CHN,Chinook Salmon,Oncorhynchus tshawytscha,6.72,4.4,unsexed,FL,423,USA,Snake River Plain,Lamb et al. 2018
+CHN,Chinook Salmon,Oncorhynchus tshawytscha,6.32,3.7,unsexed,FL,1410,USA,Snake River Plain,Lamb et al. 2018
+CHN,Chinook Salmon,Oncorhynchus tshawytscha,6.82,4.1,unsexed,FL,1041,USA,Snake River Plain,Lamb et al. 2018
+CHN,Chinook Salmon,Oncorhynchus tshawytscha,7.45,5.9,unsexed,FL,334,USA,Snake River Plain,Lamb et al. 2018
+CHN,Chinook Salmon,Oncorhynchus tshawytscha,6.76,4.2,unsexed,FL,490,USA,Snake River Plain,Lamb et al. 2018
+CHN,Chinook Salmon,Oncorhynchus tshawytscha,6.51,3,unsexed,FL,1098,USA,Snake River Plain,Lamb et al. 2018
+CHN,Chinook Salmon,Oncorhynchus tshawytscha,6.68,3.9,unsexed,FL,639,USA,Snake River Plain,Lamb et al. 2018
+CHN,Chinook Salmon,Oncorhynchus tshawytscha,6.55,3.5,unsexed,FL,593,USA,Snake River Plain,Lamb et al. 2018
+CHN,Chinook Salmon,Oncorhynchus tshawytscha,7.32,5.1,unsexed,FL,764,USA,Snake River Plain,Lamb et al. 2018
+CHN,Chinook Salmon,Oncorhynchus tshawytscha,8.33,7.8,unsexed,FL,114,USA,Snake River Plain,Lamb et al. 2018
+HCH,Sacramento Hitch,Lavinia exilicauda exilicauda,21,140,unsexed,FL,1,USA,Mokelumne River,Jeffres et al. 2006
+HCH,Sacramento Hitch,Lavinia exilicauda exilicauda,20.5,145,unsexed,FL,1,USA,Mokelumne River,Jeffres et al. 2006
+HCH,Sacramento Hitch,Lavinia exilicauda exilicauda,22.3,160,unsexed,FL,1,USA,Mokelumne River,Jeffres et al. 2006
+HCH,Sacramento Hitch,Lavinia exilicauda exilicauda,16.8,80,unsexed,FL,1,USA,Mokelumne River,Jeffres et al. 2006
+HCH,Sacramento Hitch,Lavinia exilicauda exilicauda,17.9,85,unsexed,FL,1,USA,Mokelumne River,Jeffres et al. 2006
+HCH,Sacramento Hitch,Lavinia exilicauda exilicauda,16.8,75,unsexed,FL,1,USA,Mokelumne River,Jeffres et al. 2006
+MSS,Inland Mississippi Silverside,Menidia beryllina subspecies,0.6345,0.00016,unsexed,SL,22,USA,Pettaquamscutt River,"Letcher and Bengtson, 1993"
+MSS,Inland Mississippi Silverside,Menidia beryllina subspecies,0.8596,0.000596,unsexed,SL,9,USA,Pettaquamscutt River,"Letcher and Bengtson, 1993"
+MSS,Inland Mississippi Silverside,Menidia beryllina subspecies,0.9615,0.001098,unsexed,SL,10,USA,Pettaquamscutt River,"Letcher and Bengtson, 1993"
+MSS,Inland Mississippi Silverside,Menidia beryllina subspecies,1,0.00163,unsexed,SL,10,USA,Pettaquamscutt River,"Letcher and Bengtson, 1993"
+MSS,Inland Mississippi Silverside,Menidia beryllina subspecies,1.0499,0.001585,unsexed,SL,10,USA,Pettaquamscutt River,"Letcher and Bengtson, 1993"
+MSS,Inland Mississippi Silverside,Menidia beryllina subspecies,1.2488,0.003542,unsexed,SL,10,USA,Pettaquamscutt River,"Letcher and Bengtson, 1993"
+MSS,Inland Mississippi Silverside,Menidia beryllina subspecies,1.297,0.004066,unsexed,SL,10,USA,Pettaquamscutt River,"Letcher and Bengtson, 1993"
+SASU,Sacramento Sucker,Catostomus occidentalis occidentalis,49.5,1700,unsexed,FL,1,USA,Mokelumne River,Jeffres et al. 2006
+SASU,Sacramento Sucker,Catostomus occidentalis occidentalis,47.5,1450,unsexed,FL,1,USA,Mokelumne River,Jeffres et al. 2006
+SASU,Sacramento Sucker,Catostomus occidentalis occidentalis,27.8,300,unsexed,FL,1,USA,Mokelumne River,Jeffres et al. 2006
+SASU,Sacramento Sucker,Catostomus occidentalis occidentalis,37.1,750,unsexed,FL,1,USA,Mokelumne River,Jeffres et al. 2006
+SASU,Sacramento Sucker,Catostomus occidentalis occidentalis,41,800,unsexed,FL,1,USA,Mokelumne River,Jeffres et al. 2006
+SASU,Sacramento Sucker,Catostomus occidentalis occidentalis,45.5,1000,unsexed,FL,1,USA,Mokelumne River,Jeffres et al. 2006

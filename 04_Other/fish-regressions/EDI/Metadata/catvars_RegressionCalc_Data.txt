@@ -1,0 +1,6 @@
+attributeName	code	definition
+Gender	unsexed	unsexed
+LengthType	FL	FL
+Country	USA	USA
+Locality	Mokelumne River	Mokelumne River
+Ref	Jeffres et al. 2006	Jeffres et al. 2006

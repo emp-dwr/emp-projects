@@ -1,0 +1,15 @@
+attributeName	attributeDefinition	class	unit	dateTimeFormatString	missingValueCode	missingValueCodeExplanation
+SpeciesCode		character				
+CommonName		character				
+SciName		character				
+a_cm_g		numeric	!Add units here!			
+b		numeric	!Add units here!			
+SD_log10_a		numeric	!Add units here!			
+SD_b		numeric	!Add units here!			
+SD_log10_W		numeric	!Add units here!			
+n_Studies		numeric	!Add units here!			
+n_Fish		character				
+LengthType		categorical				
+Gender		categorical				
+Country		character				
+Source		categorical				
