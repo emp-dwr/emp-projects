@@ -22,7 +22,7 @@ library(deltamapr)
 library(readxl)
 library(sf)
 library(sp)
-source('functions/region_assign_funcs.R')
+source('03_Phtyo/fluoroprobe-data-cleaning/functions/region_assign_funcs.R')
 
 # read in data
 year <- str_extract(fn_fl, '\\d{4}')
