@@ -131,7 +131,7 @@ ggplot() +
 
 # clean up regions in final df
 df_final <- as_tibble(sf_wq)
-df_regions <- read_csv('supp_files/regions_fluoro.csv')
+df_regions <- read_csv('03_Phyto/fluoroprobe-data-cleaning/supp_files/regions_fluoro.csv')
 df_final <- left_join(df_final, df_regions, 'SubRegion')
 
 df_final <- df_final %>%
