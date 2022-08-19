@@ -100,7 +100,7 @@ df_comb <- df_comb %>% filter(!is.na(Longitude) | !is.na(Latitude))
 df_comb$Label <- paste(df_comb$Month, df_comb$Year, run_name, row_number(df_comb$Month))
 df_comb <- df_comb %>% relocate(Label)
 
-#import delta sf
+# import delta sf
 sf_delta <- R_EDSM_Subregions_Mahardja
 
 # convert wq to spdf
