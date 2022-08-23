@@ -33,6 +33,6 @@ map
 ```
 
 ```{r}
-ggsave('03_Phyto/fluoroprobe-data-cleaning/fluoro_region_map.jpg', plot = map)
+ggsave('03_Phyto/fluoroprobe-data-cleaning/fluoro_region_map.png', plot = map, width = 7, height = 4.2)
 ```
 
