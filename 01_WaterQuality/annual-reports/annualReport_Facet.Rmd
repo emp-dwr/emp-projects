@@ -66,6 +66,17 @@ df_wq <- df_wq %>%
 
 df_wq <- subset(df_wq, !is.na(Region))
 df_wq$Val <- as.numeric(df_wq$Val)
+
+# !fill in date NAs!
+# generate all combinations of year/group
+d <- expand.grid(min(df_wq$Monyear):max(df_wq$Monyear), unique(df_wq$FullGroup))
+
+# fill NA if combination is missing
+d$val <- apply(d, 1, 
+               function(x) if (nrow(subset(data, year == x[1] & group == x[2]))) 0 else NA)
+# modify the original dataset
+names(d) <- c("year", "group", "value")
+data <- rbind(data, d[is.na(d$val), ])
 ```
 
 ```{r}
