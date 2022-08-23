@@ -1,29 +1,38 @@
 ```{r}
 library(tidyverse)
 library(deltamapr)
+library(sf)
+library(sp)
 source('03_Phyto/fluoroprobe-data-cleaning/functions/region_assign_funcs.R')
 ```
 
 ```{r}
 #import delta sf
 sf_delta <- R_EDSM_Subregions_Mahardja
-sf_channels <- WW_Delta
+# sf_channels <- WW_Delta
 df_regions <- read_csv('03_Phyto/fluoroprobe-data-cleaning/supp_files/regions_fluoro.csv')
 sf_final <- left_join(sf_delta, df_regions, 'SubRegion', suffix = c('_orig', '_EMP')) %>%
   subset(Region_EMP %in% c('Cache Slough Complex', 'Confluence','Eastern Delta','Grizzly Bay','Sac River','San Pablo Bay','Southern Delta','Suisun Bay','Western Delta'))
+sf_final <- st_transform(sf_final, crs = 4326)
+sf_delta <- st_transform(sf_delta, crs = 4326)
 
-test <- rbin
+cb_palette <- c('#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00','#ffff33','#a65628','#f781bf','#999999')
 
-ggplot() +
+map <- ggplot() +
   geom_sf(data = sf_final, aes(fill = Region_EMP, color = Region_EMP)) +
   geom_sf(data = sf_channels, fill = NA) +
-#  ylim(37.75, 38.65) +
+  ylim(37.75, 38.61) +
+  xlim(122.6, 121.25) +
+#  scale_fill_manual(values=cb_palette) +
+#  scale_color_manual(values=cb_palette) +
 #  geom_sf_text(aes(label = Region_EMP, color = Region_EMP)) +
+  labs(color = 'Region', fill='Region') +
   theme_bw()
+
+map
 ```
+
 ```{r}
-# set axes
-ggplot(data = sf_channels) +
-  geom_sf()
+ggsave('03_Phyto/fluoroprobe-data-cleaning/fluoro_region_map.jpg', plot = map)
 ```
 
