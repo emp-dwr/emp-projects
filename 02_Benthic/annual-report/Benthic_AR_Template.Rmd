@@ -7,7 +7,7 @@
 
 ```{r Variables to Edit}
 # csv containing raw data
-fp_benthic <- '02_Benthic/annual-report/Data/2021 benthic annual report data.Csv'
+fp_benthic <- '02_Benthic/annual-report/Data/2021 benthic annual report data.csv'
 ```
 
 ```{r Load Packages warning=FALSE, message=FALSE}
