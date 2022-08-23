@@ -3,6 +3,9 @@
 [DO-Daily](../01_WaterQuality/DO-daily): daily DO calculation. most recent file is hosted on shared drive under "code"
 - *lead: Juliana Manning*
 
+[annual-reports](../01_WaterQuality/annual-reports): code to generate annual report graphs. will eventually be in emp-reports repo
+- *lead: Sarah Perry*
+
 ## **Completed**
 [carquinez-station-comparison](../01_WaterQuality/carquinez-station-comparison): comparison of stations within the Carquinez Straight
 - *leads: Juliana Manning, Jenna Rinde*
