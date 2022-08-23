@@ -27,8 +27,8 @@ censtats <- function(object){
     return(c(n, cen, median, mean, sd))
   }
   ret = NULL
-  tag = c("n", "n.cen", "median", "mean", 
-          "sd")
+  tag = c('n', 'n.cen', 'median', 'mean', 
+          'sd')
   if (is.null(s$strata)) {
     ret = summaryVec(x)
     names(ret) = tag

@@ -21,7 +21,7 @@ source('01_WaterQuality/annual-reports/annualReport_funcs.R')
 ```
 
 ```{r message=FALSE}
-# # import data (revision 7 = 2021)
+# import data (revision 7 = 2021)
 fp_wq <- download.file('https://portal.edirepository.org/nis/dataviewer?packageid=edi.458.7&entityid=dfeaee030be901ae00b8c0449ea39e9c',
               file.path(tempdir(), 'SACSJ_delta_water_quality_1975_2021.csv'), mode='wb')
 
@@ -55,6 +55,7 @@ df_wq <- df_wq %>%
   mutate(TurbiditySurface_Sign = '=',
          SpCndSurface_Sign = '=')
 
+
 # df_wq <- subset(df_wq, Year %in% c(year-1,year),  select = c('Station','Monyear','Region','FullGroup','SpCndSurface_sign','SpCndSurface_val','TurbiditySurface_sign','TurbiditySurface_val','Chla_sign','Chla_val','DissAmmonia_sign','DissAmmonia_val','DissNitrateNitrite_sign','DissNitrateNitrite_val','TotPhos_sign','TotPhos_val'))
 
 df_wq <- subset(df_wq, Year %in% c(year-1,year),  select = c('Station','Monyear','Region','FullGroup','SpCndSurface_Sign','SpCndSurface_Val','TurbiditySurface_Sign','TurbiditySurface_Val','Chla_Sign','Chla_Val','DissAmmonia_Sign','DissAmmonia_Val','DissNitrateNitrite_Sign','DissNitrateNitrite_Val','TotPhos_Sign','TotPhos_Val'))
@@ -67,16 +68,10 @@ df_wq <- df_wq %>%
 df_wq <- subset(df_wq, !is.na(Region))
 df_wq$Val <- as.numeric(df_wq$Val)
 
-# !fill in date NAs!
-# generate all combinations of year/group
-d <- expand.grid(min(df_wq$Monyear):max(df_wq$Monyear), unique(df_wq$FullGroup))
-
-# fill NA if combination is missing
-d$val <- apply(d, 1, 
-               function(x) if (nrow(subset(data, year == x[1] & group == x[2]))) 0 else NA)
-# modify the original dataset
-names(d) <- c("year", "group", "value")
-data <- rbind(data, d[is.na(d$val), ])
+# fill NAs - just do in Python later
+# ts <- seq.Date(as.Date(paste0(year-1,'-01-01')), as.Date(paste0(year,'-12-31')), by='month')
+# df_dates <- data.frame(Monyear = ts)
+# df_wq <- full_join(df_dates, df_wq)
 ```
 
 ```{r}
