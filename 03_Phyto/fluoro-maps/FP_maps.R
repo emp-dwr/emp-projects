@@ -1,12 +1,19 @@
 ## Cleaning and joining FluoroProbe and MOPED data, then generating a map
-## 7/20/22 TMF
+## 
+## 8/25/22 TMF
 
 library("tidyverse");packageVersion("tidyverse")
 library("lubridate");packageVersion("lubridate")
+library("deltamapr");packageVersion("deltamapr")
+library("sf");packageVersion("sf")
+library("ggrepel");packageVersion("ggrepel")
+library("maps");packageVersion("maps")
 library("janitor");packageVersion("janitor")
+
 
 # Set working directory
 setwd("./03_Phyto/fluoro-maps")
+getwd()
 
 # Clean workspace
 rm(list=ls()) 
@@ -23,7 +30,6 @@ col_names <- names(read_tsv(FP_data, n_max = 0))
 df_FP <- read_tsv(FP_data, skip = 2, col_names = col_names)
 ## Read in MOPED data
 df_MOPED <-  read_csv(MOPED_data, skip = 2)
-
 
 ## Remove unnecessary columns
 df_FP[6:9] <- NULL
@@ -66,14 +72,14 @@ df_MOPED$DateTime <- mdy_hm(df_MOPED$DateTime,
 ## Average data to same time interval as FluoroProbe data
 df_MOPED_data <- df_MOPED %>%
   subset(select = c(DateTime, Value, Header)) %>%
-  mutate(DateTime = round_date(DateTime, unit='1 minute')) %>%
+  mutate(DateTime = round_date(DateTime, unit = time_unit)) %>%
   group_by(Header, DateTime) %>%
   summarize_all(~mean(., na.rm = TRUE)) 
 
 ## Average data to same time interval as FluoroProbe data
 df_MOPED_GPS <- df_MOPED %>%
   subset(select = c(DateTime, Latitude, Longitude)) %>%
-  mutate(DateTime = round_date(DateTime, unit='1 minute')) %>%
+  mutate(DateTime = round_date(DateTime, unit = time_unit)) %>%
   group_by(DateTime) %>%
   summarize_all(~mean(., na.rm = TRUE))
 
@@ -82,10 +88,71 @@ df_MOPED_l <- left_join(df_MOPED_GPS, df_MOPED_data)
 df_MOPED_w <- pivot_wider(df_MOPED_l, names_from = Header, values_from = Value)
 
 ## Combine MOPED and FluoroProbe data
-df_EMP_data <- left_join(df_MOPED_w, df_FP)
+df_FP <- left_join(df_MOPED_w, df_FP)
 
 ## Filter out data rows with no FP data
-df_EMP_data_FP <- df_EMP_data %>% drop_na()
+df_FP <- df_FP %>% drop_na()
+
+#df_FP <- df_FP %>% filter(Longitude > 1)
+
+df_FP$Longitude <- df_FP$Longitude
+
+df_FP.l <- pivot_longer(df_FP, cols = 12:16,
+                        names_to = "Group",
+                        values_to = "Conc")
+
+## Pull data to plot cities alongside data
+CA <- map_data("world") %>% filter(subregion=="California")
+cities <- world.cities %>% filter(country.etc=="USA")
+cities$long <- cities$long
+
+## Plot maps of FluoroProbe data
+groups <- unique(df_FP.l$Group) 
+
+for (group in groups) {
+  df_temp <- df_FP.l %>%
+    filter(Group == group)
+  
+  plot <- ggplot(WW_Delta) + 
+    geom_sf(fill = "lightblue") + 
+    geom_point(data = df_temp,
+               aes(x = Longitude,
+                   y = Latitude,
+                   fill = Conc,
+                   size = 1),
+               pch = 21,
+               color = "black") +
+    scale_fill_continuous(type = "viridis", 
+                          limits = c(0,80)) +
+    geom_point(data = cities %>% arrange(pop) %>% tail(500),
+               aes(x = long,
+                   y = lat)) +
+    geom_text_repel(data = cities %>% arrange(pop) %>% tail(500), 
+                    aes(x = long,
+                        y = lat, 
+                        label = name)) +
+    #scale_y_continuous() +
+    ylim(38, 38.2) +
+    xlim(-122.5, -122.2) +
+    theme_bw()
+  
+  plot + labs(x = "Longitude",
+              y = "Latitude",
+              fill = "Fluorescence (ug/L)",
+              title = paste0("San Pablo Bay Phytoplankton, August 23, 2022 - ", group)) +
+    guides(size = "none")
+  
+  
+  ggsave(path="plots",
+         filename = paste0("FP.map.Aug.2022.",group,".png"), 
+         device = "png",
+         scale=1.0, 
+         units="in",
+         height=6.5,
+         width=9, 
+         dpi="print")
+  
+}
 
 
 
