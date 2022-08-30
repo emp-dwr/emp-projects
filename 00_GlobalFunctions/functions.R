@@ -23,7 +23,7 @@ import_emp_data <- function(version = 'newest', show_version = FALSE, show_col_t
 }
 
 # import EMP data from EDI
-import_emp_stations <- function(version = 'newest', show_version = FALSE, show_col_types = FALSE, col_types = NULL, active_only = FALSE){
+import_emp_stations <- function(version = 'newest', show_version = FALSE, show_col_types = FALSE, col_types = NULL, active_only = FALSE, ez_stations = FALSE){
   if (version != 'newest'){
     url_emp <- paste0('https://portal.edirepository.org/nis/dataviewer?packageid=edi.458.',as.character(version),'&entityid=ecf241d54a8335a49f8dfc8813d75609')
   } else{
@@ -48,6 +48,10 @@ import_emp_stations <- function(version = 'newest', show_version = FALSE, show_c
   # subset active
   if (active_only){
     df_stations <- df_stations[df_stations$Status == 'Active',]
+  }
+  
+  if (!ez_stations){
+    df_stations <- df_stations[!grepl('EZ', df_stations$Station),]
   }
   
   return(df_stations)
