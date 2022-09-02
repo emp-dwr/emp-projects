@@ -7,7 +7,7 @@
 
 ```{r Variables to Edit}
 # csv containing raw data
-fp_benthic <- '02_Benthic/annual-report/Data/2021 benthic annual report data.csv'
+fp_benthic <- '02_Benthic/annual-report/Data/2021 benthic annual report data_20220820.xlsx'
 ```
 
 ```{r Load Packages warning=FALSE, message=FALSE}
@@ -51,17 +51,16 @@ blank_theme <- function(){
 
 ```{r Import and Clean Data}
 # read in data
-df_benthic <- read_csv(fp_benthic, show_col_types = FALSE)
+wkbk_raw <- read_excel(fp_benthic)
 
 # create workbook for new data
 wkbk_export <- createWorkbook()
 
 # append raw data to new xlsx
-# add_sheet(wkbk_export, df_benthic, getSheetNames(wkbk_raw))
+add_sheet(wkbk_export, wkbk_raw, getSheetNames(wkbk_raw))
 
-# convert date column, rename
-df_benthic <- df_benthic %>% rename(Date = SampleDate)
-df_benthic$Date <- as.Date(df_benthic$Date, format = '%m/%d/%Y')
+# add date col
+df_benthic$Date <- as.yearmon(paste(df_benthic$Month, df_benthic$Year))
 
 # remove dashes in station names
 df_benthic$StationCode <- unlist(lapply(df_benthic$StationCode, function(x) str_split(x, '-')[[1]][1]))
