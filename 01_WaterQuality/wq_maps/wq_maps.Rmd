@@ -1,0 +1,42 @@
+```{r setup, include=FALSE, cache=FALSE}
+knitr::opts_knit$set(root.dir = './01_WaterQuality/wq_maps')
+
+library(tidyverse)
+source('../../00_GlobalFunctions/functions.R')
+
+# import data
+df_stations <- import_emp_stations(active_only = TRUE)
+```
+
+```{r}
+# sampling days
+df_stations <- df_stations %>%
+  mutate(
+    Region = case_when(
+      Station %in% c('D41A','D41','NZ325','NZ002','NZ004') ~ 'San Pablo Bay',
+      Station %in% c('D10','D8','D6') ~ 'Suisun Bay',
+      Station %in% c('D7','NZS42','NZ032') ~ 'Grizzly Bay',
+      Station %in% c('D4','D22','NZ068') ~ 'Sacramento River',
+      Station %in% c('NZ068','C3A') ~ 'Northern Interior Delta',
+      Station %in% c('D19','D12','D28A') ~ 'Mid Delta Day 1',
+      Station %in% c('D16','D26','P8','MD10A') ~ 'Mid Delta Day 2',
+      TRUE ~ 'Van Run')
+  )
+
+
+```
+
+```{r}
+# regions
+df_stations <- df_stations %>%
+  mutate(
+    Region = case_when(
+      Station %in% c('D41A','D41','NZ325','NZ002','NZ004','D6') ~ 'San Pablo Bay',
+      Station %in% c('NZS42','NZ032','D7','D8') ~ 'Suisun & Grizzly Bays',
+      Station %in% c('D10','D4','D12','D22') ~ 'Confluence',
+      Station %in% c('NZ068','C3A') ~ 'Northern Interior Delta',
+      Station %in% c('D16','D19','D26','D28A') ~ 'Central Delta',
+      Station %in% c('C9','P8','MD10A','C10A') ~ 'Southern Interior Delta')
+    )
+```
+

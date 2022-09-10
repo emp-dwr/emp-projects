@@ -5,9 +5,13 @@
 # Contact: sarah.perry@water.ca.gov
 ```
 
+```{r setup, include=FALSE, cache=FALSE}
+knitr::opts_knit$set(root.dir = './02_Benthic/annual-report/')
+```
+
 ```{r Variables to Edit}
 # workbook
-wkbk_raw <- 'Benthic/2021 benthic annual report data.xlsx'
+wkbk_raw <- 'Data/2021 benthic annual report data.csv'
 ```
 
 ```{r Load Packages warning=FALSE, message=FALSE}
@@ -51,16 +55,18 @@ blank_theme <- function(){
 
 ```{r Import and Clean Data}
 # read in data
-df_benthic <- read.xlsx(wkbk_raw)
+df_benthic <- read_csv(wkbk_raw)
 
 # create workbook for new data
 wkbk_export <- createWorkbook()
 
 # append raw data to new xlsx
-add_sheet(wkbk_export, df_benthic, getSheetNames(wkbk_raw))
+# add_sheet(wkbk_export, df_benthic, getSheetNames(wkbk_raw))
 
 # add date col
-df_benthic$Date <- as.yearmon(paste(df_benthic$Month, df_benthic$Year))
+# df_benthic$Date <- as.yearmon(paste(df_benthic$Month, df_benthic$Year))
+df_benthic <- df_benthic %>% rename(Date = SampleDate)
+df_benthic$Date <- as.Date(df_benthic$Date, format = '%m/%d/%Y')
 
 # remove dashes in station names
 df_benthic$StationCode <- unlist(lapply(df_benthic$StationCode, function(x) str_split(x, '-')[[1]][1]))
@@ -92,13 +98,13 @@ for (dir in dir_list){
 # ---  Calculate Monthly/Yearly Totals ---
 # create df of totals by month/year
 df_month_sums <- df_benthic %>%
-  separate(Date, c('Month', 'Year'), ' ') %>%
+  # separate(Date, c('Month', 'Year'), ' ') #%>% # column already made
   group_by(Month, Year, StationCode) %>%
-  mutate(Grab_Count = max(Grab)) %>%
+  mutate(Grab_Count = length(unique(Grab))) %>%
   ungroup() %>%
-  distinct(Month, Year, StationCode, Grab_Count) %>% 
+  distinct(Month, Year, StationCode, Grab_Count, .keep_all = TRUE) %>% 
   group_by(Month, Year) %>%
-  summarise(Grab_Count = sum(Grab_Count))
+  mutate(Grab_Count = sum(Grab_Count), Station_Count = length(unique((StationCode)))) %>%
   ungroup %>%
   group_by(.dots = c(classif, 'Month', 'Year', 'Grab_Count', 'Station_Count')) %>%
   summarize(
@@ -106,15 +112,15 @@ df_month_sums <- df_benthic %>%
     ) %>%
   ungroup()
 
-df_month_sums$Date <- with(df_month_sums, paste(Month, Year))
+df_month_sums$Date <- with(df_month_sums, paste(Month, Year)) # explore adding in day as well
 
-# get grab variable
+# get grab variable (TODO: maybe make more understandable)
 df_grab_vari <- df_month_sums[!duplicated(df_month_sums$Date),]
 
 df_grab_vari <- df_grab_vari %>%
   group_by(Year) %>%
   summarize(Grab_Count = sum(Grab_Count)) 
-# test test
+
 # create df of totals by year
 df_year_sums <- df_month_sums %>%
   group_by(.dots = c(classif, 'Year')) %>%
@@ -124,18 +130,20 @@ df_year_sums <- df_month_sums %>%
 df_year_sums <-  merge(df_year_sums, df_grab_vari, by = 'Year', all.x=FALSE, all.y=FALSE)
 
 df_month_CPUE <- df_month_sums %>%
+  group_by(.dots = c(classif, 'Month', 'Year')) %>% # TODO: redundant, check after confirming right
   mutate(CPUE_Total = Orgs_Total/Grab_Count/0.052) %>%
-  group_by(.dots = c(classif, 'Month', 'Year'))
+  ungroup()
 
 df_year_CPUE <- df_year_sums %>%
+  group_by(.dots = c(classif, 'Year')) %>%
   mutate(CPUE_Total = Orgs_Total/Grab_Count/0.052) %>%
-  group_by(.dots = c(classif, 'Year'))
+  ungroup()
 
 # merge dfs
 df_year <- merge(df_year_sums, df_year_CPUE, all = TRUE)
 df_month <- merge(df_month_CPUE, df_month_sums,  all = TRUE)
 
-df_year <- df_year[!df_year$Phylum == 'n/a',]
+df_year <- df_year[!df_year$Phylum == 'n/a',] # TODO: need to fix in future versions of csv
 df_month <- df_month[!df_month$Phylum == 'n/a',]
 
 # remove extra cols
@@ -151,30 +159,39 @@ add_sheet(wkbk_export, df_month, 'Monthly Totals (All)')
 # add a name col to year
 df_year$Name <- with(df_year, paste(Phylum, Genus, Species))
 
-# subset top 10 species by average CPUE
-df_year_top <- df_year %>%
-  group_by(Name) %>%
-  mutate(Mean = mean(CPUE_Total)) %>%
-  arrange(desc(Mean)) %>%
-  ungroup()
+# subset top 10 (B: 15) species by average CPUE
 
-df_year_top <- df_year_top[df_year_top$Mean %in% unique(df_year_top$Mean)[1:10],]
+# TODO
+# sum by year
+# sum by all -- subset out top 15
+# graph
+
+
+df_year_top <- df_year %>%
+  subset(Year >= report_year - 5) %>%
+  group_by(Name) %>%
+  mutate(Total_Mean = sum(CPUE_Total)) %>%
+  arrange(desc(Total_Mean)) %>%
+  ungroup()
+  
+
+df_year_top <- df_year_top[df_year_top$Total_Mean %in% unique(df_year_top$Total_Mean)[1:10],]
 
 # complete cases
-suppressWarnings(df_year_top <- df_year_top %>% complete(Year, nesting(Name, Mean)))
+suppressWarnings(df_year_top <- df_year_top %>% complete(Year, nesting(Name, Total_Mean)))
 df_year_top$CPUE_Total[is.na(df_year_top$CPUE_Total)] = 0
-df_year_top$Mean[is.na(df_year_top$Mean)] = 0
+df_year_top$Total_Mean[is.na(df_year_top$Total_Mean)] = 0
 
-# trick R cause it's dumb
-df_year_top$Name2 <- df_year_top$Name
-df_year_top$Year2 <- df_year_top$Year
-df_year_top <- subset(df_year_top, select = -c(Name, Year))
-df_year_top$Year <- df_year_top$Year2
-df_year_top$Name <- df_year_top$Name2
-df_year_top <- subset(df_year_top, select = -c(Year2, Name2))
+# # trick R cause it's dumb
+# df_year_top$Name2 <- df_year_top$Name
+# df_year_top$Year2 <- df_year_top$Year
+# df_year_top <- subset(df_year_top, select = -c(Name, Year))
+# df_year_top$Year <- df_year_top$Year2
+# df_year_top$Name <- df_year_top$Name2
+# df_year_top <- subset(df_year_top, select = -c(Year2, Name2))
 
 # re-order
-df_year_top$Name <- with(df_year_top, reorder(Name, Mean))
+df_year_top$Name <- with(df_year_top, reorder(Name, Total_Mean))
 
 # plot
 colorCount = length(unique(df_year_top$Name))
@@ -192,6 +209,8 @@ ggsave(paste0(years_ts_dir,'/CPUE_all.png'), plot = plt, width = 8, height = 4)
 
 rm(df_year_top)
 # TODO: look into .dots
+
+plt
 ```
 
 
