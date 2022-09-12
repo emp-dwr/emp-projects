@@ -104,7 +104,7 @@ sf_delta <- R_EDSM_Subregions_Mahardja
 
 # convert wq to spdf
 coords <- df_all[,c('Longitude', 'Latitude')]
-data   <- subset(df_all, select = -c(Latitude, Longitude))
+data   <- subset(df_all)#, select = -c(Latitude, Longitude))
 crs    <- CRS('+init=epsg:4326 +proj=longlat')
 spdf_wq <- SpatialPointsDataFrame(coords = coords,
                                   data = data, 
@@ -133,5 +133,25 @@ df_final <- as_tibble(sf_wq)
 df_regions <- read_csv('supp_files/regions_fluoro.csv')
 df_final <- left_join(df_final, df_regions, 'SubRegion')
 
-df_final <- df_final %>%
+## Add column for year and month for highlighting data
+df_final <- df_final %>% 
+  mutate(Year = year(df_final$DateTime)) %>%
+  mutate(Month = month(df_final$DateTime, label = T))
+
+## Order month in calendar order rather than (default) alphabetical
+df_final$Month = factor(df_final$Month, levels = month.abb)
+
+## Reorder date/time columns
+df_final <- df_final %>% 
+  relocate(Year, .after = DateTime) %>% 
+  relocate(Month, .after = DateTime)  %>%
+  relocate(Region, .after = Longitude) %>%
   subset(select = -c(geometry, SubRegion))
+
+# Save CSV to share
+write.csv(df_final, file = "data_request_output/FP_data_for_USBR.csv")
+save(df_final, file = "data_request_output/FP_data_for_USBR.RData")
+
+sum(is.na(df_final$GreenAlgae.ug.L))
+
+table(df_final$Month)
