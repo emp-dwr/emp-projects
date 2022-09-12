@@ -3,6 +3,9 @@
 library("tidyverse");packageVersion("tidyverse")
 library("lubridate");packageVersion("lubridate")
 library("janitor");packageVersion("janitor")
+library(deltamapr)
+library(sf)
+library(sp)
 
 # Set working directory
 setwd("./03_Phyto/fluoroprobe-data-cleaning")
@@ -93,3 +96,42 @@ df_MOPED_w <- pivot_wider(df_MOPED_l, names_from = Header, values_from = Value)
 ## Combine MOPED and FluoroProbe data
 df_all <- left_join(df_MOPED_w, df_FP)
 
+#################################
+######## Assign Regions #########
+#################################
+# import delta sf
+sf_delta <- R_EDSM_Subregions_Mahardja
+
+# convert wq to spdf
+coords <- df_all[,c('Longitude', 'Latitude')]
+data   <- subset(df_all, select = -c(Latitude, Longitude))
+crs    <- CRS('+init=epsg:4326 +proj=longlat')
+spdf_wq <- SpatialPointsDataFrame(coords = coords,
+                                  data = data, 
+                                  proj4string = crs)
+
+# convert delta to spdf
+spdf_delta <- as(sf_delta, 'Spatial')
+spdf_delta <- spTransform(spdf_delta, CRS('+init=epsg:4326 +proj=longlat'))
+
+# add subregion to df
+col_sr <- sp::over(spdf_wq, spdf_delta[,'SubRegion'])
+spdf_wq$SubRegion <- col_sr$SubRegion
+
+# convert to shapefile
+sf_wq <- st_as_sf(spdf_wq)
+sf_wq <- st_transform(sf_wq, st_crs = sf_delta)
+sf_wq <- sf_wq %>% filter(!is.na(SubRegion))
+
+# check data
+ggplot() +
+  geom_sf(data = sf_delta) +
+  geom_sf(data = sf_wq, color = 'red')
+
+# clean up regions in final df
+df_final <- as_tibble(sf_wq)
+df_regions <- read_csv('supp_files/regions_fluoro.csv')
+df_final <- left_join(df_final, df_regions, 'SubRegion')
+
+df_final <- df_final %>%
+  subset(select = -c(geometry, SubRegion))
