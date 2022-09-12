@@ -1,0 +1,73 @@
+Analyte,Region,Year,Median,Max,Min,RL_Min
+Chla,Central Delta,2020,2.09,8.5,1.01,FALSE
+Chla,Central Delta,2021,2.1399999999999997,15.5,0.5,TRUE
+Chla,Confluence,2020,2.12,5.27,0.5,TRUE
+Chla,Confluence,2021,2.2649999999999997,12.07,0.53,FALSE
+Chla,Northern Interior Delta,2020,1.18,2.78,0.53,FALSE
+Chla,Northern Interior Delta,2021,1.08,5.12,0.5,TRUE
+Chla,San Pablo Bay,2020,1.7,8.93,0.5,TRUE
+Chla,San Pablo Bay,2021,2.97,13,0.73,FALSE
+Chla,Southern Interior Delta,2020,2.79,32.5,0.5,TRUE
+Chla,Southern Interior Delta,2021,1.92,25.51,0.5,TRUE
+Chla,Suisun & Grizzly Bays,2020,1.935,9.69,0.5,TRUE
+Chla,Suisun & Grizzly Bays,2021,3.16,16.85,0.5,TRUE
+DissAmmonia,Central Delta,2020,0.05,0.25,0.05,TRUE
+DissAmmonia,Central Delta,2021,0.05,0.1,0.05,TRUE
+DissAmmonia,Confluence,2020,0.06,0.2,0.05,TRUE
+DissAmmonia,Confluence,2021,0.06,0.18,0.05,TRUE
+DissAmmonia,Northern Interior Delta,2020,0.29,0.7,0.06,FALSE
+DissAmmonia,Northern Interior Delta,2021,0.05,0.27,0.05,TRUE
+DissAmmonia,San Pablo Bay,2020,0.08499999999999999,0.25,0.05,TRUE
+DissAmmonia,San Pablo Bay,2021,0.09,0.19,0.05,TRUE
+DissAmmonia,Southern Interior Delta,2020,0.05,0.25,0.05,TRUE
+DissAmmonia,Southern Interior Delta,2021,0.05,0.3,0.05,TRUE
+DissAmmonia,Suisun & Grizzly Bays,2020,0.095,0.26,0.05,TRUE
+DissAmmonia,Suisun & Grizzly Bays,2021,0.07500000000000001,0.3,0.05,TRUE
+DissNitrateNitrite,Central Delta,2020,0.27,1.94,0.05,TRUE
+DissNitrateNitrite,Central Delta,2021,0.22,0.74,0.05,TRUE
+DissNitrateNitrite,Confluence,2020,0.3,0.51,0.01,FALSE
+DissNitrateNitrite,Confluence,2021,0.38,0.58,0.05,TRUE
+DissNitrateNitrite,Northern Interior Delta,2020,0.19,0.36,0.07,FALSE
+DissNitrateNitrite,Northern Interior Delta,2021,0.24,0.53,0.08,FALSE
+DissNitrateNitrite,San Pablo Bay,2020,0.29,0.47,0.06,FALSE
+DissNitrateNitrite,San Pablo Bay,2021,0.31,0.48,0.05,TRUE
+DissNitrateNitrite,Southern Interior Delta,2020,0.685,3.25,0.05,TRUE
+DissNitrateNitrite,Southern Interior Delta,2021,0.72,3.58,0.05,TRUE
+DissNitrateNitrite,Suisun & Grizzly Bays,2020,0.355,0.53,0.2,FALSE
+DissNitrateNitrite,Suisun & Grizzly Bays,2021,0.45,0.63,0.17,FALSE
+SpCndSurface,Central Delta,2020,386,1594,162,FALSE
+SpCndSurface,Central Delta,2021,613,2333,323,FALSE
+SpCndSurface,Confluence,2020,4339,13874,212,FALSE
+SpCndSurface,Confluence,2021,8115,17363,1862,FALSE
+SpCndSurface,Northern Interior Delta,2020,164,605,132,FALSE
+SpCndSurface,Northern Interior Delta,2021,243,3144,138,FALSE
+SpCndSurface,San Pablo Bay,2020,33621,45349,22284,FALSE
+SpCndSurface,San Pablo Bay,2021,35915,46189,26446,FALSE
+SpCndSurface,Southern Interior Delta,2020,428.5,792,195,FALSE
+SpCndSurface,Southern Interior Delta,2021,506,1077,84,FALSE
+SpCndSurface,Suisun & Grizzly Bays,2020,13693.5,21419,4273,FALSE
+SpCndSurface,Suisun & Grizzly Bays,2021,16524,25278,5488,FALSE
+TotPhos,Central Delta,2020,0.07,0.11,0.04,FALSE
+TotPhos,Central Delta,2021,0.07,0.1,0.05,FALSE
+TotPhos,Confluence,2020,0.09,0.17,0.06,FALSE
+TotPhos,Confluence,2021,0.1,0.15,0.07,FALSE
+TotPhos,Northern Interior Delta,2020,0.08,0.15,0.05,FALSE
+TotPhos,Northern Interior Delta,2021,0.07,0.12,0.02,FALSE
+TotPhos,San Pablo Bay,2020,0.11,0.17,0.07,FALSE
+TotPhos,San Pablo Bay,2021,0.11,0.34,0.07,FALSE
+TotPhos,Southern Interior Delta,2020,0.09,0.49,0.05,FALSE
+TotPhos,Southern Interior Delta,2021,0.1,0.47,0.03,FALSE
+TotPhos,Suisun & Grizzly Bays,2020,0.11,0.19,0.04,TRUE
+TotPhos,Suisun & Grizzly Bays,2021,0.12,0.18,0.09,FALSE
+TurbiditySurfaceFNU,Central Delta,2020,3.5,19.5,0.3,FALSE
+TurbiditySurfaceFNU,Central Delta,2021,5.05,9.3,1.3,FALSE
+TurbiditySurfaceFNU,Confluence,2020,9,37.8,5.3,FALSE
+TurbiditySurfaceFNU,Confluence,2021,16.15,35.5,3.8,FALSE
+TurbiditySurfaceFNU,Northern Interior Delta,2020,3.1,8.7,1.5,FALSE
+TurbiditySurfaceFNU,Northern Interior Delta,2021,4.15,16.7,0.2,FALSE
+TurbiditySurfaceFNU,San Pablo Bay,2020,10.600000000000001,30.5,4.3,FALSE
+TurbiditySurfaceFNU,San Pablo Bay,2021,10.25,111.3,2.9,FALSE
+TurbiditySurfaceFNU,Southern Interior Delta,2020,3.7,10.2,0.5,FALSE
+TurbiditySurfaceFNU,Southern Interior Delta,2021,3.1,13.7,0.7,FALSE
+TurbiditySurfaceFNU,Suisun & Grizzly Bays,2020,15.15,41.4,5,FALSE
+TurbiditySurfaceFNU,Suisun & Grizzly Bays,2021,19.05,51.1,4.6,FALSE

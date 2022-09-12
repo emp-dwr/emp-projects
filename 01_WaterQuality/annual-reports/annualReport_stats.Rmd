@@ -1,0 +1,72 @@
+```{r setup, include=FALSE, cache=FALSE}
+knitr::opts_knit$set(root.dir = './01_WaterQuality/annual-reports/')
+```
+
+```{r}
+library(tidyverse)
+library(lubridate)
+source('../../00_GlobalFunctions/functions.R')
+```
+
+
+```{r}
+# import data
+df_wq <- import_emp_data(subset_EZs = TRUE)
+
+
+# subset data
+report_year <- as.integer(format(Sys.Date(), '%Y'))-1
+report_analytes <- c('SpCndSurface','TurbiditySurface_FNU','DissAmmonia_Sign','DissAmmonia','Chla_Sign','Chla','DissNitrateNitrite_Sign','DissNitrateNitrite','TotPhos_Sign','TotPhos')
+  
+df_wq <- df_wq %>% subset(year(Date) >= report_year - 1, select = c('Station', 'Date', .data = report_analytes))
+df_wq <- assign_run_regions(df_wq)
+
+# write this later
+pivot_wq_long <- function(df_edi){
+}
+
+df_wq <- df_wq %>%
+  rename(SpCndSurface_Value = SpCndSurface,
+         TurbiditySurfaceFNU_Value = TurbiditySurface_FNU,
+         DissAmmonia_Value = DissAmmonia,
+         Chla_Value = Chla,
+         DissNitrateNitrite_Value = DissNitrateNitrite,
+         TotPhos_Value = TotPhos)
+
+df_wq[grepl('Value',colnames(df_wq))] <- lapply(df_wq[grepl('Value',colnames(df_wq))], as.character)
+
+df_wq <- df_wq %>%
+  pivot_longer(
+    -c(Station, Date, Region),
+    names_to = c('Analyte','.value'),
+    names_sep = '_'
+  )
+
+df_wq$Value <- as.numeric(df_wq$Value)
+```
+
+```{r}
+df_stats_station <- df_wq %>%
+  group_by(Analyte, Station, year(Date)) %>%
+  summarize(Median = median(round(Value,2), na.rm = TRUE),
+            Max = max(round(Value,2), na.rm = TRUE),
+            Min = min(round(Value,2), na.rm = TRUE),
+            RL_Min = '<' %in% Sign,
+            Region = unique(Region),
+            .groups = 'drop') %>%
+  rename('Year' = 'year(Date)')
+
+df_stats_region <- df_wq %>%
+  group_by(Analyte, Region, year(Date)) %>%
+  summarize(Median = median(round(Value,2), na.rm = TRUE),
+            Max = max(round(Value,2), na.rm = TRUE),
+            Min = min(round(Value,2), na.rm = TRUE),
+            RL_Min = '<' %in% Sign,
+            Region = unique(Region),
+            .groups = 'drop') %>%
+  rename('Year' = 'year(Date)')
+
+write_csv(df_stats_region, 'Sum_Stats/wq_stats_region.csv')
+write_csv(df_stats_station, 'Sum_Stats/wq_stats_station.csv')
+```
+
