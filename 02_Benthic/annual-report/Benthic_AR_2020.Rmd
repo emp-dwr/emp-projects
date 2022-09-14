@@ -18,6 +18,7 @@ wkbk_raw <- 'Data/2021 benthic annual report data.csv'
 # import packages
 library(RColorBrewer)
 library(tidyverse)
+library(lubridate)
 library(openxlsx)
 library(ggplot2)
 library(zoo)
@@ -96,60 +97,50 @@ for (dir in dir_list){
 
 ```{r All Years & All Stations Timeseries}
 # ---  Calculate Monthly/Yearly Totals ---
-# create df of totals by month/year
-df_month_sums <- df_benthic %>%
-  # separate(Date, c('Month', 'Year'), ' ') #%>% # column already made
+# create df of totals by month per station
+df_month <- df_benthic %>%
   group_by(Month, Year, StationCode) %>%
-  mutate(Grab_Count = length(unique(Grab))) %>%
+  mutate(GrabCount_Month = length(unique(Grab))) %>%
   ungroup() %>%
-  distinct(Month, Year, StationCode, Grab_Count, .keep_all = TRUE) %>% 
-  group_by(Month, Year) %>%
-  mutate(Grab_Count = sum(Grab_Count), Station_Count = length(unique((StationCode)))) %>%
-  ungroup %>%
-  group_by(.dots = c(classif, 'Month', 'Year', 'Grab_Count', 'Station_Count')) %>%
-  summarize(
-    Orgs_Total = sum(Count, na.rm = TRUE)
-    ) %>%
-  ungroup()
+  group_by(.dots = c(classif, 'Month', 'Year', 'StationCode', 'GrabCount_Month')) %>%
+  summarize(OrgsTotal_Month = sum(Count, na.rm = TRUE), .groups = 'drop') %>%
+  mutate(Date = paste(Month, Year)) # TODO: explore adding in day as well
 
-df_month_sums$Date <- with(df_month_sums, paste(Month, Year)) # explore adding in day as well
-
-# get grab variable (TODO: maybe make more understandable)
-df_grab_vari <- df_month_sums[!duplicated(df_month_sums$Date),]
-
-df_grab_vari <- df_grab_vari %>%
+# get grab variable per station per year
+df_grab_vari <- df_month %>%
+  distinct(Date, Year, StationCode, GrabCount_Month) %>%
+  group_by(Year, StationCode) %>%
+  summarize(GrabCount_Year = sum(GrabCount_Month), .groups = 'drop') %>%
   group_by(Year) %>%
-  summarize(Grab_Count = sum(Grab_Count)) 
+  mutate(GrabCount_Year = sum(GrabCount_Year)) %>%
+  ungroup()
 
-# create df of totals by year
-df_year_sums <- df_month_sums %>%
+# create df of totals by year per station
+df_year <- df_month %>%
+  group_by(.dots = c(classif, 'Year','StationCode')) %>%
+  summarize(OrgsTotal_Year = sum(OrgsTotal_Month, na.rm = TRUE), .groups = 'drop')
+
+df_year <-  merge(df_year, df_grab_vari, by = c('Year','StationCode'), all.x=FALSE, all.y=FALSE)
+
+# calc CPUE
+df_month <- df_month %>%
+  group_by(.dots = c(classif, 'Month', 'Year', 'StationCode')) %>% # TODO: redundant, check after confirming right
+  mutate(CPUETotal_Month = OrgsTotal_Month/GrabCount_Month/0.052) %>%
+  ungroup() %>%
+  group_by(.dots = c(classif, 'Month', 'Year')) %>%
+  summarize(CPUETotal_Month = sum(CPUETotal_Month), .groups = 'drop')
+
+df_year <- df_year %>%
+  group_by(.dots = c(classif, 'Year', 'StationCode')) %>%
+  mutate(CPUETotal_Year = OrgsTotal_Year/GrabCount_Year/0.052) %>%
+  ungroup() %>%
   group_by(.dots = c(classif, 'Year')) %>%
-  summarize(Orgs_Total = sum(Orgs_Total, na.rm = TRUE)) %>%
+  mutate(CPUETotal_Year = sum(CPUETotal_Year),
+         OrgsTotal_Year = sum(OrgsTotal_Year)) %>%
   ungroup()
-
-df_year_sums <-  merge(df_year_sums, df_grab_vari, by = 'Year', all.x=FALSE, all.y=FALSE)
-
-df_month_CPUE <- df_month_sums %>%
-  group_by(.dots = c(classif, 'Month', 'Year')) %>% # TODO: redundant, check after confirming right
-  mutate(CPUE_Total = Orgs_Total/Grab_Count/0.052) %>%
-  ungroup()
-
-df_year_CPUE <- df_year_sums %>%
-  group_by(.dots = c(classif, 'Year')) %>%
-  mutate(CPUE_Total = Orgs_Total/Grab_Count/0.052) %>%
-  ungroup()
-
-# merge dfs
-df_year <- merge(df_year_sums, df_year_CPUE, all = TRUE)
-df_month <- merge(df_month_CPUE, df_month_sums,  all = TRUE)
 
 df_year <- df_year[!df_year$Phylum == 'n/a',] # TODO: need to fix in future versions of csv
 df_month <- df_month[!df_month$Phylum == 'n/a',]
-
-# remove extra cols
-df_month <- subset(df_month, select = -c(Station_Count))
-
-rm(df_year_sums, df_year_CPUE, df_month_sums, df_month_CPUE)
 
 # append to workbook
 add_sheet(wkbk_export, df_year, 'Yearly Totals (All)')
@@ -159,45 +150,29 @@ add_sheet(wkbk_export, df_month, 'Monthly Totals (All)')
 # add a name col to year
 df_year$Name <- with(df_year, paste(Phylum, Genus, Species))
 
-# subset top 10 (B: 15) species by average CPUE
-
-# TODO
-# sum by year
-# sum by all -- subset out top 15
-# graph
-
-
 df_year_top <- df_year %>%
-  subset(Year >= report_year - 5) %>%
+  subset(Year >= report_year - 10) %>%
   group_by(Name) %>%
-  mutate(Total_Mean = sum(CPUE_Total)) %>%
-  arrange(desc(Total_Mean)) %>%
-  ungroup()
+  mutate(TotalSum = sum(CPUETotal_Year)) %>%
+  arrange(desc(TotalSum)) %>%
+  ungroup() %>%
+  distinct(across(-StationCode))
   
-
-df_year_top <- df_year_top[df_year_top$Total_Mean %in% unique(df_year_top$Total_Mean)[1:10],]
+df_year_top <- df_year_top[df_year_top$TotalSum %in% unique(df_year_top$TotalSum)[1:15],]
 
 # complete cases
-suppressWarnings(df_year_top <- df_year_top %>% complete(Year, nesting(Name, Total_Mean)))
-df_year_top$CPUE_Total[is.na(df_year_top$CPUE_Total)] = 0
-df_year_top$Total_Mean[is.na(df_year_top$Total_Mean)] = 0
-
-# # trick R cause it's dumb
-# df_year_top$Name2 <- df_year_top$Name
-# df_year_top$Year2 <- df_year_top$Year
-# df_year_top <- subset(df_year_top, select = -c(Name, Year))
-# df_year_top$Year <- df_year_top$Year2
-# df_year_top$Name <- df_year_top$Name2
-# df_year_top <- subset(df_year_top, select = -c(Year2, Name2))
+suppressWarnings(df_year_top <- df_year_top %>% complete(Year, nesting(Name, TotalSum)))
+df_year_top$CPUETotal_Year[is.na(df_year_top$CPUETotal_Year)] = 0
+df_year_top$TotalSum[is.na(df_year_top$TotalSum)] = 0
 
 # re-order
-df_year_top$Name <- with(df_year_top, reorder(Name, Total_Mean))
+df_year_top$Name <- with(df_year_top, reorder(Name, TotalSum))
 
 # plot
 colorCount = length(unique(df_year_top$Name))
 getPalette = colorRampPalette(brewer.pal(8, 'Set2'))
 
-plt <- ggplot(df_year_top, aes(Year, CPUE_Total, group = Name)) +
+plt <- ggplot(df_year_top, aes(Year, CPUETotal_Year, group = Name)) +
   geom_line(aes(color = Name), size = 1) +
   geom_point(aes(color = Name), size = 1.7) +
   scale_color_manual(values = getPalette(colorCount)) +
@@ -208,8 +183,6 @@ plt <- ggplot(df_year_top, aes(Year, CPUE_Total, group = Name)) +
 ggsave(paste0(years_ts_dir,'/CPUE_all.png'), plot = plt, width = 8, height = 4)
 
 rm(df_year_top)
-# TODO: look into .dots
-
 plt
 ```
 
@@ -217,7 +190,7 @@ plt
 ```{r Specific Stations Timeseries}
 # ---  Calculate Monthly/Yearly Totals ---
 # create df of station totals by month/year
-df_month_stat_sums <- df_benthic %>%
+df_month_stat <- df_benthic %>%
   separate(Date, c('Month', 'Year'), ' ') %>%
   group_by(Month, Year, StationCode) %>%
   mutate(Grab_Count = max(Grab)) %>%

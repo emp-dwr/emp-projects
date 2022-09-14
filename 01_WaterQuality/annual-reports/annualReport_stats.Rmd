@@ -13,7 +13,6 @@ source('../../00_GlobalFunctions/functions.R')
 # import data
 df_wq <- import_emp_data(subset_EZs = TRUE)
 
-
 # subset data
 report_year <- as.integer(format(Sys.Date(), '%Y'))-1
 report_analytes <- c('SpCndSurface','TurbiditySurface_FNU','DissAmmonia_Sign','DissAmmonia','Chla_Sign','Chla','DissNitrateNitrite_Sign','DissNitrateNitrite','TotPhos_Sign','TotPhos')
@@ -43,6 +42,29 @@ df_wq <- df_wq %>%
   )
 
 df_wq$Value <- as.numeric(df_wq$Value)
+```
+```{r}
+'%!in%' <- function(x,y)!('%in%'(x,y))
+
+# add '_Value" suffix to analyte columns
+cols_sign <- colnames(df_wq)[grepl('Sign',colnames(df_wq))]
+cols_analyte <- sapply(str_split(sign_cols,'_'[1]), function(x) x[1])
+cols_value <- paste(analyte_cols, 'Value', sep = '_')
+cols_other <- colnames(df_wq)[colnames(df_wq) %!in% cols_sign & colnames(df_wq) %!in% cols_value]
+
+colnames(df_wq)[colnames(df_wq) %in% cols_analyte] <- cols_value
+
+# switch value cols to character for pivot
+df_wq[grepl('Value',colnames(df_wq))] <- lapply(df_wq[grepl('Value',colnames(df_wq))], as.character)
+
+test <- df_wq %>%
+  pivot_longer(
+    -cols_other,
+    names_to = c('Analyte','.value'),
+    names_sep = '_'
+  )
+
+
 ```
 
 ```{r}
