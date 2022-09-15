@@ -2,13 +2,13 @@
 ## 
 ## 8/25/22 TMF
 
-library("tidyverse");packageVersion("tidyverse")
-library("lubridate");packageVersion("lubridate")
-library("deltamapr");packageVersion("deltamapr")
-library("sf");packageVersion("sf")
-library("ggrepel");packageVersion("ggrepel")
-library("maps");packageVersion("maps")
-library("janitor");packageVersion("janitor")
+library(tidyverse)
+library(lubridate)
+library(deltamapr)
+library(sf)
+library(ggrepel)
+library(maps)
+library(janitor)
 
 
 # Set working directory
@@ -168,7 +168,7 @@ plot.MOPED <- ggplot(WW_Delta) +
   geom_point(data = df_FP,
              aes(x = Longitude,
                  y = Latitude,
-                 fill = FLUOR,
+                 fill = EXO2.Chla,
                  size = 1),
              pch = 21,
              color = "black") +
@@ -185,6 +185,8 @@ plot.MOPED <- ggplot(WW_Delta) +
   ylim(38, 38.2) +
   xlim(-122.5, -122.2) +
   theme_bw()
+
+plot.MOPED
 
 ## Make plot comparing different fluorescence values (EXO2 and FluoroProbe)
 plot.fluor <- ggplot(df_FP.l, aes(x = DateTime, y = Conc, color = Group)) +
