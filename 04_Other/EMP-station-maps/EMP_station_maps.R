@@ -1,40 +1,52 @@
 ## Generate maps of EMP's fixed sampling locations
-## 7/25/2021
+## 9/23/2022
 
-library("tidyverse");packageVersion("tidyverse")
-library("deltamapr");packageVersion("deltamapr")
-library("sf");packageVersion("sf")
-library("ggrepel");packageVersion("ggrepel")
-library("maps");packageVersion("maps")
+# Load required libraries ------------------------------------------------------
 
-setwd("C:/Users/tflynn/Documents/R/EMP_station_maps")
+library(tidyverse)
+library(deltamapr)
+library(sf)
+library(ggrepel)
+library(maps)
+
+# Prepare workspace ------------------------------------------------------------
+
+setwd("./04_Other/EMP-station-maps")
+getwd()
+
 theme_set(theme_bw())
 
-## Clean workspace
 rm(list=ls()) 
 
-## Read FP data
+# Read in EMP station and city location data -----------------------------------
 df_EMP <- read_csv("EMP_Stations_All.csv")
-df_EMP$Longitude <- df_EMP$Longitude * -1
 
-#Import data about city locations
+# Set order that station types appear in 
+#unique(df_EMP$StationType)
+station.order <- c("Benthic","Zooplankton","Phytoplankton","WQ - Continuous",
+                   "WQ - Discrete")
+
+df_EMP$StationType <- factor(df_EMP$StationType, levels = station.order)
+
+# Import data about city locations
 CA <- map_data("world") %>% filter(subregion=="California")
 cities <- world.cities %>% filter(country.etc=="USA")
-cities$long <- cities$long * -1
 
-
-
-## Plot EMP station maps
+# Plot all EMP station maps together -------------------------------------------
 plot <- ggplot(WW_Delta) + 
   geom_sf(fill = "lightblue") + 
-  geom_point(data = subset(df_EMP, StationType == "Benthic"),
+  geom_jitter(data = df_EMP,
              aes(x = Longitude,
                  y = Latitude,
                  fill = StationType,
                  size = 3),
              pch = 21,
              color = "black") +
-  #scale_fill_manual(values = c("red","purple")) +
+  scale_fill_manual(values = c("#E41A1C",
+                               "#984EA3",
+                               "#4DAF4A",
+                               "#FF7F00",
+                               "#377EB8")) +
   geom_point(data = cities %>% arrange(pop) %>% tail(250),
              aes(x = long,
                  y = lat)) +
@@ -43,21 +55,21 @@ plot <- ggplot(WW_Delta) +
                       y = lat, 
                       label = name)) +
   ylim(37.65, 38.6) +
-  xlim(122.41, 121.2) +
+  xlim(-122.41, -121.2) +
   theme_bw()
 
-plot + labs(x = "Longitude",
-            y = "Latitude",
+plot + labs(x = NULL,
+            y = NULL,
             fill = "Station Type",
-            title = "EMP Monitoring Stations - Water Quality") +
+            title = "EMP Monitoring Stations - 2022") +
   guides(size = "none")
 
 
 ggsave(path="plots",
-       filename = "EMP.WQ.pdf", 
+       filename = "EMP.Monitoring.Stations.pdf", 
        device = "pdf",
        scale=1.0, 
        units="in",
-       height=6.5,
+       height=6,
        width=9, 
        dpi="print")
