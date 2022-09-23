@@ -73,3 +73,45 @@ ggsave(path="plots",
        height=6,
        width=9, 
        dpi="print")
+
+# Plot benthic EMP stations ----------------------------------------------------
+plot <- ggplot(WW_Delta) + 
+  geom_sf(fill = "lightblue") + 
+  geom_jitter(data = subset(df_EMP, StationType == "Benthic"),
+              aes(x = Longitude,
+                  y = Latitude,
+                  fill = StationType,
+                  size = 3),
+              pch = 21,
+              color = "black") +
+  scale_fill_manual(values = c("#E41A1C",
+                               "#984EA3",
+                               "#4DAF4A",
+                               "#FF7F00",
+                               "#377EB8")) +
+  geom_point(data = cities %>% arrange(pop) %>% tail(250),
+             aes(x = long,
+                 y = lat)) +
+  geom_text_repel(data = cities %>% arrange(pop) %>% tail(250), 
+                  aes(x = long,
+                      y = lat, 
+                      label = name)) +
+  ylim(37.65, 38.6) +
+  xlim(-122.41, -121.2) +
+  theme_bw()
+
+plot + labs(x = NULL,
+            y = NULL,
+            fill = "Station Type",
+            title = "EMP Monitoring Stations - 2022") +
+  guides(size = "none")
+
+
+ggsave(path="plots",
+       filename = "EMP.Monitoring.Stations.Benthic.pdf", 
+       device = "pdf",
+       scale=1.0, 
+       units="in",
+       height=6,
+       width=9, 
+       dpi="print")
