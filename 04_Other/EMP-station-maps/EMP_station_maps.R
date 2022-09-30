@@ -23,10 +23,10 @@ df_EMP <- read_csv("EMP_Stations_All.csv")
 
 # Set order that station types appear in 
 #unique(df_EMP$StationType)
-station.order <- c("Benthic","Zooplankton","Phytoplankton","WQ - Continuous",
+stations <- c("Benthic","Zooplankton","Phytoplankton","WQ - Continuous",
                    "WQ - Discrete")
 
-df_EMP$StationType <- factor(df_EMP$StationType, levels = station.order)
+df_EMP$StationType <- factor(df_EMP$StationType, levels = stations)
 
 # Import data about city locations
 CA <- map_data("world") %>% filter(subregion=="California")
@@ -74,10 +74,13 @@ ggsave(path="plots",
        width=9, 
        dpi="print")
 
-# Plot benthic EMP stations ----------------------------------------------------
+# Plot stations for each EMP elemtn---------------------------------------------
+
+for (x in stations) {
+
 plot <- ggplot(WW_Delta) + 
   geom_sf(fill = "lightblue") + 
-  geom_jitter(data = subset(df_EMP, StationType == "Benthic"),
+  geom_jitter(data = subset(df_EMP, StationType == x),
               aes(x = Longitude,
                   y = Latitude,
                   fill = StationType,
@@ -103,15 +106,17 @@ plot <- ggplot(WW_Delta) +
 plot + labs(x = NULL,
             y = NULL,
             fill = "Station Type",
-            title = "EMP Monitoring Stations - 2022") +
+            title = paste0("EMP ",x," Monitoring Stations - 2022")) +
   guides(size = "none")
 
 
 ggsave(path="plots",
-       filename = "EMP.Monitoring.Stations.Benthic.pdf", 
+       filename = paste0("EMP.Monitoring.Stations.",x,".pdf"), 
        device = "pdf",
        scale=1.0, 
        units="in",
        height=6,
        width=9, 
        dpi="print")
+
+}
