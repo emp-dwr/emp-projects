@@ -74,24 +74,19 @@ ggsave(path="plots",
        width=9, 
        dpi="print")
 
-# Plot stations for each EMP elemtn---------------------------------------------
+# Plot stations for each EMP element -------------------------------------------
 
 for (x in stations) {
 
 plot <- ggplot(WW_Delta) + 
   geom_sf(fill = "lightblue") + 
-  geom_jitter(data = subset(df_EMP, StationType == x),
+  geom_point(data = subset(df_EMP, StationType == x),
               aes(x = Longitude,
                   y = Latitude,
                   fill = StationType,
                   size = 3),
               pch = 21,
               color = "black") +
-  scale_fill_manual(values = c("#E41A1C",
-                               "#984EA3",
-                               "#4DAF4A",
-                               "#FF7F00",
-                               "#377EB8")) +
   geom_point(data = cities %>% arrange(pop) %>% tail(250),
              aes(x = long,
                  y = lat)) +
@@ -108,7 +103,6 @@ plot + labs(x = NULL,
             fill = "Station Type",
             title = paste0("EMP ",x," Monitoring Stations - 2022")) +
   guides(size = "none")
-
 
 ggsave(path="plots",
        filename = paste0("EMP.Monitoring.Stations.",x,".pdf"), 
