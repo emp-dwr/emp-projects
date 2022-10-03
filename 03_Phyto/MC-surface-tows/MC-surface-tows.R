@@ -12,11 +12,14 @@ library(janitor)
 setwd("./03_Phyto/MC-surface-tows")
 getwd()
 
-# Set visual theme in ggplot
-theme_set(theme_bw())
-
 # Clean workspace
 rm(list=ls()) 
+
+# Set directory for storing plots
+output <- "plots"
+
+# Set visual theme in ggplot
+theme_set(theme_bw())
 
 # Import EMP data files
 phyto_files <- dir(path = "data/", pattern = "\\.csv", full.names = T)
@@ -141,6 +144,8 @@ df_phyto_tow <- left_join(df_phyto_tow, df_flowmeter)
 # Calculate distance traveled by flowmeter
 # Rotor Constant is 26873
 
+rm(df_flowmeter)
+
 df_phyto_tow <- df_phyto_tow %>%
   mutate(TowDistance = (FlowmeterPost - FlowmeterPre)*26873/999999)
 
@@ -161,23 +166,57 @@ df_phyto_tow <- df_phyto_tow %>% rename("BV.um3.per.L" = "BV.um3.per.L.Tow")
 # Recombine tow and regular samples
 df_phyto <- bind_rows(df_phyto_reg, df_phyto_tow)
 
-## Calculate relative abundance of biovolume by group
+rm(df_phyto_reg)
+rm(df_phyto_tow)
+
+## Calculate the most abundant taxa for each sample type
+df_abund <- df_phyto %>%
+  group_by(SampleType, Genus) %>%
+  summarize(Mean.BV.per.L = mean(BV.um3.per.L)) %>%
+  ungroup()
+
+df_abund <- df_abund %>%
+  group_by(SampleType) %>%
+  mutate(MeanRelAbund = Mean.BV.per.L/sum(Mean.BV.per.L)) %>%
+  ungroup
+
+# Highlight most abundant genera (avg abundance > 1%)
+df_abund <- df_abund %>%
+  mutate(Type = case_when(MeanRelAbund > 0.01 ~ Genus,
+                          TRUE ~ 'Other'))
+
+df_phyto_type <- df_abund %>% select(Genus,Type)
+
+df_phyto_type <- unique(df_phyto_type)
+
+# Read in taxonomy classification
+df_classification <- read_csv(file = "phyto_group_classification.csv")
+
+df_phyto_type <- left_join(df_phyto_type,df_classification)
+
+# Combine with complete phyto dataset
+df_phyto <- left_join(df_phyto,df_phyto_type, by = "Genus")
+
+rm(df_abund)
+rm(df_classification)
+rm(df_phyto_type)
+
+# Rearrange columns
+df_phyto <- df_phyto %>%
+  relocate(Group, .after = Genus) %>%
+  relocate(Type, .after = Group)
+
+# Lump together less abundant taxa
 df_phyto_RA <- df_phyto %>%
-  group_by(DateTime, Month, SampleType, Genus) %>%
+  group_by(DateTime, Year, Month, SampleType, Group, Type) %>%
   summarize(Mean.BV.per.L = mean(BV.um3.per.L)) %>%
   ungroup()
 
 df_phyto_RA <- df_phyto_RA %>%
-  group_by(DateTime, Month, SampleType) %>%
-  mutate(MeanRelAbund = Mean.BV.per.L/sum(Mean.BV.per.L)) %>%
+  group_by(DateTime, Year, Month, SampleType) %>%
+  mutate(MeanRelAbund = Mean.BV.per.L/sum(Mean.BV.per.L)*100) %>%
   ungroup
 
-# Highlight most abundant genera
-df_phyto_RA <- df_phyto_RA %>%
-  mutate(Type = case_when(MeanRelAbund > 0.1 ~ Genus,
-                          TRUE ~ 'Other'))
-
-# lump together all "other" taxa
 df_phyto_RA <- df_phyto_RA %>%
   group_by(DateTime, Month, SampleType, Type) %>%
   summarize(MeanRelAbund = sum(MeanRelAbund)) %>%
@@ -193,8 +232,29 @@ bar.plot <- ggplot(df_phyto, aes(x = Month, y = BV.um3.per.L, fill = Genus)) +
 bar.plot + 
   facet_wrap(SampleType ~ ., ncol = 1, scale = "free_y")
 
+# Compare taxonomy (re;lative abundance)
+bar.plot.RA <- ggplot(df_phyto_RA, aes(x = SampleType, y = MeanRelAbund, fill = Type)) +
+  geom_bar(position = "stack",  
+           width = 0.6, 
+           stat = "summary", 
+           fun = "mean") +
+  scale_fill_brewer(palette = "Paired")
 
+bar.plot.RA + 
+  facet_wrap(DateTime ~ ., ncol = 1) +
+  labs(x = "Sample Type",
+       y = "Relative Abundance (%)",
+       fill = "Genus",
+       title = "Phytoplankton Sample Comparison - D19")
 
+ggsave(path = output,
+       filename = "phyto_RA.png", 
+       device = "png",
+       scale=1.0, 
+       units="in",
+       height=5.5,
+       width=5.5, 
+       dpi="print")
 
 # Save data file
-save(phyto_gen_EMP, file = "RData/phyto.RData") 
+save(df_phyto, file = "RData/phyto.RData") 
