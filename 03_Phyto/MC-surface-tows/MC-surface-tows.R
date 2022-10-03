@@ -52,8 +52,9 @@ df_phyto$SampleDate <- mdy(df_phyto$SampleDate)
 # Combine date and time column
 df_phyto <- df_phyto %>% unite(DateTime, c("SampleDate","SampleTime"), sep = " ") #, remove = FALSE, na.rm = FALSE)
 
-# Correct error in data for June 2022
+# Correct error in data for June 2022 & November 2021
 df_phyto$DateTime <- gsub("2022-06-11 13:45:00","2022-06-21 13:45:00",df_phyto$DateTime)
+df_phyto$DateTime <- gsub("2021-11-19 12:00:00","2021-11-09 12:00:00",df_phyto$DateTime)
 
 df_phyto$DateTime <- as_datetime(df_phyto$DateTime, 
                               tz = "US/Pacific",
@@ -118,6 +119,8 @@ df_phyto <- df_phyto %>% rename("SampleType" = "FullCode")
 df_phyto$SampleType <- gsub("E0722B1412","Regular",df_phyto$SampleType)
 df_phyto$SampleType <- gsub("E0622B1201","Regular",df_phyto$SampleType)
 df_phyto$SampleType <- gsub("D19 Microcystis Tow","Surface Tow",df_phyto$SampleType)
+df_phyto$SampleType <- gsub("MC TOW", "Surface Tow",df_phyto$SampleType)
+df_phyto$SampleType <- gsub("E1121B2010","Regular",df_phyto$SampleType)
 
 # Make sure all stations are named D19
 df_phyto$StationCode <- gsub("D19 MC Tow","D19",df_phyto$StationCode)
@@ -133,7 +136,8 @@ df_flowmeter <- read.csv(file = "data/flowmeter-data.csv")
 
 # Make sure dates and times are in correct format
 df_flowmeter$DateTime <- as_datetime(df_flowmeter$DateTime, 
-                              tz = "US/Pacific")
+                              tz = "US/Pacific",
+                              format = "%m/%d/%Y %H:%M")
 
 # Combine flowmeter data with surface tow samples
 df_phyto_tow <- df_phyto %>% filter(SampleType == "Surface Tow")
