@@ -495,7 +495,7 @@ for (station in unique(df_ry_stat_phy$StationCode)){
 df_phy_percs <- subset(df_ry_phy, select = -c(Month))
 df_phy_percs <- df_phy_percs %>%
   group_by(Phylum) %>%
-  summarize(Orgs_Total = sum(Orgs_Total), CPUE_Total = sum(CPUE_Total)) %>%
+  summarize(Orgs_Total = sum(OrgsTotal_Month), CPUE_Total = sum(CPUETotal_Month)) %>%
   ungroup() %>%
   mutate(Percentage = round(Orgs_Total/sum(Orgs_Total)*100,2)) %>%
   arrange(desc(Percentage))
@@ -503,7 +503,7 @@ df_phy_percs <- df_phy_percs %>%
 df_phy_stat_percs <- subset(df_ry_stat_phy, select = -c(Month))
 df_phy_stat_percs <- df_phy_stat_percs %>%
   group_by(Phylum, StationCode) %>%
-  summarize(Orgs_Total = sum(Orgs_Total), CPUE_Total = sum(CPUE_Total)) %>%
+  summarize(Orgs_Total = sum(OrgsTotal_Month), CPUE_Total = sum(CPUE_Total)) %>%
   ungroup() %>%
   group_by(StationCode) %>%
   mutate(Percentage = round(Orgs_Total/sum(Orgs_Total)*100,2)) %>%
