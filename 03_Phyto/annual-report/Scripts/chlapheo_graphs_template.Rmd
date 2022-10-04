@@ -1,0 +1,53 @@
+```{r Info}
+# Phyto IEP Template
+# Purpose: create graphs/compute summary statistics for phyto (chla/pheo only for now) data
+# Author: Sarah Perry
+# Contact: sarah.perry@water.ca.gov
+```
+
+```{r setup, include=FALSE, cache=FALSE}
+knitr::opts_knit$set(root.dir = './03_Phyto/annual-report/')
+```
+
+```{r Variables to Edit}
+# chla/pheo data
+fp_wq <- '../Data/chla_pheo_21.csv'
+```
+
+-- CODE STARTS HERE --
+
+```{r}
+library(tidyverse)
+library(lubridate)
+library(scales)
+```
+
+```{r}
+df_wq <- read_csv(fp_wq)
+df_wq <- df_wq %>% pivot_longer(cols = c(Chla, Pheo), names_to = 'Analyte', values_to = 'Value')
+df_wq$Month <- month.abb[match(df_wq$Month,month.abb)]
+
+# grab report year (for saving purposes)
+report_year <- as.integer(format(Sys.Date(), '%Y'))-1
+
+# create a plots dir (for saving purposes)
+wq_dir <- paste0('../',report_year,' Plots/chla_pheo')
+dir.create(file.path(wq_dir), recursive = TRUE)
+```
+
+```{r}
+for (region in unique(df_wq$Region)){
+  # filter by station
+  df_filt <- df_wq %>%
+    filter(Region == region)
+
+  # plot
+  plt <- ggplot(df_filt, aes(fill = Analyte, y = Value, x = Month)) + 
+    geom_bar(position = 'dodge', stat = 'identity') +
+    scale_x_discrete(labels = month.abb) +
+    theme_bw()
+
+  ggsave(paste0(wq_dir,'/chlapheo_',region,'.png'), plot = plt, width = 8, height = 4)
+}
+```
+
