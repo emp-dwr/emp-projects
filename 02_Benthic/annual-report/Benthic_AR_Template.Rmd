@@ -102,37 +102,53 @@ for (dir in dir_list){
 # create df of totals by month per station
 df_month_stat <- df_benthic %>%
   group_by(Month, Year, StationCode) %>%
-  mutate(GrabCount_Month = length(unique(Grab))) %>%
+  mutate(GrabCount_MonthStat = length(unique(Grab))) %>%
   ungroup() %>%
-  group_by(.dots = c(classif, 'Month', 'Year', 'StationCode', 'GrabCount_Month')) %>%
-  summarize(OrgsTotal_Month = sum(Count, na.rm = TRUE), .groups = 'drop') %>%
+  group_by(.dots = c(classif, 'Month', 'Year', 'StationCode', 'GrabCount_MonthStat')) %>%
+  summarize(OrgsTotal_MonthStat = sum(Count, na.rm = TRUE), .groups = 'drop') %>%
   mutate(Date = paste(Month, Year)) # TODO: explore adding in day as well
 
 # get grab variable per station per year
-df_grab_vari <- df_month_stat %>%
-  distinct(Date, Year, StationCode, GrabCount_Month) %>%
+df_grabvari_month <- df_month_stat %>%
+  distinct(Date, Month, Year, StationCode, GrabCount_MonthStat) %>%
+  group_by(Year, Month, StationCode) %>%
+  summarize(GrabCount_MonthStat = sum(GrabCount_MonthStat), .groups = 'drop') %>%
+  group_by(Month, Year) %>%
+  mutate(GrabCount_Month = sum(GrabCount_MonthStat)) %>%
+  ungroup() %>%
   group_by(Year, StationCode) %>%
-  summarize(GrabCount_Year = sum(GrabCount_Month), .groups = 'drop') %>%
+  mutate(GrabCount_YearStat = sum(GrabCount_MonthStat))
+
+df_grabvari_year <- df_month_stat %>%
+  distinct(Date, Year, StationCode, GrabCount_MonthStat) %>%
+  group_by(Year, StationCode) %>%
+  summarize(GrabCount_YearStat = sum(GrabCount_MonthStat), .groups = 'drop') %>%
   group_by(Year) %>%
-  mutate(GrabCount_Year = sum(GrabCount_Year)) %>%
+  mutate(GrabCount_Year = sum(GrabCount_YearStat)) %>%
   ungroup()
 
 # create df of totals by year per station
 df_year_stat <- df_month_stat %>%
   group_by(.dots = c(classif, 'Year','StationCode')) %>%
-  summarize(OrgsTotal_Year = sum(OrgsTotal_Month, na.rm = TRUE), .groups = 'drop')
+  summarize(OrgsTotal_YearStat = sum(OrgsTotal_MonthStat, na.rm = TRUE), .groups = 'drop')
 
-df_year_stat <-  merge(df_year_stat, df_grab_vari, by = c('Year','StationCode'), all.x=FALSE, all.y=FALSE)
+df_year_stat <-  merge(df_year_stat, df_grabvari_year, by = c('Year','StationCode'), all.x=FALSE, all.y=FALSE)
+
+df_month_stat <- df_month_stat %>% select(-c('GrabCount_MonthStat'))
+
+df_month_stat <- merge(df_month_stat, df_grabvari_month, by = c('Year','Month','StationCode'), all.x=FALSE, all.y=FALSE)
 
 # calc CPUE
 df_month_stat <- df_month_stat %>%
   group_by(.dots = c(classif, 'Month', 'Year', 'StationCode')) %>% # TODO: redundant, check after confirming right
-  mutate(CPUETotal_Month = OrgsTotal_Month/GrabCount_Month/0.052) %>%
+  mutate(CPUETotal_MonthStat = OrgsTotal_MonthStat/GrabCount_MonthStat/0.052,
+         CPUETotal_Month = OrgsTotal_MonthStat/GrabCount_Month/0.052) %>%
   ungroup()
 
 df_year_stat <- df_year_stat %>%
   group_by(.dots = c(classif, 'Year', 'StationCode')) %>%
-  mutate(CPUETotal_Year = OrgsTotal_Year/GrabCount_Year/0.052) %>%
+  mutate(CPUETotal_YearStat = OrgsTotal_YearStat/GrabCount_YearStat/0.052,
+         CPUETotal_Year = OrgsTotal_YearStat/GrabCount_Year/0.052) %>%
   ungroup()
 
 df_year_stat <- df_year_stat[!df_year_stat$Phylum == 'n/a',] # TODO: need to fix in future versions of csv
@@ -141,13 +157,13 @@ df_month_stat <- df_month_stat[!df_month_stat$Phylum == 'n/a',]
 df_month <- df_month_stat %>%
   group_by(.dots = c(classif, 'Month', 'Year')) %>%
   summarize(CPUETotal_Month = sum(CPUETotal_Month, na.rm = TRUE),
-            OrgsTotal_Month = sum(OrgsTotal_Month, na.rm = TRUE),
+            OrgsTotal_Month = sum(OrgsTotal_MonthStat, na.rm = TRUE),
             .groups = 'drop')
 
 df_year <- df_year_stat %>%
   group_by(.dots = c(classif, 'Year')) %>%
   summarize(CPUETotal_Year = sum(CPUETotal_Year, na.rm = TRUE),
-         OrgsTotal_Year = sum(OrgsTotal_Year, na.rm = TRUE),
+         OrgsTotal_Year = sum(OrgsTotal_YearStat, na.rm = TRUE),
          .groups = 'drop')
 
 # append to workbook
@@ -189,7 +205,7 @@ plt <- ggplot(df_year_top, aes(Year, CPUETotal_Year, group = Name)) +
 
 ggsave(paste0(years_ts_dir,'/CPUE_all.png'), plot = plt, width = 8, height = 4)
 
-rm(df_year_top)
+rm(df_year_top, plt)
 ```
 
 ```{r Specific Stations Timeseries}
@@ -201,7 +217,8 @@ df_year_stat_top <- df_year_stat %>%
   group_by(Name, StationCode) %>%
   mutate(TotalSum = sum(CPUETotal_Year, na.rm = TRUE)) %>%
   arrange(Year, StationCode, desc(TotalSum)) %>%
-  ungroup()
+  ungroup() %>%
+  select(-c(CPUETotal_Year, GrabCount_Year))
 
 # append to workbook
 add_sheet(wkbk_export, subset(df_year_stat_top, select = -c(Name, TotalSum)), 'Yearly Totals (Stations)')
@@ -210,9 +227,9 @@ for (station in unique(df_year_stat_top$StationCode)){
   # filter by station
   df_filt <- df_year_stat_top %>%
     filter(StationCode == station) %>%
-    mutate(CPUESum_Year = sum(CPUETotal_Year)) %>%
+    mutate(CPUESum_Year = sum(CPUETotal_YearStat)) %>%
     group_by(Name) %>%
-    mutate(Percentage = round(sum(CPUETotal_Year)/CPUESum_Year*100,2)) %>%
+    mutate(Percentage = round(sum(CPUETotal_YearStat)/CPUESum_Year*100,2)) %>%
     ungroup()
 
   # subset species that are top 10 (average CPUE over all years)
@@ -221,7 +238,7 @@ for (station in unique(df_year_stat_top$StationCode)){
   # complete missing cases
   df_filt <- df_filt %>% complete(Year, nesting(Name, StationCode, Percentage))
   
-  df_filt$CPUETotal_Year[is.na(df_filt$CPUETotal_Year)] = 0
+  df_filt$CPUETotal_YearStat[is.na(df_filt$CPUETotal_YearStat)] = 0
   df_filt$Percentage[is.na(df_filt$Percentage)] = 0
 
     # re-order
@@ -232,7 +249,7 @@ for (station in unique(df_year_stat_top$StationCode)){
   getPalette = colorRampPalette(brewer.pal(8, 'Set2'))
 
   # plot
-  plt <- ggplot(df_filt, aes(Year, CPUETotal_Year, group = Name)) +
+  plt <- ggplot(df_filt, aes(Year, CPUETotal_YearStat, group = Name)) +
     geom_line(aes(color = Name), size = 1) +
     geom_point(aes(color = Name), size = 1.7) +
     scale_color_manual(values = getPalette(colorCount)) +
@@ -243,8 +260,6 @@ for (station in unique(df_year_stat_top$StationCode)){
   ggsave(paste0(years_ts_dir,'/CPUE_',station,'.png'), plot = plt, width = 8, height = 4)
 }
 
-# TODO: double check math by summing stations manually
-# TODO: START HERE 9/15
 
 # --- Create Report Year Timeseries ---
 # add a name col to year
@@ -253,7 +268,7 @@ df_month_stat$Name <- with(df_month_stat, paste(Phylum, Genus, Species))
 # subset top 10 species by average CPUE over all months in a given year
 df_month_stat_top <- df_month_stat %>%
   group_by(Name, StationCode, Year) %>%
-  mutate(TotalSum = sum(CPUETotal_Month, na.rm = TRUE)) %>%
+  mutate(TotalSum = sum(CPUETotal_MonthStat, na.rm = TRUE)) %>%
   arrange(Year, StationCode, desc(TotalSum)) %>%
   ungroup()
 
@@ -262,7 +277,8 @@ df_month_stat_top$Month = factor(df_month_stat_top$Month, levels = month.name)
 
 # arrange df
 df_month_stat_top <- df_month_stat_top %>%
-  arrange(Year, Month, StationCode, desc(TotalSum))
+  arrange(Year, Month, StationCode, desc(TotalSum)) %>%
+  select(-c(CPUETotal_Month, GrabCount_Month, GrabCount_YearStat))
 
 # append to workbook 
 add_sheet(wkbk_export, subset(df_month_stat_top, select = -c(Name, TotalSum)), 'Monthly Totals (Stations)')
@@ -274,10 +290,10 @@ for (station in unique(df_month_stat_top$StationCode)){
     filter(StationCode == station,
            Year == report_year) %>%
     group_by(StationCode) %>%
-    mutate(CPUESum_Month = sum(CPUETotal_Month)) %>%
+    mutate(CPUESum_Month = sum(CPUETotal_MonthStat)) %>%
     ungroup %>%
     group_by(Name) %>%
-    mutate(Percentage = round(sum(CPUETotal_Month)/CPUESum_Month*100,2)) %>%
+    mutate(Percentage = round(sum(CPUETotal_MonthStat)/CPUESum_Month*100,2)) %>%
     ungroup %>%
     arrange(desc(Percentage))
 
@@ -288,7 +304,7 @@ for (station in unique(df_month_stat_top$StationCode)){
   # complete missing cases
   df_filt <- df_filt %>% complete(Year, nesting(Name, StationCode, Percentage))
   
-  df_filt$CPUETotal_Month[is.na(df_filt$CPUETotal_Month)] = 0
+  df_filt$CPUETotal_MonthStat[is.na(df_filt$CPUETotal_MonthStat)] = 0
   df_filt$Percentage[is.na(df_filt$Percentage)] = 0
 
   # re-order
@@ -299,7 +315,7 @@ for (station in unique(df_month_stat_top$StationCode)){
   getPalette = colorRampPalette(brewer.pal(8, 'Set2'))
   
   # plot timeseries
-  ts <- ggplot(df_filt, aes(Month, CPUETotal_Month, group = Name)) +
+  ts <- ggplot(df_filt, aes(Month, CPUETotal_MonthStat, group = Name)) +
     geom_line(aes(color = Name), size = 1) +
     geom_point(aes(color = Name), size = 1.7) +
     scale_color_manual(values = getPalette(colorCount)) +
@@ -325,11 +341,11 @@ df_report_year <- df_year %>%
 df_report_year_stat <- df_year_stat %>%
   filter(Year == report_year) %>%
   group_by(StationCode) %>%
-  mutate(CPUESum_Year = sum(CPUETotal_Year)) %>%
+  mutate(CPUESum_YearStat = sum(CPUETotal_YearStat)) %>%
   ungroup() %>%
   group_by(Genus, Species, StationCode) %>%
-  mutate(Percentage = round(CPUETotal_Year/CPUESum_Year*100, 2)) %>%
-  arrange(StationCode, desc(OrgsTotal_Year))
+  mutate(Percentage = round(CPUETotal_YearStat/CPUESum_YearStat*100, 2)) %>%
+  arrange(StationCode, desc(OrgsTotal_YearStat))
 
 df_report_month <- df_month %>%
   filter(Year == report_year) %>%
@@ -351,21 +367,21 @@ df_report_month_stat <- df_month_stat %>%
   ungroup() %>%
   group_by(Genus, Species, Month, StationCode) %>%
   mutate(Percentage = round(CPUETotal_Month/CPUESum_Month*100, 2)) %>%
-  arrange(StationCode, desc(OrgsTotal_Month))
+  arrange(StationCode, desc(OrgsTotal_MonthStat))
 
 df_report_month_stat$Month = factor(df_report_month_stat$Month, levels = month.name)
 
 df_report_month_stat <- df_report_month_stat %>%
-  arrange(StationCode, Month, desc(OrgsTotal_Month))
+  arrange(StationCode, Month, desc(OrgsTotal_MonthStat))
 
 # subset out year cols
 df_report_year <- subset(df_report_year, select = -c(Name, Year, CPUESum_Year))
 
-df_report_year_stat <- subset(df_report_year_stat, select = -c(Name, Year, CPUESum_Year))
+df_report_year_stat <- subset(df_report_year_stat, select = -c(Name, Year, CPUESum_YearStat, CPUETotal_Year))
 
 df_report_month <- subset(df_report_month, select = -c(Year, CPUESum_Month))
 
-df_report_month_stat <- subset(df_report_month_stat, select = -c(Name, Year, CPUESum_Month))
+df_report_month_stat <- subset(df_report_month_stat, select = -c(Name, Year, CPUESum_Month, CPUETotal_Month))
 
 # add to workbook
 add_sheet(wkbk_export, df_report_year, paste(report_year,'Species (Year) (All)'))
@@ -377,11 +393,12 @@ add_sheet(wkbk_export, df_report_year_stat, paste(report_year,'Species (Year) (S
 add_sheet(wkbk_export, df_report_month_stat, paste(report_year,'Species (Month) (Stations)'))
 
 # remove extra stuff
-rm(df_report_year, df_report_year_stat, df_year, df_month, df_month_stat, df_year_stat)
+rm(df_year, df_month, df_month_stat, df_year_stat)
 
 df_report_month <- subset(df_report_month, select = -c(Percentage))
 
 df_report_month_stat <- subset(df_report_month_stat, select = -c(Percentage))
+
 ```
 
 ```{r Create RY Bargraphs  and Calc Phylums}
@@ -411,17 +428,17 @@ df_ry_phy <- df_ry_phy %>%
 # condense by phylum per station (all months)
 df_ry_stat_phy <- df_report_month_stat %>%
   group_by(Phylum, StationCode, Month) %>%
-  summarize(OrgsTotal_Month = sum(OrgsTotal_Month), CPUE_Total = sum(CPUETotal_Month)) %>%
+  summarize(OrgsTotal_MonthStat = sum(OrgsTotal_MonthStat), CPUETotal_MonthStat = sum(CPUETotal_MonthStat)) %>%
   ungroup() %>%
   group_by(StationCode, Month) %>%
-  mutate(SumTotal_Month = sum(OrgsTotal_Month)) %>%
+  mutate(SumTotal_MonthStat = sum(OrgsTotal_MonthStat)) %>%
   ungroup() %>%
   group_by(Phylum, StationCode, Month) %>%
-  mutate(Percentage = round(OrgsTotal_Month/SumTotal_Month*100,2)) %>%
+  mutate(Percentage = round(OrgsTotal_MonthStat/SumTotal_MonthStat*100,2)) %>%
   ungroup()
 
 # remove extra col
-df_ry_stat_phy <- subset(df_ry_stat_phy, select = -c(SumTotal_Month))
+df_ry_stat_phy <- subset(df_ry_stat_phy, select = -c(SumTotal_MonthStat))
 
 # factor month col
 df_ry_stat_phy$Month = factor(df_ry_stat_phy$Month, levels = month.name)
@@ -462,16 +479,16 @@ for (station in unique(df_ry_stat_phy$StationCode)){
   
   # check phyla less than 1% of total year
   df_check <- df_filt %>%
-    mutate(Total_Check = sum(OrgsTotal_Month)) %>%
+    mutate(Total_Check = sum(OrgsTotal_MonthStat)) %>%
     group_by(Phylum) %>%
-    mutate(Percent_Check = round(sum(OrgsTotal_Month)/Total_Check*100,2)) %>%
+    mutate(Percent_Check = round(sum(OrgsTotal_MonthStat)/Total_Check*100,2)) %>%
     ungroup()
   
   rare_phyla <- unique(df_check$Phylum[df_check$Percent_Check <= 1])
   
   df_filt <- df_filt[!df_filt$Phylum %in% rare_phyla,]
   
-  df_filt$Phylum <- with(df_filt, reorder(Phylum, CPUE_Total))
+  df_filt$Phylum <- with(df_filt, reorder(Phylum, CPUETotal_MonthStat))
   
   # arrange df
   df_filt <- df_filt %>%
@@ -481,7 +498,7 @@ for (station in unique(df_ry_stat_phy$StationCode)){
     ungroup()
   
   # graph
-  bar <- ggplot(df_filt, aes(Month, CPUE_Total, fill = factor(Color, levels = unique(df_filt$Color)))) +
+  bar <- ggplot(df_filt, aes(Month, CPUETotal_MonthStat, fill = factor(Color, levels = unique(df_filt$Color)))) +
     geom_col(color = 'black') +
     scale_fill_identity(guide = 'legend', labels = rev(df_filt$Phylum), breaks = rev(df_filt$Color)) +
     ylab(expression(bold('Individuals/m'^2))) +
@@ -494,22 +511,24 @@ for (station in unique(df_ry_stat_phy$StationCode)){
 
 # --- Calc Phylums by Year ---
 # subset df
-df_phy_percs <- subset(df_ry_phy, select = -c(Month))
-df_phy_percs <- df_phy_percs %>%
+df_phy_percs <- df_report_year %>%
   group_by(Phylum) %>%
-  summarize(Orgs_Total = sum(OrgsTotal_Month), CPUE_Total = sum(CPUETotal_Month)) %>%
+  summarize(OrgsTotal_Year = sum(OrgsTotal_Year), CPUETotal_Year = sum(CPUETotal_Year)) %>%
   ungroup() %>%
-  mutate(Percentage = round(Orgs_Total/sum(Orgs_Total)*100,2)) %>%
-  arrange(desc(Percentage))
+  mutate(SumTotal_Year = sum(OrgsTotal_Year)) %>%
+  group_by(Phylum) %>%
+  mutate(Percentage = round(OrgsTotal_Year/SumTotal_Year*100,2)) %>%
+  ungroup()
 
-df_phy_stat_percs <- subset(df_ry_stat_phy, select = -c(Month))
-df_phy_stat_percs <- df_phy_stat_percs %>%
+df_phy_stat_percs <- df_report_year_stat %>%
   group_by(Phylum, StationCode) %>%
-  summarize(Orgs_Total = sum(OrgsTotal_Month), CPUE_Total = sum(CPUE_Total)) %>%
+  summarize(OrgsTotal_YearStat = sum(OrgsTotal_YearStat), CPUETotal_YearStat = sum(CPUETotal_YearStat)) %>%
   ungroup() %>%
   group_by(StationCode) %>%
-  mutate(Percentage = round(Orgs_Total/sum(Orgs_Total)*100,2)) %>%
+  mutate(Percentage = round(OrgsTotal_YearStat/sum(OrgsTotal_YearStat)*100,2)) %>%
   arrange(StationCode, desc(Percentage))
+
+df_ry_stat_phy <- subset(df_ry_stat_phy, select = -c(Color))
 
 # add sheets
 add_sheet(wkbk_export, df_phy_percs, paste(report_year, 'Phylums (Year) (All)'))
