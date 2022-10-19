@@ -18,7 +18,7 @@ theme_set(theme_bw())
 rm(list=ls())
 
 ## Create date variables
-start <- as.Date("2022-05-01")
+start <- as.Date("2022-08-01")
 end <- Sys.Date()
 
 ## Pull non-QA'd data from CDEC
