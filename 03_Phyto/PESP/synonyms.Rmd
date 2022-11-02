@@ -3,6 +3,45 @@ knitr::opts_knit$set(root.dir = './03_Phyto/PESP/')
 ```
 
 ```{r}
+library(tidyverse)
+'%!in%' <- function(x,y)!('%in%'(x,y))
+```
 
+```{r}
+# read in data
+df_syn <- read_csv('data/Phyto Classification.csv', show_col_types = FALSE)
+df_data <- read_csv('data/Phyto Data 2008-present.csv', show_col_types = FALSE)
+
+# change all spp. to sp.
+df_data <- df_data %>%
+  select(-Synonym) %>%
+  mutate(Taxon = gsub('spp.', 'sp.', Taxon))
+
+# assume if Synonym is either 'None' or 'Unknown' it should stay the orig Taxon name
+df_syn <- df_syn %>%
+  select(Taxon, `Current Name`) %>%
+  rename(Synonym = `Current Name`) %>%
+  mutate(Synonym = case_when(Synonym == 'None' | Synonym == 'Unknown' ~ NA_character_,
+                   TRUE ~ Synonym))
+
+```
+
+```{r}
+# check taxa not in synonym list
+ls_extra_taxon <- list(unknown_taxon = unique(df_data$Taxon[df_data$Taxon %!in% df_syn$Taxon]))
+ls_extra_taxon[1]
+
+# export for Tiffany
+write_csv(as.data.frame(ls_extra_taxon), 'data/unknown_taxon.csv')
+```
+
+```{r}
+# combine
+test <- left_join(df_data, df_syn, by = 'Taxon') %>%
+  rename(Original_Taxon = Taxon,
+         Taxon = Synonym) %>%
+  mutate(Taxon = case_when(is.na(Taxon) ~ Original_Taxon,
+                           TRUE ~ Taxon)) %>%
+  relocate(Taxon, .before = Original_Taxon)
 ```
 
