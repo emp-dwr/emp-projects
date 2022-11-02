@@ -50,4 +50,3 @@ for (region in unique(df_wq$Region)){
   ggsave(paste0(wq_dir,'/chlapheo_',region,'.png'), plot = plt, width = 8, height = 4)
 }
 ```
-
