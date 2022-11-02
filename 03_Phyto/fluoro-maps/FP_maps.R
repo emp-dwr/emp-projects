@@ -22,37 +22,44 @@ theme_set(theme_bw())
 rm(list=ls()) 
 
 ## File names 
-FP_data <- "Fluoroprobe_SP_Aug22.txt"
-MOPED_data <- "MOPED_Export_92_08232022_SP.csv"
+FP_data <- "Fluoroprobe_MD1_Oct22.txt"
+MOPED_data <- "MOPED_Export_15_10132022_MD1.csv"
 
 ## Map settings
 time_unit <- "1 minute"
+xlat.MD2 <- c(37.9, 38.15)
+ylon.MD2 <- c(-121.8, -121.3)
+xlat.MD1 <- c(37.95, 38.15)
+ylon.MD1 <- c(-121.8, -121.5)
 
-# read in FluoroProbe data
+# Read in FluoroProbe data
 col_names <- names(read_tsv(FP_data, n_max = 0))
 df_FP <- read_tsv(FP_data, skip = 2, col_names = col_names)
-## Read in MOPED data
+
+# Read in MOPED data
 df_MOPED <-  read_csv(MOPED_data, skip = 2)
 
-## Remove unnecessary columns
-df_FP[6:9] <- NULL
-df_FP[7:28] <- NULL
-
-## Clean headers and remove unnecessary data
+# Clean headers and remove unnecessary data
 df_FP <- df_FP %>%
   clean_names(case = "big_camel")
 
-## Rename headers
+# Remove unnecessary columns
+df_FP <- df_FP %>%
+  select(DateTime:Planktothrix6,UnboundPhycocyanin12:TotalConc)
+
+# Rename headers
 df_FP <- df_FP %>%
   rename("GreenAlgae" = "GreenAlgae2") %>%
   rename("Cyanobacteria" = "Bluegreen3") %>%
   rename("Diatoms" = "Diatoms4") %>%
   rename("Cryptophytes" = "Cryptophyta5") %>%
+  rename("Planktothrix" = "Planktothrix6") %>%
+  rename("UB.Phycocyanin" = "UnboundPhycocyanin12") %>%
+  rename("Yellow.Substances" = "YellowSubstances13") %>%
   rename("Total.Fluorescence" = "TotalConc")
 
 ## Covert to datetime
-df_FP$DateTime <- mdy_hms(df_FP$DateTime, 
-                          tz = "US/Pacific")
+df_FP$DateTime <- mdy_hms(df_FP$DateTime, tz = "US/Pacific")
 
 # Round to nearest 1 min and calc average
 df_FP <- df_FP %>%
@@ -69,8 +76,7 @@ run_name <- unique(df_MOPED$Extension[!is.na(df_MOPED$Extension)])
 
 ## Covert to datetime
 df_MOPED <- df_MOPED %>% rename("DateTime" = "TimeStamp")
-df_MOPED$DateTime <- mdy_hm(df_MOPED$DateTime, 
-                            tz = "US/Pacific")
+df_MOPED$DateTime <- mdy_hms(df_MOPED$DateTime, tz = "US/Pacific")
 
 ## Average data to same time interval as FluoroProbe data
 df_MOPED_data <- df_MOPED %>%
@@ -104,7 +110,7 @@ df_FP <- df_FP %>%
   rename("EXO2.Chla" = "FLUOR") %>%
   rename("FP.Total.Chl" = "Total.Fluorescence")
 
-df_FP.l <- pivot_longer(df_FP, cols = 4:16,
+df_FP.l <- pivot_longer(df_FP, cols = 4:19,
                         names_to = "Group",
                         values_to = "Conc")
 
@@ -125,12 +131,9 @@ for (group in groups) {
     geom_point(data = df_temp,
                aes(x = Longitude,
                    y = Latitude,
-                   fill = Conc,
-                   size = 1),
-               pch = 21,
-               color = "black") +
-    scale_fill_continuous(type = "viridis", 
-                          limits = c(0,80)) +
+                   color = Conc,
+                   size = 1)) +
+    scale_color_continuous(type = "viridis") +
     geom_point(data = cities %>% arrange(pop) %>% tail(500),
                aes(x = long,
                    y = lat)) +
@@ -139,19 +142,19 @@ for (group in groups) {
                         y = lat, 
                         label = name)) +
     #scale_y_continuous() +
-    ylim(38, 38.2) +
-    xlim(-122.5, -122.2) +
+    ylim(xlat.MD1) +
+    xlim(ylon.MD1) +
     theme_bw()
   
   plot + labs(x = "Longitude",
               y = "Latitude",
-              fill = "Fluorescence (ug/L)",
-              title = paste0("San Pablo Bay Phytoplankton, August 23, 2022 - ", group)) +
+              color = "Fluorescence (ug/L)",
+              title = paste0("Interior Delta, Day 1 - 10/13/2022 - ", group)) +
     guides(size = "none")
   
   
   ggsave(path="plots",
-         filename = paste0("FP.map.Aug.2022.",group,".png"), 
+         filename = paste0("FP.map.MD1.Oct.2022.",group,".png"), 
          device = "png",
          scale=1.0, 
          units="in",
