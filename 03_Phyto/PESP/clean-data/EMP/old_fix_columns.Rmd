@@ -1,0 +1,93 @@
+```{r setup, include=FALSE, echo=FALSE}
+knitr::opts_knit$set(root.dir = '~/03_Phyto/PESP/')
+```
+
+```{r echo=FALSE}
+# Clean up columns for EMP data
+# contact: Sarah Perry (sarah.perry@water.ca.gov)
+
+library(tidyverse)
+library(fuzzyjoin)
+'%!in%' <- function(x,y)!('%in%'(x,y))
+```
+
+```{r}
+# read in data
+df_syn <- read_csv('data/EMP/Phyto Classification.csv', show_col_types = FALSE)
+df_data <- read_csv('data/Phyto Data 2008-present_121522.csv', show_col_types = FALSE)
+
+# remove unnecessary columns
+df_data <- df_data %>%
+  select(-c(Taxonomist, LabNumber, TIN))
+
+# remove percents from percent col
+df_data$Percent_Sample_Counted <- gsub('%','',df_data$Percent_Sample_Counted)
+```
+
+```{r}
+unknown_syns <- 'unknown|unidentified|Unidentified|Undetermined|undetermined'
+
+test <- df_data %>%
+  # update Taxon column to standardize Unknown
+  mutate(
+    Taxon = case_when(grepl(unknown_syns,Taxon) ~ str_replace_all(Taxon, unknown_syns, 'Unknown'),
+                      TRUE ~ Taxon)
+    ) %>%
+  # Update Genus column if unknown Species
+  mutate(
+    Genus = case_when(grepl('Unknown', Taxon) ~ 'Unknown',
+                      is.na(Genus) ~ 'Unknown',
+                      Genus == 'Other' ~ 'Unknown',
+                      Genus == 'genus' ~ 'Unknown',
+                      TRUE ~ Genus)
+    ) %>%
+  # Update Species column in unknown
+  mutate(
+      Species = case_when(Genus == 'Unknown' ~ 'Unknown',
+                          is.na(Species) ~ 'Unknown',
+                          TRUE ~ Species)
+  )
+
+test2 <- test %>%
+```
+
+```{r}
+# subset synonym/taxon columns
+test_syn <- df_syn %>% select(c('Kingdom':'Algal Type','Current Name'))
+
+# create column for joining that ignores cf.
+test$join_taxon <- str_squish(str_remove(test$Taxon, 'cf.'))
+
+# join with main dataset
+test_joined <- test %>%
+  regex_left_join(test_syn, by = 'Taxon') %>%
+  regex_left_join(test_syn, by = c('join_taxon' = 'Taxon')) %>%
+  mutate(Kingdom = coalesce(Kingdom.x, Kingdom.y),
+         Phylum = coalesce(Phylum.x, Phylum.y),
+         Class = coalesce(Class.x, Class.y),
+         AlgalType = coalesce(`Algal Type.x`, `Algal Type.y`),
+         Genus = coalesce(Genus.x, Genus.y),
+         Taxon = coalesce(Taxon.x, Taxon.y),
+         CurrentName = coalesce(`Current Name.x`, `Current Name.y`))
+  # select(-c('Taxon.y','Genus.y','join_taxon')) %>%
+  # rename('Taxon' = 'Taxon.x', 'Genus' = 'Genus.x')
+
+test2 <- test_joined %>% select(c('Kingdom':'CurrentName','Taxon','Genus','Species'))
+
+check <- test2 %>% subset(is.na(AlgalType) | is.na(Class) | is.na(Phylum) | is.na(Kingdom) | is.na(Genus) | is.na(Species))
+syn_check <- test2 %>% subset(is.na(CurrentName) | CurrentName == 'Unknown')
+check <- check[!duplicated(check),]
+check <- check %>% arrange(Taxon)
+syn_check <- syn_check[!duplicated(syn_check),]
+syn_check <- syn_check %>% arrange(Taxon)
+
+write_csv(check, 'C:/Users/sperry/Desktop/unknown_phyto_taxon_3.csv')
+write_csv(syn_check, 'C:/Users/sperry/Desktop/unknown_phyto_syn_2.csv')
+```
+
+```{r}
+x <- data.frame(one = 'test cf. hi', two = 'combine')
+y <- data.frame(one = 'test hi')
+x$join_taxon <- str_squish(str_remove(x$one, 'cf.'))
+regex_full_join(x,y, by = c("join_taxon" = 'one'))
+```
