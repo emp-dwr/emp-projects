@@ -13,7 +13,7 @@ library(fuzzyjoin)
 ## Read in data
 ```{r}
 # read in data
-df_syn <- read_csv('data/EMP/Phyto Classification.csv', show_col_types = FALSE)
+df_syn_test <- read_csv('data/EMP/Phyto Classification Test.csv', show_col_types = FALSE)
 df_data <- read_csv('data/EMP/Phyto Data 2008-present_121522.csv', show_col_types = FALSE)
 
 # remove unnecessary columns/rename
@@ -122,5 +122,13 @@ syn_check <- syn_check %>% arrange(Name)
 
 write_csv(check, 'C:/Users/sperry/Desktop/unknown_phyto_taxon_3.csv')
 write_csv(syn_check, 'C:/Users/sperry/Desktop/unknown_phyto_syn_2.csv')
+```
+
+```{r}
+df <- read_csv('C:/Users/sperry/Desktop/unknown_phyto_syn_2.csv')
+df_check <- left_join(df, df_syn[str_squish(str_remove(df_syn$Name, 'cf.'))])
+
+str_squish(str_remove(df_syn$Name, 'cf.'))
+test <- df_syn(select = -c)
 ```
 
