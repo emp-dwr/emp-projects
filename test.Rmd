@@ -1,0 +1,10 @@
+```{r setup, include=FALSE, echo=FALSE}
+knitr::opts_knit$set(root.dir = './03_Phyto/PESP/')
+```
+
+```{r}
+library(tidyverse)
+# read in data
+df_syn_test <- read_csv('data/EMP/Phyto Classification Test.csv', show_col_types = FALSE)
+```
+

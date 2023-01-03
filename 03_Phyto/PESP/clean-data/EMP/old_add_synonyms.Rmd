@@ -1,0 +1,78 @@
+```{r setup, include=FALSE, cache=FALSE}
+# Clean up columns for EMP data
+# contact: Sarah Perry (sarah.perry@water.ca.gov)
+# (need to fix up)
+
+knitr::opts_knit$set(root.dir = './03_Phyto/PESP/')
+```
+
+```{r}
+library(tidyverse)
+'%!in%' <- function(x,y)!('%in%'(x,y))
+```
+
+```{r}
+# read in data
+df_syn <- read_csv('data/Phyto Classification.csv', show_col_types = FALSE)
+df_data <- read_csv('data/Phyto Data 2008-present_121522.csv', show_col_types = FALSE)
+
+# remove unnecessary columns
+df_data <- df_data %>%
+  select(-c(Taxonomist, LabNumber, TIN))
+
+# remove percents from percent col
+df_data$Percent_Sample_Counted <- gsub('%','',df_data$Percent_Sample_Counted)
+```
+
+```{r}
+# change all spp. to sp.
+# df_data <- df_data %>%
+#   mutate(Taxon = gsub('spp.', 'sp.', Taxon))
+
+# assume if Synonym is either 'None' or 'Unknown' it should stay the orig Taxon name
+df_syn <- df_syn %>%
+  select(Taxon, `Current Name`) %>%
+  rename(Synonym = `Current Name`) %>%
+  mutate(Synonym = case_when(Synonym == 'None' | Synonym == 'Unknown' ~ NA_character_,
+                   TRUE ~ Synonym))
+
+
+df_data$Taxon_Cleaned <- df_data$Taxon
+
+df_data <- df_data %>%
+  mutate(Taxon_Cleaned = case_when(grepl('unknown ',Taxon_Cleaned) ~ str_replace(Taxon_Cleaned, 'unknown ', ''),
+                                   grepl('Unknown ',Taxon_Cleaned) ~ str_replace(Taxon_Cleaned, 'Unknown ', ''),
+                                   grepl('cf. ', Taxon_Cleaned) ~ str_replace(Taxon_Cleaned, 'cf. ', ''),
+                                   grepl(' cf. ', Taxon_Cleaned) ~ str_replace(Taxon_Cleaned, ' cf. ', ''),
+                                   TRUE ~ Taxon_Cleaned))
+
+df_data <- df_data %>%
+  mutate(Taxon_Cleaned = gsub('spp.','sp.', Taxon_Cleaned))
+```
+
+```{r}
+# check taxa not in synonym list
+# remove sp and cf for checks
+ls_extra_taxon <- list(unknown_taxon = unique(df_data$Taxon_Cleaned[str_squish(str_remove(df_data$Taxon_Cleaned,'cf.')) %!in% df_syn$Taxon]))
+ls_extra_taxon[1]
+
+# export for Tiffany
+write_csv(as.data.frame(ls_extra_taxon), 'data/unknown_taxon_2.csv')
+
+
+df_data$Taxon_Cleaned[df_data$Taxon_Cleaned %!in% df_data$Taxon]
+
+str_squish(str_remove(df_data$Taxon_Cleaned,'cf.'))
+```
+
+```{r}
+# combine
+df_data_syn <- left_join(df_data, df_syn, by = 'Taxon') %>%
+  rename(Original_Taxon = Taxon,
+         Taxon = Synonym) %>%
+  mutate(Taxon = case_when(is.na(Taxon) ~ Original_Taxon,
+                           TRUE ~ Taxon)) %>%
+  relocate(Taxon, .before = Original_Taxon)
+
+write_csv(df_data_syn, 'data/EMP_Phyto_2008-2021.csv')
+```
