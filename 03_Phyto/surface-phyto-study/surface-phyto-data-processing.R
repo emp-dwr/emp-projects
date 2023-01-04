@@ -32,4 +32,35 @@ df_phyto$DateTime <- mdy_hms(df_phyto$DateTime,
 # Remove unneeded columns
 df_phyto <- df_phyto %>% select(!c("Factor"))
 df_phyto <- df_phyto %>% select(!(Species:BiovolumeIndividualCell))
-df_phyto <- df_phyto %>% select(!(VolumeReceivedML:NumberOfFieldsCounted))
+
+# Reorder date/time columns
+df_phyto <- df_phyto %>% 
+  relocate(DateTime, .before = Region) %>% 
+  relocate(Year, .after = DateTime)
+
+# Check if Station Codes are all correct ---------------------------------------
+sort(unique(df_phyto$StationCode)) # 28 Total stations, no typos
+
+sort(unique(df_phyto$Genus))
+
+# Summarize data by genus and algal group --------------------------------------
+
+## Summarize by genus
+df_phyto_gen <- df_phyto %>%
+  group_by(Year, Month, Season, DateTime, StationCode, Region, RegionAbbreviation, AlgalType, Genus) %>%
+  summarize(BV.per.mL = sum(BiovolumePerML, na.rm = TRUE)) %>%
+  ungroup
+
+## Summarize by algal group
+df_phyto_grp <- df_phyto %>%
+  group_by(Year, Month, Season, DateTime, StationCode, Region, RegionAbbreviation, AlgalType) %>%
+  summarize(BV.per.mL = sum(BiovolumePerML, na.rm = TRUE)) %>%
+  ungroup
+
+# Export data for analysis in PRIMER -------------------------------------------
+
+write_csv(df_phyto_gen, file = "df_phyto_gen.csv")
+write_csv(df_phyto_grp, file = "df_phyto_grp.csv")
+
+
+
