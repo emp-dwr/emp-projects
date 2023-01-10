@@ -202,12 +202,12 @@ df_phyto <- df_phyto %>%
 df_phyto$Genus <- gsub("cf Chlorella","Chlorella",df_phyto$Genus)
 
 # Units for Density (unit, biovolume) are in per mL, will convert to per L 
-df_phyto <- df_phyto %>% mutate(across(Units.per.mL:BV.um3.per.mL, ~ .x * 1000,.keep = "unused"))
+#df_phyto <- df_phyto %>% mutate(across(Units.per.mL:BV.um3.per.mL, ~ .x * 1000,.keep = "unused"))
 
 # Rename headers b/c units are now in L
-df_phyto <- df_phyto %>% 
-  rename("Units.per.L" = "Units.per.mL") %>%
-  rename("BV.um3.per.L" = "BV.um3.per.mL")
+# df_phyto <- df_phyto %>% 
+#    rename("Units.per.L" = "Units.per.mL") %>%
+#    rename("BV.um3.per.L" = "BV.um3.per.mL")
 
 # Add Taxonomy Data-------------------------------------------------------------
 
