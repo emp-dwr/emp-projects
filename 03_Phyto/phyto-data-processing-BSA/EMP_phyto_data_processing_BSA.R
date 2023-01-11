@@ -240,13 +240,13 @@ table(is.na(df_phyto$Region)) # no NAs
 ## Summarize by genus
 df_phyto_gen <- df_phyto %>%
   group_by(Year, Month, DateTime, Region, StationCode, Group, Genus) %>%
-  summarize(across(Units.per.L:BV.um3.per.L, ~sum(.x, na.rm = TRUE))) %>%
+  summarize(across(Units.per.mL:BV.um3.per.mL, ~sum(.x, na.rm = TRUE))) %>%
   ungroup
 
 ## Summarize by genus
 df_phyto_grp <- df_phyto %>%
   group_by(Year, Month, DateTime, Region, StationCode, Group) %>%
-  summarize(across(Units.per.L:BV.um3.per.L, ~sum(.x, na.rm = TRUE))) %>%
+  summarize(across(Units.per.mL:BV.um3.per.mL, ~sum(.x, na.rm = TRUE))) %>%
   ungroup
 
 # Save df to use for making plots and exporting to Primer
