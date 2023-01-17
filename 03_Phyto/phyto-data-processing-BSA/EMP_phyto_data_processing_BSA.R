@@ -251,5 +251,6 @@ df_phyto_grp <- df_phyto %>%
 
 # Save df to use for making plots and exporting to Primer
 save(df_phyto, file = "df_phyto.RData")
+save(df_phyto_gen, file = "df_phyto_gen.RData")
 write.csv(df_phyto_gen, file = "df_phyto_gen.csv")
 write.csv(df_phyto_grp, file = "df_phyto_grp.csv")
