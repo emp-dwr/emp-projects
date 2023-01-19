@@ -1,0 +1,1635 @@
+﻿SampleDate,StationCode,Factor,Taxon,Algal Type,Genus,Unit Abundance,Total Cells Counted,GALD 1,Biovolume 1,Sample Type
+7/18/2018,D22,450.43,cf. Cyclotella sp.,Centric Diatom,Cyclotella,2,2,5.6,91.13,Regular
+7/18/2018,D22,450.43,Nitzschia sp.,Pennate Diatom,Nitzschia,3,3,13,26.00,Regular
+7/18/2018,D22,450.43,Eucapsis microscopica,Cyanobacterium,Eucapsis,527,1054,0.8,0.18,Regular
+7/18/2018,NZ068,300.29,Cocconeis sp.,Pennate Diatom,Cocconeis,1,1,14.8,367.55,Regular
+7/18/2018,NZ068,300.29,Nitzschia spp.,Pennate Diatom,Nitzschia,2,2,16.7,33.40,Regular
+7/18/2018,NZ068,300.29,Ulnaria sp.,Pennate Diatom,Ulnaria,2,2,9.3,99.99,Regular
+7/18/2018,NZ068,300.29,cf. Chlorella sp.,Green Alga,Chlorella,3,3,2,4.19,Regular
+7/18/2018,NZ068,300.29,Plagioselmis prolonga,Cryptophyte,Plagioselmis,1,1,7.4,159.13,Regular
+7/18/2018,NZ068,300.29,Eucapsis microscopica,Cyanobacterium,Eucapsis,407,899,0.8,0.18,Regular
+7/19/2018,D19,321.74,cf. Chlorella sp.,Green Alga,Chlorella,15,15,2,4.19,Regular
+7/19/2018,D19,321.74,cf. Aphanizomenon sp.,Cyanobacterium,Aphanizomenon,1,4,5.6,60.21,Regular
+7/19/2018,D19,321.74,Eucapsis microscopica,Cyanobacterium,Eucapsis,417,853,0.8,0.18,Regular
+7/19/2018,D19,321.74,Merismopedia sp.,Cyanobacterium,Merismopedia,1,4,1,1.00,Regular
+7/19/2018,D19,321.74,Microcystis sp.,Cyanobacterium,Microcystis,5,5,9.3,421.16,Regular
+7/19/2018,D12,450.43,cf. Cyclotella sp.,Centric Diatom,Cyclotella,1,1,6.5,122.78,Regular
+7/19/2018,D12,450.43,Ulnaria sp.,Pennate Diatom,Ulnaria,1,1,7.4,51.61,Regular
+7/19/2018,D12,450.43,cf. Chlorella sp.,Green Alga,Chlorella,11,11,2,4.19,Regular
+7/19/2018,D12,450.43,Drepanochloris nannoselene,Green Alga,Drepanochloris,1,1,7.4,26.39,Regular
+7/19/2018,D12,450.43,Eucapsis microscopica,Cyanobacterium,Eucapsis,389,797,0.8,0.18,Regular
+7/9/2018,D16 Twitchell,375.36,cf. Chlorella sp.,Green Alga,Chlorella,6,6,2,4.19,Regular
+7/9/2018,D16 Twitchell,375.36,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,1,1,9.3,314.74,Regular
+7/9/2018,D16 Twitchell,375.36,cf. Aphanizomenon sp.,Cyanobacterium,Aphanizomenon,2,42,3.7,39.78,Regular
+7/9/2018,D16 Twitchell,375.36,Eucapsis microscopica,Cyanobacterium,Eucapsis,403,812,0.8,0.18,Regular
+7/9/2018,D16 Twitchell,375.36,cf. Microcystis sp.,Cyanobacterium,Microcystis,3,3,4.6,50.96,Regular
+7/12/2018,D41A,136.49,cf. Chlorella sp.,Green Alga,Chlorella,1,1,2.2,5.58,Regular
+7/12/2018,D41A,136.49,Chroococcus minimus,Cyanobacterium,Chroococcus,1,2,2.2,5.58,Regular
+7/12/2018,D41A,136.49,Eucapsis microscopica,Cyanobacterium,Eucapsis,403,919,0.8,0.18,Regular
+7/12/2018,D41,250.24,cf. Cyclotella sp.,Centric Diatom,Cyclotella,1,1,4.6,48.20,Regular
+7/12/2018,D41,250.24,Nitzschia sp.,Pennate Diatom,Nitzschia,1,1,11.1,22.20,Regular
+7/12/2018,D41,250.24,cf. Chlorella sp.,Green Alga,Chlorella,2,2,2,4.19,Regular
+7/12/2018,D41,250.24,cf. Mucidosphaerium sp.,Green Alga,Mucidosphaerium,2,3,2.2,5.58,Regular
+7/12/2018,D41,250.24,Eucapsis microscopica,Cyanobacterium,Eucapsis,400,834,0.8,0.18,Regular
+7/19/2018,D28A,281.52,Cocconeis sp.,Pennate Diatom,Cocconeis,1,1,13,275.37,Regular
+7/19/2018,D28A,281.52,Nitzschia sp.,Pennate Diatom,Nitzschia,1,1,14.8,101.31,Regular
+7/19/2018,D28A,281.52,cf. Chlorella sp.,Green Alga,Chlorella,4,4,2.2,5.58,Regular
+7/19/2018,D28A,281.52,cf. Aphanizomenon sp.,Cyanobacterium,Aphanizomenon,1,34,3.7,39.78,Regular
+7/19/2018,D28A,281.52,Eucapsis microscopica,Cyanobacterium,Eucapsis,389,779,0.8,0.18,Regular
+7/19/2018,D28A,281.52,cf. Microcystis sp.,Cyanobacterium,Microcystis,10,11,5.6,73.62,Regular
+7/9/2018,D26,375.36,Cocconeis sp.,Pennate Diatom,Cocconeis,1,1,22.2,954.79,Regular
+7/9/2018,D26,375.36,Ulnaria sp.,Pennate Diatom,Ulnaria,5,5,11.1,137.51,Regular
+7/9/2018,D26,375.36,cf. Chlorella sp.,Green Alga,Chlorella,3,3,2.4,7.24,Regular
+7/9/2018,D26,375.36,cf. Mucidosphaerium sp.,Green Alga,Mucidosphaerium,3,13,2,4.19,Regular
+7/9/2018,D26,375.36,Aphanizomenon sp.,Cyanobacterium,Aphanizomenon,1,16,3.7,39.78,Regular
+7/9/2018,D26,375.36,Eucapsis microscopica,Cyanobacterium,Eucapsis,411,796,0.8,0.18,Regular
+7/9/2018,D26,375.36,cf. Microcystis sp.,Cyanobacterium,Microcystis,10,10,5.3,54.36,Regular
+7/12/2018,NZ325,264.96,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,1,1,10.2,430.35,Regular
+7/12/2018,NZ325,264.96,Eucapsis microscopica,Cyanobacterium,Eucapsis,402,846,0.8,0.18,Regular
+7/11/2018,NZS42,900.86,cf. Chlorella sp.,Green Alga,Chlorella,4,4,2,4.19,Regular
+7/11/2018,NZS42,900.86,Eucapsis microscopica,Cyanobacterium,Eucapsis,463,894,0.8,0.18,Regular
+7/10/2018,D10,574.96,cf. Cyclotella sp.,Centric Diatom,Cyclotella,1,1,5.6,91.13,Regular
+7/10/2018,D10,574.96,cf. Plagioselmis sp.,Cryptophyte,Plagioselmis,1,1,11.1,567.71,Regular
+7/10/2018,D10,574.96,Eucapsis microscopica,Cyanobacterium,Eucapsis,451,911,0.8,0.18,Regular
+7/10/2018,EZ2,919.94,cf. Cyclotella sp.,Centric Diatom,Cyclotella,1,1,6.5,122.78,Regular
+7/10/2018,EZ2,919.94,cf. Navicula sp.,Pennate Diatom,Navicula,1,1,31.5,1702.61,Regular
+7/10/2018,EZ2,919.94,Chlorella sp.,Green Alga,Chlorella,3,3,2.5,8.18,Regular
+7/10/2018,EZ2,919.94,Eucapsis microscopica,Cyanobacterium,Eucapsis,653,1317,0.8,0.18,Regular
+7/10/2018,EZ6,766.62,Chroococcus minutus,Cyanobacterium,Chroococcus,1,1,4.6,50.96,Regular
+7/10/2018,EZ6,766.62,Eucapsis microscopica,Cyanobacterium,Eucapsis,413,832,0.8,0.18,Regular
+7/10/2018,D8,919.94,cf. Cyclotella sp.,Centric Diatom,Cyclotella,1,1,5.6,91.13,Regular
+7/10/2018,D8,919.94,Cryptomonas sp.,Cryptophyte,Cryptomonas,1,1,14.8,412.96,Regular
+7/10/2018,D8,919.94,Eucapsis microscopica,Cyanobacterium,Eucapsis,411,834,0.8,0.18,Regular
+7/19/2018,EZ2-SJR,919.94,Nitzschia sp.,Pennate Diatom,Nitzschia,1,1,11.1,43.51,Regular
+7/19/2018,EZ2-SJR,919.94,Skeletonema potamos,Centric Diatom,Skeletonema,1,1,18.5,198.91,Regular
+7/19/2018,EZ2-SJR,919.94,Chlorella sp.,Green Alga,Chlorella,1,1,2.8,11.49,Regular
+7/19/2018,EZ2-SJR,919.94,Chroococcus minutus,Cyanobacterium,Chroococcus,1,1,5.6,91.95,Regular
+7/19/2018,EZ2-SJR,919.94,Eucapsis microscopica,Cyanobacterium,Eucapsis,433,880,0.8,0.18,Regular
+7/12/2018,NZ002,199.99,cf. Thalassiosira sp.,Centric Diatom,Thalassiosira,1,1,13,982.22,Regular
+7/12/2018,NZ002,199.99,Chlorella sp.,Green Alga,Chlorella,10,10,2.8,4.85,Regular
+7/12/2018,NZ002,199.99,Eucapsis microscopica,Cyanobacterium,Eucapsis,393,791,0.8,0.18,Regular
+7/12/2018,NZ004,270.57,Chlorella sp.,Green Alga,Chlorella,4,4,2.6,9.20,Regular
+7/12/2018,NZ004,270.57,cf. Oocystis sp.,Green Alga,Oocystis,1,3,4.6,32.97,Regular
+7/12/2018,NZ004,270.57,Eucapsis microscopica,Cyanobacterium,Eucapsis,409,825,0.8,0.18,Regular
+7/11/2018,NZ032,657.10,Chlorella sp.,Green Alga,Chlorella,3,3,2.8,5.58,Regular
+7/11/2018,NZ032,657.10,Eucapsis microscopica,Cyanobacterium,Eucapsis,398,806,0.8,0.18,Regular
+7/11/2018,D7,328.55,cf. Chlorella sp.,Green Alga,Chlorella,3,3,2.8,8.18,Regular
+7/11/2018,D7,328.55,Eucapsis microscopica,Cyanobacterium,Eucapsis,412,841,0.8,0.18,Regular
+7/16/2018,C9,328.55,Cyclotella meneghiniana,Centric Diatom,Cyclotella,1,1,13,982.22,Regular
+7/16/2018,C9,328.55,Nitzschia sp.,Pennate Diatom,Nitzschia,1,1,13,88.99,Regular
+7/16/2018,C9,328.55,Chlorella sp.,Green Alga,Chlorella,12,12,3.7,9.20,Regular
+7/16/2018,C9,328.55,Monoraphidium convolutum,Green Alga,Monoraphidium,1,1,7.4,3.14,Regular
+7/16/2018,C9,328.55,Chroococcus minutus,Cyanobacterium,Chroococcus,20,30,5.6,57.91,Regular
+7/16/2018,C9,328.55,Eucapsis microscopica,Cyanobacterium,Eucapsis,402,822,0.8,0.18,Regular
+7/16/2018,C9,328.55,Pseudanabaena sp.,Cyanobacterium,Pseudanabaena,3,38,7.4,60.21,Regular
+7/17/2018,C3A-Hood,209.08,cf. Cyclotella sp.,Centric Diatom,Cyclotella,3,3,5.6,105.91,Regular
+7/17/2018,C3A-Hood,209.08,Encyonema silesiacum,Pennate Diatom,Encyonema,1,1,20.4,281.82,Regular
+7/17/2018,C3A-Hood,209.08,Gomphonema parvulum,Pennate Diatom,Gomphonema,1,1,16.7,1025.34,Regular
+7/17/2018,C3A-Hood,209.08,Staurosira construens var. binodis,Pennate Diatom,Staurosira,1,1,18.5,198.91,Regular
+7/17/2018,C3A-Hood,209.08,Chlorella sp.,Green Alga,Chlorella,2,2,2.8,11.49,Regular
+7/17/2018,C3A-Hood,209.08,Dolichospermum sp.,Cyanobacterium,Dolichospermum,1,1,5,39.27,Regular
+7/17/2018,C3A-Hood,209.08,Dolichospermum spp.,Cyanobacterium,Dolichospermum,1,1,5,39.27,Regular
+7/17/2018,C3A-Hood,209.08,Eucapsis microscopica,Cyanobacterium,Eucapsis,394,796,0.8,0.18,Regular
+7/9/2018,MD10A,287.48,Cocconeis placentula,Pennate Diatom,Cocconeis,1,1,9.3,36.81,Regular
+7/9/2018,MD10A,287.48,cf. Cyclotella sp.,Centric Diatom,Cyclotella,3,3,8.2,116.90,Regular
+7/9/2018,MD10A,287.48,Chlorella sp.,Green Alga,Chlorella,16,16,2.8,9.20,Regular
+7/9/2018,MD10A,287.48,Eucapsis microscopica,Cyanobacterium,Eucapsis,386,788,0.8,0.18,Regular
+7/16/2018,C10A,459.97,Cyclotella sp.,Centric Diatom,Cyclotella,19,19,17.6,1302.56,Regular
+7/16/2018,C10A,459.97,Navicula sp.,Pennate Diatom,Navicula,1,1,40.7,3299.82,Regular
+7/16/2018,C10A,459.97,Nitzschia palea,Pennate Diatom,Nitzschia,4,4,29.6,146.59,Regular
+7/16/2018,C10A,459.97,Skeletonema potamos,Centric Diatom,Skeletonema,9,9,16.7,155.91,Regular
+7/16/2018,C10A,459.97,Chlamydomonas sp.,Green Alga,Chlamydomonas,4,4,7.4,71.24,Regular
+7/16/2018,C10A,459.97,Chlorella sp.,Green Alga,Chlorella,7,7,3.7,18.82,Regular
+7/16/2018,C10A,459.97,cf. Oocystis sp.,Green Alga,Oocystis,1,4,3.7,26.52,Regular
+7/16/2018,C10A,459.97,Chroococcus minutus,Cyanobacterium,Chroococcus,6,7,5.6,57.91,Regular
+7/16/2018,C10A,459.97,Eucapsis microscopica,Cyanobacterium,Eucapsis,348,702,0.8,0.18,Regular
+7/18/2018,D4,766.62,cf. Cyclotella sp.,Centric Diatom,Cyclotella,2,2,7.4,122.78,Regular
+7/18/2018,D4,766.62,Dolichospermum sp.,Cyanobacterium,Dolichospermum,1,40,1.9,3.59,Regular
+7/18/2018,D4,766.62,Eucapsis microscopica,Cyanobacterium,Eucapsis,424,864,0.8,0.18,Regular
+7/9/2018,P8,459.97,cf. Cyclotella sp.,Centric Diatom,Cyclotella,1,1,6.5,122.78,Regular
+7/9/2018,P8,459.97,Chlorella sp.,Green Alga,Chlorella,15,15,2.8,4.85,Regular
+7/9/2018,P8,459.97,Cryptomonas sp.,Cryptophyte,Cryptomonas,2,2,14.8,652.12,Regular
+7/9/2018,P8,459.97,Plagioselmis prolonga,Cryptophyte,Plagioselmis,1,1,6.5,112.82,Regular
+7/9/2018,P8,459.97,Chroococcus minutus,Cyanobacterium,Chroococcus,3,3,5.6,91.95,Regular
+7/9/2018,P8,459.97,Eucapsis microscopica,Cyanobacterium,Eucapsis,413,836,0.8,0.18,Regular
+7/9/2018,P8,459.97,Pseudanabaena sp.,Cyanobacterium,Pseudanabaena,2,18,5.6,46.23,Regular
+7/11/2018,D6,219.03,Cocconeis placentula,Pennate Diatom,Cocconeis,1,1,11.1,122.57,Regular
+7/11/2018,D6,219.03,cf. Cyclotella sp.,Centric Diatom,Cyclotella,1,1,5.6,91.13,Regular
+7/11/2018,D6,219.03,cf. Chlorella sp.,Green Alga,Chlorella,2,2,3.7,11.49,Regular
+7/11/2018,D6,219.03,Eucapsis microscopica,Cyanobacterium,Eucapsis,400,812,0.8,0.18,Regular
+8/2/2018,C3A-Hood,214.49,Achnanthidium sp.,Pennate Diatom,Achnanthidium,1,1,7.4,79.57,Regular
+8/2/2018,C3A-Hood,214.49,cf. Cyclotella sp.,Centric Diatom,Cyclotella,1,1,5.6,91.13,Regular
+8/2/2018,C3A-Hood,214.49,Encyonema sp.,Pennate Diatom,Encyonema,1,1,20.4,186.22,Regular
+8/2/2018,C3A-Hood,214.49,Nitzschia spp.,Pennate Diatom,Nitzschia,2,2,26,269.36,Regular
+8/2/2018,C3A-Hood,214.49,Ulnaria sp.,Pennate Diatom,Ulnaria,3,3,7.4,98.92,Regular
+8/2/2018,C3A-Hood,214.49,cf. Chlorella sp.,Green Alga,Chlorella,7,7,2,4.19,Regular
+8/2/2018,C3A-Hood,214.49,Eucapsis microscopica,Cyanobacterium,Eucapsis,401,881,0.8,0.18,Regular
+8/2/2018,C3A-Hood,214.49,Pseudanabaena sp.,Cyanobacterium,Pseudanabaena,1,8,3,2.36,Regular
+8/1/2018,C10A,643.47,Cyclotella cf. meneghiniana,Centric Diatom,Cyclotella,1,1,11.1,541.91,Regular
+8/1/2018,C10A,643.47,cf. Cyclotella sp.,Centric Diatom,Cyclotella,1,1,5.6,91.13,Regular
+8/1/2018,C10A,643.47,Nitzschia spp.,Pennate Diatom,Nitzschia,2,2,26,177.97,Regular
+8/1/2018,C10A,643.47,cf. Skeletonema sp.,Centric Diatom,Skeletonema,3,3,9.3,99.99,Regular
+8/1/2018,C10A,643.47,Ulnaria sp.,Pennate Diatom,Ulnaria,1,1,7.4,120.42,Regular
+8/1/2018,C10A,643.47,cf. Chlorella sp.,Green Alga,Chlorella,1,1,2.2,5.58,Regular
+8/1/2018,C10A,643.47,Drepanochloris nannoselene,Green Alga,Drepanochloris,1,1,9.3,32.36,Regular
+8/1/2018,C10A,643.47,cf. Monoraphidium sp.,Green Alga,Monoraphidium,1,1,7.4,15.50,Regular
+8/1/2018,C10A,643.47,cf. Mucidosphaerium sp.,Green Alga,Mucidosphaerium,1,4,5.6,40.14,Regular
+8/1/2018,C10A,643.47,Scenedesmus spp.,Green Alga,Scenedesmus,2,6,11.1,122.98,Regular
+8/1/2018,C10A,643.47,Eucapsis microscopica,Cyanobacterium,Eucapsis,369,751,0.8,0.18,Regular
+8/1/2018,C10A,643.47,cf. Microcystis sp.,Cyanobacterium,Microcystis,31,44,4.6,36.09,Regular
+8/2/2018,D4,900.86,cf. Cyclotella sp.,Centric Diatom,Cyclotella,2,2,5.6,91.13,Regular
+8/2/2018,D4,900.86,Eucapsis microscopica,Cyanobacterium,Eucapsis,469,905,0.8,0.18,Regular
+8/1/2018,C9,450.43,cf. Chlorella sp.,Green Alga,Chlorella,5,5,3,6.37,Regular
+8/1/2018,C9,450.43,Drepanochloris nannoselene,Green Alga,Drepanochloris,1,1,9.3,32.36,Regular
+8/1/2018,C9,450.43,cf. Mucidosphaerium sp.,Green Alga,Mucidosphaerium,1,3,2.2,5.58,Regular
+8/1/2018,C9,450.43,Aphanizomenon sp.,Cyanobacterium,Aphanizomenon,1,22,3.7,39.78,Regular
+8/1/2018,C9,450.43,Eucapsis microscopica,Cyanobacterium,Eucapsis,379,808,0.8,0.18,Regular
+8/1/2018,C9,450.43,cf. Microcystis sp.,Cyanobacterium,Microcystis,6,8,4.6,36.09,Regular
+8/6/2018,P8,563.04,cf. Ulnaria sp.,Pennate Diatom,Ulnaria,1,1,7.4,51.61,Regular
+8/6/2018,P8,563.04,cf. Mucidosphaerium sp.,Green Alga,Mucidosphaerium,1,4,2.8,11.49,Regular
+8/6/2018,P8,563.04,Kephyrion sp.,Chrysophyte,Kephyrion,1,1,9.3,152.71,Regular
+8/6/2018,P8,563.04,Cryptomonas sp.,Cryptophyte,Cryptomonas,1,1,11.1,245.55,Regular
+8/6/2018,P8,563.04,Plagioselmis prolonga,Cryptophyte,Plagioselmis,1,1,4.6,45.98,Regular
+8/6/2018,P8,563.04,Eucapsis microscopica,Cyanobacterium,Eucapsis,416,812,0.8,0.18,Regular
+8/6/2018,P8,563.04,cf. Microcystis sp.,Cyanobacterium,Microcystis,1,1,4.6,50.96,Regular
+8/9/2018,NZ325,321.74,Eucapsis microscopica,Cyanobacterium,Eucapsis,410,902,0.8,0.18,Regular
+8/8/2018,NZS42,900.86,Entomoneis sp.,Pennate Diatom,Entomoneis,2,2,33.3,3773.98,Regular
+8/8/2018,NZS42,900.86,Eucapsis microscopica,Cyanobacterium,Eucapsis,606,1183,0.8,0.18,Regular
+8/3/2018,D28A,250.24,Cocconeis sp.,Pennate Diatom,Cocconeis,1,1,18.5,528.89,Regular
+8/3/2018,D28A,250.24,cf. Chlorella sp.,Green Alga,Chlorella,12,12,2,4.19,Regular
+8/3/2018,D28A,250.24,Lagerheimia genevensis,Green Alga,Lagerheimia,3,3,5.6,40.14,Regular
+8/3/2018,D28A,250.24,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,1,1,7.4,186.37,Regular
+8/3/2018,D28A,250.24,Eucapsis microscopica,Cyanobacterium,Eucapsis,391,787,0.8,0.18,Regular
+8/3/2018,D28A,250.24,Microcystis sp.,Cyanobacterium,Microcystis,7,7,4.5,47.71,Regular
+8/6/2018,D26,409.48,Aulacoseira sp. ,Centric Diatom,Aulacoseira,15,15,30,6809.40,Regular
+8/6/2018,D26,409.48,cf. Cyclotella spp.,Centric Diatom,Cyclotella,2,2,6.5,122.78,Regular
+8/6/2018,D26,409.48,Nitzschia spp.,Pennate Diatom,Nitzschia,2,2,11.1,27.75,Regular
+8/6/2018,D26,409.48,Ulnaria sp.,Pennate Diatom,Ulnaria,1,1,9.3,81.08,Regular
+8/6/2018,D26,409.48,Eucapsis microscopica,Cyanobacterium,Eucapsis,393,796,0.8,0.18,Regular
+8/6/2018,D26,409.48,cf. Microcystis sp.,Cyanobacterium,Microcystis,2,3,3.7,26.52,Regular
+8/7/2018,EZ6,750.72,cf. Cyclotella sp.,Centric Diatom,Cyclotella,1,1,5.6,113.30,Regular
+8/7/2018,EZ6,750.72,cf. Chlorella sp.,Green Alga,Chlorella,2,2,2.2,5.58,Regular
+8/7/2018,EZ6,750.72,Eucapsis microscopica,Cyanobacterium,Eucapsis,416,849,0.8,0.18,Regular
+8/7/2018,EZ6,750.72,cf. Microcystis sp.,Cyanobacterium,Microcystis,1,1,3.7,26.52,Regular
+8/7/2018,EZ2,900.86,Cyclotella meneghiniana,Centric Diatom,Cyclotella,1,1,13,743.30,Regular
+8/7/2018,EZ2,900.86,cf. Chlorella sp.,Green Alga,Chlorella,1,1,2.2,5.58,Regular
+8/7/2018,EZ2,900.86,Eucapsis microscopica,Cyanobacterium,Eucapsis,398,814,0.8,0.18,Regular
+8/9/2018,D41,225.21,Nitzschia sp.,Pennate Diatom,Nitzschia,1,1,24,164.28,Regular
+8/9/2018,D41,225.21,Eucapsis microscopica,Cyanobacterium,Eucapsis,417,841,0.8,0.18,Regular
+8/9/2018,D41A,281.52,cf. Kephyrion sp.,Chrysophyte,Kephyrion,1,1,5.6,40.14,Regular
+8/9/2018,D41A,281.52,Eucapsis microscopica,Cyanobacterium,Eucapsis,436,879,0.8,0.18,Regular
+8/6/2018,MD10A,563.04,Aulacoseira sp. ,Centric Diatom,Aulacoseira,5,5,35,3326.16,Regular
+8/6/2018,MD10A,563.04,Drepanochloris nannoselene,Green Alga,Drepanochloris,1,1,7.4,26.39,Regular
+8/6/2018,MD10A,563.04,Scenedesmus sp.,Green Alga,Scenedesmus,2,6,7.4,28.25,Regular
+8/6/2018,MD10A,563.04,Chroococcus minimus,Cyanobacterium,Chroococcus,2,12,2,4.19,Regular
+8/6/2018,MD10A,563.04,Eucapsis microscopica,Cyanobacterium,Eucapsis,414,835,0.8,0.18,Regular
+8/2/2018,NZ068,321.74,cf. Cyclotella sp.,Centric Diatom,Cyclotella,1,1,11.1,541.91,Regular
+8/2/2018,NZ068,321.74,cf. Chlorella sp.,Green Alga,Chlorella,8,8,2,4.19,Regular
+8/2/2018,NZ068,321.74,Plagioselmis prolonga,Cryptophyte,Plagioselmis,1,1,7.4,172.03,Regular
+8/2/2018,NZ068,321.74,Eucapsis microscopica,Cyanobacterium,Eucapsis,428,921,0.8,0.18,Regular
+8/8/2018,D7,750.72,Eucapsis microscopica,Cyanobacterium,Eucapsis,450,887,0.8,0.18,Regular
+8/3/2018,D12,919.94,cf. Cyclotella sp.,Centric Diatom,Cyclotella,1,1,4.6,61.49,Regular
+8/3/2018,D12,919.94,Chlorella sp.,Green Alga,Chlorella,2,2,2.8,7.24,Regular
+8/3/2018,D12,919.94,Chroococcus minutus,Cyanobacterium,Chroococcus,2,3,4.6,50.96,Regular
+8/3/2018,D12,919.94,Eucapsis microscopica,Cyanobacterium,Eucapsis,434,891,0.8,0.18,Regular
+8/6/2018,D16-Twitchell,511.08,Chlorella sp.,Green Alga,Chlorella,11,11,1.9,3.59,Regular
+8/6/2018,D16-Twitchell,511.08,Chroococcus minutus,Cyanobacterium,Chroococcus,1,2,3.7,26.52,Regular
+8/6/2018,D16-Twitchell,511.08,Eucapsis microscopica,Cyanobacterium,Eucapsis,393,801,0.8,0.18,Regular
+8/3/2018,D19,287.48,Cocconeis placentula,Pennate Diatom,Cocconeis,2,2,20.4,474.48,Regular
+8/3/2018,D19,287.48,Skeletonema potamos,Centric Diatom,Skeletonema,1,1,9.3,99.99,Regular
+8/3/2018,D19,287.48,Chlorella sp.,Green Alga,Chlorella,10,10,2.8,7.24,Regular
+8/3/2018,D19,287.48,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,1,1,9.3,337.38,Regular
+8/3/2018,D19,287.48,Plagioselmis prolonga,Cryptophyte,Plagioselmis,1,1,6.5,112.82,Regular
+8/3/2018,D19,287.48,Chroococcus minutus,Cyanobacterium,Chroococcus,7,10,5.6,57.91,Regular
+8/3/2018,D19,287.48,Eucapsis microscopica,Cyanobacterium,Eucapsis,397,804,0.8,0.18,Regular
+8/3/2018,D19,287.48,Pseudanabaena sp.,Cyanobacterium,Pseudanabaena,1,5,3.7,7.94,Regular
+8/2/2018,D22,766.62,cf. Cyclotella sp.,Centric Diatom,Cyclotella,1,1,3.7,39.78,Regular
+8/2/2018,D22,766.62,Chlorella sp.,Green Alga,Chlorella,4,4,2.8,7.24,Regular
+8/2/2018,D22,766.62,Monoraphidium tortile,Green Alga,Monoraphidium,1,1,11.1,20.98,Regular
+8/2/2018,D22,766.62,Plagioselmis prolonga,Cryptophyte,Plagioselmis,1,1,5.6,76.35,Regular
+8/2/2018,D22,766.62,Eucapsis microscopica,Cyanobacterium,Eucapsis,442,889,0.8,0.18,Regular
+8/8/2018,D6,191.65,Chlorella sp.,Green Alga,Chlorella,2,2,3.7,18.82,Regular
+8/8/2018,D6,191.65,Eucapsis microscopica,Cyanobacterium,Eucapsis,407,821,0.8,0.18,Regular
+8/7/2018,D8,919.94,Eucapsis microscopica,Cyanobacterium,Eucapsis,414,844,0.8,0.18,Regular
+8/7/2018,D10,511.08,cf. Cyclotella sp.,Centric Diatom,Cyclotella,1,1,5.6,91.13,Regular
+8/7/2018,D10,511.08,Eucapsis microscopica,Cyanobacterium,Eucapsis,422,853,0.8,0.18,Regular
+8/3/2018,EZ2-SJR,657.10,cf. Cyclotella sp.,Centric Diatom,Cyclotella,3,3,7.4,122.78,Regular
+8/3/2018,EZ2-SJR,657.10,Chroococcus minutus,Cyanobacterium,Chroococcus,5,7,5.6,73.62,Regular
+8/3/2018,EZ2-SJR,657.10,Eucapsis microscopica,Cyanobacterium,Eucapsis,397,799,0.8,0.18,Regular
+8/9/2018,NZ002,270.57,cf. Cyclotella sp.,Centric Diatom,Cyclotella,1,1,7.4,159.13,Regular
+8/9/2018,NZ002,270.57,Chlorella sp.,Green Alga,Chlorella,1,1,1.9,3.59,Regular
+8/9/2018,NZ002,270.57,Eucapsis microscopica,Cyanobacterium,Eucapsis,415,838,0.8,0.18,Regular
+8/9/2018,NZ004,328.55,cf. Cyclotella sp.,Centric Diatom,Cyclotella,1,1,5.6,91.13,Regular
+8/9/2018,NZ004,328.55,Staurosira construens var. venter,Pennate Diatom,Staurosira,1,1,11.1,180.64,Regular
+8/9/2018,NZ004,328.55,Eucapsis microscopica,Cyanobacterium,Eucapsis,418,843,0.8,0.18,Regular
+8/8/2018,NZ032,1533.23,cf. Cyclotella sp.,Centric Diatom,Cyclotella,1,1,5.6,91.13,Regular
+8/8/2018,NZ032,1533.23,Eucapsis microscopica,Cyanobacterium,Eucapsis,407,829,0.8,0.18,Regular
+9/21/2018,C10A,750.72,Aulacoseira sp. ,Centric Diatom,Aulacoseira,1,1,11.1,273.39,Regular
+9/21/2018,C10A,750.72,Cyclotella spp.,Centric Diatom,Cyclotella,17,17,15,853.36,Regular
+9/21/2018,C10A,750.72,Navicula spp.,Pennate Diatom,Navicula,2,2,22.2,722.54,Regular
+9/21/2018,C10A,750.72,Navicula spp.,Pennate Diatom,Navicula,2,2,22.2,477.39,Regular
+9/21/2018,C10A,750.72,Nitzschia spp.,Pennate Diatom,Nitzschia,2,2,9.3,18.60,Regular
+9/21/2018,C10A,750.72,Skeletonema sp.,Centric Diatom,Skeletonema,4,4,16.7,179.56,Regular
+9/21/2018,C10A,750.72,Surirella sp.,Pennate Diatom,Surirella,1,1,55.6,6798.25,Regular
+9/21/2018,C10A,750.72,Ulnaria sp. ,Pennate Diatom,Ulnaria,1,1,5.6,60.21,Regular
+9/21/2018,C10A,750.72,Lagerheimia genevensis,Green Alga,Lagerheimia,1,1,5.6,40.14,Regular
+9/21/2018,C10A,750.72,Scenedesmus sp.,Green Alga,Scenedesmus,1,4,9.3,38.18,Regular
+9/21/2018,C10A,750.72,Pseudokephyrion sp.,Chrysophyte,Pseudokephyrion,1,1,3.7,26.52,Regular
+9/21/2018,C10A,750.72,Plagioselmis lacustris,Cryptophyte,Plagioselmis,2,2,9.3,337.38,Regular
+9/21/2018,C10A,750.72,Eucapsis microscopica,Cyanobacterium,Eucapsis,387,752,0.8,0.18,Regular
+9/21/2018,C10A,750.72,Microcystis sp.,Cyanobacterium,Microcystis,1,1,3.7,26.52,Regular
+9/21/2018,C10A,750.72,Romeria simplex,Cyanobacterium,Romeria,2,7,3.7,5.70,Regular
+9/21/2018,C9,250.24,Cocconeis sp.,Pennate Diatom,Cocconeis,1,1,18.5,499.97,Regular
+9/21/2018,C9,250.24,cf. Cyclotella sp.,Centric Diatom,Cyclotella,2,2,7.4,159.13,Regular
+9/21/2018,C9,250.24,Fragilaria brevistriata,Pennate Diatom,Fragilaria,1,1,7.4,79.57,Regular
+9/21/2018,C9,250.24,Skeletonema sp.,Centric Diatom,Skeletonema,1,1,13,139.78,Regular
+9/21/2018,C9,250.24,Chlorella sp.,Green Alga,Chlorella,3,3,2.2,5.58,Regular
+9/21/2018,C9,250.24,Eucapsis microscopica,Cyanobacterium,Eucapsis,404,816,0.8,0.18,Regular
+9/21/2018,C9,250.24,Microcystis sp.,Cyanobacterium,Microcystis,27,30,3.7,26.52,Regular
+9/21/2018,C9,250.24,Pseudanabaena sp.,Cyanobacterium,Pseudanabaena,3,9,3.7,11.62,Regular
+9/21/2018,C9,250.24,Ceratium sp.,Dinoflagellate,Ceratium,1,1,92.6,36359.50,Regular
+9/7/2018,C3A-Hood,281.52,Fragilaria brevistriata,Pennate Diatom,Fragilaria,5,5,14.8,159.13,Regular
+9/7/2018,C3A-Hood,281.52,Ulnaria sp.,Pennate Diatom,Ulnaria,3,3,79,1116.84,Regular
+9/7/2018,C3A-Hood,281.52,Mucidosphaerium sp.,Green Alga,Mucidosphaerium,1,4,5.6,75.53,Regular
+9/7/2018,C3A-Hood,281.52,Plagioselmis sp.,Cryptophyte,Plagioselmis,1,1,9.3,314.74,Regular
+9/7/2018,C3A-Hood,281.52,Eucapsis microscopica,Cyanobacterium,Eucapsis,444,879,0.8,0.18,Regular
+9/14/2018,D19,281.52,cf. Cyclotella sp.,Centric Diatom,Cyclotella,1,1,7.4,240.85,Regular
+9/14/2018,D19,281.52,cf. Sphaerocystis sp.,Green Alga,Sphaerocystis,1,1,4.6,50.96,Regular
+9/14/2018,D19,281.52,Plagioselmis lacustris,Cryptophyte,Plagioselmis,2,2,11,554.36,Regular
+9/14/2018,D19,281.52,Eucapsis microscopica,Cyanobacterium,Eucapsis,439,870,0.8,0.18,Regular
+9/14/2018,D19,281.52,Microcystis sp.,Cyanobacterium,Microcystis,2,2,4.6,50.96,Regular
+9/13/2018,D4,643.47,Eucapsis microscopica,Cyanobacterium,Eucapsis,424,838,0.8,0.18,Regular
+9/17/2018,D16-Twitchell,281.52,Ulnaria sp.,Pennate Diatom,Ulnaria,1,1,7.4,120.42,Regular
+9/17/2018,D16-Twitchell,281.52,cf. Chlorella sp.,Green Alga,Chlorella,5,5,2.4,7.24,Regular
+9/17/2018,D16-Twitchell,281.52,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,4,4,9.3,335.12,Regular
+9/17/2018,D16-Twitchell,281.52,Eucapsis microscopica,Cyanobacterium,Eucapsis,412,823,0.8,0.18,Regular
+9/17/2018,D16-Twitchell,281.52,Microcystis sp.,Cyanobacterium,Microcystis,2,4,3.7,26.52,Regular
+9/13/2018,NZ068,346.48,cf. Cyclotella sp.,Centric Diatom,Cyclotella,1,1,7.4,159.13,Regular
+9/13/2018,NZ068,346.48,Nitzschia sp.,Pennate Diatom,Nitzschia,1,1,9.3,79.14,Regular
+9/13/2018,NZ068,346.48,cf. Ulnaria sp.,Pennate Diatom,Ulnaria,1,1,14.8,159.13,Regular
+9/13/2018,NZ068,346.48,cf. Chlorella sp.,Green Alga,Chlorella,3,3,2,4.19,Regular
+9/13/2018,NZ068,346.48,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,1,1,8,226.19,Regular
+9/13/2018,NZ068,346.48,Eucapsis microscopica,Cyanobacterium,Eucapsis,410,856,0.8,0.18,Regular
+9/14/2018,D12,450.43,cf. Cyclotella sp.,Centric Diatom,Cyclotella,1,1,5.6,61.58,Regular
+9/14/2018,D12,450.43,Nitzschia spp.,Pennate Diatom,Nitzschia,2,2,14.8,91.91,Regular
+9/14/2018,D12,450.43,Ulnaria sp.,Pennate Diatom,Ulnaria,1,1,13,211.55,Regular
+9/14/2018,D12,450.43,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,1,1,8.3,232.66,Regular
+9/14/2018,D12,450.43,Eucapsis microscopica,Cyanobacterium,Eucapsis,578,1156,0.8,0.18,Regular
+9/20/2018,NZ325,60.87,cf. Cyclotella sp.,Centric Diatom,Cyclotella,2,2,7.4,159.13,Regular
+9/20/2018,NZ325,60.87,cf. Chlorella sp.,Green Alga,Chlorella,1,1,2.2,5.58,Regular
+9/20/2018,NZ325,60.87,Eucapsis microscopica,Cyanobacterium,Eucapsis,397,927,0.8,0.18,Regular
+9/19/2018,NZS42,563.04,Eucapsis microscopica,Cyanobacterium,Eucapsis,405,794,0.8,0.18,Regular
+9/18/2018,D10,450.43,cf. Cyclotella sp.,Centric Diatom,Cyclotella,1,1,3.7,39.78,Regular
+9/18/2018,D10,450.43,Ulnaria sp.,Pennate Diatom,Ulnaria,4,4,7.4,120.42,Regular
+9/18/2018,D10,450.43,cf. Chlorella sp.,Green Alga,Chlorella,2,2,2.4,7.24,Regular
+9/18/2018,D10,450.43,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,2,2,9.3,337.38,Regular
+9/18/2018,D10,450.43,Eucapsis microscopica,Cyanobacterium,Eucapsis,412,816,0.8,0.18,Regular
+9/19/2018,D6,418.15,cf. Navicula sp.,Pennate Diatom,Navicula,1,1,42.6,2022.53,Regular
+9/19/2018,D6,418.15,Chlorella sp.,Green Alga,Chlorella,1,1,2.8,11.49,Regular
+9/19/2018,D6,418.15,Cryptomonas sp.,Cryptophyte,Cryptomonas,1,1,14.8,521.06,Regular
+9/19/2018,D6,418.15,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,3,3,9.3,330.59,Regular
+9/19/2018,D6,418.15,Eucapsis microscopica,Cyanobacterium,Eucapsis,408,832,0.8,0.18,Regular
+9/18/2018,D8,459.97,cf. Cyclotella sp.,Centric Diatom,Cyclotella,1,1,5.6,91.13,Regular
+9/18/2018,D8,459.97,Chlorella sp.,Green Alga,Chlorella,2,2,2.8,7.24,Regular
+9/18/2018,D8,459.97,Cryptomonas sp.,Cryptophyte,Cryptomonas,1,1,14.8,424.35,Regular
+9/18/2018,D8,459.97,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,1,1,8.3,232.66,Regular
+9/18/2018,D8,459.97,Plagioselmis prolonga,Cryptophyte,Plagioselmis,2,2,7.4,112.82,Regular
+9/18/2018,D8,459.97,Eucapsis microscopica,Cyanobacterium,Eucapsis,412,835,0.8,0.18,Regular
+9/18/2018,D8,459.97,cf. Microcystis sp.,Cyanobacterium,Microcystis,1,1,3.7,26.52,Regular
+9/18/2018,D8,459.97,Euglena sp.,Euglenoid,Euglena,1,1,29.6,1210.74,Regular
+9/19/2018,D7,459.97,cf. Cyclotella sp.,Centric Diatom,Cyclotella,1,1,9.6,694.87,Regular
+9/19/2018,D7,459.97,Chlorella sp.,Green Alga,Chlorella,3,3,3.7,15.60,Regular
+9/19/2018,D7,459.97,Cryptomonas sp.,Cryptophyte,Cryptomonas,1,1,22.2,1432.18,Regular
+9/19/2018,D7,459.97,Eucapsis microscopica,Cyanobacterium,Eucapsis,416,845,0.8,0.18,Regular
+9/14/2018,D28A,328.55,Chlamydomonas sp.,Green Alga,Chlamydomonas,1,1,5.6,62.04,Regular
+9/14/2018,D28A,328.55,Chlorella sp.,Green Alga,Chlorella,37,37,2.8,4.85,Regular
+9/14/2018,D28A,328.55,Drepanochloris nannoselene,Green Alga,Drepanochloris,1,1,5.6,3.85,Regular
+9/14/2018,D28A,328.55,Lagerheimia genevensis,Green Alga,Lagerheimia,1,1,4.6,18.88,Regular
+9/14/2018,D28A,328.55,Plagioselmis prolonga,Cryptophyte,Plagioselmis,1,1,5.6,76.35,Regular
+9/14/2018,D28A,328.55,Chroococcus minutus,Cyanobacterium,Chroococcus,1,1,5.6,91.95,Regular
+9/14/2018,D28A,328.55,Eucapsis microscopica,Cyanobacterium,Eucapsis,359,723,0.8,0.18,Regular
+9/14/2018,D28A,328.55,cf. Synechococcus sp.,Cyanobacterium,Synechococcus,2,4,2.8,7.24,Regular
+9/13/2018,D22,574.96,cf. Chlorella sp.,Green Alga,Chlorella,9,9,2.8,6.37,Regular
+9/13/2018,D22,574.96,Plagioselmis prolonga,Cryptophyte,Plagioselmis,1,1,7.4,159.13,Regular
+9/13/2018,D22,574.96,Eucapsis microscopica,Cyanobacterium,Eucapsis,438,884,0.8,0.18,Regular
+9/17/2018,MD10A,191.65,cf. Cyclotella sp.,Centric Diatom,Cyclotella,3,3,7.4,87.91,Regular
+9/17/2018,MD10A,191.65,Chlorella sp.,Green Alga,Chlorella,49,49,2.8,9.20,Regular
+9/17/2018,MD10A,191.65,Desmodesmus bicaudatus,Green Alga,Desmodesmus,1,4,7.4,89.27,Regular
+9/17/2018,MD10A,191.65,cf. Mucidosphaerium sp.,Green Alga,Mucidosphaerium,1,4,2.8,11.49,Regular
+9/17/2018,MD10A,191.65,Monoraphidium convolutum,Green Alga,Monoraphidium,4,4,10.2,17.96,Regular
+9/17/2018,MD10A,191.65,Scenedesmus sp.,Green Alga,Scenedesmus,1,2,5.6,10.59,Regular
+9/17/2018,MD10A,191.65,Chroococcus minutus,Cyanobacterium,Chroococcus,2,2,5.6,69.46,Regular
+9/17/2018,MD10A,191.65,Eucapsis microscopica,Cyanobacterium,Eucapsis,344,698,0.8,0.18,Regular
+9/17/2018,D26,287.48,cf. Cyclotella sp.,Centric Diatom,Cyclotella,1,1,5.6,91.13,Regular
+9/17/2018,D26,287.48,Nitzschia sp.,Pennate Diatom,Nitzschia,2,2,14.8,54.49,Regular
+9/17/2018,D26,287.48,Chlamydomonas sp.,Green Alga,Chlamydomonas,1,1,3.7,26.52,Regular
+9/17/2018,D26,287.48,cf. Chlorella sp.,Green Alga,Chlorella,1,1,1.9,3.59,Regular
+9/17/2018,D26,287.48,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,1,1,9.3,337.38,Regular
+9/17/2018,D26,287.48,Chroococcus minutus,Cyanobacterium,Chroococcus,1,1,4.6,50.96,Regular
+9/17/2018,D26,287.48,Eucapsis microscopica,Cyanobacterium,Eucapsis,417,842,0.8,0.18,Regular
+9/17/2018,P8,459.97,cf. Cyclotella sp.,Centric Diatom,Cyclotella,4,4,5.6,60.72,Regular
+9/17/2018,P8,459.97,Nitzschia sp.,Pennate Diatom,Nitzschia,1,1,14.8,58.02,Regular
+9/17/2018,P8,459.97,Chlorella sp.,Green Alga,Chlorella,12,12,3.7,11.49,Regular
+9/17/2018,P8,459.97,Eucapsis microscopica,Cyanobacterium,Eucapsis,412,835,0.8,0.18,Regular
+9/20/2018,D41,328.55,Chlamydomonas sp.,Green Alga,Chlamydomonas,5,5,5.6,45.08,Regular
+9/20/2018,D41,328.55,cf. Chlorella sp.,Green Alga,Chlorella,16,16,2.8,9.20,Regular
+9/20/2018,D41,328.55,Cryptomonas sp.,Cryptophyte,Cryptomonas,1,1,14.8,670.23,Regular
+9/20/2018,D41,328.55,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,3,3,12,578.40,Regular
+9/20/2018,D41,328.55,Plagioselmis prolonga,Cryptophyte,Plagioselmis,5,5,7.4,117.25,Regular
+9/20/2018,D41,328.55,Chroococcus minutus,Cyanobacterium,Chroococcus,2,2,4.6,50.96,Regular
+9/20/2018,D41,328.55,Eucapsis microscopica,Cyanobacterium,Eucapsis,371,750,0.8,0.18,Regular
+9/13/2018,EZ6,766.62,Chlorella sp.,Green Alga,Chlorella,3,3,2.8,8.18,Regular
+9/13/2018,EZ6,766.62,Eucapsis microscopica,Cyanobacterium,Eucapsis,452,921,0.8,0.18,Regular
+9/13/2018,EZ2,459.97,Entomoneis sp.,Pennate Diatom,Entomoneis,1,1,37,3756.55,Regular
+9/13/2018,EZ2,459.97,Nitzschia sp.,Pennate Diatom,Nitzschia,1,1,13.9,95.15,Regular
+9/13/2018,EZ2,459.97,Chlorella sp.,Green Alga,Chlorella,6,6,2.8,7.24,Regular
+9/13/2018,EZ2,459.97,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,1,1,9.3,337.38,Regular
+9/13/2018,EZ2,459.97,Plagioselmis prolonga,Cryptophyte,Plagioselmis,1,1,5.6,76.35,Regular
+9/13/2018,EZ2,459.97,Eucapsis microscopica,Cyanobacterium,Eucapsis,409,826,0.8,0.18,Regular
+9/20/2018,D41A,109.52,cf. Chlorella sp.,Green Alga,Chlorella,2,2,2.8,7.24,Regular
+9/20/2018,D41A,109.52,cf. Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,1,1,9.3,337.38,Regular
+9/20/2018,D41A,109.52,Eucapsis microscopica,Cyanobacterium,Eucapsis,404,826,0.8,0.18,Regular
+9/14/2018,EZ2-SJR,383.31,Nitzschia sp.,Pennate Diatom,Nitzschia,1,1,16.7,30.14,Regular
+9/14/2018,EZ2-SJR,383.31,cf. Chlorella sp.,Green Alga,Chlorella,3,3,2.8,8.18,Regular
+9/14/2018,EZ2-SJR,383.31,Eucapsis microscopica,Cyanobacterium,Eucapsis,429,869,0.8,0.18,Regular
+9/20/2018,NZ002,383.31,Chlorella sp.,Green Alga,Chlorella,9,9,3.7,9.20,Regular
+9/20/2018,NZ002,383.31,cf. Ochromonas sp.,Chrysophyte,Ochromonas,1,1,6.5,122.78,Regular
+9/20/2018,NZ002,383.31,Eucapsis microscopica,Cyanobacterium,Eucapsis,438,895,0.8,0.18,Regular
+9/19/2018,NZ032,328.55,Chlorella sp.,Green Alga,Chlorella,1,1,2.8,11.49,Regular
+9/19/2018,NZ032,328.55,Monoraphidium minutum,Green Alga,Monoraphidium,1,1,6.5,2.76,Regular
+9/19/2018,NZ032,328.55,Cryptomonas sp.,Cryptophyte,Cryptomonas,2,2,22.2,1742.60,Regular
+9/19/2018,NZ032,328.55,Eucapsis microscopica,Cyanobacterium,Eucapsis,418,844,0.8,0.18,Regular
+9/20/2018,NZ004,287.48,Chlamydomonas sp.,Green Alga,Chlamydomonas,1,1,7.4,160.56,Regular
+9/20/2018,NZ004,287.48,Chlorella sp.,Green Alga,Chlorella,7,7,3.7,11.49,Regular
+9/20/2018,NZ004,287.48,Eucapsis microscopica,Cyanobacterium,Eucapsis,442,891,0.8,0.18,Regular
+10/12/2018,NZ068,118.61,Cyclotella sp.,Centric Diatom,Cyclotella,3,3,8.3,181.61,Regular
+10/12/2018,NZ068,118.61,Nitzschia sp.,Pennate Diatom,Nitzschia,2,2,16.7,37.92,Regular
+10/12/2018,NZ068,118.61,Thalassiosira sp.,Centric Diatom,Thalassiosira,2,2,27.8,7890.83,Regular
+10/12/2018,NZ068,118.61,cf. Chlorella sp.,Green Alga,Chlorella,5,5,1.9,2.57,Regular
+10/12/2018,NZ068,118.61,cf. Hemiselmis sp.,Cryptophyte,Hemiselmis,1,1,4.6,21.68,Regular
+10/12/2018,NZ068,118.61,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,1,1,9.3,314.74,Regular
+10/12/2018,NZ068,118.61,Eucapsis microscopica,Cyanobacterium,Eucapsis,390,824,0.8,0.18,Regular
+10/12/2018,D4,160.98,cf. Chlorella sp.,Green Alga,Chlorella,1,1,1.9,3.59,Regular
+10/12/2018,D4,160.98,Chlorella sp.,Green Alga,Chlorella,1,1,2,4.19,Regular
+10/12/2018,D4,160.98,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,1,1,8.7,271.47,Regular
+10/12/2018,D4,160.98,Plagioselmis prolonga,Cryptophyte,Plagioselmis,1,1,8,206.09,Regular
+10/12/2018,D4,160.98,Eucapsis microscopica,Cyanobacterium,Eucapsis,407,816,0.8,0.18,Regular
+10/11/2018,C10A,173.36,cf. Achnanthidium sp.,Pennate Diatom,Achnanthidium,1,1,18.5,374.29,Regular
+10/11/2018,C10A,173.36,Cocconeis sp.,Pennate Diatom,Cocconeis,1,1,10.2,141.56,Regular
+10/11/2018,C10A,173.36,Cyclotella sp.,Centric Diatom,Cyclotella,13,13,9.3,133.97,Regular
+10/11/2018,C10A,173.36,Navicula sp.,Pennate Diatom,Navicula,3,3,37,743.32,Regular
+10/11/2018,C10A,173.36,Nitzschia incerta,Pennate Diatom,Nitzschia,3,3,84.2,657.71,Regular
+10/11/2018,C10A,173.36,Nitzschia inconspicua,Pennate Diatom,Nitzschia,2,2,9.3,20.98,Regular
+10/11/2018,C10A,173.36,Nitzschia sp.,Pennate Diatom,Nitzschia,1,1,31.5,136.71,Regular
+10/11/2018,C10A,173.36,Odontidium mesodon,Pennate Diatom,Odontidium,1,1,13,796.39,Regular
+10/11/2018,C10A,173.36,Plagiotropis lepidoptera,Pennate Diatom,Plagiotropis,1,1,78.6,10515.47,Regular
+10/11/2018,C10A,173.36,Planothidium sp.,Pennate Diatom,Planothidium,2,2,18.7,176.83,Regular
+10/11/2018,C10A,173.36,Seminavis sp.,Pennate Diatom,Seminavis,1,1,26.8,188.43,Regular
+10/11/2018,C10A,173.36,Skeletonema sp.,Centric Diatom,Skeletonema,5,7,13.9,228.00,Regular
+10/11/2018,C10A,173.36,cf. Chlorella sp.,Green Alga,Chlorella,13,13,2.8,4.85,Regular
+10/11/2018,C10A,173.36,Monoraphidium convolutum,Green Alga,Monoraphidium,1,1,27.8,24.60,Regular
+10/11/2018,C10A,173.36,Monoraphidium minutum,Green Alga,Monoraphidium,1,1,9.3,28.05,Regular
+10/11/2018,C10A,173.36,cf. Rusalka fusiformis,Green Alga,Rusalka,1,1,14.8,150.80,Regular
+10/11/2018,C10A,173.36,cf. Hemiselmis sp.,Cryptophyte,Hemiselmis,1,1,4.6,23.15,Regular
+10/11/2018,C10A,173.36,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,2,2,9.3,271.67,Regular
+10/11/2018,C10A,173.36,cf. Aphanizomenon sp.,Cyanobacterium,Aphanizomenon,1,11,4.6,49.46,Regular
+10/11/2018,C10A,173.36,Chroococcus sp.,Cyanobacterium,Chroococcus,4,8,3.7,12.77,Regular
+10/11/2018,C10A,173.36,Eucapsis microscopica,Cyanobacterium,Eucapsis,342,694,0.8,0.18,Regular
+10/15/2018,D28A,75.12,Cocconeis placentula,Pennate Diatom,Cocconeis,3,3,19.7,438.49,Regular
+10/15/2018,D28A,75.12,Cyclotella sp.,Centric Diatom,Cyclotella,1,1,6.8,134.37,Regular
+10/15/2018,D28A,75.12,cf. Nitzschia sp.,Pennate Diatom,Nitzschia,2,2,9.3,24.47,Regular
+10/15/2018,D28A,75.12,Skeletonema cf. costatum,Centric Diatom,Skeletonema,4,4,4.6,28.32,Regular
+10/15/2018,D28A,75.12,cf. Chlorella sp.,Green Alga,Chlorella,16,16,1.9,2.14,Regular
+10/15/2018,D28A,75.12,Cryptomonas erosa,Cryptophyte,Cryptomonas,2,2,14.8,506.98,Regular
+10/15/2018,D28A,75.12,cf. Hemiselmis sp.,Cryptophyte,Hemiselmis,2,2,5.6,19.29,Regular
+10/15/2018,D28A,75.12,Plagioselmis lacustris,Cryptophyte,Plagioselmis,1,1,11.1,596.74,Regular
+10/15/2018,D28A,75.12,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,8,8,10.5,323.52,Regular
+10/15/2018,D28A,75.12,Plagioselmis prolonga,Cryptophyte,Plagioselmis,3,3,7.4,112.82,Regular
+10/15/2018,D28A,75.12,Eucapsis microscopica,Cyanobacterium,Eucapsis,369,746,0.8,0.18,Regular
+10/15/2018,D28A,75.12,cf. Microcystis sp.,Cyanobacterium,Microcystis,8,8,3.7,17.16,Regular
+10/15/2018,EZ2 SJR,160.98,Skeletonema cf. costatum,Centric Diatom,Skeletonema,2,2,5.6,25.33,Regular
+10/15/2018,EZ2 SJR,160.98,cf. Chlorella sp.,Green Alga,Chlorella,8,8,1.9,2.57,Regular
+10/15/2018,EZ2 SJR,160.98,Plagioselmis prolonga,Cryptophyte,Plagioselmis,1,1,8,211.11,Regular
+10/15/2018,EZ2 SJR,160.98,Chroococcus sp.,Cyanobacterium,Chroococcus,1,2,2.8,11.49,Regular
+10/15/2018,EZ2 SJR,160.98,Eucapsis microscopica,Cyanobacterium,Eucapsis,400,810,0.8,0.18,Regular
+10/15/2018,EZ2 SJR,160.98,cf. Microcystis sp.,Cyanobacterium,Microcystis,1,4,5.6,50.96,Regular
+10/15/2018,EZ6-SJR,321.95,Nitzschia sp.,Pennate Diatom,Nitzschia,1,1,32.7,114.45,Regular
+10/15/2018,EZ6-SJR,321.95,cf. Chlorella sp.,Green Alga,Chlorella,1,1,1.9,3.59,Regular
+10/15/2018,EZ6-SJR,321.95,cf. Hemiselmis sp.,Cryptophyte,Hemiselmis,2,2,4.3,30.82,Regular
+10/15/2018,EZ6-SJR,321.95,Eucapsis microscopica,Cyanobacterium,Eucapsis,411,830,0.8,0.18,Regular
+10/15/2018,D19,132.57,Cocconeis sp.,Pennate Diatom,Cocconeis,1,1,22.2,838.66,Regular
+10/15/2018,D19,132.57,Navicula cf. rhynchotella,Pennate Diatom,Navicula,1,1,44.4,1491.81,Regular
+10/15/2018,D19,132.57,Nitzschia inconspicua,Pennate Diatom,Nitzschia,1,1,11.1,29.53,Regular
+10/15/2018,D19,132.57,Nitzschia sp.,Pennate Diatom,Nitzschia,1,1,17.6,27.46,Regular
+10/15/2018,D19,132.57,cf. Chlorella sp.,Green Alga,Chlorella,5,5,2.1,2.57,Regular
+10/15/2018,D19,132.57,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,3,3,9.3,294.76,Regular
+10/15/2018,D19,132.57,Plagioselmis prolonga,Cryptophyte,Plagioselmis,2,2,7.4,170.60,Regular
+10/15/2018,D19,132.57,Chroococcus sp.,Cyanobacterium,Chroococcus,1,2,3.7,26.52,Regular
+10/15/2018,D19,132.57,Eucapsis microscopica,Cyanobacterium,Eucapsis,385,780,0.8,0.18,Regular
+10/15/2018,D19,132.57,cf. Microcystis sp.,Cyanobacterium,Microcystis,3,3,4.6,33.51,Regular
+10/15/2018,D19,132.57,Pseudanabaena sp.,Cyanobacterium,Pseudanabaena,1,6,3.7,2.35,Regular
+10/15/2018,D19,132.57,Snowella sp.,Cyanobacterium,Snowella,2,12,0.8,0.27,Regular
+10/17/2018,D10,346.72,Skeletonema cf. costatum,Centric Diatom,Skeletonema,3,3,4.3,32.45,Regular
+10/17/2018,D10,346.72,cf. Chlorella sp.,Green Alga,Chlorella,1,1,1.9,3.59,Regular
+10/17/2018,D10,346.72,Coccomyxa sp.,Green Alga,Coccomyxa,21,21,6.1,20.88,Regular
+10/17/2018,D10,346.72,Eucapsis microscopica,Cyanobacterium,Eucapsis,378,760,0.8,0.18,Regular
+10/17/2018,D10,346.72,Snowella sp.,Cyanobacterium,Snowella,1,5,0.8,0.27,Regular
+10/17/2018,D10,346.72,cf. Synechococcus sp.,Cyanobacterium,Synechococcus,1,1,5.6,91.95,Regular
+10/17/2018,EZ6,187.80,Cocconeis sp.,Pennate Diatom,Cocconeis,1,1,18.5,310.79,Regular
+10/17/2018,EZ6,187.80,Entomoneis sp.,Pennate Diatom,Entomoneis,1,1,35.2,5114.51,Regular
+10/17/2018,EZ6,187.80,Nitzschia sp.,Pennate Diatom,Nitzschia,2,2,16.7,38.38,Regular
+10/17/2018,EZ6,187.80,Coccomyxa sp.,Green Alga,Coccomyxa,10,10,8.3,22.30,Regular
+10/17/2018,EZ6,187.80,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,2,2,7.4,186.37,Regular
+10/17/2018,EZ6,187.80,Eucapsis microscopica,Cyanobacterium,Eucapsis,398,806,0.8,0.18,Regular
+10/17/2018,EZ6,187.80,Snowella sp.,Cyanobacterium,Snowella,3,16,0.9,0.27,Regular
+10/15/2018,D12,160.98,Entomoneis sp.,Pennate Diatom,Entomoneis,1,1,43.5,3741.73,Regular
+10/15/2018,D12,160.98,Gyrosigma cf. macrum alt.,Pennate Diatom,Gyrosigma,1,1,137,1419.32,Regular
+10/15/2018,D12,160.98,cf. Nitzschia sp.,Pennate Diatom,Nitzschia,1,1,11.1,10.55,Regular
+10/15/2018,D12,160.98,cf. Chlorella sp.,Green Alga,Chlorella,2,2,1.9,2.14,Regular
+10/15/2018,D12,160.98,Coccomyxa sp.,Green Alga,Coccomyxa,7,7,5.8,10.96,Regular
+10/15/2018,D12,160.98,cf. Chroococcus sp.,Cyanobacterium,Chroococcus,1,2,3.7,26.52,Regular
+10/15/2018,D12,160.98,Eucapsis microscopica,Cyanobacterium,Eucapsis,411,828,0.8,0.18,Regular
+10/15/2018,D12,160.98,cf. Microcystis sp.,Cyanobacterium,Microcystis,1,1,3.7,26.52,Regular
+10/18/2018,D6,173.36,Coccomyxa sp.,Green Alga,Coccomyxa,46,46,5.6,11.55,Regular
+10/18/2018,D6,173.36,Plagioselmis lacustris,Cryptophyte,Plagioselmis,1,1,13,876.03,Regular
+10/18/2018,D6,173.36,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,1,1,10.2,430.35,Regular
+10/18/2018,D6,173.36,Eucapsis microscopica,Cyanobacterium,Eucapsis,352,710,0.8,0.18,Regular
+10/18/2018,D6,173.36,cf. Microcystis sp.,Cyanobacterium,Microcystis,1,1,3.7,26.52,Regular
+10/12/2018,EZ2,173.36,Seminavis sp.,Pennate Diatom,Seminavis,1,1,29.6,237.33,Regular
+10/12/2018,EZ2,173.36,cf. Chlorella sp.,Green Alga,Chlorella,7,7,1.9,2.57,Regular
+10/12/2018,EZ2,173.36,Coccomyxa sp.,Green Alga,Coccomyxa,3,3,5,5.89,Regular
+10/12/2018,EZ2,173.36,Ochromonas sp.,Chrysophyte,Ochromonas,1,1,4.6,50.96,Regular
+10/12/2018,EZ2,173.36,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,1,1,11.1,538.68,Regular
+10/12/2018,EZ2,173.36,Eucapsis microscopica,Cyanobacterium,Eucapsis,384,774,0.8,0.18,Regular
+10/12/2018,EZ2,173.36,Snowella sp.,Cyanobacterium,Snowella,2,11,0.8,0.27,Regular
+10/12/2018,D22,204.88,Achnanthidium minutissimum,Pennate Diatom,Achnanthidium,1,1,18.5,107.52,Regular
+10/12/2018,D22,204.88,Planothidium frequentissimum,Pennate Diatom,Planothidium,1,1,8,57.81,Regular
+10/12/2018,D22,204.88,cf. Chlorella sp.,Green Alga,Chlorella,2,2,1.9,3.59,Regular
+10/12/2018,D22,204.88,Coccomyxa sp.,Green Alga,Coccomyxa,2,2,5.6,22.99,Regular
+10/12/2018,D22,204.88,Plagioselmis prolonga,Cryptophyte,Plagioselmis,1,1,7.4,159.13,Regular
+10/12/2018,D22,204.88,Eucapsis microscopica,Cyanobacterium,Eucapsis,423,848,0.8,0.18,Regular
+10/19/2018,NZ325,187.80,cf. Chlorella sp.,Green Alga,Chlorella,7,7,1.9,1.44,Regular
+10/19/2018,NZ325,187.80,Coccomyxa sp.,Green Alga,Coccomyxa,7,7,8.3,10.14,Regular
+10/19/2018,NZ325,187.80,Hemiselmis sp.,Cryptophyte,Hemiselmis,1,1,3.7,6.99,Regular
+10/19/2018,NZ325,187.80,Plagioselmis lacustris,Cryptophyte,Plagioselmis,2,2,11.7,619.99,Regular
+10/19/2018,NZ325,187.80,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,1,1,8.3,227.25,Regular
+10/19/2018,NZ325,187.80,Plagioselmis prolonga,Cryptophyte,Plagioselmis,1,1,5.6,76.35,Regular
+10/19/2018,NZ325,187.80,Eucapsis microscopica,Cyanobacterium,Eucapsis,388,784,0.8,0.18,Regular
+10/19/2018,NZ325,187.80,cf. Microcystis sp.,Cyanobacterium,Microcystis,2,2,3.7,26.52,Regular
+10/19/2018,NZ004,250.41,cf. Chlorella sp.,Green Alga,Chlorella,2,2,1.3,1.15,Regular
+10/19/2018,NZ004,250.41,Coccomyxa sp.,Green Alga,Coccomyxa,14,14,7.4,11.53,Regular
+10/19/2018,NZ004,250.41,Plagioselmis prolonga,Cryptophyte,Plagioselmis,1,1,7.4,159.13,Regular
+10/19/2018,NZ004,250.41,Eucapsis microscopica,Cyanobacterium,Eucapsis,380,768,0.8,0.18,Regular
+10/19/2018,NZ004,250.41,cf. Microcystis sp.,Cyanobacterium,Microcystis,3,3,5.6,41.63,Regular
+10/19/2018,NZ002,225.37,cf. Chlorella sp.,Green Alga,Chlorella,3,3,1.9,2.57,Regular
+10/19/2018,NZ002,225.37,Coccomyxa sp.,Green Alga,Coccomyxa,8,8,7.4,8.47,Regular
+10/19/2018,NZ002,225.37,Hemiselmis sp.,Cryptophyte,Hemiselmis,1,1,3.7,15.19,Regular
+10/19/2018,NZ002,225.37,Plagioselmis lacustris,Cryptophyte,Plagioselmis,2,2,13,822.94,Regular
+10/19/2018,NZ002,225.37,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,5,5,8.3,229.05,Regular
+10/19/2018,NZ002,225.37,Plagioselmis prolonga,Cryptophyte,Plagioselmis,1,1,7.4,159.13,Regular
+10/19/2018,NZ002,225.37,Eucapsis microscopica,Cyanobacterium,Eucapsis,413,828,0.8,0.18,Regular
+10/19/2018,NZ002,225.37,cf. Microcystis sp.,Cyanobacterium,Microcystis,1,1,4.6,50.96,Regular
+10/19/2018,D41,160.98,Cyclotella sp.,Centric Diatom,Cyclotella,2,2,8.8,243.28,Regular
+10/19/2018,D41,160.98,cf. Chlorella sp.,Green Alga,Chlorella,5,5,2.4,3.05,Regular
+10/19/2018,D41,160.98,Coccomyxa sp.,Green Alga,Coccomyxa,10,10,8,10.69,Regular
+10/19/2018,D41,160.98,Plagioselmis lacustris,Cryptophyte,Plagioselmis,3,3,11,476.25,Regular
+10/19/2018,D41,160.98,Plagioselmis prolonga,Cryptophyte,Plagioselmis,9,9,7.4,132.13,Regular
+10/19/2018,D41,160.98,Eucapsis microscopica,Cyanobacterium,Eucapsis,384,770,0.8,0.18,Regular
+10/19/2018,D41,160.98,cf. Microcystis sp.,Cyanobacterium,Microcystis,2,2,4.6,38.79,Regular
+10/16/2018,MD10A,176.91,cf. Achnanthidium sp.,Pennate Diatom,Achnanthidium,1,1,7.4,60.21,Regular
+10/16/2018,MD10A,176.91,cf. Chlorella sp.,Green Alga,Chlorella,4,4,2.8,4.85,Regular
+10/16/2018,MD10A,176.91,Coccomyxa sp.,Green Alga,Coccomyxa,13,13,5.6,15.51,Regular
+10/16/2018,MD10A,176.91,Drepanochloris nannoselene,Green Alga,Drepanochloris,1,1,5.6,3.85,Regular
+10/16/2018,MD10A,176.91,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,1,1,8.2,242.93,Regular
+10/16/2018,MD10A,176.91,Chroococcus minutus,Cyanobacterium,Chroococcus,6,9,5.6,65.45,Regular
+10/16/2018,MD10A,176.91,Eucapsis microscopica,Cyanobacterium,Eucapsis,388,799,0.8,0.18,Regular
+10/18/2018,D7,328.55,cf. Chlorella sp.,Green Alga,Chlorella,1,1,2.8,11.49,Regular
+10/18/2018,D7,328.55,Coccomyxa sp.,Green Alga,Coccomyxa,11,11,7.4,21.59,Regular
+10/18/2018,D7,328.55,Eucapsis microscopica,Cyanobacterium,Eucapsis,433,888,0.8,0.18,Regular
+10/17/2018,D8,459.97,cf. Chlorella sp.,Green Alga,Chlorella,1,1,3.7,26.52,Regular
+10/17/2018,D8,459.97,Coccomyxa sp.,Green Alga,Coccomyxa,4,4,9.3,16.55,Regular
+10/17/2018,D8,459.97,Plagioselmis prolonga,Cryptophyte,Plagioselmis,2,2,7.4,166.30,Regular
+10/17/2018,D8,459.97,Eucapsis microscopica,Cyanobacterium,Eucapsis,423,866,0.8,0.18,Regular
+10/18/2018,NZ032,287.48,Coccomyxa sp.,Green Alga,Coccomyxa,3,3,5.3,21.76,Regular
+10/18/2018,NZ032,287.48,Eucapsis microscopica,Cyanobacterium,Eucapsis,407,836,0.8,0.18,Regular
+10/12/2018,C3A,60.10,Cocconeis sp.,Pennate Diatom,Cocconeis,1,1,15.7,337.62,Regular
+10/12/2018,C3A,60.10,Gomphonema sp.,Pennate Diatom,Gomphonema,1,1,18.5,1567.65,Regular
+10/12/2018,C3A,60.10,Navicula lanceolata,Pennate Diatom,Navicula,1,1,46.3,1555.65,Regular
+10/12/2018,C3A,60.10,Navicula sp.,Pennate Diatom,Navicula,1,1,37,1243.17,Regular
+10/12/2018,C3A,60.10,Nitzschia sp.,Pennate Diatom,Nitzschia,2,2,11.1,22.34,Regular
+10/12/2018,C3A,60.10,Nitzschia sp.,Pennate Diatom,Nitzschia,1,1,15.7,64.13,Regular
+10/12/2018,C3A,60.10,Ulnaria ulna,Pennate Diatom,Ulnaria,2,2,490.3,59414.05,Regular
+10/12/2018,C3A,60.10,cf. Chlorella sp.,Green Alga,Chlorella,11,11,1.9,2.57,Regular
+10/12/2018,C3A,60.10,Coccomyxa sp.,Green Alga,Coccomyxa,7,7,7.4,9.45,Regular
+10/12/2018,C3A,60.10,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,1,1,9.3,314.74,Regular
+10/12/2018,C3A,60.10,Plagioselmis prolonga,Cryptophyte,Plagioselmis,5,5,7.4,146.57,Regular
+10/12/2018,C3A,60.10,Eucapsis microscopica,Cyanobacterium,Eucapsis,371,750,0.8,0.18,Regular
+10/12/2018,C3A,60.10,cf. Microcystis sp.,Cyanobacterium,Microcystis,1,1,3.7,26.52,Regular
+10/16/2018,D16,209.08,cf. Chlorella sp.,Green Alga,Chlorella,5,5,3.7,14.14,Regular
+10/16/2018,D16,209.08,Coccomyxa sp.,Green Alga,Coccomyxa,5,5,9.3,16.89,Regular
+10/16/2018,D16,209.08,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,1,1,9.3,314.74,Regular
+10/16/2018,D16,209.08,Eucapsis microscopica,Cyanobacterium,Eucapsis,428,871,0.8,0.18,Regular
+10/18/2018,NZS42,383.31,cf. Chlorella sp.,Green Alga,Chlorella,2,2,1.9,3.59,Regular
+10/18/2018,NZS42,383.31,Coccomyxa sp.,Green Alga,Coccomyxa,4,4,7.4,26.68,Regular
+10/18/2018,NZS42,383.31,Eucapsis microscopica,Cyanobacterium,Eucapsis,454,933,0.8,0.18,Regular
+10/19/2018,D41A,328.55,cf. Chlorella sp.,Green Alga,Chlorella,1,1,3.7,26.52,Regular
+10/19/2018,D41A,328.55,Coccomyxa sp.,Green Alga,Coccomyxa,9,9,7.4,20.53,Regular
+10/19/2018,D41A,328.55,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,1,1,9.3,314.74,Regular
+10/19/2018,D41A,328.55,Plagioselmis prolonga,Cryptophyte,Plagioselmis,2,2,7.4,143.68,Regular
+10/19/2018,D41A,328.55,Eucapsis microscopica,Cyanobacterium,Eucapsis,422,865,0.8,0.18,Regular
+10/16/2018,P8,88.38,cf. Achnanthidium sp.,Pennate Diatom,Achnanthidium,1,1,10.2,59.28,Regular
+10/16/2018,P8,88.38,Cyclotella sp.,Centric Diatom,Cyclotella,2,2,5.6,68.96,Regular
+10/16/2018,P8,88.38,cf. Nitzschia sp.,Pennate Diatom,Nitzschia,1,1,15.4,120.74,Regular
+10/16/2018,P8,88.38,Skeletonema cf. costatum,Centric Diatom,Skeletonema,5,5,5.6,32.97,Regular
+10/16/2018,P8,88.38,cf. Chlorella sp.,Green Alga,Chlorella,57,57,2.8,4.85,Regular
+10/16/2018,P8,88.38,cf. Coccomyxa sp.,Green Alga,Coccomyxa,1,1,5.6,16.89,Regular
+10/16/2018,P8,88.38,Coccomyxa sp.,Green Alga,Coccomyxa,3,3,7.4,12.36,Regular
+10/16/2018,P8,88.38,Desmodesmus bicaudatus,Green Alga,Desmodesmus,1,4,8.3,53.04,Regular
+10/16/2018,P8,88.38,Lemmermannia triangularis,Green Alga,Lemmermannia,1,4,3.7,26.52,Regular
+10/16/2018,P8,88.38,Monoraphidium convolutum,Green Alga,Monoraphidium,2,2,9.3,34.48,Regular
+10/16/2018,P8,88.38,Cryptomonas erosa,Cryptophyte,Cryptomonas,1,1,18.5,837.79,Regular
+10/16/2018,P8,88.38,Plagioselmis lacustris,Cryptophyte,Plagioselmis,5,5,13.9,929.13,Regular
+10/16/2018,P8,88.38,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,2,2,9.3,281.80,Regular
+10/16/2018,P8,88.38,Plagioselmis prolonga,Cryptophyte,Plagioselmis,2,2,6.5,118.35,Regular
+10/16/2018,P8,88.38,cf. Chroococcus sp.,Cyanobacterium,Chroococcus,14,45,2.4,4.19,Regular
+10/16/2018,P8,88.38,Eucapsis microscopica,Cyanobacterium,Eucapsis,308,622,0.8,0.18,Regular
+10/16/2018,P8,88.38,Snowella sp.,Cyanobacterium,Snowella,2,11,0.8,0.27,Regular
+10/16/2018,D26,229.98,cf. Cyclotella sp.,Centric Diatom,Cyclotella,2,2,5.6,91.13,Regular
+10/16/2018,D26,229.98,cf. Chlorella sp.,Green Alga,Chlorella,4,4,2.8,7.24,Regular
+10/16/2018,D26,229.98,Coccomyxa sp.,Green Alga,Coccomyxa,9,9,7.4,17.79,Regular
+10/16/2018,D26,229.98,Plagioselmis prolonga,Cryptophyte,Plagioselmis,2,2,7.4,118.35,Regular
+10/16/2018,D26,229.98,Eucapsis microscopica,Cyanobacterium,Eucapsis,412,844,0.8,0.18,Regular
+10/11/2018,C9,150.24,Cyclotella sp.,Centric Diatom,Cyclotella,1,1,6.5,122.78,Regular
+10/11/2018,C9,150.24,cf. Chlorella sp.,Green Alga,Chlorella,10,10,2.4,4.85,Regular
+10/11/2018,C9,150.24,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,1,1,9.3,314.74,Regular
+10/11/2018,C9,150.24,Plagioselmis prolonga,Cryptophyte,Plagioselmis,1,1,6.5,122.78,Regular
+10/11/2018,C9,150.24,Chroococcus sp.,Cyanobacterium,Chroococcus,5,10,3.7,18.82,Regular
+10/11/2018,C9,150.24,Eucapsis microscopica,Cyanobacterium,Eucapsis,350,710,0.8,0.18,Regular
+10/11/2018,C9,150.24,cf. Microcystis sp.,Cyanobacterium,Microcystis,33,33,3.7,15.60,Regular
+10/11/2018,C9,150.24,Pseudanabaena sp.,Cyanobacterium,Pseudanabaena,1,3,2.8,3.72,Regular
+10/11/2018,C9,150.24,cf. Synechococcus sp.,Cyanobacterium,Synechococcus,3,3,4.3,36.09,Regular
+11/19/2018,D22,136.58,Cocconeis sp.,Pennate Diatom,Cocconeis,1,1,13,279.55,Regular
+11/19/2018,D22,136.58,Thalassiosira tenera,Centric Diatom,Thalassiosira,1,1,16.7,1752.32,Regular
+11/19/2018,D22,136.58,cf. Chlorella sp.,Green Alga,Chlorella,8,8,2.8,2.14,Regular
+11/19/2018,D22,136.58,Coccomyxa sp.,Green Alga,Coccomyxa,9,9,7.4,11.91,Regular
+11/19/2018,D22,136.58,Hemiselmis sp.,Cryptophyte,Hemiselmis,1,1,4.6,18.88,Regular
+11/19/2018,D22,136.58,Plagioselmis lacustris,Cryptophyte,Plagioselmis,1,1,11.1,554.81,Regular
+11/19/2018,D22,136.58,Plagioselmis prolonga,Cryptophyte,Plagioselmis,1,1,5.6,76.35,Regular
+11/19/2018,D22,136.58,Eucapsis microscopica,Cyanobacterium,Eucapsis,379,758,0.8,0.18,Regular
+11/20/2018,EZ6,187.80,Entomoneis sp.,Pennate Diatom,Entomoneis,1,1,25.9,2513.84,Regular
+11/20/2018,EZ6,187.80,Nitzschia brevissima,Pennate Diatom,Nitzschia,1,1,18.5,145.04,Regular
+11/20/2018,EZ6,187.80,Planothidium dubium,Pennate Diatom,Planothidium,1,1,11.1,122.05,Regular
+11/20/2018,EZ6,187.80,Thalassiosira eccentrica,Centric Diatom,Thalassiosira,1,1,23.1,4861.51,Regular
+11/20/2018,EZ6,187.80,cf. Chlorella sp.,Green Alga,Chlorella,2,2,1.9,3.59,Regular
+11/20/2018,EZ6,187.80,Coccomyxa sp.,Green Alga,Coccomyxa,6,6,9.3,25.13,Regular
+11/20/2018,EZ6,187.80,Eucapsis microscopica,Cyanobacterium,Eucapsis,398,814,0.8,0.18,Regular
+11/20/2018,EZ6,187.80,cf. Microcystis sp.,Cyanobacterium,Microcystis,1,1,3.7,26.52,Regular
+11/28/2018,D7,115.57,Coccomyxa sp.,Green Alga,Coccomyxa,13,13,6.5,7.07,Regular
+11/28/2018,D7,115.57,Eucapsis microscopica,Cyanobacterium,Eucapsis,402,810,0.8,0.18,Regular
+11/20/2018,D41,79.08,cf. Chlorella sp.,Green Alga,Chlorella,3,3,1.9,2.57,Regular
+11/20/2018,D41,79.08,Coccomyxa sp.,Green Alga,Coccomyxa,10,10,8.3,8.72,Regular
+11/20/2018,D41,79.08,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,5,5,10.2,297.01,Regular
+11/20/2018,D41,79.08,Plagioselmis prolonga,Cryptophyte,Plagioselmis,2,2,6.5,100.34,Regular
+11/20/2018,D41,79.08,Eucapsis microscopica,Cyanobacterium,Eucapsis,388,776,0.8,0.18,Regular
+11/20/2018,D41,79.08,cf. Microcystis sp.,Cyanobacterium,Microcystis,1,1,3.7,26.52,Regular
+11/20/2018,D41,79.08,cf. Strombidium sp.,Ciliate,Strombidium,1,1,21.3,5059.84,Regular
+11/16/2018,D8,107.32,Coccomyxa sp.,Green Alga,Coccomyxa,11,11,7.4,7.42,Regular
+11/16/2018,D8,107.32,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,1,1,7.4,172.03,Regular
+11/16/2018,D8,107.32,Eucapsis microscopica,Cyanobacterium,Eucapsis,392,784,0.8,0.18,Regular
+11/16/2018,D10,375.61,cf. Chlorella sp.,Green Alga,Chlorella,3,3,1.9,3.59,Regular
+11/16/2018,D10,375.61,Coccomyxa sp.,Green Alga,Coccomyxa,13,13,6.5,12.29,Regular
+11/16/2018,D10,375.61,Eucapsis microscopica,Cyanobacterium,Eucapsis,392,792,0.8,0.18,Regular
+11/16/2018,D10,375.61,cf. Microcystis sp.,Cyanobacterium,Microcystis,1,5,3.7,18.82,Regular
+11/14/2018,D12,281.71,Entomoneis paludosa,Pennate Diatom,Entomoneis,1,1,33.3,2209.99,Regular
+11/14/2018,D12,281.71,Navicula antonii,Pennate Diatom,Navicula,1,1,11.1,61.29,Regular
+11/14/2018,D12,281.71,Chlorella sp.,Green Alga,Chlorella,1,1,1.9,3.59,Regular
+11/14/2018,D12,281.71,Coccomyxa sp.,Green Alga,Coccomyxa,10,10,7.4,6.47,Regular
+11/14/2018,D12,281.71,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,1,1,8.3,232.66,Regular
+11/14/2018,D12,281.71,Eucapsis microscopica,Cyanobacterium,Eucapsis,385,782,0.8,0.18,Regular
+11/13/2018,D4,281.71,Coccomyxa sp.,Green Alga,Coccomyxa,7,7,8,11.71,Regular
+11/13/2018,D4,281.71,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,1,1,9.3,314.74,Regular
+11/13/2018,D4,281.71,Eucapsis microscopica,Cyanobacterium,Eucapsis,419,846,0.8,0.18,Regular
+11/19/2018,NZS42,450.73,cf. Chlorella sp.,Green Alga,Chlorella,5,5,1.9,2.57,Regular
+11/19/2018,NZS42,450.73,Coccomyxa sp.,Green Alga,Coccomyxa,15,15,7.4,12.66,Regular
+11/19/2018,NZS42,450.73,Eucapsis microscopica,Cyanobacterium,Eucapsis,409,826,0.8,0.18,Regular
+11/14/2018,D19,375.61,Cocconeis placentula,Pennate Diatom,Cocconeis,2,2,20.4,251.23,Regular
+11/14/2018,D19,375.61,Cocconeis placentula,Pennate Diatom,Cocconeis,25,25,22.2,527.95,Regular
+11/14/2018,D19,375.61,cf. Eunotia sp.,Pennate Diatom,Eunotia,1,1,44.4,5999.67,Regular
+11/14/2018,D19,375.61,Nitzschia incerta,Pennate Diatom,Nitzschia,1,1,159.3,8723.27,Regular
+11/14/2018,D19,375.61,Rhoicosphenia abbreviata,Pennate Diatom,Rhoicosphenia,1,1,18.5,579.29,Regular
+11/14/2018,D19,375.61,Ulnaria ulna,Pennate Diatom,Ulnaria,1,1,83.3,3954.86,Regular
+11/14/2018,D19,375.61,Coccomyxa sp.,Green Alga,Coccomyxa,5,5,9.3,12.55,Regular
+11/14/2018,D19,375.61,Eucapsis microscopica,Cyanobacterium,Eucapsis,388,804,0.8,0.18,Regular
+11/15/2018,P8,80.49,Cyclotella sp.,Centric Diatom,Cyclotella,1,1,8.3,216.42,Regular
+11/15/2018,P8,80.49,cf. Nitzschia sp.,Pennate Diatom,Nitzschia,2,2,12,90.94,Regular
+11/15/2018,P8,80.49,Ulnaria ulna,Pennate Diatom,Ulnaria,1,1,18.5,349.44,Regular
+11/15/2018,P8,80.49,cf. Chlorella sp.,Green Alga,Chlorella,1,1,1.9,3.59,Regular
+11/15/2018,P8,80.49,Chlorella sp.,Green Alga,Chlorella,5,5,1.9,3.59,Regular
+11/15/2018,P8,80.49,Coccomyxa sp.,Green Alga,Coccomyxa,1,1,5.6,10.59,Regular
+11/15/2018,P8,80.49,Plagioselmis lacustris,Cryptophyte,Plagioselmis,1,1,12,697.43,Regular
+11/15/2018,P8,80.49,Chroococcus sp.,Cyanobacterium,Chroococcus,1,2,1.3,1.15,Regular
+11/15/2018,P8,80.49,Eucapsis microscopica,Cyanobacterium,Eucapsis,387,788,0.8,0.18,Regular
+11/19/2018,D6,125.20,cf. Chlorella sp.,Green Alga,Chlorella,1,1,1.9,3.59,Regular
+11/19/2018,D6,125.20,Coccomyxa sp.,Green Alga,Coccomyxa,12,12,9.3,11.05,Regular
+11/19/2018,D6,125.20,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,4,4,10.2,323.80,Regular
+11/19/2018,D6,125.20,Plagioselmis prolonga,Cryptophyte,Plagioselmis,5,5,8,137.11,Regular
+11/19/2018,D6,125.20,Eucapsis microscopica,Cyanobacterium,Eucapsis,402,804,0.8,0.18,Regular
+11/19/2018,D6,125.20,cf. Microcystis sp.,Cyanobacterium,Microcystis,1,1,3.7,26.52,Regular
+11/15/2018,D26,70.43,cf. Cyclotella sp.,Centric Diatom,Cyclotella,1,1,9.3,380.40,Regular
+11/15/2018,D26,70.43,cf. Chlorella sp.,Green Alga,Chlorella,4,4,1.9,3.59,Regular
+11/15/2018,D26,70.43,Coccomyxa sp.,Green Alga,Coccomyxa,2,2,7.4,13.99,Regular
+11/15/2018,D26,70.43,Eucapsis microscopica,Cyanobacterium,Eucapsis,396,805,0.8,0.18,Regular
+11/20/2018,EZ2,150.24,cf. Chlorella sp.,Green Alga,Chlorella,3,3,1.9,3.59,Regular
+11/20/2018,EZ2,150.24,Coccomyxa sp.,Green Alga,Coccomyxa,9,9,7,11.88,Regular
+11/20/2018,EZ2,150.24,Eucapsis microscopica,Cyanobacterium,Eucapsis,424,854,0.8,0.18,Regular
+11/9/2018,C9,75.12,Cocconeis placentula,Pennate Diatom,Cocconeis,1,1,17.6,475.65,Regular
+11/9/2018,C9,75.12,Cyclotella cf. distinguenda,Centric Diatom,Cyclotella,1,1,19.1,2664.64,Regular
+11/9/2018,C9,75.12,Navicula lanceolata,Pennate Diatom,Navicula,1,1,29.6,688.13,Regular
+11/9/2018,C9,75.12,Chlamydomonas globosa,Green Alga,Chlamydomonas,1,1,6.5,143.79,Regular
+11/9/2018,C9,75.12,cf. Chlorella sp.,Green Alga,Chlorella,18,18,2.4,4.19,Regular
+11/9/2018,C9,75.12,Coccomyxa sp.,Green Alga,Coccomyxa,1,1,2.8,2.48,Regular
+11/9/2018,C9,75.12,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,1,1,9.3,314.74,Regular
+11/9/2018,C9,75.12,Plagioselmis prolonga,Cryptophyte,Plagioselmis,3,3,6.5,112.82,Regular
+11/9/2018,C9,75.12,Eucapsis microscopica,Cyanobacterium,Eucapsis,371,748,0.8,0.18,Regular
+11/9/2018,C9,75.12,cf. Microcystis sp.,Cyanobacterium,Microcystis,1,1,3.7,26.52,Regular
+11/9/2018,C9,75.12,Snowella sp.,Cyanobacterium,Snowella,1,10,0.9,0.38,Regular
+11/20/2018,D41A,75.12,cf. Chlorella sp.,Green Alga,Chlorella,2,2,1.9,3.59,Regular
+11/20/2018,D41A,75.12,Coccomyxa sp.,Green Alga,Coccomyxa,21,21,7,16.16,Regular
+11/20/2018,D41A,75.12,Chroococcus sp.,Cyanobacterium,Chroococcus,2,4,2.4,7.24,Regular
+11/20/2018,D41A,75.12,Eucapsis microscopica,Cyanobacterium,Eucapsis,375,756,0.8,0.18,Regular
+11/20/2018,D41A,75.12,cf. Microcystis sp.,Cyanobacterium,Microcystis,2,2,3.7,26.52,Regular
+11/20/2018,D41A,75.12,cf. Trachelomonas sp.,Euglenoid,Trachelomonas,1,1,13.9,896.72,Regular
+11/19/2018,NZ032,214.63,Entomoneis sp.,Pennate Diatom,Entomoneis,1,1,35.3,2342.72,Regular
+11/19/2018,NZ032,214.63,cf. Chlorella sp.,Green Alga,Chlorella,9,9,1.9,3.59,Regular
+11/19/2018,NZ032,214.63,Coccomyxa sp.,Green Alga,Coccomyxa,2,2,7.4,6.55,Regular
+11/19/2018,NZ032,214.63,Eucapsis microscopica,Cyanobacterium,Eucapsis,419,854,0.8,0.18,Regular
+11/19/2018,NZ068,187.80,Entomoneis paludosa,Pennate Diatom,Entomoneis,1,1,53.7,5212.09,Regular
+11/19/2018,NZ068,187.80,Entomoneis sp.,Pennate Diatom,Entomoneis,1,1,29.6,1964.44,Regular
+11/19/2018,NZ068,187.80,cf. Chlorella sp.,Green Alga,Chlorella,1,1,1.9,3.59,Regular
+11/19/2018,NZ068,187.80,Coccomyxa sp.,Green Alga,Coccomyxa,4,4,8.3,8.71,Regular
+11/19/2018,NZ068,187.80,Eucapsis microscopica,Cyanobacterium,Eucapsis,392,794,0.8,0.18,Regular
+11/15/2018,D16-Twitchell,150.24,cf. Chlorella sp.,Green Alga,Chlorella,19,19,2.4,4.19,Regular
+11/15/2018,D16-Twitchell,150.24,Coccomyxa sp.,Green Alga,Coccomyxa,8,8,6.5,12.29,Regular
+11/15/2018,D16-Twitchell,150.24,Eucapsis microscopica,Cyanobacterium,Eucapsis,372,750,0.8,0.18,Regular
+11/14/2018,D28A,93.90,Cocconeis placentula,Pennate Diatom,Cocconeis,2,2,22.2,954.79,Regular
+11/14/2018,D28A,93.90,cf. Chlorella sp.,Green Alga,Chlorella,13,13,1.9,2.57,Regular
+11/14/2018,D28A,93.90,Coccomyxa sp.,Green Alga,Coccomyxa,4,4,9.3,11.66,Regular
+11/14/2018,D28A,93.90,Plagioselmis lacustris,Cryptophyte,Plagioselmis,1,1,12,682.35,Regular
+11/14/2018,D28A,93.90,Plagioselmis prolonga,Cryptophyte,Plagioselmis,2,2,6.5,122.78,Regular
+11/14/2018,D28A,93.90,Chroococcus sp.,Cyanobacterium,Chroococcus,1,2,1.9,3.59,Regular
+11/14/2018,D28A,93.90,Eucapsis microscopica,Cyanobacterium,Eucapsis,381,766,0.8,0.18,Regular
+11/9/2018,C3A-Hood,86.68,Aulacoseira granulata,Centric Diatom,Aulacoseira,2,2,9.3,229.06,Regular
+11/9/2018,C3A-Hood,86.68,Cocconeis placentula,Pennate Diatom,Cocconeis,1,1,22.2,838.66,Regular
+11/9/2018,C3A-Hood,86.68,Nitzschia sp.,Pennate Diatom,Nitzschia,1,1,20.4,54.26,Regular
+11/9/2018,C3A-Hood,86.68,cf. Chlorella sp.,Green Alga,Chlorella,11,11,2.4,4.85,Regular
+11/9/2018,C3A-Hood,86.68,Coccomyxa sp.,Green Alga,Coccomyxa,3,3,9.3,19.86,Regular
+11/9/2018,C3A-Hood,86.68,Eucapsis microscopica,Cyanobacterium,Eucapsis,397,800,0.8,0.18,Regular
+11/15/2018,MD10A,80.49,cf. Chlorella sp.,Green Alga,Chlorella,9,9,1.9,3.59,Regular
+11/15/2018,MD10A,80.49,Eucapsis microscopica,Cyanobacterium,Eucapsis,396,796,0.8,0.18,Regular
+11/9/2018,C10A,164.27,Achnanthidium sp.,Pennate Diatom,Achnanthidium,1,1,9.3,99.99,Regular
+11/9/2018,C10A,164.27,Cocconeis placentula,Pennate Diatom,Cocconeis,1,1,18.5,306.43,Regular
+11/9/2018,C10A,164.27,Cyclotella meneghiniana,Centric Diatom,Cyclotella,1,1,13,982.22,Regular
+11/9/2018,C10A,164.27,cf. Cyclotella sp.,Centric Diatom,Cyclotella,3,3,7.4,134.37,Regular
+11/9/2018,C10A,164.27,Navicula sp.,Pennate Diatom,Navicula,1,1,22.2,477.39,Regular
+11/9/2018,C10A,164.27,Nitzschia incerta,Pennate Diatom,Nitzschia,1,1,101.9,867.17,Regular
+11/9/2018,C10A,164.27,Nitzschia spp.,Pennate Diatom,Nitzschia,2,2,27.8,182.92,Regular
+11/9/2018,C10A,164.27,Planothidium sp.,Pennate Diatom,Planothidium,1,1,22.2,477.39,Regular
+11/9/2018,C10A,164.27,Coccomyxa sp.,Green Alga,Coccomyxa,8,8,7.4,18.10,Regular
+11/9/2018,C10A,164.27,Monoraphidium convolutum,Green Alga,Monoraphidium,1,1,8.2,33.66,Regular
+11/9/2018,C10A,164.27,Chroococcus sp.,Cyanobacterium,Chroococcus,1,8,2.8,11.49,Regular
+11/9/2018,C10A,164.27,Eucapsis microscopica,Cyanobacterium,Eucapsis,382,787,0.8,0.18,Regular
+12/11/2018,NZ068,214.63,Cocconeis placentula,Pennate Diatom,Cocconeis,1,1,18.5,378.36,Regular
+12/11/2018,NZ068,214.63,Cyclotella meneghiniana,Centric Diatom,Cyclotella,2,2,13,655.96,Regular
+12/11/2018,NZ068,214.63,Coccomyxa sp.,Green Alga,Coccomyxa,4,4,7,32.99,Regular
+12/11/2018,NZ068,214.63,Eucapsis microscopica,Cyanobacterium,Eucapsis,400,802,0.8,0.18,Regular
+12/13/2018,P8,150.24,Achnanthidium minutissimum,Pennate Diatom,Achnanthidium,1,1,10.2,91.89,Regular
+12/13/2018,P8,150.24,cf. Chlorella sp.,Green Alga,Chlorella,3,3,2.4,5.58,Regular
+12/13/2018,P8,150.24,Monoraphidium contortum,Green Alga,Monoraphidium,1,1,20.4,18.05,Regular
+12/13/2018,P8,150.24,Plagioselmis lacustris,Cryptophyte,Plagioselmis,4,4,13,697.61,Regular
+12/13/2018,P8,150.24,Eucapsis microscopica,Cyanobacterium,Eucapsis,403,814,0.8,0.18,Regular
+12/13/2018,D16 Twitchell,187.80,Cocconeis placentula,Pennate Diatom,Cocconeis,2,2,20.4,540.78,Regular
+12/13/2018,D16 Twitchell,187.80,Rhoicosphenia abbreviata,Pennate Diatom,Rhoicosphenia,1,1,8.3,170.27,Regular
+12/13/2018,D16 Twitchell,187.80,cf. Chlorella sp.,Green Alga,Chlorella,2,2,1.9,3.59,Regular
+12/13/2018,D16 Twitchell,187.80,Coccomyxa sp.,Green Alga,Coccomyxa,2,2,8,13.80,Regular
+12/13/2018,D16 Twitchell,187.80,Eucapsis microscopica,Cyanobacterium,Eucapsis,408,822,0.8,0.18,Regular
+12/14/2018,D10,563.41,Coccomyxa sp.,Green Alga,Coccomyxa ,1,1,7.4,13.99,Regular
+12/14/2018,D10,563.41,Eucapsis microscopica,Cyanobacterium,Eucapsis,403,810,0.8,0.18,Regular
+12/17/2018,D6,81.95,cf. Chlorella sp.,Green Alga,Chlorella,2,2,1.3,1.15,Regular
+12/17/2018,D6,81.95,Eucapsis microscopica,Cyanobacterium,Eucapsis,411,834,0.8,0.18,Regular
+12/10/2018,C10A,173.36,Cyclotella meneghiniana,Centric Diatom,Cyclotella,3,3,16.7,1732.26,Regular
+12/10/2018,C10A,173.36,Cyclotella sp.,Centric Diatom,Cyclotella,2,2,9.3,271.72,Regular
+12/10/2018,C10A,173.36,Diploneis cf. puella,Pennate Diatom,Diploneis,2,2,19.4,777.99,Regular
+12/10/2018,C10A,173.36,Navicula gregaria,Pennate Diatom,Navicula,2,2,26.8,506.22,Regular
+12/10/2018,C10A,173.36,Navicula rostellata,Pennate Diatom,Navicula,1,1,36,972.92,Regular
+12/10/2018,C10A,173.36,Nitzschia incerta,Pennate Diatom,Nitzschia,1,1,78.6,231.48,Regular
+12/10/2018,C10A,173.36,Nitzschia palea,Pennate Diatom,Nitzschia,2,2,31.5,110.72,Regular
+12/10/2018,C10A,173.36,Surirella suecica,Pennate Diatom,Surirella,1,1,24.1,1162.56,Regular
+12/10/2018,C10A,173.36,cf. Chlorella sp.,Green Alga,Chlorella,1,1,1.9,3.59,Regular
+12/10/2018,C10A,173.36,Coccomyxa sp.,Green Alga,Coccomyxa,9,9,8.3,32.43,Regular
+12/10/2018,C10A,173.36,Desmodesmus armatus var. bicaudatus,Green Alga,Desmodesmus,1,8,13,93.18,Regular
+12/10/2018,C10A,173.36,Eucapsis microscopica,Cyanobacterium,Eucapsis,380,766,0.8,0.18,Regular
+12/12/2018,D12,250.41,Coccomyxa sp.,Green Alga,Coccomyxa,16,16,9.3,19.17,Regular
+12/12/2018,D12,250.41,Eucapsis microscopica,Cyanobacterium,Eucapsis,420,846,0.8,0.18,Regular
+12/12/2018,D12,250.41,cf. Microcystis sp.,Cyanobacterium,Microcystis,1,1,3.7,26.52,Regular
+12/10/2018,C9,88.38,Cocconeis placentula,Pennate Diatom,Cocconeis,1,1,18.5,289.87,Regular
+12/10/2018,C9,88.38,Cyclotella sp.,Centric Diatom,Cyclotella,1,1,8.3,216.42,Regular
+12/10/2018,C9,88.38,Nitzschia palea,Pennate Diatom,Nitzschia,1,1,18.5,65.03,Regular
+12/10/2018,C9,88.38,cf. Chlorella sp.,Green Alga,Chlorella,6,6,1.9,1.77,Regular
+12/10/2018,C9,88.38,Coccomyxa sp.,Green Alga,Coccomyxa,10,10,7.4,10.14,Regular
+12/10/2018,C9,88.38,Eucapsis microscopica,Cyanobacterium,Eucapsis,387,770,0.8,0.18,Regular
+12/10/2018,C9,88.38,cf. Microcystis sp.,Cyanobacterium,Microcystis,1,1,3.7,26.52,Regular
+12/10/2018,C3A-Hood,160.98,Achnanthidium minutissimum,Pennate Diatom,Achnanthidium,2,2,16.7,292.56,Regular
+12/10/2018,C3A-Hood,160.98,Encyonema sp.,Pennate Diatom,Encyonema,1,1,22.2,640.06,Regular
+12/10/2018,C3A-Hood,160.98,Frustulia rhomboides,Pennate Diatom,Frustulia,1,1,87,14845.29,Regular
+12/10/2018,C3A-Hood,160.98,Nitzschia gracilis,Pennate Diatom,Nitzschia,1,1,35.2,42.24,Regular
+12/10/2018,C3A-Hood,160.98,Nitzschia inconspicua,Pennate Diatom,Nitzschia,1,1,8.7,30.58,Regular
+12/10/2018,C3A-Hood,160.98,cf. Chlorella sp.,Green Alga,Chlorella,1,1,1.9,3.59,Regular
+12/10/2018,C3A-Hood,160.98,Coccomyxa sp.,Green Alga,Coccomyxa,6,6,8.3,13.23,Regular
+12/10/2018,C3A-Hood,160.98,Eucapsis microscopica,Cyanobacterium,Eucapsis,406,826,0.8,0.18,Regular
+12/11/2018,D4,450.73,Eucapsis microscopica,Cyanobacterium,Eucapsis,420,848,0.8,0.18,Regular
+12/11/2018,D22,563.41,Cyclotella sp.,Centric Diatom,Cyclotella,1,1,8.3,216.42,Regular
+12/11/2018,D22,563.41,Nitzschia inconspicua,Pennate Diatom,Nitzschia,1,1,11.1,59.05,Regular
+12/11/2018,D22,563.41,Coccomyxa sp.,Green Alga,Coccomyxa,1,1,8.3,15.69,Regular
+12/11/2018,D22,563.41,Eucapsis microscopica,Cyanobacterium,Eucapsis,400,802,0.8,0.18,Regular
+12/18/2018,NZ032,643.90,Eucapsis microscopica,Cyanobacterium,Eucapsis,401,808,0.8,0.18,Regular
+12/18/2018,NZ032,643.90,cf. Microcystis sp.,Cyanobacterium,Microcystis,1,1,3.7,26.52,Regular
+12/11/2018,EZ2,4507.30,Nitzschia incerta,Pennate Diatom,Nitzschia,1,1,70.4,601.22,Regular
+12/11/2018,EZ2,4507.30,Eucapsis microscopica,Cyanobacterium,Eucapsis,446,896,0.8,0.18,Regular
+12/13/2018,D26,166.94,Coccomyxa sp.,Green Alga,Coccomyxa,1,1,8.3,15.69,Regular
+12/13/2018,D26,166.94,Plagioselmis lacustris,Cryptophyte,Plagioselmis,2,2,13,834.48,Regular
+12/13/2018,D26,166.94,Eucapsis microscopica,Cyanobacterium,Eucapsis,416,836,0.8,0.18,Regular
+12/14/2018,D8,321.95,cf. Chlorella sp.,Green Alga,Chlorella,2,2,1.3,1.15,Regular
+12/14/2018,D8,321.95,Coccomyxa sp.,Green Alga,Coccomyxa,1,1,5.6,4.96,Regular
+12/14/2018,D8,321.95,Eucapsis microscopica,Cyanobacterium,Eucapsis,402,808,0.8,0.18,Regular
+12/12/2018,EZ2-SJR,321.95,cf. Chlorella sp.,Green Alga,Chlorella,4,4,1.9,3.59,Regular
+12/12/2018,EZ2-SJR,321.95,Coccomyxa sp.,Green Alga,Coccomyxa,2,2,6.1,4.34,Regular
+12/12/2018,EZ2-SJR,321.95,Eucapsis microscopica,Cyanobacterium,Eucapsis,429,874,0.8,0.18,Regular
+12/13/2018,MD10A,125.20,cf. Chlorella sp.,Green Alga,Chlorella,56,56,1.9,3.59,Regular
+12/13/2018,MD10A,125.20,Coccomyxa sp.,Green Alga,Cladophora,2,2,6.1,11.53,Regular
+12/13/2018,MD10A,125.20,Plagioselmis prolonga,Cryptophyte,Plagioselmis,1,1,6.5,112.82,Regular
+12/13/2018,MD10A,125.20,Chroococcus sp.,Cyanobacterium,Chroococcus,1,2,1.9,3.59,Regular
+12/13/2018,MD10A,125.20,Eucapsis microscopica,Cyanobacterium,Eucapsis,365,734,0.8,0.18,Regular
+12/13/2018,MD10A,125.20,cf. Microcystis sp.,Cyanobacterium,Microcystis,1,1,3.7,26.52,Regular
+12/12/2018,D19,187.80,Cocconeis placentula,Pennate Diatom,Cocconeis,1,1,18.5,596.74,Regular
+12/12/2018,D19,187.80,Cyclotella meneghiniana,Centric Diatom,Cyclotella,1,1,14.8,1118.22,Regular
+12/12/2018,D19,187.80,cf. Chlorella sp.,Green Alga,Chlorella,2,2,1.9,3.59,Regular
+12/12/2018,D19,187.80,Coccomyxa sp.,Green Alga,Coccomyxa,36,36,7.4,12.78,Regular
+12/12/2018,D19,187.80,Plagioselmis lacustris,Cryptophyte,Plagioselmis,2,2,11.1,538.68,Regular
+12/12/2018,D19,187.80,Eucapsis microscopica,Cyanobacterium,Eucapsis,362,733,0.8,0.18,Regular
+12/18/2018,NZS42,901.46,cf. Chlorella sp.,Green Alga,Chlorella,2,2,1.9,3.59,Regular
+12/18/2018,NZS42,901.46,Coccomyxa sp.,Green Alga,Coccomyxa,5,5,7.4,5.95,Regular
+12/18/2018,NZS42,901.46,Eucapsis microscopica,Cyanobacterium,Eucapsis,459,928,0.8,0.18,Regular
+12/19/2018,NZ002,250.41,Coccomyxa sp.,Green Alga,Coccomyxa,1,1,5.6,10.59,Regular
+12/19/2018,NZ002,250.41,Eucapsis microscopica,Cyanobacterium,Eucapsis,407,820,0.8,0.18,Regular
+12/19/2018,NZ004,250.41,Eucapsis microscopica,Cyanobacterium,Eucapsis,405,816,0.8,0.18,Regular
+12/18/2018,D7,450.73,Coccomyxa sp.,Green Alga,Coccomyxa,2,2,10.2,25.33,Regular
+12/18/2018,D7,450.73,Eucapsis microscopica,Cyanobacterium,Eucapsis,417,840,0.8,0.18,Regular
+12/19/2018,D41,80.49,Eucapsis microscopica,Cyanobacterium,Eucapsis,423,850,0.8,0.18,Regular
+12/19/2018,D41,80.49,cf. Microcystis sp.,Cyanobacterium,Microcystis,2,2,5.6,54.36,Regular
+12/11/2018,EZ6,375.61,Cyclotella sp.,Centric Diatom,Cyclotella,1,1,8.3,216.42,Regular
+12/11/2018,EZ6,375.61,Eucapsis microscopica,Cyanobacterium,Eucapsis,424,858,0.8,0.18,Regular
+12/19/2018,NZ325,281.71,cf. Chlorella sp.,Green Alga,Chlorella,5,5,1.9,3.59,Regular
+12/19/2018,NZ325,281.71,Coccomyxa sp.,Green Alga,Coccomyxa,1,1,5.9,11.15,Regular
+12/19/2018,NZ325,281.71,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,4,4,10.2,333.15,Regular
+12/19/2018,NZ325,281.71,Eucapsis microscopica,Cyanobacterium,Eucapsis,399,806,0.8,0.18,Regular
+12/19/2018,NZ325,281.71,cf. Microcystis sp.,Cyanobacterium,Microcystis,2,2,3.7,26.52,Regular
+12/19/2018,D41A,136.58,Coscinodiscus radiatus,Centric Diatom,Coscinodiscus,1,1,66.7,115306.85,Regular
+12/19/2018,D41A,136.58,Surirella minuta,Pennate Diatom,Surirella,1,1,24.1,966.47,Regular
+12/19/2018,D41A,136.58,cf. Chlorella sp.,Green Alga,Chlorella,2,2,1.9,3.59,Regular
+12/19/2018,D41A,136.58,Eucapsis microscopica,Cyanobacterium,Eucapsis,425,852,0.8,0.18,Regular
+12/12/2018,D28A,112.68,Chlamydomonas globosa,Green Alga,Chlamydomonas,1,1,9.3,266.65,Regular
+12/12/2018,D28A,112.68,cf. Chlorella sp.,Green Alga,Chlorella,1,1,1.9,3.59,Regular
+12/12/2018,D28A,112.68,Coccomyxa sp.,Green Alga,Coccomyxa,2,2,9.3,14.93,Regular
+12/12/2018,D28A,112.68,Monoraphidium contortum,Green Alga,Monoraphidium,1,1,20.4,18.05,Regular
+12/12/2018,D28A,112.68,Plagioselmis lacustris,Cryptophyte,Plagioselmis,4,4,13,866.44,Regular
+12/12/2018,D28A,112.68,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,4,4,9.3,337.38,Regular
+12/12/2018,D28A,112.68,Plagioselmis prolonga,Cryptophyte,Plagioselmis,1,1,5.6,76.35,Regular
+12/12/2018,D28A,112.68,Eucapsis microscopica,Cyanobacterium,Eucapsis,409,840,0.8,0.18,Regular
+1/19/2019,C9,300.49,Rhoicosphenia abbreviata,Pennate Diatom,Rhoicosphenia,1,1,8,199.93,Regular
+1/19/2019,C9,300.49,cf. Chlorella sp.,Green Alga,Chlorella,2,2,1.9,3.59,Regular
+1/19/2019,C9,300.49,Coccomyxa sp.,Green Alga,Coccomyxa,1,1,9.3,17.58,Regular
+1/19/2019,C9,300.49,Eucapsis microscopica,Cyanobacterium,Eucapsis,417,836,0.8,0.18,Regular
+1/19/2019,C9,300.49,cf. Microcystis sp.,Cyanobacterium,Microcystis,1,1,3.7,26.52,Regular
+1/9/2019,C3A,1502.43,Coccomyxa sp.,Green Alga,Coccomyxa,3,3,7.4,13.23,Regular
+1/9/2019,C3A,1502.43,Eucapsis microscopica,Cyanobacterium,Eucapsis,432,876,0.8,0.18,Regular
+1/9/2019,C10A,250.41,Aulacoseira sp. ,Centric Diatom,Aulacoseira,1,3,18.5,268.66,Regular
+1/9/2019,C10A,250.41,Cyclotella meneghiniana,Centric Diatom,Cyclotella,2,2,9.3,312.47,Regular
+1/9/2019,C10A,250.41,Cyclotella sp.,Centric Diatom,Cyclotella,4,4,8,117.74,Regular
+1/9/2019,C10A,250.41,Navicula gregaria,Pennate Diatom,Navicula,3,3,26.6,362.68,Regular
+1/9/2019,C10A,250.41,Navicula lanceolata,Pennate Diatom,Navicula,1,1,28.7,829.51,Regular
+1/9/2019,C10A,250.41,Nitzschia fruticosa,Pennate Diatom,Nitzschia,2,2,20.4,17.44,Regular
+1/9/2019,C10A,250.41,Thalassiosira sp.,Centric Diatom,Thalassiosira,1,1,18.5,2499.86,Regular
+1/9/2019,C10A,250.41,cf. Chlorella sp.,Green Alga,Chlorella,6,6,1.9,3.59,Regular
+1/9/2019,C10A,250.41,Chlorella sp.,Green Alga,Chlorella,2,2,1.9,3.59,Regular
+1/9/2019,C10A,250.41,Coccomyxa sp.,Green Alga,Coccomyxa,6,6,6.5,15.01,Regular
+1/9/2019,C10A,250.41,Monoraphidium contortum,Green Alga,Monoraphidium,1,1,24.1,21.33,Regular
+1/9/2019,C10A,250.41,Monoraphidium sp.,Green Alga,Monoraphidium,2,2,11.1,4.71,Regular
+1/9/2019,C10A,250.41,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,1,1,9.8,354.52,Regular
+1/9/2019,C10A,250.41,Plagioselmis prolonga,Cryptophyte,Plagioselmis,1,1,7.4,159.13,Regular
+1/9/2019,C10A,250.41,Eucapsis microscopica,Cyanobacterium,Eucapsis,380,762,0.8,0.18,Regular
+1/9/2019,C10A,250.41,cf. Microcystis sp.,Cyanobacterium,Microcystis,2,2,3.7,18.82,Regular
+1/10/2019,D4,450.73,Achnanthidium exiguum,Pennate Diatom,Achnanthidium,1,1,16.7,139.56,Regular
+1/10/2019,D4,450.73,Cocconeis placentula,Pennate Diatom,Cocconeis,1,1,18.5,548.36,Regular
+1/10/2019,D4,450.73,Coccomyxa sp.,Green Alga,Coccomyxa,1,1,4.6,8.69,Regular
+1/10/2019,D4,450.73,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,3,3,9.3,257.52,Regular
+1/10/2019,D4,450.73,Eucapsis microscopica,Cyanobacterium,Eucapsis,460,928,0.8,0.18,Regular
+1/16/2019,D10,450.73,Coccomyxa sp.,Green Alga,Coccomyxa,28,28,8.3,13.04,Regular
+1/16/2019,D10,450.73,Eucapsis microscopica,Cyanobacterium,Eucapsis,378,762,0.8,0.18,Regular
+1/16/2019,D8,321.95,cf. Chlorella sp.,Green Alga,Chlorella,2,2,1.9,3.59,Regular
+1/16/2019,D8,321.95,Coccomyxa sp.,Green Alga,Coccomyxa,12,12,8.3,18.70,Regular
+1/16/2019,D8,321.95,Plagioselmis lacustris,Cryptophyte,Plagioselmis,1,1,11.1,538.68,Regular
+1/16/2019,D8,321.95,Eucapsis microscopica,Cyanobacterium,Eucapsis,397,806,0.8,0.18,Regular
+1/11/2019,D19,500.81,Cocconeis sp.,Pennate Diatom,Cocconeis,2,2,14.8,163.43,Regular
+1/11/2019,D19,500.81,Cyclotella sp.,Centric Diatom,Cyclotella,1,1,7.4,159.13,Regular
+1/11/2019,D19,500.81,Nitzschia inconspicua,Pennate Diatom,Nitzschia,1,1,14.8,64.68,Regular
+1/11/2019,D19,500.81,Nitzschia sp.,Pennate Diatom,Nitzschia,3,3,20.4,245.31,Regular
+1/11/2019,D19,500.81,cf. Chlorella sp.,Green Alga,Chlorella,2,2,1.9,3.59,Regular
+1/11/2019,D19,500.81,Eucapsis microscopica,Cyanobacterium,Eucapsis,410,824,0.8,0.18,Regular
+1/15/2019,D16-Twitchell,450.73,cf. Chlorella sp.,Green Alga,Chlorella,2,2,1.9,3.59,Regular
+1/15/2019,D16-Twitchell,450.73,Coccomyxa sp.,Green Alga,Coccomyxa,1,1,7.4,13.99,Regular
+1/15/2019,D16-Twitchell,450.73,Plagioselmis lacustris,Cryptophyte,Plagioselmis,1,1,10.2,454.87,Regular
+1/15/2019,D16-Twitchell,450.73,Eucapsis microscopica,Cyanobacterium,Eucapsis,398,806,0.8,0.18,Regular
+1/10/2019,D22,643.90,Aulacoseira alpigena,Centric Diatom,Aulacoseira,1,1,6.5,160.10,Regular
+1/10/2019,D22,643.90,Coccomyxa sp.,Green Alga,Coccomyxa,1,1,5.6,10.59,Regular
+1/10/2019,D22,643.90,Eucapsis microscopica,Cyanobacterium,Eucapsis,421,850,0.8,0.18,Regular
+1/15/2019,EZ2,375.61,Entomoneis paludosa,Pennate Diatom,Entomoneis,1,1,38.9,4386.04,Regular
+1/15/2019,EZ2,375.61,Coccomyxa sp.,Green Alga,Coccomyxa,5,5,7.4,15.08,Regular
+1/15/2019,EZ2,375.61,Eucapsis microscopica,Cyanobacterium,Eucapsis,429,868,0.8,0.18,Regular
+1/15/2019,P8,300.49,cf. Chlorella sp.,Green Alga,Chlorella,2,2,1.9,3.59,Regular
+1/15/2019,P8,300.49,Coccomyxa sp.,Green Alga,Coccomyxa,4,4,9.3,18.75,Regular
+1/15/2019,P8,300.49,Monoraphidium contortum,Green Alga,Monoraphidium,1,1,13,5.51,Regular
+1/15/2019,P8,300.49,Eucapsis microscopica,Cyanobacterium,Eucapsis,412,842,0.8,0.18,Regular
+1/15/2019,D26,901.46,Achnanthidium exiguum,Pennate Diatom,Achnanthidium,1,1,13,71.78,Regular
+1/15/2019,D26,901.46,Melosira varians,Centric Diatom,Melosira,1,1,13,1725.52,Regular
+1/15/2019,D26,901.46,Nitzschia palea,Pennate Diatom,Nitzschia,1,1,22.2,97.01,Regular
+1/15/2019,D26,901.46,Ulnaria ulna,Pennate Diatom,Ulnaria,1,1,74.1,2489.71,Regular
+1/15/2019,D26,901.46,Eucapsis microscopica,Cyanobacterium,Eucapsis,401,820,0.8,0.18,Regular
+1/11/2019,D12,1287.80,Cyclotella meneghiniana,Centric Diatom,Cyclotella,1,1,11.1,541.91,Regular
+1/11/2019,D12,1287.80,cf. Chlorella sp.,Green Alga,Chlorella,2,2,1.9,3.59,Regular
+1/11/2019,D12,1287.80,Coccomyxa sp.,Green Alga,Coccomyxa,3,3,9.3,19.51,Regular
+1/11/2019,D12,1287.80,Eucapsis microscopica,Cyanobacterium,Eucapsis,446,906,0.8,0.18,Regular
+1/15/2019,EZ6,901.46,Entomoneis paludosa,Pennate Diatom,Entomoneis,1,1,47.2,7713.68,Regular
+1/15/2019,EZ6,901.46,cf. Chlorella sp.,Green Alga,Chlorella,4,4,2.4,4.19,Regular
+1/15/2019,EZ6,901.46,Eucapsis microscopica,Cyanobacterium,Eucapsis,397,808,0.8,0.18,Regular
+1/18/2019,NZ004,375.61,Planothidium sp.,Pennate Diatom,Planothidium,1,1,18.5,397.83,Regular
+1/18/2019,NZ004,375.61,cf. Chlorella sp.,Green Alga,Chlorella,9,9,1.9,3.59,Regular
+1/18/2019,NZ004,375.61,Drepanochloris nannoselene,Green Alga,Drepanochloris,1,1,4.6,2.93,Regular
+1/18/2019,NZ004,375.61,Plagioselmis lacustris,Cryptophyte,Plagioselmis,1,1,13,942.40,Regular
+1/18/2019,NZ004,375.61,Eucapsis microscopica,Cyanobacterium,Eucapsis,391,794,0.8,0.18,Regular
+1/18/2019,NZ004,375.61,cf. Microcystis sp.,Cyanobacterium,Microcystis,1,1,3.7,26.52,Regular
+1/11/2019,D28A,563.41,Cyclotella meneghiniana,Centric Diatom,Cyclotella,1,1,13,862.76,Regular
+1/11/2019,D28A,563.41,Cyclotella sp.,Centric Diatom,Cyclotella,1,1,5.6,68.96,Regular
+1/11/2019,D28A,563.41,cf. Melosira sp.,Centric Diatom,Melosira,1,1,16.7,2037.07,Regular
+1/11/2019,D28A,563.41,Nitzschia inconspicua,Pennate Diatom,Nitzschia,1,1,11,15.40,Regular
+1/11/2019,D28A,563.41,cf. Nitzschia sp.,Pennate Diatom,Nitzschia,1,1,19.6,442.37,Regular
+1/11/2019,D28A,563.41,cf. Ulnaria ulna,Pennate Diatom,Ulnaria,1,1,20.9,394.78,Regular
+1/11/2019,D28A,563.41,cf. Chlorella sp.,Green Alga,Chlorella,4,4,2.4,7.24,Regular
+1/11/2019,D28A,563.41,Plagioselmis lacustris,Cryptophyte,Plagioselmis,1,1,13,862.76,Regular
+1/11/2019,D28A,563.41,Eucapsis microscopica,Cyanobacterium,Eucapsis,406,822,0.8,0.18,Regular
+1/18/2019,NZ002,375.61,Cyclotella meneghiniana,Centric Diatom,Cyclotella,1,1,9.3,312.47,Regular
+1/18/2019,NZ002,375.61,cf. Chlorella sp.,Green Alga,Chlorella,17,17,2.4,7.24,Regular
+1/18/2019,NZ002,375.61,Plagioselmis prolonga,Cryptophyte,Plagioselmis,1,1,6.5,112.82,Regular
+1/18/2019,NZ002,375.61,Eucapsis microscopica,Cyanobacterium,Eucapsis,448,904,0.8,0.18,Regular
+1/16/2019,NZS42,1802.92,cf. Chlorella sp.,Green Alga,Chlorella,8,8,1.9,3.59,Regular
+1/16/2019,NZS42,1802.92,Eucapsis microscopica,Cyanobacterium,Eucapsis,557,1136,0.8,0.18,Regular
+1/16/2019,NZS42,1802.92,cf. Microcystis sp.,Cyanobacterium,Microcystis,4,4,3.7,26.52,Regular
+1/10/2019,NZ068,901.46,Nitzschia inconspicua,Pennate Diatom,Nitzschia,1,1,10.2,14.28,Regular
+1/10/2019,NZ068,901.46,Nitzschia palea,Pennate Diatom,Nitzschia,2,2,29.6,129.35,Regular
+1/10/2019,NZ068,901.46,cf. Chlorella sp.,Green Alga,Chlorella,5,5,2.4,4.19,Regular
+1/10/2019,NZ068,901.46,Coccomyxa sp.,Green Alga,Coccomyxa,5,5,9.3,18.47,Regular
+1/10/2019,NZ068,901.46,Monoraphidium contortum,Green Alga,Monoraphidium,1,1,11.1,4.71,Regular
+1/10/2019,NZ068,901.46,Eucapsis microscopica,Cyanobacterium,Eucapsis,600,1218,0.8,0.18,Regular
+1/17/2019,NZ032,901.46,Ulnaria ulna,Pennate Diatom,Ulnaria,1,1,33,364.41,Regular
+1/17/2019,NZ032,901.46,cf. Chlorella sp.,Green Alga,Chlorella,1,1,1.9,3.59,Regular
+1/17/2019,NZ032,901.46,Eucapsis microscopica,Cyanobacterium,Eucapsis,415,844,0.8,0.18,Regular
+1/17/2019,NZ032,901.46,cf. Microcystis sp.,Cyanobacterium,Microcystis,1,1,3.7,26.52,Regular
+1/17/2019,D7,409.75,cf. Chlorella sp.,Green Alga,Chlorella,3,3,1.9,3.59,Regular
+1/17/2019,D7,409.75,Eucapsis microscopica,Cyanobacterium,Eucapsis,422,846,0.8,0.18,Regular
+1/16/2019,D6,500.81,Thalassiosira sp.,Centric Diatom,Thalassiosira,1,1,14.8,963.39,Regular
+1/16/2019,D6,500.81,cf. Chlorella sp.,Green Alga,Chlorella,2,2,1.9,3.59,Regular
+1/16/2019,D6,500.81,Coccomyxa sp.,Green Alga,Coccomyxa,2,2,7.4,13.99,Regular
+1/16/2019,D6,500.81,Eucapsis microscopica,Cyanobacterium,Eucapsis,410,826,0.8,0.18,Regular
+1/18/2019,D41A,250.41,cf. Chlorella sp.,Green Alga,Chlorella,2,2,1.9,3.59,Regular
+1/18/2019,D41A,250.41,Coccomyxa sp.,Green Alga,Coccomyxa,1,1,7.4,13.99,Regular
+1/18/2019,D41A,250.41,Eucapsis microscopica,Cyanobacterium,Eucapsis,411,822,0.8,0.18,Regular
+1/18/2019,NZ325,321.95,Nitzschia inconspicua,Pennate Diatom,Nitzschia,1,1,10.2,18.41,Regular
+1/18/2019,NZ325,321.95,cf. Chlorella sp.,Green Alga,Chlorella,7,7,1.9,3.59,Regular
+1/18/2019,NZ325,321.95,Plagioselmis lacustris,Cryptophyte,Plagioselmis,1,1,11.1,616.09,Regular
+1/18/2019,NZ325,321.95,Eucapsis microscopica,Cyanobacterium,Eucapsis,453,926,0.8,0.18,Regular
+1/15/2019,MD10A,225.37,Cocconeis placentula,Pennate Diatom,Cocconeis,1,1,9.3,77.72,Regular
+1/15/2019,MD10A,225.37,cf. Chlorella sp.,Green Alga,Chlorella,4,4,2.4,4.19,Regular
+1/15/2019,MD10A,225.37,Coccomyxa sp.,Green Alga,Coccomyxa,8,8,9.3,17.09,Regular
+1/15/2019,MD10A,225.37,Plagioselmis lacustris,Cryptophyte,Plagioselmis,1,1,10.2,430.35,Regular
+1/15/2019,MD10A,225.37,Eucapsis microscopica,Cyanobacterium,Eucapsis,463,946,0.8,0.18,Regular
+1/18/2019,D41,150.24,cf. Chlorella sp.,Green Alga,Chlorella,1,1,1.9,3.59,Regular
+1/18/2019,D41,150.24,Coccomyxa sp.,Green Alga,Coccomyxa,4,4,7.4,12.29,Regular
+1/18/2019,D41,150.24,Eucapsis microscopica,Cyanobacterium,Eucapsis,408,820,0.8,0.18,Regular
+2/7/2019,C10A,1126.83,Aulacoseira sp. ,Centric Diatom,Aulacoseira,11,11,9.3,154.56,Regular
+2/7/2019,C10A,1126.83,cf. Chlorella sp.,Green Alga,Chlorella,3,3,1.9,3.59,Regular
+2/7/2019,C10A,1126.83,Eucapsis microscopica,Cyanobacterium,Eucapsis,407,834,0.8,0.18,Regular
+2/7/2019,C3A,1126.83,Aulacoseira alpigena,Centric Diatom,Aulacoseira,5,5,9.3,154.56,Regular
+2/7/2019,C3A,1126.83,Geissleria decussis,Pennate Diatom,Geissleria,1,1,20.4,403.12,Regular
+2/7/2019,C3A,1126.83,cf. Chlorella sp.,Green Alga,Chlorella,4,4,1.9,3.59,Regular
+2/7/2019,C3A,1126.83,Eucapsis microscopica,Cyanobacterium,Eucapsis,423,864,0.8,0.18,Regular
+2/7/2019,C9,187.80,Cyclotella sp.,Centric Diatom,Cyclotella,1,1,9.3,312.47,Regular
+2/7/2019,C9,187.80,Geissleria decussis,Pennate Diatom,Geissleria,1,1,20.4,438.69,Regular
+2/7/2019,C9,187.80,Nitzschia capitellata,Pennate Diatom,Nitzschia,1,1,24.1,64.11,Regular
+2/7/2019,C9,187.80,Rhoicosphenia abbreviata,Pennate Diatom,Rhoicosphenia,1,1,12,241.62,Regular
+2/7/2019,C9,187.80,Chlorella sp.,Green Alga,Chlorella,1,1,1.9,3.59,Regular
+2/7/2019,C9,187.80,Plagioselmis lacustris,Cryptophyte,Plagioselmis,1,1,13,902.58,Regular
+2/7/2019,C9,187.80,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,1,1,9.3,314.74,Regular
+2/7/2019,C9,187.80,Eucapsis microscopica,Cyanobacterium,Eucapsis,398,802,0.8,0.18,Regular
+2/19/2019,D6,901.46,cf. Chlorella sp.,Green Alga,Chlorella,4,4,2.4,5.58,Regular
+2/19/2019,D6,901.46,Eucapsis microscopica,Cyanobacterium,Eucapsis,471,952,0.8,0.18,Regular
+2/12/2019,D4,450.73,Cyclotella meneghiniana,Centric Diatom,Cyclotella,1,1,12,678.58,Regular
+2/12/2019,D4,450.73,cf. Chlorella sp.,Green Alga,Chlorella,5,5,1.9,3.59,Regular
+2/12/2019,D4,450.73,Eucapsis microscopica,Cyanobacterium,Eucapsis,418,842,0.8,0.18,Regular
+2/13/2019,D12,901.46,cf. Chlorella sp.,Green Alga,Chlorella,2,2,1.9,3.59,Regular
+2/13/2019,D12,901.46,Eucapsis microscopica,Cyanobacterium,Eucapsis,406,820,0.8,0.18,Regular
+2/19/2019,D7,1802.92,Achnanthidium exiguum,Pennate Diatom,Achnanthidium,1,1,16.7,315.44,Regular
+2/19/2019,D7,1802.92,Eucapsis microscopica,Cyanobacterium,Eucapsis,427,864,0.8,0.18,Regular
+2/19/2019,D10,1126.83,Aulacoseira sp. ,Centric Diatom,Aulacoseira,1,1,3.7,39.78,Regular
+2/19/2019,D10,1126.83,Nitzschia acicularis,Pennate Diatom,Nitzschia,1,1,40.7,108.26,Regular
+2/19/2019,D10,1126.83,Nitzschia palea,Pennate Diatom,Nitzschia,1,1,37,130.06,Regular
+2/19/2019,D10,1126.83,Eucapsis microscopica,Cyanobacterium,Eucapsis,451,906,0.8,0.18,Regular
+2/19/2019,D8,1502.43,Achnanthidium exiguum,Pennate Diatom,Achnanthidium,1,1,15.7,209.87,Regular
+2/19/2019,D8,1502.43,Nitzschia inconspicua,Pennate Diatom,Nitzschia,1,1,8.3,56.81,Regular
+2/19/2019,D8,1502.43,cf. Chlorella sp.,Green Alga,Chlorella,5,5,2.4,4.85,Regular
+2/19/2019,D8,1502.43,Eucapsis microscopica,Cyanobacterium,Eucapsis,444,896,0.8,0.18,Regular
+2/13/2019,D19,751.22,Cocconeis placentula,Pennate Diatom,Cocconeis,1,1,18.5,976.41,Regular
+2/13/2019,D19,751.22,Cocconeis sp.,Pennate Diatom,Cocconeis,1,1,25,2688.02,Regular
+2/13/2019,D19,751.22,Melosira sp.,Centric Diatom,Melosira,1,1,18.5,3978.27,Regular
+2/13/2019,D19,751.22,Thalassiosira sp.,Centric Diatom,Thalassiosira,1,1,38.9,17589.38,Regular
+2/13/2019,D19,751.22,Ulnaria ulna,Pennate Diatom,Ulnaria,4,4,98.2,2111.71,Regular
+2/13/2019,D19,751.22,cf. Chlorella sp.,Green Alga,Chlorella,6,6,1.9,3.59,Regular
+2/13/2019,D19,751.22,Eucapsis microscopica,Cyanobacterium,Eucapsis,459,932,0.8,0.18,Regular
+2/15/2019,D16,643.90,cf. Chlorella sp.,Green Alga,Chlorella,1,1,2.4,7.24,Regular
+2/15/2019,D16,643.90,Eucapsis microscopica,Cyanobacterium,Eucapsis,447,898,0.8,0.18,Regular
+2/15/2019,D26,563.41,Navicula cf. antonii,Pennate Diatom,Nitzschia,1,1,18.5,253.27,Regular
+2/15/2019,D26,563.41,Nitzschia fonticola,Pennate Diatom,Nitzschia,1,1,42.6,174.02,Regular
+2/15/2019,D26,563.41,cf. Chlorella sp.,Green Alga,Chlorella,4,4,1.9,3.59,Regular
+2/15/2019,D26,563.41,Chlorella sp.,Green Alga,Chlorella,1,1,1.9,3.59,Regular
+2/15/2019,D26,563.41,Eucapsis microscopica,Cyanobacterium,Eucapsis,431,872,0.8,0.18,Regular
+2/15/2019,D26,563.41,cf. Planktolyngbya sp.,Cyanobacterium,Planktolyngbya,1,32,1.9,1.21,Regular
+2/12/2019,D22,901.46,cf. Chlorella sp.,Green Alga,Chlorella,7,7,1.9,3.59,Regular
+2/12/2019,D22,901.46,Eucapsis microscopica,Cyanobacterium,Eucapsis,431,874,0.8,0.18,Regular
+2/12/2019,D22,901.46,cf. Microcystis sp.,Cyanobacterium,Microcystis,1,1,3.7,26.52,Regular
+2/21/2019,D41A,901.46,Nitzschia cf. recta,Pennate Diatom,Nitzschia,1,1,55.6,195.43,Regular
+2/21/2019,D41A,901.46,Eucapsis microscopica,Cyanobacterium,Eucapsis,434,874,0.8,0.18,Regular
+2/12/2019,NZ068,901.46,Chlorella sp.,Green Alga,Chlorella,2,2,1.9,3.59,Regular
+2/12/2019,NZ068,901.46,Eucapsis microscopica,Cyanobacterium,Eucapsis,450,904,0.8,0.18,Regular
+2/21/2019,D41,166.94,Cyclotella meneghiniana,Centric Diatom,Cyclotella,1,1,8.3,216.42,Regular
+2/21/2019,D41,166.94,Planothidium rostratum,Pennate Diatom,Planothidium,1,1,14.8,182.26,Regular
+2/21/2019,D41,166.94,cf. Chlorella sp.,Green Alga,Chlorella,2,2,1.9,3.59,Regular
+2/21/2019,D41,166.94,Chlorella sp.,Green Alga,Chlorella,1,1,1.9,3.59,Regular
+2/21/2019,D41,166.94,Eucapsis microscopica,Cyanobacterium,Eucapsis,401,810,0.8,0.18,Regular
+2/15/2019,EZ6,1802.92,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,1,1,8.3,232.66,Regular
+2/15/2019,EZ6,1802.92,Plagioselmis prolonga,Cryptophyte,Plagioselmis,1,1,7.4,159.13,Regular
+2/15/2019,EZ6,1802.92,Eucapsis microscopica,Cyanobacterium,Eucapsis,461,932,0.8,0.18,Regular
+2/13/2019,D28A,409.75,Cocconeis placentula,Pennate Diatom,Cocconeis,1,1,9.3,224.31,Regular
+2/13/2019,D28A,409.75,Cocconeis placentula,Pennate Diatom,Cocconeis,2,2,18.5,446.21,Regular
+2/13/2019,D28A,409.75,Cyclotella meneghiniana,Centric Diatom,Cyclotella,1,1,9.3,312.47,Regular
+2/13/2019,D28A,409.75,Nitzschia fonticola,Pennate Diatom,Nitzschia,1,1,13,34.58,Regular
+2/13/2019,D28A,409.75,Nitzschia palea,Pennate Diatom,Nitzschia,1,1,29.6,163.39,Regular
+2/13/2019,D28A,409.75,cf. Chlorella sp.,Green Alga,Chlorella,4,4,1.9,3.59,Regular
+2/13/2019,D28A,409.75,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,1,1,8.3,232.66,Regular
+2/13/2019,D28A,409.75,Plagioselmis prolonga,Cryptophyte,Plagioselmis,1,1,5.6,81.28,Regular
+2/13/2019,D28A,409.75,Eucapsis microscopica,Cyanobacterium,Eucapsis,391,788,0.8,0.18,Regular
+2/15/2019,MD10A,450.73,Achnanthidium minutissimum,Pennate Diatom,Achnanthidium,1,1,9.3,75.67,Regular
+2/15/2019,MD10A,450.73,Nitzschia palea,Pennate Diatom,Nitzschia,1,1,27.8,97.72,Regular
+2/15/2019,MD10A,450.73,Planothidium frequentissimum,Pennate Diatom,Planothidium,1,1,7.4,30.92,Regular
+2/15/2019,MD10A,450.73,Eucapsis microscopica,Cyanobacterium,Eucapsis,497,1000,0.8,0.18,Regular
+2/14/2019,P8,643.90,Cocconeis placentula,Pennate Diatom,Cocconeis,1,1,18.5,548.36,Regular
+2/14/2019,P8,643.90,Cocconeis placentula,Pennate Diatom,Cocconeis,1,1,14.8,318.26,Regular
+2/14/2019,P8,643.90,Cocconeis sp.,Pennate Diatom,Cocconeis,1,1,31.5,4064.29,Regular
+2/14/2019,P8,643.90,cf. Chlorella sp.,Green Alga,Chlorella,4,4,1.9,3.59,Regular
+2/14/2019,P8,643.90,Eucapsis microscopica,Cyanobacterium,Eucapsis,410,826,0.8,0.18,Regular
+2/14/2019,P8,643.90,Euglena sp.,Euglenoid,Euglena,1,1,25.9,2116.36,Regular
+2/19/2019,NZS42,1802.92,Eucapsis microscopica,Cyanobacterium,Eucapsis,470,952,0.8,0.18,Regular
+2/20/2019,NZ325,1802.92,Cyclotella sp.,Centric Diatom,Cyclotella,1,1,7.4,159.13,Regular
+2/20/2019,NZ325,1802.92,Cyclotella cf. striata,Centric Diatom,Cyclotella,1,1,25.9,5848.06,Regular
+2/20/2019,NZ325,1802.92,Eucapsis microscopica,Cyanobacterium,Eucapsis,517,1048,0.8,0.18,Regular
+2/20/2019,NZ002,1802.92,Cyclotella sp.,Centric Diatom,Cyclotella,1,1,8.3,216.42,Regular
+2/20/2019,NZ002,1802.92,Nitzschia fruticosa,Pennate Diatom,Nitzschia,1,1,24.1,64.11,Regular
+2/20/2019,NZ002,1802.92,Chlamydomonas globosa,Green Alga,Chlamydomonas,1,1,9.3,421.16,Regular
+2/20/2019,NZ002,1802.92,Monoraphidium contortum,Green Alga,Monoraphidium,1,1,29.6,55.95,Regular
+2/20/2019,NZ002,1802.92,Cryptomonas ovata,Cryptophyte,Cryptomonas,1,1,29.6,2619.25,Regular
+2/20/2019,NZ002,1802.92,Eucapsis microscopica,Cyanobacterium,Eucapsis,437,882,0.8,0.18,Regular
+2/20/2019,NZ032,1802.92,cf. Chlorella sp.,Green Alga,Chlorella,3,3,1.9,3.59,Regular
+2/20/2019,NZ032,1802.92,Eucapsis microscopica,Cyanobacterium,Eucapsis,459,940,0.8,0.18,Regular
+2/20/2019,NZ032,1802.92,cf. Microcystis sp.,Cyanobacterium,Microcystis,3,3,3.7,26.52,Regular
+2/15/2019,EZ2,1287.80,cf. Chlorella sp.,Green Alga,Chlorella,1,1,1.9,3.59,Regular
+2/15/2019,EZ2,1287.80,Eucapsis microscopica,Cyanobacterium,Eucapsis,404,812,0.8,0.18,Regular
+2/20/2019,NZ004,1802.92,Aulacoseira alpigena,Centric Diatom,Aulacoseira,3,3,7.4,245.55,Regular
+2/20/2019,NZ004,1802.92,Cyclotella sp.,Centric Diatom,Cyclotella,1,1,6.5,122.78,Regular
+2/20/2019,NZ004,1802.92,Rhoicosphenia abbreviata,Pennate Diatom,Rhoicosphenia,1,1,13.9,618.51,Regular
+2/20/2019,NZ004,1802.92,cf. Chlorella sp.,Green Alga,Chlorella,1,1,1.9,3.59,Regular
+2/20/2019,NZ004,1802.92,Eucapsis microscopica,Cyanobacterium,Eucapsis,501,1014,0.8,0.18,Regular
+3/28/2019,NZS42,1287.80,cf. Chlorella sp.,Green Alga,Chlorella,14,14,1.9,3.59,Regular
+3/28/2019,NZS42,1287.80,Eucapsis microscopica,Cyanobacterium,Eucapsis,389,790,0.8,0.18,Regular
+3/19/2019,NZ325,530.27,Cyclotella sp.,Centric Diatom,Cyclotella,1,1,5.6,68.96,Regular
+3/19/2019,NZ325,530.27,cf. Chlorella sp.,Green Alga,Chlorella,16,16,1.9,3.59,Regular
+3/19/2019,NZ325,530.27,Eucapsis microscopica,Cyanobacterium,Eucapsis,391,796,0.8,0.18,Regular
+3/18/2019,NZ032,1802.92,cf. Chlorella sp.,Green Alga,Chlorella,10,10,1.9,3.59,Regular
+3/18/2019,NZ032,1802.92,Eucapsis microscopica,Cyanobacterium,Eucapsis,432,878,0.8,0.18,Regular
+3/19/2019,NZ004,1126.83,Cyclotella sp.,Centric Diatom,Cyclotella,1,1,5.6,73.89,Regular
+3/19/2019,NZ004,1126.83,Nitzschia capitellata,Pennate Diatom,Nitzschia,1,1,16.7,44.42,Regular
+3/19/2019,NZ004,1126.83,cf. Chlorella sp.,Green Alga,Chlorella,6,6,1.9,3.59,Regular
+3/19/2019,NZ004,1126.83,Eucapsis microscopica,Cyanobacterium,Eucapsis,413,834,0.8,0.18,Regular
+3/19/2019,NZ002,693.43,Nitzschia sp.,Pennate Diatom,Nitzschia,1,1,18.5,54.48,Regular
+3/19/2019,NZ002,693.43,cf. Chlorella sp.,Green Alga,Chlorella,3,3,1.9,3.59,Regular
+3/19/2019,NZ002,693.43,Chlorella sp.,Green Alga,Chlorella,2,2,1.9,3.59,Regular
+3/19/2019,NZ002,693.43,Monoraphidium contortum,Green Alga,Monoraphidium,1,1,13,11.50,Regular
+3/19/2019,NZ002,693.43,Eucapsis microscopica,Cyanobacterium,Eucapsis,426,858,0.8,0.18,Regular
+3/15/2019,EZ6,450.73,Nitzschia sp.,Pennate Diatom,Nitzschia,1,1,16.7,26.05,Regular
+3/15/2019,EZ6,450.73,Pseudostaurosira brevistriata,Pennate Diatom,Pseudostaurosira,1,1,18.5,698.89,Regular
+3/15/2019,EZ6,450.73,cf. Chlorella sp.,Green Alga,Chlorella,8,8,1.9,3.59,Regular
+3/15/2019,EZ6,450.73,Eucapsis microscopica,Cyanobacterium,Eucapsis,398,804,0.8,0.18,Regular
+3/15/2019,EZ2,450.73,Pseudostaurosira brevistriata,Pennate Diatom,Pseudostaurosira,1,1,13.9,226.20,Regular
+3/15/2019,EZ2,450.73,cf. Chlorella sp.,Green Alga,Chlorella,4,4,1.9,3.59,Regular
+3/15/2019,EZ2,450.73,Eucapsis microscopica,Cyanobacterium,Eucapsis,406,820,0.8,0.18,Regular
+3/14/2019,MD10A,321.95,Cyclotella sp.,Centric Diatom,Cyclotella,2,2,7.4,159.13,Regular
+3/14/2019,MD10A,321.95,Nitzschia inconspicua,Pennate Diatom,Nitzschia,1,1,10.2,35.85,Regular
+3/14/2019,MD10A,321.95,cf. Chlorella sp.,Green Alga,Chlorella,1,1,1.9,3.59,Regular
+3/14/2019,MD10A,321.95,Chlorella sp.,Green Alga,Chlorella,1,1,1.9,3.59,Regular
+3/14/2019,MD10A,321.95,Monoraphidium contortum,Green Alga,Monoraphidium,1,1,20.4,18.05,Regular
+3/14/2019,MD10A,321.95,Cryptomonas ovata,Cryptophyte,Cryptomonas,1,1,22.2,2546.10,Regular
+3/14/2019,MD10A,321.95,Plagioselmis prolonga,Cryptophyte,Plagioselmis,1,1,6.8,127.11,Regular
+3/14/2019,MD10A,321.95,Eucapsis microscopica,Cyanobacterium,Eucapsis,393,802,0.8,0.18,Regular
+3/19/2019,D41A,409.75,Nitzschia sp.,Pennate Diatom,Nitzschia,1,1,19.1,18.15,Regular
+3/19/2019,D41A,409.75,cf. Chlorella sp.,Green Alga,Chlorella,4,4,1.9,3.59,Regular
+3/19/2019,D41A,409.75,Chlorella sp.,Green Alga,Chlorella,9,9,1.9,3.59,Regular
+3/19/2019,D41A,409.75,Eucapsis microscopica,Cyanobacterium,Eucapsis,400,804,0.8,0.18,Regular
+3/14/2019,P8,204.88,Cyclotella sp.,Centric Diatom,Cyclotella,1,1,6.5,122.78,Regular
+3/14/2019,P8,204.88,Pseudostaurosira brevistriata,Pennate Diatom,Pseudostaurosira,6,6,13,211.55,Regular
+3/14/2019,P8,204.88,cf. Chlorella sp.,Green Alga,Chlorella,13,13,1.9,3.59,Regular
+3/14/2019,P8,204.88,Scenedesmus cf. acuminatus,Green Alga,Scenedesmus,1,2,18.5,75.94,Regular
+3/14/2019,P8,204.88,Eucapsis microscopica,Cyanobacterium,Eucapsis,385,776,0.8,0.18,Regular
+3/19/2019,D41,214.63,Achnanthidium minutissimum,Pennate Diatom,Achnanthidium,1,1,16.7,168.94,Regular
+3/19/2019,D41,214.63,Chlamydomonas sp.,Green Alga,Chlamydomonas,1,1,11,315.39,Regular
+3/19/2019,D41,214.63,cf. Chlorella sp.,Green Alga,Chlorella,3,3,1.9,3.59,Regular
+3/19/2019,D41,214.63,Chlorella sp.,Green Alga,Chlorella,3,3,1.9,3.59,Regular
+3/19/2019,D41,214.63,Plagioselmis lacustris,Cryptophyte,Plagioselmis,1,1,13,862.76,Regular
+3/19/2019,D41,214.63,Eucapsis microscopica,Cyanobacterium,Eucapsis,426,864,0.8,0.18,Regular
+3/19/2019,D41,214.63,Planktothrix suspensa,Cyanobacterium,Planktothrix,1,33,3.7,39.78,Regular
+3/14/2019,D16,901.46,Nitzschia sp.,Pennate Diatom,Nitzschia,1,1,16.7,261.86,Regular
+3/14/2019,D16,901.46,cf. Chlorella sp.,Green Alga,Chlorella,7,7,1.9,3.59,Regular
+3/14/2019,D16,901.46,Eucapsis microscopica,Cyanobacterium,Eucapsis,434,874,0.8,0.18,Regular
+3/14/2019,D16,901.46,cf. Microcystis sp.,Cyanobacterium,Microcystis,1,1,3.7,26.52,Regular
+3/18/2019,D6,1001.62,cf. Chlorella sp.,Green Alga,Chlorella,3,3,1.9,3.59,Regular
+3/18/2019,D6,1001.62,Eucapsis microscopica,Cyanobacterium,Eucapsis,405,830,0.8,0.18,Regular
+3/15/2019,D10,1001.62,cf. Chlorella sp.,Green Alga,Chlorella,2,2,1.9,3.59,Regular
+3/15/2019,D10,1001.62,Eucapsis microscopica,Cyanobacterium,Eucapsis,405,826,0.8,0.18,Regular
+3/13/2019,D28A,187.80,Cocconeis placentula,Pennate Diatom,Cocconeis,1,1,14.8,399.98,Regular
+3/13/2019,D28A,187.80,Cyclotella sp.,Centric Diatom,Cyclotella,1,1,6.5,99.55,Regular
+3/13/2019,D28A,187.80,cf. Chlorella sp.,Green Alga,Chlorella,15,15,1.9,3.59,Regular
+3/13/2019,D28A,187.80,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,2,2,9.3,323.80,Regular
+3/13/2019,D28A,187.80,Plagioselmis prolonga,Cryptophyte,Plagioselmis,1,1,6.5,122.78,Regular
+3/13/2019,D28A,187.80,Eucapsis microscopica,Cyanobacterium,Eucapsis,403,818,0.8,0.18,Regular
+3/13/2019,D28A,187.80,cf. Microcystis sp.,Cyanobacterium,Microcystis,1,1,3.7,26.52,Regular
+3/14/2019,D26,450.73,cf. Chlorella sp.,Green Alga,Chlorella,8,8,1.9,3.59,Regular
+3/14/2019,D26,450.73,Eucapsis microscopica,Cyanobacterium,Eucapsis,400,814,0.8,0.18,Regular
+3/14/2019,D26,450.73,cf. Planktolyngbya sp.,Cyanobacterium,Planktolyngbya,1,17,1.9,1.21,Regular
+3/13/2019,D19,346.72,Cocconeis placentula,Pennate Diatom,Cocconeis,1,1,21.3,1217.87,Regular
+3/13/2019,D19,346.72,cf. Chlorella sp.,Green Alga,Chlorella,12,12,2.4,4.19,Regular
+3/13/2019,D19,346.72,Eucapsis microscopica,Cyanobacterium,Eucapsis,408,828,0.8,0.18,Regular
+3/13/2019,D12,530.27,Aulacoseira granulata,Centric Diatom,Aulacoseira,2,2,11.1,119.35,Regular
+3/13/2019,D12,530.27,cf. Cocconeis placentula,Pennate Diatom,Cocconeis,1,1,9.3,51.35,Regular
+3/13/2019,D12,530.27,cf. Chlorella sp.,Green Alga,Chlorella,9,9,1.9,3.59,Regular
+3/13/2019,D12,530.27,Eucapsis microscopica,Cyanobacterium,Eucapsis,389,790,0.8,0.18,Regular
+3/12/2019,D4,643.90,Rhoicosphenia abbreviata,Pennate Diatom,Rhoicosphenia,2,2,9.3,132.00,Regular
+3/12/2019,D4,643.90,cf. Chlorella sp.,Green Alga,Chlorella,10,10,1.9,3.59,Regular
+3/12/2019,D4,643.90,Cryptomonas ovata,Cryptophyte,Cryptomonas,1,1,24.1,2132.56,Regular
+3/12/2019,D4,643.90,Eucapsis microscopica,Cyanobacterium,Eucapsis,399,810,0.8,0.18,Regular
+3/15/2019,D8,1001.62,cf. Chlorella sp.,Green Alga,Chlorella,6,6,1.9,3.59,Regular
+3/15/2019,D8,1001.62,Eucapsis microscopica,Cyanobacterium,Eucapsis,407,830,0.8,0.18,Regular
+3/18/2019,D7,1001.62,Cyclotella sp.,Centric Diatom,Cyclotella,2,2,5.6,68.96,Regular
+3/18/2019,D7,1001.62,Nitzschia sp.,Pennate Diatom,Nitzschia,1,1,19.4,68.19,Regular
+3/18/2019,D7,1001.62,cf. Chlorella sp.,Green Alga,Chlorella,3,3,1.9,3.59,Regular
+3/18/2019,D7,1001.62,Drepanochloris nannoselene,Green Alga,Drepanochloris,1,1,3.7,2.64,Regular
+3/18/2019,D7,1001.62,Eucapsis microscopica,Cyanobacterium,Eucapsis,394,800,0.8,0.18,Regular
+3/18/2019,D7,1001.62,cf. Microcystis sp.,Cyanobacterium,Microcystis,1,1,3.7,26.52,Regular
+3/11/2019,C10A,450.73,Cocconeis sp.,Pennate Diatom,Cocconeis,1,1,11.1,180.64,Regular
+3/11/2019,C10A,450.73,Cyclotella meneghiniana,Centric Diatom,Cyclotella,1,1,11.1,541.91,Regular
+3/11/2019,C10A,450.73,Cyclotella sp.,Centric Diatom,Cyclotella,1,1,5.6,68.96,Regular
+3/11/2019,C10A,450.73,Chlorella sp.,Green Alga,Chlorella,13,13,3.7,6.37,Regular
+3/11/2019,C10A,450.73,cf. Chrysochromulina sp.,Haptophyte,Chrysochromulina,2,2,3.7,26.52,Regular
+3/11/2019,C10A,450.73,Eucapsis microscopica,Cyanobacterium,Eucapsis,384,784,0.8,0.18,Regular
+3/12/2019,NZ068,450.73,Cyclotella striata,Centric Diatom,Cyclotella,1,1,25,6135.92,Regular
+3/12/2019,NZ068,450.73,cf. Staurosirella sp.,Pennate Diatom,Staurosirella,2,2,24.1,1820.88,Regular
+3/12/2019,NZ068,450.73,Chlorella sp.,Green Alga,Chlorella,9,9,1.9,3.59,Regular
+3/12/2019,NZ068,450.73,Eucapsis microscopica,Cyanobacterium,Eucapsis,388,788,0.8,0.18,Regular
+3/11/2019,C3A-Hood,751.22,cf. Chlorella sp.,Green Alga,Chlorella,3,3,1.9,3.59,Regular
+3/11/2019,C3A-Hood,751.22,Eucapsis microscopica,Cyanobacterium,Eucapsis,398,822,0.8,0.18,Regular
+3/12/2019,D22,563.41,Achnanthidium minutissimum,Pennate Diatom,Achnanthidium,1,1,13.5,219.69,Regular
+3/12/2019,D22,563.41,Aulacoseira granulata,Centric Diatom,Aulacoseira,1,1,13,216.05,Regular
+3/12/2019,D22,563.41,cf. Chlorella sp.,Green Alga,Chlorella,8,8,1.9,3.59,Regular
+3/12/2019,D22,563.41,Plagioselmis prolonga,Cryptophyte,Plagioselmis,2,2,5.6,76.35,Regular
+3/12/2019,D22,563.41,Eucapsis microscopica,Cyanobacterium,Eucapsis,458,926,0.8,0.18,Regular
+3/11/2019,C9,250.41,Cyclotella sp.,Centric Diatom,Cyclotella,2,2,6.5,122.78,Regular
+3/11/2019,C9,250.41,Thalassiosira sp.,Centric Diatom,Thalassiosira,1,1,11.1,541.91,Regular
+3/11/2019,C9,250.41,cf. Chlorella sp.,Green Alga,Chlorella,10,10,2.4,4.19,Regular
+3/11/2019,C9,250.41,Raphidocelis sp.,Green Alga,Raphidocelis,1,1,11.1,45.57,Regular
+3/11/2019,C9,250.41,Cryptomonas ovata,Cryptophyte,Cryptomonas,1,1,24.1,2132.56,Regular
+3/11/2019,C9,250.41,Eucapsis microscopica,Cyanobacterium,Eucapsis,418,860,0.8,0.18,Regular
+3/11/2019,C9,250.41,cf. Microcystis sp.,Cyanobacterium,Microcystis,3,3,3.7,26.52,Regular
+3/11/2019,C9,250.41,cf. Planktolyngbya limnetica,Cyanobacterium,Planktolyngbya,2,104,1.9,1.21,Regular
+4/10/2019,NZ068,563.41,Chlorella sp.,Green Alga,Chlorella,7,7,1.9,3.59,Regular
+4/10/2019,NZ068,563.41,Eucapsis microscopica,Cyanobacterium,Eucapsis,402,810,0.8,0.18,Regular
+4/16/2019,NZS42,1001.62,cf. Chlorella sp.,Green Alga,Chlorella,5,5,1.9,3.59,Regular
+4/16/2019,NZS42,1001.62,Monoraphidium contortum,Green Alga,Monoraphidium,1,1,16.7,7.08,Regular
+4/16/2019,NZS42,1001.62,Eucapsis microscopica,Cyanobacterium,Eucapsis,407,828,0.8,0.18,Regular
+4/17/2019,NZ325,409.75,Cyclotella meneghiniana,Centric Diatom,Cyclotella,1,1,11.1,541.91,Regular
+4/17/2019,NZ325,409.75,Nitzschia inconspicua,Pennate Diatom,Nitzschia,1,1,7.4,22.94,Regular
+4/17/2019,NZ325,409.75,Skeletonema sp.,Centric Diatom,Skeletonema,2,2,7.4,79.57,Regular
+4/17/2019,NZ325,409.75,Chlorella sp.,Green Alga,Chlorella,11,11,2.4,4.85,Regular
+4/17/2019,NZ325,409.75,Drepanochloris nannoselene,Green Alga,Drepanochloris,1,1,5.6,3.85,Regular
+4/17/2019,NZ325,409.75,Monoraphidium contortum,Green Alga,Monoraphidium,1,1,18.5,16.37,Regular
+4/17/2019,NZ325,409.75,Eucapsis microscopica,Cyanobacterium,Eucapsis,389,782,0.8,0.18,Regular
+4/17/2019,NZ002,1001.62,Aulacoseira granulata,Centric Diatom,Aulacoseira,2,2,13.5,580.61,Regular
+4/17/2019,NZ002,1001.62,cf. Chlorella sp.,Green Alga,Chlorella,7,7,1.9,3.59,Regular
+4/17/2019,NZ002,1001.62,Monoraphidium contortum,Green Alga,Monoraphidium,1,1,15.7,6.66,Regular
+4/17/2019,NZ002,1001.62,Eucapsis microscopica,Cyanobacterium,Eucapsis,392,788,0.8,0.18,Regular
+4/17/2019,NZ004,1502.43,cf. Chlorella sp.,Green Alga,Chlorella,8,8,1.9,3.59,Regular
+4/17/2019,NZ004,1502.43,Eucapsis microscopica,Cyanobacterium,Eucapsis,410,832,0.8,0.18,Regular
+4/16/2019,NZ032,450.73,cf. Chlorella sp.,Green Alga,Chlorella,16,16,1.9,3.59,Regular
+4/16/2019,NZ032,450.73,Cryptomonas sp.,Cryptophyte,Cryptomonas,1,1,16.7,602.38,Regular
+4/16/2019,NZ032,450.73,Eucapsis microscopica,Cyanobacterium,Eucapsis,390,782,0.8,0.18,Regular
+4/17/2019,D41,300.49,Cyclotella sp.,Centric Diatom,Cyclotella,3,3,7.4,93.59,Regular
+4/17/2019,D41,300.49,cf. Chlorella sp.,Green Alga,Chlorella,7,7,1.9,3.59,Regular
+4/17/2019,D41,300.49,Monoraphidium convolutum,Green Alga,Monoraphidium,1,1,7.4,13.99,Regular
+4/17/2019,D41,300.49,Cryptomonas sp.,Cryptophyte,Cryptomonas,1,1,14.8,670.23,Regular
+4/17/2019,D41,300.49,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,2,2,9.3,319.27,Regular
+4/17/2019,D41,300.49,Eucapsis microscopica,Cyanobacterium,Eucapsis,397,802,0.8,0.18,Regular
+4/12/2019,D26,225.37,cf. Chlorella sp.,Green Alga,Chlorella,6,6,1.9,3.59,Regular
+4/12/2019,D26,225.37,Eucapsis microscopica,Cyanobacterium,Eucapsis,409,826,0.8,0.18,Regular
+4/12/2019,P8,500.81,Cyclotella sp.,Centric Diatom,Cyclotella,4,4,7.4,210.74,Regular
+4/12/2019,P8,500.81,Cymbella tumida,Pennate Diatom,Cymbella,1,1,35.2,991.67,Regular
+4/12/2019,P8,500.81,Navicula gregaria,Pennate Diatom,Navicula,1,1,22.2,599.79,Regular
+4/12/2019,P8,500.81,Nitzschia spp.,Pennate Diatom,Nitzschia,2,2,14.8,43.92,Regular
+4/12/2019,P8,500.81,cf. Chlorella sp.,Green Alga,Chlorella,5,5,1.9,3.59,Regular
+4/12/2019,P8,500.81,Chlorella sp.,Green Alga,Chlorella,3,3,1.9,3.59,Regular
+4/12/2019,P8,500.81,Monoraphidium arcuatum,Green Alga,Monoraphidium,1,1,33.3,62.94,Regular
+4/12/2019,P8,500.81,Eucapsis microscopica,Cyanobacterium,Eucapsis,431,880,0.8,0.18,Regular
+4/15/2019,EZ2,500.81,Cyclotella sp.,Centric Diatom,Cyclotella,1,1,5.6,68.96,Regular
+4/15/2019,EZ2,500.81,cf. Chlorella sp.,Green Alga,Chlorella,8,8,1.9,3.59,Regular
+4/15/2019,EZ2,500.81,Eucapsis microscopica,Cyanobacterium,Eucapsis,414,842,0.8,0.18,Regular
+4/11/2019,D19,250.41,Ulnaria sp.,Pennate Diatom,Ulnaria,1,1,14.8,182.26,Regular
+4/11/2019,D19,250.41,cf. Chlorella sp.,Green Alga,Chlorella,4,4,1.9,3.59,Regular
+4/11/2019,D19,250.41,Cryptomonas sp.,Cryptophyte,Cryptomonas,1,1,20.4,923.83,Regular
+4/11/2019,D19,250.41,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,1,1,9.3,337.38,Regular
+4/11/2019,D19,250.41,Eucapsis microscopica,Cyanobacterium,Eucapsis,395,792,0.8,0.18,Regular
+4/15/2019,EZ6,693.43,Thalassiosira decipiens,Centric Diatom,Thalassiosira,1,1,13,862.76,Regular
+4/15/2019,EZ6,693.43,cf. Chlorella sp.,Green Alga,Chlorella,5,5,1.9,3.59,Regular
+4/15/2019,EZ6,693.43,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,1,1,9.3,314.74,Regular
+4/15/2019,EZ6,693.43,Eucapsis microscopica,Cyanobacterium,Eucapsis,424,852,0.8,0.18,Regular
+4/12/2019,D16-Twitchell,281.71,Monoraphidium contortum,Green Alga,Monoraphidium,1,1,18.5,7.85,Regular
+4/12/2019,D16-Twitchell,281.71,Eucapsis microscopica,Cyanobacterium,Eucapsis,425,854,0.8,0.18,Regular
+4/12/2019,D16-Twitchell,281.71,cf. Microcystis sp.,Cyanobacterium,Microcystis,2,2,3.7,26.52,Regular
+4/11/2019,D28A,150.24,Cocconeis placentula,Pennate Diatom,Cocconeis,2,2,18.5,591.28,Regular
+4/11/2019,D28A,150.24,Gomphoneis minuta,Pennate Diatom,Gomphoneis,1,1,15.7,1014.59,Regular
+4/11/2019,D28A,150.24,cf. Chlorella sp.,Green Alga,Chlorella,4,4,1.9,3.59,Regular
+4/11/2019,D28A,150.24,Plagioselmis lacustris,Cryptophyte,Plagioselmis,1,1,13,862.76,Regular
+4/11/2019,D28A,150.24,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,1,1,9.3,314.74,Regular
+4/11/2019,D28A,150.24,Eucapsis microscopica,Cyanobacterium,Eucapsis,414,836,0.8,0.18,Regular
+4/11/2019,D12,429.27,Pinnularia sp.,Pennate Diatom,Pinnularia,1,1,24.1,985.77,Regular
+4/11/2019,D12,429.27,Eucapsis microscopica,Cyanobacterium,Eucapsis,410,828,0.8,0.18,Regular
+4/12/2019,MD10A,187.80,cf. Chlorella sp.,Green Alga,Chlorella,12,12,1.9,3.59,Regular
+4/12/2019,MD10A,187.80,Chlorella sp.,Green Alga,Chlorella,11,11,1.9,3.59,Regular
+4/12/2019,MD10A,187.80,Drepanochloris nannoselene,Green Alga,Drepanochloris,2,2,6,7.03,Regular
+4/12/2019,MD10A,187.80,Eucapsis microscopica,Cyanobacterium,Eucapsis,400,800,0.8,0.18,Regular
+4/17/2019,D41A,450.73,cf. Chlorella sp.,Green Alga,Chlorella,8,8,1.9,3.59,Regular
+4/17/2019,D41A,450.73,Eucapsis microscopica,Cyanobacterium,Eucapsis,416,832,0.8,0.18,Regular
+4/16/2019,D7,643.90,Cocconeis placentula,Pennate Diatom,Cocconeis,1,1,27.8,1809.61,Regular
+4/16/2019,D7,643.90,cf. Chlorella sp.,Green Alga,Chlorella,8,8,1.9,3.59,Regular
+4/16/2019,D7,643.90,Eucapsis microscopica,Cyanobacterium,Eucapsis,402,808,0.8,0.18,Regular
+4/9/2019,C3A- Hood,173.36,Adlafia sp.,Pennate Diatom,Adlafia,1,1,7.4,16.27,Regular
+4/9/2019,C3A-Hood,173.36,Aulacoseira alpigena,Centric Diatom,Aulacoseira,2,2,9.3,229.06,Regular
+4/9/2019,C3A-Hood,173.36,Cyclotella sp.,Centric Diatom,Cyclotella,4,4,5.6,68.96,Regular
+4/9/2019,C3A-Hood,173.36,Didymosphenia geminata,Pennate Diatom,Didymosphenia,1,1,146.3,7142.41,Regular
+4/9/2019,C3A-Hood,173.36,Nitzschia dissipata,Pennate Diatom,Nitzschia,1,1,25.9,95.96,Regular
+4/9/2019,C3A-Hood,173.36,Thalassiosira sp.,Centric Diatom,Thalassiosira,1,1,70.4,67732.68,Regular
+4/9/2019,C3A-Hood,173.36,cf. Chlorella sp.,Green Alga,Chlorella,15,15,1.9,3.59,Regular
+4/9/2019,C3A-Hood,173.36,Monoraphidium komarkovae,Green Alga,Monoraphidium,1,1,24.1,21.33,Regular
+4/9/2019,C3A-Hood,173.36,Eucapsis microscopica,Cyanobacterium,Eucapsis,386,780,0.8,0.18,Regular
+4/9/2019,C3A-Hood,173.36,Planktolyngbya sp.,Cyanobacterium,Planktolyngbya,1,16,1.9,1.21,Regular
+4/15/2019,D10,819.51,Nitzschia sp.,Pennate Diatom,Nitzschia,1,1,16.7,130.93,Regular
+4/15/2019,D10,819.51,Chlorella sp.,Green Alga,Chlorella,4,4,1.9,3.59,Regular
+4/15/2019,D10,819.51,Eucapsis microscopica,Cyanobacterium,Eucapsis,405,818,0.8,0.18,Regular
+4/15/2019,D8,819.51,cf. Chlorella sp.,Green Alga,Chlorella,4,4,1.9,3.59,Regular
+4/15/2019,D8,819.51,Chlorella sp.,Green Alga,Chlorella,3,3,1.9,3.59,Regular
+4/15/2019,D8,819.51,Eucapsis microscopica,Cyanobacterium,Eucapsis,418,842,0.8,0.18,Regular
+4/16/2019,D6,500.81,Skeletonema sp.,Centric Diatom,Skeletonema,1,1,9.3,99.99,Regular
+4/16/2019,D6,500.81,cf. Chlorella sp.,Green Alga,Chlorella,5,5,1.9,3.59,Regular
+4/16/2019,D6,500.81,Plagioselmis lacustris,Cryptophyte,Plagioselmis,1,1,13,862.76,Regular
+4/16/2019,D6,500.81,Eucapsis microscopica,Cyanobacterium,Eucapsis,400,802,0.8,0.18,Regular
+4/10/2019,D4,429.27,cf. Chlorella sp.,Green Alga,Chlorella,8,8,1.9,3.59,Regular
+4/10/2019,D4,429.27,Eucapsis microscopica,Cyanobacterium,Eucapsis,413,834,0.8,0.18,Regular
+4/9/2019,C9,166.94,Achnanthidium exiguum,Pennate Diatom,Achnanthidium,1,1,16.7,359.12,Regular
+4/9/2019,C9,166.94,Cyclotella meneghiniana,Centric Diatom,Cyclotella,1,1,10.2,375.88,Regular
+4/9/2019,C9,166.94,Fragilaria tenera,Pennate Diatom,Fragilaria,1,1,35.2,147.08,Regular
+4/9/2019,C9,166.94,Plagiotropis lepidoptera,Pennate Diatom,Plagiotropis,1,1,79.6,7263.30,Regular
+4/9/2019,C9,166.94,cf. Chlorella sp.,Green Alga,Chlorella,9,9,1.9,3.59,Regular
+4/9/2019,C9,166.94,Eucapsis microscopica,Cyanobacterium,Eucapsis,408,824,0.8,0.18,Regular
+4/9/2019,C10A,250.41,Cyclotella sp.,Centric Diatom,Cyclotella,1,1,5.6,68.96,Regular
+4/9/2019,C10A,250.41,cf. Gomphonema sp.,Pennate Diatom,Gomphonema,1,1,10.2,279.47,Regular
+4/9/2019,C10A,250.41,Navicula amphiceropsis,Pennate Diatom,Navicula,2,2,38.9,1377.28,Regular
+4/9/2019,C10A,250.41,Nitzschia capitellata,Pennate Diatom,Nitzschia,1,1,16.7,49.18,Regular
+4/9/2019,C10A,250.41,cf. Chlorella sp.,Green Alga,Chlorella,10,10,1.9,3.59,Regular
+4/9/2019,C10A,250.41,Eucapsis microscopica,Cyanobacterium,Eucapsis,396,792,0.8,0.18,Regular
+4/9/2019,C10A,250.41,cf. Microcystis sp.,Cyanobacterium,Microcystis,1,1,3.7,26.52,Regular
+5/14/2019,D6,1287.80,Chlorella sp.,Green Alga,Chlorella,10,10,1.9,3.59,Regular
+5/14/2019,D6,1287.80,Eucapsis microscopica,Cyanobacterium,Eucapsis,403,810,0.8,0.18,Regular
+5/14/2019,EZ6,1802.92,cf. Chlorella sp.,Green Alga,Chlorella,12,12,2.4,4.85,Regular
+5/14/2019,EZ6,1802.92,Monoraphidium convolutum,Green Alga,Monoraphidium,1,1,6.5,12.29,Regular
+5/14/2019,EZ6,1802.92,Eucapsis microscopica,Cyanobacterium,Eucapsis,419,858,0.8,0.18,Regular
+5/13/2019,D26,136.58,Nitzschia sp.,Pennate Diatom,Nitzschia,1,1,50,104.50,Regular
+5/13/2019,D26,136.58,Chlorella sp.,Green Alga,Chlorella,14,14,1.9,3.59,Regular
+5/13/2019,D26,136.58,cf. Sphaerocystis sp.,Green Alga,Sphaerocystis,1,1,3.7,26.52,Regular
+5/13/2019,D26,136.58,Eucapsis microscopica,Cyanobacterium,Eucapsis,389,784,0.8,0.18,Regular
+5/13/2019,D16,450.73,cf. Fragilaria sp.,Pennate Diatom,Fragilaria,2,2,16.7,223.24,Regular
+5/13/2019,D16,450.73,cf. Skeletonema sp.,Centric Diatom,Skeletonema,1,1,5.6,34.48,Regular
+5/13/2019,D16,450.73,Chlorella sp.,Green Alga,Chlorella,22,22,1.9,3.59,Regular
+5/13/2019,D16,450.73,Plagioselmis lacustris,Cryptophyte,Plagioselmis,1,1,10.2,430.35,Regular
+5/13/2019,D16,450.73,Eucapsis microscopica,Cyanobacterium,Eucapsis,403,824,0.8,0.18,Regular
+5/10/2019,D28A,204.88,Melosira varians,Centric Diatom,Melosira,2,2,31.5,8467.27,Regular
+5/10/2019,D28A,204.88,Chlorella sp.,Green Alga,Chlorella,28,28,1.9,3.59,Regular
+5/10/2019,D28A,204.88,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,1,1,9.3,378.14,Regular
+5/10/2019,D28A,204.88,Plagioselmis prolonga,Cryptophyte,Plagioselmis,1,1,6.5,112.82,Regular
+5/10/2019,D28A,204.88,Eucapsis microscopica,Cyanobacterium,Eucapsis,394,794,0.8,0.18,Regular
+5/16/2019,D41,300.49,cf. Cyclotella sp.,Centric Diatom,Cyclotella,2,2,5.6,68.96,Regular
+5/16/2019,D41,300.49,cf. Chlorella sp.,Green Alga,Chlorella,5,5,2.4,4.19,Regular
+5/16/2019,D41,300.49,Eucapsis microscopica,Cyanobacterium,Eucapsis,453,942,0.8,0.18,Regular
+5/8/2019,C3A,153.32,Achnanthidium sp.,Pennate Diatom,Achnanthidium,1,1,12,160.41,Regular
+5/8/2019,C3A,153.32,Asterionella formosa,Pennate Diatom,Asterionella,1,1,59.3,489.93,Regular
+5/8/2019,C3A,153.32,cf. Cyclotella sp.,Centric Diatom,Cyclotella,2,2,5.6,91.13,Regular
+5/8/2019,C3A,153.32,Skeletonema sp.,Centric Diatom,Skeletonema,1,1,9.3,57.26,Regular
+5/8/2019,C3A,153.32,Chlorella sp.,Green Alga,Chlorella,8,8,2.8,6.37,Regular
+5/8/2019,C3A,153.32,Monoraphidium minutum,Green Alga,Monoraphidium,1,1,4.6,8.69,Regular
+5/8/2019,C3A,153.32,Monoraphidium sp.,Green Alga,Monoraphidium,1,1,8.3,3.52,Regular
+5/8/2019,C3A,153.32,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,1,1,7.4,159.13,Regular
+5/8/2019,C3A,153.32,Eucapsis microscopica,Cyanobacterium,Eucapsis,386,788,0.8,0.18,Regular
+5/8/2019,C3A,153.32,Gymnodinium sp.,Dinoflagellate,Gymnodinium,1,1,13,588.72,Regular
+5/13/2019,P8,450.73,Cyclotella meneghiniana,Centric Diatom,Cyclotella,2,2,7.4,159.13,Regular
+5/13/2019,P8,450.73,Nitzschia palea,Pennate Diatom,Nitzschia,1,1,29.6,153.33,Regular
+5/13/2019,P8,450.73,Skeletonema potamos,Centric Diatom,Skeletonema,2,2,6.5,49.06,Regular
+5/13/2019,P8,450.73,Chlorella sp.,Green Alga,Chlorella,4,4,1.9,3.59,Regular
+5/13/2019,P8,450.73,Drepanochloris nannoselene,Green Alga,Drepanochloris,5,5,5.6,7.43,Regular
+5/13/2019,P8,450.73,Plagioselmis lacustris,Cryptophyte,Plagioselmis,1,1,13,986.64,Regular
+5/13/2019,P8,450.73,Eucapsis microscopica,Cyanobacterium,Eucapsis,389,790,0.8,0.18,Regular
+5/16/2019,D41A,574.96,cf. Cyclotella sp.,Centric Diatom,Cyclotella,2,2,20.4,593.10,Regular
+5/16/2019,D41A,574.96,cf. Chrysochromulina sp.,Haptophyte,Chrysochromulina,1,1,2.8,11.49,Regular
+5/16/2019,D41A,574.96,Eucapsis microscopica,Cyanobacterium,Eucapsis,420,873,0.8,0.18,Regular
+5/16/2019,NZ002,418.15,Cyclotella sp.,Centric Diatom,Cyclotella,1,1,29.6,10184.38,Regular
+5/16/2019,NZ002,418.15,Eucapsis microscopica,Cyanobacterium,Eucapsis,408,825,0.8,0.18,Regular
+5/14/2019,D8,353.82,cf. Cyclotella sp.,Centric Diatom,Cyclotella,2,2,7.4,139.37,Regular
+5/14/2019,D8,353.82,Chlamydomonas sp.,Green Alga,Chlamydomonas,1,1,11.1,399.98,Regular
+5/14/2019,D8,353.82,Chlorella sp.,Green Alga,Chlorella,1,1,2.8,11.49,Regular
+5/14/2019,D8,353.82,Monoraphidium sp.,Green Alga,Monoraphidium,1,1,14.8,27.97,Regular
+5/14/2019,D8,353.82,Eucapsis microscopica,Cyanobacterium,Eucapsis,411,836,0.8,0.18,Regular
+5/14/2019,D8,353.82,Snowella sp.,Cyanobacterium,Snowella,1,6,0.8,0.27,Regular
+5/6/2019,NZ004,657.10,Skeletonema sp.,Centric Diatom,Skeletonema,1,1,7.4,45.57,Regular
+5/6/2019,NZ004,657.10,Chlorella sp.,Green Alga,Chlorella,1,1,1.9,3.59,Regular
+5/6/2019,NZ004,657.10,Monoraphidium sp.,Green Alga,Monoraphidium,1,1,7.4,3.14,Regular
+5/6/2019,NZ004,657.10,Eucapsis microscopica,Cyanobacterium,Eucapsis,414,838,0.8,0.18,Regular
+5/8/2019,C9,242.09,Navicula sp.,Pennate Diatom,Navicula,1,1,27.8,2391.27,Regular
+5/8/2019,C9,242.09,Chlorella sp.,Green Alga,Chlorella,4,4,3.7,7.24,Regular
+5/8/2019,C9,242.09,Eucapsis microscopica,Cyanobacterium,Eucapsis,402,822,0.8,0.18,Regular
+5/15/2019,NZ032,919.94,cf. Cyclotella sp.,Centric Diatom,Cyclotella,1,1,3.7,39.78,Regular
+5/15/2019,NZ032,919.94,Nitzschia sp.,Pennate Diatom,Nitzschia,2,2,18.5,42.18,Regular
+5/15/2019,NZ032,919.94,cf. Thalassiosira sp.,Centric Diatom,Thalassiosira,2,2,9.3,380.40,Regular
+5/15/2019,NZ032,919.94,Chlorella sp.,Green Alga,Chlorella,3,3,2.8,11.49,Regular
+5/15/2019,NZ032,919.94,Eucapsis microscopica,Cyanobacterium,Eucapsis,508,1026,0.8,0.18,Regular
+5/16/2019,NZ325,459.97,Chlorella sp.,Green Alga,Chlorella,2,2,2.8,7.24,Regular
+5/16/2019,NZ325,459.97,Plagioselmis prolonga,Cryptophyte,Plagioselmis,1,1,7.4,159.13,Regular
+5/16/2019,NZ325,459.97,Eucapsis microscopica,Cyanobacterium,Eucapsis,398,809,0.8,0.18,Regular
+5/10/2019,D19,306.65,Skeletonema sp.,Centric Diatom,Skeletonema,1,1,7.4,45.57,Regular
+5/10/2019,D19,306.65,Chlorella sp.,Green Alga,Chlorella,9,9,2.8,9.20,Regular
+5/10/2019,D19,306.65,Desmodesmus sp.,Green Alga,Desmodesmus,1,2,7.4,53.04,Regular
+5/10/2019,D19,306.65,Eucapsis microscopica,Cyanobacterium,Eucapsis,389,789,0.8,0.18,Regular
+5/14/2019,EZ2,574.96,cf. Cyclotella sp.,Centric Diatom,Cyclotella,2,2,9.3,380.40,Regular
+5/14/2019,EZ2,574.96,Chlorella sp.,Green Alga,Chlorella,4,4,2.8,7.24,Regular
+5/14/2019,EZ2,574.96,cf. Chrysochromulina sp.,Haptophyte,Chrysochromulina,1,1,3.7,26.52,Regular
+5/14/2019,EZ2,574.96,Cryptomonas sp.,Cryptophyte,Cryptomonas,1,1,16.7,756.28,Regular
+5/14/2019,EZ2,574.96,Eucapsis microscopica,Cyanobacterium,Eucapsis,422,859,0.8,0.18,Regular
+5/9/2019,D22,328.55,cf. Cyclotella sp.,Centric Diatom,Cyclotella,1,1,6.5,152.64,Regular
+5/9/2019,D22,328.55,Skeletonema sp.,Centric Diatom,Skeletonema,1,1,14.8,91.13,Regular
+5/9/2019,D22,328.55,Chlorella sp.,Green Alga,Chlorella,3,3,2.8,8.18,Regular
+5/9/2019,D22,328.55,Monoraphidium sp.,Green Alga,Monoraphidium,2,2,20.4,8.27,Regular
+5/9/2019,D22,328.55,Eucapsis microscopica,Cyanobacterium,Eucapsis,401,809,0.8,0.18,Regular
+5/9/2019,NZ068,164.27,cf. Cyclotella sp.,Centric Diatom,Cyclotella,3,3,7.4,69.77,Regular
+5/9/2019,NZ068,164.27,Nitzschia sp.,Pennate Diatom,Nitzschia,2,2,27.8,125.24,Regular
+5/9/2019,NZ068,164.27,Chlorella sp.,Green Alga,Chlorella,4,4,3.7,11.49,Regular
+5/9/2019,NZ068,164.27,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,1,1,7.4,159.13,Regular
+5/9/2019,NZ068,164.27,Eucapsis microscopica,Cyanobacterium,Eucapsis,398,818,0.8,0.18,Regular
+5/10/2019,D12,242.09,cf. Cyclotella sp.,Centric Diatom,Cyclotella,2,2,5.6,115.76,Regular
+5/10/2019,D12,242.09,Chlorella sp.,Green Alga,Chlorella,1,1,1.9,3.59,Regular
+5/10/2019,D12,242.09,Eucapsis microscopica,Cyanobacterium,Eucapsis,413,841,0.8,0.18,Regular
+5/14/2019,D10,328.55,cf. Cyclotella sp.,Centric Diatom,Cyclotella,3,3,9.3,120.76,Regular
+5/14/2019,D10,328.55,Nitzschia sp.,Pennate Diatom,Nitzschia,2,2,29.6,135.53,Regular
+5/14/2019,D10,328.55,Chlorella sp.,Green Alga,Chlorella,2,2,2.8,7.24,Regular
+5/14/2019,D10,328.55,Scenedesmus sp.,Green Alga,Scenedesmus,1,2,7.4,13.99,Regular
+5/14/2019,D10,328.55,Eucapsis microscopica,Cyanobacterium,Eucapsis,403,824,0.8,0.18,Regular
+5/8/2019,C10A,306.65,Achnanthidium sp.,Pennate Diatom,Achnanthidium,1,1,18.5,301.06,Regular
+5/8/2019,C10A,306.65,cf. Cyclotella sp.,Centric Diatom,Cyclotella,7,7,9.3,223.64,Regular
+5/8/2019,C10A,306.65,Encyonema sp.,Pennate Diatom,Encyonema,1,1,16.7,115.35,Regular
+5/8/2019,C10A,306.65,Navicula sp.,Pennate Diatom,Navicula,2,2,25.9,682.90,Regular
+5/8/2019,C10A,306.65,Nitzschia sp.,Pennate Diatom,Nitzschia,4,4,22.2,113.26,Regular
+5/8/2019,C10A,306.65,Skeletonema sp.,Centric Diatom,Skeletonema,2,3,9.3,78.99,Regular
+5/8/2019,C10A,306.65,Tryblionella cf. calida,Pennate Diatom,Tryblionella,1,1,40.7,2625.66,Regular
+5/8/2019,C10A,306.65,Chlorella sp.,Green Alga,Chlorella,8,8,2.8,7.24,Regular
+5/8/2019,C10A,306.65,Eucapsis microscopica,Cyanobacterium,Eucapsis,395,804,0.8,0.18,Regular
+5/9/2019,D4,511.08,Aulacoseira alpigena,Centric Diatom,Aulacoseira,3,3,6.5,160.10,Regular
+5/9/2019,D4,511.08,cf. Cyclotella sp.,Centric Diatom,Cyclotella,1,1,6.5,122.78,Regular
+5/9/2019,D4,511.08,Chlorella sp.,Green Alga,Chlorella,4,4,1.9,3.59,Regular
+5/9/2019,D4,511.08,Eucapsis microscopica,Cyanobacterium,Eucapsis,398,807,0.8,0.18,Regular
+5/15/2019,NZS42,1839.88,Cyclotella sp.,Centric Diatom,Cyclotella,1,1,9.3,180.88,Regular
+5/15/2019,NZS42,1839.88,cf. Navicula sp.,Pennate Diatom,Navicula,1,1,25.9,421.48,Regular
+5/15/2019,NZS42,1839.88,Nitzschia sp.,Pennate Diatom,Nitzschia,1,1,18.5,33.39,Regular
+5/15/2019,NZS42,1839.88,Monoraphidium minutum,Green Alga,Monoraphidium,1,1,5.6,10.59,Regular
+5/15/2019,NZS42,1839.88,Eucapsis microscopica,Cyanobacterium,Eucapsis,468,965,0.8,0.18,Regular
+5/15/2019,D7,919.94,cf. Aneumastus sp.,Pennate Diatom,Aneumastus,1,1,66.7,8136.07,Regular
+5/15/2019,D7,919.94,Cyclotella cf. distinguenda,Centric Diatom,Cyclotella,1,1,20.4,3628.05,Regular
+5/15/2019,D7,919.94,cf. Cyclotella sp.,Centric Diatom,Cyclotella,1,1,5.6,91.13,Regular
+5/15/2019,D7,919.94,Nitzschia sp.,Pennate Diatom,Nitzschia,1,1,16.7,86.51,Regular
+5/15/2019,D7,919.94,Chlorella sp.,Green Alga,Chlorella,1,1,3.7,26.52,Regular
+5/15/2019,D7,919.94,Monoraphidium minutum,Green Alga,Monoraphidium,1,1,9.3,17.58,Regular
+5/15/2019,D7,919.94,Eucapsis microscopica,Cyanobacterium,Eucapsis,495,995,0.8,0.18,Regular
+5/15/2019,D7,919.94,cf. Snowella sp.,Cyanobacterium,Snowella,1,6,0.8,0.27,Regular
+5/13/2019,MD10A,191.65,Chlorella sp.,Green Alga,Chlorella,13,13,2.8,4.85,Regular
+5/13/2019,MD10A,191.65,Monoraphidium contortum,Green Alga,Monoraphidium,1,1,11.1,20.98,Regular
+5/13/2019,MD10A,191.65,cf. Chrysochromulina sp.,Haptophyte,Chrysochromulina,1,1,2.8,11.49,Regular
+5/13/2019,MD10A,191.65,Cryptomonas sp.,Cryptophyte,Cryptomonas,2,2,16.7,715.52,Regular
+5/13/2019,MD10A,191.65,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,2,2,9.3,337.38,Regular
+5/13/2019,MD10A,191.65,Plagioselmis prolonga,Cryptophyte,Plagioselmis,1,1,7.4,159.13,Regular
+5/13/2019,MD10A,191.65,Eucapsis microscopica,Cyanobacterium,Eucapsis,409,825,0.8,0.18,Regular
+6/10/2019,D26,300.49,Nitzschia inconspicua,Pennate Diatom,Nitzschia,1,1,7.4,37.00,Regular
+6/10/2019,D26,300.49,Thalassiosira sp.,Centric Diatom,Thalassiosira,1,1,33.3,12889.61,Regular
+6/10/2019,D26,300.49,Chlorella sp.,Green Alga,Chlorella,8,8,1.9,3.59,Regular
+6/10/2019,D26,300.49,Eucapsis microscopica,Cyanobacterium,Eucapsis,417,848,0.8,0.18,Regular
+6/11/2019,EZ6,1001.62,Skeletonema sp.,Centric Diatom,Skeletonema,1,1,7.4,79.57,Regular
+6/11/2019,EZ6,1001.62,Chlorella sp.,Green Alga,Chlorella,6,6,1.9,3.59,Regular
+6/11/2019,EZ6,1001.62,Monoraphidium convolutum,Green Alga,Monoraphidium,1,1,11.1,9.82,Regular
+6/11/2019,EZ6,1001.62,Eucapsis microscopica,Cyanobacterium,Eucapsis,428,864,0.8,0.18,Regular
+6/11/2019,EZ2,901.46,cf. Cyclotella sp.,Centric Diatom,Cyclotella,1,1,5.6,68.96,Regular
+6/11/2019,EZ2,901.46,cf. Chlamydomonas sp.,Green Alga,Chlamydomonas,1,1,5.6,91.95,Regular
+6/11/2019,EZ2,901.46,Chlorella sp.,Green Alga,Chlorella,11,11,1.9,3.59,Regular
+6/11/2019,EZ2,901.46,Plagioselmis lacustris,Cryptophyte,Plagioselmis,1,1,13,822.94,Regular
+6/11/2019,EZ2,901.46,Eucapsis microscopica,Cyanobacterium,Eucapsis,390,788,0.8,0.18,Regular
+6/7/2019,D19,321.95,Cocconeis sp.,Pennate Diatom,Cocconeis,1,1,20.4,412.73,Regular
+6/7/2019,D19,321.95,Cyclotella sp.,Centric Diatom,Cyclotella,1,1,9.3,312.47,Regular
+6/7/2019,D19,321.95,Chlorella sp.,Green Alga,Chlorella,13,13,2.4,4.19,Regular
+6/7/2019,D19,321.95,Plagioselmis prolonga,Cryptophyte,Plagioselmis,1,1,5.6,68.96,Regular
+6/7/2019,D19,321.95,Eucapsis microscopica,Cyanobacterium,Eucapsis,451,924,0.8,0.18,Regular
+6/10/2019,D16,321.95,Chlorella sp.,Green Alga,Chlorella,14,14,1.9,3.59,Regular
+6/10/2019,D16,321.95,Eucapsis microscopica,Cyanobacterium,Eucapsis,402,812,0.8,0.18,Regular
+6/7/2019,D12,450.73,Cyclotella sp.,Centric Diatom,Cyclotella,1,1,7.4,159.13,Regular
+6/7/2019,D12,450.73,Chlorella sp.,Green Alga,Chlorella,15,15,1.9,3.59,Regular
+6/7/2019,D12,450.73,cf. Chrysochromulina sp.,Haptophyte,Chrysochromulina,1,1,3.7,26.52,Regular
+6/7/2019,D12,450.73,Eucapsis microscopica,Cyanobacterium,Eucapsis,419,844,0.8,0.18,Regular
+6/11/2019,D8,375.61,Aulacoseira alpigena,Centric Diatom,Aulacoseira,1,1,8.3,204.43,Regular
+6/11/2019,D8,375.61,Fragilaria sp.,Pennate Diatom,Fragilaria,1,1,25.9,278.48,Regular
+6/11/2019,D8,375.61,Nitzschia sp.,Pennate Diatom,Nitzschia,2,2,13,43.68,Regular
+6/11/2019,D8,375.61,Synedra sp.,Pennate Diatom,Synedra,1,1,27.8,562.45,Regular
+6/11/2019,D8,375.61,Thalassiosira sp.,Centric Diatom,Thalassiosira,1,1,13,982.22,Regular
+6/11/2019,D8,375.61,Chlorella sp.,Green Alga,Chlorella,24,24,2.4,4.19,Regular
+6/11/2019,D8,375.61,Drepanochloris nannoselene,Green Alga,Drepanochloris,2,2,5.6,8.03,Regular
+6/11/2019,D8,375.61,Cryptomonas sp.,Cryptophyte,Cryptomonas,1,1,14.8,670.23,Regular
+6/11/2019,D8,375.61,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,1,1,9.3,337.38,Regular
+6/11/2019,D8,375.61,Eucapsis microscopica,Cyanobacterium,Eucapsis,413,832,0.8,0.18,Regular
+6/6/2019,C3A-Hood,176.91,Achnanthidium sp.,Pennate Diatom,Achnanthidium,1,1,9.3,57.26,Regular
+6/6/2019,C3A-Hood,176.91,Encyonema sp.,Pennate Diatom,Encyonema,1,1,25.9,369.34,Regular
+6/6/2019,C3A-Hood,176.91,cf. Navicula sp.,Pennate Diatom,Navicula,1,1,20.4,663.96,Regular
+6/6/2019,C3A-Hood,176.91,Nitzschia palea,Pennate Diatom,Nitzschia,1,1,14.8,58.02,Regular
+6/6/2019,C3A-Hood,176.91,Nitzschia sp.,Pennate Diatom,Nitzschia,1,1,27.8,50.18,Regular
+6/6/2019,C3A-Hood,176.91,Staurosira construens,Pennate Diatom,Staurosira,7,7,14.8,299.43,Regular
+6/6/2019,C3A-Hood,176.91,Chlorella sp.,Green Alga,Chlorella,8,8,2.8,7.24,Regular
+6/6/2019,C3A-Hood,176.91,Pseudokephyrion pseudospirale,Chrysophyte,Pseudokephyrion,1,1,4.6,32.97,Regular
+6/6/2019,C3A-Hood,176.91,Eucapsis microscopica,Cyanobacterium,Eucapsis,400,835,0.8,0.18,Regular
+6/6/2019,C9,153.32,Cocconeis placentula,Pennate Diatom,Cocconeis,1,1,20.4,395.75,Regular
+6/6/2019,C9,153.32,Chlorella sp.,Green Alga,Chlorella,12,12,2.8,6.37,Regular
+6/6/2019,C9,153.32,Eucapsis microscopica,Cyanobacterium,Eucapsis,426,873,0.8,0.18,Regular
+6/12/2019,D6,353.82,Skeletonema sp.,Centric Diatom,Skeletonema,1,1,7.4,45.57,Regular
+6/12/2019,D6,353.82,Chlorella sp.,Green Alga,Chlorella,15,15,1.9,3.59,Regular
+6/12/2019,D6,353.82,Eucapsis microscopica,Cyanobacterium,Eucapsis,385,798,0.8,0.18,Regular
+6/11/2019,D10,255.54,Cyclotella sp.,Centric Diatom,Cyclotella,7,7,7.4,100.98,Regular
+6/11/2019,D10,255.54,cf. Nitzschia sp.,Pennate Diatom,Nitzschia,1,1,20.4,79.97,Regular
+6/11/2019,D10,255.54,Nitzschia sp.,Pennate Diatom,Nitzschia,1,1,35.2,372.42,Regular
+6/11/2019,D10,255.54,Skeletonema sp.,Centric Diatom,Skeletonema,1,1,7.4,45.57,Regular
+6/11/2019,D10,255.54,Staurosirella pinnata,Pennate Diatom,Staurosirella,1,1,5.6,60.21,Regular
+6/11/2019,D10,255.54,Chlorella sp.,Green Alga,Chlorella,31,31,2.8,7.24,Regular
+6/11/2019,D10,255.54,cf. Chrysochromulina sp.,Haptophyte,Chrysochromulina,1,1,3.7,15.19,Regular
+6/11/2019,D10,255.54,Cryptomonas sp.,Cryptophyte,Cryptomonas,1,1,13,588.72,Regular
+6/11/2019,D10,255.54,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,3,3,9.3,344.17,Regular
+6/11/2019,D10,255.54,Eucapsis microscopica,Cyanobacterium,Eucapsis,389,796,0.8,0.18,Regular
+6/10/2019,P8,306.65,Staurosirella pinnata,Pennate Diatom,Staurosirella,1,1,5.6,60.21,Regular
+6/10/2019,P8,306.65,Chlorella sp.,Green Alga,Chlorella,14,14,2.8,7.24,Regular
+6/10/2019,P8,306.65,Monoraphidium sp.,Green Alga,Monoraphidium,2,2,11.1,10.47,Regular
+6/10/2019,P8,306.65,Cryptomonas sp.,Cryptophyte,Cryptomonas,2,2,33.3,2212.20,Regular
+6/10/2019,P8,306.65,Eucapsis microscopica,Cyanobacterium,Eucapsis,386,783,0.8,0.18,Regular
+6/12/2019,NZ032,919.94,cf. Cyclotella sp.,Centric Diatom,Cyclotella,3,3,7.4,105.91,Regular
+6/12/2019,NZ032,919.94,Chlorella sp.,Green Alga,Chlorella,4,4,2.8,4.85,Regular
+6/12/2019,NZ032,919.94,Plagioselmis lacustris,Cryptophyte,Plagioselmis,1,1,11.1,596.74,Regular
+6/12/2019,NZ032,919.94,Eucapsis microscopica,Cyanobacterium,Eucapsis,575,1166,0.8,0.18,Regular
+6/6/2019,C10A,209.08,cf. Cyclotella sp.,Centric Diatom,Cyclotella,4,4,9.3,362.72,Regular
+6/6/2019,C10A,209.08,Geissleria decussis,Pennate Diatom,Geissleria,1,1,20.4,331.98,Regular
+6/6/2019,C10A,209.08,Gomphonema sp.,Pennate Diatom,Gomphonema,1,1,13,659.08,Regular
+6/6/2019,C10A,209.08,Melosira varians,Centric Diatom,Melosira,1,1,33.3,10884.14,Regular
+6/6/2019,C10A,209.08,Skeletonema sp.,Centric Diatom,Skeletonema,1,1,9.3,99.99,Regular
+6/6/2019,C10A,209.08,Chlamydomonas sp.,Green Alga,Chlamydomonas,1,1,13,973.37,Regular
+6/6/2019,C10A,209.08,Chlorella sp.,Green Alga,Chlorella,13,13,3.7,17.16,Regular
+6/6/2019,C10A,209.08,Desmodesmus armatus var. bicaudatus,Green Alga,Desmodesmus,1,4,7.4,26.68,Regular
+6/6/2019,C10A,209.08,Drepanochloris nannoselene,Green Alga,Drepanochloris,1,1,7.4,4.99,Regular
+6/6/2019,C10A,209.08,Monoraphidium sp.,Green Alga,Monoraphidium,1,1,18.5,7.85,Regular
+6/6/2019,C10A,209.08,Cryptomonas sp.,Cryptophyte,Cryptomonas,1,1,14.8,424.35,Regular
+6/6/2019,C10A,209.08,Eucapsis microscopica,Cyanobacterium,Eucapsis,389,794,0.8,0.18,Regular
+6/6/2019,C10A,209.08,Pseudanabaena sp.,Cyanobacterium,Pseudanabaena,1,16,6.5,18.43,Regular
+6/11/2019,NZ068,270.57,cf. Cyclotella sp.,Centric Diatom,Cyclotella,1,1,3.7,30.11,Regular
+6/11/2019,NZ068,270.57,Thalassiosira sp.,Centric Diatom,Thalassiosira,1,1,9.3,502.67,Regular
+6/11/2019,NZ068,270.57,Chlorella sp.,Green Alga,Chlorella,8,8,2.8,4.85,Regular
+6/11/2019,NZ068,270.57,Desmodesmus sp.,Green Alga,Desmodesmus,1,4,5.6,22.99,Regular
+6/11/2019,NZ068,270.57,Eucapsis microscopica,Cyanobacterium,Eucapsis,399,812,0.8,0.18,Regular
+6/11/2019,NZ068,270.57,cf. Synechococcus sp.,Cyanobacterium,Synechococcus,2,4,1.9,3.59,Regular
+6/13/2019,D41,219.03,cf. Cyclotella sp.,Centric Diatom,Cyclotella,3,3,5.6,62.44,Regular
+6/13/2019,D41,219.03,Chlorella sp.,Green Alga,Chlorella,2,2,2.8,7.24,Regular
+6/13/2019,D41,219.03,Drepanochloris nannoselene,Green Alga,Drepanochloris,1,1,5.6,3.85,Regular
+6/13/2019,D41,219.03,Plagioselmis prolonga,Cryptophyte,Plagioselmis,2,2,6.5,108.40,Regular
+6/13/2019,D41,219.03,Eucapsis microscopica,Cyanobacterium,Eucapsis,413,857,0.8,0.18,Regular
+6/13/2019,D41,219.03,Peridinium sp.,Dinoflagellate,Peridinium,1,1,29.6,6365.24,Regular
+6/13/2019,NZ002,901.46,Navicula sp.,Pennate Diatom,Navicula,1,1,24.1,565.95,Regular
+6/13/2019,NZ002,901.46,Chlorella sp.,Green Alga,Chlorella,4,4,1.9,3.59,Regular
+6/13/2019,NZ002,901.46,Eucapsis microscopica,Cyanobacterium,Eucapsis,506,1028,0.8,0.18,Regular
+6/12/2019,NZS42,707.65,cf. Cyclotella sp.,Centric Diatom,Cyclotella,3,3,7.4,175.87,Regular
+6/12/2019,NZS42,707.65,Chlorella sp.,Green Alga,Chlorella,2,2,1.9,3.59,Regular
+6/12/2019,NZS42,707.65,cf. Chrysochromulina sp.,Haptophyte,Chrysochromulina,1,1,2.8,11.49,Regular
+6/12/2019,NZS42,707.65,Eucapsis microscopica,Cyanobacterium,Eucapsis,415,839,0.8,0.18,Regular
+6/12/2019,D7,707.65,cf. Cyclotella sp.,Centric Diatom,Cyclotella,2,2,7.4,142.39,Regular
+6/12/2019,D7,707.65,Skeletonema sp.,Centric Diatom,Skeletonema,1,1,5.6,34.48,Regular
+6/12/2019,D7,707.65,Chlorella sp.,Green Alga,Chlorella,9,9,2.8,4.85,Regular
+6/12/2019,D7,707.65,Monoraphidium sp.,Green Alga,Monoraphidium,1,1,9.3,17.58,Regular
+6/12/2019,D7,707.65,Scenedesmus sp.,Green Alga,Scenedesmus,1,2,3.7,6.99,Regular
+6/12/2019,D7,707.65,Eucapsis microscopica,Cyanobacterium,Eucapsis,414,839,0.8,0.18,Regular
+6/13/2019,D41A,766.62,Cyclotella meneghiniana,Centric Diatom,Cyclotella,1,1,9.3,251.34,Regular
+6/13/2019,D41A,766.62,cf. Cyclotella sp.,Centric Diatom,Cyclotella,1,1,13,982.22,Regular
+6/13/2019,D41A,766.62,Chlorella sp.,Green Alga,Chlorella,1,1,1.9,3.59,Regular
+6/13/2019,D41A,766.62,cf. Kephyrion sp.,Chrysophyte,Kephyrion,1,1,4.6,18.88,Regular
+6/13/2019,D41A,766.62,Eucapsis microscopica,Cyanobacterium,Eucapsis,414,844,0.8,0.18,Regular
+6/10/2019,MD10A,229.98,Cyclotella meneghiniana,Centric Diatom,Cyclotella,1,1,10.2,604.67,Regular
+6/10/2019,MD10A,229.98,cf. Cyclotella sp.,Centric Diatom,Cyclotella,1,1,4.6,61.49,Regular
+6/10/2019,MD10A,229.98,Chlorella sp.,Green Alga,Chlorella,51,51,2.8,4.85,Regular
+6/10/2019,MD10A,229.98,Drepanochloris nannoselene,Green Alga,Drepanochloris,1,1,3.7,2.64,Regular
+6/10/2019,MD10A,229.98,Monoraphidium sp.,Green Alga,Monoraphidium,7,7,7.4,2.97,Regular
+6/10/2019,MD10A,229.98,Scenedesmus sp.,Green Alga,Scenedesmus,1,2,4.6,8.69,Regular
+6/10/2019,MD10A,229.98,Cryptomonas sp.,Cryptophyte,Cryptomonas,1,1,13,372.74,Regular
+6/10/2019,MD10A,229.98,Chroococcus minimus,Cyanobacterium,Chroococcus,3,6,1.9,3.59,Regular
+6/10/2019,MD10A,229.98,Eucapsis microscopica,Cyanobacterium,Eucapsis,354,718,0.8,0.18,Regular
+6/11/2019,D4,328.55,cf. Cyclotella sp.,Centric Diatom,Cyclotella,4,4,5.6,69.77,Regular
+6/11/2019,D4,328.55,Nitzschia sp.,Pennate Diatom,Nitzschia,1,1,20.4,105.67,Regular
+6/11/2019,D4,328.55,Skeletonema sp.,Centric Diatom,Skeletonema,1,1,9.3,99.99,Regular
+6/11/2019,D4,328.55,Chlorella sp.,Green Alga,Chlorella,16,16,2.8,6.37,Regular
+6/11/2019,D4,328.55,Plagioselmis prolonga,Cryptophyte,Plagioselmis,1,1,5.6,76.35,Regular
+6/11/2019,D4,328.55,Eucapsis microscopica,Cyanobacterium,Eucapsis,397,815,0.8,0.18,Regular
+6/13/2019,NZ004,751.22,Cyclotella sp.,Centric Diatom,Cyclotella,1,1,7.4,159.13,Regular
+6/13/2019,NZ004,751.22,Skeletonema sp.,Centric Diatom,Skeletonema,1,1,5.6,34.48,Regular
+6/13/2019,NZ004,751.22,Chlorella sp.,Green Alga,Chlorella,9,9,1.9,3.59,Regular
+6/13/2019,NZ004,751.22,cf. Chrysochromulina sp.,Haptophyte,Chrysochromulina,1,1,3.7,26.52,Regular
+6/13/2019,NZ004,751.22,Eucapsis microscopica,Cyanobacterium,Eucapsis,447,908,0.8,0.18,Regular
+6/13/2019,NZ325,574.96,cf. Cyclotella sp.,Centric Diatom,Cyclotella,3,3,7.4,97.69,Regular
+6/13/2019,NZ325,574.96,Chlamydomonas sp.,Green Alga,Chlamydomonas,1,1,9.3,335.12,Regular
+6/13/2019,NZ325,574.96,Eucapsis microscopica,Cyanobacterium,Eucapsis,421,860,0.8,0.18,Regular
+6/13/2019,NZ325,574.96,Gymnodinium sp.,Dinoflagellate,Gymnodinium,1,1,11.1,502.67,Regular
+6/11/2019,D22,375.61,Achnanthidium sp.,Pennate Diatom,Achnanthidium,1,1,11.1,75.67,Regular
+6/11/2019,D22,375.61,Cyclotella sp.,Centric Diatom,Cyclotella,2,2,6.5,99.55,Regular
+6/11/2019,D22,375.61,Ulnaria ulna,Pennate Diatom,Ulnaria,1,1,93.4,4505.53,Regular
+6/11/2019,D22,375.61,Chlorella sp.,Green Alga,Chlorella,14,14,2.4,4.85,Regular
+6/11/2019,D22,375.61,Monoraphidium convolutum,Green Alga,Monoraphidium,1,1,6.5,5.75,Regular
+6/11/2019,D22,375.61,Eucapsis microscopica,Cyanobacterium,Eucapsis,382,764,0.8,0.18,Regular
+6/7/2019,D28A,225.37,Chlorella sp.,Green Alga,Chlorella,20,20,1.9,3.59,Regular
+6/7/2019,D28A,225.37,Eucapsis microscopica,Cyanobacterium,Eucapsis,381,764,0.8,0.18,Regular
+7/15/2019,D41A,1802.92,Achnanthidium minutissimum,Pennate Diatom,Achnanthidium,1,1,14.2,115.54,Regular
+7/15/2019,D41A,1802.92,Eucapsis microscopica,Cyanobacterium,Eucapsis,482,964,0.8,0.18,Regular
+7/15/2019,NZ002,409.75,Eucapsis microscopica,Cyanobacterium,Eucapsis,416,848,0.8,0.18,Regular
+7/12/2019,NZ032,1502.43,Chlorella sp.,Green Alga,Chlorella,5,5,1.9,3.59,Regular
+7/12/2019,NZ032,1502.43,Eucapsis microscopica,Cyanobacterium,Eucapsis,446,900,0.8,0.18,Regular
+7/9/2019,D28A,140.85,Chlorella sp.,Green Alga,Chlorella,51,51,1.9,3.59,Regular
+7/9/2019,D28A,140.85,Plagioselmis prolonga,Cryptophyte,Plagioselmis,2,2,7.4,112.82,Regular
+7/9/2019,D28A,140.85,Eucapsis microscopica,Cyanobacterium,Eucapsis,386,784,0.8,0.18,Regular
+7/9/2019,D28A,140.85,cf. Microcystis sp.,Cyanobacterium,Microcystis,2,2,3.7,26.52,Regular
+7/8/2019,NZ068,281.71,Cocconeis placentula,Pennate Diatom,Cocconeis,1,1,20.4,995.93,Regular
+7/8/2019,NZ068,281.71,Cyclotella sp.,Centric Diatom,Cyclotella,1,1,6.8,112.58,Regular
+7/8/2019,NZ068,281.71,Nitzschia sp.,Pennate Diatom,Nitzschia,1,1,16.7,44.42,Regular
+7/8/2019,NZ068,281.71,cf. Skeletonema sp.,Centric Diatom,Skeletonema,2,2,4.6,28.32,Regular
+7/8/2019,NZ068,281.71,Chlorella sp.,Green Alga,Chlorella,26,26,1.9,3.59,Regular
+7/8/2019,NZ068,281.71,Drepanochloris nannoselene,Green Alga,Drepanochloris,2,2,3.7,2.64,Regular
+7/8/2019,NZ068,281.71,cf. Microspora sp.,Green Alga,Microspora,1,2,6.5,81.85,Regular
+7/8/2019,NZ068,281.71,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,1,1,9.3,323.80,Regular
+7/8/2019,NZ068,281.71,Eucapsis microscopica,Cyanobacterium,Eucapsis,387,778,0.8,0.18,Regular
+7/11/2019,EZ2,751.22,Chlorella sp.,Green Alga,Chlorella,9,9,1.9,3.59,Regular
+7/11/2019,EZ2,751.22,Eucapsis microscopica,Cyanobacterium,Eucapsis,418,858,0.8,0.18,Regular
+7/11/2019,EZ6,751.22,Chlorella sp.,Green Alga,Chlorella,5,5,1.9,3.59,Regular
+7/11/2019,EZ6,751.22,Eucapsis microscopica,Cyanobacterium,Eucapsis,458,936,0.8,0.18,Regular
+7/10/2019,MD10A,281.71,cf. Cocconeis pediculus,Pennate Diatom,Cocconeis,1,1,27.8,6017.46,Regular
+7/10/2019,MD10A,281.71,Chlorella sp.,Green Alga,Chlorella,52,52,1.9,3.59,Regular
+7/10/2019,MD10A,281.71,Drepanochloris nannoselene,Green Alga,Drepanochloris,1,1,3.7,2.64,Regular
+7/10/2019,MD10A,281.71,Plagioselmis prolonga,Cryptophyte,Plagioselmis,1,1,7.4,172.03,Regular
+7/10/2019,MD10A,281.71,Chroococcus minimus,Cyanobacterium,Chroococcus,25,56,1.9,3.59,Regular
+7/10/2019,MD10A,281.71,Eucapsis microscopica,Cyanobacterium,Eucapsis,350,720,0.8,0.18,Regular
+7/15/2019,D41,136.58,Cyclotella meneghiniana,Centric Diatom,Cyclotella,1,1,13,862.76,Regular
+7/15/2019,D41,136.58,Cyclotella sp.,Centric Diatom,Cyclotella,1,1,5.6,68.96,Regular
+7/15/2019,D41,136.58,Thalassiosira sp.,Centric Diatom,Thalassiosira,1,1,25.9,6849.08,Regular
+7/15/2019,D41,136.58,Chlorella sp.,Green Alga,Chlorella,4,4,1.9,3.59,Regular
+7/15/2019,D41,136.58,Eucapsis microscopica,Cyanobacterium,Eucapsis,413,840,0.8,0.18,Regular
+7/15/2019,NZ004,346.72,Eucapsis microscopica,Cyanobacterium,Eucapsis,430,862,0.8,0.18,Regular
+7/15/2019,NZ004,346.72,cf. Euglena sp.,Euglenoid,Euglena,1,1,35.2,1904.53,Regular
+7/12/2019,D7,751.22,cf. Chlorella sp.,Green Alga,Chlorella,1,1,2.4,7.24,Regular
+7/12/2019,D7,751.22,Eucapsis microscopica,Cyanobacterium,Eucapsis,420,844,0.8,0.18,Regular
+7/10/2019,P8,563.41,Chlorella sp.,Green Alga,Chlorella,22,22,1.9,3.59,Regular
+7/10/2019,P8,563.41,Plagioselmis lacustris,Cryptophyte,Plagioselmis,1,1,13,942.40,Regular
+7/10/2019,P8,563.41,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,1,1,8.3,239.87,Regular
+7/10/2019,P8,563.41,Chroococcus minimus,Cyanobacterium,Chroococcus,4,8,1.9,3.59,Regular
+7/10/2019,P8,563.41,Eucapsis microscopica,Cyanobacterium,Eucapsis,378,766,0.8,0.18,Regular
+7/11/2019,D10,450.73,Cyclotella sp.,Centric Diatom,Cyclotella,2,2,7.4,159.13,Regular
+7/11/2019,D10,450.73,Entomoneis paludosa,Pennate Diatom,Entomoneis,1,1,40.7,9244.47,Regular
+7/11/2019,D10,450.73,Chlorella sp.,Green Alga,Chlorella,3,3,1.9,3.59,Regular
+7/11/2019,D10,450.73,Monoraphidium convolutum,Green Alga,Monoraphidium,1,1,11.1,20.98,Regular
+7/11/2019,D10,450.73,Eucapsis microscopica,Cyanobacterium,Eucapsis,430,870,0.8,0.18,Regular
+7/10/2019,D26,250.41,Skeletonema potamos,Centric Diatom,Skeletonema,1,1,7.4,55.85,Regular
+7/10/2019,D26,250.41,cf. Chlamydomonas sp.,Green Alga,Chlamydomonas,1,1,5.6,91.95,Regular
+7/10/2019,D26,250.41,Chlorella sp.,Green Alga,Chlorella,26,26,2.4,4.19,Regular
+7/10/2019,D26,250.41,Lagerheimia genevensis,Green Alga,Lagerheimia,1,1,4.6,18.88,Regular
+7/10/2019,D26,250.41,cf. Scenedesmus sp.,Green Alga,Scenedesmus,1,1,7.4,13.99,Regular
+7/10/2019,D26,250.41,Chroococcus minimus,Cyanobacterium,Chroococcus,2,6,1.9,3.59,Regular
+7/10/2019,D26,250.41,Eucapsis microscopica,Cyanobacterium,Eucapsis,400,822,0.8,0.18,Regular
+7/12/2019,D6,281.71,Chlorella sp.,Green Alga,Chlorella,2,2,1.9,3.59,Regular
+7/12/2019,D6,281.71,Eucapsis microscopica,Cyanobacterium,Eucapsis,425,852,0.8,0.18,Regular
+7/12/2019,NZS42,1802.92,Entomoneis paludosa,Pennate Diatom,Entomoneis,1,1,35.2,5470.59,Regular
+7/12/2019,NZS42,1802.92,Chlorella sp.,Green Alga,Chlorella,3,3,1.9,3.59,Regular
+7/12/2019,NZS42,1802.92,Eucapsis microscopica,Cyanobacterium,Eucapsis,454,930,0.8,0.18,Regular
+7/15/2019,NZ325,321.95,Eucapsis microscopica,Cyanobacterium,Eucapsis,405,826,0.8,0.18,Regular
+7/15/2019,NZ325,321.95,cf. Euglena sp.,Euglenoid,Euglena,1,1,37,7532.57,Regular
+7/11/2019,D8,751.22,Entomoneis sp.,Pennate Diatom,Entomoneis,2,2,40.7,7216.55,Regular
+7/11/2019,D8,751.22,Gomphonema sp.,Pennate Diatom,Gomphonema,1,1,8.3,165.73,Regular
+7/11/2019,D8,751.22,Nitzschia inconspicua,Pennate Diatom,Nitzschia,1,1,6.5,17.29,Regular
+7/11/2019,D8,751.22,Nitzschia sp.,Pennate Diatom,Nitzschia,1,1,16.7,38.08,Regular
+7/11/2019,D8,751.22,cf. Chlorella sp.,Green Alga,Chlorella,3,3,1.9,3.59,Regular
+7/11/2019,D8,751.22,Drepanochloris nannoselene,Green Alga,Drepanochloris,1,1,5.6,3.85,Regular
+7/11/2019,D8,751.22,Eucapsis microscopica,Cyanobacterium,Eucapsis,455,926,0.8,0.18,Regular
+7/8/2019,C9,191.65,cf. Cyclotella sp.,Centric Diatom,Cyclotella,6,6,9.3,117.56,Regular
+7/8/2019,C9,191.65,Chlorella sp.,Green Alga,Chlorella,28,28,3.7,6.37,Regular
+7/8/2019,C9,191.65,Monoraphidium sp.,Green Alga,Monoraphidium,3,3,9.3,3.39,Regular
+7/8/2019,C9,191.65,Plagioselmis nannoplanctica,Cryptophyte,Plagioselmis,1,1,8.3,232.66,Regular
+7/8/2019,C9,191.65,Plagioselmis prolonga,Cryptophyte,Plagioselmis,3,3,7.4,142.53,Regular
+7/8/2019,C9,191.65,Chroococcus minutus,Cyanobacterium,Chroococcus,1,2,4.6,50.96,Regular
+7/8/2019,C9,191.65,Eucapsis microscopica,Cyanobacterium,Eucapsis,378,776,0.8,0.18,Regular
+7/8/2019,C9,191.65,Pseudanabaena sp.,Cyanobacterium,Pseudanabaena,1,3,2.8,7.94,Regular
+7/8/2019,C10A,209.08,Achnanthidium sp.,Pennate Diatom,Achnanthidium,2,2,9.3,113.51,Regular
+7/8/2019,C10A,209.08,cf. Cyclotella sp.,Centric Diatom,Cyclotella,46,46,20.5,526.22,Regular
+7/8/2019,C10A,209.08,Cylindrotheca closterium,Pennate Diatom,Cylindrotheca,1,1,40.7,127.73,Regular
+7/8/2019,C10A,209.08,Navicula sp.,Pennate Diatom,Navicula,1,1,18.5,301.06,Regular
+7/8/2019,C10A,209.08,Nitzschia incerta,Pennate Diatom,Nitzschia,3,3,94.5,703.78,Regular
+7/8/2019,C10A,209.08,Nitzschia sp.,Pennate Diatom,Nitzschia,2,2,50,192.65,Regular
+7/8/2019,C10A,209.08,Skeletonema sp.,Centric Diatom,Skeletonema,34,34,10.2,73.99,Regular
+7/8/2019,C10A,209.08,Chlorella sp.,Green Alga,Chlorella,24,24,3.7,7.24,Regular
+7/8/2019,C10A,209.08,Lagerheimia genevensis,Green Alga,Lagerheimia,3,3,3.7,15.19,Regular
+7/8/2019,C10A,209.08,Monoraphidium minutum,Green Alga,Monoraphidium,2,2,11.1,34.48,Regular
+7/8/2019,C10A,209.08,Monoraphidium sp.,Green Alga,Monoraphidium,3,3,22.2,25.71,Regular
+7/8/2019,C10A,209.08,Scenedesmus sp.,Green Alga,Scenedesmus,3,8,7.4,43.62,Regular
+7/8/2019,C10A,209.08,cf. Sphaerocystis sp.,Green Alga,Sphaerocystis,2,7,7.4,179.59,Regular
+7/8/2019,C10A,209.08,Plagioselmis prolonga,Cryptophyte,Plagioselmis,2,2,7.4,172.03,Regular
+7/8/2019,C10A,209.08,Chroococcus minimus,Cyanobacterium,Chroococcus,3,6,1.9,3.59,Regular
+7/8/2019,C10A,209.08,Eucapsis microscopica,Cyanobacterium,Eucapsis,291,598,0.8,0.18,Regular
+7/8/2019,C10A,209.08,Peridinium sp.,Dinoflagellate,Peridinium,1,1,25.9,7876.48,Regular
+7/8/2019,D4,574.96,cf. Cyclotella sp.,Centric Diatom,Cyclotella,1,1,4.6,61.49,Regular
+7/8/2019,D4,574.96,Nitzschia inconspicua,Pennate Diatom,Nitzschia,4,4,14.4,31.75,Regular
+7/8/2019,D4,574.96,Chlorella sp.,Green Alga,Chlorella,5,5,2.8,6.37,Regular
+7/8/2019,D4,574.96,Eucapsis microscopica,Cyanobacterium,Eucapsis,439,903,0.8,0.18,Regular
+7/10/2019,D16-Twitchell,219.03,cf. Cyclotella sp.,Centric Diatom,Cyclotella,2,2,13,850.93,Regular
+7/10/2019,D16-Twitchell,219.03,Skeletonema sp.,Centric Diatom,Skeletonema,1,1,9.3,99.99,Regular
+7/10/2019,D16-Twitchell,219.03,Chlorella sp.,Green Alga,Chlorella,11,11,2.8,6.37,Regular
+7/10/2019,D16-Twitchell,219.03,Eucapsis microscopica,Cyanobacterium,Eucapsis,389,795,0.8,0.18,Regular
+7/9/2019,D19,143.74,cf. Cyclotella sp.,Centric Diatom,Cyclotella,2,2,6.5,85.80,Regular
+7/9/2019,D19,143.74,Chlorella sp.,Green Alga,Chlorella,16,16,2.8,4.85,Regular
+7/9/2019,D19,143.74,Plagioselmis prolonga,Cryptophyte,Plagioselmis,1,1,7.4,172.03,Regular
+7/9/2019,D19,143.74,Eucapsis microscopica,Cyanobacterium,Eucapsis,403,818,0.8,0.18,Regular
+7/8/2019,D22,459.97,cf. Cyclotella sp.,Centric Diatom,Cyclotella,1,1,6.5,152.64,Regular
+7/8/2019,D22,459.97,Nitzschia sp.,Pennate Diatom,Nitzschia,3,3,16.7,33.65,Regular
+7/8/2019,D22,459.97,Chlorella sp.,Green Alga,Chlorella,10,10,2.8,4.85,Regular
+7/8/2019,D22,459.97,Eucapsis microscopica,Cyanobacterium,Eucapsis,409,838,0.8,0.18,Regular
+7/8/2019,C3A-Hood,127.77,cf. Achnanthidium sp.,Pennate Diatom,Achnanthidium,1,1,9.3,151.34,Regular
+7/8/2019,C3A-Hood,127.77,Aulacoseira granulata var. angustissima,Centric Diatom,Aulacoseira,3,3,37.6,404.28,Regular
+7/8/2019,C3A-Hood,127.77,Cyclotella meneghiniana,Centric Diatom,Cyclotella,1,1,12,1051.80,Regular
+7/8/2019,C3A-Hood,127.77,cf. Cyclotella sp.,Centric Diatom,Cyclotella,8,8,10.9,709.18,Regular
+7/8/2019,C3A-Hood,127.77,Navicula capitatoradiata,Pennate Diatom,Navicula,1,1,40.7,2199.88,Regular
+7/8/2019,C3A-Hood,127.77,Skeletonema sp.,Centric Diatom,Skeletonema,5,5,8.5,52.34,Regular
+7/8/2019,C3A-Hood,127.77,Chlorella sp.,Green Alga,Chlorella,14,14,3.7,9.20,Regular
+7/8/2019,C3A-Hood,127.77,Monoraphidium sp.,Green Alga,Monoraphidium,1,1,7.4,13.99,Regular
+7/8/2019,C3A-Hood,127.77,Tetrabaena socialis,Green Alga,Tetrabaena,1,4,4.6,50.96,Regular
+7/8/2019,C3A-Hood,127.77,Plagioselmis prolonga,Cryptophyte,Plagioselmis,1,1,7.4,172.03,Regular
+7/8/2019,C3A-Hood,127.77,Eucapsis microscopica,Cyanobacterium,Eucapsis,375,763,0.8,0.18,Regular
+7/8/2019,C3A-Hood,127.77,Planktolyngbya sp.,Cyanobacterium,Planktolyngbya,1,23,1.9,1.21,Regular
+7/9/2019,D12,459.97,cf. Cyclotella sp.,Centric Diatom,Cyclotella,1,1,6.5,185.83,Regular
+7/9/2019,D12,459.97,Staurosira construens,Pennate Diatom,Staurosira,1,1,9.3,75.67,Regular
+7/9/2019,D12,459.97,Chlorella sp.,Green Alga,Chlorella,16,16,2.8,6.37,Regular
+7/9/2019,D12,459.97,Monoraphidium sp.,Green Alga,Monoraphidium,1,1,9.3,17.58,Regular
+7/9/2019,D12,459.97,Scenedesmus sp.,Green Alga,Scenedesmus,1,2,3.7,6.99,Regular
+7/9/2019,D12,459.97,Eucapsis microscopica,Cyanobacterium,Eucapsis,417,843,0.8,0.18,Regular

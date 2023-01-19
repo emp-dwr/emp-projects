@@ -1,0 +1,97 @@
+# Extracting phyto data from EMP datasheets ------------------------------------
+# 01/03/2023 -------------------------------------------------------------------
+
+library(tidyverse)
+library(lubridate)
+library(janitor)
+
+# Set working directory --------------------------------------------------------
+setwd("./03_Phyto/surface-phyto-study")
+getwd()
+
+# Clean workspace --------------------------------------------------------------
+rm(list=ls())
+
+# Import data files ------------------------------------------------------------
+phyto_files <- dir(path = "data/", pattern = "\\.csv", full.names = T)
+
+df_phyto <- map_dfr(phyto_files, ~read_csv(.x))
+
+# Clean up column names --------------------------------------------------------
+df_phyto <- df_phyto %>% clean_names(case = "big_camel")
+
+df_phyto <- df_phyto %>% rename("GALD" = "Gald1")
+
+# Format date column -----------------------------------------------------------
+df_phyto$SampleDate <- mdy(df_phyto$SampleDate)
+
+# Calculate Unit Density & Biovolume Density -----------------------------------
+df_phyto <- df_phyto %>%
+  mutate(Units.per.mL = UnitAbundance * Factor) %>%
+  mutate(BV.um3.per.mL= TotalCellsCounted * Biovolume1 * Factor)
+
+# Fix EMP site names -----------------------------------------------------------
+sort(unique(df_phyto$StationCode)) # there are several typos in station names
+
+df_phyto$StationCode <- gsub("D16 Twitchell","D16",df_phyto$StationCode)
+df_phyto$StationCode <- gsub("D16-Twitchell","D16",df_phyto$StationCode)
+df_phyto$StationCode <- gsub("C3A- Hood","C3A",df_phyto$StationCode)
+df_phyto$StationCode <- gsub("C3A-Hood","C3A",df_phyto$StationCode)
+df_phyto$StationCode <- gsub("EZ2SJR","EZ2-SJR",df_phyto$StationCode)
+df_phyto$StationCode <- gsub("EZ2 SJR","EZ2-SJR",df_phyto$StationCode)
+df_phyto$StationCode <- gsub("EZ6 SAC","EZ6",df_phyto$StationCode)
+df_phyto$StationCode <- gsub("EZ6 SJR","EZ6-SJR",df_phyto$StationCode)
+
+length(unique(df_phyto$StationCode)) # confirm only 28 stations
+
+# Remove unneeded columns ------------------------------------------------------
+df_phyto <- df_phyto %>% 
+  select(SampleDate:StationCode, Taxon:Genus, SampleType:BV.um3.per.mL)
+
+# Add month data from DateTime column ------------------------------------------
+df_phyto <- df_phyto %>% mutate(Month = month(SampleDate, label = T))
+
+# Add in region and season data ------------------------------------------------
+regions <- read_csv("regions.csv")
+df_phyto <- left_join(df_phyto, regions)
+
+# Add month data from DateTime column ------------------------------------------
+seasons <- read_csv("seasons.csv")
+df_phyto <- left_join(df_phyto, seasons)
+
+# Summarize data by genus ------------------------------------------------------
+df_phyto_gen <- df_phyto %>%
+  group_by(SampleDate, Season, Month, StationCode, Region, RegionAbbreviation, SampleType, Genus) %>%
+  summarize(across(Units.per.mL:BV.um3.per.mL, ~sum(.x, na.rm = TRUE))) %>%
+  ungroup
+
+# Summarize data by algal group ------------------------------------------------
+df_phyto_grp <- df_phyto %>%
+  group_by(SampleDate, Season, Month, StationCode, Region, RegionAbbreviation, SampleType, AlgalType) %>%
+  summarize(across(Units.per.mL:BV.um3.per.mL, ~sum(.x, na.rm = TRUE))) %>%
+  ungroup
+
+# Create unique column for use in Primer with date and station ID --------------
+df_phyto_gen <- df_phyto_gen %>% unite(SampleID, 
+                               c("SampleDate", "StationCode","SampleType"),
+                               sep = "-",
+                               remove = FALSE)
+
+df_phyto_grp <- df_phyto_grp %>% unite(SampleID, 
+                                       c("SampleDate", "StationCode","SampleType"),
+                                       sep = "-",
+                                       remove = FALSE)
+
+# Plot data to make sure the scale is ~approx correct and not orders of --------
+# magnitude off (might indicate problematic unit conversion) -------------------
+plot <- ggplot(data = df_phyto_gen, aes(x = Month, 
+                                        y = BV.um3.per.mL, 
+                                        color = SampleType)) +
+  geom_jitter(width = 0.2, size = 2)
+
+plot # looks good
+
+# Export data for analysis in PRIMER -------------------------------------------
+write_csv(df_phyto_gen, file = "primer/df_phyto_gen.csv")
+write_csv(df_phyto_grp, file = "primer/df_phyto_grp.csv")
+

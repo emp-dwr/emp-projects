@@ -55,9 +55,13 @@ sort(unique(df_phyto$Genus))
 seasons <- df_phyto %>% select(Month, Season)
 seasons <- unique(seasons)
 
+write_csv(seasons, file = "seasons.csv")
+
 # Pull regional data from original datset --------------------------------------
-regions <- df_phyto %>% select(StationCode, RegionAbbreviation)
+regions <- df_phyto %>% select(StationCode, Region, RegionAbbreviation)
 regions <- unique(regions)
+
+write_csv(regions, file = "regions.csv")
 
 # Summarize data by genus and algal group --------------------------------------
 
@@ -145,6 +149,10 @@ df_phyto_grp <- df_phyto %>%
   group_by(Year, Month, Season, DateTime, StationCode, Region, RegionAbbreviation, AlgalType) %>%
   summarize(BV.per.mL = sum(BiovolumePerML, na.rm = TRUE)) %>%
   ungroup
+
+test <- df_phyto %>% select(DateTime, StationCode, SampleType, Genus, BV.um3.per.mL)
+
+test <- pivot_wider(test, names_from = SampleType, values_from = BV.um3.per.mL)
 
 # Export data for analysis in PRIMER -------------------------------------------
 write_csv(df_phyto_gen, file = "df_phyto_gen.csv")
