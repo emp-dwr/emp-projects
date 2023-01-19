@@ -1,0 +1,297 @@
+"","DateTime","Month","Year","StationCode","Study","Region","Group","Taxon","Genus","Species","Units.per.mL","BV.um3.per.mL"
+"1",2022-01-10 12:10:00,"Jan","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Achnanthidium sp.","Achnanthidium","sp.",41.82,3074.1882
+"2",2022-01-10 12:10:00,"Jan","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Aulacoseira pusilla","Aulacoseira","pusilla",334.56,105466.6944
+"3",2022-01-10 12:10:00,"Jan","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Cocconeis placentula","Cocconeis","placentula",41.82,12297.171
+"4",2022-01-10 12:10:00,"Jan","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Cyclotella sp.","Cyclotella","sp.",41.82,34999.9944
+"5",2022-01-10 12:10:00,"Jan","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Nitzschia spp.","Nitzschia","spp.",125.46,11837.151
+"6",2022-01-10 12:10:00,"Jan","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Ulnaria sp.","Ulnaria","sp.",41.82,316313.5158
+"7",2022-01-10 12:10:00,"Jan","2022","NZ068","EMP","Northern Interior Delta","Cryptophytes","Plagioselmis prolonga","Plagioselmis","prolonga",83.64,6385.914
+"8",2022-01-10 12:10:00,"Jan","2022","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Eucapsis microscopica","Eucapsis","microscopica",16644.36,5991.9696
+"9",2022-02-10 14:45:00,"Feb","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Achnanthidium sp.","Achnanthidium","sp.",77.3,3969.355
+"10",2022-02-10 14:45:00,"Feb","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Cocconeis placentula","Cocconeis","placentula",77.3,85949.097
+"11",2022-02-10 14:45:00,"Feb","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Cyclotella sp.","Cyclotella","sp.",154.6,15903.702
+"12",2022-02-10 14:45:00,"Feb","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Encyonema sp.","Encyonema","sp.",38.65,2010.9595
+"13",2022-02-10 14:45:00,"Feb","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Nitzschia sp.","Nitzschia","sp.",154.6,18256.714
+"14",2022-02-10 14:45:00,"Feb","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Planothidium sp.","Planothidium","sp.",38.65,1579.239
+"15",2022-02-10 14:45:00,"Feb","2022","NZ068","EMP","Northern Interior Delta","Green Algae","Monoraphidium sp.","Monoraphidium","sp.",77.3,1520.491
+"16",2022-02-10 14:45:00,"Feb","2022","NZ068","EMP","Northern Interior Delta","Cryptophytes","Cryptomonas sp.","Cryptomonas","sp.",38.65,101234.0125
+"17",2022-02-10 14:45:00,"Feb","2022","NZ068","EMP","Northern Interior Delta","Cryptophytes","Plagioselmis nannoplanctica","Plagioselmis","nannoplanctica",193.25,49017.8625
+"18",2022-02-10 14:45:00,"Feb","2022","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Eucapsis microscopica","Eucapsis","microscopica",14880.25,5356.89
+"19",2022-02-10 14:45:00,"Feb","2022","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Planktolyngbya sp.","Planktolyngbya","sp.",115.95,1881.0955
+"20",2022-02-10 14:45:00,"Feb","2022","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Planktothrix sp.","Planktothrix","sp.",38.65,2629.746
+"21",2022-03-14 15:20:00,"Mar","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Achnanthidium sp.","Achnanthidium","sp.",21.9,1643.376
+"22",2022-03-14 15:20:00,"Mar","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Cyclotella sp.","Cyclotella","sp.",197.1,48922.191
+"23",2022-03-14 15:20:00,"Mar","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Staurosira cf. venter","Staurosira","venter",65.7,6443.856
+"24",2022-03-14 15:20:00,"Mar","2022","NZ068","EMP","Northern Interior Delta","Cryptophytes","Plagioselmis nannoplanctica","Plagioselmis","nannoplanctica",722.7,219346.677
+"25",2022-03-14 15:20:00,"Mar","2022","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Eucapsis microscopica","Eucapsis","microscopica",7840.2,2822.472
+"26",2022-04-25 12:55:00,"Apr","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Cocconeis sp.","Cocconeis","sp.",51.11,15044.7396
+"27",2022-04-25 12:55:00,"Apr","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Cyclostephanos sp.","Cyclostephanos","sp.",153.33,24399.4029
+"28",2022-04-25 12:55:00,"Apr","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Navicula sp.","Navicula","sp.",51.11,9315.3086
+"29",2022-04-25 12:55:00,"Apr","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Nitzschia sp.","Nitzschia","sp.",102.22,11684.7682
+"30",2022-04-25 12:55:00,"Apr","2022","NZ068","EMP","Northern Interior Delta","Green Algae","Monoraphidium sp.","Monoraphidium","sp.",51.11,715.0289
+"31",2022-04-25 12:55:00,"Apr","2022","NZ068","EMP","Northern Interior Delta","Cryptophytes","Plagioselmis nannoplanctica","Plagioselmis","nannoplanctica",255.55,153069.339
+"32",2022-04-25 12:55:00,"Apr","2022","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Eucapsis microscopica","Eucapsis","microscopica",20597.33,7415.0388
+"33",2022-07-21 12:20:00,"Jul","2022","NZ068","EMP","Northern Interior Delta","Diatoms","cf. Cyclotella sp.","Cyclotella","sp.",463.8,161138.034
+"34",2022-07-21 12:20:00,"Jul","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Entomoneis sp.","Entomoneis","sp.",38.65,29246.8415
+"35",2022-07-21 12:20:00,"Jul","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Fragilaria sp.","Fragilaria","sp.",38.65,5817.9845
+"36",2022-07-21 12:20:00,"Jul","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Nitzschia sp.","Nitzschia","sp.",154.6,17018.368
+"37",2022-07-21 12:20:00,"Jul","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Skeletonema sp.","Skeletonema","sp.",38.65,3075.3805
+"38",2022-07-21 12:20:00,"Jul","2022","NZ068","EMP","Northern Interior Delta","Cryptophytes","Cryptomonas sp.","Cryptomonas","sp.",115.95,95205.3855
+"39",2022-07-21 12:20:00,"Jul","2022","NZ068","EMP","Northern Interior Delta","Cryptophytes","Plagioselmis nannoplanctica","Plagioselmis","nannoplanctica",270.55,68062.2635
+"40",2022-07-21 12:20:00,"Jul","2022","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Chroococcus sp.","Chroococcus","sp.",38.65,2049.996
+"41",2022-07-21 12:20:00,"Jul","2022","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Eucapsis microscopica","Eucapsis","microscopica",14145.9,5092.524
+"42",2022-07-21 12:20:00,"Jul","2022","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Merismopedia sp.","Merismopedia","sp.",38.65,2121.112
+"43",2022-07-21 12:20:00,"Jul","2022","NZ068","EMP","Northern Interior Delta","Cyanobacteria","cf. Microcystis sp.","Microcystis","sp.",193.25,15063.8375
+"44",2022-06-23 14:20:00,"Jun","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Cocconeis sp.","Cocconeis","sp.",175.24,88294.674
+"45",2022-06-23 14:20:00,"Jun","2022","NZ068","EMP","Northern Interior Delta","Diatoms","cf. Cyclotella sp.","Cyclotella","sp.",175.24,19188.78
+"46",2022-06-23 14:20:00,"Jun","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Entomoneis sp.","Entomoneis","sp.",43.81,649985.7507
+"47",2022-06-23 14:20:00,"Jun","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Melosira varians","Melosira","varians",43.81,107577.6455
+"48",2022-06-23 14:20:00,"Jun","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Navicula sp.","Navicula","sp.",87.62,18180.2738
+"49",2022-06-23 14:20:00,"Jun","2022","NZ068","EMP","Northern Interior Delta","Green Algae","cf. Chlorella sp.","Chlorella","sp.",43.81,1161.8412
+"50",2022-06-23 14:20:00,"Jun","2022","NZ068","EMP","Northern Interior Delta","Green Algae","Monoraphidium sp.","Monoraphidium","sp.",43.81,1076.4117
+"51",2022-06-23 14:20:00,"Jun","2022","NZ068","EMP","Northern Interior Delta","Cryptophytes","Cryptomonas sp.","Cryptomonas","sp.",350.48,280541.716
+"52",2022-06-23 14:20:00,"Jun","2022","NZ068","EMP","Northern Interior Delta","Cryptophytes","Plagioselmis nannoplanctica","Plagioselmis","nannoplanctica",525.72,177367.4136
+"53",2022-06-23 14:20:00,"Jun","2022","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Eucapsis microscopica","Eucapsis","microscopica",16122.08,6119.3808
+"54",2022-05-24 13:40:00,"May","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Cocconeis placentula","Cocconeis","placentula",63.88,33998.8524
+"55",2022-05-24 13:40:00,"May","2022","NZ068","EMP","Northern Interior Delta","Diatoms","cf. Cyclotella sp.","Cyclotella","sp.",63.88,10165.2244
+"56",2022-05-24 13:40:00,"May","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Nitzschia sp.","Nitzschia","sp.",191.64,12333.9504
+"57",2022-05-24 13:40:00,"May","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Pseudostaurosira sp.","Pseudostaurosira","sp.",63.88,2610.1368
+"58",2022-05-24 13:40:00,"May","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Surirella sp.","Surirella","sp.",63.88,109802.0544
+"59",2022-05-24 13:40:00,"May","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Thalassiosira sp.","Thalassiosira","sp.",63.88,5731367.898
+"60",2022-05-24 13:40:00,"May","2022","NZ068","EMP","Northern Interior Delta","Green Algae","Monoraphidium spp.","Monoraphidium","spp.",127.76,3478.9048
+"61",2022-05-24 13:40:00,"May","2022","NZ068","EMP","Northern Interior Delta","Cryptophytes","Plagioselmis nannoplanctica","Plagioselmis","nannoplanctica",127.76,20330.4488
+"62",2022-05-24 13:40:00,"May","2022","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Eucapsis microscopica","Eucapsis","microscopica",25360.36,9129.7296
+"63",2022-05-24 13:40:00,"May","2022","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Planktolyngbya sp.","Planktolyngbya","sp.",127.76,8825.6608
+"64",2022-08-18 11:15:00,"Aug","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Cocconeis sp.","Cocconeis","sp.",57.5,11870.3
+"65",2022-08-18 11:15:00,"Aug","2022","NZ068","EMP","Northern Interior Delta","Diatoms","cf. Cyclotella sp.","Cyclotella","sp.",115,18299.95
+"66",2022-08-18 11:15:00,"Aug","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Nitzschia sp.","Nitzschia","sp.",57.5,2127.5
+"67",2022-08-18 11:15:00,"Aug","2022","NZ068","EMP","Northern Interior Delta","Cryptophytes","Plagioselmis nannoplanctica","Plagioselmis","nannoplanctica",172.5,48879.6
+"68",2022-08-18 11:15:00,"Aug","2022","NZ068","EMP","Northern Interior Delta","Cyanobacteria","cf. Chroococcus sp.","Chroococcus","sp.",57.5,1524.9
+"69",2022-08-18 11:15:00,"Aug","2022","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Eucapsis microscopica","Eucapsis","microscopica",23287.5,8383.5
+"70",2022-08-18 11:15:00,"Aug","2022","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Merismopedia tenuissima","Merismopedia","tenuissima",57.5,1591.6
+"71",2022-09-30 10:05:00,"Sep","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Cyclotella sp.","Cyclotella","sp.",353.84,60718.944
+"72",2022-09-30 10:05:00,"Sep","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Entomoneis sp.","Entomoneis","sp.",88.46,213378.789
+"73",2022-09-30 10:05:00,"Sep","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Nitzschia sp.","Nitzschia","sp.",265.38,42771.2946
+"74",2022-09-30 10:05:00,"Sep","2022","NZ068","EMP","Northern Interior Delta","Green Algae","Chlorella sp.","Chlorella","sp.",88.46,813.832
+"75",2022-09-30 10:05:00,"Sep","2022","NZ068","EMP","Northern Interior Delta","Cryptophytes","Plagioselmis nannoplanctica","Plagioselmis","nannoplanctica",442.3,88889.031
+"76",2022-09-30 10:05:00,"Sep","2022","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Eucapsis microscopica","Eucapsis","microscopica",35649.38,12833.7768
+"77",2022-09-30 10:05:00,"Sep","2022","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Microcystis sp.","Microcystis","sp.",176.92,25733.8986
+"78",2022-11-16 14:15:00,"Nov","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Achnanthidium sp.","Achnanthidium","sp.",46,2146.36
+"79",2022-11-16 14:15:00,"Nov","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Cyclotella sp.","Cyclotella","sp.",230,126419.5
+"80",2022-11-16 14:15:00,"Nov","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Entomoneis sp.","Entomoneis","sp.",46,30112.52
+"81",2022-11-16 14:15:00,"Nov","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Navicula sp.","Navicula","sp.",46,80718.96
+"82",2022-11-16 14:15:00,"Nov","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Nitzschia sp.","Nitzschia","sp.",46,1644.04
+"83",2022-11-16 14:15:00,"Nov","2022","NZ068","EMP","Northern Interior Delta","Green Algae","Chlorella sp.","Chlorella","sp.",736,3569.6
+"84",2022-11-16 14:15:00,"Nov","2022","NZ068","EMP","Northern Interior Delta","Cryptophytes","Plagioselmis nannoplanctica","Plagioselmis","nannoplanctica",184,57895.6
+"85",2022-11-16 14:15:00,"Nov","2022","NZ068","EMP","Northern Interior Delta","Cryptophytes","Teleaulax amphioxeia","Teleaulax","amphioxeia",184,16098.16
+"86",2022-11-16 14:15:00,"Nov","2022","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Eucapsis microscopica","Eucapsis","microscopica",17296,6226.56
+"87",2022-10-17 13:30:00,"Oct","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Cocconeis sp.","Cocconeis","sp.",63.88,17018.2708
+"88",2022-10-17 13:30:00,"Oct","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Cyclotella sp.","Cyclotella","sp.",447.16,42529.3876
+"89",2022-10-17 13:30:00,"Oct","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Entomoneis sp.","Entomoneis","sp.",31.94,40375.354
+"90",2022-10-17 13:30:00,"Oct","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Nitzschia sp.","Nitzschia","sp.",31.94,1182.7382
+"91",2022-10-17 13:30:00,"Oct","2022","NZ068","EMP","Northern Interior Delta","Diatoms","Thalassiosira sp.","Thalassiosira","sp.",31.94,143412.8358
+"92",2022-10-17 13:30:00,"Oct","2022","NZ068","EMP","Northern Interior Delta","Green Algae","Chlorella sp.","Chlorella","sp.",1022.08,4957.088
+"93",2022-10-17 13:30:00,"Oct","2022","NZ068","EMP","Northern Interior Delta","Cryptophytes","Plagioselmis lacustris","Plagioselmis","lacustris",63.88,55348.1872
+"94",2022-10-17 13:30:00,"Oct","2022","NZ068","EMP","Northern Interior Delta","Cryptophytes","Plagioselmis nannoplanctica","Plagioselmis","nannoplanctica",990.14,166076.1822
+"95",2022-10-17 13:30:00,"Oct","2022","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Eucapsis microscopica","Eucapsis","microscopica",10476.32,3771.4752
+"96",2022-10-17 13:30:00,"Oct","2022","NZ068","EMP","Northern Interior Delta","Cyanobacteria","cf. Microcystis sp.","Microcystis","sp.",63.88,5318.6488
+"97",2019-04-10 08:40:00,"Apr","2019","NZ068","EMP","Northern Interior Delta","Green Algae","Chlorella sp.","Chlorella","sp.",3943.87,14158.4933
+"98",2019-04-10 08:40:00,"Apr","2019","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Eucapsis microscopica","Eucapsis","microscopica",226490.82,82145.178
+"99",2021-04-06 13:10:00,"Apr","2021","NZ068","EMP","Northern Interior Delta","Diatoms","Actinocyclus sp.","Actinocyclus","sp.",153.32,4967333.4204
+"100",2021-04-06 13:10:00,"Apr","2021","NZ068","EMP","Northern Interior Delta","Diatoms","Cyclotella sp.","Cyclotella","sp.",153.32,97884.0876
+"101",2021-04-06 13:10:00,"Apr","2021","NZ068","EMP","Northern Interior Delta","Green Algae","cf. Selenastrum sp.","Selenastrum","sp.",76.66,1605.2604
+"102",2021-04-06 13:10:00,"Apr","2021","NZ068","EMP","Northern Interior Delta","Cryptophytes","Plagioselmis nannoplanctica","Plagioselmis","nannoplanctica",306.64,164049.3336
+"103",2021-04-06 13:10:00,"Apr","2021","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Eucapsis microscopica","Eucapsis","microscopica",30127.38,10845.8568
+"104",2019-08-08 13:35:00,"Aug","2019","NZ068","EMP","Northern Interior Delta","Diatoms","Cyclotella sp.","Cyclotella","sp.",321.95,51231.9035
+"105",2019-08-08 13:35:00,"Aug","2019","NZ068","EMP","Northern Interior Delta","Green Algae","Chlorella sp.","Chlorella","sp.",4507.3,16181.207
+"106",2019-08-08 13:35:00,"Aug","2019","NZ068","EMP","Northern Interior Delta","Green Algae","cf. Dictyosphaerium sp.","Dictyosphaerium","sp.",321.95,4623.202
+"107",2019-08-08 13:35:00,"Aug","2019","NZ068","EMP","Northern Interior Delta","Cryptophytes","Cryptomonas sp.","Cryptomonas","sp.",321.95,154159.3185
+"108",2019-08-08 13:35:00,"Aug","2019","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Eucapsis microscopica","Eucapsis","microscopica",131355.6,52735.41
+"109",2020-08-12 13:25:00,"Aug","2020","NZ068","EMP","Northern Interior Delta","Diatoms","Cyclotella sp.","Cyclotella","sp.",229.98,1556109.0744
+"110",2020-08-12 13:25:00,"Aug","2020","NZ068","EMP","Northern Interior Delta","Diatoms","Diatoma vulgaris","Diatoma","vulgaris",76.66,626943.8784
+"111",2020-08-12 13:25:00,"Aug","2020","NZ068","EMP","Northern Interior Delta","Diatoms","Nitzschia sp.","Nitzschia","sp.",76.66,10704.8024
+"112",2020-08-12 13:25:00,"Aug","2020","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Chroococcus sp.","Chroococcus","sp.",229.98,14868.207
+"113",2020-08-12 13:25:00,"Aug","2020","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Eucapsis microscopica","Eucapsis","microscopica",30510.68,10983.8448
+"114",2021-08-17 14:45:00,"Aug","2021","NZ068","EMP","Northern Interior Delta","Diatoms","Cyclotella sp.","Cyclotella","sp.",95.83,33963.1103
+"115",2021-08-17 14:45:00,"Aug","2021","NZ068","EMP","Northern Interior Delta","Diatoms","Nitzschia sp.","Nitzschia","sp.",95.83,3811.1591
+"116",2021-08-17 14:45:00,"Aug","2021","NZ068","EMP","Northern Interior Delta","Green Algae","Drepanochloris nannoselene","Drepanochloris","nannoselene",287.49,3668.3724
+"117",2021-08-17 14:45:00,"Aug","2021","NZ068","EMP","Northern Interior Delta","Cryptophytes","Cryptomonas sp.","Cryptomonas","sp.",95.83,52835.8705
+"118",2021-08-17 14:45:00,"Aug","2021","NZ068","EMP","Northern Interior Delta","Cryptophytes","Plagioselmis nannoplanctica","Plagioselmis","nannoplanctica",95.83,15249.4279
+"119",2021-08-17 14:45:00,"Aug","2021","NZ068","EMP","Northern Interior Delta","Cryptophytes","Plagioselmis prolonga","Plagioselmis","prolonga",958.3,145661.6
+"120",2021-08-17 14:45:00,"Aug","2021","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Aphanizomenon sp.","Aphanizomenon","sp.",95.83,184637.5776
+"121",2021-08-17 14:45:00,"Aug","2021","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Eucapsis microscopica","Eucapsis","microscopica",37277.87,13454.532
+"122",2021-08-17 14:45:00,"Aug","2021","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Microcystis sp.","Microcystis","sp.",670.81,53718.4648
+"123",2019-12-05 14:05:00,"Dec","2019","NZ068","EMP","Northern Interior Delta","Golden Algae","cf. Kephyrion sp.","Kephyrion","sp.",353.82,42992.6682
+"124",2019-12-05 14:05:00,"Dec","2019","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Eucapsis microscopica","Eucapsis","microscopica",144358.56,53115.4584
+"125",2019-02-12 11:00:00,"Feb","2019","NZ068","EMP","Northern Interior Delta","Green Algae","Chlorella sp.","Chlorella","sp.",1802.92,6472.4828
+"126",2019-02-12 11:00:00,"Feb","2019","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Eucapsis microscopica","Eucapsis","microscopica",405657,146685.5712
+"127",2020-02-18 14:55:00,"Feb","2020","NZ068","EMP","Northern Interior Delta","Diatoms","cf. Amphora sp.","Amphora","sp.",122.66,33137.8256
+"128",2020-02-18 14:55:00,"Feb","2020","NZ068","EMP","Northern Interior Delta","Diatoms","Aulacoseira alpigena","Aulacoseira","alpigena",245.32,38066.3044
+"129",2020-02-18 14:55:00,"Feb","2020","NZ068","EMP","Northern Interior Delta","Diatoms","Cocconeis placentula","Cocconeis","placentula",122.66,115845.0104
+"130",2020-02-18 14:55:00,"Feb","2020","NZ068","EMP","Northern Interior Delta","Diatoms","Cyclotella sp.","Cyclotella","sp.",245.32,52753.6128
+"131",2020-02-18 14:55:00,"Feb","2020","NZ068","EMP","Northern Interior Delta","Diatoms","Navicula gregaria","Navicula","gregaria",122.66,63325.6782
+"132",2020-02-18 14:55:00,"Feb","2020","NZ068","EMP","Northern Interior Delta","Diatoms","Navicula recens","Navicula","recens",122.66,255251.7802
+"133",2020-02-18 14:55:00,"Feb","2020","NZ068","EMP","Northern Interior Delta","Diatoms","Nitzschia cf. sigma","Nitzschia","sigma",122.66,66787.1434
+"134",2020-02-18 14:55:00,"Feb","2020","NZ068","EMP","Northern Interior Delta","Green Algae","Chlamydomonas sp.","Chlamydomonas","sp.",122.66,61657.5022
+"135",2020-02-18 14:55:00,"Feb","2020","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Eucapsis microscopica","Eucapsis","microscopica",48450.7,17442.252
+"136",2019-01-10 11:55:00,"Jan","2019","NZ068","EMP","Northern Interior Delta","Diatoms","Nitzschia inconspicua","Nitzschia","inconspicua",901.46,12872.8488
+"137",2019-01-10 11:55:00,"Jan","2019","NZ068","EMP","Northern Interior Delta","Diatoms","Nitzschia palea","Nitzschia","palea",1802.92,233207.702
+"138",2019-01-10 11:55:00,"Jan","2019","NZ068","EMP","Northern Interior Delta","Green Algae","cf. Chlorella sp.","Chlorella","sp.",4507.3,18885.587
+"139",2019-01-10 11:55:00,"Jan","2019","NZ068","EMP","Northern Interior Delta","Green Algae","Coccomyxa sp.","Coccomyxa","sp.",4507.3,83249.831
+"140",2019-01-10 11:55:00,"Jan","2019","NZ068","EMP","Northern Interior Delta","Green Algae","Monoraphidium contortum","Monoraphidium","contortum",901.46,4245.8766
+"141",2019-01-10 11:55:00,"Jan","2019","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Eucapsis microscopica","Eucapsis","microscopica",540876,197636.0904
+"142",2020-01-17 11:50:00,"Jan","2020","NZ068","EMP","Northern Interior Delta","Diatoms","cf. Achnanthidium sp.","Achnanthidium","sp.",51.11,10770.9214
+"143",2020-01-17 11:50:00,"Jan","2020","NZ068","EMP","Northern Interior Delta","Diatoms","Aulacoseira alpigena","Aulacoseira","alpigena",51.11,9315.3086
+"144",2020-01-17 11:50:00,"Jan","2020","NZ068","EMP","Northern Interior Delta","Diatoms","Cocconeis sp.","Cocconeis","sp.",102.22,82431.2302
+"145",2020-01-17 11:50:00,"Jan","2020","NZ068","EMP","Northern Interior Delta","Diatoms","Cyclotella cf. distinguenda","Cyclotella","distinguenda",51.11,258608.4224
+"146",2020-01-17 11:50:00,"Jan","2020","NZ068","EMP","Northern Interior Delta","Diatoms","Cyclotella sp.","Cyclotella","sp.",204.44,43637.718
+"147",2020-01-17 11:50:00,"Jan","2020","NZ068","EMP","Northern Interior Delta","Diatoms","Encyonema sp.","Encyonema","sp.",102.22,16396.088
+"148",2020-01-17 11:50:00,"Jan","2020","NZ068","EMP","Northern Interior Delta","Cryptophytes","Plagioselmis nannoplanctica","Plagioselmis","nannoplanctica",51.11,8352.9073
+"149",2020-01-17 11:50:00,"Jan","2020","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Eucapsis microscopica","Eucapsis","microscopica",20188.45,7267.842
+"150",2020-01-17 11:50:00,"Jan","2020","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Planktolyngbya sp.","Planktolyngbya","sp.",51.11,4011.1128
+"151",2019-07-08 09:45:00,"Jul","2019","NZ068","EMP","Northern Interior Delta","Diatoms","Cocconeis placentula","Cocconeis","placentula",281.71,280563.4403
+"152",2019-07-08 09:45:00,"Jul","2019","NZ068","EMP","Northern Interior Delta","Diatoms","Cyclotella sp.","Cyclotella","sp.",281.71,31714.9118
+"153",2019-07-08 09:45:00,"Jul","2019","NZ068","EMP","Northern Interior Delta","Diatoms","Nitzschia sp.","Nitzschia","sp.",281.71,12513.5582
+"154",2019-07-08 09:45:00,"Jul","2019","NZ068","EMP","Northern Interior Delta","Diatoms","cf. Skeletonema sp.","Skeletonema","sp.",563.42,15956.0544
+"155",2019-07-08 09:45:00,"Jul","2019","NZ068","EMP","Northern Interior Delta","Green Algae","Chlorella sp.","Chlorella","sp.",7324.46,26294.8114
+"156",2019-07-08 09:45:00,"Jul","2019","NZ068","EMP","Northern Interior Delta","Green Algae","Drepanochloris nannoselene","Drepanochloris","nannoselene",563.42,1487.4288
+"157",2019-07-08 09:45:00,"Jul","2019","NZ068","EMP","Northern Interior Delta","Green Algae","cf. Microspora sp.","Microspora","sp.",281.71,46115.927
+"158",2019-07-08 09:45:00,"Jul","2019","NZ068","EMP","Northern Interior Delta","Cryptophytes","Plagioselmis nannoplanctica","Plagioselmis","nannoplanctica",281.71,91217.698
+"159",2019-07-08 09:45:00,"Jul","2019","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Eucapsis microscopica","Eucapsis","microscopica",109021.77,39450.6684
+"160",2020-07-14 13:45:00,"Jul","2020","NZ068","EMP","Northern Interior Delta","Diatoms","Cocconeis placentula","Cocconeis","placentula",36.51,25738.4547
+"161",2020-07-14 13:45:00,"Jul","2020","NZ068","EMP","Northern Interior Delta","Diatoms","Cyclotella sp.","Cyclotella","sp.",219.06,2281330.2708
+"162",2020-07-14 13:45:00,"Jul","2020","NZ068","EMP","Northern Interior Delta","Diatoms","cf. Microcostatus sp.","Microcostatus","sp.",36.51,3297.5832
+"163",2020-07-14 13:45:00,"Jul","2020","NZ068","EMP","Northern Interior Delta","Diatoms","Nitzschia sp.","Nitzschia","sp.",36.51,2647.7052
+"164",2020-07-14 13:45:00,"Jul","2020","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Chroococcus sp.","Chroococcus","sp.",401.61,21278.7582
+"165",2020-07-14 13:45:00,"Jul","2020","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Eucapsis microscopica","Eucapsis","microscopica",14129.37,4889.4192
+"166",2021-07-19 14:30:00,"Jul","2021","NZ068","EMP","Northern Interior Delta","Diatoms","Cocconeis placentula","Cocconeis","placentula",153.32,71605.0396
+"167",2021-07-19 14:30:00,"Jul","2021","NZ068","EMP","Northern Interior Delta","Diatoms","Cyclotella sp.","Cyclotella","sp.",383.3,71431.788
+"168",2021-07-19 14:30:00,"Jul","2021","NZ068","EMP","Northern Interior Delta","Diatoms","Skeletonema sp.","Skeletonema","sp.",76.66,7665.2334
+"169",2021-07-19 14:30:00,"Jul","2021","NZ068","EMP","Northern Interior Delta","Green Algae","Monoraphidium sp.","Monoraphidium","sp.",76.66,5110.1556
+"170",2021-07-19 14:30:00,"Jul","2021","NZ068","EMP","Northern Interior Delta","Cryptophytes","Cryptomonas sp.","Cryptomonas","sp.",76.66,38534.6822
+"171",2021-07-19 14:30:00,"Jul","2021","NZ068","EMP","Northern Interior Delta","Cryptophytes","Plagioselmis nannoplanctica","Plagioselmis","nannoplanctica",996.58,291390.0262
+"172",2021-07-19 14:30:00,"Jul","2021","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Aphanizomenon sp.","Aphanizomenon","sp.",76.66,147702.3552
+"173",2021-07-19 14:30:00,"Jul","2021","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Eucapsis microscopica","Eucapsis","microscopica",28670.84,10321.5024
+"174",2021-07-19 14:30:00,"Jul","2021","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Microcystis sp.","Microcystis","sp.",383.3,176222.175
+"175",2021-07-19 14:30:00,"Jul","2021","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Pseudanabaena sp.","Pseudanabaena","sp.",536.62,30418.688
+"176",2019-06-11 14:05:00,"Jun","2019","NZ068","EMP","Northern Interior Delta","Diatoms","cf. Cyclotella sp.","Cyclotella","sp.",270.57,8146.8627
+"177",2019-06-11 14:05:00,"Jun","2019","NZ068","EMP","Northern Interior Delta","Diatoms","Thalassiosira sp.","Thalassiosira","sp.",270.57,136007.4219
+"178",2019-06-11 14:05:00,"Jun","2019","NZ068","EMP","Northern Interior Delta","Green Algae","Chlorella sp.","Chlorella","sp.",2164.56,10498.116
+"179",2019-06-11 14:05:00,"Jun","2019","NZ068","EMP","Northern Interior Delta","Green Algae","Desmodesmus sp.","Desmodesmus","sp.",270.57,24881.6172
+"180",2019-06-11 14:05:00,"Jun","2019","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Eucapsis microscopica","Eucapsis","microscopica",107957.43,39546.5112
+"181",2019-06-11 14:05:00,"Jun","2019","NZ068","EMP","Northern Interior Delta","Cyanobacteria","cf. Synechococcus sp.","Synechococcus","sp.",541.14,3885.3852
+"182",2020-06-15 14:35:00,"Jun","2020","NZ068","EMP","Northern Interior Delta","Diatoms","Cocconeis placentula","Cocconeis","placentula",42.59,20780.5128
+"183",2020-06-15 14:35:00,"Jun","2020","NZ068","EMP","Northern Interior Delta","Diatoms","Cyclotella sp.","Cyclotella","sp.",127.77,63609.0168
+"184",2020-06-15 14:35:00,"Jun","2020","NZ068","EMP","Northern Interior Delta","Diatoms","Gomphonema cf. mexicanum","Gomphonema","mexicanum",42.59,51900.5999
+"185",2020-06-15 14:35:00,"Jun","2020","NZ068","EMP","Northern Interior Delta","Diatoms","Nitzschia sp.","Nitzschia","sp.",85.18,3198.509
+"186",2020-06-15 14:35:00,"Jun","2020","NZ068","EMP","Northern Interior Delta","Green Algae","Chlorella sp.","Chlorella","sp.",42.59,3916.1505
+"187",2020-06-15 14:35:00,"Jun","2020","NZ068","EMP","Northern Interior Delta","Green Algae","Selenastrum gracile","Selenastrum","gracile",42.59,1069.4349
+"188",2020-06-15 14:35:00,"Jun","2020","NZ068","EMP","Northern Interior Delta","Cryptophytes","Plagioselmis nannoplanctica","Plagioselmis","nannoplanctica",127.77,60111.9519
+"189",2020-06-15 14:35:00,"Jun","2020","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Aphanocapsa sp.","Aphanocapsa","sp.",42.59,2141.4252
+"190",2020-06-15 14:35:00,"Jun","2020","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Chroococcus sp.","Chroococcus","sp.",42.59,9633.858
+"191",2020-06-15 14:35:00,"Jun","2020","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Dolichospermum sp.","Dolichospermum","sp.",42.59,117234.9376
+"192",2020-06-15 14:35:00,"Jun","2020","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Eucapsis microscopica","Eucapsis","microscopica",16780.46,6040.9656
+"193",2020-06-15 14:35:00,"Jun","2020","NZ068","EMP","Northern Interior Delta","Dinoflagellates","Peridinium sp.","Peridinium","sp.",42.59,479115.7791
+"194",2021-06-04 13:35:00,"Jun","2021","NZ068","EMP","Northern Interior Delta","Diatoms","Cocconeis placentula","Cocconeis","placentula",255.54,210524.0736
+"195",2021-06-04 13:35:00,"Jun","2021","NZ068","EMP","Northern Interior Delta","Diatoms","Cyclotella sp.","Cyclotella","sp.",85.18,49456.3598
+"196",2021-06-04 13:35:00,"Jun","2021","NZ068","EMP","Northern Interior Delta","Diatoms","Navicula sp.","Navicula","sp.",85.18,4455.7658
+"197",2021-06-04 13:35:00,"Jun","2021","NZ068","EMP","Northern Interior Delta","Green Algae","Chlamydomonas sp.","Chlamydomonas","sp.",85.18,18072.6406
+"198",2021-06-04 13:35:00,"Jun","2021","NZ068","EMP","Northern Interior Delta","Green Algae","Crucigenia fenestrata","Crucigenia","fenestrata",170.36,100972.372
+"199",2021-06-04 13:35:00,"Jun","2021","NZ068","EMP","Northern Interior Delta","Green Algae","Monoraphidium contortum","Monoraphidium","contortum",85.18,1485.5392
+"200",2021-06-04 13:35:00,"Jun","2021","NZ068","EMP","Northern Interior Delta","Green Algae","Selenastrum sp.","Selenastrum","sp.",255.54,4494.9486
+"201",2021-06-04 13:35:00,"Jun","2021","NZ068","EMP","Northern Interior Delta","Cryptophytes","Cryptomonas sp.","Cryptomonas","sp.",170.36,37717.704
+"202",2021-06-04 13:35:00,"Jun","2021","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Eucapsis microscopica","Eucapsis","microscopica",34242.36,12327.2496
+"203",2019-03-12 08:55:00,"Mar","2019","NZ068","EMP","Northern Interior Delta","Diatoms","Cyclotella striata","Cyclotella","striata",450.73,2765643.2216
+"204",2019-03-12 08:55:00,"Mar","2019","NZ068","EMP","Northern Interior Delta","Diatoms","cf. Staurosirella sp.","Staurosirella","sp.",901.46,1641450.4848
+"205",2019-03-12 08:55:00,"Mar","2019","NZ068","EMP","Northern Interior Delta","Green Algae","Chlorella sp.","Chlorella","sp.",4056.57,14563.0863
+"206",2019-03-12 08:55:00,"Mar","2019","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Eucapsis microscopica","Eucapsis","microscopica",174883.24,63931.5432
+"207",2020-03-04 13:10:00,"Mar","2020","NZ068","EMP","Northern Interior Delta","Diatoms","cf. Cyclotella sp.","Cyclotella","sp.",109.52,43297.6368
+"208",2020-03-04 13:10:00,"Mar","2020","NZ068","EMP","Northern Interior Delta","Diatoms","Staurosirella sp.","Staurosirella","sp.",54.76,3135.5576
+"209",2020-03-04 13:10:00,"Mar","2020","NZ068","EMP","Northern Interior Delta","Green Algae","Pyramimonas sp.","Pyramimonas","sp.",54.76,1452.2352
+"210",2020-03-04 13:10:00,"Mar","2020","NZ068","EMP","Northern Interior Delta","Cryptophytes","Rhodomonas lacustris","Rhodomonas","lacustris",54.76,49425.2808
+"211",2020-03-04 13:10:00,"Mar","2020","NZ068","EMP","Northern Interior Delta","Cryptophytes","Plagioselmis nannoplanctica","Plagioselmis","nannoplanctica",219.04,43304.208
+"212",2020-03-04 13:10:00,"Mar","2020","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Eucapsis microscopica","Eucapsis","microscopica",22506.36,8141.7168
+"213",2021-03-08 14:15:00,"Mar","2021","NZ068","EMP","Northern Interior Delta","Diatoms","Aulacoseira cf. granulata","Aulacoseira","granulata",115,101554.2
+"214",2021-03-08 14:15:00,"Mar","2021","NZ068","EMP","Northern Interior Delta","Diatoms","Cyclotella sp.","Cyclotella","sp.",115,72776.6
+"215",2021-03-08 14:15:00,"Mar","2021","NZ068","EMP","Northern Interior Delta","Green Algae","Coccomyxa sp.","Coccomyxa","sp.",57.5,608.925
+"216",2021-03-08 14:15:00,"Mar","2021","NZ068","EMP","Northern Interior Delta","Golden Algae","Ochromonas sp.","Ochromonas","sp.",57.5,11375.8
+"217",2021-03-08 14:15:00,"Mar","2021","NZ068","EMP","Northern Interior Delta","Cryptophytes","Plagioselmis sp.","Plagioselmis","sp.",1840,129922.4
+"218",2021-03-08 14:15:00,"Mar","2021","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Eucapsis microscopica","Eucapsis","microscopica",22022.5,8104.05
+"219",2021-03-08 14:15:00,"Mar","2021","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Planktolyngbya sp.","Planktolyngbya","sp.",230,5853.5
+"220",2019-05-09 07:45:00,"May","2019","NZ068","EMP","Northern Interior Delta","Diatoms","cf. Cyclotella sp.","Cyclotella","sp.",492.81,34383.3537
+"221",2019-05-09 07:45:00,"May","2019","NZ068","EMP","Northern Interior Delta","Diatoms","Nitzschia sp.","Nitzschia","sp.",328.54,41146.3496
+"222",2019-05-09 07:45:00,"May","2019","NZ068","EMP","Northern Interior Delta","Green Algae","Chlorella sp.","Chlorella","sp.",657.08,7549.8492
+"223",2019-05-09 07:45:00,"May","2019","NZ068","EMP","Northern Interior Delta","Cryptophytes","Plagioselmis nannoplanctica","Plagioselmis","nannoplanctica",164.27,26140.2851
+"224",2019-05-09 07:45:00,"May","2019","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Eucapsis microscopica","Eucapsis","microscopica",65379.46,24187.1148
+"225",2021-05-06 15:00:00,"May","2021","NZ068","EMP","Northern Interior Delta","Diatoms","Cyclotella cf. meneghiniana","Cyclotella","meneghiniana",88.46,76319.7496
+"226",2021-05-06 15:00:00,"May","2021","NZ068","EMP","Northern Interior Delta","Diatoms","Lindavia cf. comta","Lindavia","comta",88.46,2685562.4476
+"227",2021-05-06 15:00:00,"May","2021","NZ068","EMP","Northern Interior Delta","Cryptophytes","Cryptomonas sp.","Cryptomonas","sp.",265.38,42832.332
+"228",2021-05-06 15:00:00,"May","2021","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Eucapsis microscopica","Eucapsis","microscopica",35207.08,12642.7032
+"229",2021-05-06 15:00:00,"May","2021","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Planktolyngbya sp.","Planktolyngbya","sp.",88.46,2610.4546
+"230",2019-11-06 13:10:00,"Nov","2019","NZ068","EMP","Northern Interior Delta","Diatoms","cf. Cyclotella sp.","Cyclotella","sp.",557.52,100247.6712
+"231",2019-11-06 13:10:00,"Nov","2019","NZ068","EMP","Northern Interior Delta","Diatoms","Fragilaria sp.","Fragilaria","sp.",139.38,34468.674
+"232",2019-11-06 13:10:00,"Nov","2019","NZ068","EMP","Northern Interior Delta","Green Algae","Chlorella sp.","Chlorella","sp.",139.38,500.3742
+"233",2019-11-06 13:10:00,"Nov","2019","NZ068","EMP","Northern Interior Delta","Cryptophytes","Cryptomonas sp.","Cryptomonas","sp.",139.38,126799.5612
+"234",2019-11-06 13:10:00,"Nov","2019","NZ068","EMP","Northern Interior Delta","Cryptophytes","Rhodomonas lacustris","Rhodomonas","lacustris",278.76,154658.8356
+"235",2019-11-06 13:10:00,"Nov","2019","NZ068","EMP","Northern Interior Delta","Cryptophytes","Plagioselmis prolonga","Plagioselmis","prolonga",278.76,44359.0788
+"236",2019-11-06 13:10:00,"Nov","2019","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Eucapsis microscopica","Eucapsis","microscopica",57842.7,21450.582
+"237",2020-11-09 13:50:00,"Nov","2020","NZ068","EMP","Northern Interior Delta","Diatoms","Nitzschia palea","Nitzschia","palea",117.94,12312.936
+"238",2020-11-09 13:50:00,"Nov","2020","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Eucapsis microscopica","Eucapsis","microscopica",48945.1,17620.236
+"239",2019-10-07 15:00:00,"Oct","2019","NZ068","EMP","Northern Interior Delta","Diatoms","cf. Cyclotella sp.","Cyclotella","sp.",127.77,11643.6801
+"240",2019-10-07 15:00:00,"Oct","2019","NZ068","EMP","Northern Interior Delta","Diatoms","Skeletonema sp.","Skeletonema","sp.",127.77,8733.0795
+"241",2019-10-07 15:00:00,"Oct","2019","NZ068","EMP","Northern Interior Delta","Green Algae","Chlamydomonas sp.","Chlamydomonas","sp.",127.77,7926.8508
+"242",2019-10-07 15:00:00,"Oct","2019","NZ068","EMP","Northern Interior Delta","Green Algae","Chlorella sp.","Chlorella","sp.",1022.16,6511.1592
+"243",2019-10-07 15:00:00,"Oct","2019","NZ068","EMP","Northern Interior Delta","Green Algae","Monoraphidium sp.","Monoraphidium","sp.",127.77,2680.6146
+"244",2019-10-07 15:00:00,"Oct","2019","NZ068","EMP","Northern Interior Delta","Cryptophytes","Rhodomonas lacustris","Rhodomonas","lacustris",127.77,76245.4698
+"245",2019-10-07 15:00:00,"Oct","2019","NZ068","EMP","Northern Interior Delta","Cryptophytes","Plagioselmis nannoplanctica","Plagioselmis","nannoplanctica",255.54,83321.3724
+"246",2019-10-07 15:00:00,"Oct","2019","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Eucapsis microscopica","Eucapsis","microscopica",50980.23,18881.8506
+"247",2020-10-09 13:45:00,"Oct","2020","NZ068","EMP","Northern Interior Delta","Diatoms","Cocconeis placentula","Cocconeis","placentula",71.87,175436.1074
+"248",2020-10-09 13:45:00,"Oct","2020","NZ068","EMP","Northern Interior Delta","Diatoms","Cyclotella sp.","Cyclotella","sp.",71.87,15145.8838
+"249",2020-10-09 13:45:00,"Oct","2020","NZ068","EMP","Northern Interior Delta","Diatoms","cf. Cyclotella sp.","Cyclotella","sp.",215.61,137651.8923
+"250",2020-10-09 13:45:00,"Oct","2020","NZ068","EMP","Northern Interior Delta","Green Algae","Chlorella sp.","Chlorella","sp.",287.48,1204.5412
+"251",2020-10-09 13:45:00,"Oct","2020","NZ068","EMP","Northern Interior Delta","Cryptophytes","Cryptomonas marssonii","Cryptomonas","marssonii",143.74,63410.901
+"252",2020-10-09 13:45:00,"Oct","2020","NZ068","EMP","Northern Interior Delta","Cryptophytes","Plagioselmis nannoplanctica","Plagioselmis","nannoplanctica",215.61,85198.2915
+"253",2020-10-09 13:45:00,"Oct","2020","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Chroococcus sp.","Chroococcus","sp.",574.96,53331.1335
+"254",2020-10-09 13:45:00,"Oct","2020","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Cyanodictyon sp.","Cyanodictyon","sp.",71.87,1148.4826
+"255",2020-10-09 13:45:00,"Oct","2020","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Eucapsis microscopica","Eucapsis","microscopica",27382.47,9857.6892
+"256",2021-10-22 08:45:00,"Oct","2021","NZ068","EMP","Northern Interior Delta","Diatoms","Cyclotella sp.","Cyclotella","sp.",63.88,6293.4576
+"257",2021-10-22 08:45:00,"Oct","2021","NZ068","EMP","Northern Interior Delta","Green Algae","Chlorella sp.","Chlorella","sp.",191.64,3606.6648
+"258",2021-10-22 08:45:00,"Oct","2021","NZ068","EMP","Northern Interior Delta","Green Algae","cf. Sphaerocystis sp.","Sphaerocystis","sp.",255.52,6577.0848
+"259",2021-10-22 08:45:00,"Oct","2021","NZ068","EMP","Northern Interior Delta","Golden Algae","Ochromonas sp.","Ochromonas","sp.",127.76,15968.7224
+"260",2021-10-22 08:45:00,"Oct","2021","NZ068","EMP","Northern Interior Delta","Cryptophytes","Plagioselmis nannoplanctica","Plagioselmis","nannoplanctica",191.64,54841.6188
+"261",2021-10-22 08:45:00,"Oct","2021","NZ068","EMP","Northern Interior Delta","Cryptophytes","Plagioselmis sp.","Plagioselmis","sp.",127.76,48464.4784
+"262",2021-10-22 08:45:00,"Oct","2021","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Eucapsis microscopica","Eucapsis","microscopica",24913.2,8968.752
+"263",2021-10-22 08:45:00,"Oct","2021","NZ068","EMP","Northern Interior Delta","Cyanobacteria","cf. Microcystis sp.","Microcystis","sp.",127.76,7398.5816
+"264",2019-09-06 12:50:00,"Sep","2019","NZ068","EMP","Northern Interior Delta","Diatoms","cf. Cyclotella sp.","Cyclotella","sp.",153.32,24397.8116
+"265",2019-09-06 12:50:00,"Sep","2019","NZ068","EMP","Northern Interior Delta","Green Algae","Chlorella sp.","Chlorella","sp.",766.6,7052.72
+"266",2019-09-06 12:50:00,"Sep","2019","NZ068","EMP","Northern Interior Delta","Cryptophytes","Cryptomonas sp.","Cryptomonas","sp.",153.32,102759.6636
+"267",2019-09-06 12:50:00,"Sep","2019","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Eucapsis microscopica","Eucapsis","microscopica",61021.36,22105.6776
+"268",2020-09-10 11:30:00,"Sep","2020","NZ068","EMP","Northern Interior Delta","Diatoms","Cocconeis placentula","Cocconeis","placentula",172.5,188613.225
+"269",2020-09-10 11:30:00,"Sep","2020","NZ068","EMP","Northern Interior Delta","Diatoms","Cyclotella sp.","Cyclotella","sp.",115,396840.85
+"270",2020-09-10 11:30:00,"Sep","2020","NZ068","EMP","Northern Interior Delta","Diatoms","cf. Cyclotella sp.","Cyclotella","sp.",230,20959.9
+"271",2020-09-10 11:30:00,"Sep","2020","NZ068","EMP","Northern Interior Delta","Diatoms","Encyonema cf. neogracile","Encyonema","neogracile",805,99691.2
+"272",2020-09-10 11:30:00,"Sep","2020","NZ068","EMP","Northern Interior Delta","Diatoms","cf. Fragilaria sp.","Fragilaria","sp.",115,16533.55
+"273",2020-09-10 11:30:00,"Sep","2020","NZ068","EMP","Northern Interior Delta","Diatoms","cf. Mastogloia sp.","Mastogloia","sp.",57.5,37441.7
+"274",2020-09-10 11:30:00,"Sep","2020","NZ068","EMP","Northern Interior Delta","Diatoms","Navicula caroliniae","Navicula","caroliniae",57.5,55394.925
+"275",2020-09-10 11:30:00,"Sep","2020","NZ068","EMP","Northern Interior Delta","Diatoms","Nitzschia cf. inconspicua","Nitzschia","inconspicua",115,14526.8
+"276",2020-09-10 11:30:00,"Sep","2020","NZ068","EMP","Northern Interior Delta","Diatoms","Stauroforma exiguiformis","Stauroforma","exiguiformis",57.5,14740.125
+"277",2020-09-10 11:30:00,"Sep","2020","NZ068","EMP","Northern Interior Delta","Green Algae","Chlorella sp.","Chlorella","sp.",57.5,2743.325
+"278",2020-09-10 11:30:00,"Sep","2020","NZ068","EMP","Northern Interior Delta","Cryptophytes","Plagioselmis nannoplanctica","Plagioselmis","nannoplanctica",57.5,14414.675
+"279",2020-09-10 11:30:00,"Sep","2020","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Chroococcus sp.","Chroococcus","sp.",2415,137719.4
+"280",2020-09-10 11:30:00,"Sep","2020","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Eucapsis microscopica","Eucapsis","microscopica",19722.5,7100.1
+"281",2020-09-10 11:30:00,"Sep","2020","NZ068","EMP","Northern Interior Delta","Cyanobacteria","cf. Komvophoron sp.","Komvophoron","sp.",115,24777.9
+"282",2020-09-10 11:30:00,"Sep","2020","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Pseudanabaena sp.","Pseudanabaena","sp.",115,4333.2
+"283",2021-09-14 13:10:00,"Sep","2021","NZ068","EMP","Northern Interior Delta","Green Algae","Drepanochloris nannoselene","Drepanochloris","nannoselene",114.99,1515.5682
+"284",2021-09-14 13:10:00,"Sep","2021","NZ068","EMP","Northern Interior Delta","Cryptophytes","cf. Cryptomonas sp.","Cryptomonas","sp.",114.99,95007.0378
+"285",2021-09-14 13:10:00,"Sep","2021","NZ068","EMP","Northern Interior Delta","Cryptophytes","Plagioselmis spp.","Plagioselmis","spp.",229.98,126615.489
+"286",2021-09-14 13:10:00,"Sep","2021","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Eucapsis microscopica","Eucapsis","microscopica",15140.35,5464.3248
+"287",2021-09-14 13:10:00,"Sep","2021","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Microcystis sp.","Microcystis","sp.",76.66,6677.8526
+"288",2021-12-13 13:55:00,"Dec","2021","NZ068","EMP","Northern Interior Delta","Diatoms","Cyclotella sp.","Cyclotella","sp.",363.12,42052.9272
+"289",2021-12-13 13:55:00,"Dec","2021","NZ068","EMP","Northern Interior Delta","Diatoms","Navicula sp.","Navicula","sp.",121.04,29370.356
+"290",2021-12-13 13:55:00,"Dec","2021","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Eucapsis microscopica","Eucapsis","microscopica",48052.88,17299.0368
+"291",2021-11-12 14:40:00,"Nov","2021","NZ068","EMP","Northern Interior Delta","Diatoms","Cocconeis placentula","Cocconeis","placentula",172.5,105154.275
+"292",2021-11-12 14:40:00,"Nov","2021","NZ068","EMP","Northern Interior Delta","Diatoms","cf. Cyclotella sp.","Cyclotella","sp.",172.5,129155.925
+"293",2021-11-12 14:40:00,"Nov","2021","NZ068","EMP","Northern Interior Delta","Diatoms","Gyrosigma cf. fasciola","Gyrosigma","fasciola",57.5,283508.35
+"294",2021-11-12 14:40:00,"Nov","2021","NZ068","EMP","Northern Interior Delta","Diatoms","Nitzschia sp.","Nitzschia","sp.",115,43261.85
+"295",2021-11-12 14:40:00,"Nov","2021","NZ068","EMP","Northern Interior Delta","Green Algae","Monoraphidium sp.","Monoraphidium","sp.",57.5,804.425
+"296",2021-11-12 14:40:00,"Nov","2021","NZ068","EMP","Northern Interior Delta","Cyanobacteria","Eucapsis microscopica","Eucapsis","microscopica",22655,8155.8

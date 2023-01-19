@@ -1,7 +1,7 @@
 # Load Libraries and Data Files ------------------------------------------------
 # Process EMP Phyto data to get surface tow data only for D19
 # Calculate correct biovolume using flowmeter equations from Tomo Kurobe
-# 9/30/2022
+# Started: 9/30/2022
 
 library(tidyverse)
 library(lubridate)
@@ -36,10 +36,9 @@ df_phyto <- df_phyto %>% select(MethodCode:Biovolume10)
 df_phyto <- df_phyto %>% filter_all(any_vars(!is.na(.)))
 
 # Average all 10 biovolume measurements for each taxon
-df_phyto <- df_phyto %>% rowwise() %>% mutate(BV.Avg = mean(c_across(Biovolume1:Biovolume10), na.rm = T))
-
-# Remove Individual Biovolume Columns
-df_phyto <- df_phyto %>% select(!(Biovolume1:Biovolume10))
+df_phyto <- df_phyto %>% rowwise() %>% 
+  mutate(BV.Avg = mean(c_across(Biovolume1:Biovolume10), na.rm = T)) %>%
+  select(!(Biovolume1:Biovolume10))
 
 # Remove unneeded columns
 df_phyto <- df_phyto %>% select(!c("MethodCode","BsaTin","DiatomSoftBody","Synonym"))
@@ -121,6 +120,15 @@ df_phyto$SampleType <- gsub("E0622B1201","Regular",df_phyto$SampleType)
 df_phyto$SampleType <- gsub("D19 Microcystis Tow","Surface Tow",df_phyto$SampleType)
 df_phyto$SampleType <- gsub("MC TOW", "Surface Tow",df_phyto$SampleType)
 df_phyto$SampleType <- gsub("E1121B2010","Regular",df_phyto$SampleType)
+df_phyto$SampleType <- gsub("E0522B0940","Regular",df_phyto$SampleType)
+df_phyto$SampleType <- gsub("E082B1736","Regular",df_phyto$SampleType)
+df_phyto$SampleType <- gsub("Microcystis Tow", "Surface Tow",df_phyto$SampleType)
+df_phyto$SampleType <- gsub("D19-Surface Tow", "Surface Tow",df_phyto$SampleType)
+df_phyto$SampleType <- gsub("E0922B2033","Regular",df_phyto$SampleType)
+df_phyto$SampleType <- gsub("E1022B2288","Regular",df_phyto$SampleType)
+
+# Make sure all SampleType is Regular or Surface Tow
+unique(df_phyto$SampleType)
 
 # Make sure all stations are named D19
 df_phyto$StationCode <- gsub("D19 MC Tow","D19",df_phyto$StationCode)
@@ -132,7 +140,7 @@ df_phyto <- df_phyto %>% select(!("DepthM"))
 #MC <- df_phyto %>% filter(Genus == "Microcystis")
 
 # Read in flowmeter data
-df_flowmeter <- read.csv(file = "data/flowmeter-data.csv")
+df_flowmeter <- read.csv(file = "flowmeter-data.csv")
 
 # Make sure dates and times are in correct format
 df_flowmeter$DateTime <- as_datetime(df_flowmeter$DateTime, 
@@ -184,10 +192,22 @@ df_abund <- df_abund %>%
   mutate(MeanRelAbund = Mean.BV.per.L/sum(Mean.BV.per.L)) %>%
   ungroup
 
-# Highlight most abundant genera (avg abundance > 1%)
+# Import list of toxigenic genera
+tox <- read_csv("toxin_producer_list.csv")
+
+df_abund <- left_join(df_abund, tox)
+
+# Highlight potentially toxic genera
 df_abund <- df_abund %>%
-  mutate(Type = case_when(MeanRelAbund > 0.01 ~ Genus,
-                          TRUE ~ 'Other'))
+  mutate(Toxic = case_when(Toxingenic == "Potential Toxin Producer" ~ "Toxic",
+                           TRUE ~ 'Non-toxic'))
+
+df_abund$Toxingenic <- NULL
+
+# Highlight most abundant genera (avg abundance > 1%)
+ df_abund <- df_abund %>%
+   mutate(Type = case_when(Toxic == 'Toxic' ~ Genus,
+                           TRUE ~ 'Not know to be toxic'))
 
 df_phyto_type <- df_abund %>% select(Genus,Type)
 
@@ -227,7 +247,7 @@ df_phyto_RA <- df_phyto_RA %>%
   ungroup()
 
 # Compare taxonomy
-bar.plot <- ggplot(df_phyto, aes(x = Month, y = BV.um3.per.L, fill = Genus)) +
+bar.plot <- ggplot(df_phyto, aes(x = Month, y = BV.um3.per.L, fill = Type)) +
   geom_bar(position = "stack",  
            width = 1, 
            stat = "summary", 
@@ -236,13 +256,13 @@ bar.plot <- ggplot(df_phyto, aes(x = Month, y = BV.um3.per.L, fill = Genus)) +
 bar.plot + 
   facet_wrap(SampleType ~ ., ncol = 1, scale = "free_y")
 
-# Compare taxonomy (re;lative abundance)
+# Compare taxonomy (relative abundance)
 bar.plot.RA <- ggplot(df_phyto_RA, aes(x = SampleType, y = MeanRelAbund, fill = Type)) +
   geom_bar(position = "stack",  
            width = 0.6, 
            stat = "summary", 
            fun = "mean") +
-  scale_fill_brewer(palette = "Paired")
+  scale_fill_brewer(palette = "Set1")
 
 bar.plot.RA + 
   facet_wrap(DateTime ~ ., ncol = 1) +
@@ -256,7 +276,7 @@ ggsave(path = output,
        device = "png",
        scale=1.0, 
        units="in",
-       height=5.5,
+       height=7.5,
        width=5.5, 
        dpi="print")
 

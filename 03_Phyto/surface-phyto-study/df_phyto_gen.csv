@@ -1,0 +1,1542 @@
+Year,Month,Season,DateTime,StationCode,Region,RegionAbbreviation,AlgalType,Genus,BV.per.mL
+2018,Aug,Summer,2018-08-01T16:20:00Z,C9,Southern Interior Delta,SID,Cyanobacterium,Aphanizomenon,394225.27
+2018,Aug,Summer,2018-08-01T16:20:00Z,C9,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,65510.51
+2018,Aug,Summer,2018-08-01T16:20:00Z,C9,Southern Interior Delta,SID,Cyanobacterium,Microcystis,130036.99
+2018,Aug,Summer,2018-08-01T16:20:00Z,C9,Southern Interior Delta,SID,Green Alga,Chlorella,14347.59
+2018,Aug,Summer,2018-08-01T16:20:00Z,C9,Southern Interior Delta,SID,Green Alga,Drepanochloris,14575.18
+2018,Aug,Summer,2018-08-01T16:20:00Z,C9,Southern Interior Delta,SID,Green Alga,Mucidosphaerium,7533.81
+2018,Aug,Summer,2018-08-01T18:00:00Z,C10A,Southern Interior Delta,SID,Centric Diatom,Cyclotella,407340.81
+2018,Aug,Summer,2018-08-01T18:00:00Z,C10A,Southern Interior Delta,SID,Centric Diatom,Skeletonema,193030.63
+2018,Aug,Summer,2018-08-01T18:00:00Z,C10A,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,86984.42
+2018,Aug,Summer,2018-08-01T18:00:00Z,C10A,Southern Interior Delta,SID,Cyanobacterium,Microcystis,1021719.2
+2018,Aug,Summer,2018-08-01T18:00:00Z,C10A,Southern Interior Delta,SID,Green Alga,Chlorella,3587.53
+2018,Aug,Summer,2018-08-01T18:00:00Z,C10A,Southern Interior Delta,SID,Green Alga,Drepanochloris,20821.68
+2018,Aug,Summer,2018-08-01T18:00:00Z,C10A,Southern Interior Delta,SID,Green Alga,Monoraphidium,9972.84
+2018,Aug,Summer,2018-08-01T18:00:00Z,C10A,Southern Interior Delta,SID,Green Alga,Mucidosphaerium,103318.66
+2018,Aug,Summer,2018-08-01T18:00:00Z,C10A,Southern Interior Delta,SID,Green Alga,Scenedesmus,474807.1
+2018,Aug,Summer,2018-08-01T18:00:00Z,C10A,Southern Interior Delta,SID,Pennate Diatom,Nitzschia,229037.11
+2018,Aug,Summer,2018-08-01T18:00:00Z,C10A,Southern Interior Delta,SID,Pennate Diatom,Ulnaria,77489
+2018,Aug,Summer,2018-08-02T13:50:00Z,D4,Confluence,CON,Centric Diatom,Cyclotella,164192.9
+2018,Aug,Summer,2018-08-02T13:50:00Z,D4,Confluence,CON,Cyanobacterium,Eucapsis,146750.02
+2018,Aug,Summer,2018-08-02T14:40:00Z,D22,Confluence,CON,Centric Diatom,Cyclotella,30498.06
+2018,Aug,Summer,2018-08-02T14:40:00Z,D22,Confluence,CON,Cryptophyte,Plagioselmis,58533.54
+2018,Aug,Summer,2018-08-02T14:40:00Z,D22,Confluence,CON,Cyanobacterium,Eucapsis,122673.8
+2018,Aug,Summer,2018-08-02T14:40:00Z,D22,Confluence,CON,Green Alga,Chlorella,22195.73
+2018,Aug,Summer,2018-08-02T14:40:00Z,D22,Confluence,CON,Green Alga,Monoraphidium,16084.44
+2018,Aug,Summer,2018-08-02T15:35:00Z,NZ068,Northern Interior Delta,NID,Centric Diatom,Cyclotella,174350.24
+2018,Aug,Summer,2018-08-02T15:35:00Z,NZ068,Northern Interior Delta,NID,Cryptophyte,Plagioselmis,55349.28
+2018,Aug,Summer,2018-08-02T15:35:00Z,NZ068,Northern Interior Delta,NID,Cyanobacterium,Eucapsis,53337.32
+2018,Aug,Summer,2018-08-02T15:35:00Z,NZ068,Northern Interior Delta,NID,Green Alga,Chlorella,10781.45
+2018,Aug,Summer,2018-08-02T16:00:00Z,C3A,Northern Interior Delta,NID,Centric Diatom,Cyclotella,19546.77
+2018,Aug,Summer,2018-08-02T16:00:00Z,C3A,Northern Interior Delta,NID,Cyanobacterium,Eucapsis,34013.88
+2018,Aug,Summer,2018-08-02T16:00:00Z,C3A,Northern Interior Delta,NID,Cyanobacterium,Pseudanabaena,4043.04
+2018,Aug,Summer,2018-08-02T16:00:00Z,C3A,Northern Interior Delta,NID,Green Alga,Chlorella,6289.18
+2018,Aug,Summer,2018-08-02T16:00:00Z,C3A,Northern Interior Delta,NID,Pennate Diatom,Achnanthidium,17066.03
+2018,Aug,Summer,2018-08-02T16:00:00Z,C3A,Northern Interior Delta,NID,Pennate Diatom,Encyonema,39942.79
+2018,Aug,Summer,2018-08-02T16:00:00Z,C3A,Northern Interior Delta,NID,Pennate Diatom,Nitzschia,115550.25
+2018,Aug,Summer,2018-08-02T16:00:00Z,C3A,Northern Interior Delta,NID,Pennate Diatom,Ulnaria,63651.68
+2018,Aug,Summer,2018-08-03T15:25:00Z,D12,Confluence,CON,Centric Diatom,Cyclotella,56567.33
+2018,Aug,Summer,2018-08-03T15:25:00Z,D12,Confluence,CON,Cyanobacterium,Chroococcus,140653.91
+2018,Aug,Summer,2018-08-03T15:25:00Z,D12,Confluence,CON,Cyanobacterium,Eucapsis,147539.74
+2018,Aug,Summer,2018-08-03T15:25:00Z,D12,Confluence,CON,Green Alga,Chlorella,13317.44
+2018,Aug,Summer,2018-08-03T15:25:00Z,EZ2 SJR,Low Salinity Zone,LSZ,Centric Diatom,Cyclotella,242030.43
+2018,Aug,Summer,2018-08-03T15:25:00Z,EZ2 SJR,Low Salinity Zone,LSZ,Cyanobacterium,Chroococcus,338639.09
+2018,Aug,Summer,2018-08-03T15:25:00Z,EZ2 SJR,Low Salinity Zone,LSZ,Cyanobacterium,Eucapsis,94503.97
+2018,Aug,Summer,2018-08-03T16:30:00Z,D19,Central Delta,CED,Centric Diatom,Skeletonema,28746.48
+2018,Aug,Summer,2018-08-03T16:30:00Z,D19,Central Delta,CED,Cryptophyte,Plagioselmis,129424.76999999999
+2018,Aug,Summer,2018-08-03T16:30:00Z,D19,Central Delta,CED,Cyanobacterium,Chroococcus,166468.01
+2018,Aug,Summer,2018-08-03T16:30:00Z,D19,Central Delta,CED,Cyanobacterium,Eucapsis,41604.22
+2018,Aug,Summer,2018-08-03T16:30:00Z,D19,Central Delta,CED,Cyanobacterium,Pseudanabaena,11411.26
+2018,Aug,Summer,2018-08-03T16:30:00Z,D19,Central Delta,CED,Green Alga,Chlorella,20808.5
+2018,Aug,Summer,2018-08-03T16:30:00Z,D19,Central Delta,CED,Pennate Diatom,Cocconeis,272808.12
+2018,Aug,Summer,2018-08-03T17:10:00Z,D28A,Central Delta,CED,Cryptophyte,Plagioselmis,46636.9
+2018,Aug,Summer,2018-08-03T17:10:00Z,D28A,Central Delta,CED,Cyanobacterium,Eucapsis,35448.82
+2018,Aug,Summer,2018-08-03T17:10:00Z,D28A,Central Delta,CED,Cyanobacterium,Microcystis,83577.32
+2018,Aug,Summer,2018-08-03T17:10:00Z,D28A,Central Delta,CED,Green Alga,Chlorella,12578.36
+2018,Aug,Summer,2018-08-03T17:10:00Z,D28A,Central Delta,CED,Green Alga,Lagerheimia,30134.61
+2018,Aug,Summer,2018-08-03T17:10:00Z,D28A,Central Delta,CED,Pennate Diatom,Cocconeis,132347.95
+2018,Aug,Summer,2018-08-06T17:40:00Z,D16,Central Delta,CED,Cyanobacterium,Chroococcus,27109.39
+2018,Aug,Summer,2018-08-06T17:40:00Z,D16,Central Delta,CED,Cyanobacterium,Eucapsis,73687.07
+2018,Aug,Summer,2018-08-06T17:40:00Z,D16,Central Delta,CED,Green Alga,Chlorella,20190.08
+2018,Aug,Summer,2018-08-06T18:35:00Z,D26,Central Delta,CED,Centric Diatom,Aulacoseira,41824839.12
+2018,Aug,Summer,2018-08-06T18:35:00Z,D26,Central Delta,CED,Centric Diatom,Cyclotella,100550.06
+2018,Aug,Summer,2018-08-06T18:35:00Z,D26,Central Delta,CED,Cyanobacterium,Eucapsis,58670.53
+2018,Aug,Summer,2018-08-06T18:35:00Z,D26,Central Delta,CED,Cyanobacterium,Microcystis,32580.6
+2018,Aug,Summer,2018-08-06T18:35:00Z,D26,Central Delta,CED,Pennate Diatom,Nitzschia,22726.23
+2018,Aug,Summer,2018-08-06T18:35:00Z,D26,Central Delta,CED,Pennate Diatom,Ulnaria,33199.37
+2018,Aug,Summer,2018-08-06T19:45:00Z,MD10A,Southern Interior Delta,SID,Centric Diatom,Aulacoseira,9363754.95
+2018,Aug,Summer,2018-08-06T19:45:00Z,MD10A,Southern Interior Delta,SID,Cyanobacterium,Chroococcus,28301.31
+2018,Aug,Summer,2018-08-06T19:45:00Z,MD10A,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,84624.49
+2018,Aug,Summer,2018-08-06T19:45:00Z,MD10A,Southern Interior Delta,SID,Green Alga,Drepanochloris,14858.19
+2018,Aug,Summer,2018-08-06T19:45:00Z,MD10A,Southern Interior Delta,SID,Green Alga,Scenedesmus,95421.42
+2018,Aug,Summer,2018-08-06T21:00:00Z,P8,Southern Interior Delta,SID,Chrysophyte,Kephyrion,85979.39
+2018,Aug,Summer,2018-08-06T21:00:00Z,P8,Southern Interior Delta,SID,Cryptophyte,Cryptomonas,138256.34
+2018,Aug,Summer,2018-08-06T21:00:00Z,P8,Southern Interior Delta,SID,Cryptophyte,Plagioselmis,25888.04
+2018,Aug,Summer,2018-08-06T21:00:00Z,P8,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,82293.52
+2018,Aug,Summer,2018-08-06T21:00:00Z,P8,Southern Interior Delta,SID,Cyanobacterium,Microcystis,28695.17
+2018,Aug,Summer,2018-08-06T21:00:00Z,P8,Southern Interior Delta,SID,Green Alga,Mucidosphaerium,25886.27
+2018,Aug,Summer,2018-08-06T21:00:00Z,P8,Southern Interior Delta,SID,Pennate Diatom,Ulnaria,29058.37
+2018,Aug,Summer,2018-08-07T18:30:00Z,D8,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,139757.06
+2018,Aug,Summer,2018-08-07T19:20:00Z,D10,Confluence,CON,Centric Diatom,Cyclotella,46575.08
+2018,Aug,Summer,2018-08-07T19:20:00Z,D10,Confluence,CON,Cyanobacterium,Eucapsis,78470.75
+2018,Aug,Summer,2018-08-07T20:00:00Z,EZ6,Low Salinity Zone,LSZ,Centric Diatom,Cyclotella,85054.88
+2018,Aug,Summer,2018-08-07T20:00:00Z,EZ6,Low Salinity Zone,LSZ,Cyanobacterium,Eucapsis,114724.46
+2018,Aug,Summer,2018-08-07T20:00:00Z,EZ6,Low Salinity Zone,LSZ,Cyanobacterium,Microcystis,19910.37
+2018,Aug,Summer,2018-08-07T20:00:00Z,EZ6,Low Salinity Zone,LSZ,Green Alga,Chlorella,8370.9
+2018,Aug,Summer,2018-08-07T20:40:00Z,EZ2,Low Salinity Zone,LSZ,Centric Diatom,Cyclotella,669609.08
+2018,Aug,Summer,2018-08-07T20:40:00Z,EZ2,Low Salinity Zone,LSZ,Cyanobacterium,Eucapsis,131993.94
+2018,Aug,Summer,2018-08-07T20:40:00Z,EZ2,Low Salinity Zone,LSZ,Green Alga,Chlorella,5022.54
+2018,Aug,Summer,2018-08-08T20:00:00Z,D6,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,28322.61
+2018,Aug,Summer,2018-08-08T20:00:00Z,D6,San Pablo Bay,SPB,Green Alga,Chlorella,7212.53
+2018,Aug,Summer,2018-08-08T20:50:00Z,D7,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,119859.36
+2018,Aug,Summer,2018-08-08T21:50:00Z,NZS42,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,191829.03
+2018,Aug,Summer,2018-08-08T21:50:00Z,NZS42,Grizzly.Suisun Bay,GSB,Pennate Diatom,Entomoneis,6799659.47
+2018,Aug,Summer,2018-08-08T22:50:00Z,NZ032,Grizzly.Suisun Bay,GSB,Centric Diatom,Cyclotella,139725.23
+2018,Aug,Summer,2018-08-08T22:50:00Z,NZ032,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,228788.71
+2018,Aug,Summer,2018-08-09T17:25:00Z,D41A,San Pablo Bay,SPB,Chrysophyte,Kephyrion,11300.48
+2018,Aug,Summer,2018-08-09T17:25:00Z,D41A,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,44541.87
+2018,Aug,Summer,2018-08-09T18:10:00Z,D41,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,34093.03
+2018,Aug,Summer,2018-08-09T18:10:00Z,D41,San Pablo Bay,SPB,Pennate Diatom,Nitzschia,36998.3
+2018,Aug,Summer,2018-08-09T18:55:00Z,NZ325,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,52236.98
+2018,Aug,Summer,2018-08-09T19:10:00Z,NZ002,San Pablo Bay,SPB,Centric Diatom,Cyclotella,43056.09
+2018,Aug,Summer,2018-08-09T19:10:00Z,NZ002,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,40812.8
+2018,Aug,Summer,2018-08-09T19:10:00Z,NZ002,San Pablo Bay,SPB,Green Alga,Chlorella,971.72
+2018,Aug,Summer,2018-08-09T19:30:00Z,NZ004,San Pablo Bay,SPB,Centric Diatom,Cyclotella,29941.12
+2018,Aug,Summer,2018-08-09T19:30:00Z,NZ004,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,49854.1
+2018,Aug,Summer,2018-08-09T19:30:00Z,NZ004,San Pablo Bay,SPB,Pennate Diatom,Staurosira,59347.58
+2018,Dec,Winter,2018-12-10T16:00:00Z,C3A,Northern Interior Delta,NID,Cyanobacterium,Eucapsis,23933.78
+2018,Dec,Winter,2018-12-10T16:00:00Z,C3A,Northern Interior Delta,NID,Green Alga,Chlorella,578.12
+2018,Dec,Winter,2018-12-10T16:00:00Z,C3A,Northern Interior Delta,NID,Green Alga,Coccomyxa,12779.49
+2018,Dec,Winter,2018-12-10T16:00:00Z,C3A,Northern Interior Delta,NID,Pennate Diatom,Achnanthidium,94189.93
+2018,Dec,Winter,2018-12-10T16:00:00Z,C3A,Northern Interior Delta,NID,Pennate Diatom,Encyonema,103033.48
+2018,Dec,Winter,2018-12-10T16:00:00Z,C3A,Northern Interior Delta,NID,Pennate Diatom,Frustulia,2389721.21
+2018,Dec,Winter,2018-12-10T16:00:00Z,C3A,Northern Interior Delta,NID,Pennate Diatom,Nitzschia,11722.29
+2018,Dec,Winter,2018-12-10T17:55:00Z,C9,Southern Interior Delta,SID,Centric Diatom,Cyclotella,19127.24
+2018,Dec,Winter,2018-12-10T17:55:00Z,C9,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,12249.26
+2018,Dec,Winter,2018-12-10T17:55:00Z,C9,Southern Interior Delta,SID,Cyanobacterium,Microcystis,2343.96
+2018,Dec,Winter,2018-12-10T17:55:00Z,C9,Southern Interior Delta,SID,Green Alga,Chlorella,937.07
+2018,Dec,Winter,2018-12-10T17:55:00Z,C9,Southern Interior Delta,SID,Green Alga,Coccomyxa,8960.19
+2018,Dec,Winter,2018-12-10T17:55:00Z,C9,Southern Interior Delta,SID,Pennate Diatom,Cocconeis,25618.32
+2018,Dec,Winter,2018-12-10T17:55:00Z,C9,Southern Interior Delta,SID,Pennate Diatom,Nitzschia,5747.03
+2018,Dec,Winter,2018-12-10T19:30:00Z,C10A,Southern Interior Delta,SID,Centric Diatom,Cyclotella,995112.27
+2018,Dec,Winter,2018-12-10T19:30:00Z,C10A,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,23902.57
+2018,Dec,Winter,2018-12-10T19:30:00Z,C10A,Southern Interior Delta,SID,Green Alga,Chlorella,622.59
+2018,Dec,Winter,2018-12-10T19:30:00Z,C10A,Southern Interior Delta,SID,Green Alga,Coccomyxa,50597.29
+2018,Dec,Winter,2018-12-10T19:30:00Z,C10A,Southern Interior Delta,SID,Green Alga,Desmodesmus,129234.49
+2018,Dec,Winter,2018-12-10T19:30:00Z,C10A,Southern Interior Delta,SID,Pennate Diatom,Diploneis,269740.05
+2018,Dec,Winter,2018-12-10T19:30:00Z,C10A,Southern Interior Delta,SID,Pennate Diatom,Navicula,344177.5
+2018,Dec,Winter,2018-12-10T19:30:00Z,C10A,Southern Interior Delta,SID,Pennate Diatom,Nitzschia,78517.56
+2018,Dec,Winter,2018-12-10T19:30:00Z,C10A,Southern Interior Delta,SID,Pennate Diatom,Surirella,201539.3
+2018,Dec,Winter,2018-12-11T16:00:00Z,D4,Confluence,CON,Cyanobacterium,Eucapsis,68799.47
+2018,Dec,Winter,2018-12-11T16:50:00Z,EZ6,Low Salinity Zone,LSZ,Centric Diatom,Cyclotella,81290.76
+2018,Dec,Winter,2018-12-11T16:50:00Z,EZ6,Low Salinity Zone,LSZ,Cyanobacterium,Eucapsis,58008.99
+2018,Dec,Winter,2018-12-11T17:40:00Z,D22,Confluence,CON,Centric Diatom,Cyclotella,121936.14
+2018,Dec,Winter,2018-12-11T17:40:00Z,D22,Confluence,CON,Cyanobacterium,Eucapsis,81334.28
+2018,Dec,Winter,2018-12-11T17:40:00Z,D22,Confluence,CON,Green Alga,Coccomyxa,8839.15
+2018,Dec,Winter,2018-12-11T17:40:00Z,D22,Confluence,CON,Pennate Diatom,Nitzschia,33270.66
+2018,Dec,Winter,2018-12-11T17:40:00Z,EZ2,Low Salinity Zone,LSZ,Cyanobacterium,Eucapsis,726937.78
+2018,Dec,Winter,2018-12-11T17:40:00Z,EZ2,Low Salinity Zone,LSZ,Pennate Diatom,Nitzschia,2709862.52
+2018,Dec,Winter,2018-12-11T18:40:00Z,NZ068,Northern Interior Delta,NID,Centric Diatom,Cyclotella,281583.65
+2018,Dec,Winter,2018-12-11T18:40:00Z,NZ068,Northern Interior Delta,NID,Cyanobacterium,Eucapsis,30984.49
+2018,Dec,Winter,2018-12-11T18:40:00Z,NZ068,Northern Interior Delta,NID,Green Alga,Coccomyxa,28320.19
+2018,Dec,Winter,2018-12-11T18:40:00Z,NZ068,Northern Interior Delta,NID,Pennate Diatom,Cocconeis,81208.16
+2018,Dec,Winter,2018-12-12T16:50:00Z,D12,Confluence,CON,Cyanobacterium,Eucapsis,38131.78
+2018,Dec,Winter,2018-12-12T16:50:00Z,D12,Confluence,CON,Cyanobacterium,Microcystis,6641.22
+2018,Dec,Winter,2018-12-12T16:50:00Z,D12,Confluence,CON,Green Alga,Coccomyxa,76785.49
+2018,Dec,Winter,2018-12-12T18:00:00Z,EZ2 SJR,Low Salinity Zone,LSZ,Cyanobacterium,Eucapsis,50649.2
+2018,Dec,Winter,2018-12-12T18:00:00Z,EZ2 SJR,Low Salinity Zone,LSZ,Green Alga,Chlorella,4624.96
+2018,Dec,Winter,2018-12-12T18:00:00Z,EZ2 SJR,Low Salinity Zone,LSZ,Green Alga,Coccomyxa,2791.9
+2018,Dec,Winter,2018-12-12T19:00:00Z,D19,Central Delta,CED,Centric Diatom,Cyclotella,210006.04
+2018,Dec,Winter,2018-12-12T19:00:00Z,D19,Central Delta,CED,Cryptophyte,Plagioselmis,202332.74
+2018,Dec,Winter,2018-12-12T19:00:00Z,D19,Central Delta,CED,Cyanobacterium,Eucapsis,24778.9
+2018,Dec,Winter,2018-12-12T19:00:00Z,D19,Central Delta,CED,Green Alga,Chlorella,1348.95
+2018,Dec,Winter,2018-12-12T19:00:00Z,D19,Central Delta,CED,Green Alga,Coccomyxa,86376.59
+2018,Dec,Winter,2018-12-12T19:00:00Z,D19,Central Delta,CED,Pennate Diatom,Cocconeis,112070.53
+2018,Dec,Winter,2018-12-12T19:40:00Z,D28A,Central Delta,CED,Cryptophyte,Plagioselmis,551203.14
+2018,Dec,Winter,2018-12-12T19:40:00Z,D28A,Central Delta,CED,Cyanobacterium,Eucapsis,17037.6
+2018,Dec,Winter,2018-12-12T19:40:00Z,D28A,Central Delta,CED,Green Alga,Chlamydomonas,30047.02
+2018,Dec,Winter,2018-12-12T19:40:00Z,D28A,Central Delta,CED,Green Alga,Chlorella,404.68
+2018,Dec,Winter,2018-12-12T19:40:00Z,D28A,Central Delta,CED,Green Alga,Coccomyxa,3365.27
+2018,Dec,Winter,2018-12-12T19:40:00Z,D28A,Central Delta,CED,Green Alga,Monoraphidium,2034.1
+2018,Dec,Winter,2018-12-13T16:45:00Z,D16,Central Delta,CED,Cyanobacterium,Eucapsis,27787.52
+2018,Dec,Winter,2018-12-13T16:45:00Z,D16,Central Delta,CED,Green Alga,Chlorella,1348.95
+2018,Dec,Winter,2018-12-13T16:45:00Z,D16,Central Delta,CED,Green Alga,Coccomyxa,5182.79
+2018,Dec,Winter,2018-12-13T16:45:00Z,D16,Central Delta,CED,Pennate Diatom,Cocconeis,203122.17
+2018,Dec,Winter,2018-12-13T16:45:00Z,D16,Central Delta,CED,Pennate Diatom,Rhoicosphenia,31977.57
+2018,Dec,Winter,2018-12-13T17:50:00Z,D26,Central Delta,CED,Cryptophyte,Plagioselmis,278613.02
+2018,Dec,Winter,2018-12-13T17:50:00Z,D26,Central Delta,CED,Cyanobacterium,Eucapsis,25120.7
+2018,Dec,Winter,2018-12-13T17:50:00Z,D26,Central Delta,CED,Green Alga,Coccomyxa,2619.01
+2018,Dec,Winter,2018-12-13T19:10:00Z,MD10A,Southern Interior Delta,SID,Cryptophyte,Plagioselmis,14125.68
+2018,Dec,Winter,2018-12-13T19:10:00Z,MD10A,Southern Interior Delta,SID,Cyanobacterium,Chroococcus,899.3
+2018,Dec,Winter,2018-12-13T19:10:00Z,MD10A,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,16541.8
+2018,Dec,Winter,2018-12-13T19:10:00Z,MD10A,Southern Interior Delta,SID,Cyanobacterium,Microcystis,3320.61
+2018,Dec,Winter,2018-12-13T19:10:00Z,MD10A,Southern Interior Delta,SID,Green Alga,Chlorella,25180.32
+2018,Dec,Winter,2018-12-13T19:10:00Z,MD10A,Southern Interior Delta,SID,Green Alga,Cladophora,2887.22
+2018,Dec,Winter,2018-12-13T20:05:00Z,P8,Southern Interior Delta,SID,Cryptophyte,Plagioselmis,419243.03
+2018,Dec,Winter,2018-12-13T20:05:00Z,P8,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,22013.67
+2018,Dec,Winter,2018-12-13T20:05:00Z,P8,Southern Interior Delta,SID,Green Alga,Chlorella,2512.95
+2018,Dec,Winter,2018-12-13T20:05:00Z,P8,Southern Interior Delta,SID,Green Alga,Monoraphidium,2712.13
+2018,Dec,Winter,2018-12-13T20:05:00Z,P8,Southern Interior Delta,SID,Pennate Diatom,Achnanthidium,13805.39
+2018,Dec,Winter,2018-12-14T19:05:00Z,D8,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,46824.44
+2018,Dec,Winter,2018-12-14T19:05:00Z,D8,Grizzly.Suisun Bay,GSB,Green Alga,Chlorella,740.71
+2018,Dec,Winter,2018-12-14T19:05:00Z,D8,Grizzly.Suisun Bay,GSB,Green Alga,Coccomyxa,1595.37
+2018,Dec,Winter,2018-12-14T19:55:00Z,D10,Confluence,CON,Cyanobacterium,Eucapsis,82145.59
+2018,Dec,Winter,2018-12-14T19:55:00Z,D10,Confluence,CON,Green Alga,Coccomyxa,7880.68
+2018,Dec,Winter,2018-12-17T18:10:00Z,D6,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,12302.48
+2018,Dec,Winter,2018-12-17T18:10:00Z,D6,San Pablo Bay,SPB,Green Alga,Chlorella,188.54
+2018,Dec,Winter,2018-12-18T18:35:00Z,D7,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,68150.42
+2018,Dec,Winter,2018-12-18T18:35:00Z,D7,Grizzly.Suisun Bay,GSB,Green Alga,Coccomyxa,22837.4
+2018,Dec,Winter,2018-12-18T19:25:00Z,NZS42,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,150579.97
+2018,Dec,Winter,2018-12-18T19:25:00Z,NZS42,Grizzly.Suisun Bay,GSB,Green Alga,Chlorella,6474.94
+2018,Dec,Winter,2018-12-18T19:25:00Z,NZS42,Grizzly.Suisun Bay,GSB,Green Alga,Coccomyxa,26828.66
+2018,Dec,Winter,2018-12-18T20:35:00Z,NZ032,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,93648.87
+2018,Dec,Winter,2018-12-18T20:35:00Z,NZ032,Grizzly.Suisun Bay,GSB,Cyanobacterium,Microcystis,17077.41
+2018,Dec,Winter,2018-12-19T16:30:00Z,D41A,San Pablo Bay,SPB,Centric Diatom,Coscinodiscus,15749178.68
+2018,Dec,Winter,2018-12-19T16:30:00Z,D41A,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,20946.67
+2018,Dec,Winter,2018-12-19T16:30:00Z,D41A,San Pablo Bay,SPB,Green Alga,Chlorella,981.05
+2018,Dec,Winter,2018-12-19T16:30:00Z,D41A,San Pablo Bay,SPB,Pennate Diatom,Surirella,132004.93
+2018,Dec,Winter,2018-12-19T17:20:00Z,D41,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,12314.59
+2018,Dec,Winter,2018-12-19T17:20:00Z,D41,San Pablo Bay,SPB,Cyanobacterium,Microcystis,8750.86
+2018,Dec,Winter,2018-12-19T18:15:00Z,NZ325,San Pablo Bay,SPB,Cryptophyte,Plagioselmis,375397.45
+2018,Dec,Winter,2018-12-19T18:15:00Z,NZ325,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,40869.97
+2018,Dec,Winter,2018-12-19T18:15:00Z,NZ325,San Pablo Bay,SPB,Cyanobacterium,Microcystis,14942.74
+2018,Dec,Winter,2018-12-19T18:15:00Z,NZ325,San Pablo Bay,SPB,Green Alga,Chlorella,5058.55
+2018,Dec,Winter,2018-12-19T18:15:00Z,NZ325,San Pablo Bay,SPB,Green Alga,Coccomyxa,3141.62
+2018,Dec,Winter,2018-12-19T18:40:00Z,NZ002,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,36959.88
+2018,Dec,Winter,2018-12-19T18:40:00Z,NZ002,San Pablo Bay,SPB,Green Alga,Coccomyxa,2650.56
+2018,Dec,Winter,2018-12-19T19:05:00Z,NZ004,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,36779.59
+2018,Jul 18,Summer,2018-07-09T19:10:00Z,D16,Central Delta,CED,Cryptophyte,Plagioselmis,118139.41
+2018,Jul 18,Summer,2018-07-09T19:10:00Z,D16,Central Delta,CED,Cyanobacterium,Aphanizomenon,627176.57
+2018,Jul 18,Summer,2018-07-09T19:10:00Z,D16,Central Delta,CED,Cyanobacterium,Eucapsis,54862.35
+2018,Jul 18,Summer,2018-07-09T19:10:00Z,D16,Central Delta,CED,Cyanobacterium,Microcystis,57390.35
+2018,Jul 18,Summer,2018-07-09T19:10:00Z,D16,Central Delta,CED,Green Alga,Chlorella,9433.77
+2018,Jul 18,Summer,2018-07-09T20:00:00Z,D26,Central Delta,CED,Cyanobacterium,Aphanizomenon,238924.41
+2018,Jul 18,Summer,2018-07-09T20:00:00Z,D26,Central Delta,CED,Cyanobacterium,Eucapsis,53781.32
+2018,Jul 18,Summer,2018-07-09T20:00:00Z,D26,Central Delta,CED,Cyanobacterium,Microcystis,204050.51
+2018,Jul 18,Summer,2018-07-09T20:00:00Z,D26,Central Delta,CED,Green Alga,Chlorella,8150.78
+2018,Jul 18,Summer,2018-07-09T20:00:00Z,D26,Central Delta,CED,Green Alga,Mucidosphaerium,20439.84
+2018,Jul 18,Summer,2018-07-09T20:00:00Z,D26,Central Delta,CED,Pennate Diatom,Cocconeis,358386.61
+2018,Jul 18,Summer,2018-07-09T20:00:00Z,D26,Central Delta,CED,Pennate Diatom,Ulnaria,258078.5
+2018,Jul 18,Summer,2018-07-09T21:15:00Z,MD10A,Southern Interior Delta,SID,Centric Diatom,Cyclotella,100818.27
+2018,Jul 18,Summer,2018-07-09T21:15:00Z,MD10A,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,40776.27
+2018,Jul 18,Summer,2018-07-09T21:15:00Z,MD10A,Southern Interior Delta,SID,Green Alga,Chlorella,42329.89
+2018,Jul 18,Summer,2018-07-09T21:15:00Z,MD10A,Southern Interior Delta,SID,Pennate Diatom,Cocconeis,10583.07
+2018,Jul 18,Summer,2018-07-09T22:30:00Z,P8,Southern Interior Delta,SID,Centric Diatom,Cyclotella,56473.77
+2018,Jul 18,Summer,2018-07-09T22:30:00Z,P8,Southern Interior Delta,SID,Cryptophyte,Cryptomonas,599909.09
+2018,Jul 18,Summer,2018-07-09T22:30:00Z,P8,Southern Interior Delta,SID,Cryptophyte,Plagioselmis,51894.81
+2018,Jul 18,Summer,2018-07-09T22:30:00Z,P8,Southern Interior Delta,SID,Cyanobacterium,Chroococcus,126885.62
+2018,Jul 18,Summer,2018-07-09T22:30:00Z,P8,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,69216.17
+2018,Jul 18,Summer,2018-07-09T22:30:00Z,P8,Southern Interior Delta,SID,Cyanobacterium,Pseudanabaena,382791.89
+2018,Jul 18,Summer,2018-07-09T22:30:00Z,P8,Southern Interior Delta,SID,Green Alga,Chlorella,33456.17
+2018,Jul 18,Summer,2018-07-10T19:40:00Z,D8,Grizzly.Suisun Bay,GSB,Centric Diatom,Cyclotella,83835.14
+2018,Jul 18,Summer,2018-07-10T19:40:00Z,D8,Grizzly.Suisun Bay,GSB,Cryptophyte,Cryptomonas,379895.8
+2018,Jul 18,Summer,2018-07-10T19:40:00Z,D8,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,138101.17
+2018,Jul 18,Summer,2018-07-10T20:25:00Z,D10,Confluence,CON,Centric Diatom,Cyclotella,52396.96
+2018,Jul 18,Summer,2018-07-10T20:25:00Z,D10,Confluence,CON,Cryptophyte,Plagioselmis,326411.69
+2018,Jul 18,Summer,2018-07-10T20:25:00Z,D10,Confluence,CON,Cyanobacterium,Eucapsis,94282.2
+2018,Jul 18,Summer,2018-07-10T21:11:00Z,EZ6,Low Salinity Zone,LSZ,Cyanobacterium,Chroococcus,39070.53
+2018,Jul 18,Summer,2018-07-10T21:11:00Z,EZ6,Low Salinity Zone,LSZ,Cyanobacterium,Eucapsis,114808.33
+2018,Jul 18,Summer,2018-07-10T21:55:00Z,EZ2,Low Salinity Zone,LSZ,Centric Diatom,Cyclotella,112947.53
+2018,Jul 18,Summer,2018-07-10T21:55:00Z,EZ2,Low Salinity Zone,LSZ,Cyanobacterium,Eucapsis,218080.62
+2018,Jul 18,Summer,2018-07-10T21:55:00Z,EZ2,Low Salinity Zone,LSZ,Green Alga,Chlorella,22578.67
+2018,Jul 18,Summer,2018-07-10T21:55:00Z,EZ2,Low Salinity Zone,LSZ,Pennate Diatom,Navicula,1566294.9
+2018,Jul 18,Summer,2018-07-11T20:30:00Z,D6,San Pablo Bay,SPB,Centric Diatom,Cyclotella,19960.75
+2018,Jul 18,Summer,2018-07-11T20:30:00Z,D6,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,32013.86
+2018,Jul 18,Summer,2018-07-11T20:30:00Z,D6,San Pablo Bay,SPB,Green Alga,Chlorella,5035.14
+2018,Jul 18,Summer,2018-07-11T20:30:00Z,D6,San Pablo Bay,SPB,Pennate Diatom,Cocconeis,26847.71
+2018,Jul 18,Summer,2018-07-11T21:15:00Z,D7,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,49735.82
+2018,Jul 18,Summer,2018-07-11T21:15:00Z,D7,Grizzly.Suisun Bay,GSB,Green Alga,Chlorella,8063.81
+2018,Jul 18,Summer,2018-07-11T22:05:00Z,NZS42,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,144966.32
+2018,Jul 18,Summer,2018-07-11T22:05:00Z,NZS42,Grizzly.Suisun Bay,GSB,Green Alga,Chlorella,15094.03
+2018,Jul 18,Summer,2018-07-11T23:00:00Z,NZ032,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,95331.91
+2018,Jul 18,Summer,2018-07-11T23:00:00Z,NZ032,Grizzly.Suisun Bay,GSB,Green Alga,Chlorella,10990.52
+2018,Jul 18,Summer,2018-07-12T19:15:00Z,D41A,San Pablo Bay,SPB,Cyanobacterium,Chroococcus,1521.98
+2018,Jul 18,Summer,2018-07-12T19:15:00Z,D41A,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,22578.82
+2018,Jul 18,Summer,2018-07-12T19:15:00Z,D41A,San Pablo Bay,SPB,Green Alga,Chlorella,760.99
+2018,Jul 18,Summer,2018-07-12T20:10:00Z,D41,San Pablo Bay,SPB,Centric Diatom,Cyclotella,12060.29
+2018,Jul 18,Summer,2018-07-12T20:10:00Z,D41,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,37565.84
+2018,Jul 18,Summer,2018-07-12T20:10:00Z,D41,San Pablo Bay,SPB,Green Alga,Chlorella,2096.39
+2018,Jul 18,Summer,2018-07-12T20:10:00Z,D41,San Pablo Bay,SPB,Green Alga,Mucidosphaerium,4185.45
+2018,Jul 18,Summer,2018-07-12T20:10:00Z,D41,San Pablo Bay,SPB,Pennate Diatom,Nitzschia,5555.3
+2018,Jul 18,Summer,2018-07-12T20:55:00Z,NZ325,San Pablo Bay,SPB,Cryptophyte,Plagioselmis,114025.99
+2018,Jul 18,Summer,2018-07-12T20:55:00Z,NZ325,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,40347.91
+2018,Jul 18,Summer,2018-07-12T21:10:00Z,NZ002,San Pablo Bay,SPB,Centric Diatom,Thalassiosira,196430.49
+2018,Jul 18,Summer,2018-07-12T21:10:00Z,NZ002,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,28474.1
+2018,Jul 18,Summer,2018-07-12T21:10:00Z,NZ002,San Pablo Bay,SPB,Green Alga,Chlorella,9697.44
+2018,Jul 18,Summer,2018-07-12T21:25:00Z,NZ004,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,40179.67
+2018,Jul 18,Summer,2018-07-12T21:25:00Z,NZ004,San Pablo Bay,SPB,Green Alga,Chlorella,9959.97
+2018,Jul 18,Summer,2018-07-12T21:25:00Z,NZ004,San Pablo Bay,SPB,Green Alga,Oocystis,26764.59
+2018,Jul 18,Summer,2018-07-16T15:55:00Z,C9,Southern Interior Delta,SID,Centric Diatom,Cyclotella,322707.24
+2018,Jul 18,Summer,2018-07-16T15:55:00Z,C9,Southern Interior Delta,SID,Cyanobacterium,Chroococcus,570747.46
+2018,Jul 18,Summer,2018-07-16T15:55:00Z,C9,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,48612.18
+2018,Jul 18,Summer,2018-07-16T15:55:00Z,C9,Southern Interior Delta,SID,Cyanobacterium,Pseudanabaena,751736.01
+2018,Jul 18,Summer,2018-07-16T15:55:00Z,C9,Southern Interior Delta,SID,Green Alga,Chlorella,36282.76
+2018,Jul 18,Summer,2018-07-16T15:55:00Z,C9,Southern Interior Delta,SID,Green Alga,Monoraphidium,1031.14
+2018,Jul 18,Summer,2018-07-16T15:55:00Z,C9,Southern Interior Delta,SID,Pennate Diatom,Nitzschia,29235.97
+2018,Jul 18,Summer,2018-07-16T17:30:00Z,C10A,Southern Interior Delta,SID,Centric Diatom,Cyclotella,11383631.98
+2018,Jul 18,Summer,2018-07-16T17:30:00Z,C10A,Southern Interior Delta,SID,Centric Diatom,Skeletonema,645404.93
+2018,Jul 18,Summer,2018-07-16T17:30:00Z,C10A,Southern Interior Delta,SID,Cyanobacterium,Chroococcus,186444.17
+2018,Jul 18,Summer,2018-07-16T17:30:00Z,C10A,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,58121.71
+2018,Jul 18,Summer,2018-07-16T17:30:00Z,C10A,Southern Interior Delta,SID,Green Alga,Chlamydomonas,131082
+2018,Jul 18,Summer,2018-07-16T17:30:00Z,C10A,Southern Interior Delta,SID,Green Alga,Chlorella,60585.25
+2018,Jul 18,Summer,2018-07-16T17:30:00Z,C10A,Southern Interior Delta,SID,Green Alga,Oocystis,48796.9
+2018,Jul 18,Summer,2018-07-16T17:30:00Z,C10A,Southern Interior Delta,SID,Pennate Diatom,Navicula,1517814.35
+2018,Jul 18,Summer,2018-07-16T17:30:00Z,C10A,Southern Interior Delta,SID,Pennate Diatom,Nitzschia,269714.93
+2018,Jul 18,Summer,2018-07-17T16:00:00Z,C3A,Northern Interior Delta,NID,Centric Diatom,Cyclotella,66429.56
+2018,Jul 18,Summer,2018-07-17T16:00:00Z,C3A,Northern Interior Delta,NID,Cyanobacterium,Dolichospermum,16420.86
+2018,Jul 18,Summer,2018-07-17T16:00:00Z,C3A,Northern Interior Delta,NID,Cyanobacterium,Eucapsis,29956.54
+2018,Jul 18,Summer,2018-07-17T16:00:00Z,C3A,Northern Interior Delta,NID,Green Alga,Chlorella,4806.27
+2018,Jul 18,Summer,2018-07-17T16:00:00Z,C3A,Northern Interior Delta,NID,Pennate Diatom,Encyonema,58921.43
+2018,Jul 18,Summer,2018-07-17T16:00:00Z,C3A,Northern Interior Delta,NID,Pennate Diatom,Gomphonema,214374.44
+2018,Jul 18,Summer,2018-07-17T16:00:00Z,C3A,Northern Interior Delta,NID,Pennate Diatom,Staurosira,41588.27
+2018,Jul 18,Summer,2018-07-18T14:40:00Z,D4,Confluence,CON,Centric Diatom,Cyclotella,188245.89
+2018,Jul 18,Summer,2018-07-18T14:40:00Z,D4,Confluence,CON,Cyanobacterium,Dolichospermum,110127.71
+2018,Jul 18,Summer,2018-07-18T14:40:00Z,D4,Confluence,CON,Cyanobacterium,Eucapsis,119224.03
+2018,Jul 18,Summer,2018-07-18T15:25:00Z,D22,Confluence,CON,Centric Diatom,Cyclotella,82096.45
+2018,Jul 18,Summer,2018-07-18T15:25:00Z,D22,Confluence,CON,Cyanobacterium,Eucapsis,85455.54
+2018,Jul 18,Summer,2018-07-18T15:25:00Z,D22,Confluence,CON,Pennate Diatom,Nitzschia,35133.52
+2018,Jul 18,Summer,2018-07-18T16:15:00Z,NZ068,Northern Interior Delta,NID,Cryptophyte,Plagioselmis,47784.88
+2018,Jul 18,Summer,2018-07-18T16:15:00Z,NZ068,Northern Interior Delta,NID,Cyanobacterium,Eucapsis,48592.36
+2018,Jul 18,Summer,2018-07-18T16:15:00Z,NZ068,Northern Interior Delta,NID,Green Alga,Chlorella,3773.51
+2018,Jul 18,Summer,2018-07-18T16:15:00Z,NZ068,Northern Interior Delta,NID,Pennate Diatom,Cocconeis,110369.46
+2018,Jul 18,Summer,2018-07-18T16:15:00Z,NZ068,Northern Interior Delta,NID,Pennate Diatom,Nitzschia,20059.14
+2018,Jul 18,Summer,2018-07-18T16:15:00Z,NZ068,Northern Interior Delta,NID,Pennate Diatom,Ulnaria,60053.97
+2018,Jul 18,Summer,2018-07-19T16:00:00Z,D12,Confluence,CON,Centric Diatom,Cyclotella,55302.54
+2018,Jul 18,Summer,2018-07-19T16:00:00Z,D12,Confluence,CON,Cyanobacterium,Eucapsis,64618.66
+2018,Jul 18,Summer,2018-07-19T16:00:00Z,D12,Confluence,CON,Green Alga,Chlorella,20754.3
+2018,Jul 18,Summer,2018-07-19T16:00:00Z,D12,Confluence,CON,Green Alga,Drepanochloris,11886.55
+2018,Jul 18,Summer,2018-07-19T16:00:00Z,D12,Confluence,CON,Pennate Diatom,Ulnaria,23246.7
+2018,Jul 18,Summer,2018-07-19T16:40:00Z,EZ2 SJR,Low Salinity Zone,LSZ,Centric Diatom,Skeletonema,182988.37
+2018,Jul 18,Summer,2018-07-19T16:40:00Z,EZ2 SJR,Low Salinity Zone,LSZ,Cyanobacterium,Chroococcus,84590.41
+2018,Jul 18,Summer,2018-07-19T16:40:00Z,EZ2 SJR,Low Salinity Zone,LSZ,Cyanobacterium,Eucapsis,145718.26
+2018,Jul 18,Summer,2018-07-19T16:40:00Z,EZ2 SJR,Low Salinity Zone,LSZ,Green Alga,Chlorella,10573.8
+2018,Jul 18,Summer,2018-07-19T16:40:00Z,EZ2 SJR,Low Salinity Zone,LSZ,Pennate Diatom,Nitzschia,40028.36
+2018,Jul 18,Summer,2018-07-19T17:40:00Z,D19,Central Delta,CED,Cyanobacterium,Aphanizomenon,77489
+2018,Jul 18,Summer,2018-07-19T17:40:00Z,D19,Central Delta,CED,Cyanobacterium,Eucapsis,49399.28
+2018,Jul 18,Summer,2018-07-19T17:40:00Z,D19,Central Delta,CED,Cyanobacterium,Merismopedia,1286.94
+2018,Jul 18,Summer,2018-07-19T17:40:00Z,D19,Central Delta,CED,Cyanobacterium,Microcystis,677510.71
+2018,Jul 18,Summer,2018-07-19T17:40:00Z,D19,Central Delta,CED,Green Alga,Chlorella,20215.22
+2018,Jul 18,Summer,2018-07-19T18:15:00Z,D28A,Central Delta,CED,Cyanobacterium,Aphanizomenon,380785.77
+2018,Jul 18,Summer,2018-07-19T18:15:00Z,D28A,Central Delta,CED,Cyanobacterium,Eucapsis,39474.54
+2018,Jul 18,Summer,2018-07-19T18:15:00Z,D28A,Central Delta,CED,Cyanobacterium,Microcystis,227985.95
+2018,Jul 18,Summer,2018-07-19T18:15:00Z,D28A,Central Delta,CED,Green Alga,Chlorella,6278.17
+2018,Jul 18,Summer,2018-07-19T18:15:00Z,D28A,Central Delta,CED,Pennate Diatom,Cocconeis,77521.28
+2018,Jul 18,Summer,2018-07-19T18:15:00Z,D28A,Central Delta,CED,Pennate Diatom,Nitzschia,28519.52
+2018,Nov,Fall,2018-11-09T16:00:00Z,C3A,Northern Interior Delta,NID,Centric Diatom,Aulacoseira,39709.27
+2018,Nov,Fall,2018-11-09T16:00:00Z,C3A,Northern Interior Delta,NID,Cyanobacterium,Eucapsis,12481.76
+2018,Nov,Fall,2018-11-09T16:00:00Z,C3A,Northern Interior Delta,NID,Green Alga,Chlorella,4623.41
+2018,Nov,Fall,2018-11-09T16:00:00Z,C3A,Northern Interior Delta,NID,Green Alga,Coccomyxa,5163.81
+2018,Nov,Fall,2018-11-09T16:00:00Z,C3A,Northern Interior Delta,NID,Pennate Diatom,Cocconeis,72694.4
+2018,Nov,Fall,2018-11-09T16:00:00Z,C3A,Northern Interior Delta,NID,Pennate Diatom,Nitzschia,4703.54
+2018,Nov,Fall,2018-11-09T17:45:00Z,C9,Southern Interior Delta,SID,Centric Diatom,Cyclotella,200172.62
+2018,Nov,Fall,2018-11-09T17:45:00Z,C9,Southern Interior Delta,SID,Cryptophyte,Plagioselmis,49069.87
+2018,Nov,Fall,2018-11-09T17:45:00Z,C9,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,10114.39
+2018,Nov,Fall,2018-11-09T17:45:00Z,C9,Southern Interior Delta,SID,Cyanobacterium,Microcystis,1992.37
+2018,Nov,Fall,2018-11-09T17:45:00Z,C9,Southern Interior Delta,SID,Cyanobacterium,Snowella,286.74
+2018,Nov,Fall,2018-11-09T17:45:00Z,C9,Southern Interior Delta,SID,Green Alga,Chlamydomonas,10801.99
+2018,Nov,Fall,2018-11-09T17:45:00Z,C9,Southern Interior Delta,SID,Green Alga,Chlorella,5664.04
+2018,Nov,Fall,2018-11-09T17:45:00Z,C9,Southern Interior Delta,SID,Green Alga,Coccomyxa,186.13
+2018,Nov,Fall,2018-11-09T17:45:00Z,C9,Southern Interior Delta,SID,Pennate Diatom,Cocconeis,35731.59
+2018,Nov,Fall,2018-11-09T17:45:00Z,C9,Southern Interior Delta,SID,Pennate Diatom,Navicula,51693.79
+2018,Nov,Fall,2018-11-09T19:15:00Z,C10A,Southern Interior Delta,SID,Centric Diatom,Cyclotella,227575.44
+2018,Nov,Fall,2018-11-09T19:15:00Z,C10A,Southern Interior Delta,SID,Cyanobacterium,Chroococcus,15105.43
+2018,Nov,Fall,2018-11-09T19:15:00Z,C10A,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,23271.16
+2018,Nov,Fall,2018-11-09T19:15:00Z,C10A,Southern Interior Delta,SID,Green Alga,Coccomyxa,23781.14
+2018,Nov,Fall,2018-11-09T19:15:00Z,C10A,Southern Interior Delta,SID,Green Alga,Monoraphidium,5529.67
+2018,Nov,Fall,2018-11-09T19:15:00Z,C10A,Southern Interior Delta,SID,Pennate Diatom,Achnanthidium,16426.56
+2018,Nov,Fall,2018-11-09T19:15:00Z,C10A,Southern Interior Delta,SID,Pennate Diatom,Cocconeis,50339.46
+2018,Nov,Fall,2018-11-09T19:15:00Z,C10A,Southern Interior Delta,SID,Pennate Diatom,Navicula,78423.59
+2018,Nov,Fall,2018-11-09T19:15:00Z,C10A,Southern Interior Delta,SID,Pennate Diatom,Nitzschia,202553.53999999998
+2018,Nov,Fall,2018-11-09T19:15:00Z,C10A,Southern Interior Delta,SID,Pennate Diatom,Planothidium,78423.59
+2018,Nov,Fall,2018-11-13T17:20:00Z,D4,Confluence,CON,Cryptophyte,Plagioselmis,88663.67
+2018,Nov,Fall,2018-11-13T17:20:00Z,D4,Confluence,CON,Cyanobacterium,Eucapsis,42898.25
+2018,Nov,Fall,2018-11-13T17:20:00Z,D4,Confluence,CON,Green Alga,Coccomyxa,23082.73
+2018,Nov,Fall,2018-11-14T18:05:00Z,D12,Confluence,CON,Cryptophyte,Plagioselmis,65540.67
+2018,Nov,Fall,2018-11-14T18:05:00Z,D12,Confluence,CON,Cyanobacterium,Eucapsis,39653
+2018,Nov,Fall,2018-11-14T18:05:00Z,D12,Confluence,CON,Green Alga,Chlorella,1011.71
+2018,Nov,Fall,2018-11-14T18:05:00Z,D12,Confluence,CON,Green Alga,Coccomyxa,18213.42
+2018,Nov,Fall,2018-11-14T18:05:00Z,D12,Confluence,CON,Pennate Diatom,Entomoneis,622568.58
+2018,Nov,Fall,2018-11-14T18:05:00Z,D12,Confluence,CON,Pennate Diatom,Navicula,17264.92
+2018,Nov,Fall,2018-11-14T18:55:00Z,D19,Central Delta,CED,Cyanobacterium,Eucapsis,54358.07
+2018,Nov,Fall,2018-11-14T18:55:00Z,D19,Central Delta,CED,Green Alga,Coccomyxa,23576.56
+2018,Nov,Fall,2018-11-14T18:55:00Z,D19,Central Delta,CED,Pennate Diatom,Cocconeis,5146308.55
+2018,Nov,Fall,2018-11-14T18:55:00Z,D19,Central Delta,CED,Pennate Diatom,Eunotia,2253526.36
+2018,Nov,Fall,2018-11-14T18:55:00Z,D19,Central Delta,CED,Pennate Diatom,Nitzschia,3276534.14
+2018,Nov,Fall,2018-11-14T18:55:00Z,D19,Central Delta,CED,Pennate Diatom,Rhoicosphenia,217587.18
+2018,Nov,Fall,2018-11-14T18:55:00Z,D19,Central Delta,CED,Pennate Diatom,Ulnaria,1485478.27
+2018,Nov,Fall,2018-11-14T19:30:00Z,D28A,Central Delta,CED,Cryptophyte,Plagioselmis,87132.54000000001
+2018,Nov,Fall,2018-11-14T19:30:00Z,D28A,Central Delta,CED,Cyanobacterium,Chroococcus,674.47
+2018,Nov,Fall,2018-11-14T19:30:00Z,D28A,Central Delta,CED,Cyanobacterium,Eucapsis,12947.23
+2018,Nov,Fall,2018-11-14T19:30:00Z,D28A,Central Delta,CED,Green Alga,Chlorella,3140.25
+2018,Nov,Fall,2018-11-14T19:30:00Z,D28A,Central Delta,CED,Green Alga,Coccomyxa,4380.19
+2018,Nov,Fall,2018-11-14T19:30:00Z,D28A,Central Delta,CED,Pennate Diatom,Cocconeis,179312.85
+2018,Nov,Fall,2018-11-15T16:00:00Z,D16,Central Delta,CED,Cyanobacterium,Eucapsis,20282.86
+2018,Nov,Fall,2018-11-15T16:00:00Z,D16,Central Delta,CED,Green Alga,Chlorella,11957.42
+2018,Nov,Fall,2018-11-15T16:00:00Z,D16,Central Delta,CED,Green Alga,Coccomyxa,14767.41
+2018,Nov,Fall,2018-11-15T16:45:00Z,D26,Central Delta,CED,Centric Diatom,Cyclotella,26790.46
+2018,Nov,Fall,2018-11-15T16:45:00Z,D26,Central Delta,CED,Cyanobacterium,Eucapsis,10204.82
+2018,Nov,Fall,2018-11-15T16:45:00Z,D26,Central Delta,CED,Green Alga,Chlorella,1011.71
+2018,Nov,Fall,2018-11-15T16:45:00Z,D26,Central Delta,CED,Green Alga,Coccomyxa,1970.17
+2018,Nov,Fall,2018-11-15T17:35:00Z,MD10A,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,11532.26
+2018,Nov,Fall,2018-11-15T17:35:00Z,MD10A,Southern Interior Delta,SID,Green Alga,Chlorella,2601.54
+2018,Nov,Fall,2018-11-15T18:30:00Z,P8,Southern Interior Delta,SID,Centric Diatom,Cyclotella,17419.45
+2018,Nov,Fall,2018-11-15T18:30:00Z,P8,Southern Interior Delta,SID,Cryptophyte,Plagioselmis,56134.67
+2018,Nov,Fall,2018-11-15T18:30:00Z,P8,Southern Interior Delta,SID,Cyanobacterium,Chroococcus,185.18
+2018,Nov,Fall,2018-11-15T18:30:00Z,P8,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,11416.35
+2018,Nov,Fall,2018-11-15T18:30:00Z,P8,Southern Interior Delta,SID,Green Alga,Chlorella,1734.36
+2018,Nov,Fall,2018-11-15T18:30:00Z,P8,Southern Interior Delta,SID,Green Alga,Coccomyxa,851.97
+2018,Nov,Fall,2018-11-15T18:30:00Z,P8,Southern Interior Delta,SID,Pennate Diatom,Nitzschia,14639.72
+2018,Nov,Fall,2018-11-15T18:30:00Z,P8,Southern Interior Delta,SID,Pennate Diatom,Ulnaria,28125.81
+2018,Nov,Fall,2018-11-16T20:40:00Z,D8,Grizzly.Suisun Bay,GSB,Cryptophyte,Plagioselmis,18462.07
+2018,Nov,Fall,2018-11-16T20:40:00Z,D8,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,15144.54
+2018,Nov,Fall,2018-11-16T20:40:00Z,D8,Grizzly.Suisun Bay,GSB,Green Alga,Coccomyxa,8761.56
+2018,Nov,Fall,2018-11-16T21:20:00Z,D10,Confluence,CON,Cyanobacterium,Eucapsis,53546.76
+2018,Nov,Fall,2018-11-16T21:20:00Z,D10,Confluence,CON,Cyanobacterium,Microcystis,35338.29
+2018,Nov,Fall,2018-11-16T21:20:00Z,D10,Confluence,CON,Green Alga,Chlorella,4046.84
+2018,Nov,Fall,2018-11-16T21:20:00Z,D10,Confluence,CON,Green Alga,Coccomyxa,59992.6
+2018,Nov,Fall,2018-11-19T16:45:00Z,NZS42,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,67014.58
+2018,Nov,Fall,2018-11-19T16:45:00Z,NZS42,Grizzly.Suisun Bay,GSB,Green Alga,Chlorella,5797.38
+2018,Nov,Fall,2018-11-19T16:45:00Z,NZS42,Grizzly.Suisun Bay,GSB,Green Alga,Coccomyxa,85622.57
+2018,Nov,Fall,2018-11-19T17:30:00Z,NZ032,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,32993.46
+2018,Nov,Fall,2018-11-19T17:30:00Z,NZ032,Grizzly.Suisun Bay,GSB,Green Alga,Chlorella,6937.44
+2018,Nov,Fall,2018-11-19T17:30:00Z,NZ032,Grizzly.Suisun Bay,GSB,Green Alga,Coccomyxa,2810.89
+2018,Nov,Fall,2018-11-19T17:30:00Z,NZ032,Grizzly.Suisun Bay,GSB,Pennate Diatom,Entomoneis,502826.74
+2018,Nov,Fall,2018-11-19T19:50:00Z,D6,San Pablo Bay,SPB,Cryptophyte,Plagioselmis,247991.09
+2018,Nov,Fall,2018-11-19T19:50:00Z,D6,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,18119.36
+2018,Nov,Fall,2018-11-19T19:50:00Z,D6,San Pablo Bay,SPB,Cyanobacterium,Microcystis,3320.61
+2018,Nov,Fall,2018-11-19T19:50:00Z,D6,San Pablo Bay,SPB,Green Alga,Chlorella,449.65
+2018,Nov,Fall,2018-11-19T19:50:00Z,D6,San Pablo Bay,SPB,Green Alga,Coccomyxa,16596.42
+2018,Nov,Fall,2018-11-19T22:15:00Z,D22,Confluence,CON,Centric Diatom,Thalassiosira,239339.97
+2018,Nov,Fall,2018-11-19T22:15:00Z,D22,Confluence,CON,Cryptophyte,Hemiselmis,2579.14
+2018,Nov,Fall,2018-11-19T22:15:00Z,D22,Confluence,CON,Cryptophyte,Plagioselmis,86207.09999999999
+2018,Nov,Fall,2018-11-19T22:15:00Z,D22,Confluence,CON,Cyanobacterium,Eucapsis,18635.65
+2018,Nov,Fall,2018-11-19T22:15:00Z,D22,Confluence,CON,Green Alga,Chlorella,2343.42
+2018,Nov,Fall,2018-11-19T22:15:00Z,D22,Confluence,CON,Green Alga,Coccomyxa,14638.32
+2018,Nov,Fall,2018-11-19T22:15:00Z,D22,Confluence,CON,Pennate Diatom,Cocconeis,38182.92
+2018,Nov,Fall,2018-11-19T23:35:00Z,NZ068,Northern Interior Delta,NID,Cyanobacterium,Eucapsis,26840.99
+2018,Nov,Fall,2018-11-19T23:35:00Z,NZ068,Northern Interior Delta,NID,Green Alga,Chlorella,674.47
+2018,Nov,Fall,2018-11-19T23:35:00Z,NZ068,Northern Interior Delta,NID,Green Alga,Coccomyxa,6545.11
+2018,Nov,Fall,2018-11-19T23:35:00Z,NZ068,Northern Interior Delta,NID,Pennate Diatom,Entomoneis,1347782.53
+2018,Nov,Fall,2018-11-20T20:20:00Z,D41A,San Pablo Bay,SPB,Cyanobacterium,Chroococcus,2174.99
+2018,Nov,Fall,2018-11-20T20:20:00Z,D41A,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,10222.56
+2018,Nov,Fall,2018-11-20T20:20:00Z,D41A,San Pablo Bay,SPB,Cyanobacterium,Microcystis,3984.73
+2018,Nov,Fall,2018-11-20T20:20:00Z,D41A,San Pablo Bay,SPB,Euglenoid,Trachelomonas,67363.48
+2018,Nov,Fall,2018-11-20T20:20:00Z,D41A,San Pablo Bay,SPB,Green Alga,Chlorella,539.58
+2018,Nov,Fall,2018-11-20T20:20:00Z,D41A,San Pablo Bay,SPB,Green Alga,Coccomyxa,25498.79
+2018,Nov,Fall,2018-11-20T21:25:00Z,D41,San Pablo Bay,SPB,Ciliate,Strombidium,400109.57
+2018,Nov,Fall,2018-11-20T21:25:00Z,D41,San Pablo Bay,SPB,Cryptophyte,Plagioselmis,133299.74
+2018,Nov,Fall,2018-11-20T21:25:00Z,D41,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,11045.26
+2018,Nov,Fall,2018-11-20T21:25:00Z,D41,San Pablo Bay,SPB,Cyanobacterium,Microcystis,2097.23
+2018,Nov,Fall,2018-11-20T21:25:00Z,D41,San Pablo Bay,SPB,Green Alga,Chlorella,610.25
+2018,Nov,Fall,2018-11-20T21:25:00Z,D41,San Pablo Bay,SPB,Green Alga,Coccomyxa,6893.73
+2018,Nov,Fall,2018-11-20T23:00:00Z,EZ6,Low Salinity Zone,LSZ,Centric Diatom,Thalassiosira,913012.98
+2018,Nov,Fall,2018-11-20T23:00:00Z,EZ6,Low Salinity Zone,LSZ,Cyanobacterium,Eucapsis,27517.08
+2018,Nov,Fall,2018-11-20T23:00:00Z,EZ6,Low Salinity Zone,LSZ,Cyanobacterium,Microcystis,4980.91
+2018,Nov,Fall,2018-11-20T23:00:00Z,EZ6,Low Salinity Zone,LSZ,Green Alga,Chlorella,1348.95
+2018,Nov,Fall,2018-11-20T23:00:00Z,EZ6,Low Salinity Zone,LSZ,Green Alga,Coccomyxa,28317.83
+2018,Nov,Fall,2018-11-20T23:00:00Z,EZ6,Low Salinity Zone,LSZ,Pennate Diatom,Entomoneis,472109.73
+2018,Nov,Fall,2018-11-20T23:00:00Z,EZ6,Low Salinity Zone,LSZ,Pennate Diatom,Nitzschia,27239.13
+2018,Nov,Fall,2018-11-20T23:00:00Z,EZ6,Low Salinity Zone,LSZ,Pennate Diatom,Planothidium,22921.66
+2018,Nov,Fall,2018-11-21T00:15:00Z,EZ2,Low Salinity Zone,LSZ,Cyanobacterium,Eucapsis,23095.42
+2018,Nov,Fall,2018-11-21T00:15:00Z,EZ2,Low Salinity Zone,LSZ,Green Alga,Chlorella,1618.74
+2018,Nov,Fall,2018-11-21T00:15:00Z,EZ2,Low Salinity Zone,LSZ,Green Alga,Coccomyxa,16057.55
+2018,Nov,Fall,2018-11-28T15:30:00Z,D7,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,16850.38
+2018,Nov,Fall,2018-11-28T15:30:00Z,D7,Grizzly.Suisun Bay,GSB,Green Alga,Coccomyxa,10620.07
+2018,Oct,Fall,2018-10-11T16:30:00Z,C9,Southern Interior Delta,SID,Centric Diatom,Cyclotella,18446.48
+2018,Oct,Fall,2018-10-11T16:30:00Z,C9,Southern Interior Delta,SID,Cryptophyte,Plagioselmis,65733.77
+2018,Oct,Fall,2018-10-11T16:30:00Z,C9,Southern Interior Delta,SID,Cyanobacterium,Chroococcus,28270.63
+2018,Oct,Fall,2018-10-11T16:30:00Z,C9,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,19201.11
+2018,Oct,Fall,2018-10-11T16:30:00Z,C9,Southern Interior Delta,SID,Cyanobacterium,Microcystis,77337.97
+2018,Oct,Fall,2018-10-11T16:30:00Z,C9,Southern Interior Delta,SID,Cyanobacterium,Pseudanabaena,1675.14
+2018,Oct,Fall,2018-10-11T16:30:00Z,C9,Southern Interior Delta,SID,Cyanobacterium,Synechococcus,16265.47
+2018,Oct,Fall,2018-10-11T16:30:00Z,C9,Southern Interior Delta,SID,Green Alga,Chlorella,7285.37
+2018,Oct,Fall,2018-10-11T18:00:00Z,C10A,Southern Interior Delta,SID,Centric Diatom,Cyclotella,301932.21
+2018,Oct,Fall,2018-10-11T18:00:00Z,C10A,Southern Interior Delta,SID,Centric Diatom,Skeletonema,276683.94
+2018,Oct,Fall,2018-10-11T18:00:00Z,C10A,Southern Interior Delta,SID,Cryptophyte,Hemiselmis,4012.57
+2018,Oct,Fall,2018-10-11T18:00:00Z,C10A,Southern Interior Delta,SID,Cryptophyte,Plagioselmis,94191.51
+2018,Oct,Fall,2018-10-11T18:00:00Z,C10A,Southern Interior Delta,SID,Cyanobacterium,Aphanizomenon,94316.32
+2018,Oct,Fall,2018-10-11T18:00:00Z,C10A,Southern Interior Delta,SID,Cyanobacterium,Chroococcus,17710.29
+2018,Oct,Fall,2018-10-11T18:00:00Z,C10A,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,21655.86
+2018,Oct,Fall,2018-10-11T18:00:00Z,C10A,Southern Interior Delta,SID,Green Alga,Chlorella,10928.05
+2018,Oct,Fall,2018-10-11T18:00:00Z,C10A,Southern Interior Delta,SID,Green Alga,Monoraphidium,9126.91
+2018,Oct,Fall,2018-10-11T18:00:00Z,C10A,Southern Interior Delta,SID,Green Alga,Rusalka,26141.72
+2018,Oct,Fall,2018-10-11T18:00:00Z,C10A,Southern Interior Delta,SID,Pennate Diatom,Achnanthidium,64885.92
+2018,Oct,Fall,2018-10-11T18:00:00Z,C10A,Southern Interior Delta,SID,Pennate Diatom,Cocconeis,24539.72
+2018,Oct,Fall,2018-10-11T18:00:00Z,C10A,Southern Interior Delta,SID,Pennate Diatom,Navicula,386582.91
+2018,Oct,Fall,2018-10-11T18:00:00Z,C10A,Southern Interior Delta,SID,Pennate Diatom,Nitzschia,373030.96
+2018,Oct,Fall,2018-10-11T18:00:00Z,C10A,Southern Interior Delta,SID,Pennate Diatom,Odontidium,138060.95
+2018,Oct,Fall,2018-10-11T18:00:00Z,C10A,Southern Interior Delta,SID,Pennate Diatom,Plagiotropis,1822938.78
+2018,Oct,Fall,2018-10-11T18:00:00Z,C10A,Southern Interior Delta,SID,Pennate Diatom,Planothidium,61309.95
+2018,Oct,Fall,2018-10-11T18:00:00Z,C10A,Southern Interior Delta,SID,Pennate Diatom,Seminavis,32665.24
+2018,Oct,Fall,2018-10-12T13:15:00Z,D4,Confluence,CON,Cryptophyte,Plagioselmis,76875.54000000001
+2018,Oct,Fall,2018-10-12T13:15:00Z,D4,Confluence,CON,Cyanobacterium,Eucapsis,23644.02
+2018,Oct,Fall,2018-10-12T13:15:00Z,D4,Confluence,CON,Green Alga,Chlorella,1252.4099999999999
+2018,Oct,Fall,2018-10-12T14:50:00Z,D22,Confluence,CON,Cryptophyte,Plagioselmis,32602.34
+2018,Oct,Fall,2018-10-12T14:50:00Z,D22,Confluence,CON,Cyanobacterium,Eucapsis,31272.49
+2018,Oct,Fall,2018-10-12T14:50:00Z,D22,Confluence,CON,Green Alga,Chlorella,1471.58
+2018,Oct,Fall,2018-10-12T14:50:00Z,D22,Confluence,CON,Green Alga,Coccomyxa,9419.47
+2018,Oct,Fall,2018-10-12T14:50:00Z,D22,Confluence,CON,Pennate Diatom,Achnanthidium,22028.61
+2018,Oct,Fall,2018-10-12T14:50:00Z,D22,Confluence,CON,Pennate Diatom,Planothidium,11842.99
+2018,Oct,Fall,2018-10-12T15:35:00Z,EZ2,Low Salinity Zone,LSZ,Chrysophyte,Ochromonas,8835.17
+2018,Oct,Fall,2018-10-12T15:35:00Z,EZ2,Low Salinity Zone,LSZ,Cryptophyte,Plagioselmis,93384.34
+2018,Oct,Fall,2018-10-12T15:35:00Z,EZ2,Low Salinity Zone,LSZ,Cyanobacterium,Eucapsis,24152.21
+2018,Oct,Fall,2018-10-12T15:35:00Z,EZ2,Low Salinity Zone,LSZ,Cyanobacterium,Snowella,511.22
+2018,Oct,Fall,2018-10-12T15:35:00Z,EZ2,Low Salinity Zone,LSZ,Green Alga,Chlorella,3121.67
+2018,Oct,Fall,2018-10-12T15:35:00Z,EZ2,Low Salinity Zone,LSZ,Green Alga,Coccomyxa,3063.48
+2018,Oct,Fall,2018-10-12T15:35:00Z,EZ2,Low Salinity Zone,LSZ,Pennate Diatom,Seminavis,41143.1
+2018,Oct,Fall,2018-10-12T16:25:00Z,NZ068,Northern Interior Delta,NID,Centric Diatom,Cyclotella,64623.42
+2018,Oct,Fall,2018-10-12T16:25:00Z,NZ068,Northern Interior Delta,NID,Centric Diatom,Thalassiosira,1871912.68
+2018,Oct,Fall,2018-10-12T16:25:00Z,NZ068,Northern Interior Delta,NID,Cryptophyte,Hemiselmis,2571.18
+2018,Oct,Fall,2018-10-12T16:25:00Z,NZ068,Northern Interior Delta,NID,Cryptophyte,Plagioselmis,37332.07
+2018,Oct,Fall,2018-10-12T16:25:00Z,NZ068,Northern Interior Delta,NID,Cyanobacterium,Eucapsis,17592.71
+2018,Oct,Fall,2018-10-12T16:25:00Z,NZ068,Northern Interior Delta,NID,Green Alga,Chlorella,1525.63
+2018,Oct,Fall,2018-10-12T16:25:00Z,NZ068,Northern Interior Delta,NID,Pennate Diatom,Nitzschia,8995.63
+2018,Oct,Fall,2018-10-12T17:10:00Z,C3A,Northern Interior Delta,NID,Cryptophyte,Plagioselmis,62958.49
+2018,Oct,Fall,2018-10-12T17:10:00Z,C3A,Northern Interior Delta,NID,Cyanobacterium,Eucapsis,8113.14
+2018,Oct,Fall,2018-10-12T17:10:00Z,C3A,Northern Interior Delta,NID,Cyanobacterium,Microcystis,1593.89
+2018,Oct,Fall,2018-10-12T17:10:00Z,C3A,Northern Interior Delta,NID,Green Alga,Chlorella,1700.56
+2018,Oct,Fall,2018-10-12T17:10:00Z,C3A,Northern Interior Delta,NID,Green Alga,Coccomyxa,3975.84
+2018,Oct,Fall,2018-10-12T17:10:00Z,C3A,Northern Interior Delta,NID,Pennate Diatom,Cocconeis,20289.81
+2018,Oct,Fall,2018-10-12T17:10:00Z,C3A,Northern Interior Delta,NID,Pennate Diatom,Gomphonema,94211.8
+2018,Oct,Fall,2018-10-12T17:10:00Z,C3A,Northern Interior Delta,NID,Pennate Diatom,Navicula,168201.84
+2018,Oct,Fall,2018-10-12T17:10:00Z,C3A,Northern Interior Delta,NID,Pennate Diatom,Nitzschia,6539.9400000000005
+2018,Oct,Fall,2018-10-12T17:10:00Z,C3A,Northern Interior Delta,NID,Pennate Diatom,Ulnaria,7141256.74
+2018,Oct,Fall,2018-10-15T16:45:00Z,D12,Confluence,CON,Cyanobacterium,Chroococcus,8538.71
+2018,Oct,Fall,2018-10-15T16:45:00Z,D12,Confluence,CON,Cyanobacterium,Eucapsis,23991.73
+2018,Oct,Fall,2018-10-15T16:45:00Z,D12,Confluence,CON,Cyanobacterium,Microcystis,4269.35
+2018,Oct,Fall,2018-10-15T16:45:00Z,D12,Confluence,CON,Green Alga,Chlorella,690.47
+2018,Oct,Fall,2018-10-15T16:45:00Z,D12,Confluence,CON,Green Alga,Coccomyxa,12353.5
+2018,Oct,Fall,2018-10-15T16:45:00Z,D12,Confluence,CON,Pennate Diatom,Entomoneis,602325.02
+2018,Oct,Fall,2018-10-15T16:45:00Z,D12,Confluence,CON,Pennate Diatom,Gyrosigma,228475.18
+2018,Oct,Fall,2018-10-15T16:45:00Z,D12,Confluence,CON,Pennate Diatom,Nitzschia,1697.48
+2018,Oct,Fall,2018-10-15T16:45:00Z,EZ6 SJR,Low Salinity Zone,LSZ,Cryptophyte,Hemiselmis,19846.72
+2018,Oct,Fall,2018-10-15T16:45:00Z,EZ6 SJR,Low Salinity Zone,LSZ,Cyanobacterium,Eucapsis,48099.36
+2018,Oct,Fall,2018-10-15T16:45:00Z,EZ6 SJR,Low Salinity Zone,LSZ,Green Alga,Chlorella,1156.24
+2018,Oct,Fall,2018-10-15T16:45:00Z,EZ6 SJR,Low Salinity Zone,LSZ,Pennate Diatom,Nitzschia,36847.2
+2018,Oct,Fall,2018-10-15T17:50:00Z,EZ2 SJR,Low Salinity Zone,LSZ,Centric Diatom,Skeletonema,8156.22
+2018,Oct,Fall,2018-10-15T17:50:00Z,EZ2 SJR,Low Salinity Zone,LSZ,Cryptophyte,Plagioselmis,33984.23
+2018,Oct,Fall,2018-10-15T17:50:00Z,EZ2 SJR,Low Salinity Zone,LSZ,Cyanobacterium,Chroococcus,3700.51
+2018,Oct,Fall,2018-10-15T17:50:00Z,EZ2 SJR,Low Salinity Zone,LSZ,Cyanobacterium,Eucapsis,23470.17
+2018,Oct,Fall,2018-10-15T17:50:00Z,EZ2 SJR,Low Salinity Zone,LSZ,Cyanobacterium,Microcystis,32816.36
+2018,Oct,Fall,2018-10-15T17:50:00Z,EZ2 SJR,Low Salinity Zone,LSZ,Green Alga,Chlorella,3312.79
+2018,Oct,Fall,2018-10-15T18:40:00Z,D19,Central Delta,CED,Cryptophyte,Plagioselmis,162458.93
+2018,Oct,Fall,2018-10-15T18:40:00Z,D19,Central Delta,CED,Cyanobacterium,Chroococcus,7031.88
+2018,Oct,Fall,2018-10-15T18:40:00Z,D19,Central Delta,CED,Cyanobacterium,Eucapsis,18612.51
+2018,Oct,Fall,2018-10-15T18:40:00Z,D19,Central Delta,CED,Cyanobacterium,Microcystis,13327.15
+2018,Oct,Fall,2018-10-15T18:40:00Z,D19,Central Delta,CED,Cyanobacterium,Pseudanabaena,1872.26
+2018,Oct,Fall,2018-10-15T18:40:00Z,D19,Central Delta,CED,Cyanobacterium,Snowella,426.47
+2018,Oct,Fall,2018-10-15T18:40:00Z,D19,Central Delta,CED,Green Alga,Chlorella,1705.11
+2018,Oct,Fall,2018-10-15T18:40:00Z,D19,Central Delta,CED,Pennate Diatom,Cocconeis,111179.67
+2018,Oct,Fall,2018-10-15T18:40:00Z,D19,Central Delta,CED,Pennate Diatom,Navicula,197765.75
+2018,Oct,Fall,2018-10-15T18:40:00Z,D19,Central Delta,CED,Pennate Diatom,Nitzschia,7553.97
+2018,Oct,Fall,2018-10-15T19:20:00Z,D28A,Central Delta,CED,Centric Diatom,Cyclotella,10094.26
+2018,Oct,Fall,2018-10-15T19:20:00Z,D28A,Central Delta,CED,Centric Diatom,Skeletonema,8511.16
+2018,Oct,Fall,2018-10-15T19:20:00Z,D28A,Central Delta,CED,Cryptophyte,Cryptomonas,76169.99
+2018,Oct,Fall,2018-10-15T19:20:00Z,D28A,Central Delta,CED,Cryptophyte,Hemiselmis,2898.73
+2018,Oct,Fall,2018-10-15T19:20:00Z,D28A,Central Delta,CED,Cryptophyte,Plagioselmis,264679.49
+2018,Oct,Fall,2018-10-15T19:20:00Z,D28A,Central Delta,CED,Cyanobacterium,Eucapsis,10087.34
+2018,Oct,Fall,2018-10-15T19:20:00Z,D28A,Central Delta,CED,Cyanobacterium,Microcystis,10311.07
+2018,Oct,Fall,2018-10-15T19:20:00Z,D28A,Central Delta,CED,Green Alga,Chlorella,2577.77
+2018,Oct,Fall,2018-10-15T19:20:00Z,D28A,Central Delta,CED,Pennate Diatom,Cocconeis,98819.42
+2018,Oct,Fall,2018-10-15T19:20:00Z,D28A,Central Delta,CED,Pennate Diatom,Nitzschia,3676.76
+2018,Oct,Fall,2018-10-16T16:30:00Z,D16,Central Delta,CED,Cryptophyte,Plagioselmis,65804.42
+2018,Oct,Fall,2018-10-16T16:30:00Z,D16,Central Delta,CED,Cyanobacterium,Eucapsis,32779.08
+2018,Oct,Fall,2018-10-16T16:30:00Z,D16,Central Delta,CED,Green Alga,Chlorella,14778.77
+2018,Oct,Fall,2018-10-16T16:30:00Z,D16,Central Delta,CED,Green Alga,Coccomyxa,17655.7
+2018,Oct,Fall,2018-10-16T17:20:00Z,D26,Central Delta,CED,Centric Diatom,Cyclotella,41917.57
+2018,Oct,Fall,2018-10-16T17:20:00Z,D26,Central Delta,CED,Cryptophyte,Plagioselmis,54438.68
+2018,Oct,Fall,2018-10-16T17:20:00Z,D26,Central Delta,CED,Cyanobacterium,Eucapsis,34939.26
+2018,Oct,Fall,2018-10-16T17:20:00Z,D26,Central Delta,CED,Green Alga,Chlorella,6658.72
+2018,Oct,Fall,2018-10-16T17:20:00Z,D26,Central Delta,CED,Green Alga,Coccomyxa,36831.05
+2018,Oct,Fall,2018-10-16T18:35:00Z,MD10A,Southern Interior Delta,SID,Cryptophyte,Plagioselmis,42976.45
+2018,Oct,Fall,2018-10-16T18:35:00Z,MD10A,Southern Interior Delta,SID,Cyanobacterium,Chroococcus,104209.24
+2018,Oct,Fall,2018-10-16T18:35:00Z,MD10A,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,25443.38
+2018,Oct,Fall,2018-10-16T18:35:00Z,MD10A,Southern Interior Delta,SID,Green Alga,Chlorella,3431.4
+2018,Oct,Fall,2018-10-16T18:35:00Z,MD10A,Southern Interior Delta,SID,Green Alga,Coccomyxa,35673.09
+2018,Oct,Fall,2018-10-16T18:35:00Z,MD10A,Southern Interior Delta,SID,Green Alga,Drepanochloris,680.9
+2018,Oct,Fall,2018-10-16T18:35:00Z,MD10A,Southern Interior Delta,SID,Pennate Diatom,Achnanthidium,10652.13
+2018,Oct,Fall,2018-10-16T19:50:00Z,P8,Southern Interior Delta,SID,Centric Diatom,Cyclotella,12189.9
+2018,Oct,Fall,2018-10-16T19:50:00Z,P8,Southern Interior Delta,SID,Centric Diatom,Skeletonema,14571.02
+2018,Oct,Fall,2018-10-16T19:50:00Z,P8,Southern Interior Delta,SID,Cryptophyte,Cryptomonas,74042.73
+2018,Oct,Fall,2018-10-16T19:50:00Z,P8,Southern Interior Delta,SID,Cryptophyte,Plagioselmis,481304.06
+2018,Oct,Fall,2018-10-16T19:50:00Z,P8,Southern Interior Delta,SID,Cyanobacterium,Chroococcus,16658.94
+2018,Oct,Fall,2018-10-16T19:50:00Z,P8,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,9894.86
+2018,Oct,Fall,2018-10-16T19:50:00Z,P8,Southern Interior Delta,SID,Cyanobacterium,Snowella,260.62
+2018,Oct,Fall,2018-10-16T19:50:00Z,P8,Southern Interior Delta,SID,Green Alga,Chlorella,24427.42
+2018,Oct,Fall,2018-10-16T19:50:00Z,P8,Southern Interior Delta,SID,Green Alga,Coccomyxa,4768.9000000000005
+2018,Oct,Fall,2018-10-16T19:50:00Z,P8,Southern Interior Delta,SID,Green Alga,Desmodesmus,18751.67
+2018,Oct,Fall,2018-10-16T19:50:00Z,P8,Southern Interior Delta,SID,Green Alga,Lemmermannia,9375.84
+2018,Oct,Fall,2018-10-16T19:50:00Z,P8,Southern Interior Delta,SID,Green Alga,Monoraphidium,6094.95
+2018,Oct,Fall,2018-10-16T19:50:00Z,P8,Southern Interior Delta,SID,Pennate Diatom,Achnanthidium,5239.24
+2018,Oct,Fall,2018-10-16T19:50:00Z,P8,Southern Interior Delta,SID,Pennate Diatom,Nitzschia,10670.46
+2018,Oct,Fall,2018-10-17T14:15:00Z,EZ6,Low Salinity Zone,LSZ,Cryptophyte,Plagioselmis,70002.01
+2018,Oct,Fall,2018-10-17T14:15:00Z,EZ6,Low Salinity Zone,LSZ,Cyanobacterium,Eucapsis,27246.64
+2018,Oct,Fall,2018-10-17T14:15:00Z,EZ6,Low Salinity Zone,LSZ,Cyanobacterium,Snowella,805.55
+2018,Oct,Fall,2018-10-17T14:15:00Z,EZ6,Low Salinity Zone,LSZ,Green Alga,Coccomyxa,41878.49
+2018,Oct,Fall,2018-10-17T14:15:00Z,EZ6,Low Salinity Zone,LSZ,Pennate Diatom,Cocconeis,58368.36
+2018,Oct,Fall,2018-10-17T14:15:00Z,EZ6,Low Salinity Zone,LSZ,Pennate Diatom,Entomoneis,960526.59
+2018,Oct,Fall,2018-10-17T14:15:00Z,EZ6,Low Salinity Zone,LSZ,Pennate Diatom,Nitzschia,14414.35
+2018,Oct,Fall,2018-10-17T16:55:00Z,D8,Grizzly.Suisun Bay,GSB,Cryptophyte,Plagioselmis,152984.87
+2018,Oct,Fall,2018-10-17T16:55:00Z,D8,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,71700.01
+2018,Oct,Fall,2018-10-17T16:55:00Z,D8,Grizzly.Suisun Bay,GSB,Green Alga,Chlorella,12199.22
+2018,Oct,Fall,2018-10-17T16:55:00Z,D8,Grizzly.Suisun Bay,GSB,Green Alga,Coccomyxa,30442.07
+2018,Oct,Fall,2018-10-17T17:40:00Z,D10,Confluence,CON,Centric Diatom,Skeletonema,33757.94
+2018,Oct,Fall,2018-10-17T17:40:00Z,D10,Confluence,CON,Cyanobacterium,Eucapsis,47430.69
+2018,Oct,Fall,2018-10-17T17:40:00Z,D10,Confluence,CON,Cyanobacterium,Snowella,464.74
+2018,Oct,Fall,2018-10-17T17:40:00Z,D10,Confluence,CON,Cyanobacterium,Synechococcus,31881.28
+2018,Oct,Fall,2018-10-17T17:40:00Z,D10,Confluence,CON,Green Alga,Chlorella,1245.18
+2018,Oct,Fall,2018-10-17T17:40:00Z,D10,Confluence,CON,Green Alga,Coccomyxa,152051.12
+2018,Oct,Fall,2018-10-18T20:05:00Z,D6,San Pablo Bay,SPB,Cryptophyte,Plagioselmis,226472.24
+2018,Oct,Fall,2018-10-18T20:05:00Z,D6,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,22155.13
+2018,Oct,Fall,2018-10-18T20:05:00Z,D6,San Pablo Bay,SPB,Cyanobacterium,Microcystis,4597.77
+2018,Oct,Fall,2018-10-18T20:05:00Z,D6,San Pablo Bay,SPB,Green Alga,Coccomyxa,92067.86
+2018,Oct,Fall,2018-10-18T20:55:00Z,D7,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,52515.35
+2018,Oct,Fall,2018-10-18T20:55:00Z,D7,Grizzly.Suisun Bay,GSB,Green Alga,Chlorella,3776.36
+2018,Oct,Fall,2018-10-18T20:55:00Z,D7,Grizzly.Suisun Bay,GSB,Green Alga,Coccomyxa,78031.19
+2018,Oct,Fall,2018-10-18T21:50:00Z,NZS42,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,64372.7
+2018,Oct,Fall,2018-10-18T21:50:00Z,NZS42,Grizzly.Suisun Bay,GSB,Green Alga,Chlorella,2753.19
+2018,Oct,Fall,2018-10-18T21:50:00Z,NZS42,Grizzly.Suisun Bay,GSB,Green Alga,Coccomyxa,40910.54
+2018,Oct,Fall,2018-10-18T22:45:00Z,NZ032,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,43260.11
+2018,Oct,Fall,2018-10-18T22:45:00Z,NZ032,Grizzly.Suisun Bay,GSB,Green Alga,Coccomyxa,18763.78
+2018,Oct,Fall,2018-10-19T15:45:00Z,D41A,San Pablo Bay,SPB,Cryptophyte,Plagioselmis,197815.89
+2018,Oct,Fall,2018-10-19T15:45:00Z,D41A,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,51155.15
+2018,Oct,Fall,2018-10-19T15:45:00Z,D41A,San Pablo Bay,SPB,Green Alga,Chlorella,8713.73
+2018,Oct,Fall,2018-10-19T15:45:00Z,D41A,San Pablo Bay,SPB,Green Alga,Coccomyxa,60703.85
+2018,Oct,Fall,2018-10-19T16:35:00Z,D41,San Pablo Bay,SPB,Centric Diatom,Cyclotella,78325.57
+2018,Oct,Fall,2018-10-19T16:35:00Z,D41,San Pablo Bay,SPB,Cryptophyte,Plagioselmis,421417.76
+2018,Oct,Fall,2018-10-19T16:35:00Z,D41,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,22311.15
+2018,Oct,Fall,2018-10-19T16:35:00Z,D41,San Pablo Bay,SPB,Cyanobacterium,Microcystis,12489.21
+2018,Oct,Fall,2018-10-19T16:35:00Z,D41,San Pablo Bay,SPB,Green Alga,Chlorella,2457.79
+2018,Oct,Fall,2018-10-19T16:35:00Z,D41,San Pablo Bay,SPB,Green Alga,Coccomyxa,17204.52
+2018,Oct,Fall,2018-10-19T17:20:00Z,NZ325,San Pablo Bay,SPB,Cryptophyte,Hemiselmis,1313.45
+2018,Oct,Fall,2018-10-19T17:20:00Z,NZ325,San Pablo Bay,SPB,Cryptophyte,Plagioselmis,289891.41
+2018,Oct,Fall,2018-10-19T17:20:00Z,NZ325,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,26502.94
+2018,Oct,Fall,2018-10-19T17:20:00Z,NZ325,San Pablo Bay,SPB,Cyanobacterium,Microcystis,9961.83
+2018,Oct,Fall,2018-10-19T17:20:00Z,NZ325,San Pablo Bay,SPB,Green Alga,Chlorella,1888.8
+2018,Oct,Fall,2018-10-19T17:20:00Z,NZ325,San Pablo Bay,SPB,Green Alga,Coccomyxa,13328.29
+2018,Oct,Fall,2018-10-19T17:30:00Z,NZ002,San Pablo Bay,SPB,Cryptophyte,Hemiselmis,3422.97
+2018,Oct,Fall,2018-10-19T17:30:00Z,NZ002,San Pablo Bay,SPB,Cryptophyte,Plagioselmis,664884.48
+2018,Oct,Fall,2018-10-19T17:30:00Z,NZ002,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,33588.42
+2018,Oct,Fall,2018-10-19T17:30:00Z,NZ002,San Pablo Bay,SPB,Cyanobacterium,Microcystis,11485.73
+2018,Oct,Fall,2018-10-19T17:30:00Z,NZ002,San Pablo Bay,SPB,Green Alga,Chlorella,1739.21
+2018,Oct,Fall,2018-10-19T17:30:00Z,NZ002,San Pablo Bay,SPB,Green Alga,Coccomyxa,15277.8
+2018,Oct,Fall,2018-10-19T17:50:00Z,NZ004,San Pablo Bay,SPB,Cryptophyte,Plagioselmis,39847.3
+2018,Oct,Fall,2018-10-19T17:50:00Z,NZ004,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,34616.08
+2018,Oct,Fall,2018-10-19T17:50:00Z,NZ004,San Pablo Bay,SPB,Cyanobacterium,Microcystis,31272.97
+2018,Oct,Fall,2018-10-19T17:50:00Z,NZ004,San Pablo Bay,SPB,Green Alga,Chlorella,576.11
+2018,Oct,Fall,2018-10-19T17:50:00Z,NZ004,San Pablo Bay,SPB,Green Alga,Coccomyxa,40421.05
+2018,Sep,Fall,2018-09-07T22:15:00Z,C3A,Northern Interior Delta,NID,Cryptophyte,Plagioselmis,88604.56
+2018,Sep,Fall,2018-09-07T22:15:00Z,C3A,Northern Interior Delta,NID,Cyanobacterium,Eucapsis,44541.87
+2018,Sep,Fall,2018-09-07T22:15:00Z,C3A,Northern Interior Delta,NID,Green Alga,Mucidosphaerium,85054.88
+2018,Sep,Fall,2018-09-07T22:15:00Z,C3A,Northern Interior Delta,NID,Pennate Diatom,Fragilaria,223991.63
+2018,Sep,Fall,2018-09-07T22:15:00Z,C3A,Northern Interior Delta,NID,Pennate Diatom,Ulnaria,943229.72
+2018,Sep,Fall,2018-09-13T13:25:00Z,D4,Confluence,CON,Cyanobacterium,Eucapsis,97061.18
+2018,Sep,Fall,2018-09-13T13:25:00Z,EZ6,Low Salinity Zone,LSZ,Cyanobacterium,Eucapsis,127089.5
+2018,Sep,Fall,2018-09-13T13:25:00Z,EZ6,Low Salinity Zone,LSZ,Green Alga,Chlorella,18815.56
+2018,Sep,Fall,2018-09-13T14:45:00Z,D22,Confluence,CON,Cryptophyte,Plagioselmis,91494.19
+2018,Sep,Fall,2018-09-13T14:45:00Z,D22,Confluence,CON,Cyanobacterium,Eucapsis,91487.88
+2018,Sep,Fall,2018-09-13T14:45:00Z,D22,Confluence,CON,Green Alga,Chlorella,32965.76
+2018,Sep,Fall,2018-09-13T14:45:00Z,EZ2,Low Salinity Zone,LSZ,Cryptophyte,Plagioselmis,190304.95
+2018,Sep,Fall,2018-09-13T14:45:00Z,EZ2,Low Salinity Zone,LSZ,Cyanobacterium,Eucapsis,68388.23
+2018,Sep,Fall,2018-09-13T14:45:00Z,EZ2,Low Salinity Zone,LSZ,Green Alga,Chlorella,19976.16
+2018,Sep,Fall,2018-09-13T14:45:00Z,EZ2,Low Salinity Zone,LSZ,Pennate Diatom,Entomoneis,1727896.76
+2018,Sep,Fall,2018-09-13T14:45:00Z,EZ2,Low Salinity Zone,LSZ,Pennate Diatom,Nitzschia,43764
+2018,Sep,Fall,2018-09-13T15:35:00Z,NZ068,Northern Interior Delta,NID,Centric Diatom,Cyclotella,55136.4
+2018,Sep,Fall,2018-09-13T15:35:00Z,NZ068,Northern Interior Delta,NID,Cryptophyte,Plagioselmis,78372.87
+2018,Sep,Fall,2018-09-13T15:35:00Z,NZ068,Northern Interior Delta,NID,Cyanobacterium,Eucapsis,53386.32
+2018,Sep,Fall,2018-09-13T15:35:00Z,NZ068,Northern Interior Delta,NID,Green Alga,Chlorella,4354.05
+2018,Sep,Fall,2018-09-13T15:35:00Z,NZ068,Northern Interior Delta,NID,Pennate Diatom,Nitzschia,27421.82
+2018,Sep,Fall,2018-09-13T15:35:00Z,NZ068,Northern Interior Delta,NID,Pennate Diatom,Ulnaria,55136.4
+2018,Sep,Fall,2018-09-14T14:40:00Z,D12,Confluence,CON,Centric Diatom,Cyclotella,27735.29
+2018,Sep,Fall,2018-09-14T14:40:00Z,D12,Confluence,CON,Cryptophyte,Plagioselmis,104795.17
+2018,Sep,Fall,2018-09-14T14:40:00Z,D12,Confluence,CON,Cyanobacterium,Eucapsis,93725.43
+2018,Sep,Fall,2018-09-14T14:40:00Z,D12,Confluence,CON,Pennate Diatom,Nitzschia,82796.2
+2018,Sep,Fall,2018-09-14T14:40:00Z,D12,Confluence,CON,Pennate Diatom,Ulnaria,95290.52
+2018,Sep,Fall,2018-09-14T15:35:00Z,EZ2 SJR,Low Salinity Zone,LSZ,Cyanobacterium,Eucapsis,59956.99
+2018,Sep,Fall,2018-09-14T15:35:00Z,EZ2 SJR,Low Salinity Zone,LSZ,Green Alga,Chlorella,9407.78
+2018,Sep,Fall,2018-09-14T15:35:00Z,EZ2 SJR,Low Salinity Zone,LSZ,Pennate Diatom,Nitzschia,11554.24
+2018,Sep,Fall,2018-09-14T16:25:00Z,D19,Central Delta,CED,Centric Diatom,Cyclotella,67802.87
+2018,Sep,Fall,2018-09-14T16:25:00Z,D19,Central Delta,CED,Cryptophyte,Plagioselmis,312125.17
+2018,Sep,Fall,2018-09-14T16:25:00Z,D19,Central Delta,CED,Cyanobacterium,Eucapsis,44085.81
+2018,Sep,Fall,2018-09-14T16:25:00Z,D19,Central Delta,CED,Cyanobacterium,Microcystis,28695.17
+2018,Sep,Fall,2018-09-14T16:25:00Z,D19,Central Delta,CED,Green Alga,Sphaerocystis,14347.59
+2018,Sep,Fall,2018-09-14T17:05:00Z,D28A,Central Delta,CED,Cryptophyte,Plagioselmis,25085.8
+2018,Sep,Fall,2018-09-14T17:05:00Z,D28A,Central Delta,CED,Cyanobacterium,Chroococcus,30210.86
+2018,Sep,Fall,2018-09-14T17:05:00Z,D28A,Central Delta,CED,Cyanobacterium,Eucapsis,42757.43
+2018,Sep,Fall,2018-09-14T17:05:00Z,D28A,Central Delta,CED,Cyanobacterium,Synechococcus,9512.46
+2018,Sep,Fall,2018-09-14T17:05:00Z,D28A,Central Delta,CED,Green Alga,Chlamydomonas,20384.62
+2018,Sep,Fall,2018-09-14T17:05:00Z,D28A,Central Delta,CED,Green Alga,Chlorella,58946.58
+2018,Sep,Fall,2018-09-14T17:05:00Z,D28A,Central Delta,CED,Green Alga,Drepanochloris,1264.53
+2018,Sep,Fall,2018-09-14T17:05:00Z,D28A,Central Delta,CED,Green Alga,Lagerheimia,6204.02
+2018,Sep,Fall,2018-09-17T16:35:00Z,D16,Central Delta,CED,Cryptophyte,Plagioselmis,377366.18
+2018,Sep,Fall,2018-09-17T16:35:00Z,D16,Central Delta,CED,Cyanobacterium,Eucapsis,41704.17
+2018,Sep,Fall,2018-09-17T16:35:00Z,D16,Central Delta,CED,Cyanobacterium,Microcystis,29865.55
+2018,Sep,Fall,2018-09-17T16:35:00Z,D16,Central Delta,CED,Green Alga,Chlorella,10188.47
+2018,Sep,Fall,2018-09-17T16:35:00Z,D16,Central Delta,CED,Pennate Diatom,Ulnaria,33901.44
+2018,Sep,Fall,2018-09-17T17:30:00Z,D26,Central Delta,CED,Centric Diatom,Cyclotella,26198.48
+2018,Sep,Fall,2018-09-17T17:30:00Z,D26,Central Delta,CED,Cryptophyte,Plagioselmis,96990.51
+2018,Sep,Fall,2018-09-17T17:30:00Z,D26,Central Delta,CED,Cyanobacterium,Chroococcus,14651.45
+2018,Sep,Fall,2018-09-17T17:30:00Z,D26,Central Delta,CED,Cyanobacterium,Eucapsis,43570.59
+2018,Sep,Fall,2018-09-17T17:30:00Z,D26,Central Delta,CED,Green Alga,Chlamydomonas,7624.52
+2018,Sep,Fall,2018-09-17T17:30:00Z,D26,Central Delta,CED,Green Alga,Chlorella,1032.45
+2018,Sep,Fall,2018-09-17T17:30:00Z,D26,Central Delta,CED,Pennate Diatom,Nitzschia,31328.51
+2018,Sep,Fall,2018-09-17T18:40:00Z,MD10A,Southern Interior Delta,SID,Centric Diatom,Cyclotella,50542.35
+2018,Sep,Fall,2018-09-17T18:40:00Z,MD10A,Southern Interior Delta,SID,Cyanobacterium,Chroococcus,26622.96
+2018,Sep,Fall,2018-09-17T18:40:00Z,MD10A,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,24079.39
+2018,Sep,Fall,2018-09-17T18:40:00Z,MD10A,Southern Interior Delta,SID,Green Alga,Chlorella,86423.52
+2018,Sep,Fall,2018-09-17T18:40:00Z,MD10A,Southern Interior Delta,SID,Green Alga,Desmodesmus,68436.85
+2018,Sep,Fall,2018-09-17T18:40:00Z,MD10A,Southern Interior Delta,SID,Green Alga,Monoraphidium,13765.96
+2018,Sep,Fall,2018-09-17T18:40:00Z,MD10A,Southern Interior Delta,SID,Green Alga,Mucidosphaerium,8811.5
+2018,Sep,Fall,2018-09-17T18:40:00Z,MD10A,Southern Interior Delta,SID,Green Alga,Scenedesmus,4057.34
+2018,Sep,Fall,2018-09-17T19:50:00Z,P8,Southern Interior Delta,SID,Centric Diatom,Cyclotella,111722.87
+2018,Sep,Fall,2018-09-17T19:50:00Z,P8,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,69133.38
+2018,Sep,Fall,2018-09-17T19:50:00Z,P8,Southern Interior Delta,SID,Green Alga,Chlorella,63442.81
+2018,Sep,Fall,2018-09-17T19:50:00Z,P8,Southern Interior Delta,SID,Pennate Diatom,Nitzschia,26685.58
+2018,Sep,Fall,2018-09-18T16:20:00Z,D8,Grizzly.Suisun Bay,GSB,Centric Diatom,Cyclotella,41917.57
+2018,Sep,Fall,2018-09-18T16:20:00Z,D8,Grizzly.Suisun Bay,GSB,Cryptophyte,Cryptomonas,195187.59
+2018,Sep,Fall,2018-09-18T16:20:00Z,D8,Grizzly.Suisun Bay,GSB,Cryptophyte,Plagioselmis,210804.2
+2018,Sep,Fall,2018-09-18T16:20:00Z,D8,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,69133.38
+2018,Sep,Fall,2018-09-18T16:20:00Z,D8,Grizzly.Suisun Bay,GSB,Cyanobacterium,Microcystis,12199.22
+2018,Sep,Fall,2018-09-18T16:20:00Z,D8,Grizzly.Suisun Bay,GSB,Euglenoid,Euglena,556904.85
+2018,Sep,Fall,2018-09-18T16:20:00Z,D8,Grizzly.Suisun Bay,GSB,Green Alga,Chlorella,6658.72
+2018,Sep,Fall,2018-09-18T17:05:00Z,D10,Confluence,CON,Centric Diatom,Cyclotella,17919.33
+2018,Sep,Fall,2018-09-18T17:05:00Z,D10,Confluence,CON,Cryptophyte,Plagioselmis,303932.76
+2018,Sep,Fall,2018-09-18T17:05:00Z,D10,Confluence,CON,Cyanobacterium,Eucapsis,66159.13
+2018,Sep,Fall,2018-09-18T17:05:00Z,D10,Confluence,CON,Green Alga,Chlorella,6520.62
+2018,Sep,Fall,2018-09-18T17:05:00Z,D10,Confluence,CON,Pennate Diatom,Ulnaria,216969.19
+2018,Sep,Fall,2018-09-19T20:10:00Z,D6,San Pablo Bay,SPB,Cryptophyte,Cryptomonas,217883.22
+2018,Sep,Fall,2018-09-19T20:10:00Z,D6,San Pablo Bay,SPB,Cryptophyte,Plagioselmis,414709.88
+2018,Sep,Fall,2018-09-19T20:10:00Z,D6,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,62622.72
+2018,Sep,Fall,2018-09-19T20:10:00Z,D6,San Pablo Bay,SPB,Green Alga,Chlorella,4806.27
+2018,Sep,Fall,2018-09-19T20:10:00Z,D6,San Pablo Bay,SPB,Pennate Diatom,Navicula,845729.61
+2018,Sep,Fall,2018-09-19T20:55:00Z,D7,Grizzly.Suisun Bay,GSB,Centric Diatom,Cyclotella,319618.58
+2018,Sep,Fall,2018-09-19T20:55:00Z,D7,Grizzly.Suisun Bay,GSB,Cryptophyte,Cryptomonas,658758.13
+2018,Sep,Fall,2018-09-19T20:55:00Z,D7,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,69961.32
+2018,Sep,Fall,2018-09-19T20:55:00Z,D7,Grizzly.Suisun Bay,GSB,Green Alga,Chlorella,21524.52
+2018,Sep,Fall,2018-09-19T21:50:00Z,NZS42,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,80469.28
+2018,Sep,Fall,2018-09-19T22:40:00Z,NZ032,Grizzly.Suisun Bay,GSB,Cryptophyte,Cryptomonas,1145061.06
+2018,Sep,Fall,2018-09-19T22:40:00Z,NZ032,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,49913.23
+2018,Sep,Fall,2018-09-19T22:40:00Z,NZ032,Grizzly.Suisun Bay,GSB,Green Alga,Chlorella,3776.36
+2018,Sep,Fall,2018-09-19T22:40:00Z,NZ032,Grizzly.Suisun Bay,GSB,Green Alga,Monoraphidium,905.73
+2018,Sep,Fall,2018-09-20T16:50:00Z,D41A,San Pablo Bay,SPB,Cryptophyte,Plagioselmis,36948.77
+2018,Sep,Fall,2018-09-20T16:50:00Z,D41A,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,16282.91
+2018,Sep,Fall,2018-09-20T16:50:00Z,D41A,San Pablo Bay,SPB,Green Alga,Chlorella,1585.41
+2018,Sep,Fall,2018-09-20T17:35:00Z,D41,San Pablo Bay,SPB,Cryptophyte,Cryptomonas,220204.73
+2018,Sep,Fall,2018-09-20T17:35:00Z,D41,San Pablo Bay,SPB,Cryptophyte,Plagioselmis,762704
+2018,Sep,Fall,2018-09-20T17:35:00Z,D41,San Pablo Bay,SPB,Cyanobacterium,Chroococcus,33489.03
+2018,Sep,Fall,2018-09-20T17:35:00Z,D41,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,44354.18
+2018,Sep,Fall,2018-09-20T17:35:00Z,D41,San Pablo Bay,SPB,Green Alga,Chlamydomonas,74058.03
+2018,Sep,Fall,2018-09-20T17:35:00Z,D41,San Pablo Bay,SPB,Green Alga,Chlorella,48377.01
+2018,Sep,Fall,2018-09-20T18:20:00Z,NZ325,San Pablo Bay,SPB,Centric Diatom,Cyclotella,19372.25
+2018,Sep,Fall,2018-09-20T18:20:00Z,NZ325,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,10156.58
+2018,Sep,Fall,2018-09-20T18:20:00Z,NZ325,San Pablo Bay,SPB,Green Alga,Chlorella,339.36
+2018,Sep,Fall,2018-09-20T18:40:00Z,NZ002,San Pablo Bay,SPB,Chrysophyte,Ochromonas,47061.47
+2018,Sep,Fall,2018-09-20T18:40:00Z,NZ002,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,61750.87
+2018,Sep,Fall,2018-09-20T18:40:00Z,NZ002,San Pablo Bay,SPB,Green Alga,Chlorella,31747.41
+2018,Sep,Fall,2018-09-20T18:55:00Z,NZ004,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,46106.17
+2018,Sep,Fall,2018-09-20T18:55:00Z,NZ004,San Pablo Bay,SPB,Green Alga,Chlamydomonas,46159.23
+2018,Sep,Fall,2018-09-20T18:55:00Z,NZ004,San Pablo Bay,SPB,Green Alga,Chlorella,23130.19
+2018,Sep,Fall,2018-09-21T17:20:00Z,C9,Southern Interior Delta,SID,Centric Diatom,Cyclotella,79641.47
+2018,Sep,Fall,2018-09-21T17:20:00Z,C9,Southern Interior Delta,SID,Centric Diatom,Skeletonema,34977.67
+2018,Sep,Fall,2018-09-21T17:20:00Z,C9,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,36755.07
+2018,Sep,Fall,2018-09-21T17:20:00Z,C9,Southern Interior Delta,SID,Cyanobacterium,Microcystis,199103.67
+2018,Sep,Fall,2018-09-21T17:20:00Z,C9,Southern Interior Delta,SID,Cyanobacterium,Pseudanabaena,26178.72
+2018,Sep,Fall,2018-09-21T17:20:00Z,C9,Southern Interior Delta,SID,Dinoflagellate,Ceratium,9098557.49
+2018,Sep,Fall,2018-09-21T17:20:00Z,C9,Southern Interior Delta,SID,Green Alga,Chlorella,4185.45
+2018,Sep,Fall,2018-09-21T17:20:00Z,C9,Southern Interior Delta,SID,Pennate Diatom,Cocconeis,125112.44
+2018,Sep,Fall,2018-09-21T17:20:00Z,C9,Southern Interior Delta,SID,Pennate Diatom,Fragilaria,19910.37
+2018,Sep,Fall,2018-09-21T19:00:00Z,C10A,Southern Interior Delta,SID,Centric Diatom,Aulacoseira,205241.13
+2018,Sep,Fall,2018-09-21T19:00:00Z,C10A,Southern Interior Delta,SID,Centric Diatom,Cyclotella,10890725.21
+2018,Sep,Fall,2018-09-21T19:00:00Z,C10A,Southern Interior Delta,SID,Centric Diatom,Skeletonema,539194.27
+2018,Sep,Fall,2018-09-21T19:00:00Z,C10A,Southern Interior Delta,SID,Chrysophyte,Pseudokephyrion,19910.37
+2018,Sep,Fall,2018-09-21T19:00:00Z,C10A,Southern Interior Delta,SID,Cryptophyte,Plagioselmis,506554.6
+2018,Sep,Fall,2018-09-21T19:00:00Z,C10A,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,101616.96
+2018,Sep,Fall,2018-09-21T19:00:00Z,C10A,Southern Interior Delta,SID,Cyanobacterium,Microcystis,19910.37
+2018,Sep,Fall,2018-09-21T19:00:00Z,C10A,Southern Interior Delta,SID,Cyanobacterium,Romeria,29931
+2018,Sep,Fall,2018-09-21T19:00:00Z,C10A,Southern Interior Delta,SID,Green Alga,Lagerheimia,30134.61
+2018,Sep,Fall,2018-09-21T19:00:00Z,C10A,Southern Interior Delta,SID,Green Alga,Scenedesmus,114639.19
+2018,Sep,Fall,2018-09-21T19:00:00Z,C10A,Southern Interior Delta,SID,Pennate Diatom,Navicula,1801619.18
+2018,Sep,Fall,2018-09-21T19:00:00Z,C10A,Southern Interior Delta,SID,Pennate Diatom,Nitzschia,27926.65
+2018,Sep,Fall,2018-09-21T19:00:00Z,C10A,Southern Interior Delta,SID,Pennate Diatom,Surirella,5103557.03
+2018,Sep,Fall,2018-09-21T19:00:00Z,C10A,Southern Interior Delta,SID,Pennate Diatom,Ulnaria,45201.91
+2019,Apr,Spring,2019-04-09T15:00:00Z,C3A,Northern Interior Delta,NID,Centric Diatom,Aulacoseira,79418.54
+2019,Apr,Spring,2019-04-09T15:00:00Z,C3A,Northern Interior Delta,NID,Centric Diatom,Cyclotella,47821.92
+2019,Apr,Spring,2019-04-09T15:00:00Z,C3A,Northern Interior Delta,NID,Centric Diatom,Thalassiosira,11741988.27
+2019,Apr,Spring,2019-04-09T15:00:00Z,C3A,Northern Interior Delta,NID,Cyanobacterium,Eucapsis,24339.43
+2019,Apr,Spring,2019-04-09T15:00:00Z,C3A,Northern Interior Delta,NID,Cyanobacterium,Planktolyngbya,3352.68
+2019,Apr,Spring,2019-04-09T15:00:00Z,C3A,Northern Interior Delta,NID,Green Alga,Chlorella,9338.86
+2019,Apr,Spring,2019-04-09T15:00:00Z,C3A,Northern Interior Delta,NID,Green Alga,Monoraphidium,3696.97
+2019,Apr,Spring,2019-04-09T15:00:00Z,C3A,Northern Interior Delta,NID,Pennate Diatom,Adlafia,2821.13
+2019,Apr,Spring,2019-04-09T15:00:00Z,C3A,Northern Interior Delta,NID,Pennate Diatom,Didymosphenia,1238192.66
+2019,Apr,Spring,2019-04-09T15:00:00Z,C3A,Northern Interior Delta,NID,Pennate Diatom,Nitzschia,16635.33
+2019,Apr,Spring,2019-04-09T17:00:00Z,C9,Southern Interior Delta,SID,Centric Diatom,Cyclotella,62748.11
+2019,Apr,Spring,2019-04-09T17:00:00Z,C9,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,24760.12
+2019,Apr,Spring,2019-04-09T17:00:00Z,C9,Southern Interior Delta,SID,Green Alga,Chlorella,5395.78
+2019,Apr,Spring,2019-04-09T17:00:00Z,C9,Southern Interior Delta,SID,Pennate Diatom,Achnanthidium,59950.44
+2019,Apr,Spring,2019-04-09T17:00:00Z,C9,Southern Interior Delta,SID,Pennate Diatom,Fragilaria,24552.56
+2019,Apr,Spring,2019-04-09T17:00:00Z,C9,Southern Interior Delta,SID,Pennate Diatom,Plagiotropis,1212514.44
+2019,Apr,Spring,2019-04-09T18:30:00Z,C10A,Southern Interior Delta,SID,Centric Diatom,Cyclotella,17269.03
+2019,Apr,Spring,2019-04-09T18:30:00Z,C10A,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,35697.84
+2019,Apr,Spring,2019-04-09T18:30:00Z,C10A,Southern Interior Delta,SID,Cyanobacterium,Microcystis,6641.22
+2019,Apr,Spring,2019-04-09T18:30:00Z,C10A,Southern Interior Delta,SID,Green Alga,Chlorella,8992.97
+2019,Apr,Spring,2019-04-09T18:30:00Z,C10A,Southern Interior Delta,SID,Pennate Diatom,Gomphonema,69980.65
+2019,Apr,Spring,2019-04-09T18:30:00Z,C10A,Southern Interior Delta,SID,Pennate Diatom,Navicula,689758.79
+2019,Apr,Spring,2019-04-09T18:30:00Z,C10A,Southern Interior Delta,SID,Pennate Diatom,Nitzschia,12315.33
+2019,Apr,Spring,2019-04-10T13:50:00Z,D4,Confluence,CON,Cyanobacterium,Eucapsis,64441.55
+2019,Apr,Spring,2019-04-10T13:50:00Z,D4,Confluence,CON,Green Alga,Chlorella,12333.22
+2019,Apr,Spring,2019-04-10T15:40:00Z,NZ068,Northern Interior Delta,NID,Cyanobacterium,Eucapsis,82145.59
+2019,Apr,Spring,2019-04-10T15:40:00Z,NZ068,Northern Interior Delta,NID,Green Alga,Chlorella,14163.93
+2019,Apr,Spring,2019-04-11T15:10:00Z,D12,Confluence,CON,Cyanobacterium,Eucapsis,63977.94
+2019,Apr,Spring,2019-04-11T15:10:00Z,D12,Confluence,CON,Pennate Diatom,Pinnularia,423160.34
+2019,Apr,Spring,2019-04-11T16:10:00Z,D19,Central Delta,CED,Cryptophyte,Cryptomonas,231333.51
+2019,Apr,Spring,2019-04-11T16:10:00Z,D19,Central Delta,CED,Cryptophyte,Plagioselmis,84482.09
+2019,Apr,Spring,2019-04-11T16:10:00Z,D19,Central Delta,CED,Cyanobacterium,Eucapsis,35697.84
+2019,Apr,Spring,2019-04-11T16:10:00Z,D19,Central Delta,CED,Green Alga,Chlorella,3597.19
+2019,Apr,Spring,2019-04-11T16:10:00Z,D19,Central Delta,CED,Pennate Diatom,Ulnaria,45639.57
+2019,Apr,Spring,2019-04-11T16:50:00Z,D28A,Central Delta,CED,Cryptophyte,Plagioselmis,176911.18
+2019,Apr,Spring,2019-04-11T16:50:00Z,D28A,Central Delta,CED,Cyanobacterium,Eucapsis,22608.63
+2019,Apr,Spring,2019-04-11T16:50:00Z,D28A,Central Delta,CED,Green Alga,Chlorella,2158.31
+2019,Apr,Spring,2019-04-11T16:50:00Z,D28A,Central Delta,CED,Pennate Diatom,Cocconeis,177670.52
+2019,Apr,Spring,2019-04-11T16:50:00Z,D28A,Central Delta,CED,Pennate Diatom,Gomphoneis,152435.74
+2019,Apr,Spring,2019-04-12T14:40:00Z,D16,Central Delta,CED,Cyanobacterium,Eucapsis,43303.91
+2019,Apr,Spring,2019-04-12T14:40:00Z,D16,Central Delta,CED,Cyanobacterium,Microcystis,14942.74
+2019,Apr,Spring,2019-04-12T14:40:00Z,D16,Central Delta,CED,Green Alga,Monoraphidium,2210.3
+2019,Apr,Spring,2019-04-12T15:25:00Z,D26,Central Delta,CED,Cyanobacterium,Eucapsis,33507.29
+2019,Apr,Spring,2019-04-12T15:25:00Z,D26,Central Delta,CED,Green Alga,Chlorella,4856.21
+2019,Apr,Spring,2019-04-12T16:30:00Z,MD10A,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,27043.82
+2019,Apr,Spring,2019-04-12T16:30:00Z,MD10A,Southern Interior Delta,SID,Green Alga,Chlorella,15512.880000000001
+2019,Apr,Spring,2019-04-12T16:30:00Z,MD10A,Southern Interior Delta,SID,Green Alga,Drepanochloris,2642.33
+2019,Apr,Spring,2019-04-12T18:30:00Z,P8,Southern Interior Delta,SID,Centric Diatom,Cyclotella,422165.99
+2019,Apr,Spring,2019-04-12T18:30:00Z,P8,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,79328.53
+2019,Apr,Spring,2019-04-12T18:30:00Z,P8,Southern Interior Delta,SID,Green Alga,Chlorella,14388.75
+2019,Apr,Spring,2019-04-12T18:30:00Z,P8,Southern Interior Delta,SID,Green Alga,Monoraphidium,31522.74
+2019,Apr,Spring,2019-04-12T18:30:00Z,P8,Southern Interior Delta,SID,Pennate Diatom,Cymbella,496638.67
+2019,Apr,Spring,2019-04-12T18:30:00Z,P8,Southern Interior Delta,SID,Pennate Diatom,Navicula,300382.86
+2019,Apr,Spring,2019-04-12T18:30:00Z,P8,Southern Interior Delta,SID,Pennate Diatom,Nitzschia,43994.28
+2019,Apr,Spring,2019-04-15T18:25:00Z,EZ6,Low Salinity Zone,LSZ,Centric Diatom,Thalassiosira,598264.11
+2019,Apr,Spring,2019-04-15T18:25:00Z,EZ6,Low Salinity Zone,LSZ,Cryptophyte,Plagioselmis,218249.03
+2019,Apr,Spring,2019-04-15T18:25:00Z,EZ6,Low Salinity Zone,LSZ,Cyanobacterium,Eucapsis,106344.61
+2019,Apr,Spring,2019-04-15T18:25:00Z,EZ6,Low Salinity Zone,LSZ,Green Alga,Chlorella,12451.81
+2019,Apr,Spring,2019-04-15T18:45:00Z,EZ2,Low Salinity Zone,LSZ,Centric Diatom,Cyclotella,34538.05
+2019,Apr,Spring,2019-04-15T18:45:00Z,EZ2,Low Salinity Zone,LSZ,Cyanobacterium,Eucapsis,75902.98
+2019,Apr,Spring,2019-04-15T18:45:00Z,EZ2,Low Salinity Zone,LSZ,Green Alga,Chlorella,14388.76
+2019,Apr,Spring,2019-04-15T19:10:00Z,D8,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,124204.87
+2019,Apr,Spring,2019-04-15T19:10:00Z,D8,Grizzly.Suisun Bay,GSB,Green Alga,Chlorella,20602.08
+2019,Apr,Spring,2019-04-15T19:50:00Z,D10,Confluence,CON,Cyanobacterium,Eucapsis,120664.59
+2019,Apr,Spring,2019-04-15T19:50:00Z,D10,Confluence,CON,Green Alga,Chlorella,11772.62
+2019,Apr,Spring,2019-04-15T19:50:00Z,D10,Confluence,CON,Pennate Diatom,Nitzschia,107296.75
+2019,Apr,Spring,2019-04-16T17:35:00Z,D6,San Pablo Bay,SPB,Centric Diatom,Skeletonema,50078.36
+2019,Apr,Spring,2019-04-16T17:35:00Z,D6,San Pablo Bay,SPB,Cryptophyte,Plagioselmis,432079.63
+2019,Apr,Spring,2019-04-16T17:35:00Z,D6,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,72297.14
+2019,Apr,Spring,2019-04-16T17:35:00Z,D6,San Pablo Bay,SPB,Green Alga,Chlorella,8992.97
+2019,Apr,Spring,2019-04-16T18:25:00Z,D7,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,93648.87
+2019,Apr,Spring,2019-04-16T18:25:00Z,D7,Grizzly.Suisun Bay,GSB,Green Alga,Chlorella,18499.83
+2019,Apr,Spring,2019-04-16T18:25:00Z,D7,Grizzly.Suisun Bay,GSB,Pennate Diatom,Cocconeis,1165206.08
+2019,Apr,Spring,2019-04-16T19:20:00Z,NZS42,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,149281.87
+2019,Apr,Spring,2019-04-16T19:20:00Z,NZS42,Grizzly.Suisun Bay,GSB,Green Alga,Chlorella,17985.95
+2019,Apr,Spring,2019-04-16T19:20:00Z,NZS42,Grizzly.Suisun Bay,GSB,Green Alga,Monoraphidium,7094.21
+2019,Apr,Spring,2019-04-16T20:15:00Z,NZ032,Grizzly.Suisun Bay,GSB,Cryptophyte,Cryptomonas,271511.13
+2019,Apr,Spring,2019-04-16T20:15:00Z,NZ032,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,63444.79
+2019,Apr,Spring,2019-04-16T20:15:00Z,NZ032,Grizzly.Suisun Bay,GSB,Green Alga,Chlorella,25899.76
+2019,Apr,Spring,2019-04-17T17:00:00Z,D41A,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,67501.37
+2019,Apr,Spring,2019-04-17T17:00:00Z,D41A,San Pablo Bay,SPB,Green Alga,Chlorella,12949.88
+2019,Apr,Spring,2019-04-17T17:50:00Z,D41,San Pablo Bay,SPB,Centric Diatom,Cyclotella,84368.69
+2019,Apr,Spring,2019-04-17T17:50:00Z,D41,San Pablo Bay,SPB,Cryptophyte,Cryptomonas,201396.23
+2019,Apr,Spring,2019-04-17T17:50:00Z,D41,San Pablo Bay,SPB,Cryptophyte,Plagioselmis,191870.73
+2019,Apr,Spring,2019-04-17T17:50:00Z,D41,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,43378.28
+2019,Apr,Spring,2019-04-17T17:50:00Z,D41,San Pablo Bay,SPB,Green Alga,Chlorella,7554.1
+2019,Apr,Spring,2019-04-17T17:50:00Z,D41,San Pablo Bay,SPB,Green Alga,Monoraphidium,4203.03
+2019,Apr,Spring,2019-04-17T18:50:00Z,NZ325,San Pablo Bay,SPB,Centric Diatom,Cyclotella,222048.35
+2019,Apr,Spring,2019-04-17T18:50:00Z,NZ325,San Pablo Bay,SPB,Centric Diatom,Skeletonema,65204.67
+2019,Apr,Spring,2019-04-17T18:50:00Z,NZ325,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,57677.08
+2019,Apr,Spring,2019-04-17T18:50:00Z,NZ325,San Pablo Bay,SPB,Green Alga,Chlorella,21856.11
+2019,Apr,Spring,2019-04-17T18:50:00Z,NZ325,San Pablo Bay,SPB,Green Alga,Drepanochloris,1577.08
+2019,Apr,Spring,2019-04-17T18:50:00Z,NZ325,San Pablo Bay,SPB,Green Alga,Monoraphidium,6707.81
+2019,Apr,Spring,2019-04-17T18:50:00Z,NZ325,San Pablo Bay,SPB,Pennate Diatom,Nitzschia,9399.77
+2019,Apr,Spring,2019-04-17T19:30:00Z,NZ002,San Pablo Bay,SPB,Centric Diatom,Aulacoseira,1163110.38
+2019,Apr,Spring,2019-04-17T19:30:00Z,NZ002,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,142070.18
+2019,Apr,Spring,2019-04-17T19:30:00Z,NZ002,San Pablo Bay,SPB,Green Alga,Chlorella,25180.32
+2019,Apr,Spring,2019-04-17T19:30:00Z,NZ002,San Pablo Bay,SPB,Green Alga,Monoraphidium,6669.41
+2019,Apr,Spring,2019-04-17T20:05:00Z,NZ004,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,225004.55
+2019,Apr,Spring,2019-04-17T20:05:00Z,NZ004,San Pablo Bay,SPB,Green Alga,Chlorella,43166.27
+2019,Feb,Winter,2019-02-07T15:15:00Z,C3A,Northern Interior Delta,NID,Centric Diatom,Aulacoseira,870792.88
+2019,Feb,Winter,2019-02-07T15:15:00Z,C3A,Northern Interior Delta,NID,Cyanobacterium,Eucapsis,175243.93
+2019,Feb,Winter,2019-02-07T15:15:00Z,C3A,Northern Interior Delta,NID,Green Alga,Chlorella,16187.35
+2019,Feb,Winter,2019-02-07T15:15:00Z,C3A,Northern Interior Delta,NID,Pennate Diatom,Geissleria,454241.76
+2019,Feb,Winter,2019-02-07T17:15:00Z,C9,Southern Interior Delta,SID,Centric Diatom,Cyclotella,58683.87
+2019,Feb,Winter,2019-02-07T17:15:00Z,C9,Southern Interior Delta,SID,Cryptophyte,Plagioselmis,228617.27000000002
+2019,Feb,Winter,2019-02-07T17:15:00Z,C9,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,27111.43
+2019,Feb,Winter,2019-02-07T17:15:00Z,C9,Southern Interior Delta,SID,Green Alga,Chlorella,674.47
+2019,Feb,Winter,2019-02-07T17:15:00Z,C9,Southern Interior Delta,SID,Pennate Diatom,Geissleria,82386.99
+2019,Feb,Winter,2019-02-07T17:15:00Z,C9,Southern Interior Delta,SID,Pennate Diatom,Nitzschia,12039.38
+2019,Feb,Winter,2019-02-07T17:15:00Z,C9,Southern Interior Delta,SID,Pennate Diatom,Rhoicosphenia,45377.68
+2019,Feb,Winter,2019-02-07T18:45:00Z,C10A,Southern Interior Delta,SID,Centric Diatom,Aulacoseira,1915744.33
+2019,Feb,Winter,2019-02-07T18:45:00Z,C10A,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,169159.07
+2019,Feb,Winter,2019-02-07T18:45:00Z,C10A,Southern Interior Delta,SID,Green Alga,Chlorella,12140.51
+2019,Feb,Winter,2019-02-12T17:20:00Z,D4,Confluence,CON,Centric Diatom,Cyclotella,305858.1
+2019,Feb,Winter,2019-02-12T17:20:00Z,D4,Confluence,CON,Cyanobacterium,Eucapsis,68312.68
+2019,Feb,Winter,2019-02-12T17:20:00Z,D4,Confluence,CON,Green Alga,Chlorella,8093.68
+2019,Feb,Winter,2019-02-12T18:10:00Z,D22,Confluence,CON,Cyanobacterium,Eucapsis,141817.77
+2019,Feb,Winter,2019-02-12T18:10:00Z,D22,Confluence,CON,Cyanobacterium,Microcystis,23908.38
+2019,Feb,Winter,2019-02-12T18:10:00Z,D22,Confluence,CON,Green Alga,Chlorella,22662.29
+2019,Feb,Winter,2019-02-12T19:00:00Z,NZ068,Northern Interior Delta,NID,Cyanobacterium,Eucapsis,146685.66
+2019,Feb,Winter,2019-02-12T19:00:00Z,NZ068,Northern Interior Delta,NID,Green Alga,Chlorella,6474.94
+2019,Feb,Winter,2019-02-13T18:25:00Z,D12,Confluence,CON,Cyanobacterium,Eucapsis,133055.58
+2019,Feb,Winter,2019-02-13T18:25:00Z,D12,Confluence,CON,Green Alga,Chlorella,6474.94
+2019,Feb,Winter,2019-02-13T19:55:00Z,D19,Central Delta,CED,Centric Diatom,Melosira,2988547.51
+2019,Feb,Winter,2019-02-13T19:55:00Z,D19,Central Delta,CED,Centric Diatom,Thalassiosira,13213440.39
+2019,Feb,Winter,2019-02-13T19:55:00Z,D19,Central Delta,CED,Cyanobacterium,Eucapsis,126024.18
+2019,Feb,Winter,2019-02-13T19:55:00Z,D19,Central Delta,CED,Green Alga,Chlorella,16187.35
+2019,Feb,Winter,2019-02-13T19:55:00Z,D19,Central Delta,CED,Pennate Diatom,Cocconeis,2752781.89
+2019,Feb,Winter,2019-02-13T19:55:00Z,D19,Central Delta,CED,Pennate Diatom,Ulnaria,6345413.3
+2019,Feb,Winter,2019-02-13T20:30:00Z,D28A,Central Delta,CED,Centric Diatom,Cyclotella,128037.53
+2019,Feb,Winter,2019-02-13T20:30:00Z,D28A,Central Delta,CED,Cryptophyte,Plagioselmis,128636.44
+2019,Feb,Winter,2019-02-13T20:30:00Z,D28A,Central Delta,CED,Cyanobacterium,Eucapsis,58119.62
+2019,Feb,Winter,2019-02-13T20:30:00Z,D28A,Central Delta,CED,Green Alga,Chlorella,5886.31
+2019,Feb,Winter,2019-02-13T20:30:00Z,D28A,Central Delta,CED,Pennate Diatom,Cocconeis,457587.72
+2019,Feb,Winter,2019-02-13T20:30:00Z,D28A,Central Delta,CED,Pennate Diatom,Nitzschia,81119.98000000001
+2019,Feb,Winter,2019-02-14T22:15:00Z,P8,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,95735.11
+2019,Feb,Winter,2019-02-14T22:15:00Z,P8,Southern Interior Delta,SID,Euglenoid,Euglena,1362725.27
+2019,Feb,Winter,2019-02-14T22:15:00Z,P8,Southern Interior Delta,SID,Green Alga,Chlorella,9249.91
+2019,Feb,Winter,2019-02-14T22:15:00Z,P8,Southern Interior Delta,SID,Pennate Diatom,Cocconeis,3175014.4099999997
+2019,Feb,Winter,2019-02-15T18:55:00Z,D16,Central Delta,CED,Cyanobacterium,Eucapsis,104080.06
+2019,Feb,Winter,2019-02-15T18:55:00Z,D16,Central Delta,CED,Green Alga,Chlorella,4660.69
+2019,Feb,Winter,2019-02-15T19:45:00Z,D26,Central Delta,CED,Cyanobacterium,Eucapsis,88433.28
+2019,Feb,Winter,2019-02-15T19:45:00Z,D26,Central Delta,CED,Cyanobacterium,Planktolyngbya,21792.39
+2019,Feb,Winter,2019-02-15T19:45:00Z,D26,Central Delta,CED,Green Alga,Chlorella,10117.1
+2019,Feb,Winter,2019-02-15T19:45:00Z,D26,Central Delta,CED,Pennate Diatom,Nitzschia,240738.41999999998
+2019,Feb,Winter,2019-02-15T21:00:00Z,MD10A,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,81131.45
+2019,Feb,Winter,2019-02-15T21:00:00Z,MD10A,Southern Interior Delta,SID,Pennate Diatom,Achnanthidium,34107.43
+2019,Feb,Winter,2019-02-15T21:00:00Z,MD10A,Southern Interior Delta,SID,Pennate Diatom,Nitzschia,44044.01
+2019,Feb,Winter,2019-02-15T21:00:00Z,MD10A,Southern Interior Delta,SID,Pennate Diatom,Planothidium,13936.37
+2019,Feb,Winter,2019-02-15T22:30:00Z,EZ6,Low Salinity Zone,LSZ,Cryptophyte,Plagioselmis,706360.87
+2019,Feb,Winter,2019-02-15T22:30:00Z,EZ6,Low Salinity Zone,LSZ,Cyanobacterium,Eucapsis,302458.04
+2019,Feb,Winter,2019-02-15T23:05:00Z,EZ2,Low Salinity Zone,LSZ,Cyanobacterium,Eucapsis,188224.96
+2019,Feb,Winter,2019-02-15T23:05:00Z,EZ2,Low Salinity Zone,LSZ,Green Alga,Chlorella,4624.96
+2019,Feb,Winter,2019-02-19T21:40:00Z,D6,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,154474.28
+2019,Feb,Winter,2019-02-19T21:40:00Z,D6,San Pablo Bay,SPB,Green Alga,Chlorella,20103.56
+2019,Feb,Winter,2019-02-19T22:30:00Z,D7,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,280390.29
+2019,Feb,Winter,2019-02-19T22:30:00Z,D7,Grizzly.Suisun Bay,GSB,Pennate Diatom,Achnanthidium,568719.06
+2019,Feb,Winter,2019-02-19T22:35:00Z,D8,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,242312.59
+2019,Feb,Winter,2019-02-19T22:35:00Z,D8,Grizzly.Suisun Bay,GSB,Green Alga,Chlorella,36426.85
+2019,Feb,Winter,2019-02-19T22:35:00Z,D8,Grizzly.Suisun Bay,GSB,Pennate Diatom,Achnanthidium,315314.68
+2019,Feb,Winter,2019-02-19T22:35:00Z,D8,Grizzly.Suisun Bay,GSB,Pennate Diatom,Nitzschia,85358.55
+2019,Feb,Winter,2019-02-19T23:15:00Z,D10,Confluence,CON,Centric Diatom,Aulacoseira,44828.21
+2019,Feb,Winter,2019-02-19T23:15:00Z,D10,Confluence,CON,Cyanobacterium,Eucapsis,183762.73
+2019,Feb,Winter,2019-02-19T23:15:00Z,D10,Confluence,CON,Pennate Diatom,Nitzschia,268541.70999999996
+2019,Feb,Winter,2019-02-19T23:25:00Z,NZS42,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,308948.56
+2019,Feb,Winter,2019-02-20T21:30:00Z,NZ325,San Pablo Bay,SPB,Centric Diatom,Cyclotella,10830496.17
+2019,Feb,Winter,2019-02-20T21:30:00Z,NZ325,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,340103.03
+2019,Feb,Winter,2019-02-20T22:10:00Z,NZ002,San Pablo Bay,SPB,Centric Diatom,Cyclotella,390195.64
+2019,Feb,Winter,2019-02-20T22:10:00Z,NZ002,San Pablo Bay,SPB,Cryptophyte,Cryptomonas,4722298.01
+2019,Feb,Winter,2019-02-20T22:10:00Z,NZ002,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,286231.75
+2019,Feb,Winter,2019-02-20T22:10:00Z,NZ002,San Pablo Bay,SPB,Green Alga,Chlamydomonas,759318.22
+2019,Feb,Winter,2019-02-20T22:10:00Z,NZ002,San Pablo Bay,SPB,Green Alga,Monoraphidium,100872.76
+2019,Feb,Winter,2019-02-20T22:10:00Z,NZ002,San Pablo Bay,SPB,Pennate Diatom,Nitzschia,115578.06
+2019,Feb,Winter,2019-02-20T23:05:00Z,NZ004,San Pablo Bay,SPB,Centric Diatom,Aulacoseira,1328146.31
+2019,Feb,Winter,2019-02-20T23:05:00Z,NZ004,San Pablo Bay,SPB,Centric Diatom,Cyclotella,221357.72
+2019,Feb,Winter,2019-02-20T23:05:00Z,NZ004,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,329069.16
+2019,Feb,Winter,2019-02-20T23:05:00Z,NZ004,San Pablo Bay,SPB,Green Alga,Chlorella,6474.94
+2019,Feb,Winter,2019-02-20T23:05:00Z,NZ004,San Pablo Bay,SPB,Pennate Diatom,Rhoicosphenia,1115132.46
+2019,Feb,Winter,2019-02-21T00:20:00Z,NZ032,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,305054.25
+2019,Feb,Winter,2019-02-21T00:20:00Z,NZ032,Grizzly.Suisun Bay,GSB,Cyanobacterium,Microcystis,143450.28
+2019,Feb,Winter,2019-02-21T00:20:00Z,NZ032,Grizzly.Suisun Bay,GSB,Green Alga,Chlorella,19424.82
+2019,Feb,Winter,2019-02-21T20:00:00Z,D41A,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,141817.77
+2019,Feb,Winter,2019-02-21T20:00:00Z,D41A,San Pablo Bay,SPB,Pennate Diatom,Nitzschia,176176.04
+2019,Feb,Winter,2019-02-21T20:45:00Z,D41,San Pablo Bay,SPB,Centric Diatom,Cyclotella,36129.23
+2019,Feb,Winter,2019-02-21T20:45:00Z,D41,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,24339.43
+2019,Feb,Winter,2019-02-21T20:45:00Z,D41,San Pablo Bay,SPB,Green Alga,Chlorella,1798.59
+2019,Feb,Winter,2019-02-21T20:45:00Z,D41,San Pablo Bay,SPB,Pennate Diatom,Planothidium,30426.38
+2019,Jan,Winter,2019-01-09T16:15:00Z,C3A,Northern Interior Delta,NID,Cyanobacterium,Eucapsis,236903.83
+2019,Jan,Winter,2019-01-09T16:15:00Z,C3A,Northern Interior Delta,NID,Green Alga,Coccomyxa,59637.61
+2019,Jan,Winter,2019-01-09T19:30:00Z,C10A,Southern Interior Delta,SID,Centric Diatom,Aulacoseira,201819.73
+2019,Jan,Winter,2019-01-09T19:30:00Z,C10A,Southern Interior Delta,SID,Centric Diatom,Cyclotella,274425.04
+2019,Jan,Winter,2019-01-09T19:30:00Z,C10A,Southern Interior Delta,SID,Centric Diatom,Thalassiosira,625979.55
+2019,Jan,Winter,2019-01-09T19:30:00Z,C10A,Southern Interior Delta,SID,Cryptophyte,Plagioselmis,128620.88
+2019,Jan,Winter,2019-01-09T19:30:00Z,C10A,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,34345.65
+2019,Jan,Winter,2019-01-09T19:30:00Z,C10A,Southern Interior Delta,SID,Cyanobacterium,Microcystis,9423.54
+2019,Jan,Winter,2019-01-09T19:30:00Z,C10A,Southern Interior Delta,SID,Green Alga,Chlorella,7194.37
+2019,Jan,Winter,2019-01-09T19:30:00Z,C10A,Southern Interior Delta,SID,Green Alga,Coccomyxa,22549.95
+2019,Jan,Winter,2019-01-09T19:30:00Z,C10A,Southern Interior Delta,SID,Green Alga,Monoraphidium,7697.72
+2019,Jan,Winter,2019-01-09T19:30:00Z,C10A,Southern Interior Delta,SID,Pennate Diatom,Navicula,480162.60000000003
+2019,Jan,Winter,2019-01-09T19:30:00Z,C10A,Southern Interior Delta,SID,Pennate Diatom,Nitzschia,8735.15
+2019,Jan,Winter,2019-01-10T17:15:00Z,D4,Confluence,CON,Cryptophyte,Plagioselmis,348220.86
+2019,Jan,Winter,2019-01-10T17:15:00Z,D4,Confluence,CON,Cyanobacterium,Eucapsis,75289.98
+2019,Jan,Winter,2019-01-10T17:15:00Z,D4,Confluence,CON,Green Alga,Coccomyxa,3919.04
+2019,Jan,Winter,2019-01-10T17:15:00Z,D4,Confluence,CON,Pennate Diatom,Achnanthidium,62901.98
+2019,Jan,Winter,2019-01-10T17:15:00Z,D4,Confluence,CON,Pennate Diatom,Cocconeis,247160.96
+2019,Jan,Winter,2019-01-10T18:55:00Z,D22,Confluence,CON,Centric Diatom,Aulacoseira,103085.51
+2019,Jan,Winter,2019-01-10T18:55:00Z,D22,Confluence,CON,Cyanobacterium,Eucapsis,98516.76
+2019,Jan,Winter,2019-01-10T18:55:00Z,D22,Confluence,CON,Green Alga,Coccomyxa,6815.73
+2019,Jan,Winter,2019-01-10T19:55:00Z,NZ068,Northern Interior Delta,NID,Cyanobacterium,Eucapsis,197636.21
+2019,Jan,Winter,2019-01-10T19:55:00Z,NZ068,Northern Interior Delta,NID,Green Alga,Chlorella,18880.13
+2019,Jan,Winter,2019-01-10T19:55:00Z,NZ068,Northern Interior Delta,NID,Green Alga,Coccomyxa,83261.37
+2019,Jan,Winter,2019-01-10T19:55:00Z,NZ068,Northern Interior Delta,NID,Green Alga,Monoraphidium,4243.78
+2019,Jan,Winter,2019-01-10T19:55:00Z,NZ068,Northern Interior Delta,NID,Pennate Diatom,Nitzschia,246084.31
+2019,Jan,Winter,2019-01-11T16:40:00Z,D12,Confluence,CON,Centric Diatom,Cyclotella,697866.23
+2019,Jan,Winter,2019-01-11T16:40:00Z,D12,Confluence,CON,Cyanobacterium,Eucapsis,210014.55
+2019,Jan,Winter,2019-01-11T16:40:00Z,D12,Confluence,CON,Green Alga,Chlorella,9249.91
+2019,Jan,Winter,2019-01-11T16:40:00Z,D12,Confluence,CON,Green Alga,Coccomyxa,75388.36
+2019,Jan,Winter,2019-01-11T17:45:00Z,D19,Central Delta,CED,Centric Diatom,Cyclotella,79694.6
+2019,Jan,Winter,2019-01-11T17:45:00Z,D19,Central Delta,CED,Cyanobacterium,Eucapsis,74280.35
+2019,Jan,Winter,2019-01-11T17:45:00Z,D19,Central Delta,CED,Green Alga,Chlorella,3597.19
+2019,Jan,Winter,2019-01-11T17:45:00Z,D19,Central Delta,CED,Pennate Diatom,Cocconeis,163697.02
+2019,Jan,Winter,2019-01-11T17:45:00Z,D19,Central Delta,CED,Pennate Diatom,Nitzschia,400952.62
+2019,Jan,Winter,2019-01-11T18:20:00Z,D28A,Central Delta,CED,Centric Diatom,Cyclotella,524944.9
+2019,Jan,Winter,2019-01-11T18:20:00Z,D28A,Central Delta,CED,Centric Diatom,Melosira,1147709.95
+2019,Jan,Winter,2019-01-11T18:20:00Z,D28A,Central Delta,CED,Cryptophyte,Plagioselmis,486089.59
+2019,Jan,Winter,2019-01-11T18:20:00Z,D28A,Central Delta,CED,Cyanobacterium,Eucapsis,83362.56
+2019,Jan,Winter,2019-01-11T18:20:00Z,D28A,Central Delta,CED,Green Alga,Chlorella,16312.43
+2019,Jan,Winter,2019-01-11T18:20:00Z,D28A,Central Delta,CED,Pennate Diatom,Nitzschia,257914.63
+2019,Jan,Winter,2019-01-11T18:20:00Z,D28A,Central Delta,CED,Pennate Diatom,Ulnaria,222421.94
+2019,Jan,Winter,2019-01-15T16:30:00Z,EZ6,Low Salinity Zone,LSZ,Cyanobacterium,Eucapsis,131108.42
+2019,Jan,Winter,2019-01-15T16:30:00Z,EZ6,Low Salinity Zone,LSZ,Green Alga,Chlorella,15104.1
+2019,Jan,Winter,2019-01-15T16:30:00Z,EZ6,Low Salinity Zone,LSZ,Pennate Diatom,Entomoneis,6953581.93
+2019,Jan,Winter,2019-01-15T18:00:00Z,EZ2,Low Salinity Zone,LSZ,Cyanobacterium,Eucapsis,58685.08
+2019,Jan,Winter,2019-01-15T18:00:00Z,EZ2,Low Salinity Zone,LSZ,Green Alga,Coccomyxa,28320.19
+2019,Jan,Winter,2019-01-15T18:00:00Z,EZ2,Low Salinity Zone,LSZ,Pennate Diatom,Entomoneis,1647434.09
+2019,Jan,Winter,2019-01-15T18:30:00Z,D16,Central Delta,CED,Cryptophyte,Plagioselmis,205022.63
+2019,Jan,Winter,2019-01-15T18:30:00Z,D16,Central Delta,CED,Cyanobacterium,Eucapsis,65391.95
+2019,Jan,Winter,2019-01-15T18:30:00Z,D16,Central Delta,CED,Green Alga,Chlorella,3237.47
+2019,Jan,Winter,2019-01-15T18:30:00Z,D16,Central Delta,CED,Green Alga,Coccomyxa,6304.55
+2019,Jan,Winter,2019-01-15T19:20:00Z,D26,Central Delta,CED,Centric Diatom,Melosira,1555486.67
+2019,Jan,Winter,2019-01-15T19:20:00Z,D26,Central Delta,CED,Cyanobacterium,Eucapsis,133055.58
+2019,Jan,Winter,2019-01-15T19:20:00Z,D26,Central Delta,CED,Pennate Diatom,Achnanthidium,64704.56
+2019,Jan,Winter,2019-01-15T19:20:00Z,D26,Central Delta,CED,Pennate Diatom,Nitzschia,87454.29
+2019,Jan,Winter,2019-01-15T19:20:00Z,D26,Central Delta,CED,Pennate Diatom,Ulnaria,2244373.99
+2019,Jan,Winter,2019-01-15T20:30:00Z,MD10A,Southern Interior Delta,SID,Cryptophyte,Plagioselmis,96986.75
+2019,Jan,Winter,2019-01-15T20:30:00Z,MD10A,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,38375.18
+2019,Jan,Winter,2019-01-15T20:30:00Z,MD10A,Southern Interior Delta,SID,Green Alga,Chlorella,3776.03
+2019,Jan,Winter,2019-01-15T20:30:00Z,MD10A,Southern Interior Delta,SID,Green Alga,Coccomyxa,30806.71
+2019,Jan,Winter,2019-01-15T20:30:00Z,MD10A,Southern Interior Delta,SID,Pennate Diatom,Cocconeis,17514.62
+2019,Jan,Winter,2019-01-15T22:00:00Z,P8,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,45541.79
+2019,Jan,Winter,2019-01-15T22:00:00Z,P8,Southern Interior Delta,SID,Green Alga,Chlorella,2158.31
+2019,Jan,Winter,2019-01-15T22:00:00Z,P8,Southern Interior Delta,SID,Green Alga,Coccomyxa,22540.36
+2019,Jan,Winter,2019-01-15T22:00:00Z,P8,Southern Interior Delta,SID,Green Alga,Monoraphidium,1656.73
+2019,Jan,Winter,2019-01-16T17:45:00Z,D6,San Pablo Bay,SPB,Centric Diatom,Thalassiosira,482475.42
+2019,Jan,Winter,2019-01-16T17:45:00Z,D6,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,74460.64
+2019,Jan,Winter,2019-01-16T17:45:00Z,D6,San Pablo Bay,SPB,Green Alga,Chlorella,3597.19
+2019,Jan,Winter,2019-01-16T17:45:00Z,D6,San Pablo Bay,SPB,Green Alga,Coccomyxa,14010.11
+2019,Jan,Winter,2019-01-16T18:45:00Z,D8,Grizzly.Suisun Bay,GSB,Cryptophyte,Plagioselmis,173428.07
+2019,Jan,Winter,2019-01-16T18:45:00Z,D8,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,46708.53
+2019,Jan,Winter,2019-01-16T18:45:00Z,D8,Grizzly.Suisun Bay,GSB,Green Alga,Chlorella,2312.48
+2019,Jan,Winter,2019-01-16T18:45:00Z,D8,Grizzly.Suisun Bay,GSB,Green Alga,Coccomyxa,72258.98
+2019,Jan,Winter,2019-01-16T19:30:00Z,D10,Confluence,CON,Cyanobacterium,Eucapsis,61822.16
+2019,Jan,Winter,2019-01-16T19:30:00Z,D10,Confluence,CON,Green Alga,Coccomyxa,164599.8
+2019,Jan,Winter,2019-01-16T19:30:00Z,NZS42,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,368661.3
+2019,Jan,Winter,2019-01-16T19:30:00Z,NZS42,Grizzly.Suisun Bay,GSB,Cyanobacterium,Microcystis,191267.04
+2019,Jan,Winter,2019-01-16T19:30:00Z,NZS42,Grizzly.Suisun Bay,GSB,Green Alga,Chlorella,51799.52
+2019,Jan,Winter,2019-01-17T18:25:00Z,D7,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,62397.46
+2019,Jan,Winter,2019-01-17T18:25:00Z,D7,Grizzly.Suisun Bay,GSB,Green Alga,Chlorella,4414.73
+2019,Jan,Winter,2019-01-17T20:40:00Z,NZ032,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,136949.89
+2019,Jan,Winter,2019-01-17T20:40:00Z,NZ032,Grizzly.Suisun Bay,GSB,Cyanobacterium,Microcystis,23908.38
+2019,Jan,Winter,2019-01-17T20:40:00Z,NZ032,Grizzly.Suisun Bay,GSB,Green Alga,Chlorella,3237.47
+2019,Jan,Winter,2019-01-17T20:40:00Z,NZ032,Grizzly.Suisun Bay,GSB,Pennate Diatom,Ulnaria,328500.09
+2019,Jan,Winter,2019-01-18T16:50:00Z,D41A,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,37050.03
+2019,Jan,Winter,2019-01-18T16:50:00Z,D41A,San Pablo Bay,SPB,Green Alga,Chlorella,1798.59
+2019,Jan,Winter,2019-01-18T16:50:00Z,D41A,San Pablo Bay,SPB,Green Alga,Coccomyxa,3502.53
+2019,Jan,Winter,2019-01-18T17:50:00Z,D41,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,22175.93
+2019,Jan,Winter,2019-01-18T17:50:00Z,D41,San Pablo Bay,SPB,Green Alga,Chlorella,539.58
+2019,Jan,Winter,2019-01-18T17:50:00Z,D41,San Pablo Bay,SPB,Green Alga,Coccomyxa,7383.7
+2019,Jan,Winter,2019-01-18T18:35:00Z,NZ325,San Pablo Bay,SPB,Cryptophyte,Plagioselmis,198351.86
+2019,Jan,Winter,2019-01-18T18:35:00Z,NZ325,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,53662.66
+2019,Jan,Winter,2019-01-18T18:35:00Z,NZ325,San Pablo Bay,SPB,Green Alga,Chlorella,8093.68
+2019,Jan,Winter,2019-01-18T18:35:00Z,NZ325,San Pablo Bay,SPB,Pennate Diatom,Nitzschia,5927.43
+2019,Jan,Winter,2019-01-18T18:55:00Z,NZ002,San Pablo Bay,SPB,Centric Diatom,Cyclotella,117367.74
+2019,Jan,Winter,2019-01-18T18:55:00Z,NZ002,San Pablo Bay,SPB,Cryptophyte,Plagioselmis,42377.04
+2019,Jan,Winter,2019-01-18T18:55:00Z,NZ002,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,61119.02
+2019,Jan,Winter,2019-01-18T18:55:00Z,NZ002,San Pablo Bay,SPB,Green Alga,Chlorella,46218.56
+2019,Jan,Winter,2019-01-18T19:10:00Z,NZ004,San Pablo Bay,SPB,Cryptophyte,Plagioselmis,353972.93
+2019,Jan,Winter,2019-01-18T19:10:00Z,NZ004,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,53681.98
+2019,Jan,Winter,2019-01-18T19:10:00Z,NZ004,San Pablo Bay,SPB,Cyanobacterium,Microcystis,9961.83
+2019,Jan,Winter,2019-01-18T19:10:00Z,NZ004,San Pablo Bay,SPB,Green Alga,Chlorella,12140.51
+2019,Jan,Winter,2019-01-18T19:10:00Z,NZ004,San Pablo Bay,SPB,Green Alga,Drepanochloris,1099.18
+2019,Jan,Winter,2019-01-18T19:10:00Z,NZ004,San Pablo Bay,SPB,Pennate Diatom,Planothidium,149427.38
+2019,Jan,Winter,2019-01-19T18:00:00Z,C9,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,45217.26
+2019,Jan,Winter,2019-01-19T18:00:00Z,C9,Southern Interior Delta,SID,Cyanobacterium,Microcystis,7969.46
+2019,Jan,Winter,2019-01-19T18:00:00Z,C9,Southern Interior Delta,SID,Green Alga,Chlorella,2158.31
+2019,Jan,Winter,2019-01-19T18:00:00Z,C9,Southern Interior Delta,SID,Green Alga,Coccomyxa,5282.19
+2019,Jan,Winter,2019-01-19T18:00:00Z,C9,Southern Interior Delta,SID,Pennate Diatom,Rhoicosphenia,60076.57
+2019,Jul 19,Summer,2019-07-08T15:00:00Z,D4,Confluence,CON,Centric Diatom,Cyclotella,35354.58
+2019,Jul 19,Summer,2019-07-08T15:00:00Z,D4,Confluence,CON,Cyanobacterium,Eucapsis,93454.25
+2019,Jul 19,Summer,2019-07-08T15:00:00Z,D4,Confluence,CON,Green Alga,Chlorella,18314.31
+2019,Jul 19,Summer,2019-07-08T15:00:00Z,D4,Confluence,CON,Pennate Diatom,Nitzschia,73024.72
+2019,Jul 19,Summer,2019-07-08T15:50:00Z,D22,Confluence,CON,Centric Diatom,Cyclotella,70210.63
+2019,Jul 19,Summer,2019-07-08T15:50:00Z,D22,Confluence,CON,Cyanobacterium,Eucapsis,69381.76
+2019,Jul 19,Summer,2019-07-08T15:50:00Z,D22,Confluence,CON,Green Alga,Chlorella,22304.11
+2019,Jul 19,Summer,2019-07-08T15:50:00Z,D22,Confluence,CON,Pennate Diatom,Nitzschia,46432.52
+2019,Jul 19,Summer,2019-07-08T16:45:00Z,NZ068,Northern Interior Delta,NID,Centric Diatom,Cyclotella,31715.08
+2019,Jul 19,Summer,2019-07-08T16:45:00Z,NZ068,Northern Interior Delta,NID,Centric Diatom,Skeletonema,15958.43
+2019,Jul 19,Summer,2019-07-08T16:45:00Z,NZ068,Northern Interior Delta,NID,Cryptophyte,Plagioselmis,91215.14
+2019,Jul 19,Summer,2019-07-08T16:45:00Z,NZ068,Northern Interior Delta,NID,Cyanobacterium,Eucapsis,39450.17
+2019,Jul 19,Summer,2019-07-08T16:45:00Z,NZ068,Northern Interior Delta,NID,Green Alga,Chlorella,26304.45
+2019,Jul 19,Summer,2019-07-08T16:45:00Z,NZ068,Northern Interior Delta,NID,Green Alga,Drepanochloris,1487.47
+2019,Jul 19,Summer,2019-07-08T16:45:00Z,NZ068,Northern Interior Delta,NID,Green Alga,Microspora,46116.19
+2019,Jul 19,Summer,2019-07-08T16:45:00Z,NZ068,Northern Interior Delta,NID,Pennate Diatom,Cocconeis,280561.09
+2019,Jul 19,Summer,2019-07-08T16:45:00Z,NZ068,Northern Interior Delta,NID,Pennate Diatom,Nitzschia,12513.96
+2019,Jul 19,Summer,2019-07-08T17:00:00Z,C3A,Northern Interior Delta,NID,Centric Diatom,Aulacoseira,154963.12
+2019,Jul 19,Summer,2019-07-08T17:00:00Z,C3A,Northern Interior Delta,NID,Centric Diatom,Cyclotella,859278.71
+2019,Jul 19,Summer,2019-07-08T17:00:00Z,C3A,Northern Interior Delta,NID,Centric Diatom,Skeletonema,33436.5
+2019,Jul 19,Summer,2019-07-08T17:00:00Z,C3A,Northern Interior Delta,NID,Cryptophyte,Plagioselmis,21980.59
+2019,Jul 19,Summer,2019-07-08T17:00:00Z,C3A,Northern Interior Delta,NID,Cyanobacterium,Eucapsis,17547.83
+2019,Jul 19,Summer,2019-07-08T17:00:00Z,C3A,Northern Interior Delta,NID,Cyanobacterium,Planktolyngbya,3552.08
+2019,Jul 19,Summer,2019-07-08T17:00:00Z,C3A,Northern Interior Delta,NID,Green Alga,Chlorella,16461.62
+2019,Jul 19,Summer,2019-07-08T17:00:00Z,C3A,Northern Interior Delta,NID,Green Alga,Monoraphidium,1787.16
+2019,Jul 19,Summer,2019-07-08T17:00:00Z,C3A,Northern Interior Delta,NID,Green Alga,Tetrabaena,26047.02
+2019,Jul 19,Summer,2019-07-08T17:00:00Z,C3A,Northern Interior Delta,NID,Pennate Diatom,Achnanthidium,19336.97
+2019,Jul 19,Summer,2019-07-08T17:00:00Z,C3A,Northern Interior Delta,NID,Pennate Diatom,Navicula,281076.73
+2019,Jul 19,Summer,2019-07-08T18:40:00Z,C9,Southern Interior Delta,SID,Centric Diatom,Cyclotella,135185.72
+2019,Jul 19,Summer,2019-07-08T18:40:00Z,C9,Southern Interior Delta,SID,Cryptophyte,Plagioselmis,126539.14
+2019,Jul 19,Summer,2019-07-08T18:40:00Z,C9,Southern Interior Delta,SID,Cyanobacterium,Chroococcus,19535.26
+2019,Jul 19,Summer,2019-07-08T18:40:00Z,C9,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,26770.21
+2019,Jul 19,Summer,2019-07-08T18:40:00Z,C9,Southern Interior Delta,SID,Cyanobacterium,Pseudanabaena,4564.5
+2019,Jul 19,Summer,2019-07-08T18:40:00Z,C9,Southern Interior Delta,SID,Green Alga,Chlorella,34186.71
+2019,Jul 19,Summer,2019-07-08T18:40:00Z,C9,Southern Interior Delta,SID,Green Alga,Monoraphidium,1950.8
+2019,Jul 19,Summer,2019-07-08T20:00:00Z,C10A,Southern Interior Delta,SID,Centric Diatom,Cyclotella,5060905.99
+2019,Jul 19,Summer,2019-07-08T20:00:00Z,C10A,Southern Interior Delta,SID,Centric Diatom,Skeletonema,525971.65
+2019,Jul 19,Summer,2019-07-08T20:00:00Z,C10A,Southern Interior Delta,SID,Cryptophyte,Plagioselmis,71936.46
+2019,Jul 19,Summer,2019-07-08T20:00:00Z,C10A,Southern Interior Delta,SID,Cyanobacterium,Chroococcus,4505.22
+2019,Jul 19,Summer,2019-07-08T20:00:00Z,C10A,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,22505.04
+2019,Jul 19,Summer,2019-07-08T20:00:00Z,C10A,Southern Interior Delta,SID,Dinoflagellate,Peridinium,1646790.02
+2019,Jul 19,Summer,2019-07-08T20:00:00Z,C10A,Southern Interior Delta,SID,Green Alga,Chlorella,36320.29
+2019,Jul 19,Summer,2019-07-08T20:00:00Z,C10A,Southern Interior Delta,SID,Green Alga,Lagerheimia,9526.72
+2019,Jul 19,Summer,2019-07-08T20:00:00Z,C10A,Southern Interior Delta,SID,Green Alga,Monoraphidium,30542.78
+2019,Jul 19,Summer,2019-07-08T20:00:00Z,C10A,Southern Interior Delta,SID,Green Alga,Scenedesmus,72952.36
+2019,Jul 19,Summer,2019-07-08T20:00:00Z,C10A,Southern Interior Delta,SID,Green Alga,Sphaerocystis,262843.07
+2019,Jul 19,Summer,2019-07-08T20:00:00Z,C10A,Southern Interior Delta,SID,Pennate Diatom,Achnanthidium,47463.48
+2019,Jul 19,Summer,2019-07-08T20:00:00Z,C10A,Southern Interior Delta,SID,Pennate Diatom,Cylindrotheca,26705.4
+2019,Jul 19,Summer,2019-07-08T20:00:00Z,C10A,Southern Interior Delta,SID,Pennate Diatom,Navicula,62944.4
+2019,Jul 19,Summer,2019-07-08T20:00:00Z,C10A,Southern Interior Delta,SID,Pennate Diatom,Nitzschia,521989.63
+2019,Jul 19,Summer,2019-07-09T16:40:00Z,D12,Confluence,CON,Centric Diatom,Cyclotella,85473.81
+2019,Jul 19,Summer,2019-07-09T16:40:00Z,D12,Confluence,CON,Cyanobacterium,Eucapsis,69795.73
+2019,Jul 19,Summer,2019-07-09T16:40:00Z,D12,Confluence,CON,Green Alga,Chlorella,46884.64
+2019,Jul 19,Summer,2019-07-09T16:40:00Z,D12,Confluence,CON,Green Alga,Monoraphidium,8085.69
+2019,Jul 19,Summer,2019-07-09T16:40:00Z,D12,Confluence,CON,Green Alga,Scenedesmus,6433.78
+2019,Jul 19,Summer,2019-07-09T16:40:00Z,D12,Confluence,CON,Pennate Diatom,Staurosira,34806.55
+2019,Jul 19,Summer,2019-07-09T17:45:00Z,D19,Central Delta,CED,Centric Diatom,Cyclotella,24665.39
+2019,Jul 19,Summer,2019-07-09T17:45:00Z,D19,Central Delta,CED,Cryptophyte,Plagioselmis,24728.16
+2019,Jul 19,Summer,2019-07-09T17:45:00Z,D19,Central Delta,CED,Cyanobacterium,Eucapsis,21164.34
+2019,Jul 19,Summer,2019-07-09T17:45:00Z,D19,Central Delta,CED,Green Alga,Chlorella,11152.06
+2019,Jul 19,Summer,2019-07-09T18:25:00Z,D28A,Central Delta,CED,Cryptophyte,Plagioselmis,31782.78
+2019,Jul 19,Summer,2019-07-09T18:25:00Z,D28A,Central Delta,CED,Cyanobacterium,Eucapsis,19877.21
+2019,Jul 19,Summer,2019-07-09T18:25:00Z,D28A,Central Delta,CED,Cyanobacterium,Microcystis,7471.37
+2019,Jul 19,Summer,2019-07-09T18:25:00Z,D28A,Central Delta,CED,Green Alga,Chlorella,25798.59
+2019,Jul 19,Summer,2019-07-10T16:25:00Z,D16,Central Delta,CED,Centric Diatom,Cyclotella,372761.87
+2019,Jul 19,Summer,2019-07-10T16:25:00Z,D16,Central Delta,CED,Centric Diatom,Skeletonema,21902.08
+2019,Jul 19,Summer,2019-07-10T16:25:00Z,D16,Central Delta,CED,Cyanobacterium,Eucapsis,31343.62
+2019,Jul 19,Summer,2019-07-10T16:25:00Z,D16,Central Delta,CED,Green Alga,Chlorella,15349.14
+2019,Jul 19,Summer,2019-07-10T17:30:00Z,D26,Central Delta,CED,Centric Diatom,Skeletonema,13985.85
+2019,Jul 19,Summer,2019-07-10T17:30:00Z,D26,Central Delta,CED,Cyanobacterium,Chroococcus,5395.78
+2019,Jul 19,Summer,2019-07-10T17:30:00Z,D26,Central Delta,CED,Cyanobacterium,Eucapsis,37050.03
+2019,Jul 19,Summer,2019-07-10T17:30:00Z,D26,Central Delta,CED,Green Alga,Chlamydomonas,23025.37
+2019,Jul 19,Summer,2019-07-10T17:30:00Z,D26,Central Delta,CED,Green Alga,Chlorella,27271.3
+2019,Jul 19,Summer,2019-07-10T17:30:00Z,D26,Central Delta,CED,Green Alga,Lagerheimia,4728.42
+2019,Jul 19,Summer,2019-07-10T17:30:00Z,D26,Central Delta,CED,Green Alga,Scenedesmus,3502.53
+2019,Jul 19,Summer,2019-07-10T18:45:00Z,MD10A,Southern Interior Delta,SID,Cryptophyte,Plagioselmis,48462.93
+2019,Jul 19,Summer,2019-07-10T18:45:00Z,MD10A,Southern Interior Delta,SID,Cyanobacterium,Chroococcus,56655.73
+2019,Jul 19,Summer,2019-07-10T18:45:00Z,MD10A,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,36509.15
+2019,Jul 19,Summer,2019-07-10T18:45:00Z,MD10A,Southern Interior Delta,SID,Green Alga,Chlorella,52608.89
+2019,Jul 19,Summer,2019-07-10T18:45:00Z,MD10A,Southern Interior Delta,SID,Green Alga,Drepanochloris,743.74
+2019,Jul 19,Summer,2019-07-10T18:45:00Z,MD10A,Southern Interior Delta,SID,Pennate Diatom,Cocconeis,1695158.33
+2019,Jul 19,Summer,2019-07-10T20:10:00Z,P8,Southern Interior Delta,SID,Cryptophyte,Plagioselmis,666105.27
+2019,Jul 19,Summer,2019-07-10T20:10:00Z,P8,Southern Interior Delta,SID,Cyanobacterium,Chroococcus,16187.35
+2019,Jul 19,Summer,2019-07-10T20:10:00Z,P8,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,77683.36
+2019,Jul 19,Summer,2019-07-10T20:10:00Z,P8,Southern Interior Delta,SID,Green Alga,Chlorella,44515.22
+2019,Jul 19,Summer,2019-07-11T18:00:00Z,D8,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,125212.87
+2019,Jul 19,Summer,2019-07-11T18:00:00Z,D8,Grizzly.Suisun Bay,GSB,Green Alga,Chlorella,8093.68
+2019,Jul 19,Summer,2019-07-11T18:00:00Z,D8,Grizzly.Suisun Bay,GSB,Green Alga,Drepanochloris,2891.31
+2019,Jul 19,Summer,2019-07-11T18:00:00Z,D8,Grizzly.Suisun Bay,GSB,Pennate Diatom,Entomoneis,10842386.4
+2019,Jul 19,Summer,2019-07-11T18:00:00Z,D8,Grizzly.Suisun Bay,GSB,Pennate Diatom,Gomphonema,124496.49
+2019,Jul 19,Summer,2019-07-11T18:00:00Z,D8,Grizzly.Suisun Bay,GSB,Pennate Diatom,Nitzschia,41591.880000000005
+2019,Jul 19,Summer,2019-07-11T18:35:00Z,EZ6,Low Salinity Zone,LSZ,Cyanobacterium,Eucapsis,126565.06
+2019,Jul 19,Summer,2019-07-11T18:35:00Z,EZ6,Low Salinity Zone,LSZ,Green Alga,Chlorella,13489.46
+2019,Jul 19,Summer,2019-07-11T18:50:00Z,D10,Confluence,CON,Centric Diatom,Cyclotella,143450.28
+2019,Jul 19,Summer,2019-07-11T18:50:00Z,D10,Confluence,CON,Cyanobacterium,Eucapsis,70584.36
+2019,Jul 19,Summer,2019-07-11T18:50:00Z,D10,Confluence,CON,Green Alga,Chlorella,4856.21
+2019,Jul 19,Summer,2019-07-11T18:50:00Z,D10,Confluence,CON,Green Alga,Monoraphidium,9456.82
+2019,Jul 19,Summer,2019-07-11T18:50:00Z,D10,Confluence,CON,Pennate Diatom,Entomoneis,4166764.35
+2019,Jul 19,Summer,2019-07-11T19:20:00Z,EZ2,Low Salinity Zone,LSZ,Cyanobacterium,Eucapsis,116017.97
+2019,Jul 19,Summer,2019-07-11T19:20:00Z,EZ2,Low Salinity Zone,LSZ,Green Alga,Chlorella,24281.03
+2019,Jul 19,Summer,2019-07-12T17:05:00Z,D6,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,43202.5
+2019,Jul 19,Summer,2019-07-12T17:05:00Z,D6,San Pablo Bay,SPB,Green Alga,Chlorella,2023.42
+2019,Jul 19,Summer,2019-07-12T18:20:00Z,D7,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,114124.91
+2019,Jul 19,Summer,2019-07-12T18:20:00Z,D7,Grizzly.Suisun Bay,GSB,Green Alga,Chlorella,5437.48
+2019,Jul 19,Summer,2019-07-12T19:20:00Z,NZS42,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,301808.99
+2019,Jul 19,Summer,2019-07-12T19:20:00Z,NZS42,Grizzly.Suisun Bay,GSB,Green Alga,Chlorella,19424.82
+2019,Jul 19,Summer,2019-07-12T19:20:00Z,NZS42,Grizzly.Suisun Bay,GSB,Pennate Diatom,Entomoneis,9863040.1
+2019,Jul 19,Summer,2019-07-12T20:10:00Z,NZ032,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,243394.35
+2019,Jul 19,Summer,2019-07-12T20:10:00Z,NZ032,Grizzly.Suisun Bay,GSB,Green Alga,Chlorella,26978.92
+2019,Jul 19,Summer,2019-07-15T18:15:00Z,D41A,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,312842.87
+2019,Jul 19,Summer,2019-07-15T18:15:00Z,D41A,San Pablo Bay,SPB,Pennate Diatom,Achnanthidium,208312.02
+2019,Jul 19,Summer,2019-07-15T19:10:00Z,D41,San Pablo Bay,SPB,Centric Diatom,Cyclotella,127259.37
+2019,Jul 19,Summer,2019-07-15T19:10:00Z,D41,San Pablo Bay,SPB,Centric Diatom,Thalassiosira,935481.46
+2019,Jul 19,Summer,2019-07-15T19:10:00Z,D41,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,20651.64
+2019,Jul 19,Summer,2019-07-15T19:10:00Z,D41,San Pablo Bay,SPB,Green Alga,Chlorella,1962.1
+2019,Jul 19,Summer,2019-07-15T19:55:00Z,NZ325,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,47867.55
+2019,Jul 19,Summer,2019-07-15T19:55:00Z,NZ325,San Pablo Bay,SPB,Euglenoid,Euglena,2425111.34
+2019,Jul 19,Summer,2019-07-15T20:10:00Z,NZ002,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,62544.97
+2019,Jul 19,Summer,2019-07-15T20:25:00Z,NZ004,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,53796.39
+2019,Jul 19,Summer,2019-07-15T20:25:00Z,NZ004,San Pablo Bay,SPB,Euglenoid,Euglena,660331.08
+2019,Jun,Summer,2019-06-06T14:00:00Z,C3A,Northern Interior Delta,NID,Chrysophyte,Pseudokephyrion,5833.31
+2019,Jun,Summer,2019-06-06T14:00:00Z,C3A,Northern Interior Delta,NID,Cyanobacterium,Eucapsis,26589.76
+2019,Jun,Summer,2019-06-06T14:00:00Z,C3A,Northern Interior Delta,NID,Green Alga,Chlorella,10244.19
+2019,Jun,Summer,2019-06-06T14:00:00Z,C3A,Northern Interior Delta,NID,Pennate Diatom,Achnanthidium,10130.81
+2019,Jun,Summer,2019-06-06T14:00:00Z,C3A,Northern Interior Delta,NID,Pennate Diatom,Encyonema,65340.15
+2019,Jun,Summer,2019-06-06T14:00:00Z,C3A,Northern Interior Delta,NID,Pennate Diatom,Navicula,117461.32
+2019,Jun,Summer,2019-06-06T14:00:00Z,C3A,Northern Interior Delta,NID,Pennate Diatom,Nitzschia,19140.91
+2019,Jun,Summer,2019-06-06T14:00:00Z,C3A,Northern Interior Delta,NID,Pennate Diatom,Staurosira,370809.27
+2019,Jun,Summer,2019-06-06T16:10:00Z,C9,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,24093.19
+2019,Jun,Summer,2019-06-06T16:10:00Z,C9,Southern Interior Delta,SID,Green Alga,Chlorella,11721.16
+2019,Jun,Summer,2019-06-06T16:10:00Z,C9,Southern Interior Delta,SID,Pennate Diatom,Cocconeis,60677.01
+2019,Jun,Summer,2019-06-06T18:00:00Z,C10A,Southern Interior Delta,SID,Centric Diatom,Cyclotella,303348.27
+2019,Jun,Summer,2019-06-06T18:00:00Z,C10A,Southern Interior Delta,SID,Centric Diatom,Melosira,2275622.42
+2019,Jun,Summer,2019-06-06T18:00:00Z,C10A,Southern Interior Delta,SID,Centric Diatom,Skeletonema,20906.53
+2019,Jun,Summer,2019-06-06T18:00:00Z,C10A,Southern Interior Delta,SID,Cryptophyte,Cryptomonas,88721.63
+2019,Jun,Summer,2019-06-06T18:00:00Z,C10A,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,29881.28
+2019,Jun,Summer,2019-06-06T18:00:00Z,C10A,Southern Interior Delta,SID,Cyanobacterium,Pseudanabaena,61650.44
+2019,Jun,Summer,2019-06-06T18:00:00Z,C10A,Southern Interior Delta,SID,Green Alga,Chlamydomonas,203509.07
+2019,Jun,Summer,2019-06-06T18:00:00Z,C10A,Southern Interior Delta,SID,Green Alga,Chlorella,46633.46
+2019,Jun,Summer,2019-06-06T18:00:00Z,C10A,Southern Interior Delta,SID,Green Alga,Desmodesmus,22314.84
+2019,Jun,Summer,2019-06-06T18:00:00Z,C10A,Southern Interior Delta,SID,Green Alga,Drepanochloris,1044.12
+2019,Jun,Summer,2019-06-06T18:00:00Z,C10A,Southern Interior Delta,SID,Green Alga,Monoraphidium,1640.44
+2019,Jun,Summer,2019-06-06T18:00:00Z,C10A,Southern Interior Delta,SID,Pennate Diatom,Geissleria,69408.96
+2019,Jun,Summer,2019-06-06T18:00:00Z,C10A,Southern Interior Delta,SID,Pennate Diatom,Gomphonema,137797.95
+2019,Jun,Summer,2019-06-07T13:50:00Z,D12,Confluence,CON,Centric Diatom,Cyclotella,71725.14
+2019,Jun,Summer,2019-06-07T13:50:00Z,D12,Confluence,CON,Cyanobacterium,Eucapsis,68474.94
+2019,Jun,Summer,2019-06-07T13:50:00Z,D12,Confluence,CON,Green Alga,Chlorella,24281.03
+2019,Jun,Summer,2019-06-07T13:50:00Z,D12,Confluence,CON,Haptophyte,Chrysochromulina,11954.19
+2019,Jun,Summer,2019-06-07T14:55:00Z,D19,Central Delta,CED,Centric Diatom,Cyclotella,100600.92
+2019,Jun,Summer,2019-06-07T14:55:00Z,D19,Central Delta,CED,Cryptophyte,Plagioselmis,22203.03
+2019,Jun,Summer,2019-06-07T14:55:00Z,D19,Central Delta,CED,Cyanobacterium,Eucapsis,53546.76
+2019,Jun,Summer,2019-06-07T14:55:00Z,D19,Central Delta,CED,Green Alga,Chlorella,17531.55
+2019,Jun,Summer,2019-06-07T14:55:00Z,D19,Central Delta,CED,Pennate Diatom,Cocconeis,132878.35
+2019,Jun,Summer,2019-06-07T15:35:00Z,D28A,Central Delta,CED,Cyanobacterium,Eucapsis,30992.21
+2019,Jun,Summer,2019-06-07T15:35:00Z,D28A,Central Delta,CED,Green Alga,Chlorella,16187.35
+2019,Jun,Summer,2019-06-10T15:20:00Z,D16,Central Delta,CED,Cyanobacterium,Eucapsis,47056.24
+2019,Jun,Summer,2019-06-10T15:20:00Z,D16,Central Delta,CED,Green Alga,Chlorella,16187.35
+2019,Jun,Summer,2019-06-10T16:10:00Z,D26,Central Delta,CED,Centric Diatom,Thalassiosira,3873157.57
+2019,Jun,Summer,2019-06-10T16:10:00Z,D26,Central Delta,CED,Cyanobacterium,Eucapsis,45866.31
+2019,Jun,Summer,2019-06-10T16:10:00Z,D26,Central Delta,CED,Green Alga,Chlorella,8633.25
+2019,Jun,Summer,2019-06-10T16:10:00Z,D26,Central Delta,CED,Pennate Diatom,Nitzschia,11118.01
+2019,Jun,Summer,2019-06-10T17:25:00Z,MD10A,Southern Interior Delta,SID,Centric Diatom,Cyclotella,153207.63999999998
+2019,Jun,Summer,2019-06-10T17:25:00Z,MD10A,Southern Interior Delta,SID,Cryptophyte,Cryptomonas,85724.28
+2019,Jun,Summer,2019-06-10T17:25:00Z,MD10A,Southern Interior Delta,SID,Cyanobacterium,Chroococcus,4955.75
+2019,Jun,Summer,2019-06-10T17:25:00Z,MD10A,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,29723.21
+2019,Jun,Summer,2019-06-10T17:25:00Z,MD10A,Southern Interior Delta,SID,Green Alga,Chlorella,56875.49
+2019,Jun,Summer,2019-06-10T17:25:00Z,MD10A,Southern Interior Delta,SID,Green Alga,Drepanochloris,607.19
+2019,Jun,Summer,2019-06-10T17:25:00Z,MD10A,Southern Interior Delta,SID,Green Alga,Monoraphidium,4779.45
+2019,Jun,Summer,2019-06-10T17:25:00Z,MD10A,Southern Interior Delta,SID,Green Alga,Scenedesmus,3999.37
+2019,Jun,Summer,2019-06-10T18:45:00Z,P8,Southern Interior Delta,SID,Cryptophyte,Cryptomonas,1356727.12
+2019,Jun,Summer,2019-06-10T18:45:00Z,P8,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,43218.71
+2019,Jun,Summer,2019-06-10T18:45:00Z,P8,Southern Interior Delta,SID,Green Alga,Chlorella,31074.03
+2019,Jun,Summer,2019-06-10T18:45:00Z,P8,Southern Interior Delta,SID,Green Alga,Monoraphidium,6419.81
+2019,Jun,Summer,2019-06-10T18:45:00Z,P8,Southern Interior Delta,SID,Pennate Diatom,Staurosirella,18463.69
+2019,Jun,Summer,2019-06-11T16:45:00Z,EZ6,Low Salinity Zone,LSZ,Centric Diatom,Skeletonema,79694.6
+2019,Jun,Summer,2019-06-11T16:45:00Z,EZ6,Low Salinity Zone,LSZ,Cyanobacterium,Eucapsis,155772.38
+2019,Jun,Summer,2019-06-11T16:45:00Z,EZ6,Low Salinity Zone,LSZ,Green Alga,Chlorella,21583.13
+2019,Jun,Summer,2019-06-11T16:45:00Z,EZ6,Low Salinity Zone,LSZ,Green Alga,Monoraphidium,9838.12
+2019,Jun,Summer,2019-06-11T17:25:00Z,EZ2,Low Salinity Zone,LSZ,Centric Diatom,Cyclotella,62168.49
+2019,Jun,Summer,2019-06-11T17:25:00Z,EZ2,Low Salinity Zone,LSZ,Cryptophyte,Plagioselmis,741847.49
+2019,Jun,Summer,2019-06-11T17:25:00Z,EZ2,Low Salinity Zone,LSZ,Cyanobacterium,Eucapsis,127863.16
+2019,Jun,Summer,2019-06-11T17:25:00Z,EZ2,Low Salinity Zone,LSZ,Green Alga,Chlamydomonas,82891.32
+2019,Jun,Summer,2019-06-11T17:25:00Z,EZ2,Low Salinity Zone,LSZ,Green Alga,Chlorella,35612.17
+2019,Jun,Summer,2019-06-11T18:00:00Z,D8,Grizzly.Suisun Bay,GSB,Centric Diatom,Aulacoseira,76785.49
+2019,Jun,Summer,2019-06-11T18:00:00Z,D8,Grizzly.Suisun Bay,GSB,Centric Diatom,Thalassiosira,368929.53
+2019,Jun,Summer,2019-06-11T18:00:00Z,D8,Grizzly.Suisun Bay,GSB,Cryptophyte,Cryptomonas,251745.29
+2019,Jun,Summer,2019-06-11T18:00:00Z,D8,Grizzly.Suisun Bay,GSB,Cryptophyte,Plagioselmis,126723.13
+2019,Jun,Summer,2019-06-11T18:00:00Z,D8,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,56251.14
+2019,Jun,Summer,2019-06-11T18:00:00Z,D8,Grizzly.Suisun Bay,GSB,Green Alga,Chlorella,37760.26
+2019,Jun,Summer,2019-06-11T18:00:00Z,D8,Grizzly.Suisun Bay,GSB,Green Alga,Drepanochloris,6032.5
+2019,Jun,Summer,2019-06-11T18:00:00Z,D8,Grizzly.Suisun Bay,GSB,Pennate Diatom,Fragilaria,104599.16
+2019,Jun,Summer,2019-06-11T18:00:00Z,D8,Grizzly.Suisun Bay,GSB,Pennate Diatom,Nitzschia,32813.16
+2019,Jun,Summer,2019-06-11T18:00:00Z,D8,Grizzly.Suisun Bay,GSB,Pennate Diatom,Synedra,211259.21
+2019,Jun,Summer,2019-06-11T18:45:00Z,D10,Confluence,CON,Centric Diatom,Cyclotella,180635.77
+2019,Jun,Summer,2019-06-11T18:45:00Z,D10,Confluence,CON,Centric Diatom,Skeletonema,11643.77
+2019,Jun,Summer,2019-06-11T18:45:00Z,D10,Confluence,CON,Cryptophyte,Cryptomonas,150440.17
+2019,Jun,Summer,2019-06-11T18:45:00Z,D10,Confluence,CON,Cryptophyte,Plagioselmis,263848.91
+2019,Jun,Summer,2019-06-11T18:45:00Z,D10,Confluence,CON,Cyanobacterium,Eucapsis,36613.55
+2019,Jun,Summer,2019-06-11T18:45:00Z,D10,Confluence,CON,Green Alga,Chlorella,57338.98
+2019,Jun,Summer,2019-06-11T18:45:00Z,D10,Confluence,CON,Haptophyte,Chrysochromulina,3881.26
+2019,Jun,Summer,2019-06-11T18:45:00Z,D10,Confluence,CON,Pennate Diatom,Nitzschia,115601.51999999999
+2019,Jun,Summer,2019-06-11T18:45:00Z,D10,Confluence,CON,Pennate Diatom,Staurosirella,15386.41
+2019,Jun,Summer,2019-06-11T19:30:00Z,D4,Confluence,CON,Centric Diatom,Cyclotella,91694.68
+2019,Jun,Summer,2019-06-11T19:30:00Z,D4,Confluence,CON,Centric Diatom,Skeletonema,32853.12
+2019,Jun,Summer,2019-06-11T19:30:00Z,D4,Confluence,CON,Cryptophyte,Plagioselmis,25085.8
+2019,Jun,Summer,2019-06-11T19:30:00Z,D4,Confluence,CON,Cyanobacterium,Eucapsis,48198.21
+2019,Jun,Summer,2019-06-11T19:30:00Z,D4,Confluence,CON,Green Alga,Chlorella,33489.03
+2019,Jun,Summer,2019-06-11T19:30:00Z,D4,Confluence,CON,Pennate Diatom,Nitzschia,34718.48
+2019,Jun,Summer,2019-06-11T20:15:00Z,D22,Confluence,CON,Centric Diatom,Cyclotella,74783.01
+2019,Jun,Summer,2019-06-11T20:15:00Z,D22,Confluence,CON,Cyanobacterium,Eucapsis,51653.69
+2019,Jun,Summer,2019-06-11T20:15:00Z,D22,Confluence,CON,Green Alga,Chlorella,25498.79
+2019,Jun,Summer,2019-06-11T20:15:00Z,D22,Confluence,CON,Green Alga,Monoraphidium,2160.4
+2019,Jun,Summer,2019-06-11T20:15:00Z,D22,Confluence,CON,Pennate Diatom,Achnanthidium,28422.86
+2019,Jun,Summer,2019-06-11T20:15:00Z,D22,Confluence,CON,Pennate Diatom,Ulnaria,1692316.87
+2019,Jun,Summer,2019-06-11T21:05:00Z,NZ068,Northern Interior Delta,NID,Centric Diatom,Cyclotella,8145.75
+2019,Jun,Summer,2019-06-11T21:05:00Z,NZ068,Northern Interior Delta,NID,Centric Diatom,Thalassiosira,136008.8
+2019,Jun,Summer,2019-06-11T21:05:00Z,NZ068,Northern Interior Delta,NID,Cyanobacterium,Eucapsis,39546.53
+2019,Jun,Summer,2019-06-11T21:05:00Z,NZ068,Northern Interior Delta,NID,Cyanobacterium,Synechococcus,3886.86
+2019,Jun,Summer,2019-06-11T21:05:00Z,NZ068,Northern Interior Delta,NID,Green Alga,Chlorella,10496.05
+2019,Jun,Summer,2019-06-11T21:05:00Z,NZ068,Northern Interior Delta,NID,Green Alga,Desmodesmus,24879.53
+2019,Jun,Summer,2019-06-12T17:30:00Z,D6,San Pablo Bay,SPB,Centric Diatom,Skeletonema,16122.14
+2019,Jun,Summer,2019-06-12T17:30:00Z,D6,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,50823.06
+2019,Jun,Summer,2019-06-12T17:30:00Z,D6,San Pablo Bay,SPB,Green Alga,Chlorella,19060.56
+2019,Jun,Summer,2019-06-12T18:20:00Z,D7,Grizzly.Suisun Bay,GSB,Centric Diatom,Cyclotella,201526.78
+2019,Jun,Summer,2019-06-12T18:20:00Z,D7,Grizzly.Suisun Bay,GSB,Centric Diatom,Skeletonema,24401.08
+2019,Jun,Summer,2019-06-12T18:20:00Z,D7,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,106868.55
+2019,Jun,Summer,2019-06-12T18:20:00Z,D7,Grizzly.Suisun Bay,GSB,Green Alga,Chlorella,30882.62
+2019,Jun,Summer,2019-06-12T18:20:00Z,D7,Grizzly.Suisun Bay,GSB,Green Alga,Monoraphidium,12439.53
+2019,Jun,Summer,2019-06-12T18:20:00Z,D7,Grizzly.Suisun Bay,GSB,Green Alga,Scenedesmus,9898.12
+2019,Jun,Summer,2019-06-12T19:10:00Z,NZS42,Grizzly.Suisun Bay,GSB,Centric Diatom,Cyclotella,373360.87
+2019,Jun,Summer,2019-06-12T19:10:00Z,NZS42,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,106868.55
+2019,Jun,Summer,2019-06-12T19:10:00Z,NZS42,Grizzly.Suisun Bay,GSB,Green Alga,Chlorella,5082.82
+2019,Jun,Summer,2019-06-12T19:10:00Z,NZS42,Grizzly.Suisun Bay,GSB,Haptophyte,Chrysochromulina,8133.69
+2019,Jun,Summer,2019-06-12T20:05:00Z,NZ032,Grizzly.Suisun Bay,GSB,Centric Diatom,Cyclotella,292290.08
+2019,Jun,Summer,2019-06-12T20:05:00Z,NZ032,Grizzly.Suisun Bay,GSB,Cryptophyte,Plagioselmis,548965.11
+2019,Jun,Summer,2019-06-12T20:05:00Z,NZ032,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,193076.69
+2019,Jun,Summer,2019-06-12T20:05:00Z,NZ032,Grizzly.Suisun Bay,GSB,Green Alga,Chlorella,17843.29
+2019,Jun,Summer,2019-06-13T16:05:00Z,D41A,San Pablo Bay,SPB,Centric Diatom,Cyclotella,945662.68
+2019,Jun,Summer,2019-06-13T16:05:00Z,D41A,San Pablo Bay,SPB,Chrysophyte,Kephyrion,14476.04
+2019,Jun,Summer,2019-06-13T16:05:00Z,D41A,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,116464.21
+2019,Jun,Summer,2019-06-13T16:05:00Z,D41A,San Pablo Bay,SPB,Green Alga,Chlorella,2753.19
+2019,Jun,Summer,2019-06-13T17:00:00Z,D41,San Pablo Bay,SPB,Centric Diatom,Cyclotella,41032.28
+2019,Jun,Summer,2019-06-13T17:00:00Z,D41,San Pablo Bay,SPB,Cryptophyte,Plagioselmis,47485.45
+2019,Jun,Summer,2019-06-13T17:00:00Z,D41,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,33788.03
+2019,Jun,Summer,2019-06-13T17:00:00Z,D41,San Pablo Bay,SPB,Dinoflagellate,Peridinium,1394197.11
+2019,Jun,Summer,2019-06-13T17:00:00Z,D41,San Pablo Bay,SPB,Green Alga,Chlorella,3170.82
+2019,Jun,Summer,2019-06-13T17:00:00Z,D41,San Pablo Bay,SPB,Green Alga,Drepanochloris,843.02
+2019,Jun,Summer,2019-06-13T17:40:00Z,NZ325,San Pablo Bay,SPB,Centric Diatom,Cyclotella,168505.51
+2019,Jun,Summer,2019-06-13T17:40:00Z,NZ325,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,89004.05
+2019,Jun,Summer,2019-06-13T17:40:00Z,NZ325,San Pablo Bay,SPB,Dinoflagellate,Gymnodinium,289018.7
+2019,Jun,Summer,2019-06-13T17:40:00Z,NZ325,San Pablo Bay,SPB,Green Alga,Chlamydomonas,192679.13
+2019,Jun,Summer,2019-06-13T18:05:00Z,NZ002,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,166806.26
+2019,Jun,Summer,2019-06-13T18:05:00Z,NZ002,San Pablo Bay,SPB,Green Alga,Chlorella,12949.88
+2019,Jun,Summer,2019-06-13T18:05:00Z,NZ002,San Pablo Bay,SPB,Pennate Diatom,Navicula,510181.22
+2019,Jun,Summer,2019-06-13T18:30:00Z,NZ004,San Pablo Bay,SPB,Centric Diatom,Cyclotella,119541.9
+2019,Jun,Summer,2019-06-13T18:30:00Z,NZ004,San Pablo Bay,SPB,Centric Diatom,Skeletonema,25903.54
+2019,Jun,Summer,2019-06-13T18:30:00Z,NZ004,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,122778.93
+2019,Jun,Summer,2019-06-13T18:30:00Z,NZ004,San Pablo Bay,SPB,Green Alga,Chlorella,24281.03
+2019,Jun,Summer,2019-06-13T18:30:00Z,NZ004,San Pablo Bay,SPB,Haptophyte,Chrysochromulina,19923.65
+2019,Mar,Spring,2019-03-11T14:45:00Z,C3A,Northern Interior Delta,NID,Cyanobacterium,Eucapsis,111150.09
+2019,Mar,Spring,2019-03-11T14:45:00Z,C3A,Northern Interior Delta,NID,Green Alga,Chlorella,8093.68
+2019,Mar,Spring,2019-03-11T16:45:00Z,C9,Southern Interior Delta,SID,Centric Diatom,Cyclotella,61488.26
+2019,Mar,Spring,2019-03-11T16:45:00Z,C9,Southern Interior Delta,SID,Centric Diatom,Thalassiosira,135696.21
+2019,Mar,Spring,2019-03-11T16:45:00Z,C9,Southern Interior Delta,SID,Cryptophyte,Cryptomonas,534006.11
+2019,Mar,Spring,2019-03-11T16:45:00Z,C9,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,38762.8
+2019,Mar,Spring,2019-03-11T16:45:00Z,C9,Southern Interior Delta,SID,Cyanobacterium,Microcystis,19923.65
+2019,Mar,Spring,2019-03-11T16:45:00Z,C9,Southern Interior Delta,SID,Cyanobacterium,Planktolyngbya,31477.9
+2019,Mar,Spring,2019-03-11T16:45:00Z,C9,Southern Interior Delta,SID,Green Alga,Chlorella,10488.96
+2019,Mar,Spring,2019-03-11T16:45:00Z,C9,Southern Interior Delta,SID,Green Alga,Raphidocelis,11409.89
+2019,Mar,Spring,2019-03-11T18:15:00Z,C10A,Southern Interior Delta,SID,Centric Diatom,Cyclotella,275337.43
+2019,Mar,Spring,2019-03-11T18:15:00Z,C10A,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,63607.06
+2019,Mar,Spring,2019-03-11T18:15:00Z,C10A,Southern Interior Delta,SID,Green Alga,Chlorella,37328.61
+2019,Mar,Spring,2019-03-11T18:15:00Z,C10A,Southern Interior Delta,SID,Haptophyte,Chrysochromulina,23908.38
+2019,Mar,Spring,2019-03-11T18:15:00Z,C10A,Southern Interior Delta,SID,Pennate Diatom,Cocconeis,81417.73
+2019,Mar,Spring,2019-03-12T14:25:00Z,D4,Confluence,CON,Cryptophyte,Cryptomonas,1373158.57
+2019,Mar,Spring,2019-03-12T14:25:00Z,D4,Confluence,CON,Cyanobacterium,Eucapsis,93880.68
+2019,Mar,Spring,2019-03-12T14:25:00Z,D4,Confluence,CON,Green Alga,Chlorella,23124.79
+2019,Mar,Spring,2019-03-12T14:25:00Z,D4,Confluence,CON,Pennate Diatom,Rhoicosphenia,169995.23
+2019,Mar,Spring,2019-03-12T15:10:00Z,D22,Confluence,CON,Centric Diatom,Aulacoseira,121723.74
+2019,Mar,Spring,2019-03-12T15:10:00Z,D22,Confluence,CON,Cryptophyte,Plagioselmis,86036.75
+2019,Mar,Spring,2019-03-12T15:10:00Z,D22,Confluence,CON,Cyanobacterium,Eucapsis,93909.65
+2019,Mar,Spring,2019-03-12T15:10:00Z,D22,Confluence,CON,Green Alga,Chlorella,16187.35
+2019,Mar,Spring,2019-03-12T15:10:00Z,D22,Confluence,CON,Pennate Diatom,Achnanthidium,123776.95
+2019,Mar,Spring,2019-03-12T15:55:00Z,NZ068,Northern Interior Delta,NID,Centric Diatom,Cyclotella,2765643.98
+2019,Mar,Spring,2019-03-12T15:55:00Z,NZ068,Northern Interior Delta,NID,Cyanobacterium,Eucapsis,63931.58
+2019,Mar,Spring,2019-03-12T15:55:00Z,NZ068,Northern Interior Delta,NID,Green Alga,Chlorella,14568.62
+2019,Mar,Spring,2019-03-12T15:55:00Z,NZ068,Northern Interior Delta,NID,Pennate Diatom,Staurosirella,1641452.62
+2019,Mar,Spring,2019-03-13T15:45:00Z,D12,Confluence,CON,Centric Diatom,Aulacoseira,126573.78
+2019,Mar,Spring,2019-03-13T15:45:00Z,D12,Confluence,CON,Cyanobacterium,Eucapsis,75404.52
+2019,Mar,Spring,2019-03-13T15:45:00Z,D12,Confluence,CON,Green Alga,Chlorella,17139.55
+2019,Mar,Spring,2019-03-13T15:45:00Z,D12,Confluence,CON,Pennate Diatom,Cocconeis,27228.62
+2019,Mar,Spring,2019-03-13T16:50:00Z,D19,Central Delta,CED,Cyanobacterium,Eucapsis,51674.49
+2019,Mar,Spring,2019-03-13T16:50:00Z,D19,Central Delta,CED,Green Alga,Chlorella,17427.81
+2019,Mar,Spring,2019-03-13T16:50:00Z,D19,Central Delta,CED,Pennate Diatom,Cocconeis,422254.1
+2019,Mar,Spring,2019-03-13T17:25:00Z,D28A,Central Delta,CED,Centric Diatom,Cyclotella,18695.75
+2019,Mar,Spring,2019-03-13T17:25:00Z,D28A,Central Delta,CED,Cryptophyte,Plagioselmis,144678.29
+2019,Mar,Spring,2019-03-13T17:25:00Z,D28A,Central Delta,CED,Cyanobacterium,Eucapsis,27652.3
+2019,Mar,Spring,2019-03-13T17:25:00Z,D28A,Central Delta,CED,Cyanobacterium,Microcystis,4980.91
+2019,Mar,Spring,2019-03-13T17:25:00Z,D28A,Central Delta,CED,Green Alga,Chlorella,10117.09
+2019,Mar,Spring,2019-03-13T17:25:00Z,D28A,Central Delta,CED,Pennate Diatom,Cocconeis,75117.55
+2019,Mar,Spring,2019-03-14T15:05:00Z,D16,Central Delta,CED,Cyanobacterium,Eucapsis,141817.77
+2019,Mar,Spring,2019-03-14T15:05:00Z,D16,Central Delta,CED,Cyanobacterium,Microcystis,23908.38
+2019,Mar,Spring,2019-03-14T15:05:00Z,D16,Central Delta,CED,Green Alga,Chlorella,22662.29
+2019,Mar,Spring,2019-03-14T15:05:00Z,D16,Central Delta,CED,Pennate Diatom,Nitzschia,236052.85
+2019,Mar,Spring,2019-03-14T15:55:00Z,D26,Central Delta,CED,Cyanobacterium,Eucapsis,66041
+2019,Mar,Spring,2019-03-14T15:55:00Z,D26,Central Delta,CED,Cyanobacterium,Planktolyngbya,9261.77
+2019,Mar,Spring,2019-03-14T15:55:00Z,D26,Central Delta,CED,Green Alga,Chlorella,12949.88
+2019,Mar,Spring,2019-03-14T17:00:00Z,MD10A,Southern Interior Delta,SID,Centric Diatom,Cyclotella,102464.49
+2019,Mar,Spring,2019-03-14T17:00:00Z,MD10A,Southern Interior Delta,SID,Cryptophyte,Cryptomonas,819715.89
+2019,Mar,Spring,2019-03-14T17:00:00Z,MD10A,Southern Interior Delta,SID,Cryptophyte,Plagioselmis,40922.68
+2019,Mar,Spring,2019-03-14T17:00:00Z,MD10A,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,46476.73
+2019,Mar,Spring,2019-03-14T17:00:00Z,MD10A,Southern Interior Delta,SID,Green Alga,Chlorella,2312.48
+2019,Mar,Spring,2019-03-14T17:00:00Z,MD10A,Southern Interior Delta,SID,Green Alga,Monoraphidium,5811.71
+2019,Mar,Spring,2019-03-14T17:00:00Z,MD10A,Southern Interior Delta,SID,Pennate Diatom,Nitzschia,11542.88
+2019,Mar,Spring,2019-03-14T18:15:00Z,P8,Southern Interior Delta,SID,Centric Diatom,Cyclotella,25154.29
+2019,Mar,Spring,2019-03-14T18:15:00Z,P8,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,28617.27
+2019,Mar,Spring,2019-03-14T18:15:00Z,P8,Southern Interior Delta,SID,Green Alga,Chlorella,9565.25
+2019,Mar,Spring,2019-03-14T18:15:00Z,P8,Southern Interior Delta,SID,Green Alga,Scenedesmus,31117.89
+2019,Mar,Spring,2019-03-14T18:15:00Z,P8,Southern Interior Delta,SID,Pennate Diatom,Pseudostaurosira,260056.62
+2019,Mar,Spring,2019-03-15T16:55:00Z,EZ6,Low Salinity Zone,LSZ,Cyanobacterium,Eucapsis,65229.69
+2019,Mar,Spring,2019-03-15T16:55:00Z,EZ6,Low Salinity Zone,LSZ,Green Alga,Chlorella,12949.88
+2019,Mar,Spring,2019-03-15T16:55:00Z,EZ6,Low Salinity Zone,LSZ,Pennate Diatom,Nitzschia,11742.43
+2019,Mar,Spring,2019-03-15T16:55:00Z,EZ6,Low Salinity Zone,LSZ,Pennate Diatom,Pseudostaurosira,315009.06
+2019,Mar,Spring,2019-03-15T17:20:00Z,EZ2,Low Salinity Zone,LSZ,Cyanobacterium,Eucapsis,66527.79
+2019,Mar,Spring,2019-03-15T17:20:00Z,EZ2,Low Salinity Zone,LSZ,Green Alga,Chlorella,6474.94
+2019,Mar,Spring,2019-03-15T17:20:00Z,EZ2,Low Salinity Zone,LSZ,Pennate Diatom,Pseudostaurosira,101955.53
+2019,Mar,Spring,2019-03-15T17:40:00Z,D8,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,149642.45
+2019,Mar,Spring,2019-03-15T17:40:00Z,D8,Grizzly.Suisun Bay,GSB,Green Alga,Chlorella,21583.13
+2019,Mar,Spring,2019-03-15T18:20:00Z,D10,Confluence,CON,Cyanobacterium,Eucapsis,148921.28
+2019,Mar,Spring,2019-03-15T18:20:00Z,D10,Confluence,CON,Green Alga,Chlorella,7194.38
+2019,Mar,Spring,2019-03-18T15:50:00Z,D6,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,149642.45
+2019,Mar,Spring,2019-03-18T15:50:00Z,D6,San Pablo Bay,SPB,Green Alga,Chlorella,10791.57
+2019,Mar,Spring,2019-03-18T18:30:00Z,D7,Grizzly.Suisun Bay,GSB,Centric Diatom,Cyclotella,138152.2
+2019,Mar,Spring,2019-03-18T18:30:00Z,D7,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,144233.69
+2019,Mar,Spring,2019-03-18T18:30:00Z,D7,Grizzly.Suisun Bay,GSB,Cyanobacterium,Microcystis,26564.87
+2019,Mar,Spring,2019-03-18T18:30:00Z,D7,Grizzly.Suisun Bay,GSB,Green Alga,Chlorella,10791.57
+2019,Mar,Spring,2019-03-18T18:30:00Z,D7,Grizzly.Suisun Bay,GSB,Green Alga,Drepanochloris,2644.4
+2019,Mar,Spring,2019-03-18T18:30:00Z,D7,Grizzly.Suisun Bay,GSB,Pennate Diatom,Nitzschia,68301.66
+2019,Mar,Spring,2019-03-18T20:35:00Z,NZ032,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,284933.65
+2019,Mar,Spring,2019-03-18T20:35:00Z,NZ032,Grizzly.Suisun Bay,GSB,Green Alga,Chlorella,64749.4
+2019,Mar,Spring,2019-03-19T17:05:00Z,D41A,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,59299.71
+2019,Mar,Spring,2019-03-19T17:05:00Z,D41A,San Pablo Bay,SPB,Green Alga,Chlorella,19130.510000000002
+2019,Mar,Spring,2019-03-19T17:05:00Z,D41A,San Pablo Bay,SPB,Pennate Diatom,Nitzschia,7435
+2019,Mar,Spring,2019-03-19T17:50:00Z,D41,San Pablo Bay,SPB,Cryptophyte,Plagioselmis,185176.99
+2019,Mar,Spring,2019-03-19T17:50:00Z,D41,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,33379.8
+2019,Mar,Spring,2019-03-19T17:50:00Z,D41,San Pablo Bay,SPB,Cyanobacterium,Planktothrix,281777.34
+2019,Mar,Spring,2019-03-19T17:50:00Z,D41,San Pablo Bay,SPB,Green Alga,Chlamydomonas,67694.26
+2019,Mar,Spring,2019-03-19T17:50:00Z,D41,San Pablo Bay,SPB,Green Alga,Chlorella,4624.96
+2019,Mar,Spring,2019-03-19T17:50:00Z,D41,San Pablo Bay,SPB,Pennate Diatom,Achnanthidium,36259.29
+2019,Mar,Spring,2019-03-19T18:30:00Z,NZ325,San Pablo Bay,SPB,Centric Diatom,Cyclotella,36569.7
+2019,Mar,Spring,2019-03-19T18:30:00Z,NZ325,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,75977.22
+2019,Mar,Spring,2019-03-19T18:30:00Z,NZ325,San Pablo Bay,SPB,Green Alga,Chlorella,30470.31
+2019,Mar,Spring,2019-03-19T19:10:00Z,NZ002,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,107093.51
+2019,Mar,Spring,2019-03-19T19:10:00Z,NZ002,San Pablo Bay,SPB,Green Alga,Chlorella,12451.810000000001
+2019,Mar,Spring,2019-03-19T19:10:00Z,NZ002,San Pablo Bay,SPB,Green Alga,Monoraphidium,7976.85
+2019,Mar,Spring,2019-03-19T19:10:00Z,NZ002,San Pablo Bay,SPB,Pennate Diatom,Nitzschia,37779.86
+2019,Mar,Spring,2019-03-19T19:50:00Z,NZ004,San Pablo Bay,SPB,Centric Diatom,Cyclotella,83261.37
+2019,Mar,Spring,2019-03-19T19:50:00Z,NZ004,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,169159.07
+2019,Mar,Spring,2019-03-19T19:50:00Z,NZ004,San Pablo Bay,SPB,Green Alga,Chlorella,24281.03
+2019,Mar,Spring,2019-03-19T19:50:00Z,NZ004,San Pablo Bay,SPB,Pennate Diatom,Nitzschia,50055.85
+2019,Mar,Spring,2019-03-28T19:30:00Z,NZS42,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,183125.27
+2019,Mar,Spring,2019-03-28T19:30:00Z,NZS42,Grizzly.Suisun Bay,GSB,Green Alga,Chlorella,64749.4
+2019,May,Spring,2019-05-06T19:40:00Z,NZ004,San Pablo Bay,SPB,Centric Diatom,Skeletonema,29941.12
+2019,May,Spring,2019-05-06T19:40:00Z,NZ004,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,99116.8
+2019,May,Spring,2019-05-06T19:40:00Z,NZ004,San Pablo Bay,SPB,Green Alga,Chlorella,2359.88
+2019,May,Spring,2019-05-06T19:40:00Z,NZ004,San Pablo Bay,SPB,Green Alga,Monoraphidium,2062.27
+2019,May,Spring,2019-05-08T14:30:00Z,C3A,Northern Interior Delta,NID,Centric Diatom,Cyclotella,27945.05
+2019,May,Spring,2019-05-08T14:30:00Z,C3A,Northern Interior Delta,NID,Centric Diatom,Skeletonema,8780.03
+2019,May,Spring,2019-05-08T14:30:00Z,C3A,Northern Interior Delta,NID,Cryptophyte,Plagioselmis,24398.45
+2019,May,Spring,2019-05-08T14:30:00Z,C3A,Northern Interior Delta,NID,Cyanobacterium,Eucapsis,21747.35
+2019,May,Spring,2019-05-08T14:30:00Z,C3A,Northern Interior Delta,NID,Dinoflagellate,Gymnodinium,90264.1
+2019,May,Spring,2019-05-08T14:30:00Z,C3A,Northern Interior Delta,NID,Green Alga,Chlorella,7814.11
+2019,May,Spring,2019-05-08T14:30:00Z,C3A,Northern Interior Delta,NID,Green Alga,Monoraphidium,1872.84
+2019,May,Spring,2019-05-08T14:30:00Z,C3A,Northern Interior Delta,NID,Pennate Diatom,Achnanthidium,24594.49
+2019,May,Spring,2019-05-08T14:30:00Z,C3A,Northern Interior Delta,NID,Pennate Diatom,Asterionella,75117.58
+2019,May,Spring,2019-05-08T16:30:00Z,C9,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,35819.5
+2019,May,Spring,2019-05-08T16:30:00Z,C9,Southern Interior Delta,SID,Green Alga,Chlorella,7009.18
+2019,May,Spring,2019-05-08T16:30:00Z,C9,Southern Interior Delta,SID,Pennate Diatom,Navicula,578899.2
+2019,May,Spring,2019-05-08T18:15:00Z,C10A,Southern Interior Delta,SID,Centric Diatom,Cyclotella,480055.98
+2019,May,Spring,2019-05-08T18:15:00Z,C10A,Southern Interior Delta,SID,Centric Diatom,Skeletonema,72665.02
+2019,May,Spring,2019-05-08T18:15:00Z,C10A,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,44377.83
+2019,May,Spring,2019-05-08T18:15:00Z,C10A,Southern Interior Delta,SID,Green Alga,Chlorella,17756.59
+2019,May,Spring,2019-05-08T18:15:00Z,C10A,Southern Interior Delta,SID,Pennate Diatom,Achnanthidium,92318.46
+2019,May,Spring,2019-05-08T18:15:00Z,C10A,Southern Interior Delta,SID,Pennate Diatom,Encyonema,35373.09
+2019,May,Spring,2019-05-08T18:15:00Z,C10A,Southern Interior Delta,SID,Pennate Diatom,Navicula,418819.25
+2019,May,Spring,2019-05-08T18:15:00Z,C10A,Southern Interior Delta,SID,Pennate Diatom,Nitzschia,138918.07
+2019,May,Spring,2019-05-08T18:15:00Z,C10A,Southern Interior Delta,SID,Pennate Diatom,Tryblionella,805148.83
+2019,May,Spring,2019-05-09T13:20:00Z,D4,Confluence,CON,Centric Diatom,Aulacoseira,245463.25
+2019,May,Spring,2019-05-09T13:20:00Z,D4,Confluence,CON,Centric Diatom,Cyclotella,62748.63
+2019,May,Spring,2019-05-09T13:20:00Z,D4,Confluence,CON,Cyanobacterium,Eucapsis,74239.04
+2019,May,Spring,2019-05-09T13:20:00Z,D4,Confluence,CON,Green Alga,Chlorella,7341.85
+2019,May,Spring,2019-05-09T14:05:00Z,D22,Confluence,CON,Centric Diatom,Cyclotella,50150.45
+2019,May,Spring,2019-05-09T14:05:00Z,D22,Confluence,CON,Centric Diatom,Skeletonema,29941.12
+2019,May,Spring,2019-05-09T14:05:00Z,D22,Confluence,CON,Cyanobacterium,Eucapsis,47843.37
+2019,May,Spring,2019-05-09T14:05:00Z,D22,Confluence,CON,Green Alga,Chlorella,8063.81
+2019,May,Spring,2019-05-09T14:05:00Z,D22,Confluence,CON,Green Alga,Monoraphidium,5434.36
+2019,May,Spring,2019-05-09T14:45:00Z,NZ068,Northern Interior Delta,NID,Centric Diatom,Cyclotella,34385.51
+2019,May,Spring,2019-05-09T14:45:00Z,NZ068,Northern Interior Delta,NID,Cryptophyte,Plagioselmis,26141.2
+2019,May,Spring,2019-05-09T14:45:00Z,NZ068,Northern Interior Delta,NID,Cyanobacterium,Eucapsis,24187.81
+2019,May,Spring,2019-05-09T14:45:00Z,NZ068,Northern Interior Delta,NID,Green Alga,Chlorella,7552.72
+2019,May,Spring,2019-05-09T14:45:00Z,NZ068,Northern Interior Delta,NID,Pennate Diatom,Nitzschia,41148.85
+2019,May,Spring,2019-05-10T14:55:00Z,D12,Confluence,CON,Centric Diatom,Cyclotella,56049.1
+2019,May,Spring,2019-05-10T14:55:00Z,D12,Confluence,CON,Cyanobacterium,Eucapsis,36647.45
+2019,May,Spring,2019-05-10T14:55:00Z,D12,Confluence,CON,Green Alga,Chlorella,869.43
+2019,May,Spring,2019-05-10T15:55:00Z,D19,Central Delta,CED,Centric Diatom,Skeletonema,13972.52
+2019,May,Spring,2019-05-10T15:55:00Z,D19,Central Delta,CED,Cyanobacterium,Eucapsis,43549.89
+2019,May,Spring,2019-05-10T15:55:00Z,D19,Central Delta,CED,Green Alga,Chlorella,25397.93
+2019,May,Spring,2019-05-10T15:55:00Z,D19,Central Delta,CED,Green Alga,Desmodesmus,32531.27
+2019,May,Spring,2019-05-10T16:30:00Z,D28A,Central Delta,CED,Centric Diatom,Melosira,3469505.4
+2019,May,Spring,2019-05-10T16:30:00Z,D28A,Central Delta,CED,Cryptophyte,Plagioselmis,100586.73
+2019,May,Spring,2019-05-10T16:30:00Z,D28A,Central Delta,CED,Cyanobacterium,Eucapsis,29281.08
+2019,May,Spring,2019-05-10T16:30:00Z,D28A,Central Delta,CED,Green Alga,Chlorella,20602.08
+2019,May,Spring,2019-05-13T16:40:00Z,D16,Central Delta,CED,Centric Diatom,Skeletonema,15542.12
+2019,May,Spring,2019-05-13T16:40:00Z,D16,Central Delta,CED,Cryptophyte,Plagioselmis,193973.51
+2019,May,Spring,2019-05-13T16:40:00Z,D16,Central Delta,CED,Cyanobacterium,Eucapsis,66852.31
+2019,May,Spring,2019-05-13T16:40:00Z,D16,Central Delta,CED,Green Alga,Chlorella,35612.17
+2019,May,Spring,2019-05-13T16:40:00Z,D16,Central Delta,CED,Pennate Diatom,Fragilaria,201239.05
+2019,May,Spring,2019-05-13T17:30:00Z,D26,Central Delta,CED,Cyanobacterium,Eucapsis,19274.87
+2019,May,Spring,2019-05-13T17:30:00Z,D26,Central Delta,CED,Green Alga,Chlorella,6867.36
+2019,May,Spring,2019-05-13T17:30:00Z,D26,Central Delta,CED,Green Alga,Sphaerocystis,3622.48
+2019,May,Spring,2019-05-13T17:30:00Z,D26,Central Delta,CED,Pennate Diatom,Nitzschia,14273.13
+2019,May,Spring,2019-05-13T18:35:00Z,MD10A,Southern Interior Delta,SID,Cryptophyte,Cryptomonas,274263.99
+2019,May,Spring,2019-05-13T18:35:00Z,MD10A,Southern Interior Delta,SID,Cryptophyte,Plagioselmis,159818.74
+2019,May,Spring,2019-05-13T18:35:00Z,MD10A,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,28460.6
+2019,May,Spring,2019-05-13T18:35:00Z,MD10A,Southern Interior Delta,SID,Green Alga,Chlorella,12081.39
+2019,May,Spring,2019-05-13T18:35:00Z,MD10A,Southern Interior Delta,SID,Green Alga,Monoraphidium,4021.11
+2019,May,Spring,2019-05-13T18:35:00Z,MD10A,Southern Interior Delta,SID,Haptophyte,Chrysochromulina,2202.88
+2019,May,Spring,2019-05-13T19:50:00Z,P8,Southern Interior Delta,SID,Centric Diatom,Cyclotella,143450.28
+2019,May,Spring,2019-05-13T19:50:00Z,P8,Southern Interior Delta,SID,Centric Diatom,Skeletonema,44225.52
+2019,May,Spring,2019-05-13T19:50:00Z,P8,Southern Interior Delta,SID,Cryptophyte,Plagioselmis,444709.65
+2019,May,Spring,2019-05-13T19:50:00Z,P8,Southern Interior Delta,SID,Cyanobacterium,Eucapsis,64093.84
+2019,May,Spring,2019-05-13T19:50:00Z,P8,Southern Interior Delta,SID,Green Alga,Chlorella,6474.94
+2019,May,Spring,2019-05-13T19:50:00Z,P8,Southern Interior Delta,SID,Green Alga,Drepanochloris,16751.39
+2019,May,Spring,2019-05-13T19:50:00Z,P8,Southern Interior Delta,SID,Pennate Diatom,Nitzschia,69109.57
+2019,May,Spring,2019-05-14T19:05:00Z,D6,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,187761.35
+2019,May,Spring,2019-05-14T19:05:00Z,D6,San Pablo Bay,SPB,Green Alga,Chlorella,46249.57
+2019,May,Spring,2019-05-14T20:00:00Z,EZ6,Low Salinity Zone,LSZ,Cyanobacterium,Eucapsis,278443.13
+2019,May,Spring,2019-05-14T20:00:00Z,EZ6,Low Salinity Zone,LSZ,Green Alga,Chlorella,104909.33
+2019,May,Spring,2019-05-14T20:00:00Z,EZ6,Low Salinity Zone,LSZ,Green Alga,Monoraphidium,22151.11
+2019,May,Spring,2019-05-14T20:25:00Z,EZ2,Low Salinity Zone,LSZ,Centric Diatom,Cyclotella,437433.71
+2019,May,Spring,2019-05-14T20:25:00Z,EZ2,Low Salinity Zone,LSZ,Cryptophyte,Cryptomonas,434829.94
+2019,May,Spring,2019-05-14T20:25:00Z,EZ2,Low Salinity Zone,LSZ,Cyanobacterium,Eucapsis,88900.56
+2019,May,Spring,2019-05-14T20:25:00Z,EZ2,Low Salinity Zone,LSZ,Green Alga,Chlorella,16646.8
+2019,May,Spring,2019-05-14T20:25:00Z,EZ2,Low Salinity Zone,LSZ,Haptophyte,Chrysochromulina,15249.03
+2019,May,Spring,2019-05-14T20:45:00Z,D8,Grizzly.Suisun Bay,GSB,Centric Diatom,Cyclotella,98623.63
+2019,May,Spring,2019-05-14T20:45:00Z,D8,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,53243.21
+2019,May,Spring,2019-05-14T20:45:00Z,D8,Grizzly.Suisun Bay,GSB,Cyanobacterium,Snowella,569.12
+2019,May,Spring,2019-05-14T20:45:00Z,D8,Grizzly.Suisun Bay,GSB,Green Alga,Chlamydomonas,141521.15
+2019,May,Spring,2019-05-14T20:45:00Z,D8,Grizzly.Suisun Bay,GSB,Green Alga,Chlorella,4066.85
+2019,May,Spring,2019-05-14T20:45:00Z,D8,Grizzly.Suisun Bay,GSB,Green Alga,Monoraphidium,9898.12
+2019,May,Spring,2019-05-14T21:25:00Z,D10,Confluence,CON,Centric Diatom,Cyclotella,119029.58
+2019,May,Spring,2019-05-14T21:25:00Z,D10,Confluence,CON,Cyanobacterium,Eucapsis,48730.46
+2019,May,Spring,2019-05-14T21:25:00Z,D10,Confluence,CON,Green Alga,Chlorella,4756.23
+2019,May,Spring,2019-05-14T21:25:00Z,D10,Confluence,CON,Green Alga,Scenedesmus,9191.11
+2019,May,Spring,2019-05-14T21:25:00Z,D10,Confluence,CON,Pennate Diatom,Nitzschia,89057.28
+2019,May,Spring,2019-05-15T18:45:00Z,D7,Grizzly.Suisun Bay,GSB,Centric Diatom,Cyclotella,3421414.69
+2019,May,Spring,2019-05-15T18:45:00Z,D7,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,164760.99
+2019,May,Spring,2019-05-15T18:45:00Z,D7,Grizzly.Suisun Bay,GSB,Cyanobacterium,Snowella,1479.72
+2019,May,Spring,2019-05-15T18:45:00Z,D7,Grizzly.Suisun Bay,GSB,Green Alga,Chlorella,24398.45
+2019,May,Spring,2019-05-15T18:45:00Z,D7,Grizzly.Suisun Bay,GSB,Green Alga,Monoraphidium,16171.38
+2019,May,Spring,2019-05-15T18:45:00Z,D7,Grizzly.Suisun Bay,GSB,Pennate Diatom,Aneumastus,7484685.67
+2019,May,Spring,2019-05-15T18:45:00Z,D7,Grizzly.Suisun Bay,GSB,Pennate Diatom,Nitzschia,79580.2
+2019,May,Spring,2019-05-15T19:45:00Z,NZS42,Grizzly.Suisun Bay,GSB,Centric Diatom,Cyclotella,332791.52
+2019,May,Spring,2019-05-15T19:45:00Z,NZS42,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,319586.64
+2019,May,Spring,2019-05-15T19:45:00Z,NZS42,Grizzly.Suisun Bay,GSB,Green Alga,Monoraphidium,19475.22
+2019,May,Spring,2019-05-15T19:45:00Z,NZS42,Grizzly.Suisun Bay,GSB,Pennate Diatom,Navicula,775475.04
+2019,May,Spring,2019-05-15T19:45:00Z,NZS42,Grizzly.Suisun Bay,GSB,Pennate Diatom,Nitzschia,61438.09
+2019,May,Spring,2019-05-15T20:40:00Z,NZ032,Grizzly.Suisun Bay,GSB,Centric Diatom,Cyclotella,36597.67
+2019,May,Spring,2019-05-15T20:40:00Z,NZ032,Grizzly.Suisun Bay,GSB,Centric Diatom,Thalassiosira,699893.94
+2019,May,Spring,2019-05-15T20:40:00Z,NZ032,Grizzly.Suisun Bay,GSB,Cyanobacterium,Eucapsis,169894.24
+2019,May,Spring,2019-05-15T20:40:00Z,NZ032,Grizzly.Suisun Bay,GSB,Green Alga,Chlorella,31721.4
+2019,May,Spring,2019-05-15T20:40:00Z,NZ032,Grizzly.Suisun Bay,GSB,Pennate Diatom,Nitzschia,77606.01
+2019,May,Spring,2019-05-16T16:50:00Z,D41A,San Pablo Bay,SPB,Centric Diatom,Cyclotella,682021.21
+2019,May,Spring,2019-05-16T16:50:00Z,D41A,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,90349.46
+2019,May,Spring,2019-05-16T16:50:00Z,D41A,San Pablo Bay,SPB,Haptophyte,Chrysochromulina,6608.63
+2019,May,Spring,2019-05-16T17:45:00Z,D41,San Pablo Bay,SPB,Centric Diatom,Cyclotella,41445.66
+2019,May,Spring,2019-05-16T17:45:00Z,D41,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,50950.55
+2019,May,Spring,2019-05-16T17:45:00Z,D41,San Pablo Bay,SPB,Green Alga,Chlorella,6293.38
+2019,May,Spring,2019-05-16T18:20:00Z,NZ325,San Pablo Bay,SPB,Cryptophyte,Plagioselmis,73195.35
+2019,May,Spring,2019-05-16T18:20:00Z,NZ325,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,66980.72
+2019,May,Spring,2019-05-16T18:20:00Z,NZ325,San Pablo Bay,SPB,Green Alga,Chlorella,6658.72
+2019,May,Spring,2019-05-16T19:00:00Z,NZ002,San Pablo Bay,SPB,Centric Diatom,Cyclotella,4258638.43
+2019,May,Spring,2019-05-16T19:00:00Z,NZ002,San Pablo Bay,SPB,Cyanobacterium,Eucapsis,62095.85
