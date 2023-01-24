@@ -1,0 +1,21 @@
+Pennate Diatom
+Centric Diatom
+Green Alga
+Cryptophyte
+NA
+Euglenoid
+Synurophyte
+Cyanobacterium
+Chrysophyte
+Dinoflagellate
+Ciliate
+Centric diatom
+Silico-flagellate
+Xanthophyte
+Haptophyte
+Red Alga
+Kathablepharid
+Raphidophyte
+Unknown
+Coccolithophore
+Eustigmatophyte

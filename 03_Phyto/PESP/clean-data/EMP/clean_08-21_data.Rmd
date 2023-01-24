@@ -1,7 +1,3 @@
-```{r setup, include=FALSE, echo=FALSE}
-knitr::opts_knit$set(root.dir = './03_Phyto/PESP/')
-```
-
 # Format EMP phyto data
 ## contact: Sarah Perry (sarah.perry@water.ca.gov)
 ```{r}
@@ -13,20 +9,21 @@ library(fuzzyjoin)
 ## Read in data
 ```{r}
 # read in data
-df_syn_test <- read_csv('data/EMP/Phyto Classification Test.csv', show_col_types = FALSE)
-df_data <- read_csv('data/EMP/Phyto Data 2008-present_121522.csv', show_col_types = FALSE)
+df_syn <- read_csv('03_Phyto/PESP/data/EMP/Phyto Classification.csv', show_col_types = FALSE)
+df_data <- read_csv('03_Phyto/PESP/data/EMP/Phyto Data 2008-present_121522.csv', show_col_types = FALSE)
 
 # remove unnecessary columns/rename
 df_data <- df_data %>%
-  select(-c(Taxonomist, LabNumber, TIN)) %>%
+  select(-c(Taxonomist, LabNumber, TIN, SynonymOrig)) %>%
   rename('Name' = 'Taxon')
 
 df_syn <- df_syn %>%
   rename('Name' = 'Taxon')
 
-# remove percents from percent col, fix dates
+# remove percents from percent col, fix dates, colony codes
 df_data$Percent_Sample_Counted <- gsub('%','',df_data$Percent_Sample_Counted)
 df_data$SampleDate <- as.Date(df_data$SampleDate, format = '%m/%d/%Y')
+df_data$Colony_or_FilamentGroupCode[df_data$Colony_or_FilamentGroupCode == 'n/p'] <- NA_character_
 ```
 
 ## Standardize dataset
@@ -37,7 +34,7 @@ unknown_syns <- 'unknown|unidentified|Unidentified|Undetermined|undetermined'
 df_data <- df_data %>%
   # update Taxon column to standardize Unknown
   mutate(
-    Name = case_when(grepl(unknown_syns,Name) ~ str_replace_all(Name, unknown_syns, 'Unknown'),
+    Name = case_when(grepl(unknown_syns,Name,ignore.case = TRUE) ~ str_replace_all(Name, unknown_syns, 'Unknown'),
                       TRUE ~ Name)
     ) %>%
   # Update Genus column if unknown Species
@@ -59,7 +56,7 @@ df_data <- df_data %>%
 ### Add in higher level taxa/current names
 ```{r}
 # subset synonym/taxon columns
-df_syn <- df_syn %>% select(c('Kingdom':'Algal Type','Current Name'))
+df_syn <- df_syn %>% select(c('Kingdom':'AlgalGroup','Current Name'))
 
 # create column for joining that ignores cf.
 df_data$join_taxon <- str_squish(str_remove(df_data$Name, 'cf.'))
@@ -71,17 +68,33 @@ df_joined <- df_data %>%
   mutate(Kingdom = coalesce(Kingdom.x, Kingdom.y),
          Phylum = coalesce(Phylum.x, Phylum.y),
          Class = coalesce(Class.x, Class.y),
-         AlgalType = coalesce(`Algal Type.x`, `Algal Type.y`),
+         AlgalGroup = coalesce(AlgalGroup.x, AlgalGroup.y),
          Genus = coalesce(Genus.x, Genus.y),
          Name = coalesce(Name.x, Name.y),
          CurrentName = coalesce(`Current Name.x`, `Current Name.y`)) %>%
   select(-c(ends_with('.y'), ends_with('.x'),'join_taxon')) %>%
-  relocate(c(Name, Kingdom:AlgalType), .after = StationCode) %>%
-  relocate(c(Genus, Species), .after = AlgalType)
+  relocate(c(Name, Kingdom:AlgalGroup), .after = StationCode) %>%
+  relocate(c(Genus, Species), .after = AlgalGroup)
+
+# standardize spp. to sp.
+df_joined$Name <- str_replace_all(df_joined$Name, 'spp.', 'sp.')
+df_joined$Species <- str_replace_all(df_joined$Species, 'spp.', 'sp.')
 ```
 
 ### Check taxa for errors
+```{r}
+df_errors <- df_joined %>% select(c('Name':'Species'))
 
+check <- df_errors %>% subset(is.na(AlgalGroup) | is.na(Class) | is.na(Phylum) | is.na(Kingdom) | is.na(Genus) | is.na(Species))
+check <- check[!duplicated(check),]
+check <- check %>% arrange(Name)
+syn_check <- df_errors %>% subset(is.na(Name) | Name == 'Unknown')
+syn_check <- syn_check[!duplicated(syn_check),]
+syn_check <- syn_check %>% arrange(Name)
+
+print(check)
+print(syn_check)
+```
 
 ### Update Names
 ```{r}
@@ -100,35 +113,69 @@ df_joined <- df_joined %>%
                       )) %>%
   select(-CurrentName) %>%
   relocate(OrigName, .after = StationCode)
+
+# standardize specific unknown name cases
+df_joined <- df_joined %>%
+  mutate(
+    Name = case_when(Name == 'LGBs' ~ 'Little Green Balls',
+                     Name == 'Unknown Banana Blue Green' | Name == 'Unknown Cyanobacteria sp.' ~ 'Unknown cyanobacterium',
+                     Name == 'Unknown centrales sp.' | Name == 'Unknown centric sp.' | Name == 'Unknown Centric diatom'  ~ 'Unknown centric diatom',
+                     Name == 'Unknown Chlorophyte alga sp.' | Name == 'Unknown Chlorophyte filament' ~ 'Unknown green alga',
+                     Name == 'Unknown dinoflagellate sp.' | Name == 'small dinoflagellates'~ 'Unknown dinoflagellate',
+                     Name == 'Unknown girdle sp.' | Name == 'Unknown pennales sp.' | Name == 'Unknown pennate girdle sp.' ~ 'Unknown pennate diatom',
+                     Name == 'Small nano-flagellates' | Name == 'small nano-flagellates' ~ 'Unknown nanoflagellate',
+                     Name == 'Unknown Euglenoids' ~ 'Unknown euglenoid',
+                     TRUE ~ Name),
+    AlgalGroup = case_when(Name == 'Little Green Balls' ~ 'Unknown',
+                           Name == 'Unknown cyanobacteria' ~ 'Cyanobacteria',
+                           Name == 'Unknown centric diatom' ~ 'Centric Diatoms',
+                           Name == 'Unknown green alga' ~ 'Green Algae',
+                           Name == 'Unknown dinoflagellate' ~ 'Dinoflagellates',
+                           Name == 'Unknown pennate diatom' ~ 'Pennate Diatoms',
+                           Name == 'Unknown nanoflagellate' ~ 'Nanflagellates',
+                           Name == 'Unknown euglenoid' ~ 'Euglenoids',
+                           TRUE ~ AlgalGroup)
+  )
 ```
 
-
-------WORK IN PROGRESS-------
-
+## Clean Data
+### Average Biovolume, Biovolume Density
 ```{r}
-df_check <- df_joined %>% select(c('Name':'Species','CurrentName'))
+df_joined <- df_joined %>%
+  mutate(AverageBiovolume = round(rowMeans(select(., starts_with('Biovolume')), na.rm = TRUE),2),
+         AverageBiovolume_per_mL = round(AverageBiovolume/VolumeAnalyzed,2)) %>%
+  select(-starts_with('Biovolume_')) %>%
+  relocate(Comments, .after = Shape) %>%
+  relocate(AverageBiovolume:AverageBiovolume_per_mL, .after = Organisms_per_mL)
+
+df_joined$AverageBiovolume[is.nan(df_joined$AverageBiovolume)] <- NA
+df_joined$AverageBiovolume_per_mL[is.nan(df_joined$AverageBiovolume_per_mL)] <- NA
 ```
 
-
+### Change Comments to QA
 ```{r}
-test2 <- test_joined %>% select(c('Kingdom':'CurrentName','Name','Genus','Species'))
+df_joined <- df_joined %>%
+  mutate(
+    QC_1 = case_when(grepl('broken\\.|cannot meet|did not reach|delete', Comments, ignore.case = TRUE) ~ 'BadData'),
+    QC_2 = case_when(grepl('degraded', Comments, ignore.case = TRUE) ~ 'Degraded'),
+    QC_3 = case_when(grepl('poorly preserved', Comments, ignore.case = TRUE) ~ 'PoorlyPreserved'),
+    QC_4 = case_when(grepl('fragment\\.', Comments, ignore.case = TRUE) ~ 'Fragmented')
+  ) %>%
+  unite(QualityCheck, starts_with('QC'), remove = TRUE, na.rm = TRUE, sep = ' ')
+```
 
-check <- test2 %>% subset(is.na(AlgalType) | is.na(Class) | is.na(Phylum) | is.na(Kingdom) | is.na(Genus) | is.na(Species))
-syn_check <- test2 %>% subset(is.na(CurrentName) | CurrentName == 'Unknown')
-check <- check[!duplicated(check),]
-check <- check %>% arrange(Name)
-syn_check <- syn_check[!duplicated(syn_check),]
-syn_check <- syn_check %>% arrange(Name)
+### Remove Columns
+```{r}
+df_joined <- df_joined %>%
+  select(-c(VolumeReceived:UnitAbundance, Cells_per_Unit, Total_Cells_Counted, Comments))
+```
 
-write_csv(check, 'C:/Users/sperry/Desktop/unknown_phyto_taxon_3.csv')
-write_csv(syn_check, 'C:/Users/sperry/Desktop/unknown_phyto_syn_2.csv')
+## Export
+```{r}
+write_csv(df_joined,'03_Phyto/PESP/data/EMP/EMP_Phyto_Data_2008-2021.csv')
 ```
 
 ```{r}
-df <- read_csv('C:/Users/sperry/Desktop/unknown_phyto_syn_2.csv')
-df_check <- left_join(df, df_syn[str_squish(str_remove(df_syn$Name, 'cf.'))])
-
-str_squish(str_remove(df_syn$Name, 'cf.'))
-test <- df_syn(select = -c)
+unique(df_joined$StationCode)
 ```
 

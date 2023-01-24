@@ -1,0 +1,5 @@
+﻿QC_Code,Explanation
+BadData,"Sample either broken, did not meet natural unit tally, or marked for deletion"
+Degraded,Sample was degraded
+PoorlyPreserved,Sample was poorly preserved
+Fragment,Sample was fragmented
