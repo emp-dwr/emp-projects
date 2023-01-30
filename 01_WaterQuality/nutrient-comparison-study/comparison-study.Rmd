@@ -1,0 +1,20 @@
+```{r}
+# Title: Nutrient Comparison Study
+# Contact: sarah.perry@water.ca.gov
+# Date: 01/2023
+
+# t-test to determine if there's a significant difference between acidified and frozen samples
+```
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+df_wq <- read_csv('01_WaterQuality/nutrient-comparison-study/data/nutrient_data.csv')
+```
+
+```{r}
+
+```
+

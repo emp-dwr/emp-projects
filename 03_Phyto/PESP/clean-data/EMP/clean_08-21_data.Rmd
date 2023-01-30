@@ -3,6 +3,7 @@
 ```{r}
 library(tidyverse)
 library(fuzzyjoin)
+library(lubridate)
 '%!in%' <- function(x,y)!('%in%'(x,y))
 ```
 
@@ -10,23 +11,42 @@ library(fuzzyjoin)
 ```{r}
 # read in data
 df_syn <- read_csv('03_Phyto/PESP/data/EMP/Phyto Classification.csv', show_col_types = FALSE)
-df_data <- read_csv('03_Phyto/PESP/data/EMP/Phyto Data 2008-present_121522.csv', show_col_types = FALSE)
+df_data <- read_csv('03_Phyto/PESP/data/EMP/Phyto Data 2008-present_012723.csv', show_col_types = FALSE)
 
 # remove unnecessary columns/rename
 df_data <- df_data %>%
   select(-c(Taxonomist, LabNumber, TIN, SynonymOrig)) %>%
   rename('Name' = 'Taxon')
 
-df_syn <- df_syn %>%
-  rename('Name' = 'Taxon')
-
-# remove percents from percent col, fix dates, colony codes
+# remove percents from percent col, fix dates/times, colony codes
 df_data$Percent_Sample_Counted <- gsub('%','',df_data$Percent_Sample_Counted)
-df_data$SampleDate <- as.Date(df_data$SampleDate, format = '%m/%d/%Y')
 df_data$Colony_or_FilamentGroupCode[df_data$Colony_or_FilamentGroupCode == 'n/p'] <- NA_character_
+df_data$SampleDate <- as.Date(df_data$SampleDate, format = '%m/%d/%Y')
+df_data<- df_data %>%
+  mutate(
+    SampleTime = case_when(grepl(':', SampleTime) ~ SampleTime,
+                           is.na(SampleTime) ~ NA_character_,
+                           TRUE ~ paste0(substr(SampleTime, 1, nchar(SampleTime)-2),':',substr(SampleTime, nchar(SampleTime)-1, nchar(SampleTime)))
+                           )
+    )
 ```
 
 ## Standardize dataset
+### Standardize station names
+```{r}
+df_data <- df_data %>%
+  mutate(
+    StationCode = case_when(StationCode == 'C3A-Hood' | StationCode == 'C3A - Hood' | StationCode == 'C3A Hood' ~ 'C3A',
+                            StationCode == 'D16 - Twitchell' | StationCode == 'D16-Twitchell' |StationCode == 'D16 Twitchell' ~ 'D16',
+                            StationCode == 'E22' ~ 'EZ2',
+                            StationCode == 'E26' ~ 'EZ6',
+                            StationCode == 'EZ2 SJR' | StationCode == 'EZ2 - SJR' ~ 'EZ2-SJR',
+                            StationCode == 'EZ6 SJR' | StationCode == 'EZ6 - SJR' ~ 'EZ6-SJR',
+                            TRUE ~ StationCode)
+    )
+```
+
+
 ### standardize "unknown" identifiers
 ```{r}
 unknown_syns <- 'unknown|unidentified|Unidentified|Undetermined|undetermined'
@@ -56,44 +76,23 @@ df_data <- df_data %>%
 ### Add in higher level taxa/current names
 ```{r}
 # subset synonym/taxon columns
-df_syn <- df_syn %>% select(c('Kingdom':'AlgalGroup','Current Name'))
+df_syn <- df_syn %>% select(c('Kingdom':'AlgalGroup','CurrentName'))
+
+# standardize spp. to sp.
+df_data$Name <- str_replace_all(df_data$Name, 'spp.', 'sp.')
+df_data$Species <- str_replace_all(df_data$Species, 'spp.', 'sp.')
+
 
 # create column for joining that ignores cf.
-df_data$join_taxon <- str_squish(str_remove(df_data$Name, 'cf.'))
+# df_data$join_taxon <- str_squish(str_remove(df_data$Name, 'cf.'))
 
 # join with main dataset
 df_joined <- df_data %>%
-  regex_left_join(df_syn, by = 'Name') %>%
-  regex_left_join(df_syn, by = c('join_taxon' = 'Name')) %>%
-  mutate(Kingdom = coalesce(Kingdom.x, Kingdom.y),
-         Phylum = coalesce(Phylum.x, Phylum.y),
-         Class = coalesce(Class.x, Class.y),
-         AlgalGroup = coalesce(AlgalGroup.x, AlgalGroup.y),
-         Genus = coalesce(Genus.x, Genus.y),
-         Name = coalesce(Name.x, Name.y),
-         CurrentName = coalesce(`Current Name.x`, `Current Name.y`)) %>%
-  select(-c(ends_with('.y'), ends_with('.x'),'join_taxon')) %>%
+  left_join(df_syn, by = 'Name') %>%
+  mutate(Genus = Genus.y) %>%
+  select(-c(ends_with('.y'), ends_with('.x'))) %>%
   relocate(c(Name, Kingdom:AlgalGroup), .after = StationCode) %>%
   relocate(c(Genus, Species), .after = AlgalGroup)
-
-# standardize spp. to sp.
-df_joined$Name <- str_replace_all(df_joined$Name, 'spp.', 'sp.')
-df_joined$Species <- str_replace_all(df_joined$Species, 'spp.', 'sp.')
-```
-
-### Check taxa for errors
-```{r}
-df_errors <- df_joined %>% select(c('Name':'Species'))
-
-check <- df_errors %>% subset(is.na(AlgalGroup) | is.na(Class) | is.na(Phylum) | is.na(Kingdom) | is.na(Genus) | is.na(Species))
-check <- check[!duplicated(check),]
-check <- check %>% arrange(Name)
-syn_check <- df_errors %>% subset(is.na(Name) | Name == 'Unknown')
-syn_check <- syn_check[!duplicated(syn_check),]
-syn_check <- syn_check %>% arrange(Name)
-
-print(check)
-print(syn_check)
 ```
 
 ### Update Names
@@ -121,7 +120,7 @@ df_joined <- df_joined %>%
                      Name == 'Unknown Banana Blue Green' | Name == 'Unknown Cyanobacteria sp.' ~ 'Unknown cyanobacterium',
                      Name == 'Unknown centrales sp.' | Name == 'Unknown centric sp.' | Name == 'Unknown Centric diatom'  ~ 'Unknown centric diatom',
                      Name == 'Unknown Chlorophyte alga sp.' | Name == 'Unknown Chlorophyte filament' ~ 'Unknown green alga',
-                     Name == 'Unknown dinoflagellate sp.' | Name == 'small dinoflagellates'~ 'Unknown dinoflagellate',
+                     Name == 'Unknown dinoflagellate sp.' | Name == 'Unknown Dinoflagellate sp.' | Name == 'small dinoflagellates'~ 'Unknown dinoflagellate',
                      Name == 'Unknown girdle sp.' | Name == 'Unknown pennales sp.' | Name == 'Unknown pennate girdle sp.' ~ 'Unknown pennate diatom',
                      Name == 'Small nano-flagellates' | Name == 'small nano-flagellates' ~ 'Unknown nanoflagellate',
                      Name == 'Unknown Euglenoids' ~ 'Unknown euglenoid',
@@ -136,6 +135,21 @@ df_joined <- df_joined %>%
                            Name == 'Unknown euglenoid' ~ 'Euglenoids',
                            TRUE ~ AlgalGroup)
   )
+```
+
+### Check taxa for errors
+```{r}
+df_error_check <- df_joined %>% select(c('Name':'Species'))
+
+check <- df_error_check %>% subset(is.na(AlgalGroup) | is.na(Class) | is.na(Phylum) | is.na(Kingdom) | is.na(Genus) | is.na(Species))
+check <- check[!duplicated(check),]
+check <- check %>% arrange(Name)
+syn_check <- df_error_check %>% subset(is.na(Name) | Name == 'Unknown')
+syn_check <- syn_check[!duplicated(syn_check),]
+syn_check <- syn_check %>% arrange(Name)
+
+print(check)
+print(syn_check)
 ```
 
 ## Clean Data
@@ -162,20 +176,21 @@ df_joined <- df_joined %>%
     QC_4 = case_when(grepl('fragment\\.', Comments, ignore.case = TRUE) ~ 'Fragmented')
   ) %>%
   unite(QualityCheck, starts_with('QC'), remove = TRUE, na.rm = TRUE, sep = ' ')
+
+df_joined$QualityCheck[df_joined$QualityCheck == ''] <- 'Good'
 ```
 
-### Remove Columns
+### Remove Columns and Duplicates
 ```{r}
 df_joined <- df_joined %>%
   select(-c(VolumeReceived:UnitAbundance, Cells_per_Unit, Total_Cells_Counted, Comments))
+
+df_joined <- distinct(df_joined)
+df_joined <- df_joined[!duplicated(df_joined),]
 ```
 
 ## Export
 ```{r}
 write_csv(df_joined,'03_Phyto/PESP/data/EMP/EMP_Phyto_Data_2008-2021.csv')
-```
-
-```{r}
-unique(df_joined$StationCode)
 ```
 

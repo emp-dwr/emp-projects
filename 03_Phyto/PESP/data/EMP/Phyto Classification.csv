@@ -1,5 +1,6 @@
-﻿Kingdom,Phylum,Class,Genus,Taxon,AlgalGroup,Authority,Authority Source,Current Name,Synonym Authority,Synonym Authority Source,Taxonomic Classification Source,Growth Habit,Habitat Type,Salinity Range
+﻿Kingdom,Phylum,Class,Genus,Name,AlgalGroup,Authority,Authority Source,CurrentName,Synonym Authority,Synonym Authority Source,Taxonomic Classification Source,Growth Habit,Habitat Type,Salinity Range
 Chromista,Ochrophyta,Coscinodiscophyceae,Acanthoceras,Acanthoceras sp.,Centric Diatoms,Honigmann,www.algaebase.org,None,N/A,N/A,Cavalier-Smith 1998,solitary,planktonic,freshwater
+Chromista,Ochrophyta,Coscinodiscophyceae,Acanthoceras,cf. Acanthoceras sp.,Centric Diatoms,Honigmann,www.algaebase.org,None,N/A,N/A,Cavalier-Smith 1998,solitary,planktonic,freshwater
 Chromista,Ochrophyta,Bacillariophyceae,Achnanthes,Achnanthes brevipes,Pennate Diatoms,Agardh,www.algaebase.org,None,N/A,N/A,Cavalier-Smith 1998,solitary or colonial,benthic,brackish to marine
 Chromista,Ochrophyta,Bacillariophyceae,Achnanthes,Achnanthes cf. crenulata,Pennate Diatoms,Unknown,Unknown,None,Unknown,Unknown,Cavalier-Smith 1998,solitary,benthic,freshwater
 Chromista,Ochrophyta,Bacillariophyceae,Achnanthes,Achnanthes delicatula,Pennate Diatoms,Kützing,www.algaebase.org,Planothidium delicatulum, (Kützing) Round & L. Bukhtiyarova,www.algaebase.org,Cavalier-Smith 1998,solitary or colonial,benthic,brackish to marine
@@ -10,6 +11,7 @@ Chromista,Ochrophyta,Bacillariophyceae,Planothidium,Planothidium lanceolatum,Pen
 Chromista,Ochrophyta,Bacillariophyceae,Achnanthes,Achnanthes linearis,Pennate Diatoms,(W. Smith) Grunow,www.algaebase.org,Achnanthidium lineare,W. Smith,www.algaebase.org,Cavalier-Smith 1998,solitary,benthic,freshwater
 Chromista,Ochrophyta,Bacillariophyceae,Achnanthes,Achnanthes minutissima,Pennate Diatoms,Kützing,www.algaebase.org,Achnanthidium minutissimum,(Kützing) Czarnecki,www.algaebase.org,Cavalier-Smith 1998,solitary,benthic,freshwater
 Chromista,Ochrophyta,Bacillariophyceae,Achnanthes,Achnanthes sp.,Pennate Diatoms,Bory de St.-Vincent,Wehr and Sheath 2003,None,N/A,N/A,Cavalier-Smith 1998,solitary or colonial,benthic,freshwater to marine
+Chromista,Ochrophyta,Bacillariophyceae,Achnanthes,cf. Achnanthes sp.,Pennate Diatoms,Bory de St.-Vincent,Wehr and Sheath 2003,None,N/A,N/A,Cavalier-Smith 1998,solitary or colonial,benthic,freshwater to marine
 Chromista,Ochrophyta,Bacillariophyceae,Achnanthes,Achnanthes temperei,Pennate Diatoms,M. Peragallo,www.algaebase.org,None,N/A,N/A,Cavalier-Smith 1998,solitary or colonial,benthic,freshwater
 Chromista,Ochrophyta,Bacillariophyceae,Achnanthidium,Achnanthidium exiguum,Pennate Diatoms,(Grunow) D.B. Czarnecki,www.algaebase.org,Lemnicola exigua,"(Grunow) Kulikovskiy, Witkowski and Plinski",www.algaebase.org,Cavalier-Smith 1998,solitary,planktonic or benthic,freshwater
 Chromista,Ochrophyta,Fragilariophyceae,Achnanthidium,Achnanthidium gracillimum,Pennate Diatoms,(F. Meister) Lange-Bertalot,www.algaebase.org,None,N/A,N/A,Cavalier-Smith 1998,solitary,planktonic,freshwater
@@ -556,7 +558,7 @@ Chromista,Ochrophyta,Bacillariophyceae,Epithemia,Epithemia turgida,Pennate Diato
 Chromista,Ochrophyta,Bacillariophyceae,Epithemia,Epithemia zebra,Pennate Diatoms,(Ehrenberg) Kützing,www.algaebase.org,Epithemia adnata,(Kützing) Brébisson,www.algaebase.org,Cavalier-Smith 1998,solitary,benthic,freshwater
 Chromista,Ochrophyta,Coscinodiscophyceae,Eucampia,Eucampia sp.,Centric Diatoms,Ehrenberg,www.algaebase.org,None,N/A,N/A,Cavalier-Smith 1998,solitary,planktonic,marine
 Chromista,Ochrophyta,Coscinodiscophyceae,Eucampia,Eucampia zoodiacus,Centric Diatoms,Ehrenberg,www.algaebase.org,None,N/A,N/A,Cavalier-Smith 1998,colonial,planktonic,marine
-Bacteria,Cyanobacteria,Cyanophyceae,Eucapsis,Eucapsis microscopica,Cyanobacteria,(Komárková-Legnerová and G. Cronberg) Komárek and Hindák,www.algaebase.org,Chroococcus microscopicus,Komárková-Legnerová and G. Cronberg,www.algaebase.org,Cavalier-Smith 1998,colonial,planktonic,freshwater
+Bacteria,Cyanobacteria,Cyanophyceae,Eucapsis,Eucapsis microscopica,Cyanobacteria,(Komárková-Legnerová and G. Cronberg) Komárek and Hindák,www.algaebase.org,None,Komárková-Legnerová and G. Cronberg,www.algaebase.org,Cavalier-Smith 1998,colonial,planktonic,freshwater
 Bacteria,Cyanobacteria,Cyanophyceae,Eucapsis,Eucapsis sp.,Cyanobacteria,Clements et Shantz,Wehr and Sheath 2003,None,N/A,N/A,Cavalier-Smith 1998,colonial,planktonic,freshwater
 Plantae,Chlorophyta,Chlorophyceae,Eudorina,Eudorina elegans,Green Algae,Ehrenberg,www.algaebase.org,None,N/A,N/A,Wehr and Sheath 2003,colonial,planktonic,freshwater
 Plantae,Chlorophyta,Chlorophyceae,Eudorina,Eudorina sp.,Green Algae,Ehrenberg,Wehr and Sheath 2003,None,N/A,N/A,Wehr and Sheath 2003,colonial,planktonic,freshwater
@@ -1260,10 +1262,12 @@ Plantae,Chlorophyta,Chlorophyceae,Unknown,Unknown Coccoid Green Alga,Green Algae
 Bacteria,Cyanobacteria,Cyanophyceae,Unknown Cyanobacterium,Unknown Cyanobacterium,Cyanobacteria,Unknown,Unknown,Unknown,Unknown,Unknown,Cavalier-Smith 1998,Unknown,Unknown,Unknown
 Protozoa,Dinozoa,Dinophyceae,Unknown dinoflagellates,Unknown Dinoflagellates,Dinoflagellates,Unknown,Unknown,Unknown,Unknown,Unknown,Cavalier-Smith 1998,unknown,unknown,unknown
 Protozoa,Euglenozoa,Euglenophyceae,Unknown,Unknown Euglenoid,Euglenoids,Unknown,Unknown,Unknown,Unknown,Unknown,Cavalier-Smith 1998,solitary,planktonic,Unknown
+Protozoa,Euglenozoa,Euglenophyceae,Unknown,Unknown Euglenoids,Euglenoids,Unknown,Unknown,Unknown,Unknown,Unknown,Cavalier-Smith 1998,solitary,planktonic,Unknown
 Plantae,Chlorophyta,Chlorophyceae,Unknown,Unknown Filamentous Green Alga,Green Algae,Unknown,Unknown,Unknown,Unknown,Unknown,Wehr and Sheath 2003,Unknown,Unknown,Unknown
 Unknown,Unknown,Unknown,Unknown,Unknown Genus,Unknown,Unknown,Unknown,None,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown
 Plantae,Chlorophyta,Chlorophyceae,Unknown green alga,Unknown Green Alga,Green Algae,Unknown,Unknown,Unknown,Unknown,Unknown,Wehr and Sheath 2003,Unknown,Unknown,Unknown
 Chromista,Ochrophyta,Bacillariophyceae,Unknown pennate diatom,Unknown Pennate Diatom,Pennate Diatoms,Unknown,Unknown,Unknown,Unknown,Unknown,Cavalier-Smith 1998,unknown,unknown,unknown
+Protozoa,Euglenozoa,Euglenophyceae,Unknown euglenoid,Unknown Euglenoid,Euglenoids,Unknown,Unknown,Unknown,Unknown,Unknown,Cavalier-Smith 1998,unknown,unknown,unknown
 Chromista,Ochrophyta,Coscinodiscophyceae,Urosolenia,Urosolenia sp.,Centric Diatoms,Round & R.M. Crawford,www.algaebase.org,None,N/A,N/A,Cavalier-Smith 1998,solitary,planktonic,freshwater
 Plantae,Chlorophyta,Chlorophyceae,Volvox,Volvox sp.,Green Algae,Linnaeus,Wehr and Sheath 2003,None,N/A,N/A,Wehr and Sheath 2003,colonial,planktonic,freshwater
 Protozoa,Dinozoa,Dinophyceae,Warnowia,Warnowia parva,Dinoflagellates,(Lohmann) Lindemann,www.algaebase.org,None,N/A,N/A,Cavalier-Smith 1998,solitary,planktonic,marine
@@ -1300,6 +1304,7 @@ Plantae,Chlorophyta,Chlorophyceae,Pediastrum,Pediastrum angulosum,Green alga,Ehr
 Protozoa,Euglenozoa,Euglenophyceae,Phacus,Phacus hamelii,Unknown flagellate,P.Allorge & M.Lefèvre,www.algaebase.org,None,N/A,N/A,Cavalier-Smith 1998,solitary,,freshwater
 Plantae,Chlorophyta,Chlorophyceae,Selenastrum,Selenastrum gracile,Green alga,Reinsch,www.algaebase.org,Messastrum gracile,T.S.Garcia,www.algaebase.org,Cavalier-Smith 1998,,,freshwater
 Chromista,Miozoa,Unknown,Unknown,small dinoflagellates,Dinoflagellate,Cavalier-Smith,www.algaebase.org,None,N/A,N/A,Cavalier-Smith 1998,,,Unknown
+Chromista,Miozoa,Unknown,Unknown,Unknown Dinoflagellate sp.,Dinoflagellate,Cavalier-Smith,www.algaebase.org,None,N/A,N/A,Cavalier-Smith 1998,,,Unknown
 Unknown,Unknown,Unknown,Unknown,small nano-flagellates,Unknown,Unknown,www.algaebase.org,None,N/A,N/A,Cavalier-Smith 1998,,,Unknown
 Eubacteria,Cyanobacteria,Cyanophyceae,Sphaerospermopsis,Sphaerospermopsis aphanizomenoides,Cyanobacterium,"Zapomelová, Jezberová, Hrouzek, Hisem, Reháková & Komárková",www.algaebase.org,None,Forti,www.algaebase.org,Cavalier-Smith 1998,,,freshwater
 Chromista,Bacillariophyta,Bacillariophyceae,Staurosirella,Staurosirella sp.,Pennate Diatom,D.M.Wiliams & Round,www.algaebase.org,Fragilaria lapponica,Grunow,www.algaebase.org,Cavalier-Smith 1998,Some colonial some solitary,Some benthic some planktonic,freshwater
@@ -1321,3 +1326,4 @@ Chromista,Bacillariophyta,Bacillariophyceae,Unknown,Unknown pennales sp.,Pennate
 Chromista,Bacillariophyta,Bacillariophyceae,Unknown,Unknown pennate girdle sp.,Pennate Diatom,Haeckel,www.algaebase.org,None,N/A,N/A,Cavalier-Smith 1998,Unknown,Unknown,Unknown
 Chromista,Bacillariophyta,Bacillariophyceae,Didymosphenia,Didymosphenia sp.,Pennate Diatom,,www.ncbi.nlm.nih.gov/,None,N/A,N/A,,,,
 Plantae,Chlorophyta,Chlorophyceae,Chlamydonephris,Chlamydonephris sp.,Green Algae,,,None,,,,,,
+Plantae,Chlorophyta,Chlorophyceae,Chlamydonephris,cf. Chlamydonephris sp.,Green Algae,,,None,,,,,,
