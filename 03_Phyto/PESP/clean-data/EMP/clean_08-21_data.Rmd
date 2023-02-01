@@ -1,6 +1,6 @@
 # Format EMP phyto data
 ## contact: Sarah Perry (sarah.perry@water.ca.gov)
-```{r}
+```{r message = FALSE}
 library(tidyverse)
 library(fuzzyjoin)
 library(lubridate)
@@ -82,9 +82,20 @@ df_syn <- df_syn %>% select(c('Kingdom':'AlgalGroup','CurrentName'))
 df_data$Name <- str_replace_all(df_data$Name, 'spp.', 'sp.')
 df_data$Species <- str_replace_all(df_data$Species, 'spp.', 'sp.')
 
-
-# create column for joining that ignores cf.
-# df_data$join_taxon <- str_squish(str_remove(df_data$Name, 'cf.'))
+# standardize unknown names before synonym join
+df_data <- df_data %>%
+  mutate(
+    Name = case_when(Name == 'LGBs' ~ 'Little Green Balls',
+                     Name == 'Unknown Banana Blue Green' | Name == 'Unknown Cyanobacteria sp.' ~ 'Unknown cyanobacterium',
+                     Name == 'Unknown centrales sp.' | Name == 'Unknown centric sp.' | Name == 'Unknown Centric diatom'  ~ 'Unknown centric diatom',
+                     Name == 'Unknown Chlorophyte alga sp.' | Name == 'Unknown Chlorophyte filament' ~ 'Unknown green alga',
+                     Name == 'Unknown dinoflagellate sp.' | Name == 'Unknown Dinoflagellate sp.' | Name == 'small dinoflagellates'~ 'Unknown dinoflagellate',
+                     Name == 'Unknown girdle sp.' | Name == 'Unknown pennales sp.' | Name == 'Unknown pennate girdle sp.' ~ 'Unknown pennate diatom',
+                     Name == 'Small nano-flagellates' | Name == 'small nano-flagellates' ~ 'Unknown nanoflagellate',
+                     Name == 'Unknown Euglenoids' ~ 'Unknown euglenoid',
+                     Name == 'Unknown Genus' ~ 'Unknown genus',
+                     TRUE ~ Name)
+    )
 
 # join with main dataset
 df_joined <- df_data %>%
@@ -116,15 +127,6 @@ df_joined <- df_joined %>%
 # standardize specific unknown name cases
 df_joined <- df_joined %>%
   mutate(
-    Name = case_when(Name == 'LGBs' ~ 'Little Green Balls',
-                     Name == 'Unknown Banana Blue Green' | Name == 'Unknown Cyanobacteria sp.' ~ 'Unknown cyanobacterium',
-                     Name == 'Unknown centrales sp.' | Name == 'Unknown centric sp.' | Name == 'Unknown Centric diatom'  ~ 'Unknown centric diatom',
-                     Name == 'Unknown Chlorophyte alga sp.' | Name == 'Unknown Chlorophyte filament' ~ 'Unknown green alga',
-                     Name == 'Unknown dinoflagellate sp.' | Name == 'Unknown Dinoflagellate sp.' | Name == 'small dinoflagellates'~ 'Unknown dinoflagellate',
-                     Name == 'Unknown girdle sp.' | Name == 'Unknown pennales sp.' | Name == 'Unknown pennate girdle sp.' ~ 'Unknown pennate diatom',
-                     Name == 'Small nano-flagellates' | Name == 'small nano-flagellates' ~ 'Unknown nanoflagellate',
-                     Name == 'Unknown Euglenoids' ~ 'Unknown euglenoid',
-                     TRUE ~ Name),
     AlgalGroup = case_when(Name == 'Little Green Balls' ~ 'Unknown',
                            Name == 'Unknown cyanobacteria' ~ 'Cyanobacteria',
                            Name == 'Unknown centric diatom' ~ 'Centric Diatoms',
