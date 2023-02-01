@@ -57,7 +57,7 @@ test_syn <- df_syn %>% select(c('Kingdom':'Algal Type','Current Name'))
 
 # create column for joining that ignores cf.
 test$join_taxon <- str_squish(str_remove(test$Taxon, 'cf.'))
-
+    
 # join with main dataset
 test_joined <- test %>%
   regex_left_join(test_syn, by = 'Taxon') %>%
