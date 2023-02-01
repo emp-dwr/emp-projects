@@ -1,0 +1,72 @@
+Title: Nutrient Preservation Comparison Study
+Contact: sarah.perry@water.ca.gov
+Date: 01/2023
+
+Summary: independent t-test to determine if there's a significant difference between acidified and frozen samples from Bryte
+
+# Read in data
+```{r message = FALSE}
+# read in packages
+library(tidyverse)
+library(stats)
+```
+
+```{r message = FALSE}
+# read in data
+df_wq <- read_csv('01_WaterQuality/nutrient-comparison-study/data/nutrient_data.csv')
+
+# mutate df
+df_wq <- df_wq %>%
+  pivot_longer(cols = c(Frozen, Acidified),
+               names_to = 'PresType',
+               values_to = 'Result')
+```
+
+# Descriptive analysis
+
+Total summary
+```{r}
+summary(df_wq)
+```
+Summary by preservation type
+```{r}
+by(data = df_wq, 
+   INDICES = df_wq[,'PresType'], 
+   FUN = summary)
+```
+# Check boxplot
+```{r}
+ggplot(df_wq, aes(PresType, Result)) +
+  geom_boxplot()
+```
+# Check variances are homogeneous
+```{r}
+bartlett.test(df_wq$Result ~ df_wq$PresType)
+```
+Variances are homogeneous.
+
+# Check normality
+```{r}
+# remove outliers as ID'd in boxplots
+df_qq <- df_wq %>% subset(Result < 0.7)
+
+qqnorm(df_qq$Result[df_wq$PresType == 'Frozen'], pch = 1, frame = FALSE)
+```
+
+```{r}
+qqnorm(df_qq$Result[df_wq$PresType == 'Acidified'], pch = 1, frame = FALSE)
+```
+Both are close enough to normal for a t-test.
+
+# t-test
+```{r}
+t.test(formula = df_wq$Result ~ df_wq$PresType,
+       alternative = 'two.sided',
+       mu = 0, 
+       paired = FALSE,   
+       var.equal = TRUE,
+       conf.level = 0.95)
+```
+p = 0.84
+
+Accept null hypothesis of no difference -- the two are the same.

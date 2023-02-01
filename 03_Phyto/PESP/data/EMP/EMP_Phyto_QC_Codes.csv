@@ -1,4 +1,5 @@
-﻿QC_Code,Explanation
+﻿QualityCheck,Explanation
+Good,Sample passed QC
 BadData,"Sample either broken, did not meet natural unit tally, or marked for deletion"
 Degraded,Sample was degraded
 PoorlyPreserved,Sample was poorly preserved
