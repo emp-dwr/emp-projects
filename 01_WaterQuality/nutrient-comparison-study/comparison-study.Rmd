@@ -19,54 +19,76 @@ df_wq <- read_csv('01_WaterQuality/nutrient-comparison-study/data/nutrient_data.
 df_wq <- df_wq %>%
   pivot_longer(cols = c(Frozen, Acidified),
                names_to = 'PresType',
-               values_to = 'Result')
+               values_to = 'Result') %>%
+   drop_na()
 ```
 
 # Descriptive analysis
 
-Total summary
-```{r}
-summary(df_wq)
-```
 Summary by preservation type
 ```{r}
 by(data = df_wq, 
-   INDICES = df_wq[,'PresType'], 
+   INDICES = c(df_wq[,'Analyte'],df_wq[,'PresType']), 
    FUN = summary)
 ```
 # Check boxplot
 ```{r}
 ggplot(df_wq, aes(PresType, Result)) +
-  geom_boxplot()
+  geom_boxplot()+
+   facet_wrap(~Analyte)
 ```
 # Check variances are homogeneous
 ```{r}
-bartlett.test(df_wq$Result ~ df_wq$PresType)
+for (analyte in unique(df_wq$Analyte)){
+   df_test <- df_wq %>% subset(Analyte == analyte)
+   barlett_test <- bartlett.test(df_test$Result ~ df_test$PresType)
+   
+   print(paste0('--',analyte,'--'))
+   print(barlett_test)
+}
 ```
-Variances are homogeneous.
+Variances are homogeneous for all analytes.
 
 # Check normality
 ```{r}
-# remove outliers as ID'd in boxplots
-df_qq <- df_wq %>% subset(Result < 0.7)
-
-qqnorm(df_qq$Result[df_wq$PresType == 'Frozen'], pch = 1, frame = FALSE)
+for (analyte in unique(df_wq$Analyte)){
+   df_test <- df_wq %>% subset(df_wq$Analyte == analyte)
+   
+   qq_test <- qqnorm(df_test$Result[df_test$PresType == 'Frozen'], pch = 1, frame = FALSE)
+   title(sub = analyte)
+   
+   print(qq_test)
+}
 ```
 
 ```{r}
-qqnorm(df_qq$Result[df_wq$PresType == 'Acidified'], pch = 1, frame = FALSE)
+for (analyte in unique(df_wq$Analyte)){
+   df_test <- df_wq %>% subset(df_wq$Analyte == analyte)
+   
+   qq_test <- qqnorm(df_test$Result[df_test$PresType == 'Acidified'], pch = 1, frame = FALSE)
+   title(sub = analyte)
+   
+   print(qq_test)
+}
 ```
-Both are close enough to normal for a t-test.
+For all, data is close enough to normal for a t-test. A bit debateable for NitrateNitrite and Orthophosphate, but I feel comfortable not applying any normalization transformations.
 
 # t-test
 ```{r}
-t.test(formula = df_wq$Result ~ df_wq$PresType,
-       alternative = 'two.sided',
-       mu = 0, 
-       paired = FALSE,   
-       var.equal = TRUE,
-       conf.level = 0.95) 
+for (analyte in unique(df_wq$Analyte)){
+   df_test <- df_wq %>% subset(Analyte == analyte)
+   
+   ttest <- t.test(formula = df_test$Result ~ df_test$PresType,
+                   alternative = 'two.sided',
+                   mu = 0, 
+                   paired = FALSE,   
+                   var.equal = TRUE,
+                   conf.level = 0.95)
+   
+   print(paste0('--',analyte,'--'))
+   print(ttest)
+   }
 ```
-p = 0.84
+p > 0.05 for all analytes.
 
-Accept null hypothesis of no difference -- the two are the same.
+Accept null hypothesis of no difference -- the two are the same -- for all analytes.

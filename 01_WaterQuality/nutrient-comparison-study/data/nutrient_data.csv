@@ -1,67 +1,361 @@
 ﻿StationName,CollectionDate,Analyte,Frozen,Acidified
+D16 - Twitchell,1/6/2022 9:15,Dissolved Ammonia,0.059,0.054
+D16 - Twitchell,1/6/2022 9:15,Dissolved NitrateNitrite,0.821,0.848
+D16 - Twitchell,1/6/2022 9:15,Dissolved Orthophosphate,0.071,0.067
 D16 - Twitchell,1/6/2022 9:15,Total Kjeldahl Nitrogen,0.53,0.545
+D16 - Twitchell,1/6/2022 9:15,Total Phosphorus,0.098,0.093
+D19,1/6/2022 10:35,Dissolved Ammonia,0.116,0.108
+D19,1/6/2022 10:35,Dissolved NitrateNitrite,0.907,0.936
+D19,1/6/2022 10:35,Dissolved Orthophosphate,0.068,0.063
 D19,1/6/2022 10:35,Total Kjeldahl Nitrogen,0.638,0.736
+D19,1/6/2022 10:35,Total Phosphorus,0.086,0.088
+P8,1/7/2022 11:00,Dissolved Ammonia,0.29,0.276
+P8,1/7/2022 11:00,Dissolved NitrateNitrite,1.66,1.7
+P8,1/7/2022 11:00,Dissolved Orthophosphate,0.242,0.233
 P8,1/7/2022 11:00,Total Kjeldahl Nitrogen,1.34,1.44
+P8,1/7/2022 11:00,Total Phosphorus,0.281,0.272
+D22,1/10/2022 11:15,Dissolved Ammonia,,
+D22,1/10/2022 11:15,Dissolved NitrateNitrite,0.548,0.556
+D22,1/10/2022 11:15,Dissolved Orthophosphate,0.065,0.057
 D22,1/10/2022 11:15,Total Kjeldahl Nitrogen,0.32,0.346
+D22,1/10/2022 11:15,Total Phosphorus,0.077,0.079
+D7,1/12/2022 9:45,Dissolved Ammonia,0.113,0.106
+D7,1/12/2022 9:45,Dissolved NitrateNitrite,0.656,0.672
+D7,1/12/2022 9:45,Dissolved Orthophosphate,0.08,0.073
 D7,1/12/2022 9:45,Total Kjeldahl Nitrogen,0.517,0.537
+D7,1/12/2022 9:45,Total Phosphorus,0.143,0.153
+D41,1/13/2022 10:45,Dissolved Ammonia,0.103,0.105
+D41,1/13/2022 10:45,Dissolved NitrateNitrite,0.412,0.43
+D41,1/13/2022 10:45,Dissolved Orthophosphate,0.074,0.071
 D41,1/13/2022 10:45,Total Kjeldahl Nitrogen,0.309,0.272
+D41,1/13/2022 10:45,Total Phosphorus,0.099,0.104
+D16 - Twitchell,2/8/2022 11:10,Dissolved Ammonia,,
+D16 - Twitchell,2/8/2022 11:10,Dissolved NitrateNitrite,0.447,0.459
+D16 - Twitchell,2/8/2022 11:10,Dissolved Orthophosphate,0.06,0.055
 D16 - Twitchell,2/8/2022 11:10,Total Kjeldahl Nitrogen,0.231,0.314
+D16 - Twitchell,2/8/2022 11:10,Total Phosphorus,0.058,0.063
+D19,2/8/2022 12:10,Dissolved Ammonia,,
+D19,2/8/2022 12:10,Dissolved NitrateNitrite,0.59,0.607
+D19,2/8/2022 12:10,Dissolved Orthophosphate,0.063,0.057
 D19,2/8/2022 12:10,Total Kjeldahl Nitrogen,0.422,0.41
+D19,2/8/2022 12:10,Total Phosphorus,0.065,0.067
+P8,2/9/2022 13:25,Dissolved Ammonia,0.145,0.132
+P8,2/9/2022 13:25,Dissolved NitrateNitrite,5.47,5.45
+P8,2/9/2022 13:25,Dissolved Orthophosphate,0.326,0.323
 P8,2/9/2022 13:25,Total Kjeldahl Nitrogen,0.793,0.76
+P8,2/9/2022 13:25,Total Phosphorus,0.344,0.339
+D22,2/10/2022 13:50,Dissolved Ammonia,,
+D22,2/10/2022 13:50,Dissolved NitrateNitrite,0.314,0.325
+D22,2/10/2022 13:50,Dissolved Orthophosphate,0.057,0.052
 D22,2/10/2022 13:50,Total Kjeldahl Nitrogen,0.21,0.209
+D22,2/10/2022 13:50,Total Phosphorus,0.062,0.065
+D7,2/14/2022 11:50,Dissolved Ammonia,0.107,0.104
+D7,2/14/2022 11:50,Dissolved NitrateNitrite,0.511,0.525
+D7,2/14/2022 11:50,Dissolved Orthophosphate,0.076,0.072
 D7,2/14/2022 11:50,Total Kjeldahl Nitrogen,0.312,0.362
+D7,2/14/2022 11:50,Total Phosphorus,0.102,0.101
+D41,2/15/2022 12:05,Dissolved Ammonia,0.0536,0.055
+D41,2/15/2022 12:05,Dissolved NitrateNitrite,0.306,0.317
+D41,2/15/2022 12:05,Dissolved Orthophosphate,0.068,0.066
 D41,2/15/2022 12:05,Total Kjeldahl Nitrogen,0.137,0.172
+D41,2/15/2022 12:05,Total Phosphorus,0.082,0.077
+D16 - Twitchell,3/10/2022 11:00,Dissolved Ammonia,,
+D16 - Twitchell,3/10/2022 11:00,Dissolved NitrateNitrite,0.315,0.315
+D16 - Twitchell,3/10/2022 11:00,Dissolved Orthophosphate,,
 D16 - Twitchell,3/10/2022 11:00,Total Kjeldahl Nitrogen,0.355,0.307
+D16 - Twitchell,3/10/2022 11:00,Total Phosphorus,0.05,0.049
+D19,3/10/2022 12:00,Dissolved Ammonia,,
+D19,3/10/2022 12:00,Dissolved NitrateNitrite,0.354,0.353
+D19,3/10/2022 12:00,Dissolved Orthophosphate,,
 D19,3/10/2022 12:00,Total Kjeldahl Nitrogen,0.388,0.382
+D19,3/10/2022 12:00,Total Phosphorus,0.049,0.056
+P8,3/11/2022 13:50,Dissolved Ammonia,0.07,0.056
+P8,3/11/2022 13:50,Dissolved NitrateNitrite,3.27,2.88
+P8,3/11/2022 13:50,Dissolved Orthophosphate,0.13,0.123
 P8,3/11/2022 13:50,Total Kjeldahl Nitrogen,0.503,0.469
+P8,3/11/2022 13:50,Total Phosphorus,0.13,0.129
+D22,3/14/2022 14:25,Dissolved Ammonia,,
+D22,3/14/2022 14:25,Dissolved NitrateNitrite,0.204,0.203
+D22,3/14/2022 14:25,Dissolved Orthophosphate,,
 D22,3/14/2022 14:25,Total Kjeldahl Nitrogen,0.235,0.244
+D22,3/14/2022 14:25,Total Phosphorus,0.041,0.042
+D7,3/16/2022 11:15,Dissolved Ammonia,0.053,0.051
+D7,3/16/2022 11:15,Dissolved NitrateNitrite,0.354,0.36
+D7,3/16/2022 11:15,Dissolved Orthophosphate,0.069,0.067
 D7,3/16/2022 11:15,Total Kjeldahl Nitrogen,0.34,0.323
+D7,3/16/2022 11:15,Total Phosphorus,0.098,0.099
+D41,3/17/2022 12:15,Dissolved Ammonia,0.068,0.051
+D41,3/17/2022 12:15,Dissolved NitrateNitrite,0.252,0.258
+D41,3/17/2022 12:15,Dissolved Orthophosphate,0.07,0.066
 D41,3/17/2022 12:15,Total Kjeldahl Nitrogen,0.211,0.242
+D41,3/17/2022 12:15,Total Phosphorus,0.087,0.079
+D16 - Twitchell,4/21/2022 9:15,Dissolved Ammonia,,
+D16 - Twitchell,4/21/2022 9:15,Dissolved NitrateNitrite,0.243,0.247
+D16 - Twitchell,4/21/2022 9:15,Dissolved Orthophosphate,0.069,0.064
 D16 - Twitchell,4/21/2022 9:15,Total Kjeldahl Nitrogen,0.247,0.255
+D16 - Twitchell,4/21/2022 9:15,Total Phosphorus,0.076,0.082
+D19,4/21/2022 10:50,Dissolved Ammonia,,
+D19,4/21/2022 10:50,Dissolved NitrateNitrite,0.124,0.164
+D19,4/21/2022 10:50,Dissolved Orthophosphate,,
 D19,4/21/2022 10:50,Total Kjeldahl Nitrogen,0.374,0.311
+D19,4/21/2022 10:50,Total Phosphorus,0.056,0.055
+P8,4/22/2022 10:45,Dissolved Ammonia,0.109,0.105
+P8,4/22/2022 10:45,Dissolved NitrateNitrite,3.55,3.59
+P8,4/22/2022 10:45,Dissolved Orthophosphate,0.296,0.291
 P8,4/22/2022 10:45,Total Kjeldahl Nitrogen,0.665,0.617
+P8,4/22/2022 10:45,Total Phosphorus,0.305,0.309
+D22,4/25/2022 12:00,Dissolved Ammonia,,
+D22,4/25/2022 12:00,Dissolved NitrateNitrite,0.247,0.25
+D22,4/25/2022 12:00,Dissolved Orthophosphate,0.077,0.072
 D22,4/25/2022 12:00,Total Kjeldahl Nitrogen,0.366,0.294
+D22,4/25/2022 12:00,Total Phosphorus,0.109,0.109
+D7,4/27/2022 10:45,Dissolved Ammonia,0.106,0.093
+D7,4/27/2022 10:45,Dissolved NitrateNitrite,0.345,0.341
+D7,4/27/2022 10:45,Dissolved Orthophosphate,0.089,0.088
 D7,4/27/2022 10:45,Total Kjeldahl Nitrogen,0.4,0.378
+D7,4/27/2022 10:45,Total Phosphorus,0.145,0.15
+D41,4/28/2022 12:40,Dissolved Ammonia,0.08,0.074
+D41,4/28/2022 12:40,Dissolved NitrateNitrite,0.25,0.26
+D41,4/28/2022 12:40,Dissolved Orthophosphate,0.08,0.08
 D41,4/28/2022 12:40,Total Kjeldahl Nitrogen,0.239,0.294
+D41,4/28/2022 12:40,Total Phosphorus,0.1,0.093
+D16 - Twitchell,5/20/2022 9:30,Dissolved Ammonia,,
+D16 - Twitchell,5/20/2022 9:30,Dissolved NitrateNitrite,0.213,0.218
+D16 - Twitchell,5/20/2022 9:30,Dissolved Orthophosphate,0.065,0.065
 D16 - Twitchell,5/20/2022 9:30,Total Kjeldahl Nitrogen,0.233,0.246
+D16 - Twitchell,5/20/2022 9:30,Total Phosphorus,0.076,0.071
+D19,5/20/2022 10:45,Dissolved Ammonia,,
+D19,5/20/2022 10:45,Dissolved NitrateNitrite,0.122,0.123
+D19,5/20/2022 10:45,Dissolved Orthophosphate,0.05,
 D19,5/20/2022 10:45,Total Kjeldahl Nitrogen,0.242,0.259
+D19,5/20/2022 10:45,Total Phosphorus,0.06,0.058
+P8,5/23/2022 11:55,Dissolved Ammonia,0.068,0.06
+P8,5/23/2022 11:55,Dissolved NitrateNitrite,2.42,2.46
+P8,5/23/2022 11:55,Dissolved Orthophosphate,0.301,0.3
 P8,5/23/2022 11:55,Total Kjeldahl Nitrogen,0.549,0.528
+P8,5/23/2022 11:55,Total Phosphorus,0.3,0.306
+D22,5/24/2022 12:15,Dissolved Ammonia,,
+D22,5/24/2022 12:15,Dissolved NitrateNitrite,0.231,0.238
+D22,5/24/2022 12:15,Dissolved Orthophosphate,0.073,0.069
 D22,5/24/2022 12:15,Total Kjeldahl Nitrogen,0.277,0.308
+D22,5/24/2022 12:15,Total Phosphorus,0.091,0.088
+D41,5/26/2022 10:35,Dissolved Ammonia,0.061,0.054
+D41,5/26/2022 10:35,Dissolved NitrateNitrite,0.272,0.28
+D41,5/26/2022 10:35,Dissolved Orthophosphate,0.086,0.085
 D41,5/26/2022 10:35,Total Kjeldahl Nitrogen,0.213,0.353
+D41,5/26/2022 10:35,Total Phosphorus,0.107,0.108
+D7,5/27/2022 11:25,Dissolved Ammonia,0.086,0.077
+D7,5/27/2022 11:25,Dissolved NitrateNitrite,0.362,0.375
+D7,5/27/2022 11:25,Dissolved Orthophosphate,0.104,0.105
 D7,5/27/2022 11:25,Total Kjeldahl Nitrogen,0.373,0.359
+D7,5/27/2022 11:25,Total Phosphorus,0.158,0.154
+D16 - Twitchell,6/21/2022 12:15,Dissolved Ammonia,,
+D16 - Twitchell,6/21/2022 12:15,Dissolved NitrateNitrite,0.164,0.165
+D16 - Twitchell,6/21/2022 12:15,Dissolved Orthophosphate,0.065,0.06
 D16 - Twitchell,6/21/2022 12:15,Total Kjeldahl Nitrogen,0.224,0.188
+D16 - Twitchell,6/21/2022 12:15,Total Phosphorus,0.066,0.067
+D19,6/21/2022 13:45,Dissolved Ammonia,,
+D19,6/21/2022 13:45,Dissolved NitrateNitrite,,
+D19,6/21/2022 13:45,Dissolved Orthophosphate,0.051,
 D19,6/21/2022 13:45,Total Kjeldahl Nitrogen,0.23,0.213
+D19,6/21/2022 13:45,Total Phosphorus,0.058,0.059
+P8,6/22/2022 13:10,Dissolved Ammonia,,
+P8,6/22/2022 13:10,Dissolved NitrateNitrite,3.58,3.62
+P8,6/22/2022 13:10,Dissolved Orthophosphate,0.456,0.452
 P8,6/22/2022 13:10,Total Kjeldahl Nitrogen,0.535,0.541
+P8,6/22/2022 13:10,Total Phosphorus,0.462,0.465
+D22,6/23/2022 12:55,Dissolved Ammonia,,
+D22,6/23/2022 12:55,Dissolved NitrateNitrite,0.191,0.195
+D22,6/23/2022 12:55,Dissolved Orthophosphate,0.068,0.067
 D22,6/23/2022 12:55,Total Kjeldahl Nitrogen,0.24,0.238
+D22,6/23/2022 12:55,Total Phosphorus,0.08,0.08
+D7,6/27/2022 13:55,Dissolved Ammonia,,
+D7,6/27/2022 13:55,Dissolved NitrateNitrite,0.196,0.205
+D7,6/27/2022 13:55,Dissolved Orthophosphate,0.089,0.089
 D7,6/27/2022 13:55,Total Kjeldahl Nitrogen,0.284,0.261
+D7,6/27/2022 13:55,Total Phosphorus,0.118,0.118
+D41,6/28/2022 14:10,Dissolved Ammonia,0.058,0.053
+D41,6/28/2022 14:10,Dissolved NitrateNitrite,0.257,0.265
+D41,6/28/2022 14:10,Dissolved Orthophosphate,0.103,0.101
 D41,6/28/2022 14:10,Total Kjeldahl Nitrogen,0.255,0.286
+D41,6/28/2022 14:10,Total Phosphorus,0.127,0.129
+D19,7/19/2022 10:50,Dissolved Ammonia,,
+D19,7/19/2022 10:50,Dissolved NitrateNitrite,,
+D19,7/19/2022 10:50,Dissolved Orthophosphate,0.057,0.057
 D19,7/19/2022 10:50,Total Kjeldahl Nitrogen,0.163,0.22
+D19,7/19/2022 10:50,Total Phosphorus,0.067,0.064
+D16 - Twitchell,7/20/2022 8:20,Dissolved Ammonia,,
+D16 - Twitchell,7/20/2022 8:20,Dissolved NitrateNitrite,0.073,0.073
+D16 - Twitchell,7/20/2022 8:20,Dissolved Orthophosphate,0.051,0.05
 D16 - Twitchell,7/20/2022 8:20,Total Kjeldahl Nitrogen,0.135,0.156
+D16 - Twitchell,7/20/2022 8:20,Total Phosphorus,0.063,0.06
+P8,7/20/2022 12:25,Dissolved Ammonia,,
+P8,7/20/2022 12:25,Dissolved NitrateNitrite,1.26,1.27
+P8,7/20/2022 12:25,Dissolved Orthophosphate,0.295,0.291
 P8,7/20/2022 12:25,Total Kjeldahl Nitrogen,0.5,0.511
+P8,7/20/2022 12:25,Total Phosphorus,0.304,0.307
+D22,7/21/2022 11:25,Dissolved Ammonia,,
+D22,7/21/2022 11:25,Dissolved NitrateNitrite,0.096,0.097
+D22,7/21/2022 11:25,Dissolved Orthophosphate,0.059,0.053
 D22,7/21/2022 11:25,Total Kjeldahl Nitrogen,0.154,0.16
+D22,7/21/2022 11:25,Total Phosphorus,0.076,0.069
+D7,7/25/2022 13:30,Dissolved Ammonia,0.081,0.076
+D7,7/25/2022 13:30,Dissolved NitrateNitrite,0.16,0.171
+D7,7/25/2022 13:30,Dissolved Orthophosphate,0.1,0.097
 D7,7/25/2022 13:30,Total Kjeldahl Nitrogen,0.36,0.387
+D7,7/25/2022 13:30,Total Phosphorus,0.185,0.18
+D41,7/26/2022 13:10,Dissolved Ammonia,0.125,0.12
+D41,7/26/2022 13:10,Dissolved NitrateNitrite,0.246,0.261
+D41,7/26/2022 13:10,Dissolved Orthophosphate,0.11,0.109
 D41,7/26/2022 13:10,Total Kjeldahl Nitrogen,0.329,0.273
+D41,7/26/2022 13:10,Total Phosphorus,0.152,0.149
+D19,8/16/2022 10:30,Dissolved Ammonia,,
+D19,8/16/2022 10:30,Dissolved NitrateNitrite,,
+D19,8/16/2022 10:30,Dissolved Orthophosphate,0.055,0.052
 D19,8/16/2022 10:30,Total Kjeldahl Nitrogen,0.216,0.191
+D19,8/16/2022 10:30,Total Phosphorus,0.061,0.063
+D16 - Twitchell,8/17/2022 7:00,Dissolved Ammonia,,
+D16 - Twitchell,8/17/2022 7:00,Dissolved NitrateNitrite,0.067,0.067
+D16 - Twitchell,8/17/2022 7:00,Dissolved Orthophosphate,0.051,
 D16 - Twitchell,8/17/2022 7:00,Total Kjeldahl Nitrogen,0.188,0.158
+D16 - Twitchell,8/17/2022 7:00,Total Phosphorus,0.059,0.06
+P8,8/17/2022 10:55,Dissolved Ammonia,,
+P8,8/17/2022 10:55,Dissolved NitrateNitrite,0.806,0.817
+P8,8/17/2022 10:55,Dissolved Orthophosphate,0.26,0.258
 P8,8/17/2022 10:55,Total Kjeldahl Nitrogen,0.475,0.549
+P8,8/17/2022 10:55,Total Phosphorus,0.276,0.268
+D22,8/18/2022 10:05,Dissolved Ammonia,,
+D22,8/18/2022 10:05,Dissolved NitrateNitrite,0.102,0.108
+D22,8/18/2022 10:05,Dissolved Orthophosphate,0.062,0.059
 D22,8/18/2022 10:05,Total Kjeldahl Nitrogen,0.184,0.196
+D22,8/18/2022 10:05,Total Phosphorus,0.076,0.077
+D7,8/22/2022 11:50,Dissolved Ammonia,0.06,0.05
+D7,8/22/2022 11:50,Dissolved NitrateNitrite,0.303,0.323
+D7,8/22/2022 11:50,Dissolved Orthophosphate,0.113,0.11
 D7,8/22/2022 11:50,Total Kjeldahl Nitrogen,0.3,0.241
+D7,8/22/2022 11:50,Total Phosphorus,0.146,0.145
+D41,8/23/2022 12:05,Dissolved Ammonia,,
+D41,8/23/2022 12:05,Dissolved NitrateNitrite,,
+D41,8/23/2022 12:05,Dissolved Orthophosphate,0.061,0.057
 D41,8/23/2022 12:05,Total Kjeldahl Nitrogen,0.372,0.51
+D41,8/23/2022 12:05,Total Phosphorus,0.146,0.151
+D19,9/14/2022 10:30,Dissolved Ammonia,,
+D19,9/14/2022 10:30,Dissolved NitrateNitrite,,
+D19,9/14/2022 10:30,Dissolved Orthophosphate,0.059,0.058
 D19,9/14/2022 10:30,Total Kjeldahl Nitrogen,0.184,0.169
+D19,9/14/2022 10:30,Total Phosphorus,0.062,0.067
+D16 - Twitchell,9/15/2022 7:15,Dissolved Ammonia,,
+D16 - Twitchell,9/15/2022 7:15,Dissolved NitrateNitrite,0.082,0.096
+D16 - Twitchell,9/15/2022 7:15,Dissolved Orthophosphate,0.056,0.054
 D16 - Twitchell,9/15/2022 7:15,Total Kjeldahl Nitrogen,0.178,0.138
+D16 - Twitchell,9/15/2022 7:15,Total Phosphorus,0.06,0.067
+P8,9/15/2022 11:25,Dissolved Ammonia,0.061,0.052
+P8,9/15/2022 11:25,Dissolved NitrateNitrite,1.03,1.04
+P8,9/15/2022 11:25,Dissolved Orthophosphate,0.349,0.345
 P8,9/15/2022 11:25,Total Kjeldahl Nitrogen,0.539,0.544
+P8,9/15/2022 11:25,Total Phosphorus,0.353,0.36
+D7,9/20/2022 11:25,Dissolved Ammonia,,
+D7,9/20/2022 11:25,Dissolved NitrateNitrite,0.263,0.294
+D7,9/20/2022 11:25,Dissolved Orthophosphate,0.103,0.1
 D7,9/20/2022 11:25,Total Kjeldahl Nitrogen,0.185,0.149
+D7,9/20/2022 11:25,Total Phosphorus,0.112,0.117
+D41,9/21/2022 11:45,Dissolved Ammonia,,
+D41,9/21/2022 11:45,Dissolved NitrateNitrite,0.14,0.157
+D41,9/21/2022 11:45,Dissolved Orthophosphate,0.105,0.105
 D41,9/21/2022 11:45,Total Kjeldahl Nitrogen,0.233,0.212
+D41,9/21/2022 11:45,Total Phosphorus,0.129,0.135
+D22,9/30/2022 8:25,Dissolved Ammonia,,
+D22,9/30/2022 8:25,Dissolved NitrateNitrite,0.152,0.165
+D22,9/30/2022 8:25,Dissolved Orthophosphate,0.067,0.058
 D22,9/30/2022 8:25,Total Kjeldahl Nitrogen,0.189,0.18
+D22,9/30/2022 8:25,Total Phosphorus,0.075,0.077
+D16 - Twitchell,10/13/2022 11:35,Dissolved Ammonia,,
+D16 - Twitchell,10/13/2022 11:35,Dissolved NitrateNitrite,0.109,0.113
+D16 - Twitchell,10/13/2022 11:35,Dissolved Orthophosphate,0.054,0.052
 D16 - Twitchell,10/13/2022 11:35,Total Kjeldahl Nitrogen,0.148,0.17
+D16 - Twitchell,10/13/2022 11:35,Total Phosphorus,0.06,0.061
+D19,10/13/2022 12:45,Dissolved Ammonia,,
+D19,10/13/2022 12:45,Dissolved NitrateNitrite,,
+D19,10/13/2022 12:45,Dissolved Orthophosphate,,
 D19,10/13/2022 12:45,Total Kjeldahl Nitrogen,0.182,0.189
+D19,10/13/2022 12:45,Total Phosphorus,0.051,0.051
+P8,10/14/2022 12:35,Dissolved Ammonia,0.07,0.062
+P8,10/14/2022 12:35,Dissolved NitrateNitrite,1.06,1.1
+P8,10/14/2022 12:35,Dissolved Orthophosphate,0.366,0.364
 P8,10/14/2022 12:35,Total Kjeldahl Nitrogen,0.489,0.523
+P8,10/14/2022 12:35,Total Phosphorus,0.371,0.375
+D22,10/17/2022 12:05,Dissolved Ammonia,,
+D22,10/17/2022 12:05,Dissolved NitrateNitrite,0.161,0.186
+D22,10/17/2022 12:05,Dissolved Orthophosphate,0.067,0.065
 D22,10/17/2022 12:05,Total Kjeldahl Nitrogen,0.165,0.279
+D22,10/17/2022 12:05,Total Phosphorus,0.077,0.165
+D7,10/19/2022 10:50,Dissolved Ammonia,0.056,
+D7,10/19/2022 10:50,Dissolved NitrateNitrite,0.297,0.326
+D7,10/19/2022 10:50,Dissolved Orthophosphate,0.101,0.1
 D7,10/19/2022 10:50,Total Kjeldahl Nitrogen,0.174,0.269
+D7,10/19/2022 10:50,Total Phosphorus,0.122,0.174
+D41,10/20/2022 10:35,Dissolved Ammonia,0.119,0.115
+D41,10/20/2022 10:35,Dissolved NitrateNitrite,0.188,0.216
+D41,10/20/2022 10:35,Dissolved Orthophosphate,0.106,0.106
 D41,10/20/2022 10:35,Total Kjeldahl Nitrogen,0.156,0.222
+D41,10/20/2022 10:35,Total Phosphorus,0.127,0.13
+D19,11/14/2022 13:25,Dissolved Ammonia,,
+D19,11/14/2022 13:25,Dissolved NitrateNitrite,0.151,0.158
+D19,11/14/2022 13:25,Dissolved Orthophosphate,0.051,
 D19,11/14/2022 13:25,Total Kjeldahl Nitrogen,0.185,0.161
+D19,11/14/2022 13:25,Total Phosphorus,0.054,0.05
+D16 - Twitchell,11/15/2022 10:30,Dissolved Ammonia,,
+D16 - Twitchell,11/15/2022 10:30,Dissolved NitrateNitrite,0.182,0.183
+D16 - Twitchell,11/15/2022 10:30,Dissolved Orthophosphate,0.055,0.051
 D16 - Twitchell,11/15/2022 10:30,Total Kjeldahl Nitrogen,0.175,0.149
+D16 - Twitchell,11/15/2022 10:30,Total Phosphorus,0.059,0.056
+P8,11/15/2022 16:00,Dissolved Ammonia,0.061,0.062
+P8,11/15/2022 16:00,Dissolved NitrateNitrite,0.8,0.806
+P8,11/15/2022 16:00,Dissolved Orthophosphate,0.123,0.118
 P8,11/15/2022 16:00,Total Kjeldahl Nitrogen,0.409,0.308
+P8,11/15/2022 16:00,Total Phosphorus,0.132,0.133
+D22,11/16/2022 12:15,Dissolved Ammonia,0.061,0.059
+D22,11/16/2022 12:15,Dissolved NitrateNitrite,0.206,0.213
+D22,11/16/2022 12:15,Dissolved Orthophosphate,0.065,0.062
 D22,11/16/2022 12:15,Total Kjeldahl Nitrogen,0.205,0.184
+D22,11/16/2022 12:15,Total Phosphorus,0.082,0.083
+D7,11/18/2022 10:10,Dissolved Ammonia,0.128,0.123
+D7,11/18/2022 10:10,Dissolved NitrateNitrite,0.29,0.308
+D7,11/18/2022 10:10,Dissolved Orthophosphate,0.088,0.085
 D7,11/18/2022 10:10,Total Kjeldahl Nitrogen,0.351,0.339
+D7,11/18/2022 10:10,Total Phosphorus,0.148,0.148
+D41,11/21/2022 12:05,Dissolved Ammonia,0.101,0.097
+D41,11/21/2022 12:05,Dissolved NitrateNitrite,0.283,0.298
+D41,11/21/2022 12:05,Dissolved Orthophosphate,0.097,0.097
 D41,11/21/2022 12:05,Total Kjeldahl Nitrogen,0.152,0.129
+D41,11/21/2022 12:05,Total Phosphorus,0.118,0.12
+D19,12/13/2022 11:35,Dissolved Ammonia,0.09,0.083
+D19,12/13/2022 11:35,Dissolved NitrateNitrite,0.262,0.266
+D19,12/13/2022 11:35,Dissolved Orthophosphate,,
+D19,12/13/2022 11:35,Total Kjeldahl Nitrogen,0.329,0.331
+D19,12/13/2022 11:35,Total Phosphorus,0.059,0.052
+D16 - Twitchell,12/14/2022 9:30,Dissolved Ammonia,,
+D16 - Twitchell,12/14/2022 9:30,Dissolved NitrateNitrite,0.331,0.344
+D16 - Twitchell,12/14/2022 9:30,Dissolved Orthophosphate,0.057,0.052
+D16 - Twitchell,12/14/2022 9:30,Total Kjeldahl Nitrogen,0.254,0.243
+D16 - Twitchell,12/14/2022 9:30,Total Phosphorus,0.066,0.063
+P8,12/14/2022 14:00,Dissolved Ammonia,0.168,0.163
+P8,12/14/2022 14:00,Dissolved NitrateNitrite,1.72,1.73
+P8,12/14/2022 14:00,Dissolved Orthophosphate,0.107,0.104
+P8,12/14/2022 14:00,Total Kjeldahl Nitrogen,0.69,0.674
+P8,12/14/2022 14:00,Total Phosphorus,0.158,0.152
+D22,12/15/2022 11:10,Dissolved Ammonia,0.053,0.051
+D22,12/15/2022 11:10,Dissolved NitrateNitrite,0.474,0.48
+D22,12/15/2022 11:10,Dissolved Orthophosphate,0.07,0.067
+D22,12/15/2022 11:10,Total Kjeldahl Nitrogen,0.27,0.27
+D22,12/15/2022 11:10,Total Phosphorus,0.087,0.083
+D7,12/19/2022 9:55,Dissolved Ammonia,0.145,0.138
+D7,12/19/2022 9:55,Dissolved NitrateNitrite,0.33,0.34
+D7,12/19/2022 9:55,Dissolved Orthophosphate,0.076,0.073
+D7,12/19/2022 9:55,Total Kjeldahl Nitrogen,0.295,0.321
+D7,12/19/2022 9:55,Total Phosphorus,0.118,0.123
+D41,12/20/2022 11:20,Dissolved Ammonia,0.107,0.1
+D41,12/20/2022 11:20,Dissolved NitrateNitrite,0.252,0.261
+D41,12/20/2022 11:20,Dissolved Orthophosphate,0.076,0.076
+D41,12/20/2022 11:20,Total Kjeldahl Nitrogen,,
+D41,12/20/2022 11:20,Total Phosphorus,0.104,0.095
