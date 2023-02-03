@@ -15,7 +15,7 @@ library(stats)
 # read in data
 df_wq <- read_csv('01_WaterQuality/nutrient-comparison-study/data/nutrient_data.csv')
 
-# mutate df
+# mutate df, drop NAs (< RL values)
 df_wq <- df_wq %>%
   pivot_longer(cols = c(Frozen, Acidified),
                names_to = 'PresType',
@@ -72,6 +72,30 @@ for (analyte in unique(df_wq$Analyte)){
 }
 ```
 For all, data is close enough to normal for a t-test. A bit debateable for NitrateNitrite and Orthophosphate, but I feel comfortable not applying any normalization transformations.
+
+# linear regression
+```{r}
+for (analyte in unique(df_wq$Analyte)){
+   df_test <- df_wq %>% subset(Analyte == analyte)
+   
+   df_test <- df_test %>%
+      pivot_wider(names_from = 'PresType',
+                  values_from = 'Result')
+   
+   plt <- ggplot(df_test, aes(Acidified, Frozen)) +
+      geom_point(size=2) +
+      geom_smooth(method='lm') +
+      theme_bw() +
+      ggtitle(analyte)
+   
+   print(plt)
+
+   ggsave(paste0('01_WaterQuality/nutrient-comparison-study/plots/lm_',analyte,'.jpg'),
+          plot = plt,
+          height = 3,
+          width = 4.5)
+   }
+```
 
 # t-test
 ```{r}
