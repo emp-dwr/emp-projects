@@ -1,0 +1,31 @@
+```{r}
+# Carquinez Station Result Analysis
+# Analyzing the results of the Carquinez Straight study
+# Authors: Sarah Perry, Julianna Manning
+# January 20, 2021
+
+# import package
+library(tidyverse)
+```
+
+
+```{r}
+df_results <- read_csv('NZ_station_comp.csv')
+
+df_station_count <- df_results %>% 
+  group_by(Stations) %>% 
+  count(Result)
+
+df_station_count <- spread(df_station_count, Result, n)
+write_csv(df_station_count, 'station_summary.csv')
+```
+
+```{r}
+df_analyte_count <- df_results %>% 
+  group_by(Analyte) %>% 
+  count(Result)
+
+df_analyte_count <- spread(df_analyte_count, Result, n)
+write_csv(df_analyte_count, 'analyte_summary.csv')
+```
+
