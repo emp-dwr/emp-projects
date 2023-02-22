@@ -1,0 +1,98 @@
+```{r message = FALSE}
+library(tidyverse)
+library(lubridate)
+library(scales)
+```
+
+```{r}
+file_names <- paste0('01_WaterQuality/misc/data/CWQ/',dir('01_WaterQuality/misc/data/CWQ')) #where you have your files
+
+df_wq <- do.call(rbind,lapply(file_names,function(x){read_csv(x,col_types = cols(datetime = 'c'))}))
+
+df <- df_wq %>%
+  separate(col = datetime, into = c('date', 'time'), sep = ' ') %>%
+  group_by(station, date) %>%
+  summarize(do = mean(dissolvedoxygen_mgl, na.rm = TRUE),
+            fl = mean(fluorescence_ugl, na.rm = TRUE),
+            ph = mean(pH_pHunits, na.rm = TRUE),
+            spc = mean(spc_uScm, na.rm = TRUE),
+            turb = mean(turbidity_FNU, na.rm = TRUE),
+            temp = mean(watertemperature_C, na.rm = TRUE)) %>%
+  ungroup()
+
+df$date <- parse_date_time(df$date, orders = c('ymd', 'mdy'))
+
+df$date2 <- as.Date(df$date, format = '%Y-%m-%d', origin = 'UTC')
+
+df <- df %>% mutate_all(~ifelse(is.nan(.), NA, .))
+```
+
+```{r}
+for (stat in unique(df$station)){
+  df_filt <- df %>% subset(station == stat)
+  
+  plt <- ggplot(df_filt, aes(x = date2, y = do)) +
+    geom_point() +
+    scale_x_date(labels = date_format('%m/%Y'))
+  
+  print(stat)
+  print(plt)
+}
+```
+```{r}
+for (stat in unique(df$station)){
+  df_filt <- df %>% subset(station == stat)
+  
+  plt <- ggplot(df_filt, aes(x = date2, y = fl)) +
+    geom_point()
+  
+  print(stat)
+  print(plt)
+}
+```
+```{r}
+for (stat in unique(df$station)){
+  df_filt <- df %>% subset(station == stat)
+  
+  plt <- ggplot(df_filt, aes(x = date2, y = ph)) +
+    geom_point()
+  
+  print(stat)
+  print(plt)
+}
+```
+```{r}
+for (stat in unique(df$station)){
+  df_filt <- df %>% subset(station == stat)
+  
+  plt <- ggplot(df_filt, aes(x = date2, y = spc)) +
+    geom_point()
+  
+  print(stat)
+  print(plt)
+}
+```
+```{r}
+for (stat in unique(df$station)){
+  df_filt <- df %>% subset(station == stat)
+  
+  plt <- ggplot(df_filt, aes(x = date2, y = turb)) +
+    geom_point()
+  
+  print(stat)
+  print(plt)
+}
+```
+
+```{r}
+for (stat in unique(df$station)){
+  df_filt <- df %>% subset(station == stat)
+  
+  plt <- ggplot(df_filt, aes(x = date2, y = temp)) +
+    geom_point()
+  
+  print(stat)
+  print(plt)
+}
+```
+
