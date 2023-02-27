@@ -1,0 +1,89 @@
+```{r message = FALSE}
+# read in packages
+library(tidyverse)
+library(stats)
+library(plotly)
+library(broom)
+```
+
+```{r message = FALSE}
+# read in data
+df_wq <- read_csv('01_WaterQuality/misc/data/spc/spc.csv')
+
+# mutate df, drop NAs (< RL values)
+df_wq <- df_wq %>%
+  subset(select = c(`Short Station Name`, Analyte, Result, `Collection Date`)) %>%
+  rename(Station = `Short Station Name`, Date = `Collection Date`) %>%
+  drop_na() %>%
+  group_by(Station,Date,Analyte) %>%
+  summarize(Result = mean(Result, na.rm = TRUE))
+```
+
+```{r}
+ggplot(df_wq, aes(Analyte, Result)) +
+  geom_violin(draw_quantiles = c(0.25, 0.5, 0.75)) +
+  geom_jitter(pch = 21, color = 'black', size = 2) +
+  theme_bw()
+```
+```{r}
+lm_wq <- lm(Result ~ Analyte, data = df_wq)
+
+df_resid <- data.frame(Residuals = 'Residuals', Value =lm_wq$residuals)
+
+ggplot(df_resid, aes(Residuals, Value)) +
+  geom_violin(draw_quantiles = c(0.25, 0.5, 0.75)) +
+  geom_jitter(pch = 21, color = 'black', size = 2) +
+  theme_bw()
+```
+```{r}
+ggplot(df_resid, aes(Residuals, Value)) +
+  geom_boxplot() +
+  theme_bw()
+```
+
+
+```{r}
+augment(lm_wq) %>%
+  ggplot(aes(sample = .resid))+
+  geom_qq()+
+  geom_qq_line() +
+  xlab('theoretical') +
+  ylab('sample') +
+  theme_bw()
+```
+```{r}
+t.test(Result ~ Analyte, data = df_wq, var.equal = TRUE) %>% tidy()
+```
+
+
+```{r}
+df_qq <- df_wq %>%
+  rowid_to_column() %>%
+  pivot_wider(id_cols = c(Station, Date), names_from = Analyte, values_from = Result) %>%
+  rename(SpC = `Specific Conductance`, FieldSpC = `Field Specific Conductance`)
+
+df_qq <- df_qq %>%
+  separate(col = Date, into = c('Date', 'Time'), sep = ' ') %>%
+  mutate(RPD = abs((SpC-FieldSpC)/SpC),
+    Dif = SpC-FieldSpC,
+         Mean = rowMeans(cbind(SpC, FieldSpC), na.rm = TRUE),
+         Month = format(as.Date(Date, format='%m/%d/%Y'),'%b'),
+         Difference = 'Difference')
+
+df_qq$Month <- factor(df_qq$Month, levels = month.abb)
+
+
+qq_test <- qqnorm(df_qq$Dif, pch = 1, frame = FALSE)
+
+plt <- ggplot(df_qq, aes(Mean, Dif, fill = Month, label = Date)) +
+  geom_point(pch=21, size = 4, color='black') +
+  theme_bw()
+print(plt)
+```
+
+```{r}
+ggplotly(plt, tooltip = 'Date')
+```
+
+
+
