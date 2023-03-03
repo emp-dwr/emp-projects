@@ -84,7 +84,7 @@ df_wq <- df_wq %>%
   rename(DateTime = TimeStamp)
 
 # set run abbv
-df_names <- read_csv('supp_files/run_names.csv')
+df_names <- read_csv('03_Phyto/fluoroprobe-data-cleaning/supp_files/run_names.csv')
 run_name <- plyr::mapvalues(run_name, 
           df_names$LongName, 
           to=df_names$ShortName)
