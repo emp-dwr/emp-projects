@@ -135,7 +135,8 @@ df_regions <- read_csv('03_Phyto/fluoroprobe-data-cleaning/supp_files/regions_fl
 df_final <- left_join(df_final, df_regions, 'SubRegion')
 
 df_final <- df_final %>%
-  subset(select = -c(geometry, SubRegion))
+  extract(geometry, c('Latitude', 'Longitude'), '\\((.*), (.*)\\)', convert = TRUE) %>%
+  subset(select = -c(SubRegion))
 
 # export
 fn_exp <- str_remove(fn_fl, '.txt')
