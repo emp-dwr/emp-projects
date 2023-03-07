@@ -76,7 +76,7 @@ df_data <- df_data %>%
 ### Add in higher level taxa/current names
 ```{r}
 # subset synonym/taxon columns
-df_syn <- df_syn %>% select(c('Kingdom':'AlgalGroup','CurrentName'))
+df_syn <- df_syn %>% select(c('Kingdom':'AlgalGroup','Name','CurrentName'))
 
 # standardize spp. to sp.
 df_data$Name <- str_replace_all(df_data$Name, 'spp.', 'sp.')
@@ -100,10 +100,13 @@ df_data <- df_data %>%
 # join with main dataset
 df_joined <- df_data %>%
   left_join(df_syn, by = 'Name') %>%
-  mutate(Genus = Genus.y) %>%
+  # mutate(Genus = Genus.y) %>%
   select(-c(ends_with('.y'), ends_with('.x'))) %>%
   relocate(c(Name, Kingdom:AlgalGroup), .after = StationCode) %>%
   relocate(c(Genus, Species), .after = AlgalGroup)
+
+# figure out switching to military time (add)
+# df_joined$SampleTime <- format(strptime(df_joined$SampleTime, "%I:%M"), format="%H:%M")
 ```
 
 ### Update Names
@@ -157,9 +160,11 @@ print(syn_check)
 ## Clean Data
 ### Average Biovolume, Biovolume Density
 ```{r}
+df_joined$Total_Cells_Counted <- as.numeric(df_joined$Total_Cells_Counted)
+
 df_joined <- df_joined %>%
   mutate(AverageBiovolume = round(rowMeans(select(., starts_with('Biovolume')), na.rm = TRUE),2),
-         AverageBiovolume_per_mL = round(AverageBiovolume/VolumeAnalyzed,2)) %>%
+         AverageBiovolume_per_mL = round(AverageBiovolume*Factor*Total_Cells_Counted,2)) %>% # Counted'
   select(-starts_with('Biovolume_')) %>%
   relocate(Comments, .after = Shape) %>%
   relocate(AverageBiovolume:AverageBiovolume_per_mL, .after = Organisms_per_mL)
@@ -193,6 +198,6 @@ df_joined <- df_joined[!duplicated(df_joined),]
 
 ## Export
 ```{r}
-write_csv(df_joined,'03_Phyto/PESP/data/EMP/EMP_Phyto_Data_2008-2021.csv')
+write_csv(df_joined,'03_Phyto/PESP/data/EMP/EMP_Phyto_Data_2008-2021_TEST3323.csv')
 ```
 
