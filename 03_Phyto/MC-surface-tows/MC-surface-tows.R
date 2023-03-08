@@ -165,19 +165,19 @@ rm(df_flowmeter)
 df_phyto_tow <- df_phyto_tow %>%
   mutate(TowDistance = (FlowmeterPost - FlowmeterPre)*26873/999999)
 
-# Calculate volume in liters using Tomo's formulae
+# Calculate volume in milliliters using Tomo's formulae
 # Net diameter = 0.3 meters
 df_phyto_tow <- df_phyto_tow %>%
-  mutate(TowVolume = pi * (0.15)^2 * TowDistance * 1000)
+  mutate(TowVolume.mL = pi * (0.15)^2 * TowDistance * 1000 * 1000)
 
 # Calculate actual concentration in tow samples using C1V1 = C2V2
 df_phyto_tow <- df_phyto_tow %>%
-  mutate(BV.um3.per.L.Tow = case_when(SampleType == "Surface Tow" ~ BV.um3.per.L * TowVolumeL / TowVolume)) 
+  mutate(BV.um3.per.mL.Tow = case_when(SampleType == "Surface Tow" ~ BV.um3.per.mL * (TowVolumeL*1000) / TowVolume.mL)) 
 
-df_phyto_tow <- df_phyto_tow %>% select(DateTime:Genus, BV.um3.per.L.Tow)
-df_phyto_reg <- df_phyto_reg %>% select(DateTime:Genus, BV.um3.per.L)
+df_phyto_tow <- df_phyto_tow %>% select(DateTime:Genus, BV.um3.per.mL.Tow)
+df_phyto_reg <- df_phyto_reg %>% select(DateTime:Genus, BV.um3.per.mL)
 
-df_phyto_tow <- df_phyto_tow %>% rename("BV.um3.per.L" = "BV.um3.per.L.Tow")
+df_phyto_tow <- df_phyto_tow %>% rename("BV.um3.per.mL" = "BV.um3.per.mL.Tow")
 
 # Recombine tow and regular samples
 df_phyto <- bind_rows(df_phyto_reg, df_phyto_tow)
@@ -188,12 +188,12 @@ rm(df_phyto_tow)
 ## Calculate the most abundant taxa for each sample type
 df_abund <- df_phyto %>%
   group_by(SampleType, Genus) %>%
-  summarize(Mean.BV.per.L = mean(BV.um3.per.L)) %>%
+  summarize(Mean.BV.per.mL = mean(BV.um3.per.mL)) %>%
   ungroup()
 
 df_abund <- df_abund %>%
   group_by(SampleType) %>%
-  mutate(MeanRelAbund = Mean.BV.per.L/sum(Mean.BV.per.L)) %>%
+  mutate(MeanRelAbund = Mean.BV.per.mL/sum(Mean.BV.per.mL)) %>%
   ungroup
 
 # Import list of toxigenic genera
@@ -241,12 +241,12 @@ df_phyto <- df_phyto %>%
 # Lump together less abundant taxa
 df_phyto_RA <- df_phyto %>%
   group_by(DateTime, Year, Month, SampleType, Type) %>%
-  summarize(Mean.BV.per.L = mean(BV.um3.per.L)) %>%
+  summarize(Mean.BV.per.mL = mean(BV.um3.per.mL)) %>%
   ungroup()
 
 df_phyto_RA <- df_phyto_RA %>%
   group_by(DateTime, Year, Month, SampleType) %>%
-  mutate(MeanRelAbund = Mean.BV.per.L/sum(Mean.BV.per.L)*100) %>%
+  mutate(MeanRelAbund = Mean.BV.per.mL/sum(Mean.BV.per.mL)*100) %>%
   ungroup
 
 df_phyto_RA <- df_phyto_RA %>%
@@ -259,7 +259,7 @@ type <- c("Aphanizomenon","Planktothrix","Dolichospermum","Microcystis","Oscilla
 df_phyto_RA$Type <- factor(as.character(df_phyto_RA$Type), levels = type)
 
 # Compare taxonomy
-bar.plot <- ggplot(df_phyto, aes(x = Month, y = BV.um3.per.L, fill = Group)) +
+bar.plot <- ggplot(df_phyto, aes(x = Month, y = BV.um3.per.mL, fill = Group)) +
   geom_bar(position = "stack",  
            width = 1, 
            stat = "summary", 
@@ -282,7 +282,9 @@ ggsave(path = output,
        dpi="print")
 
 # Compare taxonomy (relative abundance)
-bar.plot.RA <- ggplot(df_phyto_RA, aes(x = SampleType, y = MeanRelAbund, fill = Type)) +
+bar.plot.RA <- ggplot(df_phyto_RA, aes(x = SampleType, 
+                                       y = MeanRelAbund, 
+                                       fill = Type)) +
   geom_bar(position = "stack",  
            width = 0.6, 
            stat = "summary", 
@@ -293,8 +295,7 @@ bar.plot.RA +
   facet_wrap(Month ~ ., ncol = 6) +
   labs(x = "Sample Type",
        y = "Relative Abundance (%)",
-       fill = "Genus",
-       title = "Phytoplankton Sample Comparison - D19 - Summer 2022")
+       fill = "Genus")
 
 ggsave(path = output,
        filename = "phyto_RA_PTOX.pdf", 
@@ -314,9 +315,6 @@ df_phyto_comp <- df_phyto_comp %>%
   group_by(DateTime, Month, SampleType, ToxicStatus) %>%
   summarize(Proportion = sum(MeanRelAbund, na.rm = T)) %>%
   ungroup()
-
-# Save data file
-#save(df_phyto, file = "RData/phyto.RData") 
 
 # Import EMP historical data for comparison ------------------------------------
 load("df_phyto_gen.RData")
@@ -385,17 +383,22 @@ type <- c("Aphanizomenon","Cylindrospermopsis","Dolichospermum","Microcystis","O
 df_EMP_RA$Type <- factor(as.character(df_EMP_RA$Type), levels = type)
 
 # Compare taxonomy (monthly total abundance)
+bar.plot.EMP <- ggplot(df_EMP_tox, aes(x = Month, 
+                                       y = Mean.BV.per.mL, 
+                                       fill = Type)) +
+  geom_bar(position = "stack",  
+           width = 0.3, 
+           stat = "summary", 
+           fun = "mean") 
 
-
-dot.plot.EMP <- ggplot(df_phyto, aes(x = SampleType, y = log10(BV.um3.per.L))) +
-  geom_boxplot(width = 0.2) 
-
-dot.plot.EMP
-
-
+bar.plot.EMP +
+  facet_wrap(Year ~ ., ncol = 2) +
+  labs()
 
 # Compare taxonomy (relative abundance)
-bar.plot.EMP.RA <- ggplot(df_EMP_RA, aes(x = Month, y = MeanRelAbund, fill = Type)) +
+bar.plot.EMP.RA <- ggplot(df_EMP_RA, aes(x = Month, 
+                                         y = MeanRelAbund, 
+                                         fill = Type)) +
   geom_bar(position = "stack",  
            width = 0.3, 
            stat = "summary", 
@@ -488,10 +491,9 @@ bar.plot.EDI.RA +
   facet_wrap(Year ~ ., ncol = 2)
 
 # Generate NMDS data with metaMDS ----------------------------------------------
-
 df_NMDS <- df_phyto %>%
   group_by(DateTime, Month, SampleType, Genus) %>%
-  summarize(Total.BV = sum(BV.um3.per.L)) %>%
+  summarize(Total.BV = sum(BV.um3.per.mL)) %>%
   ungroup()
 
 genw <- pivot_wider(df_NMDS, 
