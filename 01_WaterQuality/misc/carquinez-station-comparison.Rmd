@@ -1,0 +1,146 @@
+```{r Import Data}
+# title: "carquines-comparison-study"
+# author: Julianna Manning, Jenna Rinde, Sarah Perry
+
+#Importing packages
+library(tidyverse)
+library(lubridate)
+library(stats)
+source('import_EDI_data.R')
+
+# import data
+df_edi <- import_EDI()
+
+# remove large function
+rm(import_EDI)
+```
+
+```{r Data Cleaning}
+# subset df by station and year
+station <- c("NZ325", "NZ002", "NZ004", "D6")
+year <- c(2018, 2019, 2017)
+
+df_edi$Date <- as.Date(df_edi$Date, format = '%m/%d/%Y')
+df_edi$Station <- as.character(df_edi$Station)
+
+df_edi <- df_edi %>%
+  mutate(Year = year(Date), 
+                Month = month(Date), 
+                Day = day(Date))
+
+df_edi$Station <- gsub(" ", "", df_edi$Station, fixed = TRUE)
+
+df_edi <- df_edi %>%
+  filter(Year %in% year&Station %in% station)
+
+# convert from factor to numeric col
+for (i in c(12:48)){
+  df_edi[,i] <- as.numeric(df_edi[,i])
+}
+
+# wide to long format
+df_edi <- gather(df_edi, 'Analyte', 'Value', 12:48)
+```
+
+```{r ACF Check}
+# analytes <- colnames(df_edi)[12:48]
+# analytes <- analytes[analytes != 'Microcystis']
+# 
+# for(analyte in analytes){
+#   analyte_data <- as.numeric(df_edi[[analyte]][df_edi$Station == "NZ325"])
+#   if(!all(is.na(analyte_data))){
+#     acf(analyte_data, na.action=na.omit)
+#   }
+# }
+
+```
+
+```{r Reformat df}
+stations <- unique(df_edi$Station)
+
+# split df by stations
+for (station in stations){
+  assign(paste0('df_',station), df_edi[df_edi$Station == station,])
+}
+
+# rename and summarize dfs
+# R has defeated me and this is super inefficent >:/
+
+df_D6 <- df_D6 %>%
+  rename(Value_D6 = Value) %>%
+  group_by(Month, Year, Analyte) %>%
+  summarize(Value_D6 = mean(Value_D6, na.rm=TRUE)) %>%
+  ungroup()
+
+df_NZ002 <- df_NZ002 %>%
+  rename(Value_NZ002 = Value) %>%
+  group_by(Month, Year, Analyte) %>%
+  summarize(Value_NZ002 = mean(Value_NZ002, na.rm=TRUE)) %>%
+  ungroup()
+
+df_NZ004 <- df_NZ004 %>%
+  rename(Value_NZ004 = Value) %>%
+  group_by(Month, Year, Analyte) %>%
+  summarize(Value_NZ004 = mean(Value_NZ004, na.rm=TRUE)) %>%
+  ungroup()
+
+df_NZ325 <- df_NZ325 %>%
+  rename(Value_NZ325 = Value) %>%
+  group_by(Month, Year, Analyte) %>%
+  summarize(Value_NZ325 = mean(Value_NZ325, na.rm=TRUE)) %>%
+  ungroup()
+
+# merge dfs
+df_edi <- list(df_D6,df_NZ002,df_NZ004,df_NZ325) %>% reduce(full_join, by = c('Month','Year','Analyte'))
+
+# clean-up
+rm(df_D6, df_NZ002, df_NZ004, df_NZ325)
+```
+
+```{r Adding Differece Columns}
+df_edi$D6_NZ002 <- (df_edi$Value_D6 - df_edi$Value_NZ002)
+
+df_edi$D6_NZ004 <- (df_edi$Value_D6 - df_edi$Value_NZ004)
+
+df_edi$D6_NZ325 <- (df_edi$Value_D6 - df_edi$Value_NZ325)
+
+df_edi$NZ002_NZ004 <- (df_edi$Value_NZ002 - df_edi$Value_NZ004)
+
+df_edi$NZ002_NZ325 <- (df_edi$Value_NZ002 - df_edi$Value_NZ325)
+
+df_edi$NZ004_NZ325 <- (df_edi$Value_NZ004 - df_edi$Value_NZ325)
+
+hist(df_edi$NZ002_NZ004[df_edi$Analyte == "DissAmmonia"])
+```
+
+```{r}
+analytes <- unique(df_edi$Analyte)
+diff_cols <- colnames(df_edi[8:13])
+
+# initiating empty vectors
+vec_pvalue <- c()
+vec_station <- c()
+vec_analyte <- c()
+vec_boo <- c()
+
+for(col in diff_cols){
+  for(analyte in analytes){
+    # defining vector for t-test
+    t_vector <- df_edi[[col]][df_edi$Analyte == analyte]
+    if (!all(is.na(t_vector))){
+      p_value <- t.test(t_vector, mu=0, na.action=na.omit)$p.value
+      # populating vectors for df
+      vec_pvalue <- c(vec_pvalue, p_value)
+      vec_station <- c(vec_station, col)
+      vec_analyte <- c(vec_analyte, analyte)
+      is_same <- ifelse(p_value>0.05, 'Same', 'Different')
+      vec_boo <- c(vec_boo, is_same)
+    }
+  }
+}
+
+df_output <- data.frame(Stations=vec_station, Analyte=vec_analyte, Pvalue=vec_pvalue, Result=vec_boo)
+
+write_csv(df_output, 'NZ_station_comp.csv')
+```
+

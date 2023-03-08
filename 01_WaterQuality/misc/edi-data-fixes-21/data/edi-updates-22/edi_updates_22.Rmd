@@ -1,0 +1,77 @@
+```{r}
+library(tidyverse)
+library(lubridate)
+
+`%ni%` <- Negate(`%in%`)
+```
+
+```{r}
+df_wq <- read_csv('edi-updates-22/SACSJ_delta_water_quality_1975_2021.csv', col_types = 'c')
+df_wq$Date <- as.Date(df_wq$Date, format = '%m/%d/%Y')
+df_historic <- read_csv('edi-updates-22/emp_historic_RLs.csv')
+df_ta <- read_csv('edi-updates-22/emp_ta_RLs.csv') %>%
+  pivot_wider(id_cols = c('Year','Month','Station'), names_from = Analyte, values_from = RL)
+```
+
+```{r Add TSS/VSS/TDS Data}
+
+```
+
+```{r Fix Historic RLs}
+# add in < and = signs
+df_wq <- df_wq %>%
+  mutate(DissAmmonia_Sign = case_when(str_detect(DissAmmonia, '<') | str_detect(DissAmmonia, 'ND') ~ '<',
+                                      is.na(DissAmmonia_Sign) ~ '='),
+         DissOrthophos_Sign = case_when(str_detect(DissOrthophos, '<') | str_detect(DissOrthophos, 'ND') ~ '<',
+                                        is.na(DissOrthophos_Sign) ~ '='),
+         DissNitrateNitrite_Sign = case_when(str_detect(DissNitrateNitrite, '<') | str_detect(DissNitrateNitrite, 'ND') ~ '<',
+                                             is.na(DissNitrateNitrite_Sign) ~ '='))
+
+# remove < sign from col
+df_wq <- df_wq %>%
+  mutate(DissAmmonia = case_when(str_detect(DissAmmonia, '<') ~ str_remove(DissAmmonia, '<'),
+                                 !str_detect(DissAmmonia, '<') ~ DissAmmonia),
+         DissOrthophos = case_when(str_detect(DissOrthophos, '<') ~ str_remove(DissOrthophos, '<'),
+                                   !str_detect(DissOrthophos, '<') ~ DissOrthophos),
+         DissNitrateNitrite = case_when(str_detect(DissNitrateNitrite, '<') ~ str_remove(DissNitrateNitrite, '<'),
+                                        !str_detect(DissNitrateNitrite, '<') ~ DissNitrateNitrite))
+
+# add in RLs
+df_wq <- df_wq %>% mutate(
+  Year = year(Date),
+  Month = month(Date)
+)
+
+df_wq <- left_join(df_wq, df_historic, by = c('Year', 'Month'))
+df_wq <- left_join(df_wq, df_ta, by = c('Year', 'Month','Station'))
+
+df_wq <- df_wq %>% subset(select = -c(Year, Month))
+
+df_wq$DissAmmonia <- ifelse(df_wq$DissAmmonia == 'ND', df_wq$DissAmmonia_RL, df_wq$DissAmmonia)
+df_wq$DissNitrateNitrite <- ifelse(df_wq$DissNitrateNitrite == 'ND', df_wq$DissNitrateNitrite_RL, df_wq$DissNitrateNitrite)
+df_wq$DissNitrateNitrite <- ifelse(df_wq$DissNitrateNitrite == 'ND', df_wq$DissNitrateNitrite_TA_RL, df_wq$DissNitrateNitrite)
+df_wq$DissOrthophos <- ifelse(df_wq$DissOrthophos == 'ND', df_wq$DissOrthophos_RL, df_wq$DissOrthophos)
+df_wq$DissOrthophos <- ifelse(df_wq$DissOrthophos == 'ND', df_wq$DissOrthophos_TA_RL, df_wq$DissOrthophos)
+```
+
+```{r Split Turbidity Cols}
+shore_stations <- c('C3A','C9','C10A')
+df_wq$TurbiditySurface_NTU[df_wq$Date <= '2018-12-01' & df_wq$Station %in% shore_stations] <- df_wq$TurbiditySurface_FNU
+df_wq$TurbiditySurface_NTU[df_wq$Date <= '2019-06-01' & df_wq$Station %ni% shore_stations] <- df_wq$TurbiditySurface_FNU
+df_wq$TurbiditySurface_FNU[df_wq$Date <= '2018-12-01' & df_wq$Station %in% shore_stations] <- NA
+df_wq$TurbiditySurface_FNU[df_wq$Date <= '2019-06-01' & df_wq$Station %ni% shore_stations] <- NA
+
+df_wq$TurbidityBottom_NTU[df_wq$Date <= '2018-12-01' & df_wq$Station %in% shore_stations] <- df_wq$TurbidityBottom_FNU
+df_wq$TurbidityBottom_NTU[df_wq$Date <= '2019-06-01' & df_wq$Station %ni% shore_stations] <- df_wq$TurbidityBottom_FNU
+df_wq$TurbidityBottom_FNU[df_wq$Date <= '2018-12-01' & df_wq$Station %in% shore_stations] <- NA
+df_wq$TurbidityBottom_FNU[df_wq$Date <= '2019-06-01' & df_wq$Station %ni% shore_stations] <- NA
+```
+
+```{r Convert TA Data}
+# pending confirmation from TA
+```
+
+```{r}
+write_csv(df_wq, 'edi-updates-22/SACSJ_delta_water_quality_1975-2021_updated.csv')
+```
+

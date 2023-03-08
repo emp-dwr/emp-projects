@@ -4,10 +4,10 @@
 # ---
 
 # declare filename for fluoroprobe data (.txt)
-fn_fl <- 'May 2022 Sacramento River.txt'
+fn_fl <- 'September 2022 Mid Delta Day 2.txt'
 
 # declare filename for water quality data (.csv)
-fn_wq <- 'MOPED May 2022 Sacramento River.csv'
+fn_wq <- 'MOPED September 2022 Mid Delta Day 2.csv'
 ```
 
 ```{r}
@@ -39,7 +39,7 @@ df_fl <- df_fl %>% mutate_if(is.character,as.numeric)
 
 # round to nearest 10 mins and calc average
 df_fl <- df_fl %>%
-  mutate(`Date/Time` = round_date(`Date/Time`, unit='10 minutes')) %>%
+  mutate(`Date/Time` = round_date(`Date/Time`, unit='1 minute')) %>%
   group_by(`Date/Time`) %>%
   summarize_all(~round(mean(., na.rm = TRUE),2))
 
@@ -47,44 +47,56 @@ df_fl <- df_fl %>%
 df_fl$`Date/Time` <- as.character(df_fl$`Date/Time`)
 
 # clean up col names
-colnames(df_fl) <- paste(colnames(df_fl), first_row, sep='_')
+clean_cols <- sapply(colnames(df_fl), function(x) unlist(stringr::str_split(x, "\\.{2,}"))[[1]])
+colnames(df_fl) <- paste(clean_cols, first_row, sep='_')
 colnames(df_fl) <- colnames(df_fl) %>% str_replace('_1_', '_')
 colnames(df_fl) <- colnames(df_fl) %>% str_replace('�g', 'ug')
 colnames(df_fl) <- colnames(df_fl) %>% str_replace('�C', 'degC')
-df_fl <- df_fl %>% rename(DateTime = `Date/Time_date`, Temp_degC = `Temp. Sample_degC`)
 
 # keep relevant columns
-keep_cols <- c('Green Algae...2_ug/l','Bluegreen...3_ug/l','Diatoms...4_ug/l','Cryptophyta...5_ug/l','Green Algae...14_cells/ml','Bluegreen...15_cells/ml',
-               'Diatoms...16_cells/ml','Cryptophyta...17_cells/ml','Temp_degC','DateTime')
+keep_cols <- c('Green Algae_ug/l','Bluegreen_ug/l','Diatoms_ug/l','Cryptophyta_ug/l','Green Algae_cells/ml','Bluegreen_cells/ml',
+               'Diatoms_cells/ml','Cryptophyta_cells/ml','Total conc._ug/l','Temp. Sample_degC','Date/Time_date')
 
 df_fl <- subset(df_fl, select = keep_cols)
+
+df_fl <- df_fl %>% rename(DateTime = `Date/Time_date`, Temp_degC = `Temp. Sample_degC`)
 
 df_fl <- df_fl %>%
   mutate(Year = year(df_fl$DateTime),
          Month = month.abb[month(df_fl$DateTime)],
          Date = as.Date(df_fl$DateTime, format = '%Y-%m-%d %H:%M:%S'),
-         Hour = paste0(hour(df_fl$DateTime),':00'))
+         # Hour = paste0(hour(df_fl$DateTime),':00'),
+         Time = format(as.POSIXct(df_fl$DateTime), format = "%H:%M:%S"))
 
 # read in wq data
 fp_wq <- abs_path(paste0(year,'/',fn_wq), type = 'MOPED')
 df_wq <- read_csv(fp_wq, skip = 2)
 
-# clean up
+# clean up, including adding WQ analytes
 if(length(unique(df_wq$Extension[!is.na(df_wq$Extension)])) > 1) stop('ERROR: more than one extension value in wq data')
 run_name <- unique(df_wq$Extension[!is.na(df_wq$Extension)])
 
 df_wq$TimeStamp <- parse_date_time(df_wq$TimeStamp, c('mdY HMS', 'mdY HM'))
 df_wq$TimeStamp <- as.POSIXct(df_wq$TimeStamp, format = '%m/%d/%Y %H:%M:%S')
 
+df_wq$Analyte <- paste0(df_wq$Header,'_',df_wq$Unit)
+
 df_wq <- df_wq %>%
-  subset(select = c(Longitude, Latitude, TimeStamp)) %>%
-  mutate(TimeStamp = round_date(TimeStamp, unit='10 minutes')) %>%
-  group_by(TimeStamp) %>%
+  subset(select = c(Longitude, Latitude, TimeStamp, Analyte, Value)) %>%
+  mutate(TimeStamp = round_date(TimeStamp, unit='1 minute')) %>%
+  group_by(TimeStamp, Analyte) %>%
   summarize_all(~mean(., na.rm = TRUE)) %>%
-  rename(DateTime = TimeStamp)
+  rename(DateTime = TimeStamp) %>%
+  pivot_wider(names_from = Analyte, values_from = Value) %>%
+  summarize_all(~mean(., na.rm = TRUE))
+
+is.nan.data.frame <- function(x)
+  do.call(cbind, lapply(x, is.nan))
+
+df_wq[is.nan(df_wq)] <- NA
 
 # set run abbv
-df_names <- read_csv('supp_files/run_names.csv')
+df_names <- read_csv('03_Phyto/fluoroprobe-data-cleaning/supp_files/run_names.csv')
 run_name <- plyr::mapvalues(run_name, 
           df_names$LongName, 
           to=df_names$ShortName)
@@ -135,14 +147,23 @@ df_regions <- read_csv('03_Phyto/fluoroprobe-data-cleaning/supp_files/regions_fl
 df_final <- left_join(df_final, df_regions, 'SubRegion')
 
 df_final <- df_final %>%
-  subset(select = -c(geometry, SubRegion))
+  extract(geometry, c('Latitude', 'Longitude'), '\\((.*), (.*)\\)', convert = TRUE) %>%
+  subset(select = -c(SubRegion, SONDEDEPTH_ft)) %>%
+  relocate(c('DateTime','Date','Time','Month','Year','Latitude','Longitude','Region'))
+
+# remove rows where all fluoroprobe data is 0 (ie. not on)
+df_final <- df_final %>%
+  filter(`Total conc._ug/l` > 0)
+
+# df_final <- df_final %>%
+#    filter_at(vars(c(ends_with('cells/ml'),ends_with('ug/l'))), any_vars(. > 0))
 
 # export
 fn_exp <- str_remove(fn_fl, '.txt')
 year <- str_extract(fn_fl, '\\d{4}')
 create_fl_dir(year)
 
-fp_exp <- abs_path(paste0(fn_exp,'_summary.csv'), type = 'export', year = year)
+fp_exp <- abs_path(paste0('0cat_',fn_exp,'_summary.csv'), type = 'export', year = year)
 write_csv(df_final, fp_exp)
 ```
 

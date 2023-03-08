@@ -1,0 +1,144 @@
+```{r}
+library(tidyverse)
+library(rlang)
+```
+
+```{r}
+# import
+df_cur <- read_csv('edi-updates-22/SACSJ_delta_water_quality_1975_2021_EDI.csv')
+df_old_raw <- read_csv('edi-updates-22/old_data/Lab_1975_2010.csv')
+
+# format
+df_cur$Date <- as.Date(df_cur$Date, format = '%m/%d/%Y')
+
+df_old_raw <- df_old_raw %>% rename(Date = SampleDate, Station = StationCode)
+df_old <- df_old_raw
+df_old$Date <- as.Date(df_old$Date, format = '%m/%d/%Y')
+
+keep_cols <- c('Organic Nitrogen (Total)','TSS','VSS','Organic Nitrogen (Dissolved)','TDS','Kjeldahl Nitrogen (Total)','Pheophytin a','Ortho-phosphate (Dissolved)','Chloride (Total)','Silica (SiO2) (Dissolved)','Chlorophyll a','Ammonia (Total)','Nitrite + Nitrate (Dissolved)','Ammonia (Dissolved)','Chloride (Dissolved)','Organic Carbon (Dissolved)')
+
+df_old <- df_old %>% filter(ConstituentName %in% keep_cols)
+df_old$ResultPrefix[is.na(df_old$ResultPrefix)] <- '='
+
+# check for duplicates
+## check in lab remarks (and other issues)
+df_lab <- df_old[grepl('/Analysis:',df_old$LabAnalysisRemarks),]
+df_old <- anti_join(df_old, df_lab)
+
+## check for other dupes
+df_dupes <- df_old[duplicated(df_old[2:6]),]
+col_check <- colnames(df_old)[!colnames(df_old) %in% c('ResultPrefix','Result')]
+df_check <- left_join(df_dupes, df_old, by = col_check)
+
+df_sumcheck <- df_check %>%
+  group_by_at(col_check) %>%
+  summarize(n = n())
+
+## all dupes except for 2
+df_left <- df_check %>% filter(Date == '2001-03-16', Station == 'NZ032')
+
+df_old <- df_old %>% pivot_wider(id_cols = c(Station, Date),
+                                 names_from = ConstituentName, values_from = c(ResultPrefix, Result, ReportingLimit, UnitName))
+```
+
+```{r TDS}
+# check data
+df_check <- select(df_cur, c(Date, TDS)) %>% filter(!is.na(TDS))
+
+# newest data is 1997, so add in older data and clean (remove duplicate rows)
+df_add <- df_old %>% filter(Date < '1997-12-04') %>% select(c(Index, Date, Station, ResultPrefix_TDS, Result_TDS, ReportingLimit_TDS, UnitName_TDS))
+df_add <- df_add %>% 
+  rename(TDS = Result_TDS) %>%
+  distinct(Date,Station,TDS, .keep_all = TRUE) %>%
+  filter(!is.na(TDS))
+
+# check for unique values; all good, so can quick add
+print(unique(df_add$ResultPrefix_TDS))
+print(unique(df_add$UnitName_TDS))
+print(unique(df_add$ReportingLimit_TDS))
+
+df_cur <- left_join(df_cur, df_add[c('Date','Station','TDS')], by = c('Date', 'Station'))
+df_cur <- df_cur %>% rename(TDS = TDS.x)
+
+df_cur <- df_cur %>%
+  mutate(
+    TDS = case_when(
+      is.na(TDS) ~ TDS.y,
+      TRUE ~ TDS)
+    ) %>%
+  select(-TDS.y)
+  
+
+# check
+df_check <- select(df_cur, c(Date, Station, TDS)) %>% filter(!is.na(TDS))
+```
+
+```{r TSS}
+# check data
+df_check <- select(df_cur, c(Date, TSS)) %>% filter(!is.na(TSS))
+
+# newest data is 1997, so add in older data and clean (remove duplicate rows)
+df_add <- df_old %>% filter(Date < '1997-12-04') %>% select(c(Index, Date, Station, ResultPrefix_TSS, Result_TSS, ReportingLimit_TSS, UnitName_TSS))
+df_add <- df_add %>% 
+  rename(TSS = Result_TSS) %>%
+  distinct(Date,Station,TSS, .keep_all = TRUE) %>%
+  filter(!is.na(TSS))
+
+# check for unique values; all good, so can quick add
+print(unique(df_add$ResultPrefix_TSS))
+print(unique(df_add$UnitName_TSS))
+print(unique(df_add$ReportingLimit_TSS))
+
+df_cur <- left_join(df_cur, df_add[c('Date','Station','TSS')], by = c('Date', 'Station'))
+df_cur <- df_cur %>% rename(TSS = TSS.x)
+
+df_cur <- df_cur %>%
+  mutate(
+    TSS = case_when(
+      is.na(TSS) ~ TSS.y,
+      TRUE ~ TSS)
+    ) %>%
+  select(-TSS.y)
+  
+
+# check
+df_check <- select(df_cur, c(Date, Station, TSS)) %>% filter(!is.na(TSS))
+```
+
+```{r VSS}
+# check data
+df_check <- select(df_cur, c(Date, VSS)) %>% filter(!is.na(VSS))
+
+# newest data is 1997, so add in older data and clean (remove duplicate rows)
+df_add <- df_old %>% filter(Date < '1997-12-04') %>% select(c(Index, Date, Station, ResultPrefix_VSS, Result_VSS, ReportingLimit_VSS, UnitName_VSS))
+df_add <- df_add %>% 
+  rename(VSS = Result_VSS) %>%
+  distinct(Date,Station,VSS, .keep_all = TRUE) %>%
+  filter(!is.na(VSS))
+
+# check for unique values; all good, so can quick add
+print(unique(df_add$ResultPrefix_VSS))
+print(unique(df_add$UnitName_VSS))
+print(unique(df_add$ReportingLimit_VSS))
+
+df_cur <- left_join(df_cur, df_add[c('Date','Station','VSS')], by = c('Date', 'Station'))
+df_cur <- df_cur %>% rename(VSS = VSS.x)
+
+df_cur <- df_cur %>%
+  mutate(
+    VSS = case_when(
+      is.na(VSS) ~ VSS.y,
+      TRUE ~ VSS)
+    ) %>%
+  select(-VSS.y)
+  
+
+# check
+df_check <- select(df_cur, c(Date, Station, VSS)) %>% filter(!is.na(VSS))
+```
+
+```{r}
+# export
+write_csv(df_cur, 'edi-updates-22/SACSJ_delta_water_quality_1975-2021_alldat.csv')
+```
+
