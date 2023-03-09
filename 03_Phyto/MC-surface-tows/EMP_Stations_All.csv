@@ -1,4 +1,4 @@
-﻿Station ID,Location,Latitude,Longitude,StationType
+﻿StationCode,Location,Latitude,Longitude,StationType
 D16,San Joaquin River @ Twitchell Island,38.0969,-121.6691,Benthic
 D24,Sacramento River below Rio Vista Bridge,38.15778,-121.6847,Benthic
 D28A,Old River @ Rancho Del Rio,37.97048,-121.573,Benthic
@@ -92,3 +92,4 @@ NZ068,Sacramento River below Rio Vista Bridge,38.14272,-121.6895,Zooplankton
 NZ325,San Pablo Bay near Rock Wall and Light 15,38.05798,-122.2919,Zooplankton
 NZS42,Suisun Slough @ Volanti Slough,38.18045,-122.0476,Zooplankton
 P8,San Joaquin River @ Buckley Cove,37.97817,-121.3823,Zooplankton
+D19A,Franks,38.04792833,-121.62292,WQ - 2022

@@ -1,5 +1,5 @@
-## Generate maps of EMP's fixed sampling locations
-## 9/23/2022
+# Generate a map of Franks Tract showing D19 and FRK ---------------------------
+# 3/9/2023
 
 # Load required libraries ------------------------------------------------------
 
@@ -11,7 +11,7 @@ library(maps)
 
 # Prepare workspace ------------------------------------------------------------
 
-setwd("./04_Other/EMP-station-maps")
+setwd("./03_Other/MC-surface-tows")
 getwd()
 
 theme_set(theme_bw())
@@ -21,12 +21,10 @@ rm(list=ls())
 # Read in EMP station and city location data -----------------------------------
 df_EMP <- read_csv("EMP_Stations_All.csv")
 
-# Set order that station types appear in 
-#unique(df_EMP$StationType)
-stations <- c("Benthic","Zooplankton","Phytoplankton","WQ - Continuous",
-                   "WQ - Discrete")
-
-df_EMP$StationType <- factor(df_EMP$StationType, levels = stations)
+# Filter out unneeded stations -------------------------------------------------
+df_EMP <- df_EMP %>%
+  filter(StationCode %in% c("D19","FRK","D19A")) %>%
+  filter(StationType != "Phytoplankton")
 
 # Import data about city locations
 CA <- map_data("world") %>% filter(subregion=="California")
@@ -38,7 +36,7 @@ plot <- ggplot(WW_Delta) +
   geom_jitter(data = df_EMP,
              aes(x = Longitude,
                  y = Latitude,
-                 fill = StationType,
+                 fill = StationCode,
                  size = 3),
              pch = 21,
              color = "black") +
@@ -54,63 +52,21 @@ plot <- ggplot(WW_Delta) +
                   aes(x = long,
                       y = lat, 
                       label = name)) +
-  ylim(37.65, 38.6) +
-  xlim(-122.41, -121.2) +
+  ylim(38.0, 38.1) +
+  xlim(-121.7, -121.55) +
   theme_bw()
 
 plot + labs(x = NULL,
             y = NULL,
-            fill = "Station Type",
-            title = "EMP Monitoring Stations - 2022") +
+            fill = "Station Name") +
   guides(size = "none")
 
 
 ggsave(path="plots",
-       filename = "EMP.Monitoring.Stations.pdf", 
+       filename = "franks_tract_station_map_2.pdf", 
        device = "pdf",
        scale=1.0, 
        units="in",
-       height=6,
-       width=9, 
+       height=5,
+       width=7, 
        dpi="print")
-
-# Plot stations for each EMP element -------------------------------------------
-
-for (x in stations) {
-
-plot <- ggplot(WW_Delta) + 
-  geom_sf(fill = "lightblue") + 
-  geom_point(data = subset(df_EMP, StationType == x),
-              aes(x = Longitude,
-                  y = Latitude,
-                  fill = StationType,
-                  size = 3),
-              pch = 21,
-              color = "black") +
-  geom_point(data = cities %>% arrange(pop) %>% tail(250),
-             aes(x = long,
-                 y = lat)) +
-  geom_text_repel(data = cities %>% arrange(pop) %>% tail(250), 
-                  aes(x = long,
-                      y = lat, 
-                      label = name)) +
-  ylim(37.65, 38.6) +
-  xlim(-122.41, -121.2) +
-  theme_bw()
-
-plot + labs(x = NULL,
-            y = NULL,
-            fill = "Station Type",
-            title = paste0("EMP ",x," Monitoring Stations - 2022")) +
-  guides(size = "none")
-
-ggsave(path="plots",
-       filename = paste0("EMP.Monitoring.Stations.",x,".pdf"), 
-       device = "pdf",
-       scale=1.0, 
-       units="in",
-       height=6,
-       width=9, 
-       dpi="print")
-
-}
