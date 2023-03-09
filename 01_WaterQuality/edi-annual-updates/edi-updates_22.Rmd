@@ -117,23 +117,3 @@ year <- year(Sys.Date())-1
 
 write_csv(df_join,paste0('01_WaterQuality/edi-annual-updates/data/final/SACSJ_delta_water_quality_1975_',year,'.csv'))
 ```
-
-```{r}
-# # convoluted code to remove lab duplicates
-# cols_analytes <- names(df_join[match('Chla_Sign', names(df_join)):length(df_join)])
-# 
-# col_cleaned <- df_join[1]
-# for (col in col_analytes){
-#   col_new <- sapply(df_join[col], function(x) str_split(x, ','))
-#   col_cleaned <- cbind(col_cleaned, col_new)
-# }
-# col_cleaned <- col_cleaned[,-1]
-# df_join[col_analytes] <- col_cleaned
-# 
-# fnc_unlist <- function(x) {
-#   sapply(x, FUN = function(y) {y[[1]]})
-# }
-# 
-# df_join[,col_analytes] <- apply(df_join[,col_analytes], MARGIN = 2, FUN = fnc_unlist)
-```
-
