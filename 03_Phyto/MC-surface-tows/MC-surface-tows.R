@@ -308,13 +308,27 @@ ggsave(path = output,
 
 # Comparison of PTOX and other taxa --------------------------------------------
 df_phyto_comp <- df_phyto_RA %>%
-  mutate(ToxicStatus = case_when(Type == "Not know to be toxic" ~ "Nontoxic",
+  mutate(ToxicStatus = case_when(Type == "Non-toxic" ~ "Non-toxic",
                                  TRUE ~ "PTOX"))
 
+# RA Proportion
 df_phyto_comp <- df_phyto_comp %>%
   group_by(DateTime, Month, SampleType, ToxicStatus) %>%
   summarize(Proportion = sum(MeanRelAbund, na.rm = T)) %>%
   ungroup()
+
+#Total proportion
+df_phyto_tot <- df_phyto %>%
+  group_by(DateTime, Month, SampleType) %>%
+  summarize(Total.BV = sum(BV.um3.per.mL, na.rm = T)) %>%
+  ungroup()
+
+df_phyto_tot <- pivot_wider(df_phyto_tot, 
+                             names_from = SampleType,
+                             values_from = Total.BV)
+
+df_phyto_tot <- df_phyto_tot %>%
+  mutate(Prop.Surf = `Surface Tow` / Regular)
 
 # Import EMP historical data for comparison ------------------------------------
 load("df_phyto_gen.RData")
@@ -550,4 +564,28 @@ ggsave(path = output,
 # Calculate ANOSIM
 anosim(genw[4:39], genw$SampleType, distance = "bray")
 
+# Import WQ data ---------------------------------------------------------------
+df_WQ_2022 <- read_csv(file = "WQ_2022_D19.csv")
 
+# Order month in calendar order rather than (default) alphabetical
+df_WQ_2022$Month = factor(df_WQ_2022$Month, levels = month.abb)
+
+df_WQ_2022 <- pivot_longer(df_WQ_2022, 
+                           names_to = "Analyte", 
+                           values_to = "Conc",
+                           cols = pH:Chla.ug.L)
+
+WQ.plot <- ggplot(df_WQ_2022, aes(x = Month, y = Conc)) +
+  geom_point(size = 3)
+
+WQ.plot +
+  facet_wrap(Analyte ~ ., ncol = 5, scale = "free_y")
+
+ggsave(path = output,
+       filename = "WQ_D19_2022.pdf", 
+       device = "pdf",
+       scale=1.0, 
+       units="in",
+       height=2,
+       width=9, 
+       dpi="print")
