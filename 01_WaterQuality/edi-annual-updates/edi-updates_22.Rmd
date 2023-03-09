@@ -1,0 +1,139 @@
+```{r}
+`%!in%` = Negate(`%in%`)
+library(tidyverse)
+library(lubridate)
+
+# import all data (check EDI data is most recent)
+df_edi <- read_csv('https://portal.edirepository.org/nis/dataviewer?packageid=edi.458.7&entityid=dfeaee030be901ae00b8c0449ea39e9c', col_types = c(Time = 'c'))
+df_wq <- read_csv('01_WaterQuality/edi-annual-updates/data/component/2022 WQ Data.csv')
+df_analytes <- read_csv('01_WaterQuality/edi-annual-updates/data/cleaning/analyte_names.csv')
+df_stations <- read_csv('01_WaterQuality/edi-annual-updates/data/cleaning/station_names.csv')
+```
+
+```{r}
+# covert NTU to FNU for YSI sonde data
+shore_stats <- c('C10A','C3A','C9','D24')
+
+df_edi <- df_edi %>%
+  mutate(
+    TurbiditySurface_FNU =
+      case_when(Station %!in% shore_stats & Date >= '2011-10-01' & is.na(TurbiditySurface_FNU) ~ TurbiditySurface_NTU,
+                Station %in% shore_stats & Date >= '2016-01-01' & is.na(TurbiditySurface_FNU) ~ TurbiditySurface_NTU,
+                TRUE ~ TurbiditySurface_FNU),
+    TurbidityBottom_FNU = 
+      case_when(Station %!in% shore_stats & Date >= '2011-10-01' & is.na(TurbidityBottom_FNU) ~ TurbidityBottom_NTU,
+                Station %in% shore_stats & Date >= '2016-01-01' & is.na(TurbidityBottom_FNU) ~ TurbidityBottom_NTU,
+                TRUE ~ TurbidityBottom_FNU)
+)
+
+df_edi <- df_edi %>%
+  mutate(
+    TurbiditySurface_NTU =
+      case_when(Station %!in% shore_stats & Date >= '2011-10-01' ~ NA_real_,
+                Station %in% shore_stats & Date >= '2016-01-01' ~ NA_real_,
+                TRUE ~ TurbiditySurface_NTU),
+    TurbidityBottom_NTU =
+      case_when(Station %!in% shore_stats & Date >= '2011-10-01' ~ NA_real_,
+                Station %in% shore_stats & Date >= '2016-01-01' ~ NA_real_,
+                TRUE ~ TurbidityBottom_NTU)
+)
+```
+
+```{r}
+# prep new data for merging
+
+# convert 'N/A' to NA
+df_wq[df_wq == 'N/A'] <- NA
+
+# rename WDL data columns
+analytes_dict <- with(df_analytes, setNames(EDI,WDL))
+colnames(df_wq) <- unlist(lapply(colnames(df_wq), function(x) if(x %in% names(analytes_dict)) analytes_dict[[x]] else x))
+
+# update station names
+stations_dict <- with(df_stations, setNames(EDI,WDL))
+df_wq$Station <- unlist(lapply(df_wq$Station, function(x) if(x %in% names(stations_dict)) stations_dict[[x]] else x))
+
+# split datetime column
+df_wq$Date <- as.Date(df_wq$DateTime, format = '%m/%d/%Y %H:%M')
+df_wq$Time <- format(as.POSIXct(df_wq$DateTime, format = '%m/%d/%Y %H:%M'), '%H:%M:%S')
+
+# combine DOC, TOC, TSS, and VSS columns (EPA and Std methods)
+df_wq <- df_wq %>%
+  mutate(
+    DOC = case_when(is.na(DOC_EPA) ~ DOC_Std,
+                    TRUE ~ DOC_EPA),
+    TOC = case_when(is.na(TOC_EPA) ~ TOC_Std,
+                    TRUE ~ TOC_EPA),
+    TSS = case_when(is.na(TSS_EPA) ~ TSS_Std,
+                    TRUE ~ TSS_EPA),
+    VSS = case_when(is.na(VSS_EPA) ~ VSS_Std,
+                    TRUE ~ VSS_EPA),
+  )
+
+# check that missing column names make sense
+print(colnames(df_edi)[colnames(df_edi) %!in% colnames(df_wq)])
+print('*******')
+print(colnames(df_wq)[colnames(df_wq) %!in% colnames(df_edi)])
+
+# remove unnecessary cols
+keep_cols <- colnames(df_wq)[colnames(df_wq) %in% colnames(df_edi)]
+df_wq <- df_wq %>% subset(select = keep_cols)
+
+# add blank cols from df_edi
+df_wq[setdiff(colnames(df_edi), colnames(df_wq))] <- NA
+```
+
+```{r}
+# join dfs
+df_join <- rbind(df_edi, df_wq)
+
+# remove lab duplicates
+cols_signs <- names(df_join)[grepl('_Sign',names(df_join))]
+cols_nosigns <- sub('_Sign','',cols_signs)
+
+df_join <- df_join %>%
+  mutate(
+    across(cols_nosigns,
+           ~ str_split(.x, ',', simplify = TRUE)[,1]))
+
+# add sign to RL columns
+df_join <- df_join %>%
+  mutate(
+    across(ends_with('_Sign'),
+           ~ case_when(grepl('<',get(sub('_Sign','',cur_column()))) ~ '<',
+                   TRUE ~ '=')))
+
+# remove sign from analyte columns
+df_join <- df_join %>%
+  mutate(
+    across(cols_nosigns,
+           ~ sub('<','',.)))
+```
+
+```{r}
+# export csv
+# get year
+year <- year(Sys.Date())-1
+
+write_csv(df_join,paste0('01_WaterQuality/edi-annual-updates/data/final/SACSJ_delta_water_quality_1975_',year,'.csv'))
+```
+
+```{r}
+# # convoluted code to remove lab duplicates
+# cols_analytes <- names(df_join[match('Chla_Sign', names(df_join)):length(df_join)])
+# 
+# col_cleaned <- df_join[1]
+# for (col in col_analytes){
+#   col_new <- sapply(df_join[col], function(x) str_split(x, ','))
+#   col_cleaned <- cbind(col_cleaned, col_new)
+# }
+# col_cleaned <- col_cleaned[,-1]
+# df_join[col_analytes] <- col_cleaned
+# 
+# fnc_unlist <- function(x) {
+#   sapply(x, FUN = function(y) {y[[1]]})
+# }
+# 
+# df_join[,col_analytes] <- apply(df_join[,col_analytes], MARGIN = 2, FUN = fnc_unlist)
+```
+
