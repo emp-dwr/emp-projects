@@ -282,7 +282,7 @@ ggsave(path = output,
        dpi="print")
 
 # Compare taxonomy (relative abundance)
-bar.plot.RA <- ggplot(df_phyto_RA, aes(x = SampleType, 
+bar.plot.RA <- ggplot(df_phyto_RA, aes(x = Month, 
                                        y = MeanRelAbund, 
                                        fill = Type)) +
   geom_bar(position = "stack",  
@@ -292,8 +292,8 @@ bar.plot.RA <- ggplot(df_phyto_RA, aes(x = SampleType,
   scale_fill_brewer(palette = "Dark2")
 
 bar.plot.RA + 
-  facet_wrap(Month ~ ., ncol = 6) +
-  labs(x = "Sample Type",
+  facet_wrap(SampleType ~ ., ncol = 2) +
+  labs(x = "Month",
        y = "Relative Abundance (%)",
        fill = "Genus")
 
