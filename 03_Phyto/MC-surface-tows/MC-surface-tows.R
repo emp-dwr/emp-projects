@@ -565,27 +565,130 @@ ggsave(path = output,
 anosim(genw[4:39], genw$SampleType, distance = "bray")
 
 # Import WQ data ---------------------------------------------------------------
-df_WQ_2022 <- read_csv(file = "WQ_2022_D19.csv")
+df_WQ <- read_csv(file = "SACSJ_delta_water_quality_1975_2022.csv")
+
+regions <- read_csv(file = "regions.csv")
+
+regions <- regions %>%
+  rename("Station" = "StationCode")
+
+# Select only data needed
+df_WQ <- df_WQ %>%
+  select(Station:Date,Chla_Sign:Chla,Microcystis)
+
+df_WQ <- left_join(df_WQ, regions)
+
+df_WQ$Date <- mdy(df_WQ$Date, 
+                      tz = "US/Pacific")
+
+# Check for missing dates
+df_WQ %>% filter(is.na(Date)) # No missing dates
+
+# Add month and year columns
+df_WQ <- df_WQ %>%
+  mutate(Month = month(Date, label = T)) %>%
+  mutate(Year = year(Date))
 
 # Order month in calendar order rather than (default) alphabetical
-df_WQ_2022$Month = factor(df_WQ_2022$Month, levels = month.abb)
+df_WQ$Month = factor(df_WQ$Month, levels = month.abb)
 
-df_WQ_2022 <- pivot_longer(df_WQ_2022, 
-                           names_to = "Analyte", 
-                           values_to = "Conc",
-                           cols = pH:Chla.ug.L)
+# Round up fractional MC scores
+df_WQ$Microcystis <- round_half_up(df_WQ$Microcystis)
 
-WQ.plot <- ggplot(df_WQ_2022, aes(x = Month, y = Conc)) +
-  geom_point(size = 3)
+# Make MC Scores factors
+df_WQ$Microcystis <- as.factor(df_WQ$Microcystis)
 
-WQ.plot +
-  facet_wrap(Analyte ~ ., ncol = 5, scale = "free_y")
+df_WQ_NA <- df_WQ %>%
+  filter(is.na(Region))
+
+table(df_WQ_NA$Station)
+
+# Plot Chlorophyll a concentrations at D19 -------------------------------------
+
+# Filter out non-D19 samples
+df_WQ_D19 <- df_WQ %>%
+  filter(Station == "D19")
+
+# Make years factors for plotting
+df_WQ_D19$Year <- as.factor(df_WQ_D19$Year)
+
+Chla.plot <- ggplot(df_WQ_D19, aes(x = Year, y = Chla, color = Month)) +
+  geom_point()
+
+Chla.plot
+
+# Plot MC Scores ---------------------------------------------------------------
+
+# Remove samples that don't have MC scores
+df_MC_scores <- df_WQ %>%
+  filter(!is.na(Microcystis)) %>%
+  filter(Year > 2015)
+
+df_MC_scores <- df_MC_scores %>% count(Region, Year, Microcystis, sort = TRUE)
+
+df_MC_scores <- df_MC_scores %>%
+  group_by(Region, Year) %>%
+  mutate(Proportion = n / sum(n) * 100) %>%
+  ungroup
+
+# Make years factors for plotting
+df_MC_scores$Year <- as.factor(df_MC_scores$Year)
+
+MC.plot <- ggplot(df_MC_scores, aes(y = Proportion, x = Year, fill = Microcystis)) +
+  geom_bar(position = "stack",  
+           width = 0.5, 
+           stat = "summary", 
+           fun = "sum") +
+  scale_x_discrete(breaks = c("2016","2018","2020","2022")) +
+  scale_fill_brewer(palette = "Set1")
+
+MC.plot +
+  facet_wrap(Region ~ ., ncol = 4) +
+  labs(x = "Year",
+       y = "Relative Proportion (%)",
+       fill = "MC Index")
 
 ggsave(path = output,
-       filename = "WQ_D19_2022.pdf", 
-       device = "pdf",
+       filename = "MC_Index_scores_by_Region.png", 
+       device = "png",
        scale=1.0, 
        units="in",
-       height=2,
-       width=9, 
+       height=4,
+       width=8, 
        dpi="print")
+
+# Make plot for D19 Only
+df_MC_scores_D19 <- df_WQ %>%
+  filter(!is.na(Microcystis)) %>%
+  filter(Year > 2015) %>%
+  filter(Station == "D19")
+
+df_MC_scores_D19 <- df_MC_scores_D19 %>% count(Station, Year, Microcystis, sort = TRUE)
+
+df_MC_scores_D19 <- df_MC_scores_D19 %>%
+  group_by(Year) %>%
+  mutate(Proportion = n / sum(n) * 100) %>%
+  ungroup
+
+MC.plot.D19 <- ggplot(df_MC_scores_D19, aes(y = Proportion, x = Year, fill = Microcystis)) +
+  geom_bar(position = "stack",  
+           width = 0.5, 
+           stat = "summary", 
+           fun = "sum") +
+  #scale_x_discrete(breaks = c("2016","2018","2020","2022")) +
+  scale_fill_brewer(palette = "Set1")
+
+MC.plot.D19 +
+  labs(x = "Year",
+       y = "Relative Proportion (%)",
+       fill = "MC Index")
+
+ggsave(path = output,
+       filename = "MC_Index_scores_by_Region.png", 
+       device = "png",
+       scale=1.0, 
+       units="in",
+       height=4,
+       width=8, 
+       dpi="print")
+
