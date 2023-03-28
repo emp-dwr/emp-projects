@@ -4,13 +4,24 @@
 library(tidyverse)
 library(lubridate)
 library(janitor)
+library(ggpubr)
+library(rstatix)
+library(car)
+library(visreg)
+library(emmeans)
 
 # Set working directory --------------------------------------------------------
 setwd("./03_Phyto/surface-phyto-study")
 getwd()
 
+# Set directory for storing plots ----------------------------------------------
+output <- "plots"
+
 # Clean workspace --------------------------------------------------------------
 rm(list=ls())
+
+# Set graphing theme -----------------------------------------------------------
+theme_set(theme_bw())
 
 # Import data files ------------------------------------------------------------
 phyto_files <- dir(path = "data/", pattern = "\\.csv", full.names = T)
@@ -55,6 +66,32 @@ df_phyto <- df_phyto %>% mutate(Month = month(SampleDate, label = T))
 regions <- read_csv("regions.csv")
 df_phyto <- left_join(df_phyto, regions)
 
+# Fix region data for EZ-SJR samples -------------------------------------------
+df_phyto <- df_phyto %>%
+  mutate(Region = case_when(is.na(Region) ~ "Low Salinity Zone",
+                            TRUE ~ Region))
+
+df_phyto <- df_phyto %>%
+  mutate(RegionAbbreviation = case_when(is.na(RegionAbbreviation) ~ "LSZ",
+                                        TRUE ~ RegionAbbreviation))
+
+# Set display order for regions ------------------------------------------------
+# Display regions E -> W (generally)
+region.order <- c("Northern Interior Delta",
+                  "Central Delta",
+                  "Southern Interior Delta",
+                  "Confluence",
+                  "Low Salinity Zone",
+                  "Grizzly.Suisun Bay",
+                  "San Pablo Bay")
+
+df_phyto$Region <- factor(as.character(df_phyto$Region), levels = region.order)
+
+region.abbv.order <- c("NID","CED","SID","CON","LSZ","GSB","SPB")
+
+df_phyto$RegionAbbreviation <- factor(as.character(df_phyto$RegionAbbreviation), levels = region.abbv.order)
+
+
 # Add month data from DateTime column ------------------------------------------
 seasons <- read_csv("seasons.csv")
 df_phyto <- left_join(df_phyto, seasons)
@@ -95,3 +132,44 @@ plot # looks good
 write_csv(df_phyto_gen, file = "primer/df_phyto_gen.csv")
 write_csv(df_phyto_grp, file = "primer/df_phyto_grp.csv")
 
+# Make boxplots for IEP --------------------------------------------------------
+df_phyto_tot <- df_phyto %>%
+  group_by(SampleDate, Season, Month, StationCode, Region, RegionAbbreviation, SampleType) %>%
+  summarize(across(Units.per.mL:BV.um3.per.mL, ~sum(.x, na.rm = TRUE))) %>%
+  ungroup
+
+# Remove samples with no region (EZ samples)
+boxplot <- ggplot(data = df_phyto_tot, aes(x = SampleType, 
+                                           y = log10(BV.um3.per.mL))) +
+  geom_boxplot(width = 0.2)
+
+boxplot +
+  facet_wrap(Region ~ ., ncol = 4) +
+  labs(x = NULL,
+       y = "Log10 Biovolume (um^3 per mL)",
+       title = "Comparison of Phytoplankton Biovolume by Sampling Method")
+
+ggsave(path = output,
+       filename = "phyto_boxplots_by_Region.png", 
+       device = "png",
+       scale=1.0, 
+       units="in",
+       height=4,
+       width=8, 
+       dpi="print")
+
+## Create QQ Plot to check for normality
+ggqqplot(log10(df_phyto_tot$BV.um3.per.mL))
+
+## View histogram to check for normality
+hist(log10(df_phyto_tot$BV.um3.per.mL))
+
+## Run Shapiro-Wilks test to check whether data is normally distributed
+shapiro.test(log10(df_phyto_tot$BV.um3.per.mL))
+
+## Rosie Code
+t.test(df_phyto_tot$BV.um3.per.mL~df_phyto_tot$SampleType)
+
+L1 <- lm(log10(BV.um3.per.mL) ~ SampleType, data = df_phyto_tot)
+
+summary(L1)
