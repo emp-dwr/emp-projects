@@ -44,8 +44,8 @@ Secchi Depth Centimeters Secchi Depth - [1]*,Secchi
 Water Temperature °C EPA 170.1 (Field) - [1]*,WTSurface
 (Bottom) Turbidity F.N.U. EPA 180.1 (Field) - [1]*,TurbidityBottom_FNU
 Turbidity F.N.U. EPA 180.1 (Field) - [1]*,TurbiditySurface_FNU
-Sample Depth,Depth
-Water Depth at Station Feet Depth of Water Column - [1]*,StationDepth
+Sample Depth,SampleDepth
+Water Depth at Station Feet Depth of Water Column - [1]*,Depth
 Weather Observations Weather Observations - [1]*,Weather
 Wind Velocity Miles/hr Wind Velocity - [1]*,WindVelocity
 Wind Direction,WindDirection

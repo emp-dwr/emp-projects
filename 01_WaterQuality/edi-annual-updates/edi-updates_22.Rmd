@@ -93,7 +93,7 @@ cols_nosigns <- sub('_Sign','',cols_signs)
 
 df_join <- df_join %>%
   mutate(
-    across(cols_nosigns,
+    across(all_of(cols_nosigns),
            ~ str_split(.x, ',', simplify = TRUE)[,1]))
 
 # add sign to RL columns
@@ -106,7 +106,7 @@ df_join <- df_join %>%
 # remove sign from analyte columns
 df_join <- df_join %>%
   mutate(
-    across(cols_nosigns,
+    across(all_of(cols_nosigns),
            ~ sub('<','',.)))
 ```
 
