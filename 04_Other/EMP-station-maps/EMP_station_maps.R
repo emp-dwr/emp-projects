@@ -7,6 +7,7 @@ library(tidyverse)
 library(deltamapr)
 library(sf)
 library(ggrepel)
+library(ggspatial)
 library(maps)
 
 # Prepare workspace ------------------------------------------------------------
@@ -35,13 +36,14 @@ cities <- world.cities %>% filter(country.etc=="USA")
 # Plot all EMP station maps together -------------------------------------------
 plot <- ggplot(WW_Delta) + 
   geom_sf(fill = "lightblue") + 
-  geom_jitter(data = df_EMP,
+  geom_point(data = df_EMP,
              aes(x = Longitude,
                  y = Latitude,
                  fill = StationType,
                  size = 3),
              pch = 21,
              color = "black") +
+  annotation_scale(location = "bl", width_hint = 0.4, unit_category = "imperial") +
   scale_fill_manual(values = c("#E41A1C",
                                "#984EA3",
                                "#4DAF4A",
@@ -61,7 +63,7 @@ plot <- ggplot(WW_Delta) +
 plot + labs(x = NULL,
             y = NULL,
             fill = "Station Type",
-            title = "EMP Monitoring Stations - 2022") +
+            title = "EMP Monitoring Stations - 2023") +
   guides(size = "none")
 
 
