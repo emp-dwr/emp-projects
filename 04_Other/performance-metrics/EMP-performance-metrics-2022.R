@@ -40,12 +40,13 @@ df_sondes <- pivot_longer(df_sondes,
                           cols = Conductivity:Turbidity)
 
 # Get ratings to sort in order good -> bad
-rating.order <- c("Excellent","Good","Fair","Poor")
+rating.order <- c("Excellent","Good","Fair","Poor","MAL")
 
-df_sondes$Rating <- factor(as.character(df_sondes$Rating), levels = rating.order)
+df_sondes$Rating <- factor(as.character(df_sondes$Rating), 
+                           levels = rating.order)
 
 # Plot DEMP's sonde ratings from 2022 ------------------------------------------
-colors = c("darkgreen","darkblue","yellow3","darkred")
+colors = c("darkgreen","darkblue","yellow3","darkred","purple")
 
 rating.plot <- ggplot(data = df_sondes, aes(x = PercentPass, 
                                             y = Sensor, 
@@ -101,6 +102,12 @@ df_CEMP <- df_CEMP %>%
 
 df_CEMP_w <- pivot_wider(df_CEMP, names_from = Parameter, values_from = Rating)
 
+# Sort samples by date (early to late)
+df_CEMP_w <- df_CEMP_w %>% 
+  group_by(StationCode) %>% 
+  arrange(Exchange_Date) %>% 
+  ungroup()
+
 df_CEMP_w <- df_CEMP_w %>% 
   group_by(StationCode) %>% 
   mutate(Start_Date = lag(Exchange_Date)) %>%
@@ -130,16 +137,17 @@ df_CEMP_sum <- pivot_longer(df_CEMP_w, cols = DO:pH,
 df_CEMP_sum <- df_CEMP_sum %>% 
   select(StationCode:Rating)
 
-test <- df_CEMP_sum %>% 
+df_CEMP_sum <- df_CEMP_sum %>% 
   group_by(StationCode, Parameter, Rating) %>% 
   summarize(Total_Days = sum(Days_Rated)) %>% 
   ungroup()
 
-# Plot C-EMP rating data -------------------------------------------------------
-colors = c("darkgreen","darkblue","yellow3","darkred")
+df_CEMP_sum$Rating <- factor(as.character(df_CEMP_sum$Rating), 
+                             levels = rating.order)
 
-rating.plot <- ggplot(data = df_sondes, aes(x = PercentPass, 
-                                            y = Sensor, 
+# Plot C-EMP rating data -------------------------------------------------------
+rating.plot.CEMP <- ggplot(data = df_CEMP_sum, aes(x = Total_Days, 
+                                            y = Parameter, 
                                             fill = Rating)) +
   geom_bar(position = "stack",  
            width = .6, 
@@ -147,18 +155,19 @@ rating.plot <- ggplot(data = df_sondes, aes(x = PercentPass,
            fun = "sum") +
   scale_fill_manual(values = colors)
 
-rating.plot +
-  labs(x = "Rating of Data Collected (%)",
+rating.plot.CEMP +
+  labs(x = "Rating of Data Collected (Days)",
        y = "Sensor",
-       fill = "Sonde Rating")
+       fill = "Sonde Rating") +
+  facet_wrap(StationCode ~ ., ncol = 5)
 
 ggsave(path = output,
-       filename = "DEMP_sonde_scores_2022.png", 
+       filename = "CEMP_sonde_scores_2022.png", 
        device = "png",
        scale=1.0, 
        units="in",
        height=5,
-       width=5, 
+       width=8, 
        dpi="print")
 
 
