@@ -32,7 +32,7 @@ df_sondes <- df_sondes %>%
   rename("Temperature" = "Temp") %>%
   rename("Turbidity" = "Turb") %>%
   rename("Conductivity" = "SpCond") %>%
-  rename("Chlorophyl" = "Chla")
+  rename("Chlorophyll" = "Chla")
 
 df_sondes <- pivot_longer(df_sondes, 
                           values_to = "PercentPass",
