@@ -158,7 +158,8 @@ rating.plot.CEMP <- ggplot(data = df_CEMP_sum, aes(x = Total_Days,
 rating.plot.CEMP +
   labs(x = "Rating of Data Collected (Days)",
        y = "Sensor",
-       fill = "Sonde Rating") +
+       fill = "Sonde Rating",
+       title = "EXO2 Sonde Probe Ratings - C-EMP - 2022 ") +
   facet_wrap(StationCode ~ ., ncol = 5)
 
 ggsave(path = output,
