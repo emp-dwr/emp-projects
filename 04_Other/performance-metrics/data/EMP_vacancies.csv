@@ -1,12 +1,13 @@
-﻿Name,Backfill,Classification,Last_Day_Filled,First_Day_Filled,Days_Vacant
-Eric Santos,,Boat Captain,11/1/2021,5/11/2023,556
-Nick Sakata,,Boat Captain,10/1/2021,5/11/2023,587
-Sarah Lesmeister,Ted Flynn,Manager,10/9/2020,2/15/2021,129
-Ted Flynn,Sarah Perry,Permanent Staff,8/31/2020,1/1/2021,123
-Brian Arena,Sarah Perry,Temporary Staff,3/29/2019,6/10/2019,73
-Brooke Watkins,Caitlin Miller,Temporary Staff,10/11/2019,1/6/2020,87
-Sarah Perry,Laurel Richardson,Temporary Staff,1/11/2021,4/12/2021,91
-Caitlin Miller,Dennis Finger,Temporary Staff,6/10/2021,10/1/2021,113
-Laurel Richardson,Phoebe Carpenter,Temporary Staff,11/10/2022,2/1/2023,83
-Dennis Finger,Ben Dugoni,Temporary Staff,4/30/2022,6/13/2022,44
-Ben Dugoni,Vivian Klotz,Temporary Staff,6/24/2022,9/26/2022,94
+﻿Name,Backfill,Position_Type,Classification,Last_Day_Filled,First_Day_Filled,Days_Vacant
+Eric Santos,,Permanent Staff,Boat Captain,11/1/2021,5/11/2023,556
+Nick Sakata,,Permanent Staff,Boat Captain,10/1/2021,5/11/2023,587
+Sarah Lesmeister,Ted Flynn,Permanent Staff,Senior ES (Supervisor),10/9/2020,2/15/2021,129
+Ted Flynn,Sarah Perry,Permanent Staff,Environmental Scientist,8/31/2020,1/1/2021,123
+Brian Arena,Sarah Perry,Temporary Staff,Scientific Aide,3/29/2019,6/10/2019,73
+Brooke Watkins,Caitlin Miller,Temporary Staff,Scientific Aide,10/11/2019,1/6/2020,87
+Sarah Perry,Laurel Richardson,Temporary Staff,Scientific Aide,1/11/2021,4/12/2021,91
+Caitlin Miller,Dennis Finger,Temporary Staff,Scientific Aide,6/10/2021,10/1/2021,113
+Laurel Richardson,Phoebe Carpenter,Temporary Staff,Scientific Aide,11/10/2022,2/1/2023,83
+Dennis Finger,Ben Dugoni,Temporary Staff,Scientific Aide,4/30/2022,6/13/2022,44
+Ben Dugoni,Vivian Klotz,Temporary Staff,Scientific Aide,6/24/2022,9/26/2022,94
+Julia Roldan,Kelsi Sigurdson,Temporary Staff,Scientific Aide,11/22/2022,1/9/2023,48

@@ -171,14 +171,32 @@ ggsave(path = output,
        width=8, 
        dpi="print")
 
-# Graph EMP position vacancy rates
+# Graph EMP position vacancy rates 
 df_vacancy <- read_csv("data/EMP_vacancies.csv")
 
 p_vac <- ggplot(data = df_vacancy,
-                aes(x = Classification,
-                    y = Days_Vacant)) +
-  geom_point(width = 0.2, size = 2)
+                aes(x = Position_Type,
+                    y = Days_Vacant,
+                    fill = Classification)) +
+#  geom_point(size = 4) +
+  geom_point(size = 4,
+             pch = 21,
+             color = "black")
 
-p_vac
+p_vac +
+  scale_fill_brewer(palette = "Set1") +
+  labs(x = NULL,
+       y = "Days Vacant",
+       fill = "Classification",
+       title = "EMP Position Vacancies 2019 - 2022")
+
+ggsave(path = output,
+       filename = "EMP_position_vacancies.png", 
+       device = "png",
+       scale=1.0, 
+       units="in",
+       height=3,
+       width=5, 
+       dpi="print")
 
 
