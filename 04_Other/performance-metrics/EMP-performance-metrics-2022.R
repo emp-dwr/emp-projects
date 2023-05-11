@@ -171,6 +171,14 @@ ggsave(path = output,
        width=8, 
        dpi="print")
 
+# Graph EMP position vacancy rates
+df_vacancy <- read_csv("data/EMP_vacancies.csv")
 
+p_vac <- ggplot(data = df_vacancy,
+                aes(x = Classification,
+                    y = Days_Vacant)) +
+  geom_point(width = 0.2, size = 2)
+
+p_vac
 
 
