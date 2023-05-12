@@ -171,7 +171,7 @@ ggsave(path = output,
        width=8, 
        dpi="print")
 
-# Graph EMP position vacancy rates 
+# Graph EMP position vacancy rates ---------------------------------------------
 df_vacancy <- read_csv("data/EMP_vacancies.csv")
 
 p_vac <- ggplot(data = df_vacancy,
@@ -199,4 +199,48 @@ ggsave(path = output,
        width=5, 
        dpi="print")
 
+# Graph EMP position tenure ----------------------------------------------------
+df_tenure <- read_csv("data/EMP_tenure_2022.csv")
 
+# Convert to dates
+df_tenure <- df_tenure %>%
+  mutate(Start_Date = mdy(Start_Date)) %>% 
+  mutate(End_Date = mdy(End_Date))
+
+# Calculate years between each date 
+df_tenure <- df_tenure %>%
+  mutate(Tenure_yr = time_length(interval(Start_Date, End_Date), "year"))
+
+# Summarize tenure numerically
+df_tenure %>% 
+  group_by(Position_Title) %>% 
+  summarize(Avg_Tenure = mean(Tenure_yr))
+
+p_ten <- ggplot(data = df_tenure,
+                aes(x = Position_Type,
+                    y = Tenure_yr,
+                    fill = Position_Title)) +
+  geom_point(size = 4) +
+  # geom_boxplot(width = 0.1)
+  geom_point(size = 4,
+             pch = 21,
+             color = "black") +
+  theme(axis.text.x = element_text(angle = 90, 
+                                   hjust = 0.95, 
+                                   vjust = 0)) 
+
+p_ten +
+  scale_fill_brewer(palette = "Set1") +
+  labs(x = NULL,
+       y = "Time in Position (yr)",
+       fill = "Classification",
+       title = "EMP Position Tenure - 2022")
+
+ggsave(path = output,
+       filename = "EMP_position_tenure.png", 
+       device = "png",
+       scale=1.0, 
+       units="in",
+       height=3.5,
+       width=5, 
+       dpi="print")
