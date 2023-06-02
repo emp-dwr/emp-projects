@@ -174,6 +174,11 @@ ggsave(path = output,
 # Graph EMP position vacancy rates ---------------------------------------------
 df_vacancy <- read_csv("data/EMP_vacancies.csv")
 
+# Summarize vacancy numerically
+df_vacancy %>% 
+  group_by(Classification) %>% 
+  summarize(Avg_Vacancy = mean(Days_Vacant))
+
 p_vac <- ggplot(data = df_vacancy,
                 aes(x = Position_Type,
                     y = Days_Vacant,
@@ -184,7 +189,7 @@ p_vac <- ggplot(data = df_vacancy,
              color = "black")
 
 p_vac +
-  scale_fill_brewer(palette = "Set1") +
+  scale_fill_brewer(palette = "Set2") +
   labs(x = NULL,
        y = "Days Vacant",
        fill = "Classification",
@@ -215,6 +220,10 @@ df_tenure <- df_tenure %>%
 df_tenure %>% 
   group_by(Position_Title) %>% 
   summarize(Avg_Tenure = mean(Tenure_yr))
+
+# ES Tenure = 6.7 yr
+# Sci Aide = 0.8 yr
+# SES Supv = 4.3 yr
 
 p_ten <- ggplot(data = df_tenure,
                 aes(x = Position_Type,
