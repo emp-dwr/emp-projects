@@ -29,6 +29,23 @@ options(dplyr.summarise.inform = FALSE)
 ```{r import}
 df_phyto <- read_csv(here("03_Phyto","annual-report-2022","data", "All 2022 Data.csv"), show_col_types = FALSE)
 
+# Remove empty rows ------------------------------------------------------------
+df_phyto <- df_phyto %>% filter_all(any_vars(!is.na(.)))
+
+# Clean up column names
+df_phyto <- df_phyto %>% clean_names(case = "big_camel")
+
+# Remove GALD columns (won't be used)
+df_phyto <- df_phyto %>% select(!(Gald1:Gald3)) 
+
+```
+
+## Process Data
+```{r process}
+# Average all 10 biovolume measurements for each taxon
+df_phyto <- df_phyto %>% rowwise() %>% 
+  mutate(BV.Avg = mean(c_across(Biovolume1:Biovolume10), na.rm = T)) %>% 
+  select(!(Biovolume1:Biovolume10)) # Remove Individual Biovolume Columns
 
 
 ```
