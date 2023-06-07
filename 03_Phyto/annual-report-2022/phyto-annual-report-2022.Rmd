@@ -12,6 +12,24 @@ library(tidyverse)
 library(lubridate)
 library(janitor)
 library(here)
+
+# Set output directory 
+output <- here("03_Phyto","annual-report-2022","output")
+
+# Set visual theme in ggplot
+theme_set(theme_bw())
+
+# Suppress summarise info
+options(tidyverse.quiet = TRUE)
+options(dplyr.summarise.inform = FALSE)
 ```
 
+## Import Raw Phyto Data
+
+```{r import}
+df_phyto <- read_csv(here("03_Phyto","annual-report-2022","data", "All 2022 Data.csv"), show_col_types = FALSE)
+
+
+
+```
 
