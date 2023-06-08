@@ -92,6 +92,7 @@ sort(unique(df_phyto$StationCode)) ## 28 stations spelled correctly
 df_phyto %>% filter(is.na(SampleDate)) # No missing dates
 ```
 
+## Add regional and seasonal metadata
 ```{r metadata}
 ## Add regional metadata
 regions <- read_csv(here("03_Phyto","annual-report-2022","data","station_regions_EMP.csv"), show_col_types = FALSE)
@@ -104,6 +105,41 @@ df_phyto <- df_phyto %>% relocate(Region, .after = StationCode)
 
 # check if there are any NAs in Region after the join
 table(is.na(df_phyto$Region)) # no NAs
+
+# Add seasons
+df_phyto <- df_phyto %>% 
+  mutate(Season = case_when(Month %in% c("Dec","Jan","Feb") ~ "Winter",
+                            Month %in% c("Mar","Apr","May") ~ "Spring",
+                            Month %in% c("Jun","Jul","Aug") ~ "Summer",
+                            Month %in% c("Sep","Oct","Nov") ~ "Fall")) %>% 
+  relocate(Season, .after = Year)
 ```
 
+## Combine by genus and Algal Type
+
+```{r combine}
+df_phyto_type <- df_phyto %>% 
+  group_by(SampleDate,StationCode,Month,Year,Region,AlgalType) %>% 
+  summarize(Total.BV.per.mL = sum(BV.um3.per.mL)) %>% 
+  ungroup()
+
+df_phyto_gen <- df_phyto %>% 
+  group_by(SampleDate,StationCode,Month,Year,Region,Genus) %>% 
+  summarize(Total.BV.per.mL = sum(BV.um3.per.mL)) %>% 
+  ungroup()
+```
+
+
+## Export to PRIMER
+
+```{r primer}
+# Remove unneeded data columns
+df_phyto_PRIMER <- df_phyto %>% select(SampleDate:Region,Taxon:Species,Units.per.mL:BV.um3.per.mL)
+
+# Write dataset for sharing
+save(df_phyto_SFSU, file = "df_phyto_SFSU.RData")
+write.csv(df_phyto_SFSU, file = "df_phyto_SFSU.csv")
+
+
+```
 
