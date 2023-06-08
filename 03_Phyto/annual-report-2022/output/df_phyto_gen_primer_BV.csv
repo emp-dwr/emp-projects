@@ -1,0 +1,2280 @@
+SampleID,Genus,BV.um3.per.mL,,SampleDate,StationCode,Month,Year,Region,RegionAbbv
+C10A.Jan.2022,Cyclotella,69947.5491,,1/5/2022,C10A,Jan,2022,Southern Interior Delta,SID
+C10A.Jan.2022,Eucapsis,5618.376,,1/5/2022,C10A,Jan,2022,Southern Interior Delta,SID
+C10A.Jan.2022,Navicula,58060.659,,1/5/2022,C10A,Jan,2022,Southern Interior Delta,SID
+C10A.Jan.2022,Nitzschia,10073.6496,,1/5/2022,C10A,Jan,2022,Southern Interior Delta,SID
+C10A.Jan.2022,Plagioselmis,50958.0132,,1/5/2022,C10A,Jan,2022,Southern Interior Delta,SID
+C10A.Jan.2022,Planktolyngbya,902.7186,,1/5/2022,C10A,Jan,2022,Southern Interior Delta,SID
+C10A.Jan.2022,Sellaphora,12750.5922,,1/5/2022,C10A,Jan,2022,Southern Interior Delta,SID
+C3A.Jan.2022,Achnanthidium,38142.1828,,1/5/2022,C3A,Jan,2022,Northern Interior Delta,NID
+C3A.Jan.2022,Cocconeis,14457.0178,,1/5/2022,C3A,Jan,2022,Northern Interior Delta,NID
+C3A.Jan.2022,Cyclotella,22232.6518,,1/5/2022,C3A,Jan,2022,Northern Interior Delta,NID
+C3A.Jan.2022,Eucapsis,12610.8576,,1/5/2022,C3A,Jan,2022,Northern Interior Delta,NID
+C3A.Jan.2022,Monoraphidium,1979.7348,,1/5/2022,C3A,Jan,2022,Northern Interior Delta,NID
+C3A.Jan.2022,Navicula,9253.8006,,1/5/2022,C3A,Jan,2022,Northern Interior Delta,NID
+C3A.Jan.2022,Nitzschia,27400.485,,1/5/2022,C3A,Jan,2022,Northern Interior Delta,NID
+C3A.Jan.2022,Plagioselmis,69393.3316,,1/5/2022,C3A,Jan,2022,Northern Interior Delta,NID
+C3A.Jan.2022,Ulnaria,253671.4344,,1/5/2022,C3A,Jan,2022,Northern Interior Delta,NID
+C9.Jan.2022,Cocconeis,134583.1656,,1/5/2022,C9,Jan,2022,Southern Interior Delta,SID
+C9.Jan.2022,Encyonema,2099.4388,,1/5/2022,C9,Jan,2022,Southern Interior Delta,SID
+C9.Jan.2022,Eucapsis,7995.9024,,1/5/2022,C9,Jan,2022,Southern Interior Delta,SID
+C9.Jan.2022,Plagioselmis,46325.034,,1/5/2022,C9,Jan,2022,Southern Interior Delta,SID
+D16.Jan.2022,Achnanthidium,3132.5319,,1/6/2022,D16,Jan,2022,Central Delta,CED
+D16.Jan.2022,Cocconeis,276255.6832,,1/6/2022,D16,Jan,2022,Central Delta,CED
+D16.Jan.2022,Cryptomonas,69878.6142,,1/6/2022,D16,Jan,2022,Central Delta,CED
+D16.Jan.2022,Cyclotella,27538.068,,1/6/2022,D16,Jan,2022,Central Delta,CED
+D16.Jan.2022,Eucapsis,7433.4384,,1/6/2022,D16,Jan,2022,Central Delta,CED
+D16.Jan.2022,Gomphonema,3669.1869,,1/6/2022,D16,Jan,2022,Central Delta,CED
+D16.Jan.2022,Nitzschia,664.43,,1/6/2022,D16,Jan,2022,Central Delta,CED
+D16.Jan.2022,Planktolyngbya,2567.7664,,1/6/2022,D16,Jan,2022,Central Delta,CED
+D19.Jan.2022,Eucapsis,6985.278,,1/6/2022,D19,Jan,2022,Central Delta,CED
+D19.Jan.2022,Microcystis,4571.5722,,1/6/2022,D19,Jan,2022,Central Delta,CED
+D19.Jan.2022,Monoraphidium,948.1389,,1/6/2022,D19,Jan,2022,Central Delta,CED
+D19.Jan.2022,Navicula,12011.037,,1/6/2022,D19,Jan,2022,Central Delta,CED
+D19.Jan.2022,Nitzschia,12870.0633,,1/6/2022,D19,Jan,2022,Central Delta,CED
+D19.Jan.2022,Plagioselmis,92749.4481,,1/6/2022,D19,Jan,2022,Central Delta,CED
+D19.Jan.2022,Planothidium,4176.7938,,1/6/2022,D19,Jan,2022,Central Delta,CED
+D28A.Jan.2022,Achnanthidium,3603.525,,1/6/2022,D28A,Jan,2022,Central Delta,CED
+D28A.Jan.2022,Cocconeis,9348.0625,,1/6/2022,D28A,Jan,2022,Central Delta,CED
+D28A.Jan.2022,Cyclotella,6182.4,,1/6/2022,D28A,Jan,2022,Central Delta,CED
+D28A.Jan.2022,Eucapsis,4088.25,,1/6/2022,D28A,Jan,2022,Central Delta,CED
+D28A.Jan.2022,Navicula,7207.625,,1/6/2022,D28A,Jan,2022,Central Delta,CED
+D28A.Jan.2022,Nitzschia,2052.75,,1/6/2022,D28A,Jan,2022,Central Delta,CED
+D28A.Jan.2022,Plagioselmis,6585.1875,,1/6/2022,D28A,Jan,2022,Central Delta,CED
+D26.Jan.2022,Cocconeis,42171.1599,,1/7/2022,D26,Jan,2022,Central Delta,CED
+D26.Jan.2022,Cyclotella,11063.6678,,1/7/2022,D26,Jan,2022,Central Delta,CED
+D26.Jan.2022,Eucapsis,10737.378,,1/7/2022,D26,Jan,2022,Central Delta,CED
+D26.Jan.2022,Navicula,52630.401,,1/7/2022,D26,Jan,2022,Central Delta,CED
+D26.Jan.2022,Nitzschia,12613.185,,1/7/2022,D26,Jan,2022,Central Delta,CED
+D26.Jan.2022,Plagioselmis,56379.1402,,1/7/2022,D26,Jan,2022,Central Delta,CED
+MD10A.Jan.2022,Cocconeis,18116.5608,,1/7/2022,MD10A,Jan,2022,Southern Interior Delta,SID
+MD10A.Jan.2022,Eucapsis,4296.1752,,1/7/2022,MD10A,Jan,2022,Southern Interior Delta,SID
+MD10A.Jan.2022,Ochromonas,3018.024,,1/7/2022,MD10A,Jan,2022,Southern Interior Delta,SID
+P8.Jan.2022,Cocconeis,22140.837,,1/7/2022,P8,Jan,2022,Southern Interior Delta,SID
+P8.Jan.2022,Eucapsis,11798.5896,,1/7/2022,P8,Jan,2022,Southern Interior Delta,SID
+P8.Jan.2022,Nitzschia,19146.834,,1/7/2022,P8,Jan,2022,Southern Interior Delta,SID
+P8.Jan.2022,Staurosira,2694.192,,1/7/2022,P8,Jan,2022,Southern Interior Delta,SID
+D22.Jan.2022,Achnanthidium,7618.9971,,1/10/2022,D22,Jan,2022,Confluence,CON
+D22.Jan.2022,Aulacoseira,97601.6704,,1/10/2022,D22,Jan,2022,Confluence,CON
+D22.Jan.2022,Cocconeis,26799.4532,,1/10/2022,D22,Jan,2022,Confluence,CON
+D22.Jan.2022,Cryptomonas,44044.3835,,1/10/2022,D22,Jan,2022,Confluence,CON
+D22.Jan.2022,Cyclotella,41067.9321,,1/10/2022,D22,Jan,2022,Confluence,CON
+D22.Jan.2022,Eucapsis,6182.4672,,1/10/2022,D22,Jan,2022,Confluence,CON
+D22.Jan.2022,Melosira,181636.6981,,1/10/2022,D22,Jan,2022,Confluence,CON
+D22.Jan.2022,Nitzschia,33411.6965,,1/10/2022,D22,Jan,2022,Confluence,CON
+D22.Jan.2022,Plagioselmis,15741.8092,,1/10/2022,D22,Jan,2022,Confluence,CON
+D4.Jan.2022,Achnanthidium,10019.462,,1/10/2022,D4,Jan,2022,Confluence,CON
+D4.Jan.2022,Cocconeis,103900.3644,,1/10/2022,D4,Jan,2022,Confluence,CON
+D4.Jan.2022,Eucapsis,22850.8128,,1/10/2022,D4,Jan,2022,Confluence,CON
+D4.Jan.2022,Plagioselmis,25057.0876,,1/10/2022,D4,Jan,2022,Confluence,CON
+NZ068.Jan.2022,Achnanthidium,3074.1882,,1/10/2022,NZ068,Jan,2022,Northern Interior Delta,NID
+NZ068.Jan.2022,Aulacoseira,105466.6944,,1/10/2022,NZ068,Jan,2022,Northern Interior Delta,NID
+NZ068.Jan.2022,Cocconeis,12297.171,,1/10/2022,NZ068,Jan,2022,Northern Interior Delta,NID
+NZ068.Jan.2022,Cyclotella,34999.9944,,1/10/2022,NZ068,Jan,2022,Northern Interior Delta,NID
+NZ068.Jan.2022,Eucapsis,5991.9696,,1/10/2022,NZ068,Jan,2022,Northern Interior Delta,NID
+NZ068.Jan.2022,Nitzschia,11837.151,,1/10/2022,NZ068,Jan,2022,Northern Interior Delta,NID
+NZ068.Jan.2022,Plagioselmis,6385.914,,1/10/2022,NZ068,Jan,2022,Northern Interior Delta,NID
+NZ068.Jan.2022,Ulnaria,316313.5158,,1/10/2022,NZ068,Jan,2022,Northern Interior Delta,NID
+D10.Jan.2022,Achnanthidium,3953.1738,,1/11/2022,D10,Jan,2022,Confluence,CON
+D10.Jan.2022,Cyclotella,182939.138,,1/11/2022,D10,Jan,2022,Confluence,CON
+D10.Jan.2022,Eucapsis,19384.3512,,1/11/2022,D10,Jan,2022,Confluence,CON
+D10.Jan.2022,Nitzschia,4422.6301,,1/11/2022,D10,Jan,2022,Confluence,CON
+D10.Jan.2022,Plagioselmis,46562.7593,,1/11/2022,D10,Jan,2022,Confluence,CON
+D6.Jan.2022,Cryptomonas,38101.4828,,1/11/2022,D6,Jan,2022,San Pablo Bay,SPB
+D6.Jan.2022,Cyclotella,130919.2872,,1/11/2022,D6,Jan,2022,San Pablo Bay,SPB
+D6.Jan.2022,Eucapsis,14535.684,,1/11/2022,D6,Jan,2022,San Pablo Bay,SPB
+D6.Jan.2022,Plagioselmis,17105.4948,,1/11/2022,D6,Jan,2022,San Pablo Bay,SPB
+D8.Jan.2022,Cocconeis,17559.7396,,1/11/2022,D8,Jan,2022,Grizzly and Suisun Bay,GSB
+D8.Jan.2022,Cyclotella,344385.8508,,1/11/2022,D8,Jan,2022,Grizzly and Suisun Bay,GSB
+D8.Jan.2022,Eucapsis,22630.032,,1/11/2022,D8,Jan,2022,Grizzly and Suisun Bay,GSB
+EZ2.Jan.2022,Eucapsis,17662.6944,,1/11/2022,EZ2,Jan,2022,Entrapment Zone,EZ
+EZ2.Jan.2022,Nitzschia,2653.65,,1/11/2022,EZ2,Jan,2022,Entrapment Zone,EZ
+EZ2.Jan.2022,Pseudanabaena,4453.4144,,1/11/2022,EZ2,Jan,2022,Entrapment Zone,EZ
+EZ6.Jan.2022,Aulacoseira,211077.072,,1/11/2022,EZ6,Jan,2022,Entrapment Zone,EZ
+EZ6.Jan.2022,Cryptomonas,2342.9778,,1/11/2022,EZ6,Jan,2022,Entrapment Zone,EZ
+EZ6.Jan.2022,Eucapsis,21927.2616,,1/11/2022,EZ6,Jan,2022,Entrapment Zone,EZ
+EZ6.Jan.2022,Nitzschia,15440.5164,,1/11/2022,EZ6,Jan,2022,Entrapment Zone,EZ
+EZ6.Jan.2022,Planothidium,10509.252,,1/11/2022,EZ6,Jan,2022,Entrapment Zone,EZ
+D7.Jan.2022,Cyclotella,48167.3945,,1/12/2022,D7,Jan,2022,Grizzly and Suisun Bay,GSB
+D7.Jan.2022,Eucapsis,28287.54,,1/12/2022,D7,Jan,2022,Grizzly and Suisun Bay,GSB
+D7.Jan.2022,Plagioselmis,29264.955,,1/12/2022,D7,Jan,2022,Grizzly and Suisun Bay,GSB
+NZ032.Jan.2022,Cyclotella,35403.1212,,1/12/2022,NZ032,Jan,2022,Grizzly and Suisun Bay,GSB
+NZ032.Jan.2022,Entomoneis,433068.4386,,1/12/2022,NZ032,Jan,2022,Grizzly and Suisun Bay,GSB
+NZ032.Jan.2022,Eucapsis,35021.3544,,1/12/2022,NZ032,Jan,2022,Grizzly and Suisun Bay,GSB
+NZS42.Jan.2022,Achnanthidium,7381.049,,1/12/2022,NZS42,Jan,2022,Grizzly and Suisun Bay,GSB
+NZS42.Jan.2022,Cyclotella,89828.8756,,1/12/2022,NZS42,Jan,2022,Grizzly and Suisun Bay,GSB
+NZS42.Jan.2022,Eucapsis,20957.292,,1/12/2022,NZS42,Jan,2022,Grizzly and Suisun Bay,GSB
+NZS42.Jan.2022,Monoraphidium,835.1294,,1/12/2022,NZS42,Jan,2022,Grizzly and Suisun Bay,GSB
+NZS42.Jan.2022,Nitzschia,4698.8606,,1/12/2022,NZS42,Jan,2022,Grizzly and Suisun Bay,GSB
+D41.Jan.2022,Cryptomonas,77044.986,,1/13/2022,D41,Jan,2022,San Pablo Bay,SPB
+D41.Jan.2022,Cyclotella,57783.2856,,1/13/2022,D41,Jan,2022,San Pablo Bay,SPB
+D41.Jan.2022,Eucapsis,8540.5824,,1/13/2022,D41,Jan,2022,San Pablo Bay,SPB
+D41.Jan.2022,Plagioselmis,17814.6672,,1/13/2022,D41,Jan,2022,San Pablo Bay,SPB
+D41A.Jan.2022,Chrysochromulina,974.5911,,1/13/2022,D41A,Jan,2022,San Pablo Bay,SPB
+D41A.Jan.2022,Cyclotella,7902.6894,,1/13/2022,D41A,Jan,2022,San Pablo Bay,SPB
+D41A.Jan.2022,Eucapsis,5884.5096,,1/13/2022,D41A,Jan,2022,San Pablo Bay,SPB
+D41A.Jan.2022,Navicula,13992.9597,,1/13/2022,D41A,Jan,2022,San Pablo Bay,SPB
+D41A.Jan.2022,Ochromonas,7552.773,,1/13/2022,D41A,Jan,2022,San Pablo Bay,SPB
+D41A.Jan.2022,Plagioselmis,115891.7367,,1/13/2022,D41A,Jan,2022,San Pablo Bay,SPB
+D41A.Jan.2022,Staurosira,1548.339,,1/13/2022,D41A,Jan,2022,San Pablo Bay,SPB
+NZ002.Jan.2022,Cyclotella,35571.5352,,1/13/2022,NZ002,Jan,2022,San Pablo Bay,SPB
+NZ002.Jan.2022,Eucapsis,12642.7032,,1/13/2022,NZ002,Jan,2022,San Pablo Bay,SPB
+NZ002.Jan.2022,Plagioselmis,463921.3932,,1/13/2022,NZ002,Jan,2022,San Pablo Bay,SPB
+NZ004.Jan.2022,Cryptomonas,28702.1084,,1/13/2022,NZ004,Jan,2022,San Pablo Bay,SPB
+NZ004.Jan.2022,Cyclotella,191216.0824,,1/13/2022,NZ004,Jan,2022,San Pablo Bay,SPB
+NZ004.Jan.2022,Eucapsis,7499.646,,1/13/2022,NZ004,Jan,2022,San Pablo Bay,SPB
+NZ004.Jan.2022,Plagioselmis,58646.5824,,1/13/2022,NZ004,Jan,2022,San Pablo Bay,SPB
+NZ004.Jan.2022,Thalassiosira,114954.5306,,1/13/2022,NZ004,Jan,2022,San Pablo Bay,SPB
+NZ325.Jan.2022,Crucigenia,8288.3367,,1/13/2022,NZ325,Jan,2022,San Pablo Bay,SPB
+NZ325.Jan.2022,Cyclotella,30481.6064,,1/13/2022,NZ325,Jan,2022,San Pablo Bay,SPB
+NZ325.Jan.2022,Encyonema,17873.2533,,1/13/2022,NZ325,Jan,2022,San Pablo Bay,SPB
+NZ325.Jan.2022,Eucapsis,13834.0188,,1/13/2022,NZ325,Jan,2022,San Pablo Bay,SPB
+NZ325.Jan.2022,Plagioselmis,10035.3176,,1/13/2022,NZ325,Jan,2022,San Pablo Bay,SPB
+D12.Jan.2022,Achnanthidium,1782.7168,,1/16/2022,D12,Jan,2022,Confluence,CON
+D12.Jan.2022,Cocconeis,403433.7184,,1/16/2022,D12,Jan,2022,Confluence,CON
+D12.Jan.2022,Cyclotella,47583.41,,1/16/2022,D12,Jan,2022,Confluence,CON
+D12.Jan.2022,Diatoma,30337.8738,,1/16/2022,D12,Jan,2022,Confluence,CON
+D12.Jan.2022,Eucapsis,14425.2864,,1/16/2022,D12,Jan,2022,Confluence,CON
+D12.Jan.2022,Melosira,358739.0456,,1/16/2022,D12,Jan,2022,Confluence,CON
+D12.Jan.2022,Monoraphidium,3574.6334,,1/16/2022,D12,Jan,2022,Confluence,CON
+D12.Jan.2022,Navicula,81331.343,,1/16/2022,D12,Jan,2022,Confluence,CON
+D12.Jan.2022,Nitzschia,46888.314,,1/16/2022,D12,Jan,2022,Confluence,CON
+C10A.Feb.2022,Achnanthidium,9672.0708,,2/7/2022,C10A,Feb,2022,Southern Interior Delta,SID
+C10A.Feb.2022,Chlorella,9680.2155,,2/7/2022,C10A,Feb,2022,Southern Interior Delta,SID
+C10A.Feb.2022,Chroococcus,275.9616,,2/7/2022,C10A,Feb,2022,Southern Interior Delta,SID
+C10A.Feb.2022,Chrysochromulina,4681.7652,,2/7/2022,C10A,Feb,2022,Southern Interior Delta,SID
+C10A.Feb.2022,Coccomyxa,5821.065,,2/7/2022,C10A,Feb,2022,Southern Interior Delta,SID
+C10A.Feb.2022,Cyclotella,184319.352,,2/7/2022,C10A,Feb,2022,Southern Interior Delta,SID
+C10A.Feb.2022,Eucapsis,5415.7464,,2/7/2022,C10A,Feb,2022,Southern Interior Delta,SID
+C10A.Feb.2022,Navicula,70258.0986,,2/7/2022,C10A,Feb,2022,Southern Interior Delta,SID
+C10A.Feb.2022,Nitzschia,30691.146,,2/7/2022,C10A,Feb,2022,Southern Interior Delta,SID
+C10A.Feb.2022,Plagioselmis,69821.1594,,2/7/2022,C10A,Feb,2022,Southern Interior Delta,SID
+C10A.Feb.2022,Planktolyngbya,881.544,,2/7/2022,C10A,Feb,2022,Southern Interior Delta,SID
+C10A.Feb.2022,Scenedesmus,13644.768,,2/7/2022,C10A,Feb,2022,Southern Interior Delta,SID
+C10A.Feb.2022,Staurosira,55690.584,,2/7/2022,C10A,Feb,2022,Southern Interior Delta,SID
+C3A.Feb.2022,Cryptomonas,31499.3676,,2/7/2022,C3A,Feb,2022,Northern Interior Delta,NID
+C3A.Feb.2022,Cyclotella,118710.8046,,2/7/2022,C3A,Feb,2022,Northern Interior Delta,NID
+C3A.Feb.2022,Diatoma,8318.0733,,2/7/2022,C3A,Feb,2022,Northern Interior Delta,NID
+C3A.Feb.2022,Encyonema,4943.454,,2/7/2022,C3A,Feb,2022,Northern Interior Delta,NID
+C3A.Feb.2022,Eucapsis,5126.004,,2/7/2022,C3A,Feb,2022,Northern Interior Delta,NID
+C3A.Feb.2022,Navicula,6654.3126,,2/7/2022,C3A,Feb,2022,Northern Interior Delta,NID
+C3A.Feb.2022,Nitzschia,29713.2984,,2/7/2022,C3A,Feb,2022,Northern Interior Delta,NID
+C3A.Feb.2022,Plagioselmis,22953.1068,,2/7/2022,C3A,Feb,2022,Northern Interior Delta,NID
+C3A.Feb.2022,Planktolyngbya,3152.6385,,2/7/2022,C3A,Feb,2022,Northern Interior Delta,NID
+C3A.Feb.2022,Planktothrix,2278.224,,2/7/2022,C3A,Feb,2022,Northern Interior Delta,NID
+C3A.Feb.2022,Scenedesmus,13219.5408,,2/7/2022,C3A,Feb,2022,Northern Interior Delta,NID
+C9.Feb.2022,Achnanthidium,5724.366,,2/7/2022,C9,Feb,2022,Southern Interior Delta,SID
+C9.Feb.2022,Coccomyxa,2679.222,,2/7/2022,C9,Feb,2022,Southern Interior Delta,SID
+C9.Feb.2022,Cyclotella,1109.9634,,2/7/2022,C9,Feb,2022,Southern Interior Delta,SID
+C9.Feb.2022,Drepanochloris,117.6278,,2/7/2022,C9,Feb,2022,Southern Interior Delta,SID
+C9.Feb.2022,Eucapsis,1630.2456,,2/7/2022,C9,Feb,2022,Southern Interior Delta,SID
+C9.Feb.2022,Nitzschia,4960.4162,,2/7/2022,C9,Feb,2022,Southern Interior Delta,SID
+C9.Feb.2022,Plagioselmis,262104.601,,2/7/2022,C9,Feb,2022,Southern Interior Delta,SID
+C9.Feb.2022,Planothidium,1650.0138,,2/7/2022,C9,Feb,2022,Southern Interior Delta,SID
+D12.Feb.2022,Cocconeis,105691.3912,,2/8/2022,D12,Feb,2022,Confluence,CON
+D12.Feb.2022,Cryptomonas,42819.4469,,2/8/2022,D12,Feb,2022,Confluence,CON
+D12.Feb.2022,Cyclotella,88191.3272,,2/8/2022,D12,Feb,2022,Confluence,CON
+D12.Feb.2022,Epithemia,9517.7042,,2/8/2022,D12,Feb,2022,Confluence,CON
+D12.Feb.2022,Eucapsis,7249.4424,,2/8/2022,D12,Feb,2022,Confluence,CON
+D12.Feb.2022,Navicula,2624.4985,,2/8/2022,D12,Feb,2022,Confluence,CON
+D12.Feb.2022,Plagioselmis,62080.7615,,2/8/2022,D12,Feb,2022,Confluence,CON
+D16.Feb.2022,Aulacoseira,4939.753,,2/8/2022,D16,Feb,2022,Central Delta,CED
+D16.Feb.2022,Carteria,2874.9812,,2/8/2022,D16,Feb,2022,Central Delta,CED
+D16.Feb.2022,Chrysochromulina,6382.0848,,2/8/2022,D16,Feb,2022,Central Delta,CED
+D16.Feb.2022,Coccomyxa,383.838,,2/8/2022,D16,Feb,2022,Central Delta,CED
+D16.Feb.2022,Eucapsis,4742.9928,,2/8/2022,D16,Feb,2022,Central Delta,CED
+D16.Feb.2022,Nitzschia,15727.6756,,2/8/2022,D16,Feb,2022,Central Delta,CED
+D16.Feb.2022,Plagioselmis,137447.8924,,2/8/2022,D16,Feb,2022,Central Delta,CED
+D19.Feb.2022,Cryptomonas,103553.3504,,2/8/2022,D19,Feb,2022,Central Delta,CED
+D19.Feb.2022,Cyclotella,19106.5854,,2/8/2022,D19,Feb,2022,Central Delta,CED
+D19.Feb.2022,Eucapsis,3745.584,,2/8/2022,D19,Feb,2022,Central Delta,CED
+D19.Feb.2022,Monoraphidium,657.9414,,2/8/2022,D19,Feb,2022,Central Delta,CED
+D19.Feb.2022,Navicula,9152.3126,,2/8/2022,D19,Feb,2022,Central Delta,CED
+D19.Feb.2022,Plagioselmis,232990.6576,,2/8/2022,D19,Feb,2022,Central Delta,CED
+D28A.Feb.2022,Cocconeis,120960.5508,,2/8/2022,D28A,Feb,2022,Central Delta,CED
+D28A.Feb.2022,Cyclotella,11408.2797,,2/8/2022,D28A,Feb,2022,Central Delta,CED
+D28A.Feb.2022,Eucapsis,5126.004,,2/8/2022,D28A,Feb,2022,Central Delta,CED
+D28A.Feb.2022,Navicula,12499.5636,,2/8/2022,D28A,Feb,2022,Central Delta,CED
+D28A.Feb.2022,Nitzschia,2774.76,,2/8/2022,D28A,Feb,2022,Central Delta,CED
+D28A.Feb.2022,Plagioselmis,51084.792,,2/8/2022,D28A,Feb,2022,Central Delta,CED
+EZ2-SJR.Feb.2022,Cocconeis,154735.9696,,2/8/2022,EZ2-SJR,Feb,2022,Entrapment Zone,EZ
+EZ2-SJR.Feb.2022,Cyclotella,245943.0984,,2/8/2022,EZ2-SJR,Feb,2022,Entrapment Zone,EZ
+EZ2-SJR.Feb.2022,Encyonema,4407.4224,,2/8/2022,EZ2-SJR,Feb,2022,Entrapment Zone,EZ
+EZ2-SJR.Feb.2022,Eucapsis,9788.8608,,2/8/2022,EZ2-SJR,Feb,2022,Entrapment Zone,EZ
+EZ2-SJR.Feb.2022,Nitzschia,4458.1524,,2/8/2022,EZ2-SJR,Feb,2022,Entrapment Zone,EZ
+EZ2-SJR.Feb.2022,Plagioselmis,32736.4072,,2/8/2022,EZ2-SJR,Feb,2022,Entrapment Zone,EZ
+D26.Feb.2022,Cocconeis,8018.8164,,2/9/2022,D26,Feb,2022,Central Delta,CED
+D26.Feb.2022,Crucigenia,3885.498,,2/9/2022,D26,Feb,2022,Central Delta,CED
+D26.Feb.2022,Cyclotella,1941.8292,,2/9/2022,D26,Feb,2022,Central Delta,CED
+D26.Feb.2022,Eucapsis,3699.1728,,2/9/2022,D26,Feb,2022,Central Delta,CED
+D26.Feb.2022,Monoraphidium,1239.3648,,2/9/2022,D26,Feb,2022,Central Delta,CED
+D26.Feb.2022,Navicula,6414.948,,2/9/2022,D26,Feb,2022,Central Delta,CED
+D26.Feb.2022,Ochromonas,25928.8992,,2/9/2022,D26,Feb,2022,Central Delta,CED
+D26.Feb.2022,Plagioselmis,34093.044,,2/9/2022,D26,Feb,2022,Central Delta,CED
+D26.Feb.2022,Staurosira,1374.7068,,2/9/2022,D26,Feb,2022,Central Delta,CED
+MD10A.Feb.2022,Chrysochromulina,1459.2724,,2/9/2022,MD10A,Feb,2022,Southern Interior Delta,SID
+MD10A.Feb.2022,Coccomyxa,1204.0845,,2/9/2022,MD10A,Feb,2022,Southern Interior Delta,SID
+MD10A.Feb.2022,Cryptomonas,40478.3851,,2/9/2022,MD10A,Feb,2022,Southern Interior Delta,SID
+MD10A.Feb.2022,Cyclotella,2030.8276,,2/9/2022,MD10A,Feb,2022,Southern Interior Delta,SID
+MD10A.Feb.2022,Eucapsis,2535.0444,,2/9/2022,MD10A,Feb,2022,Southern Interior Delta,SID
+MD10A.Feb.2022,Monoraphidium,278.7974,,2/9/2022,MD10A,Feb,2022,Southern Interior Delta,SID
+MD10A.Feb.2022,Plagioselmis,325427.3943,,2/9/2022,MD10A,Feb,2022,Southern Interior Delta,SID
+P8.Feb.2022,Achnanthidium,1412.9388,,2/9/2022,P8,Feb,2022,Southern Interior Delta,SID
+P8.Feb.2022,Cryptomonas,266520.5088,,2/9/2022,P8,Feb,2022,Southern Interior Delta,SID
+P8.Feb.2022,Cyclotella,148065.3356,,2/9/2022,P8,Feb,2022,Southern Interior Delta,SID
+P8.Feb.2022,Eucapsis,4842.5832,,2/9/2022,P8,Feb,2022,Southern Interior Delta,SID
+P8.Feb.2022,Plagioselmis,62458.7418,,2/9/2022,P8,Feb,2022,Southern Interior Delta,SID
+P8.Feb.2022,Scenedesmus,7833.0616,,2/9/2022,P8,Feb,2022,Southern Interior Delta,SID
+D22.Feb.2022,Cocconeis,18288.909,,2/10/2022,D22,Feb,2022,Confluence,CON
+D22.Feb.2022,Cyclotella,28735.209,,2/10/2022,D22,Feb,2022,Confluence,CON
+D22.Feb.2022,Eucapsis,4765.878,,2/10/2022,D22,Feb,2022,Confluence,CON
+D22.Feb.2022,Fragilaria,11106.9135,,2/10/2022,D22,Feb,2022,Confluence,CON
+D22.Feb.2022,Nitzschia,13089.411,,2/10/2022,D22,Feb,2022,Confluence,CON
+D22.Feb.2022,Plagioselmis,31131.945,,2/10/2022,D22,Feb,2022,Confluence,CON
+D22.Feb.2022,Staurosira,1609.9785,,2/10/2022,D22,Feb,2022,Confluence,CON
+D4.Feb.2022,Aulacoseira,7675.5384,,2/10/2022,D4,Feb,2022,Confluence,CON
+D4.Feb.2022,Chlorella,556.3458,,2/10/2022,D4,Feb,2022,Confluence,CON
+D4.Feb.2022,Coccomyxa,2292.687,,2/10/2022,D4,Feb,2022,Confluence,CON
+D4.Feb.2022,Cocconeis,39425.5008,,2/10/2022,D4,Feb,2022,Confluence,CON
+D4.Feb.2022,Cyclotella,5476.302,,2/10/2022,D4,Feb,2022,Confluence,CON
+D4.Feb.2022,Eucapsis,6902.7552,,2/10/2022,D4,Feb,2022,Confluence,CON
+D4.Feb.2022,Navicula,42288.0912,,2/10/2022,D4,Feb,2022,Confluence,CON
+D4.Feb.2022,Plagioselmis,10264.0716,,2/10/2022,D4,Feb,2022,Confluence,CON
+EZ2.Feb.2022,Cocconeis,187602.4152,,2/10/2022,EZ2,Feb,2022,Entrapment Zone,EZ
+EZ2.Feb.2022,Cyclotella,212386.6272,,2/10/2022,EZ2,Feb,2022,Entrapment Zone,EZ
+EZ2.Feb.2022,Encyonema,890.1753,,2/10/2022,EZ2,Feb,2022,Entrapment Zone,EZ
+EZ2.Feb.2022,Eucapsis,12630.2076,,2/10/2022,EZ2,Feb,2022,Entrapment Zone,EZ
+EZ2.Feb.2022,Gomphonema,50783.2833,,2/10/2022,EZ2,Feb,2022,Entrapment Zone,EZ
+EZ2.Feb.2022,Navicula,9212.0066,,2/10/2022,EZ2,Feb,2022,Entrapment Zone,EZ
+EZ2.Feb.2022,Nitzschia,6666.8448,,2/10/2022,EZ2,Feb,2022,Entrapment Zone,EZ
+EZ2.Feb.2022,Plagioselmis,14351.9347,,2/10/2022,EZ2,Feb,2022,Entrapment Zone,EZ
+EZ6.Feb.2022,Aulacoseira,35578.6048,,2/10/2022,EZ6,Feb,2022,Entrapment Zone,EZ
+EZ6.Feb.2022,Entomoneis,113607.386,,2/10/2022,EZ6,Feb,2022,Entrapment Zone,EZ
+EZ6.Feb.2022,Eucapsis,9060.7392,,2/10/2022,EZ6,Feb,2022,Entrapment Zone,EZ
+EZ6.Feb.2022,Nitzschia,2325.232,,2/10/2022,EZ6,Feb,2022,Entrapment Zone,EZ
+EZ6.Feb.2022,Plagioselmis,247201.5464,,2/10/2022,EZ6,Feb,2022,Entrapment Zone,EZ
+NZ068.Feb.2022,Achnanthidium,3969.355,,2/10/2022,NZ068,Feb,2022,Northern Interior Delta,NID
+NZ068.Feb.2022,Cocconeis,85949.097,,2/10/2022,NZ068,Feb,2022,Northern Interior Delta,NID
+NZ068.Feb.2022,Cryptomonas,101234.0125,,2/10/2022,NZ068,Feb,2022,Northern Interior Delta,NID
+NZ068.Feb.2022,Cyclotella,15903.702,,2/10/2022,NZ068,Feb,2022,Northern Interior Delta,NID
+NZ068.Feb.2022,Encyonema,2010.9595,,2/10/2022,NZ068,Feb,2022,Northern Interior Delta,NID
+NZ068.Feb.2022,Eucapsis,5356.89,,2/10/2022,NZ068,Feb,2022,Northern Interior Delta,NID
+NZ068.Feb.2022,Monoraphidium,1520.491,,2/10/2022,NZ068,Feb,2022,Northern Interior Delta,NID
+NZ068.Feb.2022,Nitzschia,18256.714,,2/10/2022,NZ068,Feb,2022,Northern Interior Delta,NID
+NZ068.Feb.2022,Plagioselmis,49017.8625,,2/10/2022,NZ068,Feb,2022,Northern Interior Delta,NID
+NZ068.Feb.2022,Planktolyngbya,1881.0955,,2/10/2022,NZ068,Feb,2022,Northern Interior Delta,NID
+NZ068.Feb.2022,Planktothrix,2629.746,,2/10/2022,NZ068,Feb,2022,Northern Interior Delta,NID
+NZ068.Feb.2022,Planothidium,1579.239,,2/10/2022,NZ068,Feb,2022,Northern Interior Delta,NID
+D10.Feb.2022,Cocconeis,254297.9202,,2/11/2022,D10,Feb,2022,Confluence,CON
+D10.Feb.2022,Cyclotella,69163.1034,,2/11/2022,D10,Feb,2022,Confluence,CON
+D10.Feb.2022,Eucapsis,12792.5496,,2/11/2022,D10,Feb,2022,Confluence,CON
+D10.Feb.2022,Plagioselmis,88345.6145,,2/11/2022,D10,Feb,2022,Confluence,CON
+D10.Feb.2022,Planktolyngbya,1699.1796,,2/11/2022,D10,Feb,2022,Confluence,CON
+D6.Feb.2022,Chlorella,286.0045,,2/11/2022,D6,Feb,2022,San Pablo Bay,SPB
+D6.Feb.2022,Coccomyxa,4284.7602,,2/11/2022,D6,Feb,2022,San Pablo Bay,SPB
+D6.Feb.2022,Cyclotella,4357.2933,,2/11/2022,D6,Feb,2022,San Pablo Bay,SPB
+D6.Feb.2022,Eucapsis,8279.388,,2/11/2022,D6,Feb,2022,San Pablo Bay,SPB
+D6.Feb.2022,Plagioselmis,104464.1756,,2/11/2022,D6,Feb,2022,San Pablo Bay,SPB
+D6.Feb.2022,Staurosira,13314.8363,,2/11/2022,D6,Feb,2022,San Pablo Bay,SPB
+D8.Feb.2022,Coccomyxa,12679.8738,,2/11/2022,D8,Feb,2022,Grizzly and Suisun Bay,GSB
+D8.Feb.2022,Cocconeis,13584.1188,,2/11/2022,D8,Feb,2022,Grizzly and Suisun Bay,GSB
+D8.Feb.2022,Cryptomonas,90369.459,,2/11/2022,D8,Feb,2022,Grizzly and Suisun Bay,GSB
+D8.Feb.2022,Cyclotella,391961.1144,,2/11/2022,D8,Feb,2022,Grizzly and Suisun Bay,GSB
+D8.Feb.2022,Eucapsis,10699.9704,,2/11/2022,D8,Feb,2022,Grizzly and Suisun Bay,GSB
+D8.Feb.2022,Plagioselmis,80629.5609,,2/11/2022,D8,Feb,2022,Grizzly and Suisun Bay,GSB
+D8.Feb.2022,Surirella,71017.0434,,2/11/2022,D8,Feb,2022,Grizzly and Suisun Bay,GSB
+D7.Feb.2022,Cyclotella,35687.5575,,2/14/2022,D7,Feb,2022,Grizzly and Suisun Bay,GSB
+D7.Feb.2022,Eucapsis,7231.0428,,2/14/2022,D7,Feb,2022,Grizzly and Suisun Bay,GSB
+D7.Feb.2022,Plagioselmis,68190.962,,2/14/2022,D7,Feb,2022,Grizzly and Suisun Bay,GSB
+NZ032.Feb.2022,Cyclotella,501741.9225,,2/14/2022,NZ032,Feb,2022,Grizzly and Suisun Bay,GSB
+NZ032.Feb.2022,Diploneis,136009.6024,,2/14/2022,NZ032,Feb,2022,Grizzly and Suisun Bay,GSB
+NZ032.Feb.2022,Eucapsis,12488.5656,,2/14/2022,NZ032,Feb,2022,Grizzly and Suisun Bay,GSB
+NZ032.Feb.2022,Staurosira,30498.8558,,2/14/2022,NZ032,Feb,2022,Grizzly and Suisun Bay,GSB
+NZS42.Feb.2022,Chrysochromulina,48123.315,,2/14/2022,NZS42,Feb,2022,Grizzly and Suisun Bay,GSB
+NZS42.Feb.2022,Cocconeis,28960.2315,,2/14/2022,NZS42,Feb,2022,Grizzly and Suisun Bay,GSB
+NZS42.Feb.2022,Cyclotella,115058.994,,2/14/2022,NZS42,Feb,2022,Grizzly and Suisun Bay,GSB
+NZS42.Feb.2022,Eucapsis,27804.582,,2/14/2022,NZS42,Feb,2022,Grizzly and Suisun Bay,GSB
+NZS42.Feb.2022,Nitzschia,4651.3455,,2/14/2022,NZS42,Feb,2022,Grizzly and Suisun Bay,GSB
+NZS42.Feb.2022,Plagioselmis,14632.4775,,2/14/2022,NZS42,Feb,2022,Grizzly and Suisun Bay,GSB
+D41.Feb.2022,Coccomyxa,3329.664,,2/15/2022,D41,Feb,2022,San Pablo Bay,SPB
+D41.Feb.2022,Cryptomonas,12211.344,,2/15/2022,D41,Feb,2022,San Pablo Bay,SPB
+D41.Feb.2022,Cyclotella,735907.632,,2/15/2022,D41,Feb,2022,San Pablo Bay,SPB
+D41.Feb.2022,Eucapsis,4994.496,,2/15/2022,D41,Feb,2022,San Pablo Bay,SPB
+D41.Feb.2022,Ochromonas,1202.256,,2/15/2022,D41,Feb,2022,San Pablo Bay,SPB
+D41.Feb.2022,Plagioselmis,57932.4,,2/15/2022,D41,Feb,2022,San Pablo Bay,SPB
+D41A.Feb.2022,Eucapsis,21206.4696,,2/15/2022,D41A,Feb,2022,San Pablo Bay,SPB
+D41A.Feb.2022,Navicula,44284.011,,2/15/2022,D41A,Feb,2022,San Pablo Bay,SPB
+D41A.Feb.2022,Nitzschia,17253.6264,,2/15/2022,D41A,Feb,2022,San Pablo Bay,SPB
+D41A.Feb.2022,Plagioselmis,100227.7224,,2/15/2022,D41A,Feb,2022,San Pablo Bay,SPB
+NZ002.Feb.2022,Chrysochromulina,1236.9946,,2/15/2022,NZ002,Feb,2022,San Pablo Bay,SPB
+NZ002.Feb.2022,Cyclotella,14505.6288,,2/15/2022,NZ002,Feb,2022,San Pablo Bay,SPB
+NZ002.Feb.2022,Cylindrotheca,22477.097,,2/15/2022,NZ002,Feb,2022,San Pablo Bay,SPB
+NZ002.Feb.2022,Eucapsis,7051.0176,,2/15/2022,NZ002,Feb,2022,San Pablo Bay,SPB
+NZ002.Feb.2022,Plagioselmis,6161.2322,,2/15/2022,NZ002,Feb,2022,San Pablo Bay,SPB
+NZ004.Feb.2022,Chrysochromulina,2858.0712,,2/15/2022,NZ004,Feb,2022,San Pablo Bay,SPB
+NZ004.Feb.2022,Cryptomonas,30089.4792,,2/15/2022,NZ004,Feb,2022,San Pablo Bay,SPB
+NZ004.Feb.2022,Cyclotella,19442.244,,2/15/2022,NZ004,Feb,2022,San Pablo Bay,SPB
+NZ004.Feb.2022,Eucapsis,7212.6432,,2/15/2022,NZ004,Feb,2022,San Pablo Bay,SPB
+NZ004.Feb.2022,Plagioselmis,90725.361,,2/15/2022,NZ004,Feb,2022,San Pablo Bay,SPB
+NZ004.Feb.2022,Psammothidium,4696.4979,,2/15/2022,NZ004,Feb,2022,San Pablo Bay,SPB
+NZ004.Feb.2022,Scenedesmus,1924.8026,,2/15/2022,NZ004,Feb,2022,San Pablo Bay,SPB
+NZ004.Feb.2022,Skeletonema,12200.4681,,2/15/2022,NZ004,Feb,2022,San Pablo Bay,SPB
+NZ325.Feb.2022,Cyclotella,149894.548,,2/15/2022,NZ325,Feb,2022,San Pablo Bay,SPB
+NZ325.Feb.2022,Eucapsis,14942.9088,,2/15/2022,NZ325,Feb,2022,San Pablo Bay,SPB
+NZ325.Feb.2022,Fragilaria,37682.5464,,2/15/2022,NZ325,Feb,2022,San Pablo Bay,SPB
+NZ325.Feb.2022,Gyrosigma,268753.3184,,2/15/2022,NZ325,Feb,2022,San Pablo Bay,SPB
+NZ325.Feb.2022,Navicula,10098.8392,,2/15/2022,NZ325,Feb,2022,San Pablo Bay,SPB
+NZ325.Feb.2022,Nitzschia,193456.128,,2/15/2022,NZ325,Feb,2022,San Pablo Bay,SPB
+NZ325.Feb.2022,Peridinium,119984.636,,2/15/2022,NZ325,Feb,2022,San Pablo Bay,SPB
+NZ325.Feb.2022,Planktolyngbya,1719.464,,2/15/2022,NZ325,Feb,2022,San Pablo Bay,SPB
+NZ325.Feb.2022,Pseudostaurosira,313702.5168,,2/15/2022,NZ325,Feb,2022,San Pablo Bay,SPB
+C10A.Mar.2022,Achnanthidium,23949.5796,,3/9/2022,C10A,Mar,2022,Southern Interior Delta,SID
+C10A.Mar.2022,Amphora,61433.2468,,3/9/2022,C10A,Mar,2022,Southern Interior Delta,SID
+C10A.Mar.2022,Aulacoseira,815635.3024,,3/9/2022,C10A,Mar,2022,Southern Interior Delta,SID
+C10A.Mar.2022,Cyclotella,105132.318,,3/9/2022,C10A,Mar,2022,Southern Interior Delta,SID
+C10A.Mar.2022,Desmodesmus,3093.7824,,3/9/2022,C10A,Mar,2022,Southern Interior Delta,SID
+C10A.Mar.2022,Drepanochloris,3371.5692,,3/9/2022,C10A,Mar,2022,Southern Interior Delta,SID
+C10A.Mar.2022,Eucapsis,8017.6896,,3/9/2022,C10A,Mar,2022,Southern Interior Delta,SID
+C10A.Mar.2022,Monoraphidium,18657.1056,,3/9/2022,C10A,Mar,2022,Southern Interior Delta,SID
+C10A.Mar.2022,Navicula,190964.808,,3/9/2022,C10A,Mar,2022,Southern Interior Delta,SID
+C10A.Mar.2022,Nitzschia,44320.6116,,3/9/2022,C10A,Mar,2022,Southern Interior Delta,SID
+C10A.Mar.2022,Plagioselmis,20418.2376,,3/9/2022,C10A,Mar,2022,Southern Interior Delta,SID
+C10A.Mar.2022,Planktolyngbya,4370.7544,,3/9/2022,C10A,Mar,2022,Southern Interior Delta,SID
+C10A.Mar.2022,Skeletonema,10866.9712,,3/9/2022,C10A,Mar,2022,Southern Interior Delta,SID
+C3A.Mar.2022,Achnanthidium,1910.6874,,3/9/2022,C3A,Mar,2022,Northern Interior Delta,NID
+C3A.Mar.2022,Asterionella,400.86,,3/9/2022,C3A,Mar,2022,Northern Interior Delta,NID
+C3A.Mar.2022,Aulacoseira,33793.9128,,3/9/2022,C3A,Mar,2022,Northern Interior Delta,NID
+C3A.Mar.2022,Chlamydomonas,7134.3648,,3/9/2022,C3A,Mar,2022,Northern Interior Delta,NID
+C3A.Mar.2022,Chlorella,225.3069,,3/9/2022,C3A,Mar,2022,Northern Interior Delta,NID
+C3A.Mar.2022,Cryptomonas,17810.4456,,3/9/2022,C3A,Mar,2022,Northern Interior Delta,NID
+C3A.Mar.2022,Cyclotella,71671.8816,,3/9/2022,C3A,Mar,2022,Northern Interior Delta,NID
+C3A.Mar.2022,Encyonema,766.4679,,3/9/2022,C3A,Mar,2022,Northern Interior Delta,NID
+C3A.Mar.2022,Eucapsis,1264.8312,,3/9/2022,C3A,Mar,2022,Northern Interior Delta,NID
+C3A.Mar.2022,Melosira,220187.0925,,3/9/2022,C3A,Mar,2022,Northern Interior Delta,NID
+C3A.Mar.2022,Monoraphidium,537.1524,,3/9/2022,C3A,Mar,2022,Northern Interior Delta,NID
+C3A.Mar.2022,Navicula,2871.3366,,3/9/2022,C3A,Mar,2022,Northern Interior Delta,NID
+C3A.Mar.2022,Nitzschia,5960.5524,,3/9/2022,C3A,Mar,2022,Northern Interior Delta,NID
+C3A.Mar.2022,Plagioselmis,27104.5026,,3/9/2022,C3A,Mar,2022,Northern Interior Delta,NID
+C3A.Mar.2022,Pseudanabaena,15687.3024,,3/9/2022,C3A,Mar,2022,Northern Interior Delta,NID
+C3A.Mar.2022,Staurosira,1427.2974,,3/9/2022,C3A,Mar,2022,Northern Interior Delta,NID
+C9.Mar.2022,Cocconeis,33181.2636,,3/9/2022,C9,Mar,2022,Southern Interior Delta,SID
+C9.Mar.2022,Cyclotella,12605.0398,,3/9/2022,C9,Mar,2022,Southern Interior Delta,SID
+C9.Mar.2022,Eucapsis,2672.1216,,3/9/2022,C9,Mar,2022,Southern Interior Delta,SID
+C9.Mar.2022,Gyrosigma,147231.1167,,3/9/2022,C9,Mar,2022,Southern Interior Delta,SID
+C9.Mar.2022,Melosira,603519.4788,,3/9/2022,C9,Mar,2022,Southern Interior Delta,SID
+C9.Mar.2022,Navicula,3719.7514,,3/9/2022,C9,Mar,2022,Southern Interior Delta,SID
+C9.Mar.2022,Plagioselmis,181227.8534,,3/9/2022,C9,Mar,2022,Southern Interior Delta,SID
+C9.Mar.2022,Planktolyngbya,823.3394,,3/9/2022,C9,Mar,2022,Southern Interior Delta,SID
+C9.Mar.2022,Scenedesmus,549.0274,,3/9/2022,C9,Mar,2022,Southern Interior Delta,SID
+D12.Mar.2022,Cyclotella,55964.0998,,3/10/2022,D12,Mar,2022,Confluence,CON
+D12.Mar.2022,Entomoneis,2221809.182,,3/10/2022,D12,Mar,2022,Confluence,CON
+D12.Mar.2022,Eucapsis,10901.052,,3/10/2022,D12,Mar,2022,Confluence,CON
+D12.Mar.2022,Nitzschia,38882.7186,,3/10/2022,D12,Mar,2022,Confluence,CON
+D16.Mar.2022,Achnanthidium,1422.7974,,3/10/2022,D16,Mar,2022,Central Delta,CED
+D16.Mar.2022,Aulacoseira,3215.3841,,3/10/2022,D16,Mar,2022,Central Delta,CED
+D16.Mar.2022,Chlorella,660.7899,,3/10/2022,D16,Mar,2022,Central Delta,CED
+D16.Mar.2022,Cocconeis,36730.4868,,3/10/2022,D16,Mar,2022,Central Delta,CED
+D16.Mar.2022,Cryptomonas,32963.1984,,3/10/2022,D16,Mar,2022,Central Delta,CED
+D16.Mar.2022,Cyclotella,804898.458,,3/10/2022,D16,Mar,2022,Central Delta,CED
+D16.Mar.2022,Drepanochloris,385.7004,,3/10/2022,D16,Mar,2022,Central Delta,CED
+D16.Mar.2022,Eucapsis,2249.7912,,3/10/2022,D16,Mar,2022,Central Delta,CED
+D16.Mar.2022,Monoraphidium,152.5932,,3/10/2022,D16,Mar,2022,Central Delta,CED
+D16.Mar.2022,Plagioselmis,160373.5362,,3/10/2022,D16,Mar,2022,Central Delta,CED
+D16.Mar.2022,Staurosira,3804.8616,,3/10/2022,D16,Mar,2022,Central Delta,CED
+D16.Mar.2022,Teleaulax,21000.735,,3/10/2022,D16,Mar,2022,Central Delta,CED
+D19.Mar.2022,Cocconeis,66695.986,,3/10/2022,D19,Mar,2022,Central Delta,CED
+D19.Mar.2022,Cryptomonas,151398.6978,,3/10/2022,D19,Mar,2022,Central Delta,CED
+D19.Mar.2022,Cyclotella,152306.6636,,3/10/2022,D19,Mar,2022,Central Delta,CED
+D19.Mar.2022,Eucapsis,7110.054,,3/10/2022,D19,Mar,2022,Central Delta,CED
+D19.Mar.2022,Nitzschia,32542.2951,,3/10/2022,D19,Mar,2022,Central Delta,CED
+D19.Mar.2022,Plagioselmis,237318.3435,,3/10/2022,D19,Mar,2022,Central Delta,CED
+D19.Mar.2022,Planktolyngbya,1359.2432,,3/10/2022,D19,Mar,2022,Central Delta,CED
+D19.Mar.2022,Skeletonema,9715.9916,,3/10/2022,D19,Mar,2022,Central Delta,CED
+D19.Mar.2022,Thalassiosira,1429064.58,,3/10/2022,D19,Mar,2022,Central Delta,CED
+D28A.Mar.2022,Cocconeis,67957.131,,3/10/2022,D28A,Mar,2022,Central Delta,CED
+D28A.Mar.2022,Cryptomonas,60913.1424,,3/10/2022,D28A,Mar,2022,Central Delta,CED
+D28A.Mar.2022,Cyclotella,97188.4254,,3/10/2022,D28A,Mar,2022,Central Delta,CED
+D28A.Mar.2022,Diploneis,163624.7844,,3/10/2022,D28A,Mar,2022,Central Delta,CED
+D28A.Mar.2022,Eucapsis,3399.8184,,3/10/2022,D28A,Mar,2022,Central Delta,CED
+D28A.Mar.2022,Melosira,1234101.337,,3/10/2022,D28A,Mar,2022,Central Delta,CED
+D28A.Mar.2022,Nitzschia,17513.232,,3/10/2022,D28A,Mar,2022,Central Delta,CED
+D28A.Mar.2022,Plagioselmis,175273.032,,3/10/2022,D28A,Mar,2022,Central Delta,CED
+D28A.Mar.2022,Planktolyngbya,1189.5576,,3/10/2022,D28A,Mar,2022,Central Delta,CED
+D28A.Mar.2022,Thalassiosira,228308.1966,,3/10/2022,D28A,Mar,2022,Central Delta,CED
+D26.Mar.2022,Cocconeis,24071.578,,3/11/2022,D26,Mar,2022,Central Delta,CED
+D26.Mar.2022,Cyclotella,238499.74,,3/11/2022,D26,Mar,2022,Central Delta,CED
+D26.Mar.2022,Eucapsis,1780.344,,3/11/2022,D26,Mar,2022,Central Delta,CED
+D26.Mar.2022,Navicula,12733.9355,,3/11/2022,D26,Mar,2022,Central Delta,CED
+D26.Mar.2022,Nitzschia,11349.693,,3/11/2022,D26,Mar,2022,Central Delta,CED
+D26.Mar.2022,Plagioselmis,237014.3985,,3/11/2022,D26,Mar,2022,Central Delta,CED
+D26.Mar.2022,Staurosira,1898.658,,3/11/2022,D26,Mar,2022,Central Delta,CED
+D26.Mar.2022,Teleaulax,13683.108,,3/11/2022,D26,Mar,2022,Central Delta,CED
+MD10A.Mar.2022,Achnanthidium,649.704,,3/11/2022,MD10A,Mar,2022,Southern Interior Delta,SID
+MD10A.Mar.2022,Chlorella,599.472,,3/11/2022,MD10A,Mar,2022,Southern Interior Delta,SID
+MD10A.Mar.2022,Cocconeis,15428.768,,3/11/2022,MD10A,Mar,2022,Southern Interior Delta,SID
+MD10A.Mar.2022,Drepanochloris,561.936,,3/11/2022,MD10A,Mar,2022,Southern Interior Delta,SID
+MD10A.Mar.2022,Eucapsis,864.432,,3/11/2022,MD10A,Mar,2022,Southern Interior Delta,SID
+MD10A.Mar.2022,Nitzschia,3421.112,,3/11/2022,MD10A,Mar,2022,Southern Interior Delta,SID
+MD10A.Mar.2022,Plagioselmis,256871.36,,3/11/2022,MD10A,Mar,2022,Southern Interior Delta,SID
+MD10A.Mar.2022,Synedra,14475.096,,3/11/2022,MD10A,Mar,2022,Southern Interior Delta,SID
+P8.Mar.2022,Achnanthidium,4584.663,,3/11/2022,P8,Mar,2022,Southern Interior Delta,SID
+P8.Mar.2022,Cocconeis,101398.6615,,3/11/2022,P8,Mar,2022,Southern Interior Delta,SID
+P8.Mar.2022,Cryptomonas,82113.471,,3/11/2022,P8,Mar,2022,Southern Interior Delta,SID
+P8.Mar.2022,Cyclotella,19669.758,,3/11/2022,P8,Mar,2022,Southern Interior Delta,SID
+P8.Mar.2022,Eucapsis,5370.804,,3/11/2022,P8,Mar,2022,Southern Interior Delta,SID
+P8.Mar.2022,Plagioselmis,109642.32,,3/11/2022,P8,Mar,2022,Southern Interior Delta,SID
+P8.Mar.2022,Planktolyngbya,485.444,,3/11/2022,P8,Mar,2022,Southern Interior Delta,SID
+D22.Mar.2022,Achnanthidium,11558.3232,,3/14/2022,D22,Mar,2022,Confluence,CON
+D22.Mar.2022,Cocconeis,40241.7416,,3/14/2022,D22,Mar,2022,Confluence,CON
+D22.Mar.2022,Cyclotella,47219.484,,3/14/2022,D22,Mar,2022,Confluence,CON
+D22.Mar.2022,Entomoneis,1099301.514,,3/14/2022,D22,Mar,2022,Confluence,CON
+D22.Mar.2022,Eucapsis,9155.7504,,3/14/2022,D22,Mar,2022,Confluence,CON
+D22.Mar.2022,Gyrosigma,680503.7188,,3/14/2022,D22,Mar,2022,Confluence,CON
+D22.Mar.2022,Monoraphidium,2608.1984,,3/14/2022,D22,Mar,2022,Confluence,CON
+D22.Mar.2022,Nitzschia,80441.5464,,3/14/2022,D22,Mar,2022,Confluence,CON
+D22.Mar.2022,Plagioselmis,105851.1888,,3/14/2022,D22,Mar,2022,Confluence,CON
+D22.Mar.2022,Planktolyngbya,1061.948,,3/14/2022,D22,Mar,2022,Confluence,CON
+D22.Mar.2022,Surirella,60000.062,,3/14/2022,D22,Mar,2022,Confluence,CON
+D22.Mar.2022,Thalassiosira,1158486.514,,3/14/2022,D22,Mar,2022,Confluence,CON
+D4.Mar.2022,Cyclotella,25593.7076,,3/14/2022,D4,Mar,2022,Confluence,CON
+D4.Mar.2022,Entomoneis,5774172.254,,3/14/2022,D4,Mar,2022,Confluence,CON
+D4.Mar.2022,Eucapsis,5064.1596,,3/14/2022,D4,Mar,2022,Confluence,CON
+D4.Mar.2022,Monoraphidium,1128.8185,,3/14/2022,D4,Mar,2022,Confluence,CON
+D4.Mar.2022,Nitzschia,4538.272,,3/14/2022,D4,Mar,2022,Confluence,CON
+D4.Mar.2022,Plagioselmis,295864.6704,,3/14/2022,D4,Mar,2022,Confluence,CON
+EZ2.Mar.2022,Cocconeis,45746.0884,,3/14/2022,EZ2,Mar,2022,Entrapment Zone,EZ
+EZ2.Mar.2022,Cyclotella,23953.9502,,3/14/2022,EZ2,Mar,2022,Entrapment Zone,EZ
+EZ2.Mar.2022,Entomoneis,5940867.891,,3/14/2022,EZ2,Mar,2022,Entrapment Zone,EZ
+EZ2.Mar.2022,Eucapsis,10321.5024,,3/14/2022,EZ2,Mar,2022,Entrapment Zone,EZ
+EZ2.Mar.2022,Nitzschia,11962.793,,3/14/2022,EZ2,Mar,2022,Entrapment Zone,EZ
+EZ2.Mar.2022,Plagioselmis,130674.636,,3/14/2022,EZ2,Mar,2022,Entrapment Zone,EZ
+EZ2.Mar.2022,Pseudostaurosira,63547.307,,3/14/2022,EZ2,Mar,2022,Entrapment Zone,EZ
+EZ2.Mar.2022,Thalassiosira,751835.284,,3/14/2022,EZ2,Mar,2022,Entrapment Zone,EZ
+EZ6.Mar.2022,Cryptomonas,28574.2484,,3/14/2022,EZ6,Mar,2022,Entrapment Zone,EZ
+EZ6.Mar.2022,Cyclotella,23953.9502,,3/14/2022,EZ6,Mar,2022,Entrapment Zone,EZ
+EZ6.Mar.2022,Entomoneis,8739325.093,,3/14/2022,EZ6,Mar,2022,Entrapment Zone,EZ
+EZ6.Mar.2022,Eucapsis,10652.6736,,3/14/2022,EZ6,Mar,2022,Entrapment Zone,EZ
+EZ6.Mar.2022,Navicula,13972.0516,,3/14/2022,EZ6,Mar,2022,Entrapment Zone,EZ
+EZ6.Mar.2022,Nitzschia,17052.2504,,3/14/2022,EZ6,Mar,2022,Entrapment Zone,EZ
+EZ6.Mar.2022,Plagioselmis,97204.88,,3/14/2022,EZ6,Mar,2022,Entrapment Zone,EZ
+EZ6.Mar.2022,Thalassiosira,139370.1798,,3/14/2022,EZ6,Mar,2022,Entrapment Zone,EZ
+NZ068.Mar.2022,Achnanthidium,1643.376,,3/14/2022,NZ068,Mar,2022,Northern Interior Delta,NID
+NZ068.Mar.2022,Cyclotella,48922.191,,3/14/2022,NZ068,Mar,2022,Northern Interior Delta,NID
+NZ068.Mar.2022,Eucapsis,2822.472,,3/14/2022,NZ068,Mar,2022,Northern Interior Delta,NID
+NZ068.Mar.2022,Plagioselmis,219346.677,,3/14/2022,NZ068,Mar,2022,Northern Interior Delta,NID
+NZ068.Mar.2022,Staurosira,6443.856,,3/14/2022,NZ068,Mar,2022,Northern Interior Delta,NID
+D10.Mar.2022,Cyclotella,61893.7508,,3/15/2022,D10,Mar,2022,Confluence,CON
+D10.Mar.2022,Entomoneis,3638154.811,,3/15/2022,D10,Mar,2022,Confluence,CON
+D10.Mar.2022,Eucapsis,10763.064,,3/15/2022,D10,Mar,2022,Confluence,CON
+D10.Mar.2022,Navicula,3396.038,,3/15/2022,D10,Mar,2022,Confluence,CON
+D10.Mar.2022,Nitzschia,28701.504,,3/15/2022,D10,Mar,2022,Confluence,CON
+D10.Mar.2022,Plagioselmis,25539.279,,3/15/2022,D10,Mar,2022,Confluence,CON
+D6.Mar.2022,Cryptomonas,30080.118,,3/15/2022,D6,Mar,2022,San Pablo Bay,SPB
+D6.Mar.2022,Cyclotella,132540.066,,3/15/2022,D6,Mar,2022,San Pablo Bay,SPB
+D6.Mar.2022,Eucapsis,11214.072,,3/15/2022,D6,Mar,2022,San Pablo Bay,SPB
+D6.Mar.2022,Nitzschia,25186.47,,3/15/2022,D6,Mar,2022,San Pablo Bay,SPB
+D6.Mar.2022,Plagioselmis,130356.324,,3/15/2022,D6,Mar,2022,San Pablo Bay,SPB
+D8.Mar.2022,Cyclotella,131563.6,,3/15/2022,D8,Mar,2022,Grizzly and Suisun Bay,GSB
+D8.Mar.2022,Entomoneis,6812790.542,,3/15/2022,D8,Mar,2022,Grizzly and Suisun Bay,GSB
+D8.Mar.2022,Eucapsis,6944.184,,3/15/2022,D8,Mar,2022,Grizzly and Suisun Bay,GSB
+D8.Mar.2022,Nitzschia,5792.2606,,3/15/2022,D8,Mar,2022,Grizzly and Suisun Bay,GSB
+D7.Mar.2022,Cyclotella,219352.7595,,3/16/2022,D7,Mar,2022,Grizzly and Suisun Bay,GSB
+D7.Mar.2022,Entomoneis,2661247.849,,3/16/2022,D7,Mar,2022,Grizzly and Suisun Bay,GSB
+D7.Mar.2022,Eucapsis,9709.2108,,3/16/2022,D7,Mar,2022,Grizzly and Suisun Bay,GSB
+D7.Mar.2022,Plagioselmis,91746.1881,,3/16/2022,D7,Mar,2022,Grizzly and Suisun Bay,GSB
+NZ032.Mar.2022,Cryptomonas,64204.4576,,3/16/2022,NZ032,Mar,2022,Grizzly and Suisun Bay,GSB
+NZ032.Mar.2022,Cyclotella,115566.5712,,3/16/2022,NZ032,Mar,2022,Grizzly and Suisun Bay,GSB
+NZ032.Mar.2022,Entomoneis,4803278.736,,3/16/2022,NZ032,Mar,2022,Grizzly and Suisun Bay,GSB
+NZ032.Mar.2022,Eucapsis,16994.016,,3/16/2022,NZ032,Mar,2022,Grizzly and Suisun Bay,GSB
+NZ032.Mar.2022,Planktolyngbya,1900.328,,3/16/2022,NZ032,Mar,2022,Grizzly and Suisun Bay,GSB
+NZ032.Mar.2022,Scenedesmus,3386.6992,,3/16/2022,NZ032,Mar,2022,Grizzly and Suisun Bay,GSB
+NZS42.Mar.2022,Cyclotella,152324.9532,,3/16/2022,NZS42,Mar,2022,Grizzly and Suisun Bay,GSB
+NZS42.Mar.2022,Entomoneis,6241838.884,,3/16/2022,NZS42,Mar,2022,Grizzly and Suisun Bay,GSB
+NZS42.Mar.2022,Eucapsis,16351.578,,3/16/2022,NZS42,Mar,2022,Grizzly and Suisun Bay,GSB
+NZS42.Mar.2022,Monoraphidium,3793.5201,,3/16/2022,NZS42,Mar,2022,Grizzly and Suisun Bay,GSB
+NZS42.Mar.2022,Nitzschia,5335.536,,3/16/2022,NZS42,Mar,2022,Grizzly and Suisun Bay,GSB
+D41.Mar.2022,Cocconeis,11487.432,,3/17/2022,D41,Mar,2022,San Pablo Bay,SPB
+D41.Mar.2022,Cryptomonas,8206.096,,3/17/2022,D41,Mar,2022,San Pablo Bay,SPB
+D41.Mar.2022,Cyclotella,506310.696,,3/17/2022,D41,Mar,2022,San Pablo Bay,SPB
+D41.Mar.2022,Cylindrotheca,0,,3/17/2022,D41,Mar,2022,San Pablo Bay,SPB
+D41.Mar.2022,Eucapsis,2862,,3/17/2022,D41,Mar,2022,San Pablo Bay,SPB
+D41.Mar.2022,Nitzschia,15386.112,,3/17/2022,D41,Mar,2022,San Pablo Bay,SPB
+D41.Mar.2022,Plagioselmis,80281.856,,3/17/2022,D41,Mar,2022,San Pablo Bay,SPB
+D41.Mar.2022,Pseudostaurosira,3796.284,,3/17/2022,D41,Mar,2022,San Pablo Bay,SPB
+D41.Mar.2022,Rhodomonas,27110.136,,3/17/2022,D41,Mar,2022,San Pablo Bay,SPB
+D41A.Mar.2022,Chlorella,3049.5348,,3/17/2022,D41A,Mar,2022,San Pablo Bay,SPB
+D41A.Mar.2022,Cocconeis,43482.3186,,3/17/2022,D41A,Mar,2022,San Pablo Bay,SPB
+D41A.Mar.2022,Cyclotella,199754.8785,,3/17/2022,D41A,Mar,2022,San Pablo Bay,SPB
+D41A.Mar.2022,Eucapsis,16558.56,,3/17/2022,D41A,Mar,2022,San Pablo Bay,SPB
+D41A.Mar.2022,Navicula,43520.2653,,3/17/2022,D41A,Mar,2022,San Pablo Bay,SPB
+D41A.Mar.2022,Plagioselmis,116385.9786,,3/17/2022,D41A,Mar,2022,San Pablo Bay,SPB
+NZ002.Mar.2022,Cyclotella,68030.718,,3/17/2022,NZ002,Mar,2022,San Pablo Bay,SPB
+NZ002.Mar.2022,Entomoneis,441472.4874,,3/17/2022,NZ002,Mar,2022,San Pablo Bay,SPB
+NZ002.Mar.2022,Eucapsis,10382.022,,3/17/2022,NZ002,Mar,2022,San Pablo Bay,SPB
+NZ002.Mar.2022,Nitzschia,9245.2563,,3/17/2022,NZ002,Mar,2022,San Pablo Bay,SPB
+NZ002.Mar.2022,Plagioselmis,11618.0813,,3/17/2022,NZ002,Mar,2022,San Pablo Bay,SPB
+NZ002.Mar.2022,Thalassiosira,1718163.313,,3/17/2022,NZ002,Mar,2022,San Pablo Bay,SPB
+NZ004.Mar.2022,Chlorella,1343.8104,,3/17/2022,NZ004,Mar,2022,San Pablo Bay,SPB
+NZ004.Mar.2022,Cryptomonas,45723.231,,3/17/2022,NZ004,Mar,2022,San Pablo Bay,SPB
+NZ004.Mar.2022,Cyclotella,145762.7691,,3/17/2022,NZ004,Mar,2022,San Pablo Bay,SPB
+NZ004.Mar.2022,Eucapsis,5574.0204,,3/17/2022,NZ004,Mar,2022,San Pablo Bay,SPB
+NZ004.Mar.2022,Nitzschia,4612.9824,,3/17/2022,NZ004,Mar,2022,San Pablo Bay,SPB
+NZ004.Mar.2022,Plagioselmis,36890.7168,,3/17/2022,NZ004,Mar,2022,San Pablo Bay,SPB
+NZ325.Mar.2022,Chlorella,792.78,,3/17/2022,NZ325,Mar,2022,San Pablo Bay,SPB
+NZ325.Mar.2022,Cyclotella,65673.72,,3/17/2022,NZ325,Mar,2022,San Pablo Bay,SPB
+NZ325.Mar.2022,Eucapsis,2609.604,,3/17/2022,NZ325,Mar,2022,San Pablo Bay,SPB
+NZ325.Mar.2022,Plagioselmis,471406.26,,3/17/2022,NZ325,Mar,2022,San Pablo Bay,SPB
+C10A.Apr.2022,Achnanthidium,10015.4412,,4/6/2022,C10A,Apr,2022,Southern Interior Delta,SID
+C10A.Apr.2022,Chlorella,3455.2476,,4/6/2022,C10A,Apr,2022,Southern Interior Delta,SID
+C10A.Apr.2022,Cocconeis,36950.6266,,4/6/2022,C10A,Apr,2022,Southern Interior Delta,SID
+C10A.Apr.2022,Cyclotella,30973.3844,,4/6/2022,C10A,Apr,2022,Southern Interior Delta,SID
+C10A.Apr.2022,Encyonema,7333.334,,4/6/2022,C10A,Apr,2022,Southern Interior Delta,SID
+C10A.Apr.2022,Eucapsis,5572.98,,4/6/2022,C10A,Apr,2022,Southern Interior Delta,SID
+C10A.Apr.2022,Komvophoron,5997.588,,4/6/2022,C10A,Apr,2022,Southern Interior Delta,SID
+C10A.Apr.2022,Melosira,224605.6899,,4/6/2022,C10A,Apr,2022,Southern Interior Delta,SID
+C10A.Apr.2022,Monoraphidium,6910.0529,,4/6/2022,C10A,Apr,2022,Southern Interior Delta,SID
+C10A.Apr.2022,Navicula,178945.2917,,4/6/2022,C10A,Apr,2022,Southern Interior Delta,SID
+C10A.Apr.2022,Nitzschia,8200.242,,4/6/2022,C10A,Apr,2022,Southern Interior Delta,SID
+C10A.Apr.2022,Plagioselmis,19540.814,,4/6/2022,C10A,Apr,2022,Southern Interior Delta,SID
+C10A.Apr.2022,Pseudostaurosira,174596.1558,,4/6/2022,C10A,Apr,2022,Southern Interior Delta,SID
+C10A.Apr.2022,Rhodomonas,77847.4538,,4/6/2022,C10A,Apr,2022,Southern Interior Delta,SID
+C10A.Apr.2022,Scenedesmus,6615.0388,,4/6/2022,C10A,Apr,2022,Southern Interior Delta,SID
+C10A.Apr.2022,Staurosira,14382.2691,,4/6/2022,C10A,Apr,2022,Southern Interior Delta,SID
+C10A.Apr.2022,Ulnaria,44697.0688,,4/6/2022,C10A,Apr,2022,Southern Interior Delta,SID
+C3A.Apr.2022,Achnanthidium,2406.1968,,4/6/2022,C3A,Apr,2022,Northern Interior Delta,NID
+C3A.Apr.2022,Chlorella,1109.892,,4/6/2022,C3A,Apr,2022,Northern Interior Delta,NID
+C3A.Apr.2022,Cyclotella,126619.9746,,4/6/2022,C3A,Apr,2022,Northern Interior Delta,NID
+C3A.Apr.2022,Eucapsis,1650.1212,,4/6/2022,C3A,Apr,2022,Northern Interior Delta,NID
+C3A.Apr.2022,Gomphonema,15329.0802,,4/6/2022,C3A,Apr,2022,Northern Interior Delta,NID
+C3A.Apr.2022,Monoraphidium,1063.2888,,4/6/2022,C3A,Apr,2022,Northern Interior Delta,NID
+C3A.Apr.2022,Nitzschia,2533.1292,,4/6/2022,C3A,Apr,2022,Northern Interior Delta,NID
+C3A.Apr.2022,Plagioselmis,21748.671,,4/6/2022,C3A,Apr,2022,Northern Interior Delta,NID
+C3A.Apr.2022,Staurosira,3030.1278,,4/6/2022,C3A,Apr,2022,Northern Interior Delta,NID
+C9.Apr.2022,Cocconeis,77268.3048,,4/6/2022,C9,Apr,2022,Southern Interior Delta,SID
+C9.Apr.2022,Cyclotella,95369.6736,,4/6/2022,C9,Apr,2022,Southern Interior Delta,SID
+C9.Apr.2022,Eucapsis,5645.7,,4/6/2022,C9,Apr,2022,Southern Interior Delta,SID
+C9.Apr.2022,Monoraphidium,735.1956,,4/6/2022,C9,Apr,2022,Southern Interior Delta,SID
+C9.Apr.2022,Navicula,25000.8324,,4/6/2022,C9,Apr,2022,Southern Interior Delta,SID
+C9.Apr.2022,Plagioselmis,81493.7976,,4/6/2022,C9,Apr,2022,Southern Interior Delta,SID
+C9.Apr.2022,Planktolyngbya,2888.9256,,4/6/2022,C9,Apr,2022,Southern Interior Delta,SID
+C9.Apr.2022,Planothidium,15009.198,,4/6/2022,C9,Apr,2022,Southern Interior Delta,SID
+D12.Apr.2022,Cryptomonas,50466.6,,4/6/2022,D12,Apr,2022,Confluence,CON
+D12.Apr.2022,Cyclotella,3965.2,,4/6/2022,D12,Apr,2022,Confluence,CON
+D12.Apr.2022,Entomoneis,1848436.4,,4/6/2022,D12,Apr,2022,Confluence,CON
+D12.Apr.2022,Eucapsis,8176.5,,4/6/2022,D12,Apr,2022,Confluence,CON
+D12.Apr.2022,Monoraphidium,1413.35,,4/6/2022,D12,Apr,2022,Confluence,CON
+D12.Apr.2022,Nitzschia,24833.1,,4/6/2022,D12,Apr,2022,Confluence,CON
+D12.Apr.2022,Planktolyngbya,902.75,,4/6/2022,D12,Apr,2022,Confluence,CON
+D12.Apr.2022,Thalassiosira,314755,,4/6/2022,D12,Apr,2022,Confluence,CON
+D16.Apr.2022,Chlorella,13814.568,,4/21/2022,D16,Apr,2022,Central Delta,CED
+D16.Apr.2022,Entomoneis,2427501.298,,4/21/2022,D16,Apr,2022,Central Delta,CED
+D16.Apr.2022,Eucapsis,23743.9296,,4/21/2022,D16,Apr,2022,Central Delta,CED
+D19.Apr.2022,Cryptomonas,246338.9192,,4/21/2022,D19,Apr,2022,Central Delta,CED
+D19.Apr.2022,Cyclotella,341170.935,,4/21/2022,D19,Apr,2022,Central Delta,CED
+D19.Apr.2022,Eucapsis,4840.2576,,4/21/2022,D19,Apr,2022,Central Delta,CED
+D19.Apr.2022,Monoraphidium,2650.1118,,4/21/2022,D19,Apr,2022,Central Delta,CED
+D19.Apr.2022,Plagioselmis,271969.64,,4/21/2022,D19,Apr,2022,Central Delta,CED
+D19.Apr.2022,Skeletonema,11792.8206,,4/21/2022,D19,Apr,2022,Central Delta,CED
+D28A.Apr.2022,Chlamydomonas,1693.26,,4/21/2022,D28A,Apr,2022,Central Delta,CED
+D28A.Apr.2022,Cryptomonas,21642.31,,4/21/2022,D28A,Apr,2022,Central Delta,CED
+D28A.Apr.2022,Cyclotella,66655.84,,4/21/2022,D28A,Apr,2022,Central Delta,CED
+D28A.Apr.2022,Diatoma,3843.99,,4/21/2022,D28A,Apr,2022,Central Delta,CED
+D28A.Apr.2022,Eucapsis,2426.04,,4/21/2022,D28A,Apr,2022,Central Delta,CED
+D28A.Apr.2022,Monoraphidium,1401.39,,4/21/2022,D28A,Apr,2022,Central Delta,CED
+D28A.Apr.2022,Navicula,15236.35,,4/21/2022,D28A,Apr,2022,Central Delta,CED
+D28A.Apr.2022,Nitzschia,5065.06,,4/21/2022,D28A,Apr,2022,Central Delta,CED
+D28A.Apr.2022,Plagioselmis,95189.64,,4/21/2022,D28A,Apr,2022,Central Delta,CED
+D28A.Apr.2022,Rhodomonas,138330.28,,4/21/2022,D28A,Apr,2022,Central Delta,CED
+D28A.Apr.2022,Staurosira,3657.92,,4/21/2022,D28A,Apr,2022,Central Delta,CED
+EZ2-SJR.Apr.2022,Cryptomonas,35878.9616,,4/21/2022,EZ2-SJR,Apr,2022,Entrapment Zone,EZ
+EZ2-SJR.Apr.2022,Cyclotella,14813.16,,4/21/2022,EZ2-SJR,Apr,2022,Entrapment Zone,EZ
+EZ2-SJR.Apr.2022,Entomoneis,409001.4936,,4/21/2022,EZ2-SJR,Apr,2022,Entrapment Zone,EZ
+EZ2-SJR.Apr.2022,Eucapsis,9691.4592,,4/21/2022,EZ2-SJR,Apr,2022,Entrapment Zone,EZ
+EZ2-SJR.Apr.2022,Monoraphidium,1048.42,,4/21/2022,EZ2-SJR,Apr,2022,Entrapment Zone,EZ
+EZ2-SJR.Apr.2022,Nitzschia,11772.742,,4/21/2022,EZ2-SJR,Apr,2022,Entrapment Zone,EZ
+EZ2-SJR.Apr.2022,Plagioselmis,30237.7856,,4/21/2022,EZ2-SJR,Apr,2022,Entrapment Zone,EZ
+EZ2-SJR.Apr.2022,Planktolyngbya,1274.3376,,4/21/2022,EZ2-SJR,Apr,2022,Entrapment Zone,EZ
+EZ6-SJR.Apr.2022,Entomoneis,584258.2814,,4/21/2022,EZ6-SJR,Apr,2022,Entrapment Zone,EZ
+EZ6-SJR.Apr.2022,Eucapsis,24760.5408,,4/21/2022,EZ6-SJR,Apr,2022,Entrapment Zone,EZ
+EZ6-SJR.Apr.2022,Monoraphidium,1373.9162,,4/21/2022,EZ6-SJR,Apr,2022,Entrapment Zone,EZ
+EZ6-SJR.Apr.2022,Nitzschia,10627.4004,,4/21/2022,EZ6-SJR,Apr,2022,Entrapment Zone,EZ
+D26.Apr.2022,Cocconeis,6818.5773,,4/22/2022,D26,Apr,2022,Central Delta,CED
+D26.Apr.2022,Cyclotella,348997.9014,,4/22/2022,D26,Apr,2022,Central Delta,CED
+D26.Apr.2022,Eucapsis,2249.7912,,4/22/2022,D26,Apr,2022,Central Delta,CED
+D26.Apr.2022,Monoraphidium,863.4168,,4/22/2022,D26,Apr,2022,Central Delta,CED
+D26.Apr.2022,Nitzschia,960.417,,4/22/2022,D26,Apr,2022,Central Delta,CED
+D26.Apr.2022,Odontidium,8171.5959,,4/22/2022,D26,Apr,2022,Central Delta,CED
+D26.Apr.2022,Plagioselmis,36386.9604,,4/22/2022,D26,Apr,2022,Central Delta,CED
+D26.Apr.2022,Pseudanabaena,882.9702,,4/22/2022,D26,Apr,2022,Central Delta,CED
+D26.Apr.2022,Rhodomonas,137809.1043,,4/22/2022,D26,Apr,2022,Central Delta,CED
+MD10A.Apr.2022,Chlorella,96.3197,,4/22/2022,MD10A,Apr,2022,Southern Interior Delta,SID
+MD10A.Apr.2022,Chrysococcus,4140.9422,,4/22/2022,MD10A,Apr,2022,Southern Interior Delta,SID
+MD10A.Apr.2022,Cyclotella,14801.5744,,4/22/2022,MD10A,Apr,2022,Southern Interior Delta,SID
+MD10A.Apr.2022,Eucapsis,3680.0028,,4/22/2022,MD10A,Apr,2022,Southern Interior Delta,SID
+MD10A.Apr.2022,Gyrosigma,111512.9924,,4/22/2022,MD10A,Apr,2022,Southern Interior Delta,SID
+MD10A.Apr.2022,Plagioselmis,128242.8389,,4/22/2022,MD10A,Apr,2022,Southern Interior Delta,SID
+MD10A.Apr.2022,Rhodomonas,48432.4428,,4/22/2022,MD10A,Apr,2022,Southern Interior Delta,SID
+MD10A.Apr.2022,Skeletonema,5484.8569,,4/22/2022,MD10A,Apr,2022,Southern Interior Delta,SID
+P8.Apr.2022,Chlamydomonas,8996.6695,,4/22/2022,P8,Apr,2022,Southern Interior Delta,SID
+P8.Apr.2022,Cryptomonas,321532.596,,4/22/2022,P8,Apr,2022,Southern Interior Delta,SID
+P8.Apr.2022,Cyclotella,43815.304,,4/22/2022,P8,Apr,2022,Southern Interior Delta,SID
+P8.Apr.2022,Eucapsis,4154.112,,4/22/2022,P8,Apr,2022,Southern Interior Delta,SID
+P8.Apr.2022,Lagerheimia,326.0425,,4/22/2022,P8,Apr,2022,Southern Interior Delta,SID
+P8.Apr.2022,Monoraphidium,295.091,,4/22/2022,P8,Apr,2022,Southern Interior Delta,SID
+P8.Apr.2022,Plagioselmis,178020.7075,,4/22/2022,P8,Apr,2022,Southern Interior Delta,SID
+D22.Apr.2022,Aulacoseira,159390.9732,,4/25/2022,D22,Apr,2022,Confluence,CON
+D22.Apr.2022,Cocconeis,439404.4434,,4/25/2022,D22,Apr,2022,Confluence,CON
+D22.Apr.2022,Entomoneis,1414826.516,,4/25/2022,D22,Apr,2022,Confluence,CON
+D22.Apr.2022,Eucapsis,38042.2872,,4/25/2022,D22,Apr,2022,Confluence,CON
+D22.Apr.2022,Gomphoneis,143765.3892,,4/25/2022,D22,Apr,2022,Confluence,CON
+D4.Apr.2022,Cocconeis,105145.128,,4/25/2022,D4,Apr,2022,Confluence,CON
+D4.Apr.2022,Cryptomonas,459036.369,,4/25/2022,D4,Apr,2022,Confluence,CON
+D4.Apr.2022,Eucapsis,31478.634,,4/25/2022,D4,Apr,2022,Confluence,CON
+D4.Apr.2022,Monoraphidium,13766.9444,,4/25/2022,D4,Apr,2022,Confluence,CON
+D4.Apr.2022,Planktolyngbya,5455.5754,,4/25/2022,D4,Apr,2022,Confluence,CON
+D4.Apr.2022,Rhodomonas,162726.1482,,4/25/2022,D4,Apr,2022,Confluence,CON
+EZ2.Apr.2022,Achnanthidium,29078.524,,4/25/2022,EZ2,Apr,2022,Entrapment Zone,EZ
+EZ2.Apr.2022,Entomoneis,5352653.774,,4/25/2022,EZ2,Apr,2022,Entrapment Zone,EZ
+EZ2.Apr.2022,Eucapsis,52155.9,,4/25/2022,EZ2,Apr,2022,Entrapment Zone,EZ
+EZ2.Apr.2022,Monoraphidium,2649.6485,,4/25/2022,EZ2,Apr,2022,Entrapment Zone,EZ
+EZ6.Apr.2022,Cylindrotheca,64472.4192,,4/25/2022,EZ6,Apr,2022,Entrapment Zone,EZ
+EZ6.Apr.2022,Eucapsis,156096.8136,,4/25/2022,EZ6,Apr,2022,Entrapment Zone,EZ
+EZ6.Apr.2022,Navicula,1158367.085,,4/25/2022,EZ6,Apr,2022,Entrapment Zone,EZ
+EZ6.Apr.2022,Plagioselmis,720771.3576,,4/25/2022,EZ6,Apr,2022,Entrapment Zone,EZ
+NZ068.Apr.2022,Cocconeis,15044.7396,,4/25/2022,NZ068,Apr,2022,Northern Interior Delta,NID
+NZ068.Apr.2022,Cyclostephanos,24399.4029,,4/25/2022,NZ068,Apr,2022,Northern Interior Delta,NID
+NZ068.Apr.2022,Eucapsis,7415.0388,,4/25/2022,NZ068,Apr,2022,Northern Interior Delta,NID
+NZ068.Apr.2022,Monoraphidium,715.0289,,4/25/2022,NZ068,Apr,2022,Northern Interior Delta,NID
+NZ068.Apr.2022,Navicula,9315.3086,,4/25/2022,NZ068,Apr,2022,Northern Interior Delta,NID
+NZ068.Apr.2022,Nitzschia,11684.7682,,4/25/2022,NZ068,Apr,2022,Northern Interior Delta,NID
+NZ068.Apr.2022,Plagioselmis,153069.339,,4/25/2022,NZ068,Apr,2022,Northern Interior Delta,NID
+D10.Apr.2022,Cocconeis,10033.3662,,4/26/2022,D10,Apr,2022,Confluence,CON
+D10.Apr.2022,Cyclotella,110718.3844,,4/26/2022,D10,Apr,2022,Confluence,CON
+D10.Apr.2022,Eucapsis,6245.5536,,4/26/2022,D10,Apr,2022,Confluence,CON
+D10.Apr.2022,Nitzschia,2026.2125,,4/26/2022,D10,Apr,2022,Confluence,CON
+D10.Apr.2022,Plagioselmis,23242.9574,,4/26/2022,D10,Apr,2022,Confluence,CON
+D10.Apr.2022,Staurosira,14224.2308,,4/26/2022,D10,Apr,2022,Confluence,CON
+D10.Apr.2022,Stephanodiscus,112597.3953,,4/26/2022,D10,Apr,2022,Confluence,CON
+D6.Apr.2022,Cyclotella,180175.3296,,4/26/2022,D6,Apr,2022,San Pablo Bay,SPB
+D6.Apr.2022,Eucapsis,3421.656,,4/26/2022,D6,Apr,2022,San Pablo Bay,SPB
+D6.Apr.2022,Plagioselmis,23831.4048,,4/26/2022,D6,Apr,2022,San Pablo Bay,SPB
+D6.Apr.2022,Rhodomonas,49953.7248,,4/26/2022,D6,Apr,2022,San Pablo Bay,SPB
+D8.Apr.2022,Cyclotella,637771.6212,,4/26/2022,D8,Apr,2022,Grizzly and Suisun Bay,GSB
+D8.Apr.2022,Eucapsis,18444.8772,,4/26/2022,D8,Apr,2022,Grizzly and Suisun Bay,GSB
+D7.Apr.2022,Eucapsis,47867.526,,4/27/2022,D7,Apr,2022,Grizzly and Suisun Bay,GSB
+NZ032.Apr.2022,Aulacoseira,30742.86,,4/27/2022,NZ032,Apr,2022,Grizzly and Suisun Bay,GSB
+NZ032.Apr.2022,Cylindrotheca,18619.744,,4/27/2022,NZ032,Apr,2022,Grizzly and Suisun Bay,GSB
+NZ032.Apr.2022,Eucapsis,18795.024,,4/27/2022,NZ032,Apr,2022,Grizzly and Suisun Bay,GSB
+NZ032.Apr.2022,Monoraphidium,786.256,,4/27/2022,NZ032,Apr,2022,Grizzly and Suisun Bay,GSB
+NZS42.Apr.2022,Cyclotella,744495.3468,,4/27/2022,NZS42,Apr,2022,Grizzly and Suisun Bay,GSB
+NZS42.Apr.2022,Entomoneis,1989815.873,,4/27/2022,NZS42,Apr,2022,Grizzly and Suisun Bay,GSB
+NZS42.Apr.2022,Eucapsis,35601.8328,,4/27/2022,NZS42,Apr,2022,Grizzly and Suisun Bay,GSB
+NZS42.Apr.2022,Navicula,162960.4134,,4/27/2022,NZS42,Apr,2022,Grizzly and Suisun Bay,GSB
+NZS42.Apr.2022,Nitzschia,24488.3982,,4/27/2022,NZS42,Apr,2022,Grizzly and Suisun Bay,GSB
+NZS42.Apr.2022,Planktolyngbya,5616.7692,,4/27/2022,NZS42,Apr,2022,Grizzly and Suisun Bay,GSB
+NZS42.Apr.2022,Thalassiosira,464579.3862,,4/27/2022,NZS42,Apr,2022,Grizzly and Suisun Bay,GSB
+D41.Apr.2022,Cocconeis,28995.4788,,4/28/2022,D41,Apr,2022,San Pablo Bay,SPB
+D41.Apr.2022,Cyclotella,69768.7242,,4/28/2022,D41,Apr,2022,San Pablo Bay,SPB
+D41.Apr.2022,Eucapsis,5916.6936,,4/28/2022,D41,Apr,2022,San Pablo Bay,SPB
+D41.Apr.2022,Gomphonema,14957.7594,,4/28/2022,D41,Apr,2022,San Pablo Bay,SPB
+D41.Apr.2022,Nitzschia,13138.1712,,4/28/2022,D41,Apr,2022,San Pablo Bay,SPB
+D41.Apr.2022,Plagioselmis,158138.148,,4/28/2022,D41,Apr,2022,San Pablo Bay,SPB
+D41A.Apr.2022,Chlorella,5153.232,,4/28/2022,D41A,Apr,2022,San Pablo Bay,SPB
+D41A.Apr.2022,Cyclotella,44827.234,,4/28/2022,D41A,Apr,2022,San Pablo Bay,SPB
+D41A.Apr.2022,Ditylum,7097275,,4/28/2022,D41A,Apr,2022,San Pablo Bay,SPB
+D41A.Apr.2022,Eucapsis,9217.224,,4/28/2022,D41A,Apr,2022,San Pablo Bay,SPB
+D41A.Apr.2022,Plagioselmis,136838.592,,4/28/2022,D41A,Apr,2022,San Pablo Bay,SPB
+D41A.Apr.2022,Planktolyngbya,1448.564,,4/28/2022,D41A,Apr,2022,San Pablo Bay,SPB
+D41A.Apr.2022,Teleaulax,37041.672,,4/28/2022,D41A,Apr,2022,San Pablo Bay,SPB
+NZ002.Apr.2022,Cryptomonas,33522.447,,4/28/2022,NZ002,Apr,2022,San Pablo Bay,SPB
+NZ002.Apr.2022,Cyclotella,16254.8085,,4/28/2022,NZ002,Apr,2022,San Pablo Bay,SPB
+NZ002.Apr.2022,Cylindrotheca,10395.9765,,4/28/2022,NZ002,Apr,2022,San Pablo Bay,SPB
+NZ002.Apr.2022,Eucapsis,8454.348,,4/28/2022,NZ002,Apr,2022,San Pablo Bay,SPB
+NZ002.Apr.2022,Rhodomonas,48012.594,,4/28/2022,NZ002,Apr,2022,San Pablo Bay,SPB
+NZ004.Apr.2022,Cyclotella,57376.3635,,4/28/2022,NZ004,Apr,2022,San Pablo Bay,SPB
+NZ004.Apr.2022,Eucapsis,6246.702,,4/28/2022,NZ004,Apr,2022,San Pablo Bay,SPB
+NZ004.Apr.2022,Plagioselmis,34903.1094,,4/28/2022,NZ004,Apr,2022,San Pablo Bay,SPB
+NZ004.Apr.2022,Thalassiosira,2429291.479,,4/28/2022,NZ004,Apr,2022,San Pablo Bay,SPB
+NZ325.Apr.2022,Chlorogonium,26867.0958,,4/28/2022,NZ325,Apr,2022,San Pablo Bay,SPB
+NZ325.Apr.2022,Cyclotella,84533.2248,,4/28/2022,NZ325,Apr,2022,San Pablo Bay,SPB
+NZ325.Apr.2022,Eucapsis,14567.6664,,4/28/2022,NZ325,Apr,2022,San Pablo Bay,SPB
+NZ325.Apr.2022,Euglena,51820.6422,,4/28/2022,NZ325,Apr,2022,San Pablo Bay,SPB
+NZ325.Apr.2022,Navicula,57141.936,,4/28/2022,NZ325,Apr,2022,San Pablo Bay,SPB
+NZ325.Apr.2022,Skeletonema,166125.09,,4/28/2022,NZ325,Apr,2022,San Pablo Bay,SPB
+NZ325.Apr.2022,Thalassiosira,695352.3024,,4/28/2022,NZ325,Apr,2022,San Pablo Bay,SPB
+C10A.May.2022,Achnanthidium,933.2868,,5/19/2022,C10A,May,2022,Southern Interior Delta,SID
+C10A.May.2022,Amphora,31673.9398,,5/19/2022,C10A,May,2022,Southern Interior Delta,SID
+C10A.May.2022,Cocconeis,145606.1556,,5/19/2022,C10A,May,2022,Southern Interior Delta,SID
+C10A.May.2022,Cyclotella,20883.6496,,5/19/2022,C10A,May,2022,Southern Interior Delta,SID
+C10A.May.2022,Eucapsis,4254.408,,5/19/2022,C10A,May,2022,Southern Interior Delta,SID
+C10A.May.2022,Melosira,238678.038,,5/19/2022,C10A,May,2022,Southern Interior Delta,SID
+C10A.May.2022,Monoraphidium,2463.2128,,5/19/2022,C10A,May,2022,Southern Interior Delta,SID
+C10A.May.2022,Navicula,77071.8588,,5/19/2022,C10A,May,2022,Southern Interior Delta,SID
+C10A.May.2022,Nitzschia,20852.3484,,5/19/2022,C10A,May,2022,Southern Interior Delta,SID
+C10A.May.2022,Ochromonas,2936.883,,5/19/2022,C10A,May,2022,Southern Interior Delta,SID
+C10A.May.2022,Rhoicosphenia,3059.5326,,5/19/2022,C10A,May,2022,Southern Interior Delta,SID
+C10A.May.2022,Scenedesmus,1352.9784,,5/19/2022,C10A,May,2022,Southern Interior Delta,SID
+C10A.May.2022,Synedra,54153.9506,,5/19/2022,C10A,May,2022,Southern Interior Delta,SID
+C3A.May.2022,Achnanthidium,3624.5496,,5/19/2022,C3A,May,2022,Northern Interior Delta,NID
+C3A.May.2022,Chlamydomonas,2770.4712,,5/19/2022,C3A,May,2022,Northern Interior Delta,NID
+C3A.May.2022,Chlorella,6180.258,,5/19/2022,C3A,May,2022,Northern Interior Delta,NID
+C3A.May.2022,Chroococcus,3570.4704,,5/19/2022,C3A,May,2022,Northern Interior Delta,NID
+C3A.May.2022,Cocconeis,20944.1904,,5/19/2022,C3A,May,2022,Northern Interior Delta,NID
+C3A.May.2022,Cyclotella,23824.374,,5/19/2022,C3A,May,2022,Northern Interior Delta,NID
+C3A.May.2022,Drepanochloris,142.3464,,5/19/2022,C3A,May,2022,Northern Interior Delta,NID
+C3A.May.2022,Eucapsis,3703.4928,,5/19/2022,C3A,May,2022,Northern Interior Delta,NID
+C3A.May.2022,Monoraphidium,2214.45,,5/19/2022,C3A,May,2022,Northern Interior Delta,NID
+C3A.May.2022,Navicula,46783.17,,5/19/2022,C3A,May,2022,Northern Interior Delta,NID
+C3A.May.2022,Nitzschia,50897.8512,,5/19/2022,C3A,May,2022,Northern Interior Delta,NID
+C3A.May.2022,Skeletonema,5370.9348,,5/19/2022,C3A,May,2022,Northern Interior Delta,NID
+C3A.May.2022,Teleaulax,19219.5612,,5/19/2022,C3A,May,2022,Northern Interior Delta,NID
+C9.May.2022,Cyclotella,58090.4065,,5/19/2022,C9,May,2022,Southern Interior Delta,SID
+C9.May.2022,Eucapsis,10434.5892,,5/19/2022,C9,May,2022,Southern Interior Delta,SID
+C9.May.2022,Monoraphidium,1855.9142,,5/19/2022,C9,May,2022,Southern Interior Delta,SID
+C9.May.2022,Nitzschia,21083.8278,,5/19/2022,C9,May,2022,Southern Interior Delta,SID
+C9.May.2022,Plagioselmis,34854.2439,,5/19/2022,C9,May,2022,Southern Interior Delta,SID
+C9.May.2022,Planktolyngbya,917.0056,,5/19/2022,C9,May,2022,Southern Interior Delta,SID
+D12.May.2022,Cyclotella,16964.9664,,5/20/2022,D12,May,2022,Confluence,CON
+D12.May.2022,Eucapsis,8584.1568,,5/20/2022,D12,May,2022,Confluence,CON
+D12.May.2022,Monoraphidium,527.7344,,5/20/2022,D12,May,2022,Confluence,CON
+D12.May.2022,Navicula,17187.68,,5/20/2022,D12,May,2022,Confluence,CON
+D12.May.2022,Nitzschia,13750.144,,5/20/2022,D12,May,2022,Confluence,CON
+D12.May.2022,Plagioselmis,9804.24,,5/20/2022,D12,May,2022,Confluence,CON
+D16.May.2022,Cyclotella,36014.07,,5/20/2022,D16,May,2022,Central Delta,CED
+D16.May.2022,Entomoneis,61712.0685,,5/20/2022,D16,May,2022,Central Delta,CED
+D16.May.2022,Eucapsis,5537.772,,5/20/2022,D16,May,2022,Central Delta,CED
+D16.May.2022,Gomphonema,3702.2835,,5/20/2022,D16,May,2022,Central Delta,CED
+D16.May.2022,Monoraphidium,1081.427,,5/20/2022,D16,May,2022,Central Delta,CED
+D16.May.2022,Nitzschia,3253.557,,5/20/2022,D16,May,2022,Central Delta,CED
+D16.May.2022,Plagioselmis,26079.474,,5/20/2022,D16,May,2022,Central Delta,CED
+D19.May.2022,Aulacoseira,23239.3452,,5/20/2022,D19,May,2022,Central Delta,CED
+D19.May.2022,Chlorella,2904.7356,,5/20/2022,D19,May,2022,Central Delta,CED
+D19.May.2022,Cocconeis,45002.226,,5/20/2022,D19,May,2022,Central Delta,CED
+D19.May.2022,Cryptomonas,27217.4748,,5/20/2022,D19,May,2022,Central Delta,CED
+D19.May.2022,Cyclotella,5809.8363,,5/20/2022,D19,May,2022,Central Delta,CED
+D19.May.2022,Eucapsis,4784.2704,,5/20/2022,D19,May,2022,Central Delta,CED
+D19.May.2022,Gyrosigma,73124.0535,,5/20/2022,D19,May,2022,Central Delta,CED
+D19.May.2022,Monoraphidium,1407.4605,,5/20/2022,D19,May,2022,Central Delta,CED
+D19.May.2022,Navicula,8318.0733,,5/20/2022,D19,May,2022,Central Delta,CED
+D19.May.2022,Nitzschia,29360.6118,,5/20/2022,D19,May,2022,Central Delta,CED
+D19.May.2022,Plagioselmis,160127.3835,,5/20/2022,D19,May,2022,Central Delta,CED
+D19.May.2022,Planktolyngbya,1776.9417,,5/20/2022,D19,May,2022,Central Delta,CED
+D19.May.2022,Scenedesmus,773.2818,,5/20/2022,D19,May,2022,Central Delta,CED
+D28A.May.2022,Cocconeis,144104.376,,5/20/2022,D28A,May,2022,Central Delta,CED
+D28A.May.2022,Cryptomonas,137793.636,,5/20/2022,D28A,May,2022,Central Delta,CED
+D28A.May.2022,Eucapsis,5563.458,,5/20/2022,D28A,May,2022,Central Delta,CED
+D28A.May.2022,Gomphonema,1743.12,,5/20/2022,D28A,May,2022,Central Delta,CED
+D28A.May.2022,Monoraphidium,282.8535,,5/20/2022,D28A,May,2022,Central Delta,CED
+D28A.May.2022,Navicula,3297.402,,5/20/2022,D28A,May,2022,Central Delta,CED
+D28A.May.2022,Nitzschia,39943.272,,5/20/2022,D28A,May,2022,Central Delta,CED
+D28A.May.2022,Plagioselmis,68780.61,,5/20/2022,D28A,May,2022,Central Delta,CED
+D28A.May.2022,Planktolyngbya,506.796,,5/20/2022,D28A,May,2022,Central Delta,CED
+D28A.May.2022,Scenedesmus,1128.993,,5/20/2022,D28A,May,2022,Central Delta,CED
+EZ2-SJR.May.2022,Eucapsis,11678.904,,5/20/2022,EZ2-SJR,May,2022,Entrapment Zone,EZ
+EZ2-SJR.May.2022,Monoraphidium,1128.993,,5/20/2022,EZ2-SJR,May,2022,Entrapment Zone,EZ
+EZ2-SJR.May.2022,Nitzschia,6793.326,,5/20/2022,EZ2-SJR,May,2022,Entrapment Zone,EZ
+EZ2-SJR.May.2022,Thalassiosira,69624.732,,5/20/2022,EZ2-SJR,May,2022,Entrapment Zone,EZ
+EZ6-SJR.May.2022,Cyclotella,7929.7104,,5/20/2022,EZ6-SJR,May,2022,Entrapment Zone,EZ
+EZ6-SJR.May.2022,Eucapsis,16806.9384,,5/20/2022,EZ6-SJR,May,2022,Entrapment Zone,EZ
+D26.May.2022,Aulacoseira,1258119.389,,5/23/2022,D26,May,2022,Central Delta,CED
+D26.May.2022,Chlamydomonas,7552.5432,,5/23/2022,D26,May,2022,Central Delta,CED
+D26.May.2022,Chlorella,4440.1472,,5/23/2022,D26,May,2022,Central Delta,CED
+D26.May.2022,Cyclotella,80870.1672,,5/23/2022,D26,May,2022,Central Delta,CED
+D26.May.2022,Eucapsis,10238.7096,,5/23/2022,D26,May,2022,Central Delta,CED
+D26.May.2022,Monoraphidium,1571.53,,5/23/2022,D26,May,2022,Central Delta,CED
+D26.May.2022,Plagioselmis,23733.936,,5/23/2022,D26,May,2022,Central Delta,CED
+D26.May.2022,Rhodomonas,42284.1228,,5/23/2022,D26,May,2022,Central Delta,CED
+D26.May.2022,Teleaulax,34697.0826,,5/23/2022,D26,May,2022,Central Delta,CED
+MD10A.May.2022,Achnanthidium,3522.1437,,5/23/2022,MD10A,May,2022,Southern Interior Delta,SID
+MD10A.May.2022,Aulacoseira,344738.4868,,5/23/2022,MD10A,May,2022,Southern Interior Delta,SID
+MD10A.May.2022,Chlorella,3174.1073,,5/23/2022,MD10A,May,2022,Southern Interior Delta,SID
+MD10A.May.2022,Cocconeis,40700.7105,,5/23/2022,MD10A,May,2022,Southern Interior Delta,SID
+MD10A.May.2022,Cryptomonas,15606.0595,,5/23/2022,MD10A,May,2022,Southern Interior Delta,SID
+MD10A.May.2022,Cyclotella,23896.8385,,5/23/2022,MD10A,May,2022,Southern Interior Delta,SID
+MD10A.May.2022,Eucapsis,4567.4028,,5/23/2022,MD10A,May,2022,Southern Interior Delta,SID
+MD10A.May.2022,Fragilaria,18796.2654,,5/23/2022,MD10A,May,2022,Southern Interior Delta,SID
+MD10A.May.2022,Lagerheimia,312.3895,,5/23/2022,MD10A,May,2022,Southern Interior Delta,SID
+MD10A.May.2022,Monoraphidium,1161.399,,5/23/2022,MD10A,May,2022,Southern Interior Delta,SID
+MD10A.May.2022,Nitzschia,2722.9632,,5/23/2022,MD10A,May,2022,Southern Interior Delta,SID
+MD10A.May.2022,Plagioselmis,144893.5328,,5/23/2022,MD10A,May,2022,Southern Interior Delta,SID
+MD10A.May.2022,Teleaulax,51500.188,,5/23/2022,MD10A,May,2022,Southern Interior Delta,SID
+P8.May.2022,Chlorella,5798.5473,,5/23/2022,P8,May,2022,Southern Interior Delta,SID
+P8.May.2022,Cyclotella,72902.7306,,5/23/2022,P8,May,2022,Southern Interior Delta,SID
+P8.May.2022,Desmodesmus,2255.6028,,5/23/2022,P8,May,2022,Southern Interior Delta,SID
+P8.May.2022,Eucapsis,6053.9076,,5/23/2022,P8,May,2022,Southern Interior Delta,SID
+P8.May.2022,Plagioselmis,314734.2048,,5/23/2022,P8,May,2022,Southern Interior Delta,SID
+P8.May.2022,Teleaulax,13020.0216,,5/23/2022,P8,May,2022,Southern Interior Delta,SID
+D22.May.2022,Achnanthidium,5408.9362,,5/24/2022,D22,May,2022,Confluence,CON
+D22.May.2022,Chlorella,1905.9924,,5/24/2022,D22,May,2022,Confluence,CON
+D22.May.2022,Cocconeis,45901.2129,,5/24/2022,D22,May,2022,Confluence,CON
+D22.May.2022,Cryptomonas,68620.7573,,5/24/2022,D22,May,2022,Confluence,CON
+D22.May.2022,Cyclotella,77806.462,,5/24/2022,D22,May,2022,Confluence,CON
+D22.May.2022,Entomoneis,93398.6585,,5/24/2022,D22,May,2022,Confluence,CON
+D22.May.2022,Eucapsis,9909.4356,,5/24/2022,D22,May,2022,Confluence,CON
+D22.May.2022,Gomphonema,5423.3102,,5/24/2022,D22,May,2022,Confluence,CON
+D22.May.2022,Nitzschia,19637.7588,,5/24/2022,D22,May,2022,Confluence,CON
+D22.May.2022,Plagioselmis,55541.136,,5/24/2022,D22,May,2022,Confluence,CON
+D22.May.2022,Planktolyngbya,2595.2257,,5/24/2022,D22,May,2022,Confluence,CON
+D22.May.2022,Surirella,92103.5611,,5/24/2022,D22,May,2022,Confluence,CON
+D22.May.2022,Thalassiosira,1045302.435,,5/24/2022,D22,May,2022,Confluence,CON
+D4.May.2022,Cyclotella,132057.2994,,5/24/2022,D4,May,2022,Confluence,CON
+D4.May.2022,Eucapsis,5396.598,,5/24/2022,D4,May,2022,Confluence,CON
+D4.May.2022,Plagioselmis,510789.2328,,5/24/2022,D4,May,2022,Confluence,CON
+EZ2.May.2022,Cyclotella,12841.791,,5/24/2022,EZ2,May,2022,Entrapment Zone,EZ
+EZ2.May.2022,Eucapsis,11562.696,,5/24/2022,EZ2,May,2022,Entrapment Zone,EZ
+EZ2.May.2022,Monoraphidium,2257.179,,5/24/2022,EZ2,May,2022,Entrapment Zone,EZ
+EZ2.May.2022,Navicula,23950.953,,5/24/2022,EZ2,May,2022,Entrapment Zone,EZ
+EZ2.May.2022,Planktolyngbya,1013.592,,5/24/2022,EZ2,May,2022,Entrapment Zone,EZ
+EZ6.May.2022,Chlamydomonas,13316.4724,,5/24/2022,EZ6,May,2022,Entrapment Zone,EZ
+EZ6.May.2022,Chlorella,5077.848,,5/24/2022,EZ6,May,2022,Entrapment Zone,EZ
+EZ6.May.2022,Cyclotella,30595.874,,5/24/2022,EZ6,May,2022,Entrapment Zone,EZ
+EZ6.May.2022,Entomoneis,215326.5124,,5/24/2022,EZ6,May,2022,Entrapment Zone,EZ
+EZ6.May.2022,Eucapsis,13412.142,,5/24/2022,EZ6,May,2022,Entrapment Zone,EZ
+EZ6.May.2022,Monoraphidium,406.5958,,5/24/2022,EZ6,May,2022,Entrapment Zone,EZ
+EZ6.May.2022,Plagioselmis,89891.7081,,5/24/2022,EZ6,May,2022,Entrapment Zone,EZ
+NZ068.May.2022,Cocconeis,33998.8524,,5/24/2022,NZ068,May,2022,Northern Interior Delta,NID
+NZ068.May.2022,Cyclotella,10165.2244,,5/24/2022,NZ068,May,2022,Northern Interior Delta,NID
+NZ068.May.2022,Eucapsis,9129.7296,,5/24/2022,NZ068,May,2022,Northern Interior Delta,NID
+NZ068.May.2022,Monoraphidium,3478.9048,,5/24/2022,NZ068,May,2022,Northern Interior Delta,NID
+NZ068.May.2022,Nitzschia,12333.9504,,5/24/2022,NZ068,May,2022,Northern Interior Delta,NID
+NZ068.May.2022,Plagioselmis,20330.4488,,5/24/2022,NZ068,May,2022,Northern Interior Delta,NID
+NZ068.May.2022,Planktolyngbya,8825.6608,,5/24/2022,NZ068,May,2022,Northern Interior Delta,NID
+NZ068.May.2022,Pseudostaurosira,2610.1368,,5/24/2022,NZ068,May,2022,Northern Interior Delta,NID
+NZ068.May.2022,Surirella,109802.0544,,5/24/2022,NZ068,May,2022,Northern Interior Delta,NID
+NZ068.May.2022,Thalassiosira,5731367.898,,5/24/2022,NZ068,May,2022,Northern Interior Delta,NID
+D10.May.2022,Cyclotella,35930.9253,,5/25/2022,D10,May,2022,Confluence,CON
+D10.May.2022,Eucapsis,16558.56,,5/25/2022,D10,May,2022,Confluence,CON
+D10.May.2022,Nitzschia,2698.8153,,5/25/2022,D10,May,2022,Confluence,CON
+D10.May.2022,Plagioselmis,18298.3587,,5/25/2022,D10,May,2022,Confluence,CON
+D10.May.2022,Planktolyngbya,1805.343,,5/25/2022,D10,May,2022,Confluence,CON
+D6.May.2022,Cryptomonas,35719.6742,,5/25/2022,D6,May,2022,San Pablo Bay,SPB
+D6.May.2022,Cyclotella,248034.8724,,5/25/2022,D6,May,2022,San Pablo Bay,SPB
+D6.May.2022,Eucapsis,13730.5224,,5/25/2022,D6,May,2022,San Pablo Bay,SPB
+D6.May.2022,Nitzschia,11479.4757,,5/25/2022,D6,May,2022,San Pablo Bay,SPB
+D8.May.2022,Chlorella,2344.16,,5/25/2022,D8,May,2022,Grizzly and Suisun Bay,GSB
+D8.May.2022,Eucapsis,4421.52,,5/25/2022,D8,May,2022,Grizzly and Suisun Bay,GSB
+D8.May.2022,Plagioselmis,164505.2,,5/25/2022,D8,May,2022,Grizzly and Suisun Bay,GSB
+D41.May.2022,Chlamydomonas,11152.9692,,5/26/2022,D41,May,2022,San Pablo Bay,SPB
+D41.May.2022,Chlorella,1046.4636,,5/26/2022,D41,May,2022,San Pablo Bay,SPB
+D41.May.2022,Cyclotella,166774.318,,5/26/2022,D41,May,2022,San Pablo Bay,SPB
+D41.May.2022,Eucapsis,7175.7504,,5/26/2022,D41,May,2022,San Pablo Bay,SPB
+D41.May.2022,Gymnodinium,374402.8816,,5/26/2022,D41,May,2022,San Pablo Bay,SPB
+D41.May.2022,Lagerheimia,883.2788,,5/26/2022,D41,May,2022,San Pablo Bay,SPB
+D41.May.2022,Phalacroma,209315.1716,,5/26/2022,D41,May,2022,San Pablo Bay,SPB
+D41.May.2022,Plagioselmis,141213.9928,,5/26/2022,D41,May,2022,San Pablo Bay,SPB
+D41.May.2022,Rhodomonas,71434.42,,5/26/2022,D41,May,2022,San Pablo Bay,SPB
+D41.May.2022,Skeletonema,95085.264,,5/26/2022,D41,May,2022,San Pablo Bay,SPB
+D41A.May.2022,Chlorella,14107.5116,,5/26/2022,D41A,May,2022,San Pablo Bay,SPB
+D41A.May.2022,Cyclotella,410933.874,,5/26/2022,D41A,May,2022,San Pablo Bay,SPB
+D41A.May.2022,Entomoneis,1524713.482,,5/26/2022,D41A,May,2022,San Pablo Bay,SPB
+D41A.May.2022,Eucapsis,23121.2592,,5/26/2022,D41A,May,2022,San Pablo Bay,SPB
+D41A.May.2022,Plagioselmis,57476.0568,,5/26/2022,D41A,May,2022,San Pablo Bay,SPB
+D41A.May.2022,Skeletonema,502372.9004,,5/26/2022,D41A,May,2022,San Pablo Bay,SPB
+NZ002.May.2022,Cyclotella,183791.408,,5/26/2022,NZ002,May,2022,San Pablo Bay,SPB
+NZ002.May.2022,Eucapsis,9569.7072,,5/26/2022,NZ002,May,2022,San Pablo Bay,SPB
+NZ002.May.2022,Gyrosigma,91086.0532,,5/26/2022,NZ002,May,2022,San Pablo Bay,SPB
+NZ002.May.2022,Skeletonema,163621.16,,5/26/2022,NZ002,May,2022,San Pablo Bay,SPB
+NZ004.May.2022,Cyclotella,22022.1018,,5/26/2022,NZ004,May,2022,San Pablo Bay,SPB
+NZ004.May.2022,Eucapsis,5257.44,,5/26/2022,NZ004,May,2022,San Pablo Bay,SPB
+NZ004.May.2022,Fragilaria,40891.5651,,5/26/2022,NZ004,May,2022,San Pablo Bay,SPB
+NZ004.May.2022,Gyrosigma,17337.1386,,5/26/2022,NZ004,May,2022,San Pablo Bay,SPB
+NZ004.May.2022,Peridinium,233648.6658,,5/26/2022,NZ004,May,2022,San Pablo Bay,SPB
+NZ004.May.2022,Plagioselmis,5809.8363,,5/26/2022,NZ004,May,2022,San Pablo Bay,SPB
+NZ004.May.2022,Planktolyngbya,802.4898,,5/26/2022,NZ004,May,2022,San Pablo Bay,SPB
+NZ004.May.2022,Skeletonema,33272.2932,,5/26/2022,NZ004,May,2022,San Pablo Bay,SPB
+NZ004.May.2022,Thalassiosira,846126.1869,,5/26/2022,NZ004,May,2022,San Pablo Bay,SPB
+NZ325.May.2022,Cyclotella,236716.326,,5/26/2022,NZ325,May,2022,San Pablo Bay,SPB
+NZ325.May.2022,Diatoma,37774.2222,,5/26/2022,NZ325,May,2022,San Pablo Bay,SPB
+NZ325.May.2022,Eucapsis,14182.5816,,5/26/2022,NZ325,May,2022,San Pablo Bay,SPB
+D7.May.2022,Chlorella,5533.361,,5/27/2022,D7,May,2022,Grizzly and Suisun Bay,GSB
+D7.May.2022,Cocconeis,36909.8178,,5/27/2022,D7,May,2022,Grizzly and Suisun Bay,GSB
+D7.May.2022,Coscinodiscus,7527411.133,,5/27/2022,D7,May,2022,Grizzly and Suisun Bay,GSB
+D7.May.2022,Cyclotella,272716.2291,,5/27/2022,D7,May,2022,Grizzly and Suisun Bay,GSB
+D7.May.2022,Eucapsis,19481.76,,5/27/2022,D7,May,2022,Grizzly and Suisun Bay,GSB
+D7.May.2022,Tryblionella,345388.6055,,5/27/2022,D7,May,2022,Grizzly and Suisun Bay,GSB
+NZ032.May.2022,Cocconeis,21237.9294,,5/27/2022,NZ032,May,2022,Grizzly and Suisun Bay,GSB
+NZ032.May.2022,Cyclotella,79007.8572,,5/27/2022,NZ032,May,2022,Grizzly and Suisun Bay,GSB
+NZ032.May.2022,Eucapsis,18306.8856,,5/27/2022,NZ032,May,2022,Grizzly and Suisun Bay,GSB
+NZ032.May.2022,Monoraphidium,3573.7269,,5/27/2022,NZ032,May,2022,Grizzly and Suisun Bay,GSB
+NZ032.May.2022,Nitzschia,176144.9997,,5/27/2022,NZ032,May,2022,Grizzly and Suisun Bay,GSB
+NZS42.May.2022,Cyclotella,295156.128,,5/27/2022,NZS42,May,2022,Grizzly and Suisun Bay,GSB
+NZS42.May.2022,Entomoneis,381248.1738,,5/27/2022,NZS42,May,2022,Grizzly and Suisun Bay,GSB
+NZS42.May.2022,Eucapsis,34250.8932,,5/27/2022,NZS42,May,2022,Grizzly and Suisun Bay,GSB
+NZS42.May.2022,Navicula,162510.1752,,5/27/2022,NZS42,May,2022,Grizzly and Suisun Bay,GSB
+NZS42.May.2022,Nitzschia,20618.8053,,5/27/2022,NZS42,May,2022,Grizzly and Suisun Bay,GSB
+NZS42.May.2022,Staurosira,20935.9432,,5/27/2022,NZS42,May,2022,Grizzly and Suisun Bay,GSB
+D12.Jun.2022,Cocconeis,23044.7877,,6/11/2022,D12,Jun,2022,Confluence,CON
+D12.Jun.2022,Cryptomonas,27526.3461,,6/11/2022,D12,Jun,2022,Confluence,CON
+D12.Jun.2022,Cyclotella,64165.7145,,6/11/2022,D12,Jun,2022,Confluence,CON
+D12.Jun.2022,Eucapsis,5463.1314,,6/11/2022,D12,Jun,2022,Confluence,CON
+D12.Jun.2022,Monoraphidium,434.9313,,6/11/2022,D12,Jun,2022,Confluence,CON
+D12.Jun.2022,Navicula,8435.778,,6/11/2022,D12,Jun,2022,Confluence,CON
+D12.Jun.2022,Plagioselmis,338371.623,,6/11/2022,D12,Jun,2022,Confluence,CON
+D12.Jun.2022,Planktolyngbya,1869.9171,,6/11/2022,D12,Jun,2022,Confluence,CON
+C10A.Jun.2022,Achnanthidium,2636.8836,,6/20/2022,C10A,Jun,2022,Southern Interior Delta,SID
+C10A.Jun.2022,Chlorella,2477.9664,,6/20/2022,C10A,Jun,2022,Southern Interior Delta,SID
+C10A.Jun.2022,Cocconeis,29373.0372,,6/20/2022,C10A,Jun,2022,Southern Interior Delta,SID
+C10A.Jun.2022,Cyclotella,33185.7812,,6/20/2022,C10A,Jun,2022,Southern Interior Delta,SID
+C10A.Jun.2022,Desmodesmus,6602.2008,,6/20/2022,C10A,Jun,2022,Southern Interior Delta,SID
+C10A.Jun.2022,Diploneis,32103.812,,6/20/2022,C10A,Jun,2022,Southern Interior Delta,SID
+C10A.Jun.2022,Dolichospermum,12160.4964,,6/20/2022,C10A,Jun,2022,Southern Interior Delta,SID
+C10A.Jun.2022,Encyonema,7980.752,,6/20/2022,C10A,Jun,2022,Southern Interior Delta,SID
+C10A.Jun.2022,Eucapsis,3893.9472,,6/20/2022,C10A,Jun,2022,Southern Interior Delta,SID
+C10A.Jun.2022,Kirchneriella,969.9976,,6/20/2022,C10A,Jun,2022,Southern Interior Delta,SID
+C10A.Jun.2022,Melosira,128536.7356,,6/20/2022,C10A,Jun,2022,Southern Interior Delta,SID
+C10A.Jun.2022,Monoraphidium,4830.956,,6/20/2022,C10A,Jun,2022,Southern Interior Delta,SID
+C10A.Jun.2022,Navicula,69371.64,,6/20/2022,C10A,Jun,2022,Southern Interior Delta,SID
+C10A.Jun.2022,Nitzschia,18784.584,,6/20/2022,C10A,Jun,2022,Southern Interior Delta,SID
+C10A.Jun.2022,Plagioselmis,25556.804,,6/20/2022,C10A,Jun,2022,Southern Interior Delta,SID
+C10A.Jun.2022,Sellaphora,26165.828,,6/20/2022,C10A,Jun,2022,Southern Interior Delta,SID
+C10A.Jun.2022,Skeletonema,63321.3672,,6/20/2022,C10A,Jun,2022,Southern Interior Delta,SID
+C10A.Jun.2022,Tetraedron,2664.48,,6/20/2022,C10A,Jun,2022,Southern Interior Delta,SID
+C3A.Jun.2022,Ankistrodesmus,6276.7,,6/20/2022,C3A,Jun,2022,Northern Interior Delta,NID
+C3A.Jun.2022,Eucapsis,8217.9,,6/20/2022,C3A,Jun,2022,Northern Interior Delta,NID
+C3A.Jun.2022,Gomphonema,55754.3,,6/20/2022,C3A,Jun,2022,Northern Interior Delta,NID
+C3A.Jun.2022,Plagioselmis,16925.7,,6/20/2022,C3A,Jun,2022,Northern Interior Delta,NID
+C3A.Jun.2022,Ulnaria,540346.475,,6/20/2022,C3A,Jun,2022,Northern Interior Delta,NID
+C9.Jun.2022,Aphanocapsa,1171.971,,6/20/2022,C9,Jun,2022,Southern Interior Delta,SID
+C9.Jun.2022,Chlamydomonas,6931.7886,,6/20/2022,C9,Jun,2022,Southern Interior Delta,SID
+C9.Jun.2022,Cocconeis,8542.9749,,6/20/2022,C9,Jun,2022,Southern Interior Delta,SID
+C9.Jun.2022,Cyclotella,58065.504,,6/20/2022,C9,Jun,2022,Southern Interior Delta,SID
+C9.Jun.2022,Eucapsis,2234.412,,6/20/2022,C9,Jun,2022,Southern Interior Delta,SID
+C9.Jun.2022,Lagerheimia,197.8842,,6/20/2022,C9,Jun,2022,Southern Interior Delta,SID
+C9.Jun.2022,Microcystis,190858.2156,,6/20/2022,C9,Jun,2022,Southern Interior Delta,SID
+C9.Jun.2022,Monoraphidium,2150.0739,,6/20/2022,C9,Jun,2022,Southern Interior Delta,SID
+C9.Jun.2022,Navicula,10219.8792,,6/20/2022,C9,Jun,2022,Southern Interior Delta,SID
+C9.Jun.2022,Plagioselmis,51444.0504,,6/20/2022,C9,Jun,2022,Southern Interior Delta,SID
+C9.Jun.2022,Planktolyngbya,542.1735,,6/20/2022,C9,Jun,2022,Southern Interior Delta,SID
+C9.Jun.2022,Teleaulax,22577.4189,,6/20/2022,C9,Jun,2022,Southern Interior Delta,SID
+D16.Jun.2022,Chlamydomonas,11268.8651,,6/21/2022,D16,Jun,2022,Central Delta,CED
+D16.Jun.2022,Chlorella,883.6701,,6/21/2022,D16,Jun,2022,Central Delta,CED
+D16.Jun.2022,Chrysochromulina,778.2468,,6/21/2022,D16,Jun,2022,Central Delta,CED
+D16.Jun.2022,Cryptomonas,29932.789,,6/21/2022,D16,Jun,2022,Central Delta,CED
+D16.Jun.2022,Cyclotella,91860.5496,,6/21/2022,D16,Jun,2022,Central Delta,CED
+D16.Jun.2022,Eucapsis,3342.69,,6/21/2022,D16,Jun,2022,Central Delta,CED
+D16.Jun.2022,Microcystis,1363.0747,,6/21/2022,D16,Jun,2022,Central Delta,CED
+D16.Jun.2022,Monoraphidium,970.2372,,6/21/2022,D16,Jun,2022,Central Delta,CED
+D16.Jun.2022,Nitzschia,14913.54,,6/21/2022,D16,Jun,2022,Central Delta,CED
+D16.Jun.2022,Plagioselmis,249478.3826,,6/21/2022,D16,Jun,2022,Central Delta,CED
+D16.Jun.2022,Teleaulax,25396.1587,,6/21/2022,D16,Jun,2022,Central Delta,CED
+D19.Jun.2022,Cocconeis,12154.779,,6/21/2022,D19,Jun,2022,Central Delta,CED
+D19.Jun.2022,Cyclotella,32101.9075,,6/21/2022,D19,Jun,2022,Central Delta,CED
+D19.Jun.2022,Drepanochloris,614.0876,,6/21/2022,D19,Jun,2022,Central Delta,CED
+D19.Jun.2022,Eucapsis,1899.648,,6/21/2022,D19,Jun,2022,Central Delta,CED
+D19.Jun.2022,Lagerheimia,480.8484,,6/21/2022,D19,Jun,2022,Central Delta,CED
+D19.Jun.2022,Monoraphidium,1586.6678,,6/21/2022,D19,Jun,2022,Central Delta,CED
+D19.Jun.2022,Nitzschia,3688.1534,,6/21/2022,D19,Jun,2022,Central Delta,CED
+D19.Jun.2022,Ochromonas,12406.0866,,6/21/2022,D19,Jun,2022,Central Delta,CED
+D19.Jun.2022,Plagioselmis,116262.745,,6/21/2022,D19,Jun,2022,Central Delta,CED
+D19.Jun.2022,Teleaulax,53951.6522,,6/21/2022,D19,Jun,2022,Central Delta,CED
+D28A.Jun.2022,Chlorella,1664.481,,6/21/2022,D28A,Jun,2022,Central Delta,CED
+D28A.Jun.2022,Cocconeis,19676.6739,,6/21/2022,D28A,Jun,2022,Central Delta,CED
+D28A.Jun.2022,Cryptomonas,48617.478,,6/21/2022,D28A,Jun,2022,Central Delta,CED
+D28A.Jun.2022,Cyclotella,80866.6014,,6/21/2022,D28A,Jun,2022,Central Delta,CED
+D28A.Jun.2022,Drepanochloris,1511.8818,,6/21/2022,D28A,Jun,2022,Central Delta,CED
+D28A.Jun.2022,Eucapsis,2765.5992,,6/21/2022,D28A,Jun,2022,Central Delta,CED
+D28A.Jun.2022,Monoraphidium,739.7403,,6/21/2022,D28A,Jun,2022,Central Delta,CED
+D28A.Jun.2022,Nitzschia,6993.9558,,6/21/2022,D28A,Jun,2022,Central Delta,CED
+D28A.Jun.2022,Plagioselmis,471666.3588,,6/21/2022,D28A,Jun,2022,Central Delta,CED
+D28A.Jun.2022,Teleaulax,59207.967,,6/21/2022,D28A,Jun,2022,Central Delta,CED
+EZ2-SJR.Jun.2022,Chlorella,1434.9972,,6/21/2022,EZ2-SJR,Jun,2022,Entrapment Zone,EZ
+EZ2-SJR.Jun.2022,Cocconeis,10239.7764,,6/21/2022,EZ2-SJR,Jun,2022,Entrapment Zone,EZ
+EZ2-SJR.Jun.2022,Cryptomonas,31855.6392,,6/21/2022,EZ2-SJR,Jun,2022,Entrapment Zone,EZ
+EZ2-SJR.Jun.2022,Cyclotella,11194.2768,,6/21/2022,EZ2-SJR,Jun,2022,Entrapment Zone,EZ
+EZ2-SJR.Jun.2022,Eucapsis,7636.0032,,6/21/2022,EZ2-SJR,Jun,2022,Entrapment Zone,EZ
+EZ2-SJR.Jun.2022,Monoraphidium,1513.9978,,6/21/2022,EZ2-SJR,Jun,2022,Entrapment Zone,EZ
+EZ2-SJR.Jun.2022,Nitzschia,17934.2184,,6/21/2022,EZ2-SJR,Jun,2022,Entrapment Zone,EZ
+EZ2-SJR.Jun.2022,Plagioselmis,94927.3374,,6/21/2022,EZ2-SJR,Jun,2022,Entrapment Zone,EZ
+EZ2-SJR.Jun.2022,Skeletonema,1702.8417,,6/21/2022,EZ2-SJR,Jun,2022,Entrapment Zone,EZ
+EZ6-SJR.Jun.2022,Cryptomonas,22860.1442,,6/21/2022,EZ6-SJR,Jun,2022,Entrapment Zone,EZ
+EZ6-SJR.Jun.2022,Cyclotella,9759.4429,,6/21/2022,EZ6-SJR,Jun,2022,Entrapment Zone,EZ
+EZ6-SJR.Jun.2022,Eucapsis,8456.1804,,6/21/2022,EZ6-SJR,Jun,2022,Entrapment Zone,EZ
+EZ6-SJR.Jun.2022,Plagioselmis,251051.9018,,6/21/2022,EZ6-SJR,Jun,2022,Entrapment Zone,EZ
+EZ6-SJR.Jun.2022,Scenedesmus,1716.0134,,6/21/2022,EZ6-SJR,Jun,2022,Entrapment Zone,EZ
+EZ6-SJR.Jun.2022,Skeletonema,13452.1222,,6/21/2022,EZ6-SJR,Jun,2022,Entrapment Zone,EZ
+D26.Jun.2022,Cyclotella,25591.995,,6/22/2022,D26,Jun,2022,Central Delta,CED
+D26.Jun.2022,Drepanochloris,479.864,,6/22/2022,D26,Jun,2022,Central Delta,CED
+D26.Jun.2022,Eucapsis,2764.179,,6/22/2022,D26,Jun,2022,Central Delta,CED
+D26.Jun.2022,Gomphonema,254390.3835,,6/22/2022,D26,Jun,2022,Central Delta,CED
+D26.Jun.2022,Monoraphidium,196.636,,6/22/2022,D26,Jun,2022,Central Delta,CED
+D26.Jun.2022,Nitzschia,9063.296,,6/22/2022,D26,Jun,2022,Central Delta,CED
+D26.Jun.2022,Plagioselmis,139770.9885,,6/22/2022,D26,Jun,2022,Central Delta,CED
+D26.Jun.2022,Staurosira,1295.723,,6/22/2022,D26,Jun,2022,Central Delta,CED
+D26.Jun.2022,Teleaulax,23881.352,,6/22/2022,D26,Jun,2022,Central Delta,CED
+MD10A.Jun.2022,Chlorella,5257.9776,,6/22/2022,MD10A,Jun,2022,Southern Interior Delta,SID
+MD10A.Jun.2022,Cyclotella,44413.5098,,6/22/2022,MD10A,Jun,2022,Southern Interior Delta,SID
+MD10A.Jun.2022,Eucapsis,3333.4416,,6/22/2022,MD10A,Jun,2022,Southern Interior Delta,SID
+MD10A.Jun.2022,Lagerheimia,905.0766,,6/22/2022,MD10A,Jun,2022,Southern Interior Delta,SID
+MD10A.Jun.2022,Microcystis,8662.2276,,6/22/2022,MD10A,Jun,2022,Southern Interior Delta,SID
+MD10A.Jun.2022,Monoraphidium,127.6972,,6/22/2022,MD10A,Jun,2022,Southern Interior Delta,SID
+MD10A.Jun.2022,Plagioselmis,1596779.046,,6/22/2022,MD10A,Jun,2022,Southern Interior Delta,SID
+MD10A.Jun.2022,Ulnaria,70970.291,,6/22/2022,MD10A,Jun,2022,Southern Interior Delta,SID
+P8.Jun.2022,Chroococcus,44396.7015,,6/22/2022,P8,Jun,2022,Southern Interior Delta,SID
+P8.Jun.2022,Cocconeis,19326.7354,,6/22/2022,P8,Jun,2022,Southern Interior Delta,SID
+P8.Jun.2022,Cryptomonas,72962.0805,,6/22/2022,P8,Jun,2022,Southern Interior Delta,SID
+P8.Jun.2022,Cyclotella,63881.3668,,6/22/2022,P8,Jun,2022,Southern Interior Delta,SID
+P8.Jun.2022,Desmodesmus,2512.5676,,6/22/2022,P8,Jun,2022,Southern Interior Delta,SID
+P8.Jun.2022,Eucapsis,7028.6472,,6/22/2022,P8,Jun,2022,Southern Interior Delta,SID
+P8.Jun.2022,Monoraphidium,4721.0307,,6/22/2022,P8,Jun,2022,Southern Interior Delta,SID
+P8.Jun.2022,Plagioselmis,137644.341,,6/22/2022,P8,Jun,2022,Southern Interior Delta,SID
+P8.Jun.2022,Teleaulax,3902.2485,,6/22/2022,P8,Jun,2022,Southern Interior Delta,SID
+P8.Jun.2022,Tetraedron,49067.6444,,6/22/2022,P8,Jun,2022,Southern Interior Delta,SID
+D22.Jun.2022,Chlamydomonas,26675.748,,6/23/2022,D22,Jun,2022,Confluence,CON
+D22.Jun.2022,Cyclotella,122414.028,,6/23/2022,D22,Jun,2022,Confluence,CON
+D22.Jun.2022,Eucapsis,5877.432,,6/23/2022,D22,Jun,2022,Confluence,CON
+D22.Jun.2022,Nitzschia,9480.922,,6/23/2022,D22,Jun,2022,Confluence,CON
+D22.Jun.2022,Ochromonas,18688.087,,6/23/2022,D22,Jun,2022,Confluence,CON
+D22.Jun.2022,Plagioselmis,176801.02,,6/23/2022,D22,Jun,2022,Confluence,CON
+D22.Jun.2022,Skeletonema,7625.508,,6/23/2022,D22,Jun,2022,Confluence,CON
+D22.Jun.2022,Teleaulax,15900.456,,6/23/2022,D22,Jun,2022,Confluence,CON
+D4.Jun.2022,Cocconeis,32209.9652,,6/23/2022,D4,Jun,2022,Confluence,CON
+D4.Jun.2022,Cryptomonas,31749.9932,,6/23/2022,D4,Jun,2022,Confluence,CON
+D4.Jun.2022,Cyclotella,180961.5028,,6/23/2022,D4,Jun,2022,Confluence,CON
+D4.Jun.2022,Entomoneis,542942.4308,,6/23/2022,D4,Jun,2022,Confluence,CON
+D4.Jun.2022,Eucapsis,12112.596,,6/23/2022,D4,Jun,2022,Confluence,CON
+D4.Jun.2022,Nitzschia,10203.7122,,6/23/2022,D4,Jun,2022,Confluence,CON
+D4.Jun.2022,Plagioselmis,27109.3868,,6/23/2022,D4,Jun,2022,Confluence,CON
+EZ2.Jun.2022,Achnanthidium,954.8775,,6/23/2022,EZ2,Jun,2022,Entrapment Zone,EZ
+EZ2.Jun.2022,Cocconeis,14598.7422,,6/23/2022,EZ2,Jun,2022,Entrapment Zone,EZ
+EZ2.Jun.2022,Cryptomonas,24178.7304,,6/23/2022,EZ2,Jun,2022,Entrapment Zone,EZ
+EZ2.Jun.2022,Cyclotella,38236.17,,6/23/2022,EZ2,Jun,2022,Entrapment Zone,EZ
+EZ2.Jun.2022,Eucapsis,5840.154,,6/23/2022,EZ2,Jun,2022,Entrapment Zone,EZ
+EZ2.Jun.2022,Nitzschia,1067.82,,6/23/2022,EZ2,Jun,2022,Entrapment Zone,EZ
+EZ2.Jun.2022,Plagioselmis,138561.966,,6/23/2022,EZ2,Jun,2022,Entrapment Zone,EZ
+EZ2.Jun.2022,Skeletonema,3027.6804,,6/23/2022,EZ2,Jun,2022,Entrapment Zone,EZ
+EZ6.Jun.2022,Cyclotella,34758.5844,,6/23/2022,EZ6,Jun,2022,Entrapment Zone,EZ
+EZ6.Jun.2022,Eucapsis,9633.9456,,6/23/2022,EZ6,Jun,2022,Entrapment Zone,EZ
+EZ6.Jun.2022,Monoraphidium,974.9631,,6/23/2022,EZ6,Jun,2022,Entrapment Zone,EZ
+EZ6.Jun.2022,Nitzschia,25777.6341,,6/23/2022,EZ6,Jun,2022,Entrapment Zone,EZ
+EZ6.Jun.2022,Plagioselmis,299819.6211,,6/23/2022,EZ6,Jun,2022,Entrapment Zone,EZ
+EZ6.Jun.2022,Rhodomonas,59379.3645,,6/23/2022,EZ6,Jun,2022,Entrapment Zone,EZ
+EZ6.Jun.2022,Skeletonema,8979.5565,,6/23/2022,EZ6,Jun,2022,Entrapment Zone,EZ
+NZ068.Jun.2022,Chlorella,1161.8412,,6/23/2022,NZ068,Jun,2022,Northern Interior Delta,NID
+NZ068.Jun.2022,Cocconeis,88294.674,,6/23/2022,NZ068,Jun,2022,Northern Interior Delta,NID
+NZ068.Jun.2022,Cryptomonas,280541.716,,6/23/2022,NZ068,Jun,2022,Northern Interior Delta,NID
+NZ068.Jun.2022,Cyclotella,19188.78,,6/23/2022,NZ068,Jun,2022,Northern Interior Delta,NID
+NZ068.Jun.2022,Entomoneis,649985.7507,,6/23/2022,NZ068,Jun,2022,Northern Interior Delta,NID
+NZ068.Jun.2022,Eucapsis,6119.3808,,6/23/2022,NZ068,Jun,2022,Northern Interior Delta,NID
+NZ068.Jun.2022,Melosira,107577.6455,,6/23/2022,NZ068,Jun,2022,Northern Interior Delta,NID
+NZ068.Jun.2022,Monoraphidium,1076.4117,,6/23/2022,NZ068,Jun,2022,Northern Interior Delta,NID
+NZ068.Jun.2022,Navicula,18180.2738,,6/23/2022,NZ068,Jun,2022,Northern Interior Delta,NID
+NZ068.Jun.2022,Plagioselmis,177367.4136,,6/23/2022,NZ068,Jun,2022,Northern Interior Delta,NID
+D10.Jun.2022,Cryptomonas,33851.4,,6/24/2022,D10,Jun,2022,Confluence,CON
+D10.Jun.2022,Cyclotella,26766.25,,6/24/2022,D10,Jun,2022,Confluence,CON
+D10.Jun.2022,Eucapsis,8176.5,,6/24/2022,D10,Jun,2022,Confluence,CON
+D10.Jun.2022,Gyrosigma,116443.25,,6/24/2022,D10,Jun,2022,Confluence,CON
+D10.Jun.2022,Plagioselmis,43591.9,,6/24/2022,D10,Jun,2022,Confluence,CON
+D6.Jun.2022,Cyclotella,22894.26,,6/24/2022,D6,Jun,2022,San Pablo Bay,SPB
+D6.Jun.2022,Eucapsis,15091.3944,,6/24/2022,D6,Jun,2022,San Pablo Bay,SPB
+D6.Jun.2022,Peridinium,103385.8784,,6/24/2022,D6,Jun,2022,San Pablo Bay,SPB
+D6.Jun.2022,Sellaphora,52952.6462,,6/24/2022,D6,Jun,2022,San Pablo Bay,SPB
+D8.Jun.2022,Achnanthidium,4030.965,,6/24/2022,D8,Jun,2022,Grizzly and Suisun Bay,GSB
+D8.Jun.2022,Chlamydomonas,2852.3415,,6/24/2022,D8,Jun,2022,Grizzly and Suisun Bay,GSB
+D8.Jun.2022,Coscinodiscus,82826.8485,,6/24/2022,D8,Jun,2022,Grizzly and Suisun Bay,GSB
+D8.Jun.2022,Cyclotella,34291.044,,6/24/2022,D8,Jun,2022,Grizzly and Suisun Bay,GSB
+D8.Jun.2022,Eucapsis,5519.88,,6/24/2022,D8,Jun,2022,Grizzly and Suisun Bay,GSB
+D8.Jun.2022,Glenodinium,122747.121,,6/24/2022,D8,Jun,2022,Grizzly and Suisun Bay,GSB
+D8.Jun.2022,Plagioselmis,413582.658,,6/24/2022,D8,Jun,2022,Grizzly and Suisun Bay,GSB
+D8.Jun.2022,Teleaulax,8724.0735,,6/24/2022,D8,Jun,2022,Grizzly and Suisun Bay,GSB
+D7.Jun.2022,Cyclotella,152920.3536,,6/27/2022,D7,Jun,2022,Grizzly and Suisun Bay,GSB
+D7.Jun.2022,Eucapsis,29014.5492,,6/27/2022,D7,Jun,2022,Grizzly and Suisun Bay,GSB
+NZ032.Jun.2022,Cyclotella,182751.0849,,6/27/2022,NZ032,Jun,2022,Grizzly and Suisun Bay,GSB
+NZ032.Jun.2022,Eucapsis,19481.76,,6/27/2022,NZ032,Jun,2022,Grizzly and Suisun Bay,GSB
+NZ032.Jun.2022,Plagioselmis,79566.7548,,6/27/2022,NZ032,Jun,2022,Grizzly and Suisun Bay,GSB
+NZ032.Jun.2022,Planktolyngbya,2973.6742,,6/27/2022,NZ032,Jun,2022,Grizzly and Suisun Bay,GSB
+NZS42.Jun.2022,Chlorella,5371.5662,,6/27/2022,NZS42,Jun,2022,Grizzly and Suisun Bay,GSB
+NZS42.Jun.2022,Cyclotella,7964.2074,,6/27/2022,NZS42,Jun,2022,Grizzly and Suisun Bay,GSB
+NZS42.Jun.2022,Eucapsis,10763.064,,6/27/2022,NZS42,Jun,2022,Grizzly and Suisun Bay,GSB
+NZS42.Jun.2022,Teleaulax,19168.0664,,6/27/2022,NZS42,Jun,2022,Grizzly and Suisun Bay,GSB
+D41.Jun.2022,Cyclotella,118919.008,,6/28/2022,D41,Jun,2022,San Pablo Bay,SPB
+D41.Jun.2022,Eucapsis,8830.7712,,6/28/2022,D41,Jun,2022,San Pablo Bay,SPB
+D41.Jun.2022,Nitzschia,20068.5408,,6/28/2022,D41,Jun,2022,San Pablo Bay,SPB
+D41.Jun.2022,Peridinium,81841.7784,,6/28/2022,D41,Jun,2022,San Pablo Bay,SPB
+D41.Jun.2022,Plagioselmis,50826.122,,6/28/2022,D41,Jun,2022,San Pablo Bay,SPB
+D41.Jun.2022,Planktolyngbya,1002.916,,6/28/2022,D41,Jun,2022,San Pablo Bay,SPB
+D41.Jun.2022,Skeletonema,24177.3024,,6/28/2022,D41,Jun,2022,San Pablo Bay,SPB
+D41A.Jun.2022,Cyclotella,2575229.904,,6/28/2022,D41A,Jun,2022,San Pablo Bay,SPB
+D41A.Jun.2022,Eucapsis,36337.788,,6/28/2022,D41A,Jun,2022,San Pablo Bay,SPB
+D41A.Jun.2022,Nitzschia,26946.693,,6/28/2022,D41A,Jun,2022,San Pablo Bay,SPB
+D41A.Jun.2022,Plagioselmis,123676.2492,,6/28/2022,D41A,Jun,2022,San Pablo Bay,SPB
+D41A.Jun.2022,Skeletonema,156543.804,,6/28/2022,D41A,Jun,2022,San Pablo Bay,SPB
+NZ002.Jun.2022,Chlamydomonas,35864.0151,,6/28/2022,NZ002,Jun,2022,San Pablo Bay,SPB
+NZ002.Jun.2022,Cyclotella,91119.1548,,6/28/2022,NZ002,Jun,2022,San Pablo Bay,SPB
+NZ002.Jun.2022,Eucapsis,7263.4392,,6/28/2022,NZ002,Jun,2022,San Pablo Bay,SPB
+NZ002.Jun.2022,Monoraphidium,2167.6369,,6/28/2022,NZ002,Jun,2022,San Pablo Bay,SPB
+NZ002.Jun.2022,Plagioselmis,183999.8086,,6/28/2022,NZ002,Jun,2022,San Pablo Bay,SPB
+NZ002.Jun.2022,Staurosira,9733.7194,,6/28/2022,NZ002,Jun,2022,San Pablo Bay,SPB
+NZ004.Jun.2022,Chlorella,3055.608,,6/28/2022,NZ004,Jun,2022,San Pablo Bay,SPB
+NZ004.Jun.2022,Cyclotella,69135.5952,,6/28/2022,NZ004,Jun,2022,San Pablo Bay,SPB
+NZ004.Jun.2022,Eucapsis,15140.0448,,6/28/2022,NZ004,Jun,2022,San Pablo Bay,SPB
+NZ004.Jun.2022,Monoraphidium,1284.6696,,6/28/2022,NZ004,Jun,2022,San Pablo Bay,SPB
+NZ004.Jun.2022,Teleaulax,41360.228,,6/28/2022,NZ004,Jun,2022,San Pablo Bay,SPB
+NZ325.Jun.2022,Cryptomonas,391813.5194,,6/28/2022,NZ325,Jun,2022,San Pablo Bay,SPB
+NZ325.Jun.2022,Cyclotella,54218.7736,,6/28/2022,NZ325,Jun,2022,San Pablo Bay,SPB
+NZ325.Jun.2022,Eucapsis,12296.5848,,6/28/2022,NZ325,Jun,2022,San Pablo Bay,SPB
+NZ325.Jun.2022,Nitzschia,41320.818,,6/28/2022,NZ325,Jun,2022,San Pablo Bay,SPB
+NZ325.Jun.2022,Plagioselmis,50147.1696,,6/28/2022,NZ325,Jun,2022,San Pablo Bay,SPB
+NZ325.Jun.2022,Planktolyngbya,1738.5238,,6/28/2022,NZ325,Jun,2022,San Pablo Bay,SPB
+C10A.Jul.2022,Chlamydomonas,9991.5228,,7/18/2022,C10A,Jul,2022,Southern Interior Delta,SID
+C10A.Jul.2022,Chlorella,28786.8,,7/18/2022,C10A,Jul,2022,Southern Interior Delta,SID
+C10A.Jul.2022,Cocconeis,40790.8956,,7/18/2022,C10A,Jul,2022,Southern Interior Delta,SID
+C10A.Jul.2022,Cyclotella,150658.8468,,7/18/2022,C10A,Jul,2022,Southern Interior Delta,SID
+C10A.Jul.2022,Desmodesmus,2418.0912,,7/18/2022,C10A,Jul,2022,Southern Interior Delta,SID
+C10A.Jul.2022,Encyonema,13304.1951,,7/18/2022,C10A,Jul,2022,Southern Interior Delta,SID
+C10A.Jul.2022,Eucapsis,2883.6864,,7/18/2022,C10A,Jul,2022,Southern Interior Delta,SID
+C10A.Jul.2022,Mayamaea,7156.3359,,7/18/2022,C10A,Jul,2022,Southern Interior Delta,SID
+C10A.Jul.2022,Microcystis,1492.8459,,7/18/2022,C10A,Jul,2022,Southern Interior Delta,SID
+C10A.Jul.2022,Monoraphidium,9760.9155,,7/18/2022,C10A,Jul,2022,Southern Interior Delta,SID
+C10A.Jul.2022,Navicula,75430.1772,,7/18/2022,C10A,Jul,2022,Southern Interior Delta,SID
+C10A.Jul.2022,Nitzschia,31759.9758,,7/18/2022,C10A,Jul,2022,Southern Interior Delta,SID
+C10A.Jul.2022,Ochromonas,2800.1421,,7/18/2022,C10A,Jul,2022,Southern Interior Delta,SID
+C10A.Jul.2022,Plagioselmis,14450.3478,,7/18/2022,C10A,Jul,2022,Southern Interior Delta,SID
+C10A.Jul.2022,Sellaphora,32239.6515,,7/18/2022,C10A,Jul,2022,Southern Interior Delta,SID
+C10A.Jul.2022,Teleaulax,6690.1149,,7/18/2022,C10A,Jul,2022,Southern Interior Delta,SID
+C3A.Jul.2022,Achnanthidium,2690.77,,7/18/2022,C3A,Jul,2022,Northern Interior Delta,NID
+C3A.Jul.2022,Chlorella,8497.58,,7/18/2022,C3A,Jul,2022,Northern Interior Delta,NID
+C3A.Jul.2022,Cyanodictyon,192.28,,7/18/2022,C3A,Jul,2022,Northern Interior Delta,NID
+C3A.Jul.2022,Cyclotella,29035.89,,7/18/2022,C3A,Jul,2022,Northern Interior Delta,NID
+C3A.Jul.2022,Drepanochloris,473.8,,7/18/2022,C3A,Jul,2022,Northern Interior Delta,NID
+C3A.Jul.2022,Encyonema,2645,,7/18/2022,C3A,Jul,2022,Northern Interior Delta,NID
+C3A.Jul.2022,Eucapsis,2649.6,,7/18/2022,C3A,Jul,2022,Northern Interior Delta,NID
+C3A.Jul.2022,Lagerheimia,178.25,,7/18/2022,C3A,Jul,2022,Northern Interior Delta,NID
+C3A.Jul.2022,Monoraphidium,939.09,,7/18/2022,C3A,Jul,2022,Northern Interior Delta,NID
+C3A.Jul.2022,Nitzschia,35899.55,,7/18/2022,C3A,Jul,2022,Northern Interior Delta,NID
+C3A.Jul.2022,Plagioselmis,10536.76,,7/18/2022,C3A,Jul,2022,Northern Interior Delta,NID
+C3A.Jul.2022,Rhoicosphenia,3705.3,,7/18/2022,C3A,Jul,2022,Northern Interior Delta,NID
+C3A.Jul.2022,Staurosira,1824.59,,7/18/2022,C3A,Jul,2022,Northern Interior Delta,NID
+C3A.Jul.2022,Teleaulax,3588,,7/18/2022,C3A,Jul,2022,Northern Interior Delta,NID
+C9.Jul.2022,Ankistrodesmus,4053.6726,,7/18/2022,C9,Jul,2022,Southern Interior Delta,SID
+C9.Jul.2022,Cocconeis,30698.5104,,7/18/2022,C9,Jul,2022,Southern Interior Delta,SID
+C9.Jul.2022,Cyclotella,37656.135,,7/18/2022,C9,Jul,2022,Southern Interior Delta,SID
+C9.Jul.2022,Dolichospermum,157974.6294,,7/18/2022,C9,Jul,2022,Southern Interior Delta,SID
+C9.Jul.2022,Drepanochloris,2185.152,,7/18/2022,C9,Jul,2022,Southern Interior Delta,SID
+C9.Jul.2022,Encyonema,5329.5426,,7/18/2022,C9,Jul,2022,Southern Interior Delta,SID
+C9.Jul.2022,Eucapsis,3092.2776,,7/18/2022,C9,Jul,2022,Southern Interior Delta,SID
+C9.Jul.2022,Lagerheimia,181.8564,,7/18/2022,C9,Jul,2022,Southern Interior Delta,SID
+C9.Jul.2022,Microcystis,285136.0998,,7/18/2022,C9,Jul,2022,Southern Interior Delta,SID
+C9.Jul.2022,Monoraphidium,687.1728,,7/18/2022,C9,Jul,2022,Southern Interior Delta,SID
+C9.Jul.2022,Nitzschia,8664.4152,,7/18/2022,C9,Jul,2022,Southern Interior Delta,SID
+C9.Jul.2022,Plagioselmis,58291.8048,,7/18/2022,C9,Jul,2022,Southern Interior Delta,SID
+C9.Jul.2022,Pseudanabaena,11258.5644,,7/18/2022,C9,Jul,2022,Southern Interior Delta,SID
+C9.Jul.2022,Skeletonema,4107.942,,7/18/2022,C9,Jul,2022,Southern Interior Delta,SID
+C9.Jul.2022,Trachelomonas,21229.0392,,7/18/2022,C9,Jul,2022,Southern Interior Delta,SID
+D12.Jul.2022,Bacillaria,73620.9834,,7/19/2022,D12,Jul,2022,Confluence,CON
+D12.Jul.2022,Chlorella,341.8142,,7/19/2022,D12,Jul,2022,Confluence,CON
+D12.Jul.2022,Chroococcus,1233.1068,,7/19/2022,D12,Jul,2022,Confluence,CON
+D12.Jul.2022,Cocconeis,54784.7136,,7/19/2022,D12,Jul,2022,Confluence,CON
+D12.Jul.2022,Cryptomonas,101498.9632,,7/19/2022,D12,Jul,2022,Confluence,CON
+D12.Jul.2022,Cylindrotheca,4855.6934,,7/19/2022,D12,Jul,2022,Confluence,CON
+D12.Jul.2022,Eucapsis,7611.1344,,7/19/2022,D12,Jul,2022,Confluence,CON
+D12.Jul.2022,Euglena,32933.2884,,7/19/2022,D12,Jul,2022,Confluence,CON
+D12.Jul.2022,Microcystis,4934.037,,7/19/2022,D12,Jul,2022,Confluence,CON
+D12.Jul.2022,Nitzschia,3446.5818,,7/19/2022,D12,Jul,2022,Confluence,CON
+D12.Jul.2022,Plagioselmis,216437.61,,7/19/2022,D12,Jul,2022,Confluence,CON
+D12.Jul.2022,Sellaphora,39406.8308,,7/19/2022,D12,Jul,2022,Confluence,CON
+D12.Jul.2022,Skeletonema,25870.5592,,7/19/2022,D12,Jul,2022,Confluence,CON
+D19.Jul.2022,Chlorella,1147.503,,7/19/2022,D19,Jul,2022,Central Delta,CED
+D19.Jul.2022,Cocconeis,7329.6615,,7/19/2022,D19,Jul,2022,Central Delta,CED
+D19.Jul.2022,Cyclotella,16276.512,,7/19/2022,D19,Jul,2022,Central Delta,CED
+D19.Jul.2022,Dolichospermum,24678.92,,7/19/2022,D19,Jul,2022,Central Delta,CED
+D19.Jul.2022,Drepanochloris,160.272,,7/19/2022,D19,Jul,2022,Central Delta,CED
+D19.Jul.2022,Eucapsis,2056.824,,7/19/2022,D19,Jul,2022,Central Delta,CED
+D19.Jul.2022,Merismopedia,148.4,,7/19/2022,D19,Jul,2022,Central Delta,CED
+D19.Jul.2022,Microcystis,62957.7725,,7/19/2022,D19,Jul,2022,Central Delta,CED
+D19.Jul.2022,Monoraphidium,281.7745,,7/19/2022,D19,Jul,2022,Central Delta,CED
+D19.Jul.2022,Nitzschia,6554.457,,7/19/2022,D19,Jul,2022,Central Delta,CED
+D19.Jul.2022,Ochromonas,6463.562,,7/19/2022,D19,Jul,2022,Central Delta,CED
+D19.Jul.2022,Plagioselmis,425405.295,,7/19/2022,D19,Jul,2022,Central Delta,CED
+D19.Jul.2022,Teleaulax,17018.512,,7/19/2022,D19,Jul,2022,Central Delta,CED
+D19.Jul.2022,Ulnaria,106366.2565,,7/19/2022,D19,Jul,2022,Central Delta,CED
+D28A.Jul.2022,Aphanocapsa,1179.5304,,7/19/2022,D28A,Jul,2022,Central Delta,CED
+D28A.Jul.2022,Chroococcus,2178.3528,,7/19/2022,D28A,Jul,2022,Central Delta,CED
+D28A.Jul.2022,Cocconeis,82944.972,,7/19/2022,D28A,Jul,2022,Central Delta,CED
+D28A.Jul.2022,Cryptomonas,87398.6028,,7/19/2022,D28A,Jul,2022,Central Delta,CED
+D28A.Jul.2022,Cyclotella,44462.382,,7/19/2022,D28A,Jul,2022,Central Delta,CED
+D28A.Jul.2022,Dolichospermum,362680.956,,7/19/2022,D28A,Jul,2022,Central Delta,CED
+D28A.Jul.2022,Eucapsis,5293.1016,,7/19/2022,D28A,Jul,2022,Central Delta,CED
+D28A.Jul.2022,Microcystis,8713.8219,,7/19/2022,D28A,Jul,2022,Central Delta,CED
+D28A.Jul.2022,Plagioselmis,60592.2138,,7/19/2022,D28A,Jul,2022,Central Delta,CED
+EZ2-SJR.Jul.2022,Acanthoceras,15585.1104,,7/19/2022,EZ2-SJR,Jul,2022,Entrapment Zone,EZ
+EZ2-SJR.Jul.2022,Chlorella,6939.2232,,7/19/2022,EZ2-SJR,Jul,2022,Entrapment Zone,EZ
+EZ2-SJR.Jul.2022,Cyclotella,57560.572,,7/19/2022,EZ2-SJR,Jul,2022,Entrapment Zone,EZ
+EZ2-SJR.Jul.2022,Eucapsis,7124.4144,,7/19/2022,EZ2-SJR,Jul,2022,Entrapment Zone,EZ
+EZ2-SJR.Jul.2022,Microcystis,131594.688,,7/19/2022,EZ2-SJR,Jul,2022,Entrapment Zone,EZ
+EZ2-SJR.Jul.2022,Nitzschia,4528.1064,,7/19/2022,EZ2-SJR,Jul,2022,Entrapment Zone,EZ
+EZ2-SJR.Jul.2022,Plagioselmis,423969.2288,,7/19/2022,EZ2-SJR,Jul,2022,Entrapment Zone,EZ
+EZ2-SJR.Jul.2022,Staurosira,6920.462,,7/19/2022,EZ2-SJR,Jul,2022,Entrapment Zone,EZ
+EZ2-SJR.Jul.2022,Teleaulax,15251.04,,7/19/2022,EZ2-SJR,Jul,2022,Entrapment Zone,EZ
+EZ6-SJR.Jul.2022,Cyclotella,6608.4368,,7/19/2022,EZ6-SJR,Jul,2022,Entrapment Zone,EZ
+EZ6-SJR.Jul.2022,Entomoneis,386000.3651,,7/19/2022,EZ6-SJR,Jul,2022,Entrapment Zone,EZ
+EZ6-SJR.Jul.2022,Eucapsis,13765.0212,,7/19/2022,EZ6-SJR,Jul,2022,Entrapment Zone,EZ
+EZ6-SJR.Jul.2022,Gyrosigma,389016.1352,,7/19/2022,EZ6-SJR,Jul,2022,Entrapment Zone,EZ
+EZ6-SJR.Jul.2022,Monoraphidium,1340.6617,,7/19/2022,EZ6-SJR,Jul,2022,Entrapment Zone,EZ
+EZ6-SJR.Jul.2022,Nitzschia,451147.5157,,7/19/2022,EZ6-SJR,Jul,2022,Entrapment Zone,EZ
+EZ6-SJR.Jul.2022,Plagioselmis,45748.2837,,7/19/2022,EZ6-SJR,Jul,2022,Entrapment Zone,EZ
+D16.Jul.2022,Aulacoseira,38535.0655,,7/20/2022,D16,Jul,2022,Central Delta,CED
+D16.Jul.2022,Cocconeis,47245.558,,7/20/2022,D16,Jul,2022,Central Delta,CED
+D16.Jul.2022,Cryptomonas,16375.3426,,7/20/2022,D16,Jul,2022,Central Delta,CED
+D16.Jul.2022,Cyclotella,102065.124,,7/20/2022,D16,Jul,2022,Central Delta,CED
+D16.Jul.2022,Eucapsis,5188.3488,,7/20/2022,D16,Jul,2022,Central Delta,CED
+D16.Jul.2022,Microcystis,41672.376,,7/20/2022,D16,Jul,2022,Central Delta,CED
+D16.Jul.2022,Nitzschia,2543.5788,,7/20/2022,D16,Jul,2022,Central Delta,CED
+D16.Jul.2022,Plagioselmis,23698.2891,,7/20/2022,D16,Jul,2022,Central Delta,CED
+D26.Jul.2022,Cocconeis,5703.0155,,7/20/2022,D26,Jul,2022,Central Delta,CED
+D26.Jul.2022,Cyclotella,50952.321,,7/20/2022,D26,Jul,2022,Central Delta,CED
+D26.Jul.2022,Dolichospermum,299990.4705,,7/20/2022,D26,Jul,2022,Central Delta,CED
+D26.Jul.2022,Encyonema,2784.1835,,7/20/2022,D26,Jul,2022,Central Delta,CED
+D26.Jul.2022,Eucapsis,2584.638,,7/20/2022,D26,Jul,2022,Central Delta,CED
+D26.Jul.2022,Microcystis,72762.823,,7/20/2022,D26,Jul,2022,Central Delta,CED
+D26.Jul.2022,Monoraphidium,282.8385,,7/20/2022,D26,Jul,2022,Central Delta,CED
+D26.Jul.2022,Plagioselmis,246651.2685,,7/20/2022,D26,Jul,2022,Central Delta,CED
+D26.Jul.2022,Teleaulax,38669.1585,,7/20/2022,D26,Jul,2022,Central Delta,CED
+MD10A.Jul.2022,Aphanizomenon,8764.38,,7/20/2022,MD10A,Jul,2022,Southern Interior Delta,SID
+MD10A.Jul.2022,Chlamydomonas,83076,,7/20/2022,MD10A,Jul,2022,Southern Interior Delta,SID
+MD10A.Jul.2022,Chlorella,7957.08,,7/20/2022,MD10A,Jul,2022,Southern Interior Delta,SID
+MD10A.Jul.2022,Cocconeis,46591.56,,7/20/2022,MD10A,Jul,2022,Southern Interior Delta,SID
+MD10A.Jul.2022,Cyclotella,112920.8,,7/20/2022,MD10A,Jul,2022,Southern Interior Delta,SID
+MD10A.Jul.2022,Drepanochloris,15657.48,,7/20/2022,MD10A,Jul,2022,Southern Interior Delta,SID
+MD10A.Jul.2022,Eucapsis,3990.96,,7/20/2022,MD10A,Jul,2022,Southern Interior Delta,SID
+MD10A.Jul.2022,Lagerheimia,1922.8,,7/20/2022,MD10A,Jul,2022,Southern Interior Delta,SID
+MD10A.Jul.2022,Microcystis,1428.76,,7/20/2022,MD10A,Jul,2022,Southern Interior Delta,SID
+MD10A.Jul.2022,Monoraphidium,2284.36,,7/20/2022,MD10A,Jul,2022,Southern Interior Delta,SID
+MD10A.Jul.2022,Ochromonas,8459.4,,7/20/2022,MD10A,Jul,2022,Southern Interior Delta,SID
+MD10A.Jul.2022,Plagioselmis,675819.12,,7/20/2022,MD10A,Jul,2022,Southern Interior Delta,SID
+P8.Jul.2022,Aphanizomenon,10433.4338,,7/20/2022,P8,Jul,2022,Southern Interior Delta,SID
+P8.Jul.2022,Chlorella,10942.0292,,7/20/2022,P8,Jul,2022,Southern Interior Delta,SID
+P8.Jul.2022,Cocconeis,19837.1919,,7/20/2022,P8,Jul,2022,Southern Interior Delta,SID
+P8.Jul.2022,Cyclotella,138644.8145,,7/20/2022,P8,Jul,2022,Southern Interior Delta,SID
+P8.Jul.2022,Eucapsis,6150.456,,7/20/2022,P8,Jul,2022,Southern Interior Delta,SID
+P8.Jul.2022,Lagerheimia,1733.4298,,7/20/2022,P8,Jul,2022,Southern Interior Delta,SID
+P8.Jul.2022,Microcystis,511785.6205,,7/20/2022,P8,Jul,2022,Southern Interior Delta,SID
+P8.Jul.2022,Monoraphidium,3136.9954,,7/20/2022,P8,Jul,2022,Southern Interior Delta,SID
+P8.Jul.2022,Plagioselmis,1668357.844,,7/20/2022,P8,Jul,2022,Southern Interior Delta,SID
+D4.Jul.2022,Cyclotella,33407.2104,,7/21/2022,D4,Jul,2022,Confluence,CON
+D4.Jul.2022,Diatoma,66547.899,,7/21/2022,D4,Jul,2022,Confluence,CON
+D4.Jul.2022,Eucapsis,5306.85,,7/21/2022,D4,Jul,2022,Confluence,CON
+D4.Jul.2022,Gyrosigma,183796.2636,,7/21/2022,D4,Jul,2022,Confluence,CON
+D4.Jul.2022,Nitzschia,6824.216,,7/21/2022,D4,Jul,2022,Confluence,CON
+D4.Jul.2022,Plagioselmis,84749.2152,,7/21/2022,D4,Jul,2022,Confluence,CON
+D4.Jul.2022,Teleaulax,28059.0849,,7/21/2022,D4,Jul,2022,Confluence,CON
+EZ2.Jul.2022,Aulacoseira,49786.6838,,7/21/2022,EZ2,Jul,2022,Entrapment Zone,EZ
+EZ2.Jul.2022,Chlorella,8043.1442,,7/21/2022,EZ2,Jul,2022,Entrapment Zone,EZ
+EZ2.Jul.2022,Cyclotella,59698.5648,,7/21/2022,EZ2,Jul,2022,Entrapment Zone,EZ
+EZ2.Jul.2022,Drepanochloris,484.3203,,7/21/2022,EZ2,Jul,2022,Entrapment Zone,EZ
+EZ2.Jul.2022,Eucapsis,12273.0552,,7/21/2022,EZ2,Jul,2022,Entrapment Zone,EZ
+EZ2.Jul.2022,Nitzschia,12457.0428,,7/21/2022,EZ2,Jul,2022,Entrapment Zone,EZ
+EZ2.Jul.2022,Plagioselmis,242087.0961,,7/21/2022,EZ2,Jul,2022,Entrapment Zone,EZ
+EZ2.Jul.2022,Staurosira,7378.4439,,7/21/2022,EZ2,Jul,2022,Entrapment Zone,EZ
+EZ2.Jul.2022,Tryblionella,308126.9198,,7/21/2022,EZ2,Jul,2022,Entrapment Zone,EZ
+EZ6.Jul.2022,Cryptomonas,50427.9946,,7/21/2022,EZ6,Jul,2022,Entrapment Zone,EZ
+EZ6.Jul.2022,Cyclotella,451040.6252,,7/21/2022,EZ6,Jul,2022,Entrapment Zone,EZ
+EZ6.Jul.2022,Eucapsis,20114.9172,,7/21/2022,EZ6,Jul,2022,Entrapment Zone,EZ
+EZ6.Jul.2022,Planktolyngbya,3186.0795,,7/21/2022,EZ6,Jul,2022,Entrapment Zone,EZ
+EZ6.Jul.2022,Synedra,648649.2579,,7/21/2022,EZ6,Jul,2022,Entrapment Zone,EZ
+NZ068.Jul.2022,Chroococcus,2049.996,,7/21/2022,NZ068,Jul,2022,Northern Interior Delta,NID
+NZ068.Jul.2022,Cryptomonas,95205.3855,,7/21/2022,NZ068,Jul,2022,Northern Interior Delta,NID
+NZ068.Jul.2022,Cyclotella,161138.034,,7/21/2022,NZ068,Jul,2022,Northern Interior Delta,NID
+NZ068.Jul.2022,Entomoneis,29246.8415,,7/21/2022,NZ068,Jul,2022,Northern Interior Delta,NID
+NZ068.Jul.2022,Eucapsis,5092.524,,7/21/2022,NZ068,Jul,2022,Northern Interior Delta,NID
+NZ068.Jul.2022,Fragilaria,5817.9845,,7/21/2022,NZ068,Jul,2022,Northern Interior Delta,NID
+NZ068.Jul.2022,Merismopedia,2121.112,,7/21/2022,NZ068,Jul,2022,Northern Interior Delta,NID
+NZ068.Jul.2022,Microcystis,15063.8375,,7/21/2022,NZ068,Jul,2022,Northern Interior Delta,NID
+NZ068.Jul.2022,Nitzschia,17018.368,,7/21/2022,NZ068,Jul,2022,Northern Interior Delta,NID
+NZ068.Jul.2022,Plagioselmis,68062.2635,,7/21/2022,NZ068,Jul,2022,Northern Interior Delta,NID
+NZ068.Jul.2022,Skeletonema,3075.3805,,7/21/2022,NZ068,Jul,2022,Northern Interior Delta,NID
+D10.Jul.2022,Cryptomonas,148948.8784,,7/22/2022,D10,Jul,2022,Confluence,CON
+D10.Jul.2022,Cyclotella,9329.5984,,7/22/2022,D10,Jul,2022,Confluence,CON
+D10.Jul.2022,Eucapsis,19676.5776,,7/22/2022,D10,Jul,2022,Confluence,CON
+D10.Jul.2022,Plagioselmis,21528.6977,,7/22/2022,D10,Jul,2022,Confluence,CON
+D6.Jul.2022,Chlorella,6688.5,,7/22/2022,D6,Jul,2022,San Pablo Bay,SPB
+D6.Jul.2022,Cyclotella,77205,,7/22/2022,D6,Jul,2022,San Pablo Bay,SPB
+D6.Jul.2022,Eucapsis,6714,,7/22/2022,D6,Jul,2022,San Pablo Bay,SPB
+D6.Jul.2022,Nitzschia,5014,,7/22/2022,D6,Jul,2022,San Pablo Bay,SPB
+D6.Jul.2022,Plagioselmis,194418,,7/22/2022,D6,Jul,2022,San Pablo Bay,SPB
+D6.Jul.2022,Teleaulax,2618,,7/22/2022,D6,Jul,2022,San Pablo Bay,SPB
+D8.Jul.2022,Chlamydomonas,42822.923,,7/22/2022,D8,Jul,2022,Grizzly and Suisun Bay,GSB
+D8.Jul.2022,Chlorella,1586.3666,,7/22/2022,D8,Jul,2022,Grizzly and Suisun Bay,GSB
+D8.Jul.2022,Cyclotella,90656.2514,,7/22/2022,D8,Jul,2022,Grizzly and Suisun Bay,GSB
+D8.Jul.2022,Drepanochloris,652.9458,,7/22/2022,D8,Jul,2022,Grizzly and Suisun Bay,GSB
+D8.Jul.2022,Eucapsis,16034.1948,,7/22/2022,D8,Jul,2022,Grizzly and Suisun Bay,GSB
+D8.Jul.2022,Teleaulax,21533.7486,,7/22/2022,D8,Jul,2022,Grizzly and Suisun Bay,GSB
+D22.Jul.2022,Cocconeis,17067.5556,,7/24/2022,D22,Jul,2022,Confluence,CON
+D22.Jul.2022,Cyclotella,48594.372,,7/24/2022,D22,Jul,2022,Confluence,CON
+D22.Jul.2022,Eucapsis,12825.018,,7/24/2022,D22,Jul,2022,Confluence,CON
+D22.Jul.2022,Microcystis,7509.2194,,7/24/2022,D22,Jul,2022,Confluence,CON
+D22.Jul.2022,Plagioselmis,91423.7992,,7/24/2022,D22,Jul,2022,Confluence,CON
+D22.Jul.2022,Skeletonema,10764.1765,,7/24/2022,D22,Jul,2022,Confluence,CON
+D7.Jul.2022,Cyclotella,22457.2189,,7/25/2022,D7,Jul,2022,Grizzly and Suisun Bay,GSB
+D7.Jul.2022,Entomoneis,213279.9746,,7/25/2022,D7,Jul,2022,Grizzly and Suisun Bay,GSB
+D7.Jul.2022,Eucapsis,10659.7584,,7/25/2022,D7,Jul,2022,Grizzly and Suisun Bay,GSB
+D7.Jul.2022,Nitzschia,104353.0839,,7/25/2022,D7,Jul,2022,Grizzly and Suisun Bay,GSB
+NZ032.Jul.2022,Cyclotella,89461.8744,,7/25/2022,NZ032,Jul,2022,Grizzly and Suisun Bay,GSB
+NZ032.Jul.2022,Eucapsis,17516.9088,,7/25/2022,NZ032,Jul,2022,Grizzly and Suisun Bay,GSB
+NZ032.Jul.2022,Navicula,53099.0376,,7/25/2022,NZ032,Jul,2022,Grizzly and Suisun Bay,GSB
+NZ032.Jul.2022,Plagioselmis,91382.7792,,7/25/2022,NZ032,Jul,2022,Grizzly and Suisun Bay,GSB
+NZ032.Jul.2022,Planktolyngbya,3420.5904,,7/25/2022,NZ032,Jul,2022,Grizzly and Suisun Bay,GSB
+NZS42.Jul.2022,Chlamydomonas,28487.2624,,7/25/2022,NZS42,Jul,2022,Grizzly and Suisun Bay,GSB
+NZS42.Jul.2022,Cryptomonas,69471.6912,,7/25/2022,NZS42,Jul,2022,Grizzly and Suisun Bay,GSB
+NZS42.Jul.2022,Cyclotella,74635.3288,,7/25/2022,NZS42,Jul,2022,Grizzly and Suisun Bay,GSB
+NZS42.Jul.2022,Eucapsis,9788.8608,,7/25/2022,NZS42,Jul,2022,Grizzly and Suisun Bay,GSB
+NZS42.Jul.2022,Euglena,121308.958,,7/25/2022,NZS42,Jul,2022,Grizzly and Suisun Bay,GSB
+NZS42.Jul.2022,Melosira,895193.7552,,7/25/2022,NZS42,Jul,2022,Grizzly and Suisun Bay,GSB
+NZS42.Jul.2022,Navicula,8943.3608,,7/25/2022,NZS42,Jul,2022,Grizzly and Suisun Bay,GSB
+NZS42.Jul.2022,Nitzschia,28431.7976,,7/25/2022,NZS42,Jul,2022,Grizzly and Suisun Bay,GSB
+NZS42.Jul.2022,Teleaulax,5164.314,,7/25/2022,NZS42,Jul,2022,Grizzly and Suisun Bay,GSB
+D41.Jul.2022,Cyclotella,48849.0264,,7/26/2022,D41,Jul,2022,San Pablo Bay,SPB
+D41.Jul.2022,Eucapsis,12204.5904,,7/26/2022,D41,Jul,2022,San Pablo Bay,SPB
+D41.Jul.2022,Navicula,16027.4688,,7/26/2022,D41,Jul,2022,San Pablo Bay,SPB
+D41.Jul.2022,Thalassiosira,567959.7968,,7/26/2022,D41,Jul,2022,San Pablo Bay,SPB
+D41A.Jul.2022,Cyclotella,369936.8325,,7/26/2022,D41A,Jul,2022,San Pablo Bay,SPB
+D41A.Jul.2022,Eucapsis,39156.8904,,7/26/2022,D41A,Jul,2022,San Pablo Bay,SPB
+D41A.Jul.2022,Thalassiosira,16484279.73,,7/26/2022,D41A,Jul,2022,San Pablo Bay,SPB
+NZ002.Jul.2022,Chlamydomonas,5057.3796,,7/26/2022,NZ002,Jul,2022,San Pablo Bay,SPB
+NZ002.Jul.2022,Chlorella,9980.6112,,7/26/2022,NZ002,Jul,2022,San Pablo Bay,SPB
+NZ002.Jul.2022,Cyclotella,77473.664,,7/26/2022,NZ002,Jul,2022,San Pablo Bay,SPB
+NZ002.Jul.2022,Cylindrotheca,4914.2884,,7/26/2022,NZ002,Jul,2022,San Pablo Bay,SPB
+NZ002.Jul.2022,Eucapsis,8439.8256,,7/26/2022,NZ002,Jul,2022,San Pablo Bay,SPB
+NZ002.Jul.2022,Monoraphidium,339.2028,,7/26/2022,NZ002,Jul,2022,San Pablo Bay,SPB
+NZ002.Jul.2022,Plagioselmis,42181.2416,,7/26/2022,NZ002,Jul,2022,San Pablo Bay,SPB
+NZ002.Jul.2022,Teleaulax,30972.8568,,7/26/2022,NZ002,Jul,2022,San Pablo Bay,SPB
+NZ004.Jul.2022,Cyclotella,44259.258,,7/26/2022,NZ004,Jul,2022,San Pablo Bay,SPB
+NZ004.Jul.2022,Eucapsis,9244.7136,,7/26/2022,NZ004,Jul,2022,San Pablo Bay,SPB
+NZ325.Jul.2022,Cyclotella,61201.1277,,7/26/2022,NZ325,Jul,2022,San Pablo Bay,SPB
+NZ325.Jul.2022,Eucapsis,16682.7492,,7/26/2022,NZ325,Jul,2022,San Pablo Bay,SPB
+NZ325.Jul.2022,Nitzschia,9679.8582,,7/26/2022,NZ325,Jul,2022,San Pablo Bay,SPB
+NZ325.Jul.2022,Plagioselmis,18298.3587,,7/26/2022,NZ325,Jul,2022,San Pablo Bay,SPB
+NZ325.Jul.2022,Thalassiosira,8539948.531,,7/26/2022,NZ325,Jul,2022,San Pablo Bay,SPB
+C10A.Aug.2022,Chlamydomonas,56036.613,,8/15/2022,C10A,Aug,2022,Southern Interior Delta,SID
+C10A.Aug.2022,Chlorella,8291.6568,,8/15/2022,C10A,Aug,2022,Southern Interior Delta,SID
+C10A.Aug.2022,Cyclotella,98374.09,,8/15/2022,C10A,Aug,2022,Southern Interior Delta,SID
+C10A.Aug.2022,Desmodesmus,13773.434,,8/15/2022,C10A,Aug,2022,Southern Interior Delta,SID
+C10A.Aug.2022,Encyonema,11227.4892,,8/15/2022,C10A,Aug,2022,Southern Interior Delta,SID
+C10A.Aug.2022,Eucapsis,3502.62,,8/15/2022,C10A,Aug,2022,Southern Interior Delta,SID
+C10A.Aug.2022,Fragilaria,36910.5388,,8/15/2022,C10A,Aug,2022,Southern Interior Delta,SID
+C10A.Aug.2022,Komvophoron,551.928,,8/15/2022,C10A,Aug,2022,Southern Interior Delta,SID
+C10A.Aug.2022,Microcystis,1687.9798,,8/15/2022,C10A,Aug,2022,Southern Interior Delta,SID
+C10A.Aug.2022,Monoraphidium,307.0984,,8/15/2022,C10A,Aug,2022,Southern Interior Delta,SID
+C10A.Aug.2022,Navicula,80938.1184,,8/15/2022,C10A,Aug,2022,Southern Interior Delta,SID
+C10A.Aug.2022,Nephroselmis,2704.801,,8/15/2022,C10A,Aug,2022,Southern Interior Delta,SID
+C10A.Aug.2022,Nitzschia,55798.5056,,8/15/2022,C10A,Aug,2022,Southern Interior Delta,SID
+C10A.Aug.2022,Plagioselmis,6745.9046,,8/15/2022,C10A,Aug,2022,Southern Interior Delta,SID
+C10A.Aug.2022,Pseudanabaena,4266.828,,8/15/2022,C10A,Aug,2022,Southern Interior Delta,SID
+C10A.Aug.2022,Staurosira,137025.3248,,8/15/2022,C10A,Aug,2022,Southern Interior Delta,SID
+C10A.Aug.2022,Tetradesmus,4351.74,,8/15/2022,C10A,Aug,2022,Southern Interior Delta,SID
+C10A.Aug.2022,Thalassiosira,25793.789,,8/15/2022,C10A,Aug,2022,Southern Interior Delta,SID
+C3A.Aug.2022,Achnanthidium,5281.6888,,8/15/2022,C3A,Aug,2022,Northern Interior Delta,NID
+C3A.Aug.2022,Chlamydomonas,1725.2797,,8/15/2022,C3A,Aug,2022,Northern Interior Delta,NID
+C3A.Aug.2022,Chlorella,4933.6287,,8/15/2022,C3A,Aug,2022,Northern Interior Delta,NID
+C3A.Aug.2022,Chroococcus,1138.295,,8/15/2022,C3A,Aug,2022,Northern Interior Delta,NID
+C3A.Aug.2022,Cyclotella,26002.413,,8/15/2022,C3A,Aug,2022,Northern Interior Delta,NID
+C3A.Aug.2022,Desmodesmus,1101.2124,,8/15/2022,C3A,Aug,2022,Northern Interior Delta,NID
+C3A.Aug.2022,Eucapsis,2982.5676,,8/15/2022,C3A,Aug,2022,Northern Interior Delta,NID
+C3A.Aug.2022,Nitzschia,3167.9806,,8/15/2022,C3A,Aug,2022,Northern Interior Delta,NID
+C3A.Aug.2022,Peridinium,111771.181,,8/15/2022,C3A,Aug,2022,Northern Interior Delta,NID
+C3A.Aug.2022,Plagioselmis,4563.2721,,8/15/2022,C3A,Aug,2022,Northern Interior Delta,NID
+C3A.Aug.2022,Pseudanabaena,5085.0102,,8/15/2022,C3A,Aug,2022,Northern Interior Delta,NID
+C3A.Aug.2022,Skeletonema,2302.8764,,8/15/2022,C3A,Aug,2022,Northern Interior Delta,NID
+C3A.Aug.2022,Snowella,85.4308,,8/15/2022,C3A,Aug,2022,Northern Interior Delta,NID
+C3A.Aug.2022,Staurosira,4579.4664,,8/15/2022,C3A,Aug,2022,Northern Interior Delta,NID
+C3A.Aug.2022,Teleaulax,1791.9345,,8/15/2022,C3A,Aug,2022,Northern Interior Delta,NID
+C9.Aug.2022,Asterococcus,57406.8369,,8/15/2022,C9,Aug,2022,Southern Interior Delta,SID
+C9.Aug.2022,Cocconeis,204626.6796,,8/15/2022,C9,Aug,2022,Southern Interior Delta,SID
+C9.Aug.2022,Cyclotella,157404.0975,,8/15/2022,C9,Aug,2022,Southern Interior Delta,SID
+C9.Aug.2022,Desmodesmus,17998.3164,,8/15/2022,C9,Aug,2022,Southern Interior Delta,SID
+C9.Aug.2022,Encyonema,34089.1143,,8/15/2022,C9,Aug,2022,Southern Interior Delta,SID
+C9.Aug.2022,Eucapsis,37988.028,,8/15/2022,C9,Aug,2022,Southern Interior Delta,SID
+C9.Aug.2022,Microcystis,223910.2035,,8/15/2022,C9,Aug,2022,Southern Interior Delta,SID
+C9.Aug.2022,Monoraphidium,5730.6726,,8/15/2022,C9,Aug,2022,Southern Interior Delta,SID
+C9.Aug.2022,Scenedesmus,4063.9614,,8/15/2022,C9,Aug,2022,Southern Interior Delta,SID
+C9.Aug.2022,Teleaulax,20658.0195,,8/15/2022,C9,Aug,2022,Southern Interior Delta,SID
+D12.Aug.2022,Cryptomonas,42861.3726,,8/16/2022,D12,Aug,2022,Confluence,CON
+D12.Aug.2022,Eucapsis,16641.3528,,8/16/2022,D12,Aug,2022,Confluence,CON
+D12.Aug.2022,Plagioselmis,67696.9128,,8/16/2022,D12,Aug,2022,Confluence,CON
+D19.Aug.2022,Chlorella,2708.4825,,8/16/2022,D19,Aug,2022,Central Delta,CED
+D19.Aug.2022,Cocconeis,47974.797,,8/16/2022,D19,Aug,2022,Central Delta,CED
+D19.Aug.2022,Cryptomonas,37623.105,,8/16/2022,D19,Aug,2022,Central Delta,CED
+D19.Aug.2022,Cyclotella,28490.805,,8/16/2022,D19,Aug,2022,Central Delta,CED
+D19.Aug.2022,Dolichospermum,109136.5695,,8/16/2022,D19,Aug,2022,Central Delta,CED
+D19.Aug.2022,Eucapsis,4198.23,,8/16/2022,D19,Aug,2022,Central Delta,CED
+D19.Aug.2022,Microcystis,20535.849,,8/16/2022,D19,Aug,2022,Central Delta,CED
+D19.Aug.2022,Oscillatoria,222525.9,,8/16/2022,D19,Aug,2022,Central Delta,CED
+D19.Aug.2022,Plagioselmis,59152.338,,8/16/2022,D19,Aug,2022,Central Delta,CED
+D19.Aug.2022,Teleaulax,13999.356,,8/16/2022,D19,Aug,2022,Central Delta,CED
+D28A.Aug.2022,Cryptomonas,21432.55,,8/16/2022,D28A,Aug,2022,Central Delta,CED
+D28A.Aug.2022,Cyclotella,125769.175,,8/16/2022,D28A,Aug,2022,Central Delta,CED
+D28A.Aug.2022,Dolichospermum,685413.8,,8/16/2022,D28A,Aug,2022,Central Delta,CED
+D28A.Aug.2022,Eucapsis,7907.4,,8/16/2022,D28A,Aug,2022,Central Delta,CED
+D28A.Aug.2022,Gyrosigma,143047.925,,8/16/2022,D28A,Aug,2022,Central Delta,CED
+D28A.Aug.2022,Monoraphidium,1826.2,,8/16/2022,D28A,Aug,2022,Central Delta,CED
+D28A.Aug.2022,Nitzschia,12434.95,,8/16/2022,D28A,Aug,2022,Central Delta,CED
+D28A.Aug.2022,Plagioselmis,75120.875,,8/16/2022,D28A,Aug,2022,Central Delta,CED
+D28A.Aug.2022,Planktolyngbya,1444.4,,8/16/2022,D28A,Aug,2022,Central Delta,CED
+D28A.Aug.2022,Scenedesmus,5150.85,,8/16/2022,D28A,Aug,2022,Central Delta,CED
+D28A.Aug.2022,Skeletonema,5283.675,,8/16/2022,D28A,Aug,2022,Central Delta,CED
+EZ2-SJR.Aug.2022,Chlorella,3485.695,,8/16/2022,EZ2-SJR,Aug,2022,Entrapment Zone,EZ
+EZ2-SJR.Aug.2022,Cyclotella,65104.8769,,8/16/2022,EZ2-SJR,Aug,2022,Entrapment Zone,EZ
+EZ2-SJR.Aug.2022,Drepanochloris,329.1646,,8/16/2022,EZ2-SJR,Aug,2022,Entrapment Zone,EZ
+EZ2-SJR.Aug.2022,Eucapsis,10116.4212,,8/16/2022,EZ2-SJR,Aug,2022,Entrapment Zone,EZ
+EZ2-SJR.Aug.2022,Lagerheimia,587.1779,,8/16/2022,EZ2-SJR,Aug,2022,Entrapment Zone,EZ
+EZ2-SJR.Aug.2022,Microcystis,27347.9724,,8/16/2022,EZ2-SJR,Aug,2022,Entrapment Zone,EZ
+EZ2-SJR.Aug.2022,Monoraphidium,839.4416,,8/16/2022,EZ2-SJR,Aug,2022,Entrapment Zone,EZ
+EZ2-SJR.Aug.2022,Nitzschia,11305.151,,8/16/2022,EZ2-SJR,Aug,2022,Entrapment Zone,EZ
+EZ2-SJR.Aug.2022,Plagioselmis,72223.6004,,8/16/2022,EZ2-SJR,Aug,2022,Entrapment Zone,EZ
+EZ2-SJR.Aug.2022,Pseudostaurosira,11273.5282,,8/16/2022,EZ2-SJR,Aug,2022,Entrapment Zone,EZ
+EZ6-SJR.Aug.2022,Cyclotella,8811.0192,,8/16/2022,EZ6-SJR,Aug,2022,Entrapment Zone,EZ
+EZ6-SJR.Aug.2022,Eucapsis,18421.8786,,8/16/2022,EZ6-SJR,Aug,2022,Entrapment Zone,EZ
+EZ6-SJR.Aug.2022,Nitzschia,15305.5683,,8/16/2022,EZ6-SJR,Aug,2022,Entrapment Zone,EZ
+EZ6-SJR.Aug.2022,Plagioselmis,86214.0852,,8/16/2022,EZ6-SJR,Aug,2022,Entrapment Zone,EZ
+D16.Aug.2022,Cyclotella,79285.544,,8/17/2022,D16,Aug,2022,Central Delta,CED
+D16.Aug.2022,Dolichospermum,293436.582,,8/17/2022,D16,Aug,2022,Central Delta,CED
+D16.Aug.2022,Eucapsis,12081.9312,,8/17/2022,D16,Aug,2022,Central Delta,CED
+D16.Aug.2022,Nitzschia,2521.328,,8/17/2022,D16,Aug,2022,Central Delta,CED
+D16.Aug.2022,Plagioselmis,50830.3132,,8/17/2022,D16,Aug,2022,Central Delta,CED
+D26.Aug.2022,Cryptomonas,47624.9898,,8/17/2022,D26,Aug,2022,Central Delta,CED
+D26.Aug.2022,Cyclotella,47331.1188,,8/17/2022,D26,Aug,2022,Central Delta,CED
+D26.Aug.2022,Eucapsis,18674.8632,,8/17/2022,D26,Aug,2022,Central Delta,CED
+D26.Aug.2022,Microcystis,26624.7126,,8/17/2022,D26,Aug,2022,Central Delta,CED
+D26.Aug.2022,Monoraphidium,872.6691,,8/17/2022,D26,Aug,2022,Central Delta,CED
+MD10A.Aug.2022,Chlorella,5367.1788,,8/17/2022,MD10A,Aug,2022,Southern Interior Delta,SID
+MD10A.Aug.2022,Cyclotella,54544.9896,,8/17/2022,MD10A,Aug,2022,Southern Interior Delta,SID
+MD10A.Aug.2022,Drepanochloris,934.677,,8/17/2022,MD10A,Aug,2022,Southern Interior Delta,SID
+MD10A.Aug.2022,Encyonema,5420.2902,,8/17/2022,MD10A,Aug,2022,Southern Interior Delta,SID
+MD10A.Aug.2022,Eucapsis,5073.6024,,8/17/2022,MD10A,Aug,2022,Southern Interior Delta,SID
+MD10A.Aug.2022,Lagerheimia,414.4362,,8/17/2022,MD10A,Aug,2022,Southern Interior Delta,SID
+MD10A.Aug.2022,Microcystis,10304.448,,8/17/2022,MD10A,Aug,2022,Southern Interior Delta,SID
+MD10A.Aug.2022,Nitzschia,3133.5726,,8/17/2022,MD10A,Aug,2022,Southern Interior Delta,SID
+MD10A.Aug.2022,Oocystis,8872.5312,,8/17/2022,MD10A,Aug,2022,Southern Interior Delta,SID
+MD10A.Aug.2022,Oscillatoria,906510.3936,,8/17/2022,MD10A,Aug,2022,Southern Interior Delta,SID
+MD10A.Aug.2022,Plagioselmis,176271.3,,8/17/2022,MD10A,Aug,2022,Southern Interior Delta,SID
+MD10A.Aug.2022,Teleaulax,14181.9984,,8/17/2022,MD10A,Aug,2022,Southern Interior Delta,SID
+P8.Aug.2022,Chlamydomonas,14437.1,,8/17/2022,P8,Aug,2022,Southern Interior Delta,SID
+P8.Aug.2022,Chlorella,10588.05,,8/17/2022,P8,Aug,2022,Southern Interior Delta,SID
+P8.Aug.2022,Cocconeis,22257.1,,8/17/2022,P8,Aug,2022,Southern Interior Delta,SID
+P8.Aug.2022,Cyclotella,22323.225,,8/17/2022,P8,Aug,2022,Southern Interior Delta,SID
+P8.Aug.2022,Drepanochloris,240.35,,8/17/2022,P8,Aug,2022,Southern Interior Delta,SID
+P8.Aug.2022,Eucapsis,6334.2,,8/17/2022,P8,Aug,2022,Southern Interior Delta,SID
+P8.Aug.2022,Microcystis,60214,,8/17/2022,P8,Aug,2022,Southern Interior Delta,SID
+P8.Aug.2022,Monoraphidium,1400.125,,8/17/2022,P8,Aug,2022,Southern Interior Delta,SID
+P8.Aug.2022,Plagioselmis,1740275.45,,8/17/2022,P8,Aug,2022,Southern Interior Delta,SID
+D22.Aug.2022,Chlorella,2028.076,,8/18/2022,D22,Aug,2022,Confluence,CON
+D22.Aug.2022,Cyclotella,17984.0162,,8/18/2022,D22,Aug,2022,Confluence,CON
+D22.Aug.2022,Entomoneis,804295.2164,,8/18/2022,D22,Aug,2022,Confluence,CON
+D22.Aug.2022,Eucapsis,14639.7816,,8/18/2022,D22,Aug,2022,Confluence,CON
+D22.Aug.2022,Microcystis,5327.3584,,8/18/2022,D22,Aug,2022,Confluence,CON
+D22.Aug.2022,Ochromonas,19783.1496,,8/18/2022,D22,Aug,2022,Confluence,CON
+D22.Aug.2022,Plagioselmis,34559.8786,,8/18/2022,D22,Aug,2022,Confluence,CON
+D22.Aug.2022,Staurosira,28100.352,,8/18/2022,D22,Aug,2022,Confluence,CON
+D4.Aug.2022,Cyclotella,83541.1368,,8/18/2022,D4,Aug,2022,Confluence,CON
+D4.Aug.2022,Eucapsis,38131.6788,,8/18/2022,D4,Aug,2022,Confluence,CON
+D4.Aug.2022,Plagioselmis,86214.0852,,8/18/2022,D4,Aug,2022,Confluence,CON
+EZ2.Aug.2022,Cyclotella,18433.5382,,8/18/2022,EZ2,Aug,2022,Entrapment Zone,EZ
+EZ2.Aug.2022,Eucapsis,14940.8568,,8/18/2022,EZ2,Aug,2022,Entrapment Zone,EZ
+EZ2.Aug.2022,Lagerheimia,546.7442,,8/18/2022,EZ2,Aug,2022,Entrapment Zone,EZ
+EZ2.Aug.2022,Microcystis,3503.1354,,8/18/2022,EZ2,Aug,2022,Entrapment Zone,EZ
+EZ2.Aug.2022,Nitzschia,3198.924,,8/18/2022,EZ2,Aug,2022,Entrapment Zone,EZ
+EZ2.Aug.2022,Plagioselmis,56313.6072,,8/18/2022,EZ2,Aug,2022,Entrapment Zone,EZ
+EZ2.Aug.2022,Rhoicosphenia,45047.3314,,8/18/2022,EZ2,Aug,2022,Entrapment Zone,EZ
+EZ6.Aug.2022,Cocconeis,11082.8916,,8/18/2022,EZ6,Aug,2022,Entrapment Zone,EZ
+EZ6.Aug.2022,Eucapsis,14722.5276,,8/18/2022,EZ6,Aug,2022,Entrapment Zone,EZ
+EZ6.Aug.2022,Nitzschia,17658.234,,8/18/2022,EZ6,Aug,2022,Entrapment Zone,EZ
+EZ6.Aug.2022,Ochromonas,20226.9771,,8/18/2022,EZ6,Aug,2022,Entrapment Zone,EZ
+NZ068.Aug.2022,Chroococcus,1524.9,,8/18/2022,NZ068,Aug,2022,Northern Interior Delta,NID
+NZ068.Aug.2022,Cocconeis,11870.3,,8/18/2022,NZ068,Aug,2022,Northern Interior Delta,NID
+NZ068.Aug.2022,Cyclotella,18299.95,,8/18/2022,NZ068,Aug,2022,Northern Interior Delta,NID
+NZ068.Aug.2022,Eucapsis,8383.5,,8/18/2022,NZ068,Aug,2022,Northern Interior Delta,NID
+NZ068.Aug.2022,Merismopedia,1591.6,,8/18/2022,NZ068,Aug,2022,Northern Interior Delta,NID
+NZ068.Aug.2022,Nitzschia,2127.5,,8/18/2022,NZ068,Aug,2022,Northern Interior Delta,NID
+NZ068.Aug.2022,Plagioselmis,48879.6,,8/18/2022,NZ068,Aug,2022,Northern Interior Delta,NID
+D10.Aug.2022,Cryptomonas,90236.6266,,8/19/2022,D10,Aug,2022,Confluence,CON
+D10.Aug.2022,Cyclotella,53017.71,,8/19/2022,D10,Aug,2022,Confluence,CON
+D10.Aug.2022,Eucapsis,35558.1792,,8/19/2022,D10,Aug,2022,Confluence,CON
+D6.Aug.2022,Chlorella,892.3515,,8/19/2022,D6,Aug,2022,San Pablo Bay,SPB
+D6.Aug.2022,Cyclotella,16366.5238,,8/19/2022,D6,Aug,2022,San Pablo Bay,SPB
+D6.Aug.2022,Eucapsis,8654.8896,,8/19/2022,D6,Aug,2022,San Pablo Bay,SPB
+D6.Aug.2022,Plagioselmis,6705.2089,,8/19/2022,D6,Aug,2022,San Pablo Bay,SPB
+D6.Aug.2022,Teleaulax,12178.2981,,8/19/2022,D6,Aug,2022,San Pablo Bay,SPB
+D8.Aug.2022,Cyclotella,81322.434,,8/19/2022,D8,Aug,2022,Grizzly and Suisun Bay,GSB
+D8.Aug.2022,Eucapsis,9428.688,,8/19/2022,D8,Aug,2022,Grizzly and Suisun Bay,GSB
+D8.Aug.2022,Nitzschia,1890.848,,8/19/2022,D8,Aug,2022,Grizzly and Suisun Bay,GSB
+D7.Aug.2022,Aphanizomenon,559781.3156,,8/22/2022,D7,Aug,2022,Grizzly and Suisun Bay,GSB
+D7.Aug.2022,Eucapsis,19433.0556,,8/22/2022,D7,Aug,2022,Grizzly and Suisun Bay,GSB
+NZ032.Aug.2022,Chlorella,1351.986,,8/22/2022,NZ032,Aug,2022,Grizzly and Suisun Bay,GSB
+NZ032.Aug.2022,Eucapsis,9935.0064,,8/22/2022,NZ032,Aug,2022,Grizzly and Suisun Bay,GSB
+NZ032.Aug.2022,Microcystis,2164.5714,,8/22/2022,NZ032,Aug,2022,Grizzly and Suisun Bay,GSB
+NZS42.Aug.2022,Cyclotella,35244.0768,,8/22/2022,NZS42,Aug,2022,Grizzly and Suisun Bay,GSB
+NZS42.Aug.2022,Eucapsis,37717.704,,8/22/2022,NZS42,Aug,2022,Grizzly and Suisun Bay,GSB
+NZS42.Aug.2022,Nitzschia,506150.6334,,8/22/2022,NZS42,Aug,2022,Grizzly and Suisun Bay,GSB
+NZS42.Aug.2022,Thalassiosira,6748903.394,,8/22/2022,NZS42,Aug,2022,Grizzly and Suisun Bay,GSB
+D41.Aug.2022,Chlamydomonas,30268.7692,,8/23/2022,D41,Aug,2022,San Pablo Bay,SPB
+D41.Aug.2022,Cyclotella,26623.5228,,8/23/2022,D41,Aug,2022,San Pablo Bay,SPB
+D41.Aug.2022,Eucapsis,9003.8736,,8/23/2022,D41,Aug,2022,San Pablo Bay,SPB
+D41.Aug.2022,Heterosigma,2329765.949,,8/23/2022,D41,Aug,2022,San Pablo Bay,SPB
+D41.Aug.2022,Plagioselmis,132594.4004,,8/23/2022,D41,Aug,2022,San Pablo Bay,SPB
+D41A.Aug.2022,Cyclotella,6608.4368,,8/23/2022,D41A,Aug,2022,San Pablo Bay,SPB
+D41A.Aug.2022,Eucapsis,12385.0692,,8/23/2022,D41A,Aug,2022,San Pablo Bay,SPB
+D41A.Aug.2022,Heterosigma,16203143.39,,8/23/2022,D41A,Aug,2022,San Pablo Bay,SPB
+D41A.Aug.2022,Nitzschia,47095.6535,,8/23/2022,D41A,Aug,2022,San Pablo Bay,SPB
+D41A.Aug.2022,Plagioselmis,63360.8794,,8/23/2022,D41A,Aug,2022,San Pablo Bay,SPB
+D41A.Aug.2022,Teleaulax,7316.6205,,8/23/2022,D41A,Aug,2022,San Pablo Bay,SPB
+NZ002.Aug.2022,Cyclotella,12439.0048,,8/23/2022,NZ002,Aug,2022,San Pablo Bay,SPB
+NZ002.Aug.2022,Eucapsis,12760.0812,,8/23/2022,NZ002,Aug,2022,San Pablo Bay,SPB
+NZ002.Aug.2022,Heterosigma,3630529.906,,8/23/2022,NZ002,Aug,2022,San Pablo Bay,SPB
+NZ002.Aug.2022,Plagioselmis,30428.3022,,8/23/2022,NZ002,Aug,2022,San Pablo Bay,SPB
+NZ002.Aug.2022,Teleaulax,6886.0065,,8/23/2022,NZ002,Aug,2022,San Pablo Bay,SPB
+NZ004.Aug.2022,Cyclotella,29484.9148,,8/23/2022,NZ004,Aug,2022,San Pablo Bay,SPB
+NZ004.Aug.2022,Eucapsis,13052.2968,,8/23/2022,NZ004,Aug,2022,San Pablo Bay,SPB
+NZ004.Aug.2022,Heterosigma,888797.1968,,8/23/2022,NZ004,Aug,2022,San Pablo Bay,SPB
+NZ325.Aug.2022,Chlamydomonas,89410.4745,,8/23/2022,NZ325,Aug,2022,San Pablo Bay,SPB
+NZ325.Aug.2022,Chlorella,7485.849,,8/23/2022,NZ325,Aug,2022,San Pablo Bay,SPB
+NZ325.Aug.2022,Cyclotella,143381.031,,8/23/2022,NZ325,Aug,2022,San Pablo Bay,SPB
+NZ325.Aug.2022,Eucapsis,26148.726,,8/23/2022,NZ325,Aug,2022,San Pablo Bay,SPB
+NZ325.Aug.2022,Gonyostomum,917670.029,,8/23/2022,NZ325,Aug,2022,San Pablo Bay,SPB
+NZ325.Aug.2022,Heterosigma,1500604.168,,8/23/2022,NZ325,Aug,2022,San Pablo Bay,SPB
+C10A.Sep.2022,Chlamydomonas,6013.2978,,9/13/2022,C10A,Sep,2022,Southern Interior Delta,SID
+C10A.Sep.2022,Chlorella,4433.7564,,9/13/2022,C10A,Sep,2022,Southern Interior Delta,SID
+C10A.Sep.2022,Cocconeis,38500.3284,,9/13/2022,C10A,Sep,2022,Southern Interior Delta,SID
+C10A.Sep.2022,Cryptomonas,23057.457,,9/13/2022,C10A,Sep,2022,Southern Interior Delta,SID
+C10A.Sep.2022,Cyclotella,29285.7096,,9/13/2022,C10A,Sep,2022,Southern Interior Delta,SID
+C10A.Sep.2022,Encyonema,9055.7028,,9/13/2022,C10A,Sep,2022,Southern Interior Delta,SID
+C10A.Sep.2022,Eucapsis,4727.3328,,9/13/2022,C10A,Sep,2022,Southern Interior Delta,SID
+C10A.Sep.2022,Fragilaria,69572.5884,,9/13/2022,C10A,Sep,2022,Southern Interior Delta,SID
+C10A.Sep.2022,Komvophoron,3894.2784,,9/13/2022,C10A,Sep,2022,Southern Interior Delta,SID
+C10A.Sep.2022,Microcystis,192332.271,,9/13/2022,C10A,Sep,2022,Southern Interior Delta,SID
+C10A.Sep.2022,Monoraphidium,2048.3436,,9/13/2022,C10A,Sep,2022,Southern Interior Delta,SID
+C10A.Sep.2022,Navicula,86617.584,,9/13/2022,C10A,Sep,2022,Southern Interior Delta,SID
+C10A.Sep.2022,Nitzschia,13428.402,,9/13/2022,C10A,Sep,2022,Southern Interior Delta,SID
+C10A.Sep.2022,Plagioselmis,84635.316,,9/13/2022,C10A,Sep,2022,Southern Interior Delta,SID
+C10A.Sep.2022,Planktolyngbya,1378.8054,,9/13/2022,C10A,Sep,2022,Southern Interior Delta,SID
+C10A.Sep.2022,Staurosira,14046.5016,,9/13/2022,C10A,Sep,2022,Southern Interior Delta,SID
+C10A.Sep.2022,Ulnaria,487658.4198,,9/13/2022,C10A,Sep,2022,Southern Interior Delta,SID
+C3A.Sep.2022,Cocconeis,27948.7412,,9/13/2022,C3A,Sep,2022,Northern Interior Delta,NID
+C3A.Sep.2022,Cyclotella,13253.88,,9/13/2022,C3A,Sep,2022,Northern Interior Delta,NID
+C3A.Sep.2022,Eucapsis,4302.972,,9/13/2022,C3A,Sep,2022,Northern Interior Delta,NID
+C3A.Sep.2022,Gomphonema,25397.218,,9/13/2022,C3A,Sep,2022,Northern Interior Delta,NID
+C3A.Sep.2022,Mougeotia,133198.468,,9/13/2022,C3A,Sep,2022,Northern Interior Delta,NID
+C3A.Sep.2022,Navicula,35481.6656,,9/13/2022,C3A,Sep,2022,Northern Interior Delta,NID
+C3A.Sep.2022,Nitzschia,1010.3814,,9/13/2022,C3A,Sep,2022,Northern Interior Delta,NID
+C3A.Sep.2022,Teleaulax,2310.351,,9/13/2022,C3A,Sep,2022,Northern Interior Delta,NID
+C9.Sep.2022,Achnanthidium,4072.3186,,9/13/2022,C9,Sep,2022,Southern Interior Delta,SID
+C9.Sep.2022,Cocconeis,67451.3616,,9/13/2022,C9,Sep,2022,Southern Interior Delta,SID
+C9.Sep.2022,Cyclotella,17752.4088,,9/13/2022,C9,Sep,2022,Southern Interior Delta,SID
+C9.Sep.2022,Eucapsis,7713.9216,,9/13/2022,C9,Sep,2022,Southern Interior Delta,SID
+C9.Sep.2022,Nitzschia,1406.86,,9/13/2022,C9,Sep,2022,Southern Interior Delta,SID
+C9.Sep.2022,Teleaulax,4131.2985,,9/13/2022,C9,Sep,2022,Southern Interior Delta,SID
+D12.Sep.2022,Chlorella,1195.137,,9/14/2022,D12,Sep,2022,Confluence,CON
+D12.Sep.2022,Cryptomonas,32997.2808,,9/14/2022,D12,Sep,2022,Confluence,CON
+D12.Sep.2022,Cyclotella,19319.328,,9/14/2022,D12,Sep,2022,Confluence,CON
+D12.Sep.2022,Eucapsis,11916.8712,,9/14/2022,D12,Sep,2022,Confluence,CON
+D12.Sep.2022,Plagioselmis,118779.3684,,9/14/2022,D12,Sep,2022,Confluence,CON
+D12.Sep.2022,Pseudanabaena,5869.7244,,9/14/2022,D12,Sep,2022,Confluence,CON
+D19.Sep.2022,Achnanthidium,4266.009,,9/14/2022,D19,Sep,2022,Central Delta,CED
+D19.Sep.2022,Aulacoseira,51161.891,,9/14/2022,D19,Sep,2022,Central Delta,CED
+D19.Sep.2022,Cryptomonas,205444.03,,9/14/2022,D19,Sep,2022,Central Delta,CED
+D19.Sep.2022,Cyclotella,226172.892,,9/14/2022,D19,Sep,2022,Central Delta,CED
+D19.Sep.2022,Eucapsis,6380.748,,9/14/2022,D19,Sep,2022,Central Delta,CED
+D19.Sep.2022,Microcystis,4146.945,,9/14/2022,D19,Sep,2022,Central Delta,CED
+D19.Sep.2022,Nitzschia,12848.99,,9/14/2022,D19,Sep,2022,Central Delta,CED
+D19.Sep.2022,Teleaulax,2814.24,,9/14/2022,D19,Sep,2022,Central Delta,CED
+D28A.Sep.2022,Chlorella,4249.764,,9/14/2022,D28A,Sep,2022,Central Delta,CED
+D28A.Sep.2022,Cocconeis,9673.3245,,9/14/2022,D28A,Sep,2022,Central Delta,CED
+D28A.Sep.2022,Cyclotella,20204.634,,9/14/2022,D28A,Sep,2022,Central Delta,CED
+D28A.Sep.2022,Eucapsis,4495.1112,,9/14/2022,D28A,Sep,2022,Central Delta,CED
+D28A.Sep.2022,Microcystis,22767.636,,9/14/2022,D28A,Sep,2022,Central Delta,CED
+D28A.Sep.2022,Plagioselmis,65413.5066,,9/14/2022,D28A,Sep,2022,Central Delta,CED
+D28A.Sep.2022,Teleaulax,49174.5888,,9/14/2022,D28A,Sep,2022,Central Delta,CED
+D16.Sep.2022,Chlorella,4883.242,,9/15/2022,D16,Sep,2022,Central Delta,CED
+D16.Sep.2022,Chroococcus,4066.0464,,9/15/2022,D16,Sep,2022,Central Delta,CED
+D16.Sep.2022,Cyclotella,42353.1168,,9/15/2022,D16,Sep,2022,Central Delta,CED
+D16.Sep.2022,Eucapsis,10790.6616,,9/15/2022,D16,Sep,2022,Central Delta,CED
+D16.Sep.2022,Microcystis,59469.7616,,9/15/2022,D16,Sep,2022,Central Delta,CED
+D16.Sep.2022,Nitzschia,7948.1088,,9/15/2022,D16,Sep,2022,Central Delta,CED
+D16.Sep.2022,Teleaulax,8648.7812,,9/15/2022,D16,Sep,2022,Central Delta,CED
+D26.Sep.2022,Cyclotella,168993.87,,9/15/2022,D26,Sep,2022,Central Delta,CED
+D26.Sep.2022,Eucapsis,11940.372,,9/15/2022,D26,Sep,2022,Central Delta,CED
+D26.Sep.2022,Navicula,18385.881,,9/15/2022,D26,Sep,2022,Central Delta,CED
+D26.Sep.2022,Plagioselmis,36076.128,,9/15/2022,D26,Sep,2022,Central Delta,CED
+MD10A.Sep.2022,Aphanizomenon,46983.6693,,9/15/2022,MD10A,Sep,2022,Southern Interior Delta,SID
+MD10A.Sep.2022,Aulacoseira,2507513.654,,9/15/2022,MD10A,Sep,2022,Southern Interior Delta,SID
+MD10A.Sep.2022,Chlorella,2291.706,,9/15/2022,MD10A,Sep,2022,Southern Interior Delta,SID
+MD10A.Sep.2022,Chroococcus,501.054,,9/15/2022,MD10A,Sep,2022,Southern Interior Delta,SID
+MD10A.Sep.2022,Cocconeis,34239.2376,,9/15/2022,MD10A,Sep,2022,Southern Interior Delta,SID
+MD10A.Sep.2022,Cyclotella,9217.7508,,9/15/2022,MD10A,Sep,2022,Southern Interior Delta,SID
+MD10A.Sep.2022,Dinobryon,19665.5481,,9/15/2022,MD10A,Sep,2022,Southern Interior Delta,SID
+MD10A.Sep.2022,Dolichospermum,20299.6689,,9/15/2022,MD10A,Sep,2022,Southern Interior Delta,SID
+MD10A.Sep.2022,Eucapsis,4731.264,,9/15/2022,MD10A,Sep,2022,Southern Interior Delta,SID
+MD10A.Sep.2022,Microcystis,22769.208,,9/15/2022,MD10A,Sep,2022,Southern Interior Delta,SID
+MD10A.Sep.2022,Monoraphidium,1385.7018,,9/15/2022,MD10A,Sep,2022,Southern Interior Delta,SID
+MD10A.Sep.2022,Oocystis,12373.9803,,9/15/2022,MD10A,Sep,2022,Southern Interior Delta,SID
+MD10A.Sep.2022,Plagioselmis,187073.85,,9/15/2022,MD10A,Sep,2022,Southern Interior Delta,SID
+MD10A.Sep.2022,Teleaulax,142613.9322,,9/15/2022,MD10A,Sep,2022,Southern Interior Delta,SID
+P8.Sep.2022,Aulacoseira,5531633.696,,9/15/2022,P8,Sep,2022,Southern Interior Delta,SID
+P8.Sep.2022,Cryptomonas,185987.6788,,9/15/2022,P8,Sep,2022,Southern Interior Delta,SID
+P8.Sep.2022,Cyclotella,4664.4544,,9/15/2022,P8,Sep,2022,Southern Interior Delta,SID
+P8.Sep.2022,Eucapsis,9180.1008,,9/15/2022,P8,Sep,2022,Southern Interior Delta,SID
+P8.Sep.2022,Komvophoron,10572.8084,,9/15/2022,P8,Sep,2022,Southern Interior Delta,SID
+P8.Sep.2022,Nitzschia,24516.7944,,9/15/2022,P8,Sep,2022,Southern Interior Delta,SID
+P8.Sep.2022,Plagioselmis,113739.3656,,9/15/2022,P8,Sep,2022,Southern Interior Delta,SID
+P8.Sep.2022,Pseudanabaena,957.7824,,9/15/2022,P8,Sep,2022,Southern Interior Delta,SID
+P8.Sep.2022,Scenedesmus,1586.8344,,9/15/2022,P8,Sep,2022,Southern Interior Delta,SID
+D10.Sep.2022,Chlorella,2644.908,,9/19/2022,D10,Sep,2022,Confluence,CON
+D10.Sep.2022,Chroococcus,5952.9596,,9/19/2022,D10,Sep,2022,Confluence,CON
+D10.Sep.2022,Cryptomonas,47820.1283,,9/19/2022,D10,Sep,2022,Confluence,CON
+D10.Sep.2022,Cyclotella,73458.4865,,9/19/2022,D10,Sep,2022,Confluence,CON
+D10.Sep.2022,Eucapsis,13213.0404,,9/19/2022,D10,Sep,2022,Confluence,CON
+D10.Sep.2022,Gyrosigma,452212.187,,9/19/2022,D10,Sep,2022,Confluence,CON
+D10.Sep.2022,Nitzschia,15150.723,,9/19/2022,D10,Sep,2022,Confluence,CON
+D10.Sep.2022,Plagioselmis,31680.4397,,9/19/2022,D10,Sep,2022,Confluence,CON
+D10.Sep.2022,Pseudostaurosira,20547.8686,,9/19/2022,D10,Sep,2022,Confluence,CON
+D10.Sep.2022,Teleaulax,4140.8143,,9/19/2022,D10,Sep,2022,Confluence,CON
+D6.Sep.2022,Chlamydomonas,19740.2268,,9/19/2022,D6,Sep,2022,San Pablo Bay,SPB
+D6.Sep.2022,Cyclotella,43599.5118,,9/19/2022,D6,Sep,2022,San Pablo Bay,SPB
+D6.Sep.2022,Eucapsis,5099.7168,,9/19/2022,D6,Sep,2022,San Pablo Bay,SPB
+D6.Sep.2022,Nitzschia,52810.9848,,9/19/2022,D6,Sep,2022,San Pablo Bay,SPB
+D6.Sep.2022,Plagioselmis,5966.8293,,9/19/2022,D6,Sep,2022,San Pablo Bay,SPB
+D8.Sep.2022,Chlorella,5665.576,,9/19/2022,D8,Sep,2022,Grizzly and Suisun Bay,GSB
+D8.Sep.2022,Cyclotella,50893.8108,,9/19/2022,D8,Sep,2022,Grizzly and Suisun Bay,GSB
+D8.Sep.2022,Drepanochloris,334.3858,,9/19/2022,D8,Sep,2022,Grizzly and Suisun Bay,GSB
+D8.Sep.2022,Eucapsis,10224.3204,,9/19/2022,D8,Sep,2022,Grizzly and Suisun Bay,GSB
+D8.Sep.2022,Peridinium,302122.681,,9/19/2022,D8,Sep,2022,Grizzly and Suisun Bay,GSB
+D8.Sep.2022,Plagioselmis,104077.2152,,9/19/2022,D8,Sep,2022,Grizzly and Suisun Bay,GSB
+D7.Sep.2022,Chlorella,446.2,,9/20/2022,D7,Sep,2022,Grizzly and Suisun Bay,GSB
+D7.Sep.2022,Cyclotella,8764.38,,9/20/2022,D7,Sep,2022,Grizzly and Suisun Bay,GSB
+D7.Sep.2022,Eucapsis,6590.88,,9/20/2022,D7,Sep,2022,Grizzly and Suisun Bay,GSB
+D7.Sep.2022,Plagioselmis,11787.04,,9/20/2022,D7,Sep,2022,Grizzly and Suisun Bay,GSB
+NZ032.Sep.2022,Cocconeis,16119.4632,,9/20/2022,NZ032,Sep,2022,Grizzly and Suisun Bay,GSB
+NZ032.Sep.2022,Cryptomonas,31749.9932,,9/20/2022,NZ032,Sep,2022,Grizzly and Suisun Bay,GSB
+NZ032.Sep.2022,Cyclotella,5874.0128,,9/20/2022,NZ032,Sep,2022,Grizzly and Suisun Bay,GSB
+NZ032.Sep.2022,Eucapsis,12480.5736,,9/20/2022,NZ032,Sep,2022,Grizzly and Suisun Bay,GSB
+NZ032.Sep.2022,Staurosira,16027.4688,,9/20/2022,NZ032,Sep,2022,Grizzly and Suisun Bay,GSB
+NZS42.Sep.2022,Cyclotella,48157.812,,9/20/2022,NZS42,Sep,2022,Grizzly and Suisun Bay,GSB
+NZS42.Sep.2022,Eucapsis,21967.6896,,9/20/2022,NZS42,Sep,2022,Grizzly and Suisun Bay,GSB
+NZS42.Sep.2022,Tryblionella,817151.1372,,9/20/2022,NZS42,Sep,2022,Grizzly and Suisun Bay,GSB
+D41.Sep.2022,Cryptomonas,48145.7172,,9/21/2022,D41,Sep,2022,San Pablo Bay,SPB
+D41.Sep.2022,Cyclotella,53571.0456,,9/21/2022,D41,Sep,2022,San Pablo Bay,SPB
+D41.Sep.2022,Eucapsis,6347.1168,,9/21/2022,D41,Sep,2022,San Pablo Bay,SPB
+D41.Sep.2022,Gyrosigma,351126.6408,,9/21/2022,D41,Sep,2022,San Pablo Bay,SPB
+D41.Sep.2022,Nitzschia,22740.9606,,9/21/2022,D41,Sep,2022,San Pablo Bay,SPB
+D41.Sep.2022,Ochromonas,4405.3245,,9/21/2022,D41,Sep,2022,San Pablo Bay,SPB
+D41.Sep.2022,Plagioselmis,32327.7516,,9/21/2022,D41,Sep,2022,San Pablo Bay,SPB
+D41.Sep.2022,Skeletonema,340823.1162,,9/21/2022,D41,Sep,2022,San Pablo Bay,SPB
+D41.Sep.2022,Teleaulax,51793.1055,,9/21/2022,D41,Sep,2022,San Pablo Bay,SPB
+D41A.Sep.2022,Chlorella,7192.8376,,9/21/2022,D41A,Sep,2022,San Pablo Bay,SPB
+D41A.Sep.2022,Cyclotella,87516.014,,9/21/2022,D41A,Sep,2022,San Pablo Bay,SPB
+D41A.Sep.2022,Eucapsis,9301.8528,,9/21/2022,D41A,Sep,2022,San Pablo Bay,SPB
+D41A.Sep.2022,Nitzschia,19365.332,,9/21/2022,D41A,Sep,2022,San Pablo Bay,SPB
+D41A.Sep.2022,Ochromonas,12660.8552,,9/21/2022,D41A,Sep,2022,San Pablo Bay,SPB
+D41A.Sep.2022,Plagioselmis,40363.4936,,9/21/2022,D41A,Sep,2022,San Pablo Bay,SPB
+D41A.Sep.2022,Skeletonema,81945.1836,,9/21/2022,D41A,Sep,2022,San Pablo Bay,SPB
+D41A.Sep.2022,Teleaulax,40363.4936,,9/21/2022,D41A,Sep,2022,San Pablo Bay,SPB
+NZ002.Sep.2022,Chaetoceros,16332863.95,,9/21/2022,NZ002,Sep,2022,San Pablo Bay,SPB
+NZ002.Sep.2022,Cyclotella,10165.2244,,9/21/2022,NZ002,Sep,2022,San Pablo Bay,SPB
+NZ002.Sep.2022,Eucapsis,8945.7552,,9/21/2022,NZ002,Sep,2022,San Pablo Bay,SPB
+NZ002.Sep.2022,Plagioselmis,10165.2244,,9/21/2022,NZ002,Sep,2022,San Pablo Bay,SPB
+NZ002.Sep.2022,Skeletonema,169158.7116,,9/21/2022,NZ002,Sep,2022,San Pablo Bay,SPB
+NZ004.Sep.2022,Aulacoseira,28323.1176,,9/21/2022,NZ004,Sep,2022,San Pablo Bay,SPB
+NZ004.Sep.2022,Cyclotella,81718.7568,,9/21/2022,NZ004,Sep,2022,San Pablo Bay,SPB
+NZ004.Sep.2022,Eucapsis,7341.4404,,9/21/2022,NZ004,Sep,2022,San Pablo Bay,SPB
+NZ004.Sep.2022,Ochromonas,4699.5645,,9/21/2022,NZ004,Sep,2022,San Pablo Bay,SPB
+NZ004.Sep.2022,Plagioselmis,16266.2686,,9/21/2022,NZ004,Sep,2022,San Pablo Bay,SPB
+NZ004.Sep.2022,Skeletonema,53627.1675,,9/21/2022,NZ004,Sep,2022,San Pablo Bay,SPB
+NZ004.Sep.2022,Teleaulax,3902.2485,,9/21/2022,NZ004,Sep,2022,San Pablo Bay,SPB
+NZ325.Sep.2022,Cryptomonas,131343.6388,,9/21/2022,NZ325,Sep,2022,San Pablo Bay,SPB
+NZ325.Sep.2022,Cyclotella,59064.742,,9/21/2022,NZ325,Sep,2022,San Pablo Bay,SPB
+NZ325.Sep.2022,Eucapsis,11687.3352,,9/21/2022,NZ325,Sep,2022,San Pablo Bay,SPB
+NZ325.Sep.2022,Nitzschia,36572.9024,,9/21/2022,NZ325,Sep,2022,San Pablo Bay,SPB
+NZ325.Sep.2022,Plagioselmis,93463.2976,,9/21/2022,NZ325,Sep,2022,San Pablo Bay,SPB
+NZ325.Sep.2022,Skeletonema,2291932.255,,9/21/2022,NZ325,Sep,2022,San Pablo Bay,SPB
+NZ325.Sep.2022,Teleaulax,28406.2752,,9/21/2022,NZ325,Sep,2022,San Pablo Bay,SPB
+NZ325.Sep.2022,Thalassiosira,33650.184,,9/21/2022,NZ325,Sep,2022,San Pablo Bay,SPB
+D22.Sep.2022,Cocconeis,35681.902,,9/30/2022,D22,Sep,2022,Confluence,CON
+D22.Sep.2022,Eucapsis,12204.5904,,9/30/2022,D22,Sep,2022,Confluence,CON
+D22.Sep.2022,Nitzschia,47014.2492,,9/30/2022,D22,Sep,2022,Confluence,CON
+D22.Sep.2022,Plagioselmis,131071.5768,,9/30/2022,D22,Sep,2022,Confluence,CON
+D4.Sep.2022,Chlamydomonas,26903.7008,,9/30/2022,D4,Sep,2022,Confluence,CON
+D4.Sep.2022,Cyclotella,1687093.797,,9/30/2022,D4,Sep,2022,Confluence,CON
+D4.Sep.2022,Entomoneis,193415.2252,,9/30/2022,D4,Sep,2022,Confluence,CON
+D4.Sep.2022,Eucapsis,9175.7232,,9/30/2022,D4,Sep,2022,Confluence,CON
+D4.Sep.2022,Gyrosigma,91893.2964,,9/30/2022,D4,Sep,2022,Confluence,CON
+D4.Sep.2022,Komvophoron,8263.5168,,9/30/2022,D4,Sep,2022,Confluence,CON
+D4.Sep.2022,Merismopedia,31551.6096,,9/30/2022,D4,Sep,2022,Confluence,CON
+D4.Sep.2022,Nitzschia,6907.3444,,9/30/2022,D4,Sep,2022,Confluence,CON
+D4.Sep.2022,Plagioselmis,38186.1864,,9/30/2022,D4,Sep,2022,Confluence,CON
+EZ2.Sep.2022,Chlamydomonas,55979.1292,,9/30/2022,EZ2,Sep,2022,Entrapment Zone,EZ
+EZ2.Sep.2022,Cryptomonas,76544.253,,9/30/2022,EZ2,Sep,2022,Entrapment Zone,EZ
+EZ2.Sep.2022,Cyclotella,6219.5024,,9/30/2022,EZ2,Sep,2022,Entrapment Zone,EZ
+EZ2.Sep.2022,Eucapsis,12760.0812,,9/30/2022,EZ2,Sep,2022,Entrapment Zone,EZ
+EZ2.Sep.2022,Nitzschia,2002.218,,9/30/2022,EZ2,Sep,2022,Entrapment Zone,EZ
+EZ2.Sep.2022,Plagioselmis,143974.8065,,9/30/2022,EZ2,Sep,2022,Entrapment Zone,EZ
+EZ2.Sep.2022,Teleaulax,12884.5434,,9/30/2022,EZ2,Sep,2022,Entrapment Zone,EZ
+EZ6.Sep.2022,Chlorella,1549.09,,9/30/2022,EZ6,Sep,2022,Entrapment Zone,EZ
+EZ6.Sep.2022,Cocconeis,36056.4272,,9/30/2022,EZ6,Sep,2022,Entrapment Zone,EZ
+EZ6.Sep.2022,Cyclotella,50861.256,,9/30/2022,EZ6,Sep,2022,Entrapment Zone,EZ
+EZ6.Sep.2022,Eucapsis,8945.7552,,9/30/2022,EZ6,Sep,2022,Entrapment Zone,EZ
+EZ6.Sep.2022,Lepocinclis,126288.8436,,9/30/2022,EZ6,Sep,2022,Entrapment Zone,EZ
+EZ6.Sep.2022,Mayamaea,7137.9512,,9/30/2022,EZ6,Sep,2022,Entrapment Zone,EZ
+EZ6.Sep.2022,Plagioselmis,354817.6272,,9/30/2022,EZ6,Sep,2022,Entrapment Zone,EZ
+NZ068.Sep.2022,Chlorella,813.832,,9/30/2022,NZ068,Sep,2022,Northern Interior Delta,NID
+NZ068.Sep.2022,Cyclotella,60718.944,,9/30/2022,NZ068,Sep,2022,Northern Interior Delta,NID
+NZ068.Sep.2022,Entomoneis,213378.789,,9/30/2022,NZ068,Sep,2022,Northern Interior Delta,NID
+NZ068.Sep.2022,Eucapsis,12833.7768,,9/30/2022,NZ068,Sep,2022,Northern Interior Delta,NID
+NZ068.Sep.2022,Microcystis,25733.8986,,9/30/2022,NZ068,Sep,2022,Northern Interior Delta,NID
+NZ068.Sep.2022,Nitzschia,42771.2946,,9/30/2022,NZ068,Sep,2022,Northern Interior Delta,NID
+NZ068.Sep.2022,Plagioselmis,88889.031,,9/30/2022,NZ068,Sep,2022,Northern Interior Delta,NID
+C10A.Oct.2022,Chlamydomonas,2665.9512,,10/12/2022,C10A,Oct,2022,Southern Interior Delta,SID
+C10A.Oct.2022,Chlorella,7247.7504,,10/12/2022,C10A,Oct,2022,Southern Interior Delta,SID
+C10A.Oct.2022,Cocconeis,6601.5576,,10/12/2022,C10A,Oct,2022,Southern Interior Delta,SID
+C10A.Oct.2022,Cyclotella,32102.9016,,10/12/2022,C10A,Oct,2022,Southern Interior Delta,SID
+C10A.Oct.2022,Encyonema,2803.416,,10/12/2022,C10A,Oct,2022,Southern Interior Delta,SID
+C10A.Oct.2022,Eucapsis,3107.5704,,10/12/2022,C10A,Oct,2022,Southern Interior Delta,SID
+C10A.Oct.2022,Gomphonema,10268.7288,,10/12/2022,C10A,Oct,2022,Southern Interior Delta,SID
+C10A.Oct.2022,Lagerheimia,324.1788,,10/12/2022,C10A,Oct,2022,Southern Interior Delta,SID
+C10A.Oct.2022,Mougeotia,3011000.025,,10/12/2022,C10A,Oct,2022,Southern Interior Delta,SID
+C10A.Oct.2022,Navicula,105240.1284,,10/12/2022,C10A,Oct,2022,Southern Interior Delta,SID
+C10A.Oct.2022,Nitzschia,4840.7634,,10/12/2022,C10A,Oct,2022,Southern Interior Delta,SID
+C10A.Oct.2022,Plagioselmis,37304.916,,10/12/2022,C10A,Oct,2022,Southern Interior Delta,SID
+C10A.Oct.2022,Sellaphora,74010.1824,,10/12/2022,C10A,Oct,2022,Southern Interior Delta,SID
+C3A.Oct.2022,Chlorella,7105.966,,10/12/2022,C3A,Oct,2022,Northern Interior Delta,NID
+C3A.Oct.2022,Cocconeis,9497.1905,,10/12/2022,C3A,Oct,2022,Northern Interior Delta,NID
+C3A.Oct.2022,Cyclotella,2328.3715,,10/12/2022,C3A,Oct,2022,Northern Interior Delta,NID
+C3A.Oct.2022,Eucapsis,3173.31,,10/12/2022,C3A,Oct,2022,Northern Interior Delta,NID
+C3A.Oct.2022,Microcystis,2349.3225,,10/12/2022,C3A,Oct,2022,Northern Interior Delta,NID
+C3A.Oct.2022,Plagioselmis,56648.949,,10/12/2022,C3A,Oct,2022,Northern Interior Delta,NID
+C3A.Oct.2022,Stauroforma,32942.126,,10/12/2022,C3A,Oct,2022,Northern Interior Delta,NID
+C3A.Oct.2022,Staurosira,2338.847,,10/12/2022,C3A,Oct,2022,Northern Interior Delta,NID
+C9.Oct.2022,Cocconeis,74580.9808,,10/12/2022,C9,Oct,2022,Southern Interior Delta,SID
+C9.Oct.2022,Cyclotella,44596.955,,10/12/2022,C9,Oct,2022,Southern Interior Delta,SID
+C9.Oct.2022,Eucapsis,10763.064,,10/12/2022,C9,Oct,2022,Southern Interior Delta,SID
+C9.Oct.2022,Fragilaria,72046.6012,,10/12/2022,C9,Oct,2022,Southern Interior Delta,SID
+C9.Oct.2022,Nitzschia,8289.2458,,10/12/2022,C9,Oct,2022,Southern Interior Delta,SID
+C9.Oct.2022,Stauroforma,13020.701,,10/12/2022,C9,Oct,2022,Southern Interior Delta,SID
+C9.Oct.2022,Staurosira,18712.706,,10/12/2022,C9,Oct,2022,Southern Interior Delta,SID
+D12.Oct.2022,Eucapsis,19530.4644,,10/13/2022,D12,Oct,2022,Confluence,CON
+D12.Oct.2022,Nitzschia,16206.3891,,10/13/2022,D12,Oct,2022,Confluence,CON
+D12.Oct.2022,Plagioselmis,91288.2804,,10/13/2022,D12,Oct,2022,Confluence,CON
+D16.Oct.2022,Chroococcus,9399.129,,10/13/2022,D16,Oct,2022,Central Delta,CED
+D16.Oct.2022,Cocconeis,58031.3162,,10/13/2022,D16,Oct,2022,Central Delta,CED
+D16.Oct.2022,Cyclotella,14350.1547,,10/13/2022,D16,Oct,2022,Central Delta,CED
+D16.Oct.2022,Entomoneis,99133.9782,,10/13/2022,D16,Oct,2022,Central Delta,CED
+D16.Oct.2022,Eucapsis,7267.842,,10/13/2022,D16,Oct,2022,Central Delta,CED
+D16.Oct.2022,Microcystis,4699.5645,,10/13/2022,D16,Oct,2022,Central Delta,CED
+D16.Oct.2022,Navicula,11644.3913,,10/13/2022,D16,Oct,2022,Central Delta,CED
+D16.Oct.2022,Plagioselmis,74720.2645,,10/13/2022,D16,Oct,2022,Central Delta,CED
+D16.Oct.2022,Planktolyngbya,962.9124,,10/13/2022,D16,Oct,2022,Central Delta,CED
+D16.Oct.2022,Scenedesmus,1082.5098,,10/13/2022,D16,Oct,2022,Central Delta,CED
+D19.Oct.2022,Chlorella,12297.5388,,10/13/2022,D19,Oct,2022,Central Delta,CED
+D19.Oct.2022,Cyclotella,35183.1876,,10/13/2022,D19,Oct,2022,Central Delta,CED
+D19.Oct.2022,Eucapsis,5622.7176,,10/13/2022,D19,Oct,2022,Central Delta,CED
+D19.Oct.2022,Lagerheimia,1663.4352,,10/13/2022,D19,Oct,2022,Central Delta,CED
+D19.Oct.2022,Nitzschia,1652.895,,10/13/2022,D19,Oct,2022,Central Delta,CED
+D19.Oct.2022,Plagioselmis,102692.2104,,10/13/2022,D19,Oct,2022,Central Delta,CED
+D19.Oct.2022,Teleaulax,103782.642,,10/13/2022,D19,Oct,2022,Central Delta,CED
+D28A.Oct.2022,Chlorella,1554.3672,,10/13/2022,D28A,Oct,2022,Central Delta,CED
+D28A.Oct.2022,Cocconeis,25553.0392,,10/13/2022,D28A,Oct,2022,Central Delta,CED
+D28A.Oct.2022,Cryptomonas,210040.4628,,10/13/2022,D28A,Oct,2022,Central Delta,CED
+D28A.Oct.2022,Cyclotella,18222.216,,10/13/2022,D28A,Oct,2022,Central Delta,CED
+D28A.Oct.2022,Eucapsis,9691.4592,,10/13/2022,D28A,Oct,2022,Central Delta,CED
+D28A.Oct.2022,Geissleria,13910.8424,,10/13/2022,D28A,Oct,2022,Central Delta,CED
+D28A.Oct.2022,Plagioselmis,31486.42,,10/13/2022,D28A,Oct,2022,Central Delta,CED
+D28A.Oct.2022,Planktolyngbya,1374.4448,,10/13/2022,D28A,Oct,2022,Central Delta,CED
+D28A.Oct.2022,Stauroforma,13910.8424,,10/13/2022,D28A,Oct,2022,Central Delta,CED
+D28A.Oct.2022,Tetraedron,54406.9104,,10/13/2022,D28A,Oct,2022,Central Delta,CED
+D28A.Oct.2022,Thalassiosira,832858.7604,,10/13/2022,D28A,Oct,2022,Central Delta,CED
+EZ2-SJR.Oct.2022,Chlorella,5737.5465,,10/13/2022,EZ2-SJR,Oct,2022,Entrapment Zone,EZ
+EZ2-SJR.Oct.2022,Cocconeis,28242.6756,,10/13/2022,EZ2-SJR,Oct,2022,Entrapment Zone,EZ
+EZ2-SJR.Oct.2022,Cryptomonas,83188.035,,10/13/2022,EZ2-SJR,Oct,2022,Entrapment Zone,EZ
+EZ2-SJR.Oct.2022,Cyclotella,25792.8546,,10/13/2022,EZ2-SJR,Oct,2022,Entrapment Zone,EZ
+EZ2-SJR.Oct.2022,Eucapsis,6519.2256,,10/13/2022,EZ2-SJR,Oct,2022,Entrapment Zone,EZ
+EZ2-SJR.Oct.2022,Peridinium,287570.2848,,10/13/2022,EZ2-SJR,Oct,2022,Entrapment Zone,EZ
+EZ2-SJR.Oct.2022,Plagioselmis,33015.2628,,10/13/2022,EZ2-SJR,Oct,2022,Entrapment Zone,EZ
+EZ2-SJR.Oct.2022,Planktolyngbya,1242.8004,,10/13/2022,EZ2-SJR,Oct,2022,Entrapment Zone,EZ
+EZ2-SJR.Oct.2022,Thalassionema,240714.081,,10/13/2022,EZ2-SJR,Oct,2022,Entrapment Zone,EZ
+EZ2-SJR.Oct.2022,Tryblionella,58098.7281,,10/13/2022,EZ2-SJR,Oct,2022,Entrapment Zone,EZ
+EZ6-SJR.Oct.2022,Chlorella,3588.156,,10/13/2022,EZ6-SJR,Oct,2022,Entrapment Zone,EZ
+EZ6-SJR.Oct.2022,Chroococcus,161.909,,10/13/2022,EZ6-SJR,Oct,2022,Entrapment Zone,EZ
+EZ6-SJR.Oct.2022,Cryptomonas,48588.936,,10/13/2022,EZ6-SJR,Oct,2022,Entrapment Zone,EZ
+EZ6-SJR.Oct.2022,Cyclotella,15142.776,,10/13/2022,EZ6-SJR,Oct,2022,Entrapment Zone,EZ
+EZ6-SJR.Oct.2022,Eucapsis,7549.74,,10/13/2022,EZ6-SJR,Oct,2022,Entrapment Zone,EZ
+EZ6-SJR.Oct.2022,Plagioselmis,87207.615,,10/13/2022,EZ6-SJR,Oct,2022,Entrapment Zone,EZ
+EZ6-SJR.Oct.2022,Planktolyngbya,572.77,,10/13/2022,EZ6-SJR,Oct,2022,Entrapment Zone,EZ
+D26.Oct.2022,Aulacoseira,2101386.259,,10/14/2022,D26,Oct,2022,Central Delta,CED
+D26.Oct.2022,Chlorella,3920.9544,,10/14/2022,D26,Oct,2022,Central Delta,CED
+D26.Oct.2022,Chroococcus,733.9812,,10/14/2022,D26,Oct,2022,Central Delta,CED
+D26.Oct.2022,Cyclotella,29926.5024,,10/14/2022,D26,Oct,2022,Central Delta,CED
+D26.Oct.2022,Eucapsis,8853.768,,10/14/2022,D26,Oct,2022,Central Delta,CED
+D26.Oct.2022,Navicula,19773.4152,,10/14/2022,D26,Oct,2022,Central Delta,CED
+D26.Oct.2022,Nitzschia,21608.0488,,10/14/2022,D26,Oct,2022,Central Delta,CED
+D26.Oct.2022,Plagioselmis,75891.9952,,10/14/2022,D26,Oct,2022,Central Delta,CED
+D26.Oct.2022,Pseudanabaena,1450.076,,10/14/2022,D26,Oct,2022,Central Delta,CED
+D26.Oct.2022,Snowella,132.8704,,10/14/2022,D26,Oct,2022,Central Delta,CED
+MD10A.Oct.2022,Chlorella,4461.03,,10/14/2022,MD10A,Oct,2022,Southern Interior Delta,SID
+MD10A.Oct.2022,Cryptomonas,91630.1475,,10/14/2022,MD10A,Oct,2022,Southern Interior Delta,SID
+MD10A.Oct.2022,Cyclotella,41073.669,,10/14/2022,MD10A,Oct,2022,Southern Interior Delta,SID
+MD10A.Oct.2022,Diatoma,4804.9695,,10/14/2022,MD10A,Oct,2022,Southern Interior Delta,SID
+MD10A.Oct.2022,Drepanochloris,187.5735,,10/14/2022,MD10A,Oct,2022,Southern Interior Delta,SID
+MD10A.Oct.2022,Eucapsis,4044.492,,10/14/2022,MD10A,Oct,2022,Southern Interior Delta,SID
+MD10A.Oct.2022,Microcystis,4102.6365,,10/14/2022,MD10A,Oct,2022,Southern Interior Delta,SID
+MD10A.Oct.2022,Pseudanabaena,626.778,,10/14/2022,MD10A,Oct,2022,Southern Interior Delta,SID
+MD10A.Oct.2022,Snowella,204.984,,10/14/2022,MD10A,Oct,2022,Southern Interior Delta,SID
+MD10A.Oct.2022,Teleaulax,71996.688,,10/14/2022,MD10A,Oct,2022,Southern Interior Delta,SID
+P8.Oct.2022,Aphanocapsa,1351.4472,,10/14/2022,P8,Oct,2022,Southern Interior Delta,SID
+P8.Oct.2022,Chlorella,7175.2512,,10/14/2022,P8,Oct,2022,Southern Interior Delta,SID
+P8.Oct.2022,Cryptomonas,149316.6528,,10/14/2022,P8,Oct,2022,Southern Interior Delta,SID
+P8.Oct.2022,Cyclotella,9328.9088,,10/14/2022,P8,Oct,2022,Southern Interior Delta,SID
+P8.Oct.2022,Eucapsis,9472.3056,,10/14/2022,P8,Oct,2022,Southern Interior Delta,SID
+P8.Oct.2022,Lagerheimia,625.67,,10/14/2022,P8,Oct,2022,Southern Interior Delta,SID
+P8.Oct.2022,Monoraphidium,572.9108,,10/14/2022,P8,Oct,2022,Southern Interior Delta,SID
+P8.Oct.2022,Navicula,58861.6808,,10/14/2022,P8,Oct,2022,Southern Interior Delta,SID
+P8.Oct.2022,Planktolyngbya,2123.896,,10/14/2022,P8,Oct,2022,Southern Interior Delta,SID
+P8.Oct.2022,Skeletonema,2128.6308,,10/14/2022,P8,Oct,2022,Southern Interior Delta,SID
+P8.Oct.2022,Teleaulax,19713.0016,,10/14/2022,P8,Oct,2022,Southern Interior Delta,SID
+D22.Oct.2022,Chlorella,4517.9472,,10/17/2022,D22,Oct,2022,Confluence,CON
+D22.Oct.2022,Cocconeis,28545.5216,,10/17/2022,D22,Oct,2022,Confluence,CON
+D22.Oct.2022,Cryptomonas,114952.1136,,10/17/2022,D22,Oct,2022,Confluence,CON
+D22.Oct.2022,Cyclotella,65132.0352,,10/17/2022,D22,Oct,2022,Confluence,CON
+D22.Oct.2022,Eucapsis,12204.5904,,10/17/2022,D22,Oct,2022,Confluence,CON
+D22.Oct.2022,Nitzschia,1260.664,,10/17/2022,D22,Oct,2022,Confluence,CON
+D22.Oct.2022,Plagioselmis,28738.0284,,10/17/2022,D22,Oct,2022,Confluence,CON
+D22.Oct.2022,Teleaulax,6503.493,,10/17/2022,D22,Oct,2022,Confluence,CON
+D4.Oct.2022,Chlorella,7436.505,,10/17/2022,D4,Oct,2022,Confluence,CON
+D4.Oct.2022,Cyclotella,12041.516,,10/17/2022,D4,Oct,2022,Confluence,CON
+D4.Oct.2022,Eucapsis,13873.2984,,10/17/2022,D4,Oct,2022,Confluence,CON
+D4.Oct.2022,Plagioselmis,88538.8752,,10/17/2022,D4,Oct,2022,Confluence,CON
+D4.Oct.2022,Teleaulax,40867.556,,10/17/2022,D4,Oct,2022,Confluence,CON
+EZ2.Oct.2022,Chlorella,5877.42,,10/17/2022,EZ2,Oct,2022,Entrapment Zone,EZ
+EZ2.Oct.2022,Chroococcus,2258.9736,,10/17/2022,EZ2,Oct,2022,Entrapment Zone,EZ
+EZ2.Oct.2022,Cocconeis,23079.9469,,10/17/2022,EZ2,Oct,2022,Entrapment Zone,EZ
+EZ2.Oct.2022,Cryptomonas,71903.8452,,10/17/2022,EZ2,Oct,2022,Entrapment Zone,EZ
+EZ2.Oct.2022,Cyclotella,36577.9956,,10/17/2022,EZ2,Oct,2022,Entrapment Zone,EZ
+EZ2.Oct.2022,Eucapsis,6393.6108,,10/17/2022,EZ2,Oct,2022,Entrapment Zone,EZ
+EZ2.Oct.2022,Plagioselmis,20612.7082,,10/17/2022,EZ2,Oct,2022,Entrapment Zone,EZ
+EZ2.Oct.2022,Pseudanabaena,1931.8824,,10/17/2022,EZ2,Oct,2022,Entrapment Zone,EZ
+EZ2.Oct.2022,Scenedesmus,10349.37,,10/17/2022,EZ2,Oct,2022,Entrapment Zone,EZ
+EZ6.Oct.2022,Cryptomonas,199568.5692,,10/17/2022,EZ6,Oct,2022,Entrapment Zone,EZ
+EZ6.Oct.2022,Cyclotella,44042.193,,10/17/2022,EZ6,Oct,2022,Entrapment Zone,EZ
+EZ6.Oct.2022,Eucapsis,6340.1832,,10/17/2022,EZ6,Oct,2022,Entrapment Zone,EZ
+EZ6.Oct.2022,Fragilaria,28780.9795,,10/17/2022,EZ6,Oct,2022,Entrapment Zone,EZ
+EZ6.Oct.2022,Nitzschia,17587.0864,,10/17/2022,EZ6,Oct,2022,Entrapment Zone,EZ
+EZ6.Oct.2022,Plagioselmis,65628.2562,,10/17/2022,EZ6,Oct,2022,Entrapment Zone,EZ
+NZ068.Oct.2022,Chlorella,4957.088,,10/17/2022,NZ068,Oct,2022,Northern Interior Delta,NID
+NZ068.Oct.2022,Cocconeis,17018.2708,,10/17/2022,NZ068,Oct,2022,Northern Interior Delta,NID
+NZ068.Oct.2022,Cyclotella,42529.3876,,10/17/2022,NZ068,Oct,2022,Northern Interior Delta,NID
+NZ068.Oct.2022,Entomoneis,40375.354,,10/17/2022,NZ068,Oct,2022,Northern Interior Delta,NID
+NZ068.Oct.2022,Eucapsis,3771.4752,,10/17/2022,NZ068,Oct,2022,Northern Interior Delta,NID
+NZ068.Oct.2022,Microcystis,5318.6488,,10/17/2022,NZ068,Oct,2022,Northern Interior Delta,NID
+NZ068.Oct.2022,Nitzschia,1182.7382,,10/17/2022,NZ068,Oct,2022,Northern Interior Delta,NID
+NZ068.Oct.2022,Plagioselmis,221424.3694,,10/17/2022,NZ068,Oct,2022,Northern Interior Delta,NID
+NZ068.Oct.2022,Thalassiosira,143412.8358,,10/17/2022,NZ068,Oct,2022,Northern Interior Delta,NID
+D10.Oct.2022,Chlamydomonas,84691.0668,,10/18/2022,D10,Oct,2022,Confluence,CON
+D10.Oct.2022,Chlorella,1652.492,,10/18/2022,D10,Oct,2022,Confluence,CON
+D10.Oct.2022,Cocconeis,27568.507,,10/18/2022,D10,Oct,2022,Confluence,CON
+D10.Oct.2022,Cyclotella,5017.102,,10/18/2022,D10,Oct,2022,Confluence,CON
+D10.Oct.2022,Eucapsis,11897.9424,,10/18/2022,D10,Oct,2022,Confluence,CON
+D10.Oct.2022,Microcystis,5291.3816,,10/18/2022,D10,Oct,2022,Confluence,CON
+D10.Oct.2022,Plagioselmis,256206.9594,,10/18/2022,D10,Oct,2022,Confluence,CON
+D6.Oct.2022,Chlamydomonas,18407.5011,,10/18/2022,D6,Oct,2022,San Pablo Bay,SPB
+D6.Oct.2022,Chlorella,2406.0402,,10/18/2022,D6,Oct,2022,San Pablo Bay,SPB
+D6.Oct.2022,Cyclotella,5643.798,,10/18/2022,D6,Oct,2022,San Pablo Bay,SPB
+D6.Oct.2022,Eucapsis,6467.85,,10/18/2022,D6,Oct,2022,San Pablo Bay,SPB
+D6.Oct.2022,Plagioselmis,49366.464,,10/18/2022,D6,Oct,2022,San Pablo Bay,SPB
+D6.Oct.2022,Stephanocyclus,1502178.285,,10/18/2022,D6,Oct,2022,San Pablo Bay,SPB
+D6.Oct.2022,Teleaulax,59015.538,,10/18/2022,D6,Oct,2022,San Pablo Bay,SPB
+D8.Oct.2022,Chlamydomonas,78068.594,,10/18/2022,D8,Oct,2022,Grizzly and Suisun Bay,GSB
+D8.Oct.2022,Cocconeis,16113.6776,,10/18/2022,D8,Oct,2022,Grizzly and Suisun Bay,GSB
+D8.Oct.2022,Cyclotella,19971.5196,,10/18/2022,D8,Oct,2022,Grizzly and Suisun Bay,GSB
+D8.Oct.2022,Eucapsis,7688.304,,10/18/2022,D8,Oct,2022,Grizzly and Suisun Bay,GSB
+D8.Oct.2022,Plagioselmis,241129.6364,,10/18/2022,D8,Oct,2022,Grizzly and Suisun Bay,GSB
+D8.Oct.2022,Skeletonema,14399.142,,10/18/2022,D8,Oct,2022,Grizzly and Suisun Bay,GSB
+D8.Oct.2022,Teleaulax,22125.778,,10/18/2022,D8,Oct,2022,Grizzly and Suisun Bay,GSB
+D7.Oct.2022,Cyclotella,9329.5984,,10/19/2022,D7,Oct,2022,Grizzly and Suisun Bay,GSB
+D7.Oct.2022,Eucapsis,20163.6216,,10/19/2022,D7,Oct,2022,Grizzly and Suisun Bay,GSB
+D7.Oct.2022,Fragilaria,9973.5788,,10/19/2022,D7,Oct,2022,Grizzly and Suisun Bay,GSB
+NZ032.Oct.2022,Chlorella,3785.8326,,10/19/2022,NZ032,Oct,2022,Grizzly and Suisun Bay,GSB
+NZ032.Oct.2022,Chroomonas,56224.83,,10/19/2022,NZ032,Oct,2022,Grizzly and Suisun Bay,GSB
+NZ032.Oct.2022,Cryptomonas,98356.0788,,10/19/2022,NZ032,Oct,2022,Grizzly and Suisun Bay,GSB
+NZ032.Oct.2022,Cyclotella,46537.2384,,10/19/2022,NZ032,Oct,2022,Grizzly and Suisun Bay,GSB
+NZ032.Oct.2022,Eucapsis,11650.7376,,10/19/2022,NZ032,Oct,2022,Grizzly and Suisun Bay,GSB
+NZS42.Oct.2022,Epithemia,408258.9724,,10/19/2022,NZS42,Oct,2022,Grizzly and Suisun Bay,GSB
+NZS42.Oct.2022,Eucapsis,55161.6624,,10/19/2022,NZS42,Oct,2022,Grizzly and Suisun Bay,GSB
+D41.Oct.2022,Chlorella,4814.9712,,10/20/2022,D41,Oct,2022,San Pablo Bay,SPB
+D41.Oct.2022,Cyclotella,19785.1984,,10/20/2022,D41,Oct,2022,San Pablo Bay,SPB
+D41.Oct.2022,Eucapsis,8714.88,,10/20/2022,D41,Oct,2022,San Pablo Bay,SPB
+D41.Oct.2022,Peridinium,120909.882,,10/20/2022,D41,Oct,2022,San Pablo Bay,SPB
+D41.Oct.2022,Plagioselmis,20418.2376,,10/20/2022,D41,Oct,2022,San Pablo Bay,SPB
+D41A.Oct.2022,Chlorella,19279.2512,,10/20/2022,D41A,Oct,2022,San Pablo Bay,SPB
+D41A.Oct.2022,Cyclotella,62609.1504,,10/20/2022,D41A,Oct,2022,San Pablo Bay,SPB
+D41A.Oct.2022,Eucapsis,16427.5488,,10/20/2022,D41A,Oct,2022,San Pablo Bay,SPB
+D41A.Oct.2022,Thalassiosira,179077.4696,,10/20/2022,D41A,Oct,2022,San Pablo Bay,SPB
+NZ002.Oct.2022,Cyclotella,28891.6428,,10/20/2022,NZ002,Oct,2022,San Pablo Bay,SPB
+NZ002.Oct.2022,Eucapsis,8671.3056,,10/20/2022,NZ002,Oct,2022,San Pablo Bay,SPB
+NZ002.Oct.2022,Nitzschia,1914.8528,,10/20/2022,NZ002,Oct,2022,San Pablo Bay,SPB
+NZ002.Oct.2022,Plagioselmis,19596.376,,10/20/2022,NZ002,Oct,2022,San Pablo Bay,SPB
+NZ004.Oct.2022,Chlorella,1219.92,,10/20/2022,NZ004,Oct,2022,San Pablo Bay,SPB
+NZ004.Oct.2022,Chroomonas,30171.4,,10/20/2022,NZ004,Oct,2022,San Pablo Bay,SPB
+NZ004.Oct.2022,Cyclotella,7319.98,,10/20/2022,NZ004,Oct,2022,San Pablo Bay,SPB
+NZ004.Oct.2022,Eucapsis,6607.44,,10/20/2022,NZ004,Oct,2022,San Pablo Bay,SPB
+NZ004.Oct.2022,Plagioselmis,24779.28,,10/20/2022,NZ004,Oct,2022,San Pablo Bay,SPB
+NZ325.Oct.2022,Chlorella,13140.0495,,10/20/2022,NZ325,Oct,2022,San Pablo Bay,SPB
+NZ325.Oct.2022,Cyclotella,28973.6175,,10/20/2022,NZ325,Oct,2022,San Pablo Bay,SPB
+NZ325.Oct.2022,Cylindrotheca,3979.9959,,10/20/2022,NZ325,Oct,2022,San Pablo Bay,SPB
+NZ325.Oct.2022,Eucapsis,9019.2798,,10/20/2022,NZ325,Oct,2022,San Pablo Bay,SPB
+NZ325.Oct.2022,Nephroselmis,9960.0948,,10/20/2022,NZ325,Oct,2022,San Pablo Bay,SPB
+NZ325.Oct.2022,Plagioselmis,106531.6185,,10/20/2022,NZ325,Oct,2022,San Pablo Bay,SPB
+C10A.Nov.2022,Chlamydomonas,8910.6212,,11/10/2022,C10A,Nov,2022,Southern Interior Delta,SID
+C10A.Nov.2022,Chlorella,12119.3136,,11/10/2022,C10A,Nov,2022,Southern Interior Delta,SID
+C10A.Nov.2022,Cocconeis,100697.8768,,11/10/2022,C10A,Nov,2022,Southern Interior Delta,SID
+C10A.Nov.2022,Cryptomonas,76806.7568,,11/10/2022,C10A,Nov,2022,Southern Interior Delta,SID
+C10A.Nov.2022,Cyclotella,123992.9964,,11/10/2022,C10A,Nov,2022,Southern Interior Delta,SID
+C10A.Nov.2022,Desmodesmus,4727.12,,11/10/2022,C10A,Nov,2022,Southern Interior Delta,SID
+C10A.Nov.2022,Encyonema,27847.2084,,11/10/2022,C10A,Nov,2022,Southern Interior Delta,SID
+C10A.Nov.2022,Eucapsis,6278.1264,,11/10/2022,C10A,Nov,2022,Southern Interior Delta,SID
+C10A.Nov.2022,Merismopedia,884.0992,,11/10/2022,C10A,Nov,2022,Southern Interior Delta,SID
+C10A.Nov.2022,Navicula,40958.5784,,11/10/2022,C10A,Nov,2022,Southern Interior Delta,SID
+C10A.Nov.2022,Nitzschia,57198.152,,11/10/2022,C10A,Nov,2022,Southern Interior Delta,SID
+C10A.Nov.2022,Ochromonas,50095.3348,,11/10/2022,C10A,Nov,2022,Southern Interior Delta,SID
+C10A.Nov.2022,Plagioselmis,7772.2796,,11/10/2022,C10A,Nov,2022,Southern Interior Delta,SID
+C10A.Nov.2022,Pseudanabaena,204058.272,,11/10/2022,C10A,Nov,2022,Southern Interior Delta,SID
+C10A.Nov.2022,Schroederia,5646.992,,11/10/2022,C10A,Nov,2022,Southern Interior Delta,SID
+C10A.Nov.2022,Sellaphora,37604.2396,,11/10/2022,C10A,Nov,2022,Southern Interior Delta,SID
+C10A.Nov.2022,Staurosira,65729.9648,,11/10/2022,C10A,Nov,2022,Southern Interior Delta,SID
+C3A.Nov.2022,Chlorella,10907.2425,,11/10/2022,C3A,Nov,2022,Northern Interior Delta,NID
+C3A.Nov.2022,Eucapsis,5075.4924,,11/10/2022,C3A,Nov,2022,Northern Interior Delta,NID
+C3A.Nov.2022,Nitzschia,16061.3937,,11/10/2022,C3A,Nov,2022,Northern Interior Delta,NID
+C3A.Nov.2022,Plagioselmis,11244.8754,,11/10/2022,C3A,Nov,2022,Northern Interior Delta,NID
+C3A.Nov.2022,Planktolyngbya,634.9365,,11/10/2022,C3A,Nov,2022,Northern Interior Delta,NID
+C3A.Nov.2022,Scenedesmus,3344.9988,,11/10/2022,C3A,Nov,2022,Northern Interior Delta,NID
+C9.Nov.2022,Aphanizomenon,4164.3812,,11/10/2022,C9,Nov,2022,Southern Interior Delta,SID
+C9.Nov.2022,Dinobryon,11030.3752,,11/10/2022,C9,Nov,2022,Southern Interior Delta,SID
+C9.Nov.2022,Eucapsis,8540.5824,,11/10/2022,C9,Nov,2022,Southern Interior Delta,SID
+C9.Nov.2022,Meridion,18719.4412,,11/10/2022,C9,Nov,2022,Southern Interior Delta,SID
+C9.Nov.2022,Nitzschia,10149.204,,11/10/2022,C9,Nov,2022,Southern Interior Delta,SID
+C9.Nov.2022,Ochromonas,5564.814,,11/10/2022,C9,Nov,2022,Southern Interior Delta,SID
+C9.Nov.2022,Plagioselmis,122509.4256,,11/10/2022,C9,Nov,2022,Southern Interior Delta,SID
+C9.Nov.2022,Skeletonema,6051.3948,,11/10/2022,C9,Nov,2022,Southern Interior Delta,SID
+D12.Nov.2022,Eucapsis,14682.8808,,11/14/2022,D12,Nov,2022,Confluence,CON
+D12.Nov.2022,Nitzschia,13502.2398,,11/14/2022,D12,Nov,2022,Confluence,CON
+D12.Nov.2022,Plagioselmis,45696.4288,,11/14/2022,D12,Nov,2022,Confluence,CON
+D19.Nov.2022,Chlorella,9033.9977,,11/14/2022,D19,Nov,2022,Central Delta,CED
+D19.Nov.2022,Cryptomonas,37584.4815,,11/14/2022,D19,Nov,2022,Central Delta,CED
+D19.Nov.2022,Cyclotella,81770.9222,,11/14/2022,D19,Nov,2022,Central Delta,CED
+D19.Nov.2022,Eucapsis,4001.652,,11/14/2022,D19,Nov,2022,Central Delta,CED
+D19.Nov.2022,Gomphonema,2816.4884,,11/14/2022,D19,Nov,2022,Central Delta,CED
+D19.Nov.2022,Plagioselmis,206292.8266,,11/14/2022,D19,Nov,2022,Central Delta,CED
+D19.Nov.2022,Teleaulax,216045.8951,,11/14/2022,D19,Nov,2022,Central Delta,CED
+D28A.Nov.2022,Chrysococcus,6574.9061,,11/14/2022,D28A,Nov,2022,Central Delta,CED
+D28A.Nov.2022,Cocconeis,60920.8257,,11/14/2022,D28A,Nov,2022,Central Delta,CED
+D28A.Nov.2022,Cryptomonas,117729.8325,,11/14/2022,D28A,Nov,2022,Central Delta,CED
+D28A.Nov.2022,Eucapsis,7226.9316,,11/14/2022,D28A,Nov,2022,Central Delta,CED
+D28A.Nov.2022,Monoraphidium,1135.2278,,11/14/2022,D28A,Nov,2022,Central Delta,CED
+D28A.Nov.2022,Navicula,12327.8813,,11/14/2022,D28A,Nov,2022,Central Delta,CED
+D28A.Nov.2022,Ochromonas,4975.4145,,11/14/2022,D28A,Nov,2022,Central Delta,CED
+D28A.Nov.2022,Plagioselmis,309154.2384,,11/14/2022,D28A,Nov,2022,Central Delta,CED
+D28A.Nov.2022,Planktolyngbya,1868.9594,,11/14/2022,D28A,Nov,2022,Central Delta,CED
+D28A.Nov.2022,Skeletonema,9935.6782,,11/14/2022,D28A,Nov,2022,Central Delta,CED
+D28A.Nov.2022,Teleaulax,63261.0832,,11/14/2022,D28A,Nov,2022,Central Delta,CED
+EZ2-SJR.Nov.2022,Chlorella,4647.27,,11/14/2022,EZ2-SJR,Nov,2022,Entrapment Zone,EZ
+EZ2-SJR.Nov.2022,Cyclotella,26558.11,,11/14/2022,EZ2-SJR,Nov,2022,Entrapment Zone,EZ
+EZ2-SJR.Nov.2022,Eucapsis,8439.8256,,11/14/2022,EZ2-SJR,Nov,2022,Entrapment Zone,EZ
+EZ2-SJR.Nov.2022,Microcystis,3670.5448,,11/14/2022,EZ2-SJR,Nov,2022,Entrapment Zone,EZ
+EZ2-SJR.Nov.2022,Monoraphidium,571.0872,,11/14/2022,EZ2-SJR,Nov,2022,Entrapment Zone,EZ
+EZ2-SJR.Nov.2022,Nitzschia,7232.4936,,11/14/2022,EZ2-SJR,Nov,2022,Entrapment Zone,EZ
+EZ2-SJR.Nov.2022,Plagioselmis,378818.6208,,11/14/2022,EZ2-SJR,Nov,2022,Entrapment Zone,EZ
+EZ2-SJR.Nov.2022,Teleaulax,66401.9824,,11/14/2022,EZ2-SJR,Nov,2022,Entrapment Zone,EZ
+EZ6-SJR.Nov.2022,Cyclotella,19751.61,,11/14/2022,EZ6-SJR,Nov,2022,Entrapment Zone,EZ
+EZ6-SJR.Nov.2022,Eucapsis,12922.4232,,11/14/2022,EZ6-SJR,Nov,2022,Entrapment Zone,EZ
+EZ6-SJR.Nov.2022,Plagioselmis,30428.3022,,11/14/2022,EZ6-SJR,Nov,2022,Entrapment Zone,EZ
+D16.Nov.2022,Aphanizomenon,20442.6222,,11/15/2022,D16,Nov,2022,Central Delta,CED
+D16.Nov.2022,Chlorella,3824.613,,11/15/2022,D16,Nov,2022,Central Delta,CED
+D16.Nov.2022,Cryptomonas,37497.4171,,11/15/2022,D16,Nov,2022,Central Delta,CED
+D16.Nov.2022,Cyclotella,63212.5728,,11/15/2022,D16,Nov,2022,Central Delta,CED
+D16.Nov.2022,Eucapsis,5583.1464,,11/15/2022,D16,Nov,2022,Central Delta,CED
+D16.Nov.2022,Nitzschia,4850.6432,,11/15/2022,D16,Nov,2022,Central Delta,CED
+D16.Nov.2022,Plagioselmis,79711.4188,,11/15/2022,D16,Nov,2022,Central Delta,CED
+D16.Nov.2022,Staurosira,2342.0826,,11/15/2022,D16,Nov,2022,Central Delta,CED
+D16.Nov.2022,Teleaulax,56648.0824,,11/15/2022,D16,Nov,2022,Central Delta,CED
+D26.Nov.2022,Cryptomonas,51154.7792,,11/15/2022,D26,Nov,2022,Central Delta,CED
+D26.Nov.2022,Cyclotella,495562.4308,,11/15/2022,D26,Nov,2022,Central Delta,CED
+D26.Nov.2022,Eucapsis,9521.0064,,11/15/2022,D26,Nov,2022,Central Delta,CED
+D26.Nov.2022,Gomphonema,10995.5584,,11/15/2022,D26,Nov,2022,Central Delta,CED
+D26.Nov.2022,Plagioselmis,159742.6824,,11/15/2022,D26,Nov,2022,Central Delta,CED
+D26.Nov.2022,Planktolyngbya,1592.922,,11/15/2022,D26,Nov,2022,Central Delta,CED
+D26.Nov.2022,Teleaulax,5164.314,,11/15/2022,D26,Nov,2022,Central Delta,CED
+MD10A.Nov.2022,Aphanizomenon,40219.788,,11/15/2022,MD10A,Nov,2022,Southern Interior Delta,SID
+MD10A.Nov.2022,Chlorella,3866.226,,11/15/2022,MD10A,Nov,2022,Southern Interior Delta,SID
+MD10A.Nov.2022,Cocconeis,23635.794,,11/15/2022,MD10A,Nov,2022,Southern Interior Delta,SID
+MD10A.Nov.2022,Cryptomonas,114229.3488,,11/15/2022,MD10A,Nov,2022,Southern Interior Delta,SID
+MD10A.Nov.2022,Cyclotella,16764.888,,11/15/2022,MD10A,Nov,2022,Southern Interior Delta,SID
+MD10A.Nov.2022,Eucapsis,2924.964,,11/15/2022,MD10A,Nov,2022,Southern Interior Delta,SID
+MD10A.Nov.2022,Ochromonas,2973.1002,,11/15/2022,MD10A,Nov,2022,Southern Interior Delta,SID
+MD10A.Nov.2022,Plagioselmis,871931.7684,,11/15/2022,MD10A,Nov,2022,Southern Interior Delta,SID
+MD10A.Nov.2022,Staurosira,6869.6796,,11/15/2022,MD10A,Nov,2022,Southern Interior Delta,SID
+MD10A.Nov.2022,Teleaulax,204084.6108,,11/15/2022,MD10A,Nov,2022,Southern Interior Delta,SID
+P8.Nov.2022,Chlamydomonas,14351.1788,,11/15/2022,P8,Nov,2022,Southern Interior Delta,SID
+P8.Nov.2022,Cryptomonas,158977.674,,11/15/2022,P8,Nov,2022,Southern Interior Delta,SID
+P8.Nov.2022,Cyclotella,4664.4544,,11/15/2022,P8,Nov,2022,Southern Interior Delta,SID
+P8.Nov.2022,Eucapsis,9642.7584,,11/15/2022,P8,Nov,2022,Southern Interior Delta,SID
+P8.Nov.2022,Fragilaria,139406.7164,,11/15/2022,P8,Nov,2022,Southern Interior Delta,SID
+P8.Nov.2022,Melosira,490801.9276,,11/15/2022,P8,Nov,2022,Southern Interior Delta,SID
+P8.Nov.2022,Nitzschia,5693.9352,,11/15/2022,P8,Nov,2022,Southern Interior Delta,SID
+P8.Nov.2022,Plagioselmis,19166.4704,,11/15/2022,P8,Nov,2022,Southern Interior Delta,SID
+P8.Nov.2022,Teleaulax,5164.314,,11/15/2022,P8,Nov,2022,Southern Interior Delta,SID
+D22.Nov.2022,Chlorella,84422.3224,,11/16/2022,D22,Nov,2022,Confluence,CON
+D22.Nov.2022,Entomoneis,801196.6508,,11/16/2022,D22,Nov,2022,Confluence,CON
+D22.Nov.2022,Eucapsis,29430.1008,,11/16/2022,D22,Nov,2022,Confluence,CON
+D4.Nov.2022,Chlorella,2788.5075,,11/16/2022,D4,Nov,2022,Confluence,CON
+D4.Nov.2022,Cryptomonas,211871.3748,,11/16/2022,D4,Nov,2022,Confluence,CON
+D4.Nov.2022,Cyclotella,74311.1376,,11/16/2022,D4,Nov,2022,Confluence,CON
+D4.Nov.2022,Eucapsis,15854.8212,,11/16/2022,D4,Nov,2022,Confluence,CON
+D4.Nov.2022,Plagioselmis,114668.028,,11/16/2022,D4,Nov,2022,Confluence,CON
+D4.Nov.2022,Staurosira,3227.7693,,11/16/2022,D4,Nov,2022,Confluence,CON
+D4.Nov.2022,Teleaulax,58647.1998,,11/16/2022,D4,Nov,2022,Confluence,CON
+EZ2.Nov.2022,Chlamydomonas,30497.3158,,11/16/2022,EZ2,Nov,2022,Entrapment Zone,EZ
+EZ2.Nov.2022,Chlorella,1905.9924,,11/16/2022,EZ2,Nov,2022,Entrapment Zone,EZ
+EZ2.Nov.2022,Cocconeis,98653.0742,,11/16/2022,EZ2,Nov,2022,Entrapment Zone,EZ
+EZ2.Nov.2022,Cyclotella,244562.1108,,11/16/2022,EZ2,Nov,2022,Entrapment Zone,EZ
+EZ2.Nov.2022,Eucapsis,10064.6748,,11/16/2022,EZ2,Nov,2022,Entrapment Zone,EZ
+EZ2.Nov.2022,Plagioselmis,126562.3513,,11/16/2022,EZ2,Nov,2022,Entrapment Zone,EZ
+EZ2.Nov.2022,Teleaulax,10974.549,,11/16/2022,EZ2,Nov,2022,Entrapment Zone,EZ
+EZ6.Nov.2022,Chlorella,4356.4404,,11/16/2022,EZ6,Nov,2022,Entrapment Zone,EZ
+EZ6.Nov.2022,Cyclotella,87429.4221,,11/16/2022,EZ6,Nov,2022,Entrapment Zone,EZ
+EZ6.Nov.2022,Eucapsis,23891.4288,,11/16/2022,EZ6,Nov,2022,Entrapment Zone,EZ
+EZ6.Nov.2022,Nitzschia,12481.2346,,11/16/2022,EZ6,Nov,2022,Entrapment Zone,EZ
+EZ6.Nov.2022,Plagioselmis,294079.4394,,11/16/2022,EZ6,Nov,2022,Entrapment Zone,EZ
+NZ068.Nov.2022,Achnanthidium,2146.36,,11/16/2022,NZ068,Nov,2022,Northern Interior Delta,NID
+NZ068.Nov.2022,Chlorella,3569.6,,11/16/2022,NZ068,Nov,2022,Northern Interior Delta,NID
+NZ068.Nov.2022,Cyclotella,126419.5,,11/16/2022,NZ068,Nov,2022,Northern Interior Delta,NID
+NZ068.Nov.2022,Entomoneis,30112.52,,11/16/2022,NZ068,Nov,2022,Northern Interior Delta,NID
+NZ068.Nov.2022,Eucapsis,6226.56,,11/16/2022,NZ068,Nov,2022,Northern Interior Delta,NID
+NZ068.Nov.2022,Navicula,80718.96,,11/16/2022,NZ068,Nov,2022,Northern Interior Delta,NID
+NZ068.Nov.2022,Nitzschia,1644.04,,11/16/2022,NZ068,Nov,2022,Northern Interior Delta,NID
+NZ068.Nov.2022,Plagioselmis,57895.6,,11/16/2022,NZ068,Nov,2022,Northern Interior Delta,NID
+NZ068.Nov.2022,Teleaulax,16098.16,,11/16/2022,NZ068,Nov,2022,Northern Interior Delta,NID
+D10.Nov.2022,Cyclotella,2805124.998,,11/17/2022,D10,Nov,2022,Confluence,CON
+D10.Nov.2022,Eucapsis,17909.0784,,11/17/2022,D10,Nov,2022,Confluence,CON
+D10.Nov.2022,Plagioselmis,81672.9504,,11/17/2022,D10,Nov,2022,Confluence,CON
+D6.Nov.2022,Chlamydomonas,64226.1459,,11/17/2022,D6,Nov,2022,San Pablo Bay,SPB
+D6.Nov.2022,Cyclotella,271442.2542,,11/17/2022,D6,Nov,2022,San Pablo Bay,SPB
+D6.Nov.2022,Eucapsis,19364.8212,,11/17/2022,D6,Nov,2022,San Pablo Bay,SPB
+D6.Nov.2022,Raphidocelis,8275.6629,,11/17/2022,D6,Nov,2022,San Pablo Bay,SPB
+D8.Nov.2022,Chlorella,1927.2324,,11/17/2022,D8,Nov,2022,Grizzly and Suisun Bay,GSB
+D8.Nov.2022,Cyclotella,8058.4992,,11/17/2022,D8,Nov,2022,Grizzly and Suisun Bay,GSB
+D8.Nov.2022,Eucapsis,16558.56,,11/17/2022,D8,Nov,2022,Grizzly and Suisun Bay,GSB
+D8.Nov.2022,Nitzschia,10261.7076,,11/17/2022,D8,Nov,2022,Grizzly and Suisun Bay,GSB
+D8.Nov.2022,Teleaulax,9621.2133,,11/17/2022,D8,Nov,2022,Grizzly and Suisun Bay,GSB
+D7.Nov.2022,Coscinodiscus,3878977.096,,11/18/2022,D7,Nov,2022,Grizzly and Suisun Bay,GSB
+D7.Nov.2022,Eucapsis,26264.4012,,11/18/2022,D7,Nov,2022,Grizzly and Suisun Bay,GSB
+NZ032.Nov.2022,Cryptomonas,60996.069,,11/18/2022,NZ032,Nov,2022,Grizzly and Suisun Bay,GSB
+NZ032.Nov.2022,Eucapsis,21319.5168,,11/18/2022,NZ032,Nov,2022,Grizzly and Suisun Bay,GSB
+NZ032.Nov.2022,Plagioselmis,22873.3462,,11/18/2022,NZ032,Nov,2022,Grizzly and Suisun Bay,GSB
+NZ032.Nov.2022,Teleaulax,10974.549,,11/18/2022,NZ032,Nov,2022,Grizzly and Suisun Bay,GSB
+NZ032.Nov.2022,Thalassiosira,479211.9112,,11/18/2022,NZ032,Nov,2022,Grizzly and Suisun Bay,GSB
+NZS42.Nov.2022,Cryptomonas,37097.8709,,11/18/2022,NZS42,Nov,2022,Grizzly and Suisun Bay,GSB
+NZS42.Nov.2022,Cyclotella,236800.7928,,11/18/2022,NZS42,Nov,2022,Grizzly and Suisun Bay,GSB
+NZS42.Nov.2022,Eucapsis,20066.2128,,11/18/2022,NZS42,Nov,2022,Grizzly and Suisun Bay,GSB
+NZS42.Nov.2022,Thalassiosira,1967705.111,,11/18/2022,NZS42,Nov,2022,Grizzly and Suisun Bay,GSB
+D41.Nov.2022,Amphora,14055.2955,,11/21/2022,D41,Nov,2022,San Pablo Bay,SPB
+D41.Nov.2022,Cyclotella,136504.4067,,11/21/2022,D41,Nov,2022,San Pablo Bay,SPB
+D41.Nov.2022,Eucapsis,11618.154,,11/21/2022,D41,Nov,2022,San Pablo Bay,SPB
+D41A.Nov.2022,Chlorella,2178.3528,,11/21/2022,D41A,Nov,2022,San Pablo Bay,SPB
+D41A.Nov.2022,Cyclotella,52449.6756,,11/21/2022,D41A,Nov,2022,San Pablo Bay,SPB
+D41A.Nov.2022,Eucapsis,13306.68,,11/21/2022,D41A,Nov,2022,San Pablo Bay,SPB
+D41A.Nov.2022,Navicula,61822.671,,11/21/2022,D41A,Nov,2022,San Pablo Bay,SPB
+NZ002.Nov.2022,Cyclotella,43732.137,,11/21/2022,NZ002,Nov,2022,San Pablo Bay,SPB
+NZ002.Nov.2022,Eucapsis,11649.852,,11/21/2022,NZ002,Nov,2022,San Pablo Bay,SPB
+NZ004.Nov.2022,Eucapsis,21836.9808,,11/21/2022,NZ004,Nov,2022,San Pablo Bay,SPB
+NZ004.Nov.2022,Raphidocelis,11092.4158,,11/21/2022,NZ004,Nov,2022,San Pablo Bay,SPB
+NZ325.Nov.2022,Chlorella,1538.614,,11/21/2022,NZ325,Nov,2022,San Pablo Bay,SPB
+NZ325.Nov.2022,Cyclotella,470723.0913,,11/21/2022,NZ325,Nov,2022,San Pablo Bay,SPB
+NZ325.Nov.2022,Eucapsis,10935.2628,,11/21/2022,NZ325,Nov,2022,San Pablo Bay,SPB
+NZ325.Nov.2022,Navicula,25254.6833,,11/21/2022,NZ325,Nov,2022,San Pablo Bay,SPB
+NZ325.Nov.2022,Skeletonema,85921.2816,,11/21/2022,NZ325,Nov,2022,San Pablo Bay,SPB
+NZ325.Nov.2022,Staurosira,2435.6101,,11/21/2022,NZ325,Nov,2022,San Pablo Bay,SPB
+NZ325.Nov.2022,Teleaulax,5925.2501,,11/21/2022,NZ325,Nov,2022,San Pablo Bay,SPB
+C10A.Dec.2022,Chlorella,1549.1196,,12/9/2022,C10A,Dec,2022,Southern Interior Delta,SID
+C10A.Dec.2022,Cryptomonas,89618.9088,,12/9/2022,C10A,Dec,2022,Southern Interior Delta,SID
+C10A.Dec.2022,Cyclotella,35049.525,,12/9/2022,C10A,Dec,2022,Southern Interior Delta,SID
+C10A.Dec.2022,Drepanochloris,126.3171,,12/9/2022,C10A,Dec,2022,Southern Interior Delta,SID
+C10A.Dec.2022,Encyonema,6026.7336,,12/9/2022,C10A,Dec,2022,Southern Interior Delta,SID
+C10A.Dec.2022,Eucapsis,2491.4412,,12/9/2022,C10A,Dec,2022,Southern Interior Delta,SID
+C10A.Dec.2022,Gomphonema,2362.3479,,12/9/2022,C10A,Dec,2022,Southern Interior Delta,SID
+C10A.Dec.2022,Navicula,48263.0472,,12/9/2022,C10A,Dec,2022,Southern Interior Delta,SID
+C10A.Dec.2022,Nitzschia,25803.5892,,12/9/2022,C10A,Dec,2022,Southern Interior Delta,SID
+C10A.Dec.2022,Pinnularia,7936.7592,,12/9/2022,C10A,Dec,2022,Southern Interior Delta,SID
+C10A.Dec.2022,Plagioselmis,43066.0008,,12/9/2022,C10A,Dec,2022,Southern Interior Delta,SID
+C10A.Dec.2022,Staurosira,51101.3151,,12/9/2022,C10A,Dec,2022,Southern Interior Delta,SID
+C10A.Dec.2022,Teleaulax,2537.4468,,12/9/2022,C10A,Dec,2022,Southern Interior Delta,SID
+C3A.Dec.2022,Achnanthidium,11120.9346,,12/9/2022,C3A,Dec,2022,Northern Interior Delta,NID
+C3A.Dec.2022,Chlorella,5500.0944,,12/9/2022,C3A,Dec,2022,Northern Interior Delta,NID
+C3A.Dec.2022,Cyclotella,102219.123,,12/9/2022,C3A,Dec,2022,Northern Interior Delta,NID
+C3A.Dec.2022,Eucapsis,11355.0336,,12/9/2022,C3A,Dec,2022,Northern Interior Delta,NID
+C3A.Dec.2022,Koliella,2291.706,,12/9/2022,C3A,Dec,2022,Northern Interior Delta,NID
+C3A.Dec.2022,Navicula,113501.052,,12/9/2022,C3A,Dec,2022,Northern Interior Delta,NID
+C3A.Dec.2022,Nitzschia,12987.9768,,12/9/2022,C3A,Dec,2022,Northern Interior Delta,NID
+C3A.Dec.2022,Tryblionella,111008.9244,,12/9/2022,C3A,Dec,2022,Northern Interior Delta,NID
+C9.Dec.2022,Achnanthidium,3301.0335,,12/9/2022,C9,Dec,2022,Southern Interior Delta,SID
+C9.Dec.2022,Chlorella,18191.394,,12/9/2022,C9,Dec,2022,Southern Interior Delta,SID
+C9.Dec.2022,Cocconeis,32160.564,,12/9/2022,C9,Dec,2022,Southern Interior Delta,SID
+C9.Dec.2022,Cyclotella,18782.925,,12/9/2022,C9,Dec,2022,Southern Interior Delta,SID
+C9.Dec.2022,Eucapsis,5243.886,,12/9/2022,C9,Dec,2022,Southern Interior Delta,SID
+C9.Dec.2022,Plagioselmis,148824.9225,,12/9/2022,C9,Dec,2022,Southern Interior Delta,SID
+C9.Dec.2022,Teleaulax,11528.802,,12/9/2022,C9,Dec,2022,Southern Interior Delta,SID
+D12.Dec.2022,Chlorella,3186.8865,,12/13/2022,D12,Dec,2022,Confluence,CON
+D12.Dec.2022,Cyclotella,167043.2295,,12/13/2022,D12,Dec,2022,Confluence,CON
+D12.Dec.2022,Eucapsis,31776.8724,,12/13/2022,D12,Dec,2022,Confluence,CON
+D12.Dec.2022,Plagioselmis,130703.9622,,12/13/2022,D12,Dec,2022,Confluence,CON
+D19.Dec.2022,Chlorella,38724.903,,12/13/2022,D19,Dec,2022,Central Delta,CED
+D19.Dec.2022,Cocconeis,226685.865,,12/13/2022,D19,Dec,2022,Central Delta,CED
+D19.Dec.2022,Cyclotella,6608.4368,,12/13/2022,D19,Dec,2022,Central Delta,CED
+D19.Dec.2022,Eucapsis,13178.5416,,12/13/2022,D19,Dec,2022,Central Delta,CED
+D19.Dec.2022,Navicula,19708.3978,,12/13/2022,D19,Dec,2022,Central Delta,CED
+D19.Dec.2022,Nitzschia,18366.7778,,12/13/2022,D19,Dec,2022,Central Delta,CED
+D19.Dec.2022,Oscillatoria,194726.56,,12/13/2022,D19,Dec,2022,Central Delta,CED
+D19.Dec.2022,Plagioselmis,82480.881,,12/13/2022,D19,Dec,2022,Central Delta,CED
+D28A.Dec.2022,Chlorella,10891.764,,12/13/2022,D28A,Dec,2022,Central Delta,CED
+D28A.Dec.2022,Cocconeis,46784.4798,,12/13/2022,D28A,Dec,2022,Central Delta,CED
+D28A.Dec.2022,Cyclotella,15213.9708,,12/13/2022,D28A,Dec,2022,Central Delta,CED
+D28A.Dec.2022,Eucapsis,5559.2352,,12/13/2022,D28A,Dec,2022,Central Delta,CED
+D28A.Dec.2022,Plagioselmis,180130.5558,,12/13/2022,D28A,Dec,2022,Central Delta,CED
+D28A.Dec.2022,Planktolyngbya,1478.52,,12/13/2022,D28A,Dec,2022,Central Delta,CED
+EZ2-SJR.Dec.2022,Chlorella,6506.857,,12/13/2022,EZ2-SJR,Dec,2022,Entrapment Zone,EZ
+EZ2-SJR.Dec.2022,Cyclotella,5644.387,,12/13/2022,EZ2-SJR,Dec,2022,Entrapment Zone,EZ
+EZ2-SJR.Dec.2022,Drepanochloris,1543.8213,,12/13/2022,EZ2-SJR,Dec,2022,Entrapment Zone,EZ
+EZ2-SJR.Dec.2022,Encyonema,13953.8063,,12/13/2022,EZ2-SJR,Dec,2022,Entrapment Zone,EZ
+EZ2-SJR.Dec.2022,Entomoneis,242655.9345,,12/13/2022,EZ2-SJR,Dec,2022,Entrapment Zone,EZ
+EZ2-SJR.Dec.2022,Eucapsis,13282.038,,12/13/2022,EZ2-SJR,Dec,2022,Entrapment Zone,EZ
+EZ2-SJR.Dec.2022,Monoraphidium,2088.1357,,12/13/2022,EZ2-SJR,Dec,2022,Entrapment Zone,EZ
+EZ2-SJR.Dec.2022,Nitzschia,19530.154,,12/13/2022,EZ2-SJR,Dec,2022,Entrapment Zone,EZ
+EZ2-SJR.Dec.2022,Plagioselmis,97096.8726,,12/13/2022,EZ2-SJR,Dec,2022,Entrapment Zone,EZ
+EZ2-SJR.Dec.2022,Teleaulax,12262.4068,,12/13/2022,EZ2-SJR,Dec,2022,Entrapment Zone,EZ
+EZ6-SJR.Dec.2022,Chlorella,46431.528,,12/13/2022,EZ6-SJR,Dec,2022,Entrapment Zone,EZ
+EZ6-SJR.Dec.2022,Cocconeis,213641.8506,,12/13/2022,EZ6-SJR,Dec,2022,Entrapment Zone,EZ
+EZ6-SJR.Dec.2022,Cyclotella,18659.1968,,12/13/2022,EZ6-SJR,Dec,2022,Entrapment Zone,EZ
+EZ6-SJR.Dec.2022,Eucapsis,18118.0368,,12/13/2022,EZ6-SJR,Dec,2022,Entrapment Zone,EZ
+EZ6-SJR.Dec.2022,Planktolyngbya,2705.8,,12/13/2022,EZ6-SJR,Dec,2022,Entrapment Zone,EZ
+D16.Dec.2022,Achnanthidium,2503.7415,,12/14/2022,D16,Dec,2022,Central Delta,CED
+D16.Dec.2022,Chlorella,2200.1382,,12/14/2022,D16,Dec,2022,Central Delta,CED
+D16.Dec.2022,Cocconeis,11600.0118,,12/14/2022,D16,Dec,2022,Central Delta,CED
+D16.Dec.2022,Cyclotella,29801.7525,,12/14/2022,D16,Dec,2022,Central Delta,CED
+D16.Dec.2022,Entomoneis,44594.199,,12/14/2022,D16,Dec,2022,Central Delta,CED
+D16.Dec.2022,Eucapsis,6166.6956,,12/14/2022,D16,Dec,2022,Central Delta,CED
+D16.Dec.2022,Plagioselmis,86302.1952,,12/14/2022,D16,Dec,2022,Central Delta,CED
+D16.Dec.2022,Teleaulax,7845.4948,,12/14/2022,D16,Dec,2022,Central Delta,CED
+D26.Dec.2022,Achnanthidium,10393.8394,,12/14/2022,D26,Dec,2022,Central Delta,CED
+D26.Dec.2022,Chlorella,49555.8024,,12/14/2022,D26,Dec,2022,Central Delta,CED
+D26.Dec.2022,Cocconeis,95203.3142,,12/14/2022,D26,Dec,2022,Central Delta,CED
+D26.Dec.2022,Cryptomonas,94585.2322,,12/14/2022,D26,Dec,2022,Central Delta,CED
+D26.Dec.2022,Cyclotella,149028.1946,,12/14/2022,D26,Dec,2022,Central Delta,CED
+D26.Dec.2022,Eucapsis,9805.9428,,12/14/2022,D26,Dec,2022,Central Delta,CED
+D26.Dec.2022,Navicula,16374.1421,,12/14/2022,D26,Dec,2022,Central Delta,CED
+D26.Dec.2022,Planktolyngbya,2853.9577,,12/14/2022,D26,Dec,2022,Central Delta,CED
+MD10A.Dec.2022,Achnanthidium,9650.2494,,12/14/2022,MD10A,Dec,2022,Southern Interior Delta,SID
+MD10A.Dec.2022,Aulacoseira,386739.1986,,12/14/2022,MD10A,Dec,2022,Southern Interior Delta,SID
+MD10A.Dec.2022,Chlorella,10536.1704,,12/14/2022,MD10A,Dec,2022,Southern Interior Delta,SID
+MD10A.Dec.2022,Cocconeis,22966.3788,,12/14/2022,MD10A,Dec,2022,Southern Interior Delta,SID
+MD10A.Dec.2022,Cryptomonas,76644.2064,,12/14/2022,MD10A,Dec,2022,Southern Interior Delta,SID
+MD10A.Dec.2022,Cyclotella,13313.6136,,12/14/2022,MD10A,Dec,2022,Southern Interior Delta,SID
+MD10A.Dec.2022,Eucapsis,4800.1464,,12/14/2022,MD10A,Dec,2022,Southern Interior Delta,SID
+MD10A.Dec.2022,Melosira,232824.3516,,12/14/2022,MD10A,Dec,2022,Southern Interior Delta,SID
+MD10A.Dec.2022,Nitzschia,2692.9842,,12/14/2022,MD10A,Dec,2022,Southern Interior Delta,SID
+MD10A.Dec.2022,Phacus,42893.6712,,12/14/2022,MD10A,Dec,2022,Southern Interior Delta,SID
+MD10A.Dec.2022,Plagioselmis,185920.8546,,12/14/2022,MD10A,Dec,2022,Southern Interior Delta,SID
+MD10A.Dec.2022,Planktolyngbya,1293.84,,12/14/2022,MD10A,Dec,2022,Southern Interior Delta,SID
+MD10A.Dec.2022,Teleaulax,8232.057,,12/14/2022,MD10A,Dec,2022,Southern Interior Delta,SID
+P8.Dec.2022,Chlorella,88885.7368,,12/14/2022,P8,Dec,2022,Southern Interior Delta,SID
+P8.Dec.2022,Cocconeis,135534.88,,12/14/2022,P8,Dec,2022,Southern Interior Delta,SID
+P8.Dec.2022,Cyclotella,189074.224,,12/14/2022,P8,Dec,2022,Southern Interior Delta,SID
+P8.Dec.2022,Eucapsis,19428.7104,,12/14/2022,P8,Dec,2022,Southern Interior Delta,SID
+P8.Dec.2022,Gomphonema,122036.5872,,12/14/2022,P8,Dec,2022,Southern Interior Delta,SID
+P8.Dec.2022,Navicula,64621.3136,,12/14/2022,P8,Dec,2022,Southern Interior Delta,SID
+P8.Dec.2022,Nitzschia,31540.9904,,12/14/2022,P8,Dec,2022,Southern Interior Delta,SID
+P8.Dec.2022,Planktolyngbya,4814.248,,12/14/2022,P8,Dec,2022,Southern Interior Delta,SID
+P8.Dec.2022,Scenedesmus,4289.8936,,12/14/2022,P8,Dec,2022,Southern Interior Delta,SID
+D22.Dec.2022,Chlorella,11407.3056,,12/15/2022,D22,Dec,2022,Confluence,CON
+D22.Dec.2022,Cryptomonas,178486.172,,12/15/2022,D22,Dec,2022,Confluence,CON
+D22.Dec.2022,Encyonema,19289.8628,,12/15/2022,D22,Dec,2022,Confluence,CON
+D22.Dec.2022,Eucapsis,24286.5216,,12/15/2022,D22,Dec,2022,Confluence,CON
+D22.Dec.2022,Nitzschia,5945.564,,12/15/2022,D22,Dec,2022,Confluence,CON
+D22.Dec.2022,Staurosira,20514.7512,,12/15/2022,D22,Dec,2022,Confluence,CON
+D4.Dec.2022,Chlorella,112026.8028,,12/15/2022,D4,Dec,2022,Confluence,CON
+D4.Dec.2022,Cyclotella,18658.5072,,12/15/2022,D4,Dec,2022,Confluence,CON
+D4.Dec.2022,Eucapsis,37111.3812,,12/15/2022,D4,Dec,2022,Confluence,CON
+D4.Dec.2022,Navicula,24949.2597,,12/15/2022,D4,Dec,2022,Confluence,CON
+D4.Dec.2022,Plagioselmis,91284.9066,,12/15/2022,D4,Dec,2022,Confluence,CON
+D4.Dec.2022,Planktolyngbya,9740.52,,12/15/2022,D4,Dec,2022,Confluence,CON
+EZ2.Dec.2022,Chlorella,1859.102,,12/15/2022,EZ2,Dec,2022,Entrapment Zone,EZ
+EZ2.Dec.2022,Cocconeis,19682.5237,,12/15/2022,EZ2,Dec,2022,Entrapment Zone,EZ
+EZ2.Dec.2022,Cyclotella,23045.1984,,12/15/2022,EZ2,Dec,2022,Entrapment Zone,EZ
+EZ2.Dec.2022,Eucapsis,13523.5296,,12/15/2022,EZ2,Dec,2022,Entrapment Zone,EZ
+EZ2.Dec.2022,Plagioselmis,194923.9698,,12/15/2022,EZ2,Dec,2022,Entrapment Zone,EZ
+EZ2.Dec.2022,Teleaulax,10035.3176,,12/15/2022,EZ2,Dec,2022,Entrapment Zone,EZ
+EZ6.Dec.2022,Chlorella,84905.9764,,12/15/2022,EZ6,Dec,2022,Entrapment Zone,EZ
+EZ6.Dec.2022,Cyclotella,49648.254,,12/15/2022,EZ6,Dec,2022,Entrapment Zone,EZ
+EZ6.Dec.2022,Eucapsis,13394.9088,,12/15/2022,EZ6,Dec,2022,Entrapment Zone,EZ
+EZ6.Dec.2022,Hannaea,137348.9252,,12/15/2022,EZ6,Dec,2022,Entrapment Zone,EZ
+EZ6.Dec.2022,Nitzschia,65968.6992,,12/15/2022,EZ6,Dec,2022,Entrapment Zone,EZ
+NZ068.Dec.2022,Achnanthidium,3927.905,,12/15/2022,NZ068,Dec,2022,Northern Interior Delta,NID
+NZ068.Dec.2022,Chlorella,2002.4848,,12/15/2022,NZ068,Dec,2022,Northern Interior Delta,NID
+NZ068.Dec.2022,Cocconeis,9356.4788,,12/15/2022,NZ068,Dec,2022,Northern Interior Delta,NID
+NZ068.Dec.2022,Cyclotella,24278.336,,12/15/2022,NZ068,Dec,2022,Northern Interior Delta,NID
+NZ068.Dec.2022,Eucapsis,8731.5984,,12/15/2022,NZ068,Dec,2022,Northern Interior Delta,NID
+NZ068.Dec.2022,Euglena,83676.6232,,12/15/2022,NZ068,Dec,2022,Northern Interior Delta,NID
+NZ068.Dec.2022,Navicula,56603.65,,12/15/2022,NZ068,Dec,2022,Northern Interior Delta,NID
+NZ068.Dec.2022,Nitzschia,2352.5612,,12/15/2022,NZ068,Dec,2022,Northern Interior Delta,NID
+NZ068.Dec.2022,Teleaulax,4414.1886,,12/15/2022,NZ068,Dec,2022,Northern Interior Delta,NID
+D10.Dec.2022,Chlorella,97080.516,,12/16/2022,D10,Dec,2022,Confluence,CON
+D10.Dec.2022,Cyclotella,18658.5072,,12/16/2022,D10,Dec,2022,Confluence,CON
+D10.Dec.2022,Eucapsis,37501.002,,12/16/2022,D10,Dec,2022,Confluence,CON
+D10.Dec.2022,Plagioselmis,91284.9066,,12/16/2022,D10,Dec,2022,Confluence,CON
+D10.Dec.2022,Surirella,195968.4396,,12/16/2022,D10,Dec,2022,Confluence,CON
+D6.Dec.2022,Chlorella,1593.516,,12/16/2022,D6,Dec,2022,San Pablo Bay,SPB
+D6.Dec.2022,Cocconeis,37007.9032,,12/16/2022,D6,Dec,2022,San Pablo Bay,SPB
+D6.Dec.2022,Cyclotella,24645.2856,,12/16/2022,D6,Dec,2022,San Pablo Bay,SPB
+D6.Dec.2022,Diploneis,38997.8816,,12/16/2022,D6,Dec,2022,San Pablo Bay,SPB
+D6.Dec.2022,Eucapsis,15928.5888,,12/16/2022,D6,Dec,2022,San Pablo Bay,SPB
+D6.Dec.2022,Skeletonema,175223.2384,,12/16/2022,D6,Dec,2022,San Pablo Bay,SPB
+D8.Dec.2022,Chlorella,67325.7156,,12/16/2022,D8,Dec,2022,Grizzly and Suisun Bay,GSB
+D8.Dec.2022,Cyclotella,9329.5984,,12/16/2022,D8,Dec,2022,Grizzly and Suisun Bay,GSB
+D8.Dec.2022,Eucapsis,18702.4896,,12/16/2022,D8,Dec,2022,Grizzly and Suisun Bay,GSB
+D8.Dec.2022,Gomphonema,14630.2606,,12/16/2022,D8,Dec,2022,Grizzly and Suisun Bay,GSB
+D7.Dec.2022,Achnanthidium,32709.2073,,12/19/2022,D7,Dec,2022,Grizzly and Suisun Bay,GSB
+D7.Dec.2022,Chlorella,15097.806,,12/19/2022,D7,Dec,2022,Grizzly and Suisun Bay,GSB
+D7.Dec.2022,Cyclotella,90140.3955,,12/19/2022,D7,Dec,2022,Grizzly and Suisun Bay,GSB
+D7.Dec.2022,Eucapsis,38572.4592,,12/19/2022,D7,Dec,2022,Grizzly and Suisun Bay,GSB
+D7.Dec.2022,Plagioselmis,224914.0182,,12/19/2022,D7,Dec,2022,Grizzly and Suisun Bay,GSB
+D7.Dec.2022,Planktolyngbya,9770.2827,,12/19/2022,D7,Dec,2022,Grizzly and Suisun Bay,GSB
+NZ032.Dec.2022,Chlorella,2409.0824,,12/19/2022,NZ032,Dec,2022,Grizzly and Suisun Bay,GSB
+NZ032.Dec.2022,Cyclotella,125286.6588,,12/19/2022,NZ032,Dec,2022,Grizzly and Suisun Bay,GSB
+NZ032.Dec.2022,Eucapsis,43259.9904,,12/19/2022,NZ032,Dec,2022,Grizzly and Suisun Bay,GSB
+NZ032.Dec.2022,Navicula,389233.546,,12/19/2022,NZ032,Dec,2022,Grizzly and Suisun Bay,GSB
+NZ032.Dec.2022,Planktolyngbya,4062.0924,,12/19/2022,NZ032,Dec,2022,Grizzly and Suisun Bay,GSB
+NZS42.Dec.2022,Chlorella,167727.3312,,12/19/2022,NZS42,Dec,2022,Grizzly and Suisun Bay,GSB
+NZS42.Dec.2022,Cyclotella,146568.8032,,12/19/2022,NZS42,Dec,2022,Grizzly and Suisun Bay,GSB
+NZS42.Dec.2022,Eucapsis,39120.2784,,12/19/2022,NZS42,Dec,2022,Grizzly and Suisun Bay,GSB
+NZS42.Dec.2022,Planktolyngbya,5749.6,,12/19/2022,NZS42,Dec,2022,Grizzly and Suisun Bay,GSB
+NZS42.Dec.2022,Thalassiosira,439666.1624,,12/19/2022,NZS42,Dec,2022,Grizzly and Suisun Bay,GSB
+D41.Dec.2022,Achnanthidium,11138.9886,,12/20/2022,D41,Dec,2022,San Pablo Bay,SPB
+D41.Dec.2022,Chlorella,36813.0924,,12/20/2022,D41,Dec,2022,San Pablo Bay,SPB
+D41.Dec.2022,Cyclotella,18654.42,,12/20/2022,D41,Dec,2022,San Pablo Bay,SPB
+D41.Dec.2022,Eucapsis,11836.6128,,12/20/2022,D41,Dec,2022,San Pablo Bay,SPB
+D41.Dec.2022,Plagioselmis,28738.0284,,12/20/2022,D41,Dec,2022,San Pablo Bay,SPB
+D41.Dec.2022,Teleaulax,6503.493,,12/20/2022,D41,Dec,2022,San Pablo Bay,SPB
+D41.Dec.2022,Thalassiosira,26616.1946,,12/20/2022,D41,Dec,2022,San Pablo Bay,SPB
+D41A.Dec.2022,Chlorella,62428.422,,12/20/2022,D41A,Dec,2022,San Pablo Bay,SPB
+D41A.Dec.2022,Cyclotella,140078.0841,,12/20/2022,D41A,Dec,2022,San Pablo Bay,SPB
+D41A.Dec.2022,Eucapsis,17248.95,,12/20/2022,D41A,Dec,2022,San Pablo Bay,SPB
+D41A.Dec.2022,Gyrosigma,217072.2861,,12/20/2022,D41A,Dec,2022,San Pablo Bay,SPB
+NZ002.Dec.2022,Chlorella,50485.2096,,12/20/2022,NZ002,Dec,2022,San Pablo Bay,SPB
+NZ002.Dec.2022,Cyclotella,87718.9716,,12/20/2022,NZ002,Dec,2022,San Pablo Bay,SPB
+NZ002.Dec.2022,Eucapsis,9824.7456,,12/20/2022,NZ002,Dec,2022,San Pablo Bay,SPB
+NZ002.Dec.2022,Planktolyngbya,962.8496,,12/20/2022,NZ002,Dec,2022,San Pablo Bay,SPB
+NZ002.Dec.2022,Teleaulax,6042.3412,,12/20/2022,NZ002,Dec,2022,San Pablo Bay,SPB
+NZ002.Dec.2022,Thalassiosira,1467959.274,,12/20/2022,NZ002,Dec,2022,San Pablo Bay,SPB
+NZ004.Dec.2022,Chlorella,4576.072,,12/20/2022,NZ004,Dec,2022,San Pablo Bay,SPB
+NZ004.Dec.2022,Cyclotella,123406.519,,12/20/2022,NZ004,Dec,2022,San Pablo Bay,SPB
+NZ004.Dec.2022,Eucapsis,16473.8592,,12/20/2022,NZ004,Dec,2022,San Pablo Bay,SPB
+NZ325.Dec.2022,Chlorella,1270.827,,12/20/2022,NZ325,Dec,2022,San Pablo Bay,SPB
+NZ325.Dec.2022,Cyclotella,109349.76,,12/20/2022,NZ325,Dec,2022,San Pablo Bay,SPB
+NZ325.Dec.2022,Eucapsis,6897.042,,12/20/2022,NZ325,Dec,2022,San Pablo Bay,SPB
+NZ325.Dec.2022,Nitzschia,5413.905,,12/20/2022,NZ325,Dec,2022,San Pablo Bay,SPB
+NZ325.Dec.2022,Plagioselmis,136876.257,,12/20/2022,NZ325,Dec,2022,San Pablo Bay,SPB
+NZ325.Dec.2022,Skeletonema,98380.41,,12/20/2022,NZ325,Dec,2022,San Pablo Bay,SPB
+NZ325.Dec.2022,Teleaulax,3859.4925,,12/20/2022,NZ325,Dec,2022,San Pablo Bay,SPB
