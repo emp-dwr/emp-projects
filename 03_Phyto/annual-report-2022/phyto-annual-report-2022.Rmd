@@ -27,10 +27,10 @@ options(dplyr.summarise.inform = FALSE)
 ## Import Raw Phyto Data
 
 ```{r import}
-df_phyto <- read_csv(here("03_Phyto","annual-report-2022","data", "All 2022 Data.csv"), show_col_types = FALSE)
+df_phyto_raw <- read_csv(here("03_Phyto","annual-report-2022","data", "All 2022 Data.csv"), show_col_types = FALSE)
 
 # Remove empty rows ------------------------------------------------------------
-df_phyto <- df_phyto %>% filter_all(any_vars(!is.na(.)))
+df_phyto <- df_phyto_raw %>% filter_all(any_vars(!is.na(.)))
 
 # Clean up column names
 df_phyto <- df_phyto %>% clean_names(case = "big_camel")
@@ -47,6 +47,63 @@ df_phyto <- df_phyto %>% rowwise() %>%
   mutate(BV.Avg = mean(c_across(Biovolume1:Biovolume10), na.rm = T)) %>% 
   select(!(Biovolume1:Biovolume10)) # Remove Individual Biovolume Columns
 
+# Move BV Avg data 
+df_phyto <- df_phyto %>% 
+  relocate(BV.Avg, .after = TotalNumberOfCells)
+  
+# Select data for further analyses
+df_phyto <- df_phyto %>% select(SampleDate,StationCode,Factor:BV.Avg)
+
+# Combine date and time column
+df_phyto$SampleDate <- mdy(df_phyto$SampleDate)
+
+# Rename headers 
+df_phyto <- df_phyto %>%
+  rename("TotalCells" = "TotalNumberOfCells") %>%
+  rename("UnitAbundance" = "UnitAbundanceNumberOfNaturalUnits")
+```
+
+## Calculate Unit Density and Biovolume Density
+```{r calculate}
+# Calculate Unit Density & Biovolume Density
+df_phyto <- df_phyto %>%
+  mutate(Units.per.mL = UnitAbundance * Factor) %>%
+  mutate(BV.um3.per.mL= TotalCells * BV.Avg * Factor)
+
+# Add column for year and month for highlighting data
+df_phyto <- df_phyto %>% 
+  mutate(Year = year(SampleDate)) %>%
+  mutate(Month = month(SampleDate, label = T))
+
+# Reorder date/time columns
+df_phyto <- df_phyto %>% 
+  relocate(Year, .after = SampleDate) %>% 
+  relocate(Month, .after = SampleDate)
 
 ```
+
+## Check data quality 
+```{r QA Check}
+# Check EMP site names
+sort(unique(df_phyto$StationCode)) ## 28 stations spelled correctly
+
+
+# Check for missing dates
+df_phyto %>% filter(is.na(SampleDate)) # No missing dates
+```
+
+```{r metadata}
+## Add regional metadata
+regions <- read_csv(here("03_Phyto","annual-report-2022","data","station_regions_EMP.csv"), show_col_types = FALSE)
+
+# Combine region data and phyto data
+df_phyto <- left_join(df_phyto, regions)
+
+# Reorder column
+df_phyto <- df_phyto %>% relocate(Region, .after = StationCode)
+
+# check if there are any NAs in Region after the join
+table(is.na(df_phyto$Region)) # no NAs
+```
+
 
