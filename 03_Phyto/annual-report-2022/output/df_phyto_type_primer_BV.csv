@@ -1,0 +1,1410 @@
+SampleID,AlgalType,BV.um3.per.mL,,SampleDate,StationCode,Month,Year,Region,RegionAbbv,Season
+C10A.Jan.2022,Centric Diatom,69947.5491,,1/5/2022,C10A,Jan,2022,Southern Interior Delta,SID,Winter
+C10A.Jan.2022,Cryptophyte,50958.0132,,1/5/2022,C10A,Jan,2022,Southern Interior Delta,SID,Winter
+C10A.Jan.2022,Cyanobacterium,6521.0946,,1/5/2022,C10A,Jan,2022,Southern Interior Delta,SID,Winter
+C10A.Jan.2022,Pennate Diatom,80884.9008,,1/5/2022,C10A,Jan,2022,Southern Interior Delta,SID,Winter
+C3A.Jan.2022,Centric Diatom,22232.6518,,1/5/2022,C3A,Jan,2022,Northern Interior Delta,NID,Winter
+C3A.Jan.2022,Cryptophyte,69393.3316,,1/5/2022,C3A,Jan,2022,Northern Interior Delta,NID,Winter
+C3A.Jan.2022,Cyanobacterium,12610.8576,,1/5/2022,C3A,Jan,2022,Northern Interior Delta,NID,Winter
+C3A.Jan.2022,Green Alga,1979.7348,,1/5/2022,C3A,Jan,2022,Northern Interior Delta,NID,Winter
+C3A.Jan.2022,Pennate Diatom,342924.9206,,1/5/2022,C3A,Jan,2022,Northern Interior Delta,NID,Winter
+C9.Jan.2022,Cryptophyte,46325.034,,1/5/2022,C9,Jan,2022,Southern Interior Delta,SID,Winter
+C9.Jan.2022,Cyanobacterium,7995.9024,,1/5/2022,C9,Jan,2022,Southern Interior Delta,SID,Winter
+C9.Jan.2022,Pennate Diatom,136682.6044,,1/5/2022,C9,Jan,2022,Southern Interior Delta,SID,Winter
+D16.Jan.2022,Centric Diatom,27538.068,,1/6/2022,D16,Jan,2022,Central Delta,CED,Winter
+D16.Jan.2022,Cryptophyte,69878.6142,,1/6/2022,D16,Jan,2022,Central Delta,CED,Winter
+D16.Jan.2022,Cyanobacterium,10001.2048,,1/6/2022,D16,Jan,2022,Central Delta,CED,Winter
+D16.Jan.2022,Pennate Diatom,283721.832,,1/6/2022,D16,Jan,2022,Central Delta,CED,Winter
+D19.Jan.2022,Cryptophyte,92749.4481,,1/6/2022,D19,Jan,2022,Central Delta,CED,Winter
+D19.Jan.2022,Cyanobacterium,11556.8502,,1/6/2022,D19,Jan,2022,Central Delta,CED,Winter
+D19.Jan.2022,Green Alga,948.1389,,1/6/2022,D19,Jan,2022,Central Delta,CED,Winter
+D19.Jan.2022,Pennate Diatom,29057.8941,,1/6/2022,D19,Jan,2022,Central Delta,CED,Winter
+D28A.Jan.2022,Centric Diatom,6182.4,,1/6/2022,D28A,Jan,2022,Central Delta,CED,Winter
+D28A.Jan.2022,Cryptophyte,6585.1875,,1/6/2022,D28A,Jan,2022,Central Delta,CED,Winter
+D28A.Jan.2022,Cyanobacterium,4088.25,,1/6/2022,D28A,Jan,2022,Central Delta,CED,Winter
+D28A.Jan.2022,Pennate Diatom,22211.9625,,1/6/2022,D28A,Jan,2022,Central Delta,CED,Winter
+D26.Jan.2022,Centric Diatom,11063.6678,,1/7/2022,D26,Jan,2022,Central Delta,CED,Winter
+D26.Jan.2022,Cryptophyte,56379.1402,,1/7/2022,D26,Jan,2022,Central Delta,CED,Winter
+D26.Jan.2022,Cyanobacterium,10737.378,,1/7/2022,D26,Jan,2022,Central Delta,CED,Winter
+D26.Jan.2022,Pennate Diatom,107414.7459,,1/7/2022,D26,Jan,2022,Central Delta,CED,Winter
+MD10A.Jan.2022,Chrysophyte,3018.024,,1/7/2022,MD10A,Jan,2022,Southern Interior Delta,SID,Winter
+MD10A.Jan.2022,Cyanobacterium,4296.1752,,1/7/2022,MD10A,Jan,2022,Southern Interior Delta,SID,Winter
+MD10A.Jan.2022,Pennate Diatom,18116.5608,,1/7/2022,MD10A,Jan,2022,Southern Interior Delta,SID,Winter
+P8.Jan.2022,Cyanobacterium,11798.5896,,1/7/2022,P8,Jan,2022,Southern Interior Delta,SID,Winter
+P8.Jan.2022,Pennate Diatom,43981.863,,1/7/2022,P8,Jan,2022,Southern Interior Delta,SID,Winter
+D22.Jan.2022,Centric Diatom,320306.3006,,1/10/2022,D22,Jan,2022,Confluence,CON,Winter
+D22.Jan.2022,Cryptophyte,59786.1927,,1/10/2022,D22,Jan,2022,Confluence,CON,Winter
+D22.Jan.2022,Cyanobacterium,6182.4672,,1/10/2022,D22,Jan,2022,Confluence,CON,Winter
+D22.Jan.2022,Pennate Diatom,67830.1468,,1/10/2022,D22,Jan,2022,Confluence,CON,Winter
+D4.Jan.2022,Cryptophyte,25057.0876,,1/10/2022,D4,Jan,2022,Confluence,CON,Winter
+D4.Jan.2022,Cyanobacterium,22850.8128,,1/10/2022,D4,Jan,2022,Confluence,CON,Winter
+D4.Jan.2022,Pennate Diatom,113919.8264,,1/10/2022,D4,Jan,2022,Confluence,CON,Winter
+NZ068.Jan.2022,Centric Diatom,140466.6888,,1/10/2022,NZ068,Jan,2022,Northern Interior Delta,NID,Winter
+NZ068.Jan.2022,Cryptophyte,6385.914,,1/10/2022,NZ068,Jan,2022,Northern Interior Delta,NID,Winter
+NZ068.Jan.2022,Cyanobacterium,5991.9696,,1/10/2022,NZ068,Jan,2022,Northern Interior Delta,NID,Winter
+NZ068.Jan.2022,Pennate Diatom,343522.026,,1/10/2022,NZ068,Jan,2022,Northern Interior Delta,NID,Winter
+D10.Jan.2022,Centric Diatom,182939.138,,1/11/2022,D10,Jan,2022,Confluence,CON,Winter
+D10.Jan.2022,Cryptophyte,46562.7593,,1/11/2022,D10,Jan,2022,Confluence,CON,Winter
+D10.Jan.2022,Cyanobacterium,19384.3512,,1/11/2022,D10,Jan,2022,Confluence,CON,Winter
+D10.Jan.2022,Pennate Diatom,8375.8039,,1/11/2022,D10,Jan,2022,Confluence,CON,Winter
+D6.Jan.2022,Centric Diatom,130919.2872,,1/11/2022,D6,Jan,2022,San Pablo Bay,SPB,Winter
+D6.Jan.2022,Cryptophyte,55206.9776,,1/11/2022,D6,Jan,2022,San Pablo Bay,SPB,Winter
+D6.Jan.2022,Cyanobacterium,14535.684,,1/11/2022,D6,Jan,2022,San Pablo Bay,SPB,Winter
+D8.Jan.2022,Centric Diatom,344385.8508,,1/11/2022,D8,Jan,2022,Grizzly and Suisun Bay,GSB,Winter
+D8.Jan.2022,Cyanobacterium,22630.032,,1/11/2022,D8,Jan,2022,Grizzly and Suisun Bay,GSB,Winter
+D8.Jan.2022,Pennate Diatom,17559.7396,,1/11/2022,D8,Jan,2022,Grizzly and Suisun Bay,GSB,Winter
+EZ2.Jan.2022,Cyanobacterium,22116.1088,,1/11/2022,EZ2,Jan,2022,Entrapment Zone,EZ,Winter
+EZ2.Jan.2022,Pennate Diatom,2653.65,,1/11/2022,EZ2,Jan,2022,Entrapment Zone,EZ,Winter
+EZ6.Jan.2022,Centric Diatom,211077.072,,1/11/2022,EZ6,Jan,2022,Entrapment Zone,EZ,Winter
+EZ6.Jan.2022,Cryptophyte,2342.9778,,1/11/2022,EZ6,Jan,2022,Entrapment Zone,EZ,Winter
+EZ6.Jan.2022,Cyanobacterium,21927.2616,,1/11/2022,EZ6,Jan,2022,Entrapment Zone,EZ,Winter
+EZ6.Jan.2022,Pennate Diatom,25949.7684,,1/11/2022,EZ6,Jan,2022,Entrapment Zone,EZ,Winter
+D7.Jan.2022,Centric Diatom,48167.3945,,1/12/2022,D7,Jan,2022,Grizzly and Suisun Bay,GSB,Winter
+D7.Jan.2022,Cryptophyte,29264.955,,1/12/2022,D7,Jan,2022,Grizzly and Suisun Bay,GSB,Winter
+D7.Jan.2022,Cyanobacterium,28287.54,,1/12/2022,D7,Jan,2022,Grizzly and Suisun Bay,GSB,Winter
+NZ032.Jan.2022,Centric Diatom,35403.1212,,1/12/2022,NZ032,Jan,2022,Grizzly and Suisun Bay,GSB,Winter
+NZ032.Jan.2022,Cyanobacterium,35021.3544,,1/12/2022,NZ032,Jan,2022,Grizzly and Suisun Bay,GSB,Winter
+NZ032.Jan.2022,Pennate Diatom,433068.4386,,1/12/2022,NZ032,Jan,2022,Grizzly and Suisun Bay,GSB,Winter
+NZS42.Jan.2022,Centric Diatom,89828.8756,,1/12/2022,NZS42,Jan,2022,Grizzly and Suisun Bay,GSB,Winter
+NZS42.Jan.2022,Cyanobacterium,20957.292,,1/12/2022,NZS42,Jan,2022,Grizzly and Suisun Bay,GSB,Winter
+NZS42.Jan.2022,Green Alga,835.1294,,1/12/2022,NZS42,Jan,2022,Grizzly and Suisun Bay,GSB,Winter
+NZS42.Jan.2022,Pennate Diatom,12079.9096,,1/12/2022,NZS42,Jan,2022,Grizzly and Suisun Bay,GSB,Winter
+D41.Jan.2022,Centric Diatom,57783.2856,,1/13/2022,D41,Jan,2022,San Pablo Bay,SPB,Winter
+D41.Jan.2022,Cryptophyte,94859.6532,,1/13/2022,D41,Jan,2022,San Pablo Bay,SPB,Winter
+D41.Jan.2022,Cyanobacterium,8540.5824,,1/13/2022,D41,Jan,2022,San Pablo Bay,SPB,Winter
+D41A.Jan.2022,Centric Diatom,7902.6894,,1/13/2022,D41A,Jan,2022,San Pablo Bay,SPB,Winter
+D41A.Jan.2022,Chrysophyte,7552.773,,1/13/2022,D41A,Jan,2022,San Pablo Bay,SPB,Winter
+D41A.Jan.2022,Cryptophyte,115891.7367,,1/13/2022,D41A,Jan,2022,San Pablo Bay,SPB,Winter
+D41A.Jan.2022,Cyanobacterium,5884.5096,,1/13/2022,D41A,Jan,2022,San Pablo Bay,SPB,Winter
+D41A.Jan.2022,Haptophyte,974.5911,,1/13/2022,D41A,Jan,2022,San Pablo Bay,SPB,Winter
+D41A.Jan.2022,Pennate Diatom,15541.2987,,1/13/2022,D41A,Jan,2022,San Pablo Bay,SPB,Winter
+NZ002.Jan.2022,Centric Diatom,35571.5352,,1/13/2022,NZ002,Jan,2022,San Pablo Bay,SPB,Winter
+NZ002.Jan.2022,Cryptophyte,463921.3932,,1/13/2022,NZ002,Jan,2022,San Pablo Bay,SPB,Winter
+NZ002.Jan.2022,Cyanobacterium,12642.7032,,1/13/2022,NZ002,Jan,2022,San Pablo Bay,SPB,Winter
+NZ004.Jan.2022,Centric Diatom,306170.613,,1/13/2022,NZ004,Jan,2022,San Pablo Bay,SPB,Winter
+NZ004.Jan.2022,Cryptophyte,87348.6908,,1/13/2022,NZ004,Jan,2022,San Pablo Bay,SPB,Winter
+NZ004.Jan.2022,Cyanobacterium,7499.646,,1/13/2022,NZ004,Jan,2022,San Pablo Bay,SPB,Winter
+NZ325.Jan.2022,Centric Diatom,30481.6064,,1/13/2022,NZ325,Jan,2022,San Pablo Bay,SPB,Winter
+NZ325.Jan.2022,Cryptophyte,10035.3176,,1/13/2022,NZ325,Jan,2022,San Pablo Bay,SPB,Winter
+NZ325.Jan.2022,Cyanobacterium,13834.0188,,1/13/2022,NZ325,Jan,2022,San Pablo Bay,SPB,Winter
+NZ325.Jan.2022,Green Alga,8288.3367,,1/13/2022,NZ325,Jan,2022,San Pablo Bay,SPB,Winter
+NZ325.Jan.2022,Pennate Diatom,17873.2533,,1/13/2022,NZ325,Jan,2022,San Pablo Bay,SPB,Winter
+D12.Jan.2022,Centric Diatom,406322.4556,,1/16/2022,D12,Jan,2022,Confluence,CON,Winter
+D12.Jan.2022,Cyanobacterium,14425.2864,,1/16/2022,D12,Jan,2022,Confluence,CON,Winter
+D12.Jan.2022,Green Alga,3574.6334,,1/16/2022,D12,Jan,2022,Confluence,CON,Winter
+D12.Jan.2022,Pennate Diatom,563773.966,,1/16/2022,D12,Jan,2022,Confluence,CON,Winter
+C10A.Feb.2022,Centric Diatom,184319.352,,2/7/2022,C10A,Feb,2022,Southern Interior Delta,SID,Winter
+C10A.Feb.2022,Cryptophyte,69821.1594,,2/7/2022,C10A,Feb,2022,Southern Interior Delta,SID,Winter
+C10A.Feb.2022,Cyanobacterium,6573.252,,2/7/2022,C10A,Feb,2022,Southern Interior Delta,SID,Winter
+C10A.Feb.2022,Green Alga,29146.0485,,2/7/2022,C10A,Feb,2022,Southern Interior Delta,SID,Winter
+C10A.Feb.2022,Haptophyte,4681.7652,,2/7/2022,C10A,Feb,2022,Southern Interior Delta,SID,Winter
+C10A.Feb.2022,Pennate Diatom,166311.8994,,2/7/2022,C10A,Feb,2022,Southern Interior Delta,SID,Winter
+C3A.Feb.2022,Centric Diatom,118710.8046,,2/7/2022,C3A,Feb,2022,Northern Interior Delta,NID,Winter
+C3A.Feb.2022,Cryptophyte,54452.4744,,2/7/2022,C3A,Feb,2022,Northern Interior Delta,NID,Winter
+C3A.Feb.2022,Cyanobacterium,10556.8665,,2/7/2022,C3A,Feb,2022,Northern Interior Delta,NID,Winter
+C3A.Feb.2022,Green Alga,13219.5408,,2/7/2022,C3A,Feb,2022,Northern Interior Delta,NID,Winter
+C3A.Feb.2022,Pennate Diatom,49629.1383,,2/7/2022,C3A,Feb,2022,Northern Interior Delta,NID,Winter
+C9.Feb.2022,Centric Diatom,1109.9634,,2/7/2022,C9,Feb,2022,Southern Interior Delta,SID,Winter
+C9.Feb.2022,Cryptophyte,262104.601,,2/7/2022,C9,Feb,2022,Southern Interior Delta,SID,Winter
+C9.Feb.2022,Cyanobacterium,1630.2456,,2/7/2022,C9,Feb,2022,Southern Interior Delta,SID,Winter
+C9.Feb.2022,Green Alga,2796.8498,,2/7/2022,C9,Feb,2022,Southern Interior Delta,SID,Winter
+C9.Feb.2022,Pennate Diatom,12334.796,,2/7/2022,C9,Feb,2022,Southern Interior Delta,SID,Winter
+D12.Feb.2022,Centric Diatom,88191.3272,,2/8/2022,D12,Feb,2022,Confluence,CON,Winter
+D12.Feb.2022,Cryptophyte,104900.2084,,2/8/2022,D12,Feb,2022,Confluence,CON,Winter
+D12.Feb.2022,Cyanobacterium,7249.4424,,2/8/2022,D12,Feb,2022,Confluence,CON,Winter
+D12.Feb.2022,Pennate Diatom,117833.5939,,2/8/2022,D12,Feb,2022,Confluence,CON,Winter
+D16.Feb.2022,Centric Diatom,4939.753,,2/8/2022,D16,Feb,2022,Central Delta,CED,Winter
+D16.Feb.2022,Cryptophyte,137447.8924,,2/8/2022,D16,Feb,2022,Central Delta,CED,Winter
+D16.Feb.2022,Cyanobacterium,4742.9928,,2/8/2022,D16,Feb,2022,Central Delta,CED,Winter
+D16.Feb.2022,Green Alga,3258.8192,,2/8/2022,D16,Feb,2022,Central Delta,CED,Winter
+D16.Feb.2022,Haptophyte,6382.0848,,2/8/2022,D16,Feb,2022,Central Delta,CED,Winter
+D16.Feb.2022,Pennate Diatom,15727.6756,,2/8/2022,D16,Feb,2022,Central Delta,CED,Winter
+D19.Feb.2022,Centric Diatom,19106.5854,,2/8/2022,D19,Feb,2022,Central Delta,CED,Winter
+D19.Feb.2022,Cryptophyte,336544.008,,2/8/2022,D19,Feb,2022,Central Delta,CED,Winter
+D19.Feb.2022,Cyanobacterium,3745.584,,2/8/2022,D19,Feb,2022,Central Delta,CED,Winter
+D19.Feb.2022,Green Alga,657.9414,,2/8/2022,D19,Feb,2022,Central Delta,CED,Winter
+D19.Feb.2022,Pennate Diatom,9152.3126,,2/8/2022,D19,Feb,2022,Central Delta,CED,Winter
+D28A.Feb.2022,Centric Diatom,11408.2797,,2/8/2022,D28A,Feb,2022,Central Delta,CED,Winter
+D28A.Feb.2022,Cryptophyte,51084.792,,2/8/2022,D28A,Feb,2022,Central Delta,CED,Winter
+D28A.Feb.2022,Cyanobacterium,5126.004,,2/8/2022,D28A,Feb,2022,Central Delta,CED,Winter
+D28A.Feb.2022,Pennate Diatom,136234.8744,,2/8/2022,D28A,Feb,2022,Central Delta,CED,Winter
+EZ2-SJR.Feb.2022,Centric Diatom,245943.0984,,2/8/2022,EZ2-SJR,Feb,2022,Entrapment Zone,EZ,Winter
+EZ2-SJR.Feb.2022,Cryptophyte,32736.4072,,2/8/2022,EZ2-SJR,Feb,2022,Entrapment Zone,EZ,Winter
+EZ2-SJR.Feb.2022,Cyanobacterium,9788.8608,,2/8/2022,EZ2-SJR,Feb,2022,Entrapment Zone,EZ,Winter
+EZ2-SJR.Feb.2022,Pennate Diatom,163601.5444,,2/8/2022,EZ2-SJR,Feb,2022,Entrapment Zone,EZ,Winter
+D26.Feb.2022,Centric Diatom,1941.8292,,2/9/2022,D26,Feb,2022,Central Delta,CED,Winter
+D26.Feb.2022,Chrysophyte,25928.8992,,2/9/2022,D26,Feb,2022,Central Delta,CED,Winter
+D26.Feb.2022,Cryptophyte,34093.044,,2/9/2022,D26,Feb,2022,Central Delta,CED,Winter
+D26.Feb.2022,Cyanobacterium,3699.1728,,2/9/2022,D26,Feb,2022,Central Delta,CED,Winter
+D26.Feb.2022,Green Alga,5124.8628,,2/9/2022,D26,Feb,2022,Central Delta,CED,Winter
+D26.Feb.2022,Pennate Diatom,15808.4712,,2/9/2022,D26,Feb,2022,Central Delta,CED,Winter
+MD10A.Feb.2022,Centric Diatom,2030.8276,,2/9/2022,MD10A,Feb,2022,Southern Interior Delta,SID,Winter
+MD10A.Feb.2022,Cryptophyte,365905.7794,,2/9/2022,MD10A,Feb,2022,Southern Interior Delta,SID,Winter
+MD10A.Feb.2022,Cyanobacterium,2535.0444,,2/9/2022,MD10A,Feb,2022,Southern Interior Delta,SID,Winter
+MD10A.Feb.2022,Green Alga,1482.8819,,2/9/2022,MD10A,Feb,2022,Southern Interior Delta,SID,Winter
+MD10A.Feb.2022,Haptophyte,1459.2724,,2/9/2022,MD10A,Feb,2022,Southern Interior Delta,SID,Winter
+P8.Feb.2022,Centric Diatom,148065.3356,,2/9/2022,P8,Feb,2022,Southern Interior Delta,SID,Winter
+P8.Feb.2022,Cryptophyte,328979.2506,,2/9/2022,P8,Feb,2022,Southern Interior Delta,SID,Winter
+P8.Feb.2022,Cyanobacterium,4842.5832,,2/9/2022,P8,Feb,2022,Southern Interior Delta,SID,Winter
+P8.Feb.2022,Green Alga,7833.0616,,2/9/2022,P8,Feb,2022,Southern Interior Delta,SID,Winter
+P8.Feb.2022,Pennate Diatom,1412.9388,,2/9/2022,P8,Feb,2022,Southern Interior Delta,SID,Winter
+D22.Feb.2022,Centric Diatom,28735.209,,2/10/2022,D22,Feb,2022,Confluence,CON,Winter
+D22.Feb.2022,Cryptophyte,31131.945,,2/10/2022,D22,Feb,2022,Confluence,CON,Winter
+D22.Feb.2022,Cyanobacterium,4765.878,,2/10/2022,D22,Feb,2022,Confluence,CON,Winter
+D22.Feb.2022,Pennate Diatom,44095.212,,2/10/2022,D22,Feb,2022,Confluence,CON,Winter
+D4.Feb.2022,Centric Diatom,13151.8404,,2/10/2022,D4,Feb,2022,Confluence,CON,Winter
+D4.Feb.2022,Cryptophyte,10264.0716,,2/10/2022,D4,Feb,2022,Confluence,CON,Winter
+D4.Feb.2022,Cyanobacterium,6902.7552,,2/10/2022,D4,Feb,2022,Confluence,CON,Winter
+D4.Feb.2022,Green Alga,2849.0328,,2/10/2022,D4,Feb,2022,Confluence,CON,Winter
+D4.Feb.2022,Pennate Diatom,81713.592,,2/10/2022,D4,Feb,2022,Confluence,CON,Winter
+EZ2.Feb.2022,Centric Diatom,212386.6272,,2/10/2022,EZ2,Feb,2022,Entrapment Zone,EZ,Winter
+EZ2.Feb.2022,Cryptophyte,14351.9347,,2/10/2022,EZ2,Feb,2022,Entrapment Zone,EZ,Winter
+EZ2.Feb.2022,Cyanobacterium,12630.2076,,2/10/2022,EZ2,Feb,2022,Entrapment Zone,EZ,Winter
+EZ2.Feb.2022,Pennate Diatom,255154.7252,,2/10/2022,EZ2,Feb,2022,Entrapment Zone,EZ,Winter
+EZ6.Feb.2022,Centric Diatom,35578.6048,,2/10/2022,EZ6,Feb,2022,Entrapment Zone,EZ,Winter
+EZ6.Feb.2022,Cryptophyte,247201.5464,,2/10/2022,EZ6,Feb,2022,Entrapment Zone,EZ,Winter
+EZ6.Feb.2022,Cyanobacterium,9060.7392,,2/10/2022,EZ6,Feb,2022,Entrapment Zone,EZ,Winter
+EZ6.Feb.2022,Pennate Diatom,115932.618,,2/10/2022,EZ6,Feb,2022,Entrapment Zone,EZ,Winter
+NZ068.Feb.2022,Centric Diatom,15903.702,,2/10/2022,NZ068,Feb,2022,Northern Interior Delta,NID,Winter
+NZ068.Feb.2022,Cryptophyte,150251.875,,2/10/2022,NZ068,Feb,2022,Northern Interior Delta,NID,Winter
+NZ068.Feb.2022,Cyanobacterium,9867.7315,,2/10/2022,NZ068,Feb,2022,Northern Interior Delta,NID,Winter
+NZ068.Feb.2022,Green Alga,1520.491,,2/10/2022,NZ068,Feb,2022,Northern Interior Delta,NID,Winter
+NZ068.Feb.2022,Pennate Diatom,111765.3645,,2/10/2022,NZ068,Feb,2022,Northern Interior Delta,NID,Winter
+D10.Feb.2022,Centric Diatom,69163.1034,,2/11/2022,D10,Feb,2022,Confluence,CON,Winter
+D10.Feb.2022,Cryptophyte,88345.6145,,2/11/2022,D10,Feb,2022,Confluence,CON,Winter
+D10.Feb.2022,Cyanobacterium,14491.7292,,2/11/2022,D10,Feb,2022,Confluence,CON,Winter
+D10.Feb.2022,Pennate Diatom,254297.9202,,2/11/2022,D10,Feb,2022,Confluence,CON,Winter
+D6.Feb.2022,Centric Diatom,4357.2933,,2/11/2022,D6,Feb,2022,San Pablo Bay,SPB,Winter
+D6.Feb.2022,Cryptophyte,104464.1756,,2/11/2022,D6,Feb,2022,San Pablo Bay,SPB,Winter
+D6.Feb.2022,Cyanobacterium,8279.388,,2/11/2022,D6,Feb,2022,San Pablo Bay,SPB,Winter
+D6.Feb.2022,Green Alga,4570.7647,,2/11/2022,D6,Feb,2022,San Pablo Bay,SPB,Winter
+D6.Feb.2022,Pennate Diatom,13314.8363,,2/11/2022,D6,Feb,2022,San Pablo Bay,SPB,Winter
+D8.Feb.2022,Centric Diatom,391961.1144,,2/11/2022,D8,Feb,2022,Grizzly and Suisun Bay,GSB,Winter
+D8.Feb.2022,Cryptophyte,170999.0199,,2/11/2022,D8,Feb,2022,Grizzly and Suisun Bay,GSB,Winter
+D8.Feb.2022,Cyanobacterium,10699.9704,,2/11/2022,D8,Feb,2022,Grizzly and Suisun Bay,GSB,Winter
+D8.Feb.2022,Green Alga,12679.8738,,2/11/2022,D8,Feb,2022,Grizzly and Suisun Bay,GSB,Winter
+D8.Feb.2022,Pennate Diatom,84601.1622,,2/11/2022,D8,Feb,2022,Grizzly and Suisun Bay,GSB,Winter
+D7.Feb.2022,Centric Diatom,35687.5575,,2/14/2022,D7,Feb,2022,Grizzly and Suisun Bay,GSB,Winter
+D7.Feb.2022,Cryptophyte,68190.962,,2/14/2022,D7,Feb,2022,Grizzly and Suisun Bay,GSB,Winter
+D7.Feb.2022,Cyanobacterium,7231.0428,,2/14/2022,D7,Feb,2022,Grizzly and Suisun Bay,GSB,Winter
+NZ032.Feb.2022,Centric Diatom,501741.9225,,2/14/2022,NZ032,Feb,2022,Grizzly and Suisun Bay,GSB,Winter
+NZ032.Feb.2022,Cyanobacterium,12488.5656,,2/14/2022,NZ032,Feb,2022,Grizzly and Suisun Bay,GSB,Winter
+NZ032.Feb.2022,Pennate Diatom,166508.4582,,2/14/2022,NZ032,Feb,2022,Grizzly and Suisun Bay,GSB,Winter
+NZS42.Feb.2022,Centric Diatom,115058.994,,2/14/2022,NZS42,Feb,2022,Grizzly and Suisun Bay,GSB,Winter
+NZS42.Feb.2022,Cryptophyte,14632.4775,,2/14/2022,NZS42,Feb,2022,Grizzly and Suisun Bay,GSB,Winter
+NZS42.Feb.2022,Cyanobacterium,27804.582,,2/14/2022,NZS42,Feb,2022,Grizzly and Suisun Bay,GSB,Winter
+NZS42.Feb.2022,Haptophyte,48123.315,,2/14/2022,NZS42,Feb,2022,Grizzly and Suisun Bay,GSB,Winter
+NZS42.Feb.2022,Pennate Diatom,33611.577,,2/14/2022,NZS42,Feb,2022,Grizzly and Suisun Bay,GSB,Winter
+D41.Feb.2022,Centric Diatom,735907.632,,2/15/2022,D41,Feb,2022,San Pablo Bay,SPB,Winter
+D41.Feb.2022,Chrysophyte,1202.256,,2/15/2022,D41,Feb,2022,San Pablo Bay,SPB,Winter
+D41.Feb.2022,Cryptophyte,70143.744,,2/15/2022,D41,Feb,2022,San Pablo Bay,SPB,Winter
+D41.Feb.2022,Cyanobacterium,4994.496,,2/15/2022,D41,Feb,2022,San Pablo Bay,SPB,Winter
+D41.Feb.2022,Green Alga,3329.664,,2/15/2022,D41,Feb,2022,San Pablo Bay,SPB,Winter
+D41A.Feb.2022,Cryptophyte,100227.7224,,2/15/2022,D41A,Feb,2022,San Pablo Bay,SPB,Winter
+D41A.Feb.2022,Cyanobacterium,21206.4696,,2/15/2022,D41A,Feb,2022,San Pablo Bay,SPB,Winter
+D41A.Feb.2022,Pennate Diatom,61537.6374,,2/15/2022,D41A,Feb,2022,San Pablo Bay,SPB,Winter
+NZ002.Feb.2022,Centric Diatom,14505.6288,,2/15/2022,NZ002,Feb,2022,San Pablo Bay,SPB,Winter
+NZ002.Feb.2022,Cryptophyte,6161.2322,,2/15/2022,NZ002,Feb,2022,San Pablo Bay,SPB,Winter
+NZ002.Feb.2022,Cyanobacterium,7051.0176,,2/15/2022,NZ002,Feb,2022,San Pablo Bay,SPB,Winter
+NZ002.Feb.2022,Haptophyte,1236.9946,,2/15/2022,NZ002,Feb,2022,San Pablo Bay,SPB,Winter
+NZ002.Feb.2022,Pennate Diatom,22477.097,,2/15/2022,NZ002,Feb,2022,San Pablo Bay,SPB,Winter
+NZ004.Feb.2022,Centric Diatom,31642.7121,,2/15/2022,NZ004,Feb,2022,San Pablo Bay,SPB,Winter
+NZ004.Feb.2022,Cryptophyte,120814.8402,,2/15/2022,NZ004,Feb,2022,San Pablo Bay,SPB,Winter
+NZ004.Feb.2022,Cyanobacterium,7212.6432,,2/15/2022,NZ004,Feb,2022,San Pablo Bay,SPB,Winter
+NZ004.Feb.2022,Green Alga,1924.8026,,2/15/2022,NZ004,Feb,2022,San Pablo Bay,SPB,Winter
+NZ004.Feb.2022,Haptophyte,2858.0712,,2/15/2022,NZ004,Feb,2022,San Pablo Bay,SPB,Winter
+NZ004.Feb.2022,Pennate Diatom,4696.4979,,2/15/2022,NZ004,Feb,2022,San Pablo Bay,SPB,Winter
+NZ325.Feb.2022,Centric Diatom,149894.548,,2/15/2022,NZ325,Feb,2022,San Pablo Bay,SPB,Winter
+NZ325.Feb.2022,Cyanobacterium,16662.3728,,2/15/2022,NZ325,Feb,2022,San Pablo Bay,SPB,Winter
+NZ325.Feb.2022,Dinoflagellate,119984.636,,2/15/2022,NZ325,Feb,2022,San Pablo Bay,SPB,Winter
+NZ325.Feb.2022,Pennate Diatom,823693.3488,,2/15/2022,NZ325,Feb,2022,San Pablo Bay,SPB,Winter
+C10A.Mar.2022,Centric Diatom,931634.5916,,3/9/2022,C10A,Mar,2022,Southern Interior Delta,SID,Spring
+C10A.Mar.2022,Cryptophyte,20418.2376,,3/9/2022,C10A,Mar,2022,Southern Interior Delta,SID,Spring
+C10A.Mar.2022,Cyanobacterium,12388.444,,3/9/2022,C10A,Mar,2022,Southern Interior Delta,SID,Spring
+C10A.Mar.2022,Green Alga,25122.4572,,3/9/2022,C10A,Mar,2022,Southern Interior Delta,SID,Spring
+C10A.Mar.2022,Pennate Diatom,320668.246,,3/9/2022,C10A,Mar,2022,Southern Interior Delta,SID,Spring
+C3A.Mar.2022,Centric Diatom,325652.8869,,3/9/2022,C3A,Mar,2022,Northern Interior Delta,NID,Spring
+C3A.Mar.2022,Cryptophyte,44914.9482,,3/9/2022,C3A,Mar,2022,Northern Interior Delta,NID,Spring
+C3A.Mar.2022,Cyanobacterium,16952.1336,,3/9/2022,C3A,Mar,2022,Northern Interior Delta,NID,Spring
+C3A.Mar.2022,Green Alga,7896.8241,,3/9/2022,C3A,Mar,2022,Northern Interior Delta,NID,Spring
+C3A.Mar.2022,Pennate Diatom,13337.2017,,3/9/2022,C3A,Mar,2022,Northern Interior Delta,NID,Spring
+C9.Mar.2022,Centric Diatom,616124.5186,,3/9/2022,C9,Mar,2022,Southern Interior Delta,SID,Spring
+C9.Mar.2022,Cryptophyte,181227.8534,,3/9/2022,C9,Mar,2022,Southern Interior Delta,SID,Spring
+C9.Mar.2022,Cyanobacterium,3495.461,,3/9/2022,C9,Mar,2022,Southern Interior Delta,SID,Spring
+C9.Mar.2022,Green Alga,549.0274,,3/9/2022,C9,Mar,2022,Southern Interior Delta,SID,Spring
+C9.Mar.2022,Pennate Diatom,184132.1317,,3/9/2022,C9,Mar,2022,Southern Interior Delta,SID,Spring
+D12.Mar.2022,Centric Diatom,55964.0998,,3/10/2022,D12,Mar,2022,Confluence,CON,Spring
+D12.Mar.2022,Cyanobacterium,10901.052,,3/10/2022,D12,Mar,2022,Confluence,CON,Spring
+D12.Mar.2022,Pennate Diatom,2260691.901,,3/10/2022,D12,Mar,2022,Confluence,CON,Spring
+D16.Mar.2022,Centric Diatom,808113.8421,,3/10/2022,D16,Mar,2022,Central Delta,CED,Spring
+D16.Mar.2022,Cryptophyte,214337.4696,,3/10/2022,D16,Mar,2022,Central Delta,CED,Spring
+D16.Mar.2022,Cyanobacterium,2249.7912,,3/10/2022,D16,Mar,2022,Central Delta,CED,Spring
+D16.Mar.2022,Green Alga,1199.0835,,3/10/2022,D16,Mar,2022,Central Delta,CED,Spring
+D16.Mar.2022,Pennate Diatom,41958.1458,,3/10/2022,D16,Mar,2022,Central Delta,CED,Spring
+D19.Mar.2022,Centric Diatom,1591087.235,,3/10/2022,D19,Mar,2022,Central Delta,CED,Spring
+D19.Mar.2022,Cryptophyte,388717.0413,,3/10/2022,D19,Mar,2022,Central Delta,CED,Spring
+D19.Mar.2022,Cyanobacterium,8469.2972,,3/10/2022,D19,Mar,2022,Central Delta,CED,Spring
+D19.Mar.2022,Pennate Diatom,99238.2811,,3/10/2022,D19,Mar,2022,Central Delta,CED,Spring
+D28A.Mar.2022,Centric Diatom,1559597.959,,3/10/2022,D28A,Mar,2022,Central Delta,CED,Spring
+D28A.Mar.2022,Cryptophyte,236186.1744,,3/10/2022,D28A,Mar,2022,Central Delta,CED,Spring
+D28A.Mar.2022,Cyanobacterium,4589.376,,3/10/2022,D28A,Mar,2022,Central Delta,CED,Spring
+D28A.Mar.2022,Pennate Diatom,249095.1474,,3/10/2022,D28A,Mar,2022,Central Delta,CED,Spring
+D26.Mar.2022,Centric Diatom,238499.74,,3/11/2022,D26,Mar,2022,Central Delta,CED,Spring
+D26.Mar.2022,Cryptophyte,250697.5065,,3/11/2022,D26,Mar,2022,Central Delta,CED,Spring
+D26.Mar.2022,Cyanobacterium,1780.344,,3/11/2022,D26,Mar,2022,Central Delta,CED,Spring
+D26.Mar.2022,Pennate Diatom,50053.8645,,3/11/2022,D26,Mar,2022,Central Delta,CED,Spring
+MD10A.Mar.2022,Cryptophyte,256871.36,,3/11/2022,MD10A,Mar,2022,Southern Interior Delta,SID,Spring
+MD10A.Mar.2022,Cyanobacterium,864.432,,3/11/2022,MD10A,Mar,2022,Southern Interior Delta,SID,Spring
+MD10A.Mar.2022,Green Alga,1161.408,,3/11/2022,MD10A,Mar,2022,Southern Interior Delta,SID,Spring
+MD10A.Mar.2022,Pennate Diatom,33974.68,,3/11/2022,MD10A,Mar,2022,Southern Interior Delta,SID,Spring
+P8.Mar.2022,Centric Diatom,19669.758,,3/11/2022,P8,Mar,2022,Southern Interior Delta,SID,Spring
+P8.Mar.2022,Cryptophyte,191755.791,,3/11/2022,P8,Mar,2022,Southern Interior Delta,SID,Spring
+P8.Mar.2022,Cyanobacterium,5856.248,,3/11/2022,P8,Mar,2022,Southern Interior Delta,SID,Spring
+P8.Mar.2022,Pennate Diatom,105983.3245,,3/11/2022,P8,Mar,2022,Southern Interior Delta,SID,Spring
+D22.Mar.2022,Centric Diatom,1205705.998,,3/14/2022,D22,Mar,2022,Confluence,CON,Spring
+D22.Mar.2022,Cryptophyte,105851.1888,,3/14/2022,D22,Mar,2022,Confluence,CON,Spring
+D22.Mar.2022,Cyanobacterium,10217.6984,,3/14/2022,D22,Mar,2022,Confluence,CON,Spring
+D22.Mar.2022,Green Alga,2608.1984,,3/14/2022,D22,Mar,2022,Confluence,CON,Spring
+D22.Mar.2022,Pennate Diatom,1972046.906,,3/14/2022,D22,Mar,2022,Confluence,CON,Spring
+D4.Mar.2022,Centric Diatom,25593.7076,,3/14/2022,D4,Mar,2022,Confluence,CON,Spring
+D4.Mar.2022,Cryptophyte,295864.6704,,3/14/2022,D4,Mar,2022,Confluence,CON,Spring
+D4.Mar.2022,Cyanobacterium,5064.1596,,3/14/2022,D4,Mar,2022,Confluence,CON,Spring
+D4.Mar.2022,Green Alga,1128.8185,,3/14/2022,D4,Mar,2022,Confluence,CON,Spring
+D4.Mar.2022,Pennate Diatom,5778710.526,,3/14/2022,D4,Mar,2022,Confluence,CON,Spring
+EZ2.Mar.2022,Centric Diatom,775789.2342,,3/14/2022,EZ2,Mar,2022,Entrapment Zone,EZ,Spring
+EZ2.Mar.2022,Cryptophyte,130674.636,,3/14/2022,EZ2,Mar,2022,Entrapment Zone,EZ,Spring
+EZ2.Mar.2022,Cyanobacterium,10321.5024,,3/14/2022,EZ2,Mar,2022,Entrapment Zone,EZ,Spring
+EZ2.Mar.2022,Pennate Diatom,6062124.08,,3/14/2022,EZ2,Mar,2022,Entrapment Zone,EZ,Spring
+EZ6.Mar.2022,Centric Diatom,163324.13,,3/14/2022,EZ6,Mar,2022,Entrapment Zone,EZ,Spring
+EZ6.Mar.2022,Cryptophyte,125779.1284,,3/14/2022,EZ6,Mar,2022,Entrapment Zone,EZ,Spring
+EZ6.Mar.2022,Cyanobacterium,10652.6736,,3/14/2022,EZ6,Mar,2022,Entrapment Zone,EZ,Spring
+EZ6.Mar.2022,Pennate Diatom,8770349.395,,3/14/2022,EZ6,Mar,2022,Entrapment Zone,EZ,Spring
+NZ068.Mar.2022,Centric Diatom,48922.191,,3/14/2022,NZ068,Mar,2022,Northern Interior Delta,NID,Spring
+NZ068.Mar.2022,Cryptophyte,219346.677,,3/14/2022,NZ068,Mar,2022,Northern Interior Delta,NID,Spring
+NZ068.Mar.2022,Cyanobacterium,2822.472,,3/14/2022,NZ068,Mar,2022,Northern Interior Delta,NID,Spring
+NZ068.Mar.2022,Pennate Diatom,8087.232,,3/14/2022,NZ068,Mar,2022,Northern Interior Delta,NID,Spring
+D10.Mar.2022,Centric Diatom,61893.7508,,3/15/2022,D10,Mar,2022,Confluence,CON,Spring
+D10.Mar.2022,Cryptophyte,25539.279,,3/15/2022,D10,Mar,2022,Confluence,CON,Spring
+D10.Mar.2022,Cyanobacterium,10763.064,,3/15/2022,D10,Mar,2022,Confluence,CON,Spring
+D10.Mar.2022,Pennate Diatom,3670252.353,,3/15/2022,D10,Mar,2022,Confluence,CON,Spring
+D6.Mar.2022,Centric Diatom,132540.066,,3/15/2022,D6,Mar,2022,San Pablo Bay,SPB,Spring
+D6.Mar.2022,Cryptophyte,160436.442,,3/15/2022,D6,Mar,2022,San Pablo Bay,SPB,Spring
+D6.Mar.2022,Cyanobacterium,11214.072,,3/15/2022,D6,Mar,2022,San Pablo Bay,SPB,Spring
+D6.Mar.2022,Pennate Diatom,25186.47,,3/15/2022,D6,Mar,2022,San Pablo Bay,SPB,Spring
+D8.Mar.2022,Centric Diatom,131563.6,,3/15/2022,D8,Mar,2022,Grizzly and Suisun Bay,GSB,Spring
+D8.Mar.2022,Cyanobacterium,6944.184,,3/15/2022,D8,Mar,2022,Grizzly and Suisun Bay,GSB,Spring
+D8.Mar.2022,Pennate Diatom,6818582.803,,3/15/2022,D8,Mar,2022,Grizzly and Suisun Bay,GSB,Spring
+D7.Mar.2022,Centric Diatom,219352.7595,,3/16/2022,D7,Mar,2022,Grizzly and Suisun Bay,GSB,Spring
+D7.Mar.2022,Cryptophyte,91746.1881,,3/16/2022,D7,Mar,2022,Grizzly and Suisun Bay,GSB,Spring
+D7.Mar.2022,Cyanobacterium,9709.2108,,3/16/2022,D7,Mar,2022,Grizzly and Suisun Bay,GSB,Spring
+D7.Mar.2022,Pennate Diatom,2661247.849,,3/16/2022,D7,Mar,2022,Grizzly and Suisun Bay,GSB,Spring
+NZ032.Mar.2022,Centric Diatom,115566.5712,,3/16/2022,NZ032,Mar,2022,Grizzly and Suisun Bay,GSB,Spring
+NZ032.Mar.2022,Cryptophyte,64204.4576,,3/16/2022,NZ032,Mar,2022,Grizzly and Suisun Bay,GSB,Spring
+NZ032.Mar.2022,Cyanobacterium,18894.344,,3/16/2022,NZ032,Mar,2022,Grizzly and Suisun Bay,GSB,Spring
+NZ032.Mar.2022,Green Alga,3386.6992,,3/16/2022,NZ032,Mar,2022,Grizzly and Suisun Bay,GSB,Spring
+NZ032.Mar.2022,Pennate Diatom,4803278.736,,3/16/2022,NZ032,Mar,2022,Grizzly and Suisun Bay,GSB,Spring
+NZS42.Mar.2022,Centric Diatom,152324.9532,,3/16/2022,NZS42,Mar,2022,Grizzly and Suisun Bay,GSB,Spring
+NZS42.Mar.2022,Cyanobacterium,16351.578,,3/16/2022,NZS42,Mar,2022,Grizzly and Suisun Bay,GSB,Spring
+NZS42.Mar.2022,Green Alga,3793.5201,,3/16/2022,NZS42,Mar,2022,Grizzly and Suisun Bay,GSB,Spring
+NZS42.Mar.2022,Pennate Diatom,6247174.42,,3/16/2022,NZS42,Mar,2022,Grizzly and Suisun Bay,GSB,Spring
+D41.Mar.2022,Centric Diatom,506310.696,,3/17/2022,D41,Mar,2022,San Pablo Bay,SPB,Spring
+D41.Mar.2022,Cryptophyte,115598.088,,3/17/2022,D41,Mar,2022,San Pablo Bay,SPB,Spring
+D41.Mar.2022,Cyanobacterium,2862,,3/17/2022,D41,Mar,2022,San Pablo Bay,SPB,Spring
+D41.Mar.2022,Pennate Diatom,30669.828,,3/17/2022,D41,Mar,2022,San Pablo Bay,SPB,Spring
+D41A.Mar.2022,Centric Diatom,199754.8785,,3/17/2022,D41A,Mar,2022,San Pablo Bay,SPB,Spring
+D41A.Mar.2022,Cryptophyte,116385.9786,,3/17/2022,D41A,Mar,2022,San Pablo Bay,SPB,Spring
+D41A.Mar.2022,Cyanobacterium,16558.56,,3/17/2022,D41A,Mar,2022,San Pablo Bay,SPB,Spring
+D41A.Mar.2022,Green Alga,3049.5348,,3/17/2022,D41A,Mar,2022,San Pablo Bay,SPB,Spring
+D41A.Mar.2022,Pennate Diatom,87002.5839,,3/17/2022,D41A,Mar,2022,San Pablo Bay,SPB,Spring
+NZ002.Mar.2022,Centric Diatom,1786194.031,,3/17/2022,NZ002,Mar,2022,San Pablo Bay,SPB,Spring
+NZ002.Mar.2022,Cryptophyte,11618.0813,,3/17/2022,NZ002,Mar,2022,San Pablo Bay,SPB,Spring
+NZ002.Mar.2022,Cyanobacterium,10382.022,,3/17/2022,NZ002,Mar,2022,San Pablo Bay,SPB,Spring
+NZ002.Mar.2022,Pennate Diatom,450717.7437,,3/17/2022,NZ002,Mar,2022,San Pablo Bay,SPB,Spring
+NZ004.Mar.2022,Centric Diatom,145762.7691,,3/17/2022,NZ004,Mar,2022,San Pablo Bay,SPB,Spring
+NZ004.Mar.2022,Cryptophyte,82613.9478,,3/17/2022,NZ004,Mar,2022,San Pablo Bay,SPB,Spring
+NZ004.Mar.2022,Cyanobacterium,5574.0204,,3/17/2022,NZ004,Mar,2022,San Pablo Bay,SPB,Spring
+NZ004.Mar.2022,Green Alga,1343.8104,,3/17/2022,NZ004,Mar,2022,San Pablo Bay,SPB,Spring
+NZ004.Mar.2022,Pennate Diatom,4612.9824,,3/17/2022,NZ004,Mar,2022,San Pablo Bay,SPB,Spring
+NZ325.Mar.2022,Centric Diatom,65673.72,,3/17/2022,NZ325,Mar,2022,San Pablo Bay,SPB,Spring
+NZ325.Mar.2022,Cryptophyte,471406.26,,3/17/2022,NZ325,Mar,2022,San Pablo Bay,SPB,Spring
+NZ325.Mar.2022,Cyanobacterium,2609.604,,3/17/2022,NZ325,Mar,2022,San Pablo Bay,SPB,Spring
+NZ325.Mar.2022,Green Alga,792.78,,3/17/2022,NZ325,Mar,2022,San Pablo Bay,SPB,Spring
+C10A.Apr.2022,Centric Diatom,255579.0743,,4/6/2022,C10A,Apr,2022,Southern Interior Delta,SID,Spring
+C10A.Apr.2022,Cryptophyte,97388.2678,,4/6/2022,C10A,Apr,2022,Southern Interior Delta,SID,Spring
+C10A.Apr.2022,Cyanobacterium,11570.568,,4/6/2022,C10A,Apr,2022,Southern Interior Delta,SID,Spring
+C10A.Apr.2022,Green Alga,16980.3393,,4/6/2022,C10A,Apr,2022,Southern Interior Delta,SID,Spring
+C10A.Apr.2022,Pennate Diatom,475120.4292,,4/6/2022,C10A,Apr,2022,Southern Interior Delta,SID,Spring
+C3A.Apr.2022,Centric Diatom,126619.9746,,4/6/2022,C3A,Apr,2022,Northern Interior Delta,NID,Spring
+C3A.Apr.2022,Cryptophyte,21748.671,,4/6/2022,C3A,Apr,2022,Northern Interior Delta,NID,Spring
+C3A.Apr.2022,Cyanobacterium,1650.1212,,4/6/2022,C3A,Apr,2022,Northern Interior Delta,NID,Spring
+C3A.Apr.2022,Green Alga,2173.1808,,4/6/2022,C3A,Apr,2022,Northern Interior Delta,NID,Spring
+C3A.Apr.2022,Pennate Diatom,23298.534,,4/6/2022,C3A,Apr,2022,Northern Interior Delta,NID,Spring
+C9.Apr.2022,Centric Diatom,95369.6736,,4/6/2022,C9,Apr,2022,Southern Interior Delta,SID,Spring
+C9.Apr.2022,Cryptophyte,81493.7976,,4/6/2022,C9,Apr,2022,Southern Interior Delta,SID,Spring
+C9.Apr.2022,Cyanobacterium,8534.6256,,4/6/2022,C9,Apr,2022,Southern Interior Delta,SID,Spring
+C9.Apr.2022,Green Alga,735.1956,,4/6/2022,C9,Apr,2022,Southern Interior Delta,SID,Spring
+C9.Apr.2022,Pennate Diatom,117278.3352,,4/6/2022,C9,Apr,2022,Southern Interior Delta,SID,Spring
+D12.Apr.2022,Centric Diatom,318720.2,,4/6/2022,D12,Apr,2022,Confluence,CON,Spring
+D12.Apr.2022,Cryptophyte,50466.6,,4/6/2022,D12,Apr,2022,Confluence,CON,Spring
+D12.Apr.2022,Cyanobacterium,9079.25,,4/6/2022,D12,Apr,2022,Confluence,CON,Spring
+D12.Apr.2022,Green Alga,1413.35,,4/6/2022,D12,Apr,2022,Confluence,CON,Spring
+D12.Apr.2022,Pennate Diatom,1873269.5,,4/6/2022,D12,Apr,2022,Confluence,CON,Spring
+D16.Apr.2022,Cyanobacterium,23743.9296,,4/21/2022,D16,Apr,2022,Central Delta,CED,Spring
+D16.Apr.2022,Green Alga,13814.568,,4/21/2022,D16,Apr,2022,Central Delta,CED,Spring
+D16.Apr.2022,Pennate Diatom,2427501.298,,4/21/2022,D16,Apr,2022,Central Delta,CED,Spring
+D19.Apr.2022,Centric Diatom,352963.7556,,4/21/2022,D19,Apr,2022,Central Delta,CED,Spring
+D19.Apr.2022,Cryptophyte,518308.5592,,4/21/2022,D19,Apr,2022,Central Delta,CED,Spring
+D19.Apr.2022,Cyanobacterium,4840.2576,,4/21/2022,D19,Apr,2022,Central Delta,CED,Spring
+D19.Apr.2022,Green Alga,2650.1118,,4/21/2022,D19,Apr,2022,Central Delta,CED,Spring
+D28A.Apr.2022,Centric Diatom,66655.84,,4/21/2022,D28A,Apr,2022,Central Delta,CED,Spring
+D28A.Apr.2022,Cryptophyte,255162.23,,4/21/2022,D28A,Apr,2022,Central Delta,CED,Spring
+D28A.Apr.2022,Cyanobacterium,2426.04,,4/21/2022,D28A,Apr,2022,Central Delta,CED,Spring
+D28A.Apr.2022,Green Alga,3094.65,,4/21/2022,D28A,Apr,2022,Central Delta,CED,Spring
+D28A.Apr.2022,Pennate Diatom,27803.32,,4/21/2022,D28A,Apr,2022,Central Delta,CED,Spring
+EZ2-SJR.Apr.2022,Centric Diatom,14813.16,,4/21/2022,EZ2-SJR,Apr,2022,Entrapment Zone,EZ,Spring
+EZ2-SJR.Apr.2022,Cryptophyte,66116.7472,,4/21/2022,EZ2-SJR,Apr,2022,Entrapment Zone,EZ,Spring
+EZ2-SJR.Apr.2022,Cyanobacterium,10965.7968,,4/21/2022,EZ2-SJR,Apr,2022,Entrapment Zone,EZ,Spring
+EZ2-SJR.Apr.2022,Green Alga,1048.42,,4/21/2022,EZ2-SJR,Apr,2022,Entrapment Zone,EZ,Spring
+EZ2-SJR.Apr.2022,Pennate Diatom,420774.2356,,4/21/2022,EZ2-SJR,Apr,2022,Entrapment Zone,EZ,Spring
+EZ6-SJR.Apr.2022,Cyanobacterium,24760.5408,,4/21/2022,EZ6-SJR,Apr,2022,Entrapment Zone,EZ,Spring
+EZ6-SJR.Apr.2022,Green Alga,1373.9162,,4/21/2022,EZ6-SJR,Apr,2022,Entrapment Zone,EZ,Spring
+EZ6-SJR.Apr.2022,Pennate Diatom,594885.6818,,4/21/2022,EZ6-SJR,Apr,2022,Entrapment Zone,EZ,Spring
+D26.Apr.2022,Centric Diatom,348997.9014,,4/22/2022,D26,Apr,2022,Central Delta,CED,Spring
+D26.Apr.2022,Cryptophyte,174196.0647,,4/22/2022,D26,Apr,2022,Central Delta,CED,Spring
+D26.Apr.2022,Cyanobacterium,3132.7614,,4/22/2022,D26,Apr,2022,Central Delta,CED,Spring
+D26.Apr.2022,Green Alga,863.4168,,4/22/2022,D26,Apr,2022,Central Delta,CED,Spring
+D26.Apr.2022,Pennate Diatom,15950.5902,,4/22/2022,D26,Apr,2022,Central Delta,CED,Spring
+MD10A.Apr.2022,Centric Diatom,20286.4313,,4/22/2022,MD10A,Apr,2022,Southern Interior Delta,SID,Spring
+MD10A.Apr.2022,Chrysophyte,4140.9422,,4/22/2022,MD10A,Apr,2022,Southern Interior Delta,SID,Spring
+MD10A.Apr.2022,Cryptophyte,176675.2817,,4/22/2022,MD10A,Apr,2022,Southern Interior Delta,SID,Spring
+MD10A.Apr.2022,Cyanobacterium,3680.0028,,4/22/2022,MD10A,Apr,2022,Southern Interior Delta,SID,Spring
+MD10A.Apr.2022,Green Alga,96.3197,,4/22/2022,MD10A,Apr,2022,Southern Interior Delta,SID,Spring
+MD10A.Apr.2022,Pennate Diatom,111512.9924,,4/22/2022,MD10A,Apr,2022,Southern Interior Delta,SID,Spring
+P8.Apr.2022,Centric Diatom,43815.304,,4/22/2022,P8,Apr,2022,Southern Interior Delta,SID,Spring
+P8.Apr.2022,Cryptophyte,499553.3035,,4/22/2022,P8,Apr,2022,Southern Interior Delta,SID,Spring
+P8.Apr.2022,Cyanobacterium,4154.112,,4/22/2022,P8,Apr,2022,Southern Interior Delta,SID,Spring
+P8.Apr.2022,Green Alga,9617.803,,4/22/2022,P8,Apr,2022,Southern Interior Delta,SID,Spring
+D22.Apr.2022,Centric Diatom,159390.9732,,4/25/2022,D22,Apr,2022,Confluence,CON,Spring
+D22.Apr.2022,Cyanobacterium,38042.2872,,4/25/2022,D22,Apr,2022,Confluence,CON,Spring
+D22.Apr.2022,Pennate Diatom,1997996.349,,4/25/2022,D22,Apr,2022,Confluence,CON,Spring
+D4.Apr.2022,Cryptophyte,621762.5172,,4/25/2022,D4,Apr,2022,Confluence,CON,Spring
+D4.Apr.2022,Cyanobacterium,36934.2094,,4/25/2022,D4,Apr,2022,Confluence,CON,Spring
+D4.Apr.2022,Green Alga,13766.9444,,4/25/2022,D4,Apr,2022,Confluence,CON,Spring
+D4.Apr.2022,Pennate Diatom,105145.128,,4/25/2022,D4,Apr,2022,Confluence,CON,Spring
+EZ2.Apr.2022,Cyanobacterium,52155.9,,4/25/2022,EZ2,Apr,2022,Entrapment Zone,EZ,Spring
+EZ2.Apr.2022,Green Alga,2649.6485,,4/25/2022,EZ2,Apr,2022,Entrapment Zone,EZ,Spring
+EZ2.Apr.2022,Pennate Diatom,5381732.298,,4/25/2022,EZ2,Apr,2022,Entrapment Zone,EZ,Spring
+EZ6.Apr.2022,Cryptophyte,720771.3576,,4/25/2022,EZ6,Apr,2022,Entrapment Zone,EZ,Spring
+EZ6.Apr.2022,Cyanobacterium,156096.8136,,4/25/2022,EZ6,Apr,2022,Entrapment Zone,EZ,Spring
+EZ6.Apr.2022,Pennate Diatom,1222839.505,,4/25/2022,EZ6,Apr,2022,Entrapment Zone,EZ,Spring
+NZ068.Apr.2022,Centric Diatom,24399.4029,,4/25/2022,NZ068,Apr,2022,Northern Interior Delta,NID,Spring
+NZ068.Apr.2022,Cryptophyte,153069.339,,4/25/2022,NZ068,Apr,2022,Northern Interior Delta,NID,Spring
+NZ068.Apr.2022,Cyanobacterium,7415.0388,,4/25/2022,NZ068,Apr,2022,Northern Interior Delta,NID,Spring
+NZ068.Apr.2022,Green Alga,715.0289,,4/25/2022,NZ068,Apr,2022,Northern Interior Delta,NID,Spring
+NZ068.Apr.2022,Pennate Diatom,36044.8164,,4/25/2022,NZ068,Apr,2022,Northern Interior Delta,NID,Spring
+D10.Apr.2022,Centric Diatom,223315.7797,,4/26/2022,D10,Apr,2022,Confluence,CON,Spring
+D10.Apr.2022,Cryptophyte,23242.9574,,4/26/2022,D10,Apr,2022,Confluence,CON,Spring
+D10.Apr.2022,Cyanobacterium,6245.5536,,4/26/2022,D10,Apr,2022,Confluence,CON,Spring
+D10.Apr.2022,Pennate Diatom,26283.8095,,4/26/2022,D10,Apr,2022,Confluence,CON,Spring
+D6.Apr.2022,Centric Diatom,180175.3296,,4/26/2022,D6,Apr,2022,San Pablo Bay,SPB,Spring
+D6.Apr.2022,Cryptophyte,73785.1296,,4/26/2022,D6,Apr,2022,San Pablo Bay,SPB,Spring
+D6.Apr.2022,Cyanobacterium,3421.656,,4/26/2022,D6,Apr,2022,San Pablo Bay,SPB,Spring
+D8.Apr.2022,Centric Diatom,637771.6212,,4/26/2022,D8,Apr,2022,Grizzly and Suisun Bay,GSB,Spring
+D8.Apr.2022,Cyanobacterium,18444.8772,,4/26/2022,D8,Apr,2022,Grizzly and Suisun Bay,GSB,Spring
+D7.Apr.2022,Cyanobacterium,47867.526,,4/27/2022,D7,Apr,2022,Grizzly and Suisun Bay,GSB,Spring
+NZ032.Apr.2022,Centric Diatom,30742.86,,4/27/2022,NZ032,Apr,2022,Grizzly and Suisun Bay,GSB,Spring
+NZ032.Apr.2022,Cyanobacterium,18795.024,,4/27/2022,NZ032,Apr,2022,Grizzly and Suisun Bay,GSB,Spring
+NZ032.Apr.2022,Green Alga,786.256,,4/27/2022,NZ032,Apr,2022,Grizzly and Suisun Bay,GSB,Spring
+NZ032.Apr.2022,Pennate Diatom,18619.744,,4/27/2022,NZ032,Apr,2022,Grizzly and Suisun Bay,GSB,Spring
+NZS42.Apr.2022,Centric Diatom,1209074.733,,4/27/2022,NZS42,Apr,2022,Grizzly and Suisun Bay,GSB,Spring
+NZS42.Apr.2022,Cyanobacterium,41218.602,,4/27/2022,NZS42,Apr,2022,Grizzly and Suisun Bay,GSB,Spring
+NZS42.Apr.2022,Pennate Diatom,2177264.685,,4/27/2022,NZS42,Apr,2022,Grizzly and Suisun Bay,GSB,Spring
+D41.Apr.2022,Centric Diatom,69768.7242,,4/28/2022,D41,Apr,2022,San Pablo Bay,SPB,Spring
+D41.Apr.2022,Cryptophyte,158138.148,,4/28/2022,D41,Apr,2022,San Pablo Bay,SPB,Spring
+D41.Apr.2022,Cyanobacterium,5916.6936,,4/28/2022,D41,Apr,2022,San Pablo Bay,SPB,Spring
+D41.Apr.2022,Pennate Diatom,57091.4094,,4/28/2022,D41,Apr,2022,San Pablo Bay,SPB,Spring
+D41A.Apr.2022,Centric Diatom,7142102.234,,4/28/2022,D41A,Apr,2022,San Pablo Bay,SPB,Spring
+D41A.Apr.2022,Cryptophyte,173880.264,,4/28/2022,D41A,Apr,2022,San Pablo Bay,SPB,Spring
+D41A.Apr.2022,Cyanobacterium,10665.788,,4/28/2022,D41A,Apr,2022,San Pablo Bay,SPB,Spring
+D41A.Apr.2022,Green Alga,5153.232,,4/28/2022,D41A,Apr,2022,San Pablo Bay,SPB,Spring
+NZ002.Apr.2022,Centric Diatom,16254.8085,,4/28/2022,NZ002,Apr,2022,San Pablo Bay,SPB,Spring
+NZ002.Apr.2022,Cryptophyte,81535.041,,4/28/2022,NZ002,Apr,2022,San Pablo Bay,SPB,Spring
+NZ002.Apr.2022,Cyanobacterium,8454.348,,4/28/2022,NZ002,Apr,2022,San Pablo Bay,SPB,Spring
+NZ002.Apr.2022,Pennate Diatom,10395.9765,,4/28/2022,NZ002,Apr,2022,San Pablo Bay,SPB,Spring
+NZ004.Apr.2022,Centric Diatom,2486667.842,,4/28/2022,NZ004,Apr,2022,San Pablo Bay,SPB,Spring
+NZ004.Apr.2022,Cryptophyte,34903.1094,,4/28/2022,NZ004,Apr,2022,San Pablo Bay,SPB,Spring
+NZ004.Apr.2022,Cyanobacterium,6246.702,,4/28/2022,NZ004,Apr,2022,San Pablo Bay,SPB,Spring
+NZ325.Apr.2022,Centric Diatom,946010.6172,,4/28/2022,NZ325,Apr,2022,San Pablo Bay,SPB,Spring
+NZ325.Apr.2022,Cyanobacterium,14567.6664,,4/28/2022,NZ325,Apr,2022,San Pablo Bay,SPB,Spring
+NZ325.Apr.2022,Euglenoid,51820.6422,,4/28/2022,NZ325,Apr,2022,San Pablo Bay,SPB,Spring
+NZ325.Apr.2022,Green Alga,26867.0958,,4/28/2022,NZ325,Apr,2022,San Pablo Bay,SPB,Spring
+NZ325.Apr.2022,Pennate Diatom,57141.936,,4/28/2022,NZ325,Apr,2022,San Pablo Bay,SPB,Spring
+C10A.May.2022,Centric Diatom,259561.6876,,5/19/2022,C10A,May,2022,Southern Interior Delta,SID,Spring
+C10A.May.2022,Chrysophyte,2936.883,,5/19/2022,C10A,May,2022,Southern Interior Delta,SID,Spring
+C10A.May.2022,Cyanobacterium,4254.408,,5/19/2022,C10A,May,2022,Southern Interior Delta,SID,Spring
+C10A.May.2022,Green Alga,3816.1912,,5/19/2022,C10A,May,2022,Southern Interior Delta,SID,Spring
+C10A.May.2022,Pennate Diatom,333351.0726,,5/19/2022,C10A,May,2022,Southern Interior Delta,SID,Spring
+C3A.May.2022,Centric Diatom,29195.3088,,5/19/2022,C3A,May,2022,Northern Interior Delta,NID,Spring
+C3A.May.2022,Cryptophyte,19219.5612,,5/19/2022,C3A,May,2022,Northern Interior Delta,NID,Spring
+C3A.May.2022,Cyanobacterium,7273.9632,,5/19/2022,C3A,May,2022,Northern Interior Delta,NID,Spring
+C3A.May.2022,Green Alga,11307.5256,,5/19/2022,C3A,May,2022,Northern Interior Delta,NID,Spring
+C3A.May.2022,Pennate Diatom,122249.7612,,5/19/2022,C3A,May,2022,Northern Interior Delta,NID,Spring
+C9.May.2022,Centric Diatom,58090.4065,,5/19/2022,C9,May,2022,Southern Interior Delta,SID,Spring
+C9.May.2022,Cryptophyte,34854.2439,,5/19/2022,C9,May,2022,Southern Interior Delta,SID,Spring
+C9.May.2022,Cyanobacterium,11351.5948,,5/19/2022,C9,May,2022,Southern Interior Delta,SID,Spring
+C9.May.2022,Green Alga,1855.9142,,5/19/2022,C9,May,2022,Southern Interior Delta,SID,Spring
+C9.May.2022,Pennate Diatom,21083.8278,,5/19/2022,C9,May,2022,Southern Interior Delta,SID,Spring
+D12.May.2022,Centric Diatom,16964.9664,,5/20/2022,D12,May,2022,Confluence,CON,Spring
+D12.May.2022,Cryptophyte,9804.24,,5/20/2022,D12,May,2022,Confluence,CON,Spring
+D12.May.2022,Cyanobacterium,8584.1568,,5/20/2022,D12,May,2022,Confluence,CON,Spring
+D12.May.2022,Green Alga,527.7344,,5/20/2022,D12,May,2022,Confluence,CON,Spring
+D12.May.2022,Pennate Diatom,30937.824,,5/20/2022,D12,May,2022,Confluence,CON,Spring
+D16.May.2022,Centric Diatom,36014.07,,5/20/2022,D16,May,2022,Central Delta,CED,Spring
+D16.May.2022,Cryptophyte,26079.474,,5/20/2022,D16,May,2022,Central Delta,CED,Spring
+D16.May.2022,Cyanobacterium,5537.772,,5/20/2022,D16,May,2022,Central Delta,CED,Spring
+D16.May.2022,Green Alga,1081.427,,5/20/2022,D16,May,2022,Central Delta,CED,Spring
+D16.May.2022,Pennate Diatom,68667.909,,5/20/2022,D16,May,2022,Central Delta,CED,Spring
+D19.May.2022,Centric Diatom,29049.1815,,5/20/2022,D19,May,2022,Central Delta,CED,Spring
+D19.May.2022,Cryptophyte,187344.8583,,5/20/2022,D19,May,2022,Central Delta,CED,Spring
+D19.May.2022,Cyanobacterium,6561.2121,,5/20/2022,D19,May,2022,Central Delta,CED,Spring
+D19.May.2022,Green Alga,5085.4779,,5/20/2022,D19,May,2022,Central Delta,CED,Spring
+D19.May.2022,Pennate Diatom,155804.9646,,5/20/2022,D19,May,2022,Central Delta,CED,Spring
+D28A.May.2022,Cryptophyte,206574.246,,5/20/2022,D28A,May,2022,Central Delta,CED,Spring
+D28A.May.2022,Cyanobacterium,6070.254,,5/20/2022,D28A,May,2022,Central Delta,CED,Spring
+D28A.May.2022,Green Alga,1411.8465,,5/20/2022,D28A,May,2022,Central Delta,CED,Spring
+D28A.May.2022,Pennate Diatom,189088.17,,5/20/2022,D28A,May,2022,Central Delta,CED,Spring
+EZ2-SJR.May.2022,Centric Diatom,69624.732,,5/20/2022,EZ2-SJR,May,2022,Entrapment Zone,EZ,Spring
+EZ2-SJR.May.2022,Cyanobacterium,11678.904,,5/20/2022,EZ2-SJR,May,2022,Entrapment Zone,EZ,Spring
+EZ2-SJR.May.2022,Green Alga,1128.993,,5/20/2022,EZ2-SJR,May,2022,Entrapment Zone,EZ,Spring
+EZ2-SJR.May.2022,Pennate Diatom,6793.326,,5/20/2022,EZ2-SJR,May,2022,Entrapment Zone,EZ,Spring
+EZ6-SJR.May.2022,Centric Diatom,7929.7104,,5/20/2022,EZ6-SJR,May,2022,Entrapment Zone,EZ,Spring
+EZ6-SJR.May.2022,Cyanobacterium,16806.9384,,5/20/2022,EZ6-SJR,May,2022,Entrapment Zone,EZ,Spring
+D26.May.2022,Centric Diatom,1338989.556,,5/23/2022,D26,May,2022,Central Delta,CED,Spring
+D26.May.2022,Cryptophyte,100715.1414,,5/23/2022,D26,May,2022,Central Delta,CED,Spring
+D26.May.2022,Cyanobacterium,10238.7096,,5/23/2022,D26,May,2022,Central Delta,CED,Spring
+D26.May.2022,Green Alga,13564.2204,,5/23/2022,D26,May,2022,Central Delta,CED,Spring
+MD10A.May.2022,Centric Diatom,368635.3253,,5/23/2022,MD10A,May,2022,Southern Interior Delta,SID,Spring
+MD10A.May.2022,Cryptophyte,211999.7803,,5/23/2022,MD10A,May,2022,Southern Interior Delta,SID,Spring
+MD10A.May.2022,Cyanobacterium,4567.4028,,5/23/2022,MD10A,May,2022,Southern Interior Delta,SID,Spring
+MD10A.May.2022,Green Alga,4647.8958,,5/23/2022,MD10A,May,2022,Southern Interior Delta,SID,Spring
+MD10A.May.2022,Pennate Diatom,65742.0828,,5/23/2022,MD10A,May,2022,Southern Interior Delta,SID,Spring
+P8.May.2022,Centric Diatom,72902.7306,,5/23/2022,P8,May,2022,Southern Interior Delta,SID,Spring
+P8.May.2022,Cryptophyte,327754.2264,,5/23/2022,P8,May,2022,Southern Interior Delta,SID,Spring
+P8.May.2022,Cyanobacterium,6053.9076,,5/23/2022,P8,May,2022,Southern Interior Delta,SID,Spring
+P8.May.2022,Green Alga,8054.1501,,5/23/2022,P8,May,2022,Southern Interior Delta,SID,Spring
+D22.May.2022,Centric Diatom,1123108.897,,5/24/2022,D22,May,2022,Confluence,CON,Spring
+D22.May.2022,Cryptophyte,124161.8933,,5/24/2022,D22,May,2022,Confluence,CON,Spring
+D22.May.2022,Cyanobacterium,12504.6613,,5/24/2022,D22,May,2022,Confluence,CON,Spring
+D22.May.2022,Green Alga,1905.9924,,5/24/2022,D22,May,2022,Confluence,CON,Spring
+D22.May.2022,Pennate Diatom,261873.4377,,5/24/2022,D22,May,2022,Confluence,CON,Spring
+D4.May.2022,Centric Diatom,132057.2994,,5/24/2022,D4,May,2022,Confluence,CON,Spring
+D4.May.2022,Cryptophyte,510789.2328,,5/24/2022,D4,May,2022,Confluence,CON,Spring
+D4.May.2022,Cyanobacterium,5396.598,,5/24/2022,D4,May,2022,Confluence,CON,Spring
+EZ2.May.2022,Centric Diatom,12841.791,,5/24/2022,EZ2,May,2022,Entrapment Zone,EZ,Spring
+EZ2.May.2022,Cyanobacterium,12576.288,,5/24/2022,EZ2,May,2022,Entrapment Zone,EZ,Spring
+EZ2.May.2022,Green Alga,2257.179,,5/24/2022,EZ2,May,2022,Entrapment Zone,EZ,Spring
+EZ2.May.2022,Pennate Diatom,23950.953,,5/24/2022,EZ2,May,2022,Entrapment Zone,EZ,Spring
+EZ6.May.2022,Centric Diatom,30595.874,,5/24/2022,EZ6,May,2022,Entrapment Zone,EZ,Spring
+EZ6.May.2022,Cryptophyte,89891.7081,,5/24/2022,EZ6,May,2022,Entrapment Zone,EZ,Spring
+EZ6.May.2022,Cyanobacterium,13412.142,,5/24/2022,EZ6,May,2022,Entrapment Zone,EZ,Spring
+EZ6.May.2022,Green Alga,18800.9162,,5/24/2022,EZ6,May,2022,Entrapment Zone,EZ,Spring
+EZ6.May.2022,Pennate Diatom,215326.5124,,5/24/2022,EZ6,May,2022,Entrapment Zone,EZ,Spring
+NZ068.May.2022,Centric Diatom,5741533.122,,5/24/2022,NZ068,May,2022,Northern Interior Delta,NID,Spring
+NZ068.May.2022,Cryptophyte,20330.4488,,5/24/2022,NZ068,May,2022,Northern Interior Delta,NID,Spring
+NZ068.May.2022,Cyanobacterium,17955.3904,,5/24/2022,NZ068,May,2022,Northern Interior Delta,NID,Spring
+NZ068.May.2022,Green Alga,3478.9048,,5/24/2022,NZ068,May,2022,Northern Interior Delta,NID,Spring
+NZ068.May.2022,Pennate Diatom,158744.994,,5/24/2022,NZ068,May,2022,Northern Interior Delta,NID,Spring
+D10.May.2022,Centric Diatom,35930.9253,,5/25/2022,D10,May,2022,Confluence,CON,Spring
+D10.May.2022,Cryptophyte,18298.3587,,5/25/2022,D10,May,2022,Confluence,CON,Spring
+D10.May.2022,Cyanobacterium,18363.903,,5/25/2022,D10,May,2022,Confluence,CON,Spring
+D10.May.2022,Pennate Diatom,2698.8153,,5/25/2022,D10,May,2022,Confluence,CON,Spring
+D6.May.2022,Centric Diatom,248034.8724,,5/25/2022,D6,May,2022,San Pablo Bay,SPB,Spring
+D6.May.2022,Cryptophyte,35719.6742,,5/25/2022,D6,May,2022,San Pablo Bay,SPB,Spring
+D6.May.2022,Cyanobacterium,13730.5224,,5/25/2022,D6,May,2022,San Pablo Bay,SPB,Spring
+D6.May.2022,Pennate Diatom,11479.4757,,5/25/2022,D6,May,2022,San Pablo Bay,SPB,Spring
+D8.May.2022,Cryptophyte,164505.2,,5/25/2022,D8,May,2022,Grizzly and Suisun Bay,GSB,Spring
+D8.May.2022,Cyanobacterium,4421.52,,5/25/2022,D8,May,2022,Grizzly and Suisun Bay,GSB,Spring
+D8.May.2022,Green Alga,2344.16,,5/25/2022,D8,May,2022,Grizzly and Suisun Bay,GSB,Spring
+D41.May.2022,Centric Diatom,261859.582,,5/26/2022,D41,May,2022,San Pablo Bay,SPB,Spring
+D41.May.2022,Cryptophyte,212648.4128,,5/26/2022,D41,May,2022,San Pablo Bay,SPB,Spring
+D41.May.2022,Cyanobacterium,7175.7504,,5/26/2022,D41,May,2022,San Pablo Bay,SPB,Spring
+D41.May.2022,Dinoflagellate,583718.0532,,5/26/2022,D41,May,2022,San Pablo Bay,SPB,Spring
+D41.May.2022,Green Alga,13082.7116,,5/26/2022,D41,May,2022,San Pablo Bay,SPB,Spring
+D41A.May.2022,Centric Diatom,913306.7744,,5/26/2022,D41A,May,2022,San Pablo Bay,SPB,Spring
+D41A.May.2022,Cryptophyte,57476.0568,,5/26/2022,D41A,May,2022,San Pablo Bay,SPB,Spring
+D41A.May.2022,Cyanobacterium,23121.2592,,5/26/2022,D41A,May,2022,San Pablo Bay,SPB,Spring
+D41A.May.2022,Green Alga,14107.5116,,5/26/2022,D41A,May,2022,San Pablo Bay,SPB,Spring
+D41A.May.2022,Pennate Diatom,1524713.482,,5/26/2022,D41A,May,2022,San Pablo Bay,SPB,Spring
+NZ002.May.2022,Centric Diatom,347412.568,,5/26/2022,NZ002,May,2022,San Pablo Bay,SPB,Spring
+NZ002.May.2022,Cyanobacterium,9569.7072,,5/26/2022,NZ002,May,2022,San Pablo Bay,SPB,Spring
+NZ002.May.2022,Pennate Diatom,91086.0532,,5/26/2022,NZ002,May,2022,San Pablo Bay,SPB,Spring
+NZ004.May.2022,Centric Diatom,901420.5819,,5/26/2022,NZ004,May,2022,San Pablo Bay,SPB,Spring
+NZ004.May.2022,Cryptophyte,5809.8363,,5/26/2022,NZ004,May,2022,San Pablo Bay,SPB,Spring
+NZ004.May.2022,Cyanobacterium,6059.9298,,5/26/2022,NZ004,May,2022,San Pablo Bay,SPB,Spring
+NZ004.May.2022,Dinoflagellate,233648.6658,,5/26/2022,NZ004,May,2022,San Pablo Bay,SPB,Spring
+NZ004.May.2022,Pennate Diatom,58228.7037,,5/26/2022,NZ004,May,2022,San Pablo Bay,SPB,Spring
+NZ325.May.2022,Centric Diatom,236716.326,,5/26/2022,NZ325,May,2022,San Pablo Bay,SPB,Spring
+NZ325.May.2022,Cyanobacterium,14182.5816,,5/26/2022,NZ325,May,2022,San Pablo Bay,SPB,Spring
+NZ325.May.2022,Pennate Diatom,37774.2222,,5/26/2022,NZ325,May,2022,San Pablo Bay,SPB,Spring
+D7.May.2022,Centric Diatom,7800127.362,,5/27/2022,D7,May,2022,Grizzly and Suisun Bay,GSB,Spring
+D7.May.2022,Cyanobacterium,19481.76,,5/27/2022,D7,May,2022,Grizzly and Suisun Bay,GSB,Spring
+D7.May.2022,Green Alga,5533.361,,5/27/2022,D7,May,2022,Grizzly and Suisun Bay,GSB,Spring
+D7.May.2022,Pennate Diatom,382298.4233,,5/27/2022,D7,May,2022,Grizzly and Suisun Bay,GSB,Spring
+NZ032.May.2022,Centric Diatom,79007.8572,,5/27/2022,NZ032,May,2022,Grizzly and Suisun Bay,GSB,Spring
+NZ032.May.2022,Cyanobacterium,18306.8856,,5/27/2022,NZ032,May,2022,Grizzly and Suisun Bay,GSB,Spring
+NZ032.May.2022,Green Alga,3573.7269,,5/27/2022,NZ032,May,2022,Grizzly and Suisun Bay,GSB,Spring
+NZ032.May.2022,Pennate Diatom,197382.9291,,5/27/2022,NZ032,May,2022,Grizzly and Suisun Bay,GSB,Spring
+NZS42.May.2022,Centric Diatom,295156.128,,5/27/2022,NZS42,May,2022,Grizzly and Suisun Bay,GSB,Spring
+NZS42.May.2022,Cyanobacterium,34250.8932,,5/27/2022,NZS42,May,2022,Grizzly and Suisun Bay,GSB,Spring
+NZS42.May.2022,Pennate Diatom,585313.0975,,5/27/2022,NZS42,May,2022,Grizzly and Suisun Bay,GSB,Spring
+D12.Jun.2022,Centric Diatom,64165.7145,,6/11/2022,D12,Jun,2022,Confluence,CON,Summer
+D12.Jun.2022,Cryptophyte,365897.9691,,6/11/2022,D12,Jun,2022,Confluence,CON,Summer
+D12.Jun.2022,Cyanobacterium,7333.0485,,6/11/2022,D12,Jun,2022,Confluence,CON,Summer
+D12.Jun.2022,Green Alga,434.9313,,6/11/2022,D12,Jun,2022,Confluence,CON,Summer
+D12.Jun.2022,Pennate Diatom,31480.5657,,6/11/2022,D12,Jun,2022,Confluence,CON,Summer
+C10A.Jun.2022,Centric Diatom,225043.884,,6/20/2022,C10A,Jun,2022,Southern Interior Delta,SID,Summer
+C10A.Jun.2022,Cryptophyte,25556.804,,6/20/2022,C10A,Jun,2022,Southern Interior Delta,SID,Summer
+C10A.Jun.2022,Cyanobacterium,16054.4436,,6/20/2022,C10A,Jun,2022,Southern Interior Delta,SID,Summer
+C10A.Jun.2022,Green Alga,17545.6008,,6/20/2022,C10A,Jun,2022,Southern Interior Delta,SID,Summer
+C10A.Jun.2022,Pennate Diatom,186416.5368,,6/20/2022,C10A,Jun,2022,Southern Interior Delta,SID,Summer
+C3A.Jun.2022,Cryptophyte,16925.7,,6/20/2022,C3A,Jun,2022,Northern Interior Delta,NID,Summer
+C3A.Jun.2022,Cyanobacterium,8217.9,,6/20/2022,C3A,Jun,2022,Northern Interior Delta,NID,Summer
+C3A.Jun.2022,Green Alga,6276.7,,6/20/2022,C3A,Jun,2022,Northern Interior Delta,NID,Summer
+C3A.Jun.2022,Pennate Diatom,596100.775,,6/20/2022,C3A,Jun,2022,Northern Interior Delta,NID,Summer
+C9.Jun.2022,Centric Diatom,58065.504,,6/20/2022,C9,Jun,2022,Southern Interior Delta,SID,Summer
+C9.Jun.2022,Cryptophyte,74021.4693,,6/20/2022,C9,Jun,2022,Southern Interior Delta,SID,Summer
+C9.Jun.2022,Cyanobacterium,194806.7721,,6/20/2022,C9,Jun,2022,Southern Interior Delta,SID,Summer
+C9.Jun.2022,Green Alga,9279.7467,,6/20/2022,C9,Jun,2022,Southern Interior Delta,SID,Summer
+C9.Jun.2022,Pennate Diatom,18762.8541,,6/20/2022,C9,Jun,2022,Southern Interior Delta,SID,Summer
+D16.Jun.2022,Centric Diatom,91860.5496,,6/21/2022,D16,Jun,2022,Central Delta,CED,Summer
+D16.Jun.2022,Cryptophyte,304807.3303,,6/21/2022,D16,Jun,2022,Central Delta,CED,Summer
+D16.Jun.2022,Cyanobacterium,4705.7647,,6/21/2022,D16,Jun,2022,Central Delta,CED,Summer
+D16.Jun.2022,Green Alga,13122.7724,,6/21/2022,D16,Jun,2022,Central Delta,CED,Summer
+D16.Jun.2022,Haptophyte,778.2468,,6/21/2022,D16,Jun,2022,Central Delta,CED,Summer
+D16.Jun.2022,Pennate Diatom,14913.54,,6/21/2022,D16,Jun,2022,Central Delta,CED,Summer
+D19.Jun.2022,Centric Diatom,32101.9075,,6/21/2022,D19,Jun,2022,Central Delta,CED,Summer
+D19.Jun.2022,Chrysophyte,12406.0866,,6/21/2022,D19,Jun,2022,Central Delta,CED,Summer
+D19.Jun.2022,Cryptophyte,170214.3972,,6/21/2022,D19,Jun,2022,Central Delta,CED,Summer
+D19.Jun.2022,Cyanobacterium,1899.648,,6/21/2022,D19,Jun,2022,Central Delta,CED,Summer
+D19.Jun.2022,Green Alga,2681.6038,,6/21/2022,D19,Jun,2022,Central Delta,CED,Summer
+D19.Jun.2022,Pennate Diatom,15842.9324,,6/21/2022,D19,Jun,2022,Central Delta,CED,Summer
+D28A.Jun.2022,Centric Diatom,80866.6014,,6/21/2022,D28A,Jun,2022,Central Delta,CED,Summer
+D28A.Jun.2022,Cryptophyte,579491.8038,,6/21/2022,D28A,Jun,2022,Central Delta,CED,Summer
+D28A.Jun.2022,Cyanobacterium,2765.5992,,6/21/2022,D28A,Jun,2022,Central Delta,CED,Summer
+D28A.Jun.2022,Green Alga,3916.1031,,6/21/2022,D28A,Jun,2022,Central Delta,CED,Summer
+D28A.Jun.2022,Pennate Diatom,26670.6297,,6/21/2022,D28A,Jun,2022,Central Delta,CED,Summer
+EZ2-SJR.Jun.2022,Centric Diatom,12897.1185,,6/21/2022,EZ2-SJR,Jun,2022,Entrapment Zone,EZ,Summer
+EZ2-SJR.Jun.2022,Cryptophyte,126782.9766,,6/21/2022,EZ2-SJR,Jun,2022,Entrapment Zone,EZ,Summer
+EZ2-SJR.Jun.2022,Cyanobacterium,7636.0032,,6/21/2022,EZ2-SJR,Jun,2022,Entrapment Zone,EZ,Summer
+EZ2-SJR.Jun.2022,Green Alga,2948.995,,6/21/2022,EZ2-SJR,Jun,2022,Entrapment Zone,EZ,Summer
+EZ2-SJR.Jun.2022,Pennate Diatom,28173.9948,,6/21/2022,EZ2-SJR,Jun,2022,Entrapment Zone,EZ,Summer
+EZ6-SJR.Jun.2022,Centric Diatom,23211.5651,,6/21/2022,EZ6-SJR,Jun,2022,Entrapment Zone,EZ,Summer
+EZ6-SJR.Jun.2022,Cryptophyte,273912.046,,6/21/2022,EZ6-SJR,Jun,2022,Entrapment Zone,EZ,Summer
+EZ6-SJR.Jun.2022,Cyanobacterium,8456.1804,,6/21/2022,EZ6-SJR,Jun,2022,Entrapment Zone,EZ,Summer
+EZ6-SJR.Jun.2022,Green Alga,1716.0134,,6/21/2022,EZ6-SJR,Jun,2022,Entrapment Zone,EZ,Summer
+D26.Jun.2022,Centric Diatom,25591.995,,6/22/2022,D26,Jun,2022,Central Delta,CED,Summer
+D26.Jun.2022,Cryptophyte,163652.3405,,6/22/2022,D26,Jun,2022,Central Delta,CED,Summer
+D26.Jun.2022,Cyanobacterium,2764.179,,6/22/2022,D26,Jun,2022,Central Delta,CED,Summer
+D26.Jun.2022,Green Alga,676.5,,6/22/2022,D26,Jun,2022,Central Delta,CED,Summer
+D26.Jun.2022,Pennate Diatom,264749.4025,,6/22/2022,D26,Jun,2022,Central Delta,CED,Summer
+MD10A.Jun.2022,Centric Diatom,44413.5098,,6/22/2022,MD10A,Jun,2022,Southern Interior Delta,SID,Summer
+MD10A.Jun.2022,Cryptophyte,1596779.046,,6/22/2022,MD10A,Jun,2022,Southern Interior Delta,SID,Summer
+MD10A.Jun.2022,Cyanobacterium,11995.6692,,6/22/2022,MD10A,Jun,2022,Southern Interior Delta,SID,Summer
+MD10A.Jun.2022,Green Alga,6290.7514,,6/22/2022,MD10A,Jun,2022,Southern Interior Delta,SID,Summer
+MD10A.Jun.2022,Pennate Diatom,70970.291,,6/22/2022,MD10A,Jun,2022,Southern Interior Delta,SID,Summer
+P8.Jun.2022,Centric Diatom,63881.3668,,6/22/2022,P8,Jun,2022,Southern Interior Delta,SID,Summer
+P8.Jun.2022,Cryptophyte,214508.67,,6/22/2022,P8,Jun,2022,Southern Interior Delta,SID,Summer
+P8.Jun.2022,Cyanobacterium,51425.3487,,6/22/2022,P8,Jun,2022,Southern Interior Delta,SID,Summer
+P8.Jun.2022,Green Alga,56301.2427,,6/22/2022,P8,Jun,2022,Southern Interior Delta,SID,Summer
+P8.Jun.2022,Pennate Diatom,19326.7354,,6/22/2022,P8,Jun,2022,Southern Interior Delta,SID,Summer
+D22.Jun.2022,Centric Diatom,130039.536,,6/23/2022,D22,Jun,2022,Confluence,CON,Summer
+D22.Jun.2022,Chrysophyte,18688.087,,6/23/2022,D22,Jun,2022,Confluence,CON,Summer
+D22.Jun.2022,Cryptophyte,192701.476,,6/23/2022,D22,Jun,2022,Confluence,CON,Summer
+D22.Jun.2022,Cyanobacterium,5877.432,,6/23/2022,D22,Jun,2022,Confluence,CON,Summer
+D22.Jun.2022,Green Alga,26675.748,,6/23/2022,D22,Jun,2022,Confluence,CON,Summer
+D22.Jun.2022,Pennate Diatom,9480.922,,6/23/2022,D22,Jun,2022,Confluence,CON,Summer
+D4.Jun.2022,Centric Diatom,180961.5028,,6/23/2022,D4,Jun,2022,Confluence,CON,Summer
+D4.Jun.2022,Cryptophyte,58859.38,,6/23/2022,D4,Jun,2022,Confluence,CON,Summer
+D4.Jun.2022,Cyanobacterium,12112.596,,6/23/2022,D4,Jun,2022,Confluence,CON,Summer
+D4.Jun.2022,Pennate Diatom,585356.1082,,6/23/2022,D4,Jun,2022,Confluence,CON,Summer
+EZ2.Jun.2022,Centric Diatom,41263.8504,,6/23/2022,EZ2,Jun,2022,Entrapment Zone,EZ,Summer
+EZ2.Jun.2022,Cryptophyte,162740.6964,,6/23/2022,EZ2,Jun,2022,Entrapment Zone,EZ,Summer
+EZ2.Jun.2022,Cyanobacterium,5840.154,,6/23/2022,EZ2,Jun,2022,Entrapment Zone,EZ,Summer
+EZ2.Jun.2022,Pennate Diatom,16621.4397,,6/23/2022,EZ2,Jun,2022,Entrapment Zone,EZ,Summer
+EZ6.Jun.2022,Centric Diatom,43738.1409,,6/23/2022,EZ6,Jun,2022,Entrapment Zone,EZ,Summer
+EZ6.Jun.2022,Cryptophyte,359198.9856,,6/23/2022,EZ6,Jun,2022,Entrapment Zone,EZ,Summer
+EZ6.Jun.2022,Cyanobacterium,9633.9456,,6/23/2022,EZ6,Jun,2022,Entrapment Zone,EZ,Summer
+EZ6.Jun.2022,Green Alga,974.9631,,6/23/2022,EZ6,Jun,2022,Entrapment Zone,EZ,Summer
+EZ6.Jun.2022,Pennate Diatom,25777.6341,,6/23/2022,EZ6,Jun,2022,Entrapment Zone,EZ,Summer
+NZ068.Jun.2022,Centric Diatom,126766.4255,,6/23/2022,NZ068,Jun,2022,Northern Interior Delta,NID,Summer
+NZ068.Jun.2022,Cryptophyte,457909.1296,,6/23/2022,NZ068,Jun,2022,Northern Interior Delta,NID,Summer
+NZ068.Jun.2022,Cyanobacterium,6119.3808,,6/23/2022,NZ068,Jun,2022,Northern Interior Delta,NID,Summer
+NZ068.Jun.2022,Green Alga,2238.2529,,6/23/2022,NZ068,Jun,2022,Northern Interior Delta,NID,Summer
+NZ068.Jun.2022,Pennate Diatom,756460.6985,,6/23/2022,NZ068,Jun,2022,Northern Interior Delta,NID,Summer
+D10.Jun.2022,Centric Diatom,26766.25,,6/24/2022,D10,Jun,2022,Confluence,CON,Summer
+D10.Jun.2022,Cryptophyte,77443.3,,6/24/2022,D10,Jun,2022,Confluence,CON,Summer
+D10.Jun.2022,Cyanobacterium,8176.5,,6/24/2022,D10,Jun,2022,Confluence,CON,Summer
+D10.Jun.2022,Pennate Diatom,116443.25,,6/24/2022,D10,Jun,2022,Confluence,CON,Summer
+D6.Jun.2022,Centric Diatom,22894.26,,6/24/2022,D6,Jun,2022,San Pablo Bay,SPB,Summer
+D6.Jun.2022,Cyanobacterium,15091.3944,,6/24/2022,D6,Jun,2022,San Pablo Bay,SPB,Summer
+D6.Jun.2022,Dinoflagellate,103385.8784,,6/24/2022,D6,Jun,2022,San Pablo Bay,SPB,Summer
+D6.Jun.2022,Pennate Diatom,52952.6462,,6/24/2022,D6,Jun,2022,San Pablo Bay,SPB,Summer
+D8.Jun.2022,Centric Diatom,117117.8925,,6/24/2022,D8,Jun,2022,Grizzly and Suisun Bay,GSB,Summer
+D8.Jun.2022,Cryptophyte,422306.7315,,6/24/2022,D8,Jun,2022,Grizzly and Suisun Bay,GSB,Summer
+D8.Jun.2022,Cyanobacterium,5519.88,,6/24/2022,D8,Jun,2022,Grizzly and Suisun Bay,GSB,Summer
+D8.Jun.2022,Dinoflagellate,122747.121,,6/24/2022,D8,Jun,2022,Grizzly and Suisun Bay,GSB,Summer
+D8.Jun.2022,Green Alga,2852.3415,,6/24/2022,D8,Jun,2022,Grizzly and Suisun Bay,GSB,Summer
+D8.Jun.2022,Pennate Diatom,4030.965,,6/24/2022,D8,Jun,2022,Grizzly and Suisun Bay,GSB,Summer
+D7.Jun.2022,Centric Diatom,152920.3536,,6/27/2022,D7,Jun,2022,Grizzly and Suisun Bay,GSB,Summer
+D7.Jun.2022,Cyanobacterium,29014.5492,,6/27/2022,D7,Jun,2022,Grizzly and Suisun Bay,GSB,Summer
+NZ032.Jun.2022,Centric Diatom,182751.0849,,6/27/2022,NZ032,Jun,2022,Grizzly and Suisun Bay,GSB,Summer
+NZ032.Jun.2022,Cryptophyte,79566.7548,,6/27/2022,NZ032,Jun,2022,Grizzly and Suisun Bay,GSB,Summer
+NZ032.Jun.2022,Cyanobacterium,22455.4342,,6/27/2022,NZ032,Jun,2022,Grizzly and Suisun Bay,GSB,Summer
+NZS42.Jun.2022,Centric Diatom,7964.2074,,6/27/2022,NZS42,Jun,2022,Grizzly and Suisun Bay,GSB,Summer
+NZS42.Jun.2022,Cryptophyte,19168.0664,,6/27/2022,NZS42,Jun,2022,Grizzly and Suisun Bay,GSB,Summer
+NZS42.Jun.2022,Cyanobacterium,10763.064,,6/27/2022,NZS42,Jun,2022,Grizzly and Suisun Bay,GSB,Summer
+NZS42.Jun.2022,Green Alga,5371.5662,,6/27/2022,NZS42,Jun,2022,Grizzly and Suisun Bay,GSB,Summer
+D41.Jun.2022,Centric Diatom,143096.3104,,6/28/2022,D41,Jun,2022,San Pablo Bay,SPB,Summer
+D41.Jun.2022,Cryptophyte,50826.122,,6/28/2022,D41,Jun,2022,San Pablo Bay,SPB,Summer
+D41.Jun.2022,Cyanobacterium,9833.6872,,6/28/2022,D41,Jun,2022,San Pablo Bay,SPB,Summer
+D41.Jun.2022,Dinoflagellate,81841.7784,,6/28/2022,D41,Jun,2022,San Pablo Bay,SPB,Summer
+D41.Jun.2022,Pennate Diatom,20068.5408,,6/28/2022,D41,Jun,2022,San Pablo Bay,SPB,Summer
+D41A.Jun.2022,Centric Diatom,2731773.708,,6/28/2022,D41A,Jun,2022,San Pablo Bay,SPB,Summer
+D41A.Jun.2022,Cryptophyte,123676.2492,,6/28/2022,D41A,Jun,2022,San Pablo Bay,SPB,Summer
+D41A.Jun.2022,Cyanobacterium,36337.788,,6/28/2022,D41A,Jun,2022,San Pablo Bay,SPB,Summer
+D41A.Jun.2022,Pennate Diatom,26946.693,,6/28/2022,D41A,Jun,2022,San Pablo Bay,SPB,Summer
+NZ002.Jun.2022,Centric Diatom,91119.1548,,6/28/2022,NZ002,Jun,2022,San Pablo Bay,SPB,Summer
+NZ002.Jun.2022,Cryptophyte,183999.8086,,6/28/2022,NZ002,Jun,2022,San Pablo Bay,SPB,Summer
+NZ002.Jun.2022,Cyanobacterium,7263.4392,,6/28/2022,NZ002,Jun,2022,San Pablo Bay,SPB,Summer
+NZ002.Jun.2022,Green Alga,38031.652,,6/28/2022,NZ002,Jun,2022,San Pablo Bay,SPB,Summer
+NZ002.Jun.2022,Pennate Diatom,9733.7194,,6/28/2022,NZ002,Jun,2022,San Pablo Bay,SPB,Summer
+NZ004.Jun.2022,Centric Diatom,69135.5952,,6/28/2022,NZ004,Jun,2022,San Pablo Bay,SPB,Summer
+NZ004.Jun.2022,Cryptophyte,41360.228,,6/28/2022,NZ004,Jun,2022,San Pablo Bay,SPB,Summer
+NZ004.Jun.2022,Cyanobacterium,15140.0448,,6/28/2022,NZ004,Jun,2022,San Pablo Bay,SPB,Summer
+NZ004.Jun.2022,Green Alga,4340.2776,,6/28/2022,NZ004,Jun,2022,San Pablo Bay,SPB,Summer
+NZ325.Jun.2022,Centric Diatom,54218.7736,,6/28/2022,NZ325,Jun,2022,San Pablo Bay,SPB,Summer
+NZ325.Jun.2022,Cryptophyte,441960.689,,6/28/2022,NZ325,Jun,2022,San Pablo Bay,SPB,Summer
+NZ325.Jun.2022,Cyanobacterium,14035.1086,,6/28/2022,NZ325,Jun,2022,San Pablo Bay,SPB,Summer
+NZ325.Jun.2022,Pennate Diatom,41320.818,,6/28/2022,NZ325,Jun,2022,San Pablo Bay,SPB,Summer
+C10A.Jul.2022,Centric Diatom,150658.8468,,7/18/2022,C10A,Jul,2022,Southern Interior Delta,SID,Summer
+C10A.Jul.2022,Chrysophyte,2800.1421,,7/18/2022,C10A,Jul,2022,Southern Interior Delta,SID,Summer
+C10A.Jul.2022,Cryptophyte,21140.4627,,7/18/2022,C10A,Jul,2022,Southern Interior Delta,SID,Summer
+C10A.Jul.2022,Cyanobacterium,4376.5323,,7/18/2022,C10A,Jul,2022,Southern Interior Delta,SID,Summer
+C10A.Jul.2022,Green Alga,50957.3295,,7/18/2022,C10A,Jul,2022,Southern Interior Delta,SID,Summer
+C10A.Jul.2022,Pennate Diatom,200681.2311,,7/18/2022,C10A,Jul,2022,Southern Interior Delta,SID,Summer
+C3A.Jul.2022,Centric Diatom,29035.89,,7/18/2022,C3A,Jul,2022,Northern Interior Delta,NID,Summer
+C3A.Jul.2022,Cryptophyte,14124.76,,7/18/2022,C3A,Jul,2022,Northern Interior Delta,NID,Summer
+C3A.Jul.2022,Cyanobacterium,2841.88,,7/18/2022,C3A,Jul,2022,Northern Interior Delta,NID,Summer
+C3A.Jul.2022,Green Alga,10088.72,,7/18/2022,C3A,Jul,2022,Northern Interior Delta,NID,Summer
+C3A.Jul.2022,Pennate Diatom,46765.21,,7/18/2022,C3A,Jul,2022,Northern Interior Delta,NID,Summer
+C9.Jul.2022,Centric Diatom,41764.077,,7/18/2022,C9,Jul,2022,Southern Interior Delta,SID,Summer
+C9.Jul.2022,Cryptophyte,58291.8048,,7/18/2022,C9,Jul,2022,Southern Interior Delta,SID,Summer
+C9.Jul.2022,Cyanobacterium,457461.5712,,7/18/2022,C9,Jul,2022,Southern Interior Delta,SID,Summer
+C9.Jul.2022,Euglenoid,21229.0392,,7/18/2022,C9,Jul,2022,Southern Interior Delta,SID,Summer
+C9.Jul.2022,Green Alga,7107.8538,,7/18/2022,C9,Jul,2022,Southern Interior Delta,SID,Summer
+C9.Jul.2022,Pennate Diatom,44692.4682,,7/18/2022,C9,Jul,2022,Southern Interior Delta,SID,Summer
+D12.Jul.2022,Centric Diatom,25870.5592,,7/19/2022,D12,Jul,2022,Confluence,CON,Summer
+D12.Jul.2022,Cryptophyte,317936.5732,,7/19/2022,D12,Jul,2022,Confluence,CON,Summer
+D12.Jul.2022,Cyanobacterium,13778.2782,,7/19/2022,D12,Jul,2022,Confluence,CON,Summer
+D12.Jul.2022,Euglenoid,32933.2884,,7/19/2022,D12,Jul,2022,Confluence,CON,Summer
+D12.Jul.2022,Green Alga,341.8142,,7/19/2022,D12,Jul,2022,Confluence,CON,Summer
+D12.Jul.2022,Pennate Diatom,176114.803,,7/19/2022,D12,Jul,2022,Confluence,CON,Summer
+D19.Jul.2022,Centric Diatom,16276.512,,7/19/2022,D19,Jul,2022,Central Delta,CED,Summer
+D19.Jul.2022,Chrysophyte,6463.562,,7/19/2022,D19,Jul,2022,Central Delta,CED,Summer
+D19.Jul.2022,Cryptophyte,442423.807,,7/19/2022,D19,Jul,2022,Central Delta,CED,Summer
+D19.Jul.2022,Cyanobacterium,89841.9165,,7/19/2022,D19,Jul,2022,Central Delta,CED,Summer
+D19.Jul.2022,Green Alga,1589.5495,,7/19/2022,D19,Jul,2022,Central Delta,CED,Summer
+D19.Jul.2022,Pennate Diatom,120250.375,,7/19/2022,D19,Jul,2022,Central Delta,CED,Summer
+D28A.Jul.2022,Centric Diatom,44462.382,,7/19/2022,D28A,Jul,2022,Central Delta,CED,Summer
+D28A.Jul.2022,Cryptophyte,147990.8166,,7/19/2022,D28A,Jul,2022,Central Delta,CED,Summer
+D28A.Jul.2022,Cyanobacterium,380045.7627,,7/19/2022,D28A,Jul,2022,Central Delta,CED,Summer
+D28A.Jul.2022,Pennate Diatom,82944.972,,7/19/2022,D28A,Jul,2022,Central Delta,CED,Summer
+EZ2-SJR.Jul.2022,Centric Diatom,73145.6824,,7/19/2022,EZ2-SJR,Jul,2022,Entrapment Zone,EZ,Summer
+EZ2-SJR.Jul.2022,Cryptophyte,439220.2688,,7/19/2022,EZ2-SJR,Jul,2022,Entrapment Zone,EZ,Summer
+EZ2-SJR.Jul.2022,Cyanobacterium,138719.1024,,7/19/2022,EZ2-SJR,Jul,2022,Entrapment Zone,EZ,Summer
+EZ2-SJR.Jul.2022,Green Alga,6939.2232,,7/19/2022,EZ2-SJR,Jul,2022,Entrapment Zone,EZ,Summer
+EZ2-SJR.Jul.2022,Pennate Diatom,11448.5684,,7/19/2022,EZ2-SJR,Jul,2022,Entrapment Zone,EZ,Summer
+EZ6-SJR.Jul.2022,Centric Diatom,6608.4368,,7/19/2022,EZ6-SJR,Jul,2022,Entrapment Zone,EZ,Summer
+EZ6-SJR.Jul.2022,Cryptophyte,45748.2837,,7/19/2022,EZ6-SJR,Jul,2022,Entrapment Zone,EZ,Summer
+EZ6-SJR.Jul.2022,Cyanobacterium,13765.0212,,7/19/2022,EZ6-SJR,Jul,2022,Entrapment Zone,EZ,Summer
+EZ6-SJR.Jul.2022,Green Alga,1340.6617,,7/19/2022,EZ6-SJR,Jul,2022,Entrapment Zone,EZ,Summer
+EZ6-SJR.Jul.2022,Pennate Diatom,1226164.016,,7/19/2022,EZ6-SJR,Jul,2022,Entrapment Zone,EZ,Summer
+D16.Jul.2022,Centric Diatom,140600.1895,,7/20/2022,D16,Jul,2022,Central Delta,CED,Summer
+D16.Jul.2022,Cryptophyte,40073.6317,,7/20/2022,D16,Jul,2022,Central Delta,CED,Summer
+D16.Jul.2022,Cyanobacterium,46860.7248,,7/20/2022,D16,Jul,2022,Central Delta,CED,Summer
+D16.Jul.2022,Pennate Diatom,49789.1368,,7/20/2022,D16,Jul,2022,Central Delta,CED,Summer
+D26.Jul.2022,Centric Diatom,50952.321,,7/20/2022,D26,Jul,2022,Central Delta,CED,Summer
+D26.Jul.2022,Cryptophyte,285320.427,,7/20/2022,D26,Jul,2022,Central Delta,CED,Summer
+D26.Jul.2022,Cyanobacterium,375337.9315,,7/20/2022,D26,Jul,2022,Central Delta,CED,Summer
+D26.Jul.2022,Green Alga,282.8385,,7/20/2022,D26,Jul,2022,Central Delta,CED,Summer
+D26.Jul.2022,Pennate Diatom,8487.199,,7/20/2022,D26,Jul,2022,Central Delta,CED,Summer
+MD10A.Jul.2022,Centric Diatom,112920.8,,7/20/2022,MD10A,Jul,2022,Southern Interior Delta,SID,Summer
+MD10A.Jul.2022,Chrysophyte,8459.4,,7/20/2022,MD10A,Jul,2022,Southern Interior Delta,SID,Summer
+MD10A.Jul.2022,Cryptophyte,675819.12,,7/20/2022,MD10A,Jul,2022,Southern Interior Delta,SID,Summer
+MD10A.Jul.2022,Cyanobacterium,14184.1,,7/20/2022,MD10A,Jul,2022,Southern Interior Delta,SID,Summer
+MD10A.Jul.2022,Green Alga,110897.72,,7/20/2022,MD10A,Jul,2022,Southern Interior Delta,SID,Summer
+MD10A.Jul.2022,Pennate Diatom,46591.56,,7/20/2022,MD10A,Jul,2022,Southern Interior Delta,SID,Summer
+P8.Jul.2022,Centric Diatom,138644.8145,,7/20/2022,P8,Jul,2022,Southern Interior Delta,SID,Summer
+P8.Jul.2022,Cryptophyte,1668357.844,,7/20/2022,P8,Jul,2022,Southern Interior Delta,SID,Summer
+P8.Jul.2022,Cyanobacterium,528369.5103,,7/20/2022,P8,Jul,2022,Southern Interior Delta,SID,Summer
+P8.Jul.2022,Green Alga,15812.4544,,7/20/2022,P8,Jul,2022,Southern Interior Delta,SID,Summer
+P8.Jul.2022,Pennate Diatom,19837.1919,,7/20/2022,P8,Jul,2022,Southern Interior Delta,SID,Summer
+D4.Jul.2022,Centric Diatom,33407.2104,,7/21/2022,D4,Jul,2022,Confluence,CON,Summer
+D4.Jul.2022,Cryptophyte,112808.3001,,7/21/2022,D4,Jul,2022,Confluence,CON,Summer
+D4.Jul.2022,Cyanobacterium,5306.85,,7/21/2022,D4,Jul,2022,Confluence,CON,Summer
+D4.Jul.2022,Pennate Diatom,257168.3786,,7/21/2022,D4,Jul,2022,Confluence,CON,Summer
+EZ2.Jul.2022,Centric Diatom,109485.2486,,7/21/2022,EZ2,Jul,2022,Entrapment Zone,EZ,Summer
+EZ2.Jul.2022,Cryptophyte,242087.0961,,7/21/2022,EZ2,Jul,2022,Entrapment Zone,EZ,Summer
+EZ2.Jul.2022,Cyanobacterium,12273.0552,,7/21/2022,EZ2,Jul,2022,Entrapment Zone,EZ,Summer
+EZ2.Jul.2022,Green Alga,8527.4645,,7/21/2022,EZ2,Jul,2022,Entrapment Zone,EZ,Summer
+EZ2.Jul.2022,Pennate Diatom,327962.4065,,7/21/2022,EZ2,Jul,2022,Entrapment Zone,EZ,Summer
+EZ6.Jul.2022,Centric Diatom,451040.6252,,7/21/2022,EZ6,Jul,2022,Entrapment Zone,EZ,Summer
+EZ6.Jul.2022,Cryptophyte,50427.9946,,7/21/2022,EZ6,Jul,2022,Entrapment Zone,EZ,Summer
+EZ6.Jul.2022,Cyanobacterium,23300.9967,,7/21/2022,EZ6,Jul,2022,Entrapment Zone,EZ,Summer
+EZ6.Jul.2022,Pennate Diatom,648649.2579,,7/21/2022,EZ6,Jul,2022,Entrapment Zone,EZ,Summer
+NZ068.Jul.2022,Centric Diatom,164213.4145,,7/21/2022,NZ068,Jul,2022,Northern Interior Delta,NID,Summer
+NZ068.Jul.2022,Cryptophyte,163267.649,,7/21/2022,NZ068,Jul,2022,Northern Interior Delta,NID,Summer
+NZ068.Jul.2022,Cyanobacterium,24327.4695,,7/21/2022,NZ068,Jul,2022,Northern Interior Delta,NID,Summer
+NZ068.Jul.2022,Pennate Diatom,52083.194,,7/21/2022,NZ068,Jul,2022,Northern Interior Delta,NID,Summer
+D10.Jul.2022,Centric Diatom,9329.5984,,7/22/2022,D10,Jul,2022,Confluence,CON,Summer
+D10.Jul.2022,Cryptophyte,170477.5761,,7/22/2022,D10,Jul,2022,Confluence,CON,Summer
+D10.Jul.2022,Cyanobacterium,19676.5776,,7/22/2022,D10,Jul,2022,Confluence,CON,Summer
+D6.Jul.2022,Centric Diatom,77205,,7/22/2022,D6,Jul,2022,San Pablo Bay,SPB,Summer
+D6.Jul.2022,Cryptophyte,197036,,7/22/2022,D6,Jul,2022,San Pablo Bay,SPB,Summer
+D6.Jul.2022,Cyanobacterium,6714,,7/22/2022,D6,Jul,2022,San Pablo Bay,SPB,Summer
+D6.Jul.2022,Green Alga,6688.5,,7/22/2022,D6,Jul,2022,San Pablo Bay,SPB,Summer
+D6.Jul.2022,Pennate Diatom,5014,,7/22/2022,D6,Jul,2022,San Pablo Bay,SPB,Summer
+D8.Jul.2022,Centric Diatom,90656.2514,,7/22/2022,D8,Jul,2022,Grizzly and Suisun Bay,GSB,Summer
+D8.Jul.2022,Cryptophyte,21533.7486,,7/22/2022,D8,Jul,2022,Grizzly and Suisun Bay,GSB,Summer
+D8.Jul.2022,Cyanobacterium,16034.1948,,7/22/2022,D8,Jul,2022,Grizzly and Suisun Bay,GSB,Summer
+D8.Jul.2022,Green Alga,45062.2354,,7/22/2022,D8,Jul,2022,Grizzly and Suisun Bay,GSB,Summer
+D22.Jul.2022,Centric Diatom,59358.5485,,7/24/2022,D22,Jul,2022,Confluence,CON,Summer
+D22.Jul.2022,Cryptophyte,91423.7992,,7/24/2022,D22,Jul,2022,Confluence,CON,Summer
+D22.Jul.2022,Cyanobacterium,20334.2374,,7/24/2022,D22,Jul,2022,Confluence,CON,Summer
+D22.Jul.2022,Pennate Diatom,17067.5556,,7/24/2022,D22,Jul,2022,Confluence,CON,Summer
+D7.Jul.2022,Centric Diatom,22457.2189,,7/25/2022,D7,Jul,2022,Grizzly and Suisun Bay,GSB,Summer
+D7.Jul.2022,Cyanobacterium,10659.7584,,7/25/2022,D7,Jul,2022,Grizzly and Suisun Bay,GSB,Summer
+D7.Jul.2022,Pennate Diatom,317633.0585,,7/25/2022,D7,Jul,2022,Grizzly and Suisun Bay,GSB,Summer
+NZ032.Jul.2022,Centric Diatom,89461.8744,,7/25/2022,NZ032,Jul,2022,Grizzly and Suisun Bay,GSB,Summer
+NZ032.Jul.2022,Cryptophyte,91382.7792,,7/25/2022,NZ032,Jul,2022,Grizzly and Suisun Bay,GSB,Summer
+NZ032.Jul.2022,Cyanobacterium,20937.4992,,7/25/2022,NZ032,Jul,2022,Grizzly and Suisun Bay,GSB,Summer
+NZ032.Jul.2022,Pennate Diatom,53099.0376,,7/25/2022,NZ032,Jul,2022,Grizzly and Suisun Bay,GSB,Summer
+NZS42.Jul.2022,Centric Diatom,969829.084,,7/25/2022,NZS42,Jul,2022,Grizzly and Suisun Bay,GSB,Summer
+NZS42.Jul.2022,Cryptophyte,74636.0052,,7/25/2022,NZS42,Jul,2022,Grizzly and Suisun Bay,GSB,Summer
+NZS42.Jul.2022,Cyanobacterium,9788.8608,,7/25/2022,NZS42,Jul,2022,Grizzly and Suisun Bay,GSB,Summer
+NZS42.Jul.2022,Euglenoid,121308.958,,7/25/2022,NZS42,Jul,2022,Grizzly and Suisun Bay,GSB,Summer
+NZS42.Jul.2022,Green Alga,28487.2624,,7/25/2022,NZS42,Jul,2022,Grizzly and Suisun Bay,GSB,Summer
+NZS42.Jul.2022,Pennate Diatom,37375.1584,,7/25/2022,NZS42,Jul,2022,Grizzly and Suisun Bay,GSB,Summer
+D41.Jul.2022,Centric Diatom,616808.8232,,7/26/2022,D41,Jul,2022,San Pablo Bay,SPB,Summer
+D41.Jul.2022,Cyanobacterium,12204.5904,,7/26/2022,D41,Jul,2022,San Pablo Bay,SPB,Summer
+D41.Jul.2022,Pennate Diatom,16027.4688,,7/26/2022,D41,Jul,2022,San Pablo Bay,SPB,Summer
+D41A.Jul.2022,Centric Diatom,16854216.57,,7/26/2022,D41A,Jul,2022,San Pablo Bay,SPB,Summer
+D41A.Jul.2022,Cyanobacterium,39156.8904,,7/26/2022,D41A,Jul,2022,San Pablo Bay,SPB,Summer
+NZ002.Jul.2022,Centric Diatom,77473.664,,7/26/2022,NZ002,Jul,2022,San Pablo Bay,SPB,Summer
+NZ002.Jul.2022,Cryptophyte,73154.0984,,7/26/2022,NZ002,Jul,2022,San Pablo Bay,SPB,Summer
+NZ002.Jul.2022,Cyanobacterium,8439.8256,,7/26/2022,NZ002,Jul,2022,San Pablo Bay,SPB,Summer
+NZ002.Jul.2022,Green Alga,15377.1936,,7/26/2022,NZ002,Jul,2022,San Pablo Bay,SPB,Summer
+NZ002.Jul.2022,Pennate Diatom,4914.2884,,7/26/2022,NZ002,Jul,2022,San Pablo Bay,SPB,Summer
+NZ004.Jul.2022,Centric Diatom,44259.258,,7/26/2022,NZ004,Jul,2022,San Pablo Bay,SPB,Summer
+NZ004.Jul.2022,Cyanobacterium,9244.7136,,7/26/2022,NZ004,Jul,2022,San Pablo Bay,SPB,Summer
+NZ325.Jul.2022,Centric Diatom,8601149.659,,7/26/2022,NZ325,Jul,2022,San Pablo Bay,SPB,Summer
+NZ325.Jul.2022,Cryptophyte,18298.3587,,7/26/2022,NZ325,Jul,2022,San Pablo Bay,SPB,Summer
+NZ325.Jul.2022,Cyanobacterium,16682.7492,,7/26/2022,NZ325,Jul,2022,San Pablo Bay,SPB,Summer
+NZ325.Jul.2022,Pennate Diatom,9679.8582,,7/26/2022,NZ325,Jul,2022,San Pablo Bay,SPB,Summer
+C10A.Aug.2022,Centric Diatom,124167.879,,8/15/2022,C10A,Aug,2022,Southern Interior Delta,SID,Summer
+C10A.Aug.2022,Cryptophyte,6745.9046,,8/15/2022,C10A,Aug,2022,Southern Interior Delta,SID,Summer
+C10A.Aug.2022,Cyanobacterium,10009.3558,,8/15/2022,C10A,Aug,2022,Southern Interior Delta,SID,Summer
+C10A.Aug.2022,Green Alga,85465.3432,,8/15/2022,C10A,Aug,2022,Southern Interior Delta,SID,Summer
+C10A.Aug.2022,Pennate Diatom,321899.9768,,8/15/2022,C10A,Aug,2022,Southern Interior Delta,SID,Summer
+C3A.Aug.2022,Centric Diatom,28305.2894,,8/15/2022,C3A,Aug,2022,Northern Interior Delta,NID,Summer
+C3A.Aug.2022,Cryptophyte,6355.2066,,8/15/2022,C3A,Aug,2022,Northern Interior Delta,NID,Summer
+C3A.Aug.2022,Cyanobacterium,9291.3036,,8/15/2022,C3A,Aug,2022,Northern Interior Delta,NID,Summer
+C3A.Aug.2022,Dinoflagellate,111771.181,,8/15/2022,C3A,Aug,2022,Northern Interior Delta,NID,Summer
+C3A.Aug.2022,Green Alga,7760.1208,,8/15/2022,C3A,Aug,2022,Northern Interior Delta,NID,Summer
+C3A.Aug.2022,Pennate Diatom,13029.1358,,8/15/2022,C3A,Aug,2022,Northern Interior Delta,NID,Summer
+C9.Aug.2022,Centric Diatom,157404.0975,,8/15/2022,C9,Aug,2022,Southern Interior Delta,SID,Summer
+C9.Aug.2022,Cryptophyte,20658.0195,,8/15/2022,C9,Aug,2022,Southern Interior Delta,SID,Summer
+C9.Aug.2022,Cyanobacterium,261898.2315,,8/15/2022,C9,Aug,2022,Southern Interior Delta,SID,Summer
+C9.Aug.2022,Green Alga,85199.7873,,8/15/2022,C9,Aug,2022,Southern Interior Delta,SID,Summer
+C9.Aug.2022,Pennate Diatom,238715.7939,,8/15/2022,C9,Aug,2022,Southern Interior Delta,SID,Summer
+D12.Aug.2022,Cryptophyte,110558.2854,,8/16/2022,D12,Aug,2022,Confluence,CON,Summer
+D12.Aug.2022,Cyanobacterium,16641.3528,,8/16/2022,D12,Aug,2022,Confluence,CON,Summer
+D19.Aug.2022,Centric Diatom,28490.805,,8/16/2022,D19,Aug,2022,Central Delta,CED,Summer
+D19.Aug.2022,Cryptophyte,110774.799,,8/16/2022,D19,Aug,2022,Central Delta,CED,Summer
+D19.Aug.2022,Cyanobacterium,356396.5485,,8/16/2022,D19,Aug,2022,Central Delta,CED,Summer
+D19.Aug.2022,Green Alga,2708.4825,,8/16/2022,D19,Aug,2022,Central Delta,CED,Summer
+D19.Aug.2022,Pennate Diatom,47974.797,,8/16/2022,D19,Aug,2022,Central Delta,CED,Summer
+D28A.Aug.2022,Centric Diatom,131052.85,,8/16/2022,D28A,Aug,2022,Central Delta,CED,Summer
+D28A.Aug.2022,Cryptophyte,96553.425,,8/16/2022,D28A,Aug,2022,Central Delta,CED,Summer
+D28A.Aug.2022,Cyanobacterium,694765.6,,8/16/2022,D28A,Aug,2022,Central Delta,CED,Summer
+D28A.Aug.2022,Green Alga,6977.05,,8/16/2022,D28A,Aug,2022,Central Delta,CED,Summer
+D28A.Aug.2022,Pennate Diatom,155482.875,,8/16/2022,D28A,Aug,2022,Central Delta,CED,Summer
+EZ2-SJR.Aug.2022,Centric Diatom,65104.8769,,8/16/2022,EZ2-SJR,Aug,2022,Entrapment Zone,EZ,Summer
+EZ2-SJR.Aug.2022,Cryptophyte,72223.6004,,8/16/2022,EZ2-SJR,Aug,2022,Entrapment Zone,EZ,Summer
+EZ2-SJR.Aug.2022,Cyanobacterium,37464.3936,,8/16/2022,EZ2-SJR,Aug,2022,Entrapment Zone,EZ,Summer
+EZ2-SJR.Aug.2022,Green Alga,5241.4791,,8/16/2022,EZ2-SJR,Aug,2022,Entrapment Zone,EZ,Summer
+EZ2-SJR.Aug.2022,Pennate Diatom,22578.6792,,8/16/2022,EZ2-SJR,Aug,2022,Entrapment Zone,EZ,Summer
+EZ6-SJR.Aug.2022,Centric Diatom,8811.0192,,8/16/2022,EZ6-SJR,Aug,2022,Entrapment Zone,EZ,Summer
+EZ6-SJR.Aug.2022,Cryptophyte,86214.0852,,8/16/2022,EZ6-SJR,Aug,2022,Entrapment Zone,EZ,Summer
+EZ6-SJR.Aug.2022,Cyanobacterium,18421.8786,,8/16/2022,EZ6-SJR,Aug,2022,Entrapment Zone,EZ,Summer
+EZ6-SJR.Aug.2022,Pennate Diatom,15305.5683,,8/16/2022,EZ6-SJR,Aug,2022,Entrapment Zone,EZ,Summer
+D16.Aug.2022,Centric Diatom,79285.544,,8/17/2022,D16,Aug,2022,Central Delta,CED,Summer
+D16.Aug.2022,Cryptophyte,50830.3132,,8/17/2022,D16,Aug,2022,Central Delta,CED,Summer
+D16.Aug.2022,Cyanobacterium,305518.5132,,8/17/2022,D16,Aug,2022,Central Delta,CED,Summer
+D16.Aug.2022,Pennate Diatom,2521.328,,8/17/2022,D16,Aug,2022,Central Delta,CED,Summer
+D26.Aug.2022,Centric Diatom,47331.1188,,8/17/2022,D26,Aug,2022,Central Delta,CED,Summer
+D26.Aug.2022,Cryptophyte,47624.9898,,8/17/2022,D26,Aug,2022,Central Delta,CED,Summer
+D26.Aug.2022,Cyanobacterium,45299.5758,,8/17/2022,D26,Aug,2022,Central Delta,CED,Summer
+D26.Aug.2022,Green Alga,872.6691,,8/17/2022,D26,Aug,2022,Central Delta,CED,Summer
+MD10A.Aug.2022,Centric Diatom,54544.9896,,8/17/2022,MD10A,Aug,2022,Southern Interior Delta,SID,Summer
+MD10A.Aug.2022,Cryptophyte,190453.2984,,8/17/2022,MD10A,Aug,2022,Southern Interior Delta,SID,Summer
+MD10A.Aug.2022,Cyanobacterium,921888.444,,8/17/2022,MD10A,Aug,2022,Southern Interior Delta,SID,Summer
+MD10A.Aug.2022,Green Alga,15588.8232,,8/17/2022,MD10A,Aug,2022,Southern Interior Delta,SID,Summer
+MD10A.Aug.2022,Pennate Diatom,8553.8628,,8/17/2022,MD10A,Aug,2022,Southern Interior Delta,SID,Summer
+P8.Aug.2022,Centric Diatom,22323.225,,8/17/2022,P8,Aug,2022,Southern Interior Delta,SID,Summer
+P8.Aug.2022,Cryptophyte,1740275.45,,8/17/2022,P8,Aug,2022,Southern Interior Delta,SID,Summer
+P8.Aug.2022,Cyanobacterium,66548.2,,8/17/2022,P8,Aug,2022,Southern Interior Delta,SID,Summer
+P8.Aug.2022,Green Alga,26665.625,,8/17/2022,P8,Aug,2022,Southern Interior Delta,SID,Summer
+P8.Aug.2022,Pennate Diatom,22257.1,,8/17/2022,P8,Aug,2022,Southern Interior Delta,SID,Summer
+D22.Aug.2022,Centric Diatom,17984.0162,,8/18/2022,D22,Aug,2022,Confluence,CON,Summer
+D22.Aug.2022,Chrysophyte,19783.1496,,8/18/2022,D22,Aug,2022,Confluence,CON,Summer
+D22.Aug.2022,Cryptophyte,34559.8786,,8/18/2022,D22,Aug,2022,Confluence,CON,Summer
+D22.Aug.2022,Cyanobacterium,19967.14,,8/18/2022,D22,Aug,2022,Confluence,CON,Summer
+D22.Aug.2022,Green Alga,2028.076,,8/18/2022,D22,Aug,2022,Confluence,CON,Summer
+D22.Aug.2022,Pennate Diatom,832395.5684,,8/18/2022,D22,Aug,2022,Confluence,CON,Summer
+D4.Aug.2022,Centric Diatom,83541.1368,,8/18/2022,D4,Aug,2022,Confluence,CON,Summer
+D4.Aug.2022,Cryptophyte,86214.0852,,8/18/2022,D4,Aug,2022,Confluence,CON,Summer
+D4.Aug.2022,Cyanobacterium,38131.6788,,8/18/2022,D4,Aug,2022,Confluence,CON,Summer
+EZ2.Aug.2022,Centric Diatom,18433.5382,,8/18/2022,EZ2,Aug,2022,Entrapment Zone,EZ,Summer
+EZ2.Aug.2022,Cryptophyte,56313.6072,,8/18/2022,EZ2,Aug,2022,Entrapment Zone,EZ,Summer
+EZ2.Aug.2022,Cyanobacterium,18443.9922,,8/18/2022,EZ2,Aug,2022,Entrapment Zone,EZ,Summer
+EZ2.Aug.2022,Green Alga,546.7442,,8/18/2022,EZ2,Aug,2022,Entrapment Zone,EZ,Summer
+EZ2.Aug.2022,Pennate Diatom,48246.2554,,8/18/2022,EZ2,Aug,2022,Entrapment Zone,EZ,Summer
+EZ6.Aug.2022,Chrysophyte,20226.9771,,8/18/2022,EZ6,Aug,2022,Entrapment Zone,EZ,Summer
+EZ6.Aug.2022,Cyanobacterium,14722.5276,,8/18/2022,EZ6,Aug,2022,Entrapment Zone,EZ,Summer
+EZ6.Aug.2022,Pennate Diatom,28741.1256,,8/18/2022,EZ6,Aug,2022,Entrapment Zone,EZ,Summer
+NZ068.Aug.2022,Centric Diatom,18299.95,,8/18/2022,NZ068,Aug,2022,Northern Interior Delta,NID,Summer
+NZ068.Aug.2022,Cryptophyte,48879.6,,8/18/2022,NZ068,Aug,2022,Northern Interior Delta,NID,Summer
+NZ068.Aug.2022,Cyanobacterium,11500,,8/18/2022,NZ068,Aug,2022,Northern Interior Delta,NID,Summer
+NZ068.Aug.2022,Pennate Diatom,13997.8,,8/18/2022,NZ068,Aug,2022,Northern Interior Delta,NID,Summer
+D10.Aug.2022,Centric Diatom,53017.71,,8/19/2022,D10,Aug,2022,Confluence,CON,Summer
+D10.Aug.2022,Cryptophyte,90236.6266,,8/19/2022,D10,Aug,2022,Confluence,CON,Summer
+D10.Aug.2022,Cyanobacterium,35558.1792,,8/19/2022,D10,Aug,2022,Confluence,CON,Summer
+D6.Aug.2022,Centric Diatom,16366.5238,,8/19/2022,D6,Aug,2022,San Pablo Bay,SPB,Summer
+D6.Aug.2022,Cryptophyte,18883.507,,8/19/2022,D6,Aug,2022,San Pablo Bay,SPB,Summer
+D6.Aug.2022,Cyanobacterium,8654.8896,,8/19/2022,D6,Aug,2022,San Pablo Bay,SPB,Summer
+D6.Aug.2022,Green Alga,892.3515,,8/19/2022,D6,Aug,2022,San Pablo Bay,SPB,Summer
+D8.Aug.2022,Centric Diatom,81322.434,,8/19/2022,D8,Aug,2022,Grizzly and Suisun Bay,GSB,Summer
+D8.Aug.2022,Cyanobacterium,9428.688,,8/19/2022,D8,Aug,2022,Grizzly and Suisun Bay,GSB,Summer
+D8.Aug.2022,Pennate Diatom,1890.848,,8/19/2022,D8,Aug,2022,Grizzly and Suisun Bay,GSB,Summer
+D7.Aug.2022,Cyanobacterium,579214.3712,,8/22/2022,D7,Aug,2022,Grizzly and Suisun Bay,GSB,Summer
+NZ032.Aug.2022,Cyanobacterium,12099.5778,,8/22/2022,NZ032,Aug,2022,Grizzly and Suisun Bay,GSB,Summer
+NZ032.Aug.2022,Green Alga,1351.986,,8/22/2022,NZ032,Aug,2022,Grizzly and Suisun Bay,GSB,Summer
+NZS42.Aug.2022,Centric Diatom,6784147.471,,8/22/2022,NZS42,Aug,2022,Grizzly and Suisun Bay,GSB,Summer
+NZS42.Aug.2022,Cyanobacterium,37717.704,,8/22/2022,NZS42,Aug,2022,Grizzly and Suisun Bay,GSB,Summer
+NZS42.Aug.2022,Pennate Diatom,506150.6334,,8/22/2022,NZS42,Aug,2022,Grizzly and Suisun Bay,GSB,Summer
+D41.Aug.2022,Centric Diatom,26623.5228,,8/23/2022,D41,Aug,2022,San Pablo Bay,SPB,Summer
+D41.Aug.2022,Cryptophyte,132594.4004,,8/23/2022,D41,Aug,2022,San Pablo Bay,SPB,Summer
+D41.Aug.2022,Cyanobacterium,9003.8736,,8/23/2022,D41,Aug,2022,San Pablo Bay,SPB,Summer
+D41.Aug.2022,Green Alga,30268.7692,,8/23/2022,D41,Aug,2022,San Pablo Bay,SPB,Summer
+D41.Aug.2022,Raphidophyte,2329765.949,,8/23/2022,D41,Aug,2022,San Pablo Bay,SPB,Summer
+D41A.Aug.2022,Centric Diatom,6608.4368,,8/23/2022,D41A,Aug,2022,San Pablo Bay,SPB,Summer
+D41A.Aug.2022,Cryptophyte,70677.4999,,8/23/2022,D41A,Aug,2022,San Pablo Bay,SPB,Summer
+D41A.Aug.2022,Cyanobacterium,12385.0692,,8/23/2022,D41A,Aug,2022,San Pablo Bay,SPB,Summer
+D41A.Aug.2022,Pennate Diatom,47095.6535,,8/23/2022,D41A,Aug,2022,San Pablo Bay,SPB,Summer
+D41A.Aug.2022,Raphidophyte,16203143.39,,8/23/2022,D41A,Aug,2022,San Pablo Bay,SPB,Summer
+NZ002.Aug.2022,Centric Diatom,12439.0048,,8/23/2022,NZ002,Aug,2022,San Pablo Bay,SPB,Summer
+NZ002.Aug.2022,Cryptophyte,37314.3087,,8/23/2022,NZ002,Aug,2022,San Pablo Bay,SPB,Summer
+NZ002.Aug.2022,Cyanobacterium,12760.0812,,8/23/2022,NZ002,Aug,2022,San Pablo Bay,SPB,Summer
+NZ002.Aug.2022,Raphidophyte,3630529.906,,8/23/2022,NZ002,Aug,2022,San Pablo Bay,SPB,Summer
+NZ004.Aug.2022,Centric Diatom,29484.9148,,8/23/2022,NZ004,Aug,2022,San Pablo Bay,SPB,Summer
+NZ004.Aug.2022,Cyanobacterium,13052.2968,,8/23/2022,NZ004,Aug,2022,San Pablo Bay,SPB,Summer
+NZ004.Aug.2022,Raphidophyte,888797.1968,,8/23/2022,NZ004,Aug,2022,San Pablo Bay,SPB,Summer
+NZ325.Aug.2022,Centric Diatom,143381.031,,8/23/2022,NZ325,Aug,2022,San Pablo Bay,SPB,Summer
+NZ325.Aug.2022,Cyanobacterium,26148.726,,8/23/2022,NZ325,Aug,2022,San Pablo Bay,SPB,Summer
+NZ325.Aug.2022,Green Alga,96896.3235,,8/23/2022,NZ325,Aug,2022,San Pablo Bay,SPB,Summer
+NZ325.Aug.2022,Raphidophyte,2418274.197,,8/23/2022,NZ325,Aug,2022,San Pablo Bay,SPB,Summer
+C10A.Sep.2022,Centric Diatom,29285.7096,,9/13/2022,C10A,Sep,2022,Southern Interior Delta,SID,Fall
+C10A.Sep.2022,Cryptophyte,107692.773,,9/13/2022,C10A,Sep,2022,Southern Interior Delta,SID,Fall
+C10A.Sep.2022,Cyanobacterium,202332.6876,,9/13/2022,C10A,Sep,2022,Southern Interior Delta,SID,Fall
+C10A.Sep.2022,Green Alga,12495.3978,,9/13/2022,C10A,Sep,2022,Southern Interior Delta,SID,Fall
+C10A.Sep.2022,Pennate Diatom,718879.527,,9/13/2022,C10A,Sep,2022,Southern Interior Delta,SID,Fall
+C3A.Sep.2022,Centric Diatom,13253.88,,9/13/2022,C3A,Sep,2022,Northern Interior Delta,NID,Fall
+C3A.Sep.2022,Cryptophyte,2310.351,,9/13/2022,C3A,Sep,2022,Northern Interior Delta,NID,Fall
+C3A.Sep.2022,Cyanobacterium,4302.972,,9/13/2022,C3A,Sep,2022,Northern Interior Delta,NID,Fall
+C3A.Sep.2022,Green Alga,133198.468,,9/13/2022,C3A,Sep,2022,Northern Interior Delta,NID,Fall
+C3A.Sep.2022,Pennate Diatom,89838.0062,,9/13/2022,C3A,Sep,2022,Northern Interior Delta,NID,Fall
+C9.Sep.2022,Centric Diatom,17752.4088,,9/13/2022,C9,Sep,2022,Southern Interior Delta,SID,Fall
+C9.Sep.2022,Cryptophyte,4131.2985,,9/13/2022,C9,Sep,2022,Southern Interior Delta,SID,Fall
+C9.Sep.2022,Cyanobacterium,7713.9216,,9/13/2022,C9,Sep,2022,Southern Interior Delta,SID,Fall
+C9.Sep.2022,Pennate Diatom,72930.5402,,9/13/2022,C9,Sep,2022,Southern Interior Delta,SID,Fall
+D12.Sep.2022,Centric Diatom,19319.328,,9/14/2022,D12,Sep,2022,Confluence,CON,Fall
+D12.Sep.2022,Cryptophyte,151776.6492,,9/14/2022,D12,Sep,2022,Confluence,CON,Fall
+D12.Sep.2022,Cyanobacterium,17786.5956,,9/14/2022,D12,Sep,2022,Confluence,CON,Fall
+D12.Sep.2022,Green Alga,1195.137,,9/14/2022,D12,Sep,2022,Confluence,CON,Fall
+D19.Sep.2022,Centric Diatom,277334.783,,9/14/2022,D19,Sep,2022,Central Delta,CED,Fall
+D19.Sep.2022,Cryptophyte,208258.27,,9/14/2022,D19,Sep,2022,Central Delta,CED,Fall
+D19.Sep.2022,Cyanobacterium,10527.693,,9/14/2022,D19,Sep,2022,Central Delta,CED,Fall
+D19.Sep.2022,Pennate Diatom,17114.999,,9/14/2022,D19,Sep,2022,Central Delta,CED,Fall
+D28A.Sep.2022,Centric Diatom,20204.634,,9/14/2022,D28A,Sep,2022,Central Delta,CED,Fall
+D28A.Sep.2022,Cryptophyte,114588.0954,,9/14/2022,D28A,Sep,2022,Central Delta,CED,Fall
+D28A.Sep.2022,Cyanobacterium,27262.7472,,9/14/2022,D28A,Sep,2022,Central Delta,CED,Fall
+D28A.Sep.2022,Green Alga,4249.764,,9/14/2022,D28A,Sep,2022,Central Delta,CED,Fall
+D28A.Sep.2022,Pennate Diatom,9673.3245,,9/14/2022,D28A,Sep,2022,Central Delta,CED,Fall
+D16.Sep.2022,Centric Diatom,42353.1168,,9/15/2022,D16,Sep,2022,Central Delta,CED,Fall
+D16.Sep.2022,Cryptophyte,8648.7812,,9/15/2022,D16,Sep,2022,Central Delta,CED,Fall
+D16.Sep.2022,Cyanobacterium,74326.4696,,9/15/2022,D16,Sep,2022,Central Delta,CED,Fall
+D16.Sep.2022,Green Alga,4883.242,,9/15/2022,D16,Sep,2022,Central Delta,CED,Fall
+D16.Sep.2022,Pennate Diatom,7948.1088,,9/15/2022,D16,Sep,2022,Central Delta,CED,Fall
+D26.Sep.2022,Centric Diatom,168993.87,,9/15/2022,D26,Sep,2022,Central Delta,CED,Fall
+D26.Sep.2022,Cryptophyte,36076.128,,9/15/2022,D26,Sep,2022,Central Delta,CED,Fall
+D26.Sep.2022,Cyanobacterium,11940.372,,9/15/2022,D26,Sep,2022,Central Delta,CED,Fall
+D26.Sep.2022,Pennate Diatom,18385.881,,9/15/2022,D26,Sep,2022,Central Delta,CED,Fall
+MD10A.Sep.2022,Centric Diatom,2516731.405,,9/15/2022,MD10A,Sep,2022,Southern Interior Delta,SID,Fall
+MD10A.Sep.2022,Chrysophyte,19665.5481,,9/15/2022,MD10A,Sep,2022,Southern Interior Delta,SID,Fall
+MD10A.Sep.2022,Cryptophyte,329687.7822,,9/15/2022,MD10A,Sep,2022,Southern Interior Delta,SID,Fall
+MD10A.Sep.2022,Cyanobacterium,95284.8642,,9/15/2022,MD10A,Sep,2022,Southern Interior Delta,SID,Fall
+MD10A.Sep.2022,Green Alga,16051.3881,,9/15/2022,MD10A,Sep,2022,Southern Interior Delta,SID,Fall
+MD10A.Sep.2022,Pennate Diatom,34239.2376,,9/15/2022,MD10A,Sep,2022,Southern Interior Delta,SID,Fall
+P8.Sep.2022,Centric Diatom,5536298.151,,9/15/2022,P8,Sep,2022,Southern Interior Delta,SID,Fall
+P8.Sep.2022,Cryptophyte,299727.0444,,9/15/2022,P8,Sep,2022,Southern Interior Delta,SID,Fall
+P8.Sep.2022,Cyanobacterium,20710.6916,,9/15/2022,P8,Sep,2022,Southern Interior Delta,SID,Fall
+P8.Sep.2022,Green Alga,1586.8344,,9/15/2022,P8,Sep,2022,Southern Interior Delta,SID,Fall
+P8.Sep.2022,Pennate Diatom,24516.7944,,9/15/2022,P8,Sep,2022,Southern Interior Delta,SID,Fall
+D10.Sep.2022,Centric Diatom,73458.4865,,9/19/2022,D10,Sep,2022,Confluence,CON,Fall
+D10.Sep.2022,Cryptophyte,83641.3823,,9/19/2022,D10,Sep,2022,Confluence,CON,Fall
+D10.Sep.2022,Cyanobacterium,19166,,9/19/2022,D10,Sep,2022,Confluence,CON,Fall
+D10.Sep.2022,Green Alga,2644.908,,9/19/2022,D10,Sep,2022,Confluence,CON,Fall
+D10.Sep.2022,Pennate Diatom,487910.7786,,9/19/2022,D10,Sep,2022,Confluence,CON,Fall
+D6.Sep.2022,Centric Diatom,43599.5118,,9/19/2022,D6,Sep,2022,San Pablo Bay,SPB,Fall
+D6.Sep.2022,Cryptophyte,5966.8293,,9/19/2022,D6,Sep,2022,San Pablo Bay,SPB,Fall
+D6.Sep.2022,Cyanobacterium,5099.7168,,9/19/2022,D6,Sep,2022,San Pablo Bay,SPB,Fall
+D6.Sep.2022,Green Alga,19740.2268,,9/19/2022,D6,Sep,2022,San Pablo Bay,SPB,Fall
+D6.Sep.2022,Pennate Diatom,52810.9848,,9/19/2022,D6,Sep,2022,San Pablo Bay,SPB,Fall
+D8.Sep.2022,Centric Diatom,50893.8108,,9/19/2022,D8,Sep,2022,Grizzly and Suisun Bay,GSB,Fall
+D8.Sep.2022,Cryptophyte,104077.2152,,9/19/2022,D8,Sep,2022,Grizzly and Suisun Bay,GSB,Fall
+D8.Sep.2022,Cyanobacterium,10224.3204,,9/19/2022,D8,Sep,2022,Grizzly and Suisun Bay,GSB,Fall
+D8.Sep.2022,Dinoflagellate,302122.681,,9/19/2022,D8,Sep,2022,Grizzly and Suisun Bay,GSB,Fall
+D8.Sep.2022,Green Alga,5999.9618,,9/19/2022,D8,Sep,2022,Grizzly and Suisun Bay,GSB,Fall
+D7.Sep.2022,Centric Diatom,8764.38,,9/20/2022,D7,Sep,2022,Grizzly and Suisun Bay,GSB,Fall
+D7.Sep.2022,Cryptophyte,11787.04,,9/20/2022,D7,Sep,2022,Grizzly and Suisun Bay,GSB,Fall
+D7.Sep.2022,Cyanobacterium,6590.88,,9/20/2022,D7,Sep,2022,Grizzly and Suisun Bay,GSB,Fall
+D7.Sep.2022,Green Alga,446.2,,9/20/2022,D7,Sep,2022,Grizzly and Suisun Bay,GSB,Fall
+NZ032.Sep.2022,Centric Diatom,5874.0128,,9/20/2022,NZ032,Sep,2022,Grizzly and Suisun Bay,GSB,Fall
+NZ032.Sep.2022,Cryptophyte,31749.9932,,9/20/2022,NZ032,Sep,2022,Grizzly and Suisun Bay,GSB,Fall
+NZ032.Sep.2022,Cyanobacterium,12480.5736,,9/20/2022,NZ032,Sep,2022,Grizzly and Suisun Bay,GSB,Fall
+NZ032.Sep.2022,Pennate Diatom,32146.932,,9/20/2022,NZ032,Sep,2022,Grizzly and Suisun Bay,GSB,Fall
+NZS42.Sep.2022,Centric Diatom,48157.812,,9/20/2022,NZS42,Sep,2022,Grizzly and Suisun Bay,GSB,Fall
+NZS42.Sep.2022,Cyanobacterium,21967.6896,,9/20/2022,NZS42,Sep,2022,Grizzly and Suisun Bay,GSB,Fall
+NZS42.Sep.2022,Pennate Diatom,817151.1372,,9/20/2022,NZS42,Sep,2022,Grizzly and Suisun Bay,GSB,Fall
+D41.Sep.2022,Centric Diatom,394394.1618,,9/21/2022,D41,Sep,2022,San Pablo Bay,SPB,Fall
+D41.Sep.2022,Chrysophyte,4405.3245,,9/21/2022,D41,Sep,2022,San Pablo Bay,SPB,Fall
+D41.Sep.2022,Cryptophyte,132266.5743,,9/21/2022,D41,Sep,2022,San Pablo Bay,SPB,Fall
+D41.Sep.2022,Cyanobacterium,6347.1168,,9/21/2022,D41,Sep,2022,San Pablo Bay,SPB,Fall
+D41.Sep.2022,Pennate Diatom,373867.6014,,9/21/2022,D41,Sep,2022,San Pablo Bay,SPB,Fall
+D41A.Sep.2022,Centric Diatom,169461.1976,,9/21/2022,D41A,Sep,2022,San Pablo Bay,SPB,Fall
+D41A.Sep.2022,Chrysophyte,12660.8552,,9/21/2022,D41A,Sep,2022,San Pablo Bay,SPB,Fall
+D41A.Sep.2022,Cryptophyte,80726.9872,,9/21/2022,D41A,Sep,2022,San Pablo Bay,SPB,Fall
+D41A.Sep.2022,Cyanobacterium,9301.8528,,9/21/2022,D41A,Sep,2022,San Pablo Bay,SPB,Fall
+D41A.Sep.2022,Green Alga,7192.8376,,9/21/2022,D41A,Sep,2022,San Pablo Bay,SPB,Fall
+D41A.Sep.2022,Pennate Diatom,19365.332,,9/21/2022,D41A,Sep,2022,San Pablo Bay,SPB,Fall
+NZ002.Sep.2022,Centric Diatom,16512187.89,,9/21/2022,NZ002,Sep,2022,San Pablo Bay,SPB,Fall
+NZ002.Sep.2022,Cryptophyte,10165.2244,,9/21/2022,NZ002,Sep,2022,San Pablo Bay,SPB,Fall
+NZ002.Sep.2022,Cyanobacterium,8945.7552,,9/21/2022,NZ002,Sep,2022,San Pablo Bay,SPB,Fall
+NZ004.Sep.2022,Centric Diatom,163669.0419,,9/21/2022,NZ004,Sep,2022,San Pablo Bay,SPB,Fall
+NZ004.Sep.2022,Chrysophyte,4699.5645,,9/21/2022,NZ004,Sep,2022,San Pablo Bay,SPB,Fall
+NZ004.Sep.2022,Cryptophyte,20168.5171,,9/21/2022,NZ004,Sep,2022,San Pablo Bay,SPB,Fall
+NZ004.Sep.2022,Cyanobacterium,7341.4404,,9/21/2022,NZ004,Sep,2022,San Pablo Bay,SPB,Fall
+NZ325.Sep.2022,Centric Diatom,2384647.181,,9/21/2022,NZ325,Sep,2022,San Pablo Bay,SPB,Fall
+NZ325.Sep.2022,Cryptophyte,253213.2116,,9/21/2022,NZ325,Sep,2022,San Pablo Bay,SPB,Fall
+NZ325.Sep.2022,Cyanobacterium,11687.3352,,9/21/2022,NZ325,Sep,2022,San Pablo Bay,SPB,Fall
+NZ325.Sep.2022,Pennate Diatom,36572.9024,,9/21/2022,NZ325,Sep,2022,San Pablo Bay,SPB,Fall
+D22.Sep.2022,Cryptophyte,131071.5768,,9/30/2022,D22,Sep,2022,Confluence,CON,Fall
+D22.Sep.2022,Cyanobacterium,12204.5904,,9/30/2022,D22,Sep,2022,Confluence,CON,Fall
+D22.Sep.2022,Pennate Diatom,82696.1512,,9/30/2022,D22,Sep,2022,Confluence,CON,Fall
+D4.Sep.2022,Centric Diatom,1687093.797,,9/30/2022,D4,Sep,2022,Confluence,CON,Fall
+D4.Sep.2022,Cryptophyte,38186.1864,,9/30/2022,D4,Sep,2022,Confluence,CON,Fall
+D4.Sep.2022,Cyanobacterium,48990.8496,,9/30/2022,D4,Sep,2022,Confluence,CON,Fall
+D4.Sep.2022,Green Alga,26903.7008,,9/30/2022,D4,Sep,2022,Confluence,CON,Fall
+D4.Sep.2022,Pennate Diatom,292215.866,,9/30/2022,D4,Sep,2022,Confluence,CON,Fall
+EZ2.Sep.2022,Centric Diatom,6219.5024,,9/30/2022,EZ2,Sep,2022,Entrapment Zone,EZ,Fall
+EZ2.Sep.2022,Cryptophyte,233403.6029,,9/30/2022,EZ2,Sep,2022,Entrapment Zone,EZ,Fall
+EZ2.Sep.2022,Cyanobacterium,12760.0812,,9/30/2022,EZ2,Sep,2022,Entrapment Zone,EZ,Fall
+EZ2.Sep.2022,Green Alga,55979.1292,,9/30/2022,EZ2,Sep,2022,Entrapment Zone,EZ,Fall
+EZ2.Sep.2022,Pennate Diatom,2002.218,,9/30/2022,EZ2,Sep,2022,Entrapment Zone,EZ,Fall
+EZ6.Sep.2022,Centric Diatom,50861.256,,9/30/2022,EZ6,Sep,2022,Entrapment Zone,EZ,Fall
+EZ6.Sep.2022,Cryptophyte,354817.6272,,9/30/2022,EZ6,Sep,2022,Entrapment Zone,EZ,Fall
+EZ6.Sep.2022,Cyanobacterium,8945.7552,,9/30/2022,EZ6,Sep,2022,Entrapment Zone,EZ,Fall
+EZ6.Sep.2022,Euglenoid,126288.8436,,9/30/2022,EZ6,Sep,2022,Entrapment Zone,EZ,Fall
+EZ6.Sep.2022,Green Alga,1549.09,,9/30/2022,EZ6,Sep,2022,Entrapment Zone,EZ,Fall
+EZ6.Sep.2022,Pennate Diatom,43194.3784,,9/30/2022,EZ6,Sep,2022,Entrapment Zone,EZ,Fall
+NZ068.Sep.2022,Centric Diatom,60718.944,,9/30/2022,NZ068,Sep,2022,Northern Interior Delta,NID,Fall
+NZ068.Sep.2022,Cryptophyte,88889.031,,9/30/2022,NZ068,Sep,2022,Northern Interior Delta,NID,Fall
+NZ068.Sep.2022,Cyanobacterium,38567.6754,,9/30/2022,NZ068,Sep,2022,Northern Interior Delta,NID,Fall
+NZ068.Sep.2022,Green Alga,813.832,,9/30/2022,NZ068,Sep,2022,Northern Interior Delta,NID,Fall
+NZ068.Sep.2022,Pennate Diatom,256150.0836,,9/30/2022,NZ068,Sep,2022,Northern Interior Delta,NID,Fall
+C10A.Oct.2022,Centric Diatom,32102.9016,,10/12/2022,C10A,Oct,2022,Southern Interior Delta,SID,Fall
+C10A.Oct.2022,Cryptophyte,37304.916,,10/12/2022,C10A,Oct,2022,Southern Interior Delta,SID,Fall
+C10A.Oct.2022,Cyanobacterium,3107.5704,,10/12/2022,C10A,Oct,2022,Southern Interior Delta,SID,Fall
+C10A.Oct.2022,Green Alga,3021237.905,,10/12/2022,C10A,Oct,2022,Southern Interior Delta,SID,Fall
+C10A.Oct.2022,Pennate Diatom,203764.7766,,10/12/2022,C10A,Oct,2022,Southern Interior Delta,SID,Fall
+C3A.Oct.2022,Centric Diatom,2328.3715,,10/12/2022,C3A,Oct,2022,Northern Interior Delta,NID,Fall
+C3A.Oct.2022,Cryptophyte,56648.949,,10/12/2022,C3A,Oct,2022,Northern Interior Delta,NID,Fall
+C3A.Oct.2022,Cyanobacterium,5522.6325,,10/12/2022,C3A,Oct,2022,Northern Interior Delta,NID,Fall
+C3A.Oct.2022,Green Alga,7105.966,,10/12/2022,C3A,Oct,2022,Northern Interior Delta,NID,Fall
+C3A.Oct.2022,Pennate Diatom,44778.1635,,10/12/2022,C3A,Oct,2022,Northern Interior Delta,NID,Fall
+C9.Oct.2022,Centric Diatom,44596.955,,10/12/2022,C9,Oct,2022,Southern Interior Delta,SID,Fall
+C9.Oct.2022,Cyanobacterium,10763.064,,10/12/2022,C9,Oct,2022,Southern Interior Delta,SID,Fall
+C9.Oct.2022,Pennate Diatom,186650.2348,,10/12/2022,C9,Oct,2022,Southern Interior Delta,SID,Fall
+D12.Oct.2022,Cryptophyte,91288.2804,,10/13/2022,D12,Oct,2022,Confluence,CON,Fall
+D12.Oct.2022,Cyanobacterium,19530.4644,,10/13/2022,D12,Oct,2022,Confluence,CON,Fall
+D12.Oct.2022,Pennate Diatom,16206.3891,,10/13/2022,D12,Oct,2022,Confluence,CON,Fall
+D16.Oct.2022,Centric Diatom,14350.1547,,10/13/2022,D16,Oct,2022,Central Delta,CED,Fall
+D16.Oct.2022,Cryptophyte,74720.2645,,10/13/2022,D16,Oct,2022,Central Delta,CED,Fall
+D16.Oct.2022,Cyanobacterium,22329.4479,,10/13/2022,D16,Oct,2022,Central Delta,CED,Fall
+D16.Oct.2022,Green Alga,1082.5098,,10/13/2022,D16,Oct,2022,Central Delta,CED,Fall
+D16.Oct.2022,Pennate Diatom,168809.6857,,10/13/2022,D16,Oct,2022,Central Delta,CED,Fall
+D19.Oct.2022,Centric Diatom,35183.1876,,10/13/2022,D19,Oct,2022,Central Delta,CED,Fall
+D19.Oct.2022,Cryptophyte,206474.8524,,10/13/2022,D19,Oct,2022,Central Delta,CED,Fall
+D19.Oct.2022,Cyanobacterium,5622.7176,,10/13/2022,D19,Oct,2022,Central Delta,CED,Fall
+D19.Oct.2022,Green Alga,13960.974,,10/13/2022,D19,Oct,2022,Central Delta,CED,Fall
+D19.Oct.2022,Pennate Diatom,1652.895,,10/13/2022,D19,Oct,2022,Central Delta,CED,Fall
+D28A.Oct.2022,Centric Diatom,851080.9764,,10/13/2022,D28A,Oct,2022,Central Delta,CED,Fall
+D28A.Oct.2022,Cryptophyte,241526.8828,,10/13/2022,D28A,Oct,2022,Central Delta,CED,Fall
+D28A.Oct.2022,Cyanobacterium,11065.904,,10/13/2022,D28A,Oct,2022,Central Delta,CED,Fall
+D28A.Oct.2022,Green Alga,55961.2776,,10/13/2022,D28A,Oct,2022,Central Delta,CED,Fall
+D28A.Oct.2022,Pennate Diatom,53374.724,,10/13/2022,D28A,Oct,2022,Central Delta,CED,Fall
+EZ2-SJR.Oct.2022,Centric Diatom,25792.8546,,10/13/2022,EZ2-SJR,Oct,2022,Entrapment Zone,EZ,Fall
+EZ2-SJR.Oct.2022,Cryptophyte,116203.2978,,10/13/2022,EZ2-SJR,Oct,2022,Entrapment Zone,EZ,Fall
+EZ2-SJR.Oct.2022,Cyanobacterium,7762.026,,10/13/2022,EZ2-SJR,Oct,2022,Entrapment Zone,EZ,Fall
+EZ2-SJR.Oct.2022,Dinoflagellate,287570.2848,,10/13/2022,EZ2-SJR,Oct,2022,Entrapment Zone,EZ,Fall
+EZ2-SJR.Oct.2022,Green Alga,5737.5465,,10/13/2022,EZ2-SJR,Oct,2022,Entrapment Zone,EZ,Fall
+EZ2-SJR.Oct.2022,Pennate Diatom,327055.4847,,10/13/2022,EZ2-SJR,Oct,2022,Entrapment Zone,EZ,Fall
+EZ6-SJR.Oct.2022,Centric Diatom,15142.776,,10/13/2022,EZ6-SJR,Oct,2022,Entrapment Zone,EZ,Fall
+EZ6-SJR.Oct.2022,Cryptophyte,135796.551,,10/13/2022,EZ6-SJR,Oct,2022,Entrapment Zone,EZ,Fall
+EZ6-SJR.Oct.2022,Cyanobacterium,8284.419,,10/13/2022,EZ6-SJR,Oct,2022,Entrapment Zone,EZ,Fall
+EZ6-SJR.Oct.2022,Green Alga,3588.156,,10/13/2022,EZ6-SJR,Oct,2022,Entrapment Zone,EZ,Fall
+D26.Oct.2022,Centric Diatom,2131312.762,,10/14/2022,D26,Oct,2022,Central Delta,CED,Fall
+D26.Oct.2022,Cryptophyte,75891.9952,,10/14/2022,D26,Oct,2022,Central Delta,CED,Fall
+D26.Oct.2022,Cyanobacterium,11170.6956,,10/14/2022,D26,Oct,2022,Central Delta,CED,Fall
+D26.Oct.2022,Green Alga,3920.9544,,10/14/2022,D26,Oct,2022,Central Delta,CED,Fall
+D26.Oct.2022,Pennate Diatom,41381.464,,10/14/2022,D26,Oct,2022,Central Delta,CED,Fall
+MD10A.Oct.2022,Centric Diatom,41073.669,,10/14/2022,MD10A,Oct,2022,Southern Interior Delta,SID,Fall
+MD10A.Oct.2022,Cryptophyte,163626.8355,,10/14/2022,MD10A,Oct,2022,Southern Interior Delta,SID,Fall
+MD10A.Oct.2022,Cyanobacterium,8978.8905,,10/14/2022,MD10A,Oct,2022,Southern Interior Delta,SID,Fall
+MD10A.Oct.2022,Green Alga,4648.6035,,10/14/2022,MD10A,Oct,2022,Southern Interior Delta,SID,Fall
+MD10A.Oct.2022,Pennate Diatom,4804.9695,,10/14/2022,MD10A,Oct,2022,Southern Interior Delta,SID,Fall
+P8.Oct.2022,Centric Diatom,11457.5396,,10/14/2022,P8,Oct,2022,Southern Interior Delta,SID,Fall
+P8.Oct.2022,Cryptophyte,169029.6544,,10/14/2022,P8,Oct,2022,Southern Interior Delta,SID,Fall
+P8.Oct.2022,Cyanobacterium,12947.6488,,10/14/2022,P8,Oct,2022,Southern Interior Delta,SID,Fall
+P8.Oct.2022,Green Alga,8373.832,,10/14/2022,P8,Oct,2022,Southern Interior Delta,SID,Fall
+P8.Oct.2022,Pennate Diatom,58861.6808,,10/14/2022,P8,Oct,2022,Southern Interior Delta,SID,Fall
+D22.Oct.2022,Centric Diatom,65132.0352,,10/17/2022,D22,Oct,2022,Confluence,CON,Fall
+D22.Oct.2022,Cryptophyte,150193.635,,10/17/2022,D22,Oct,2022,Confluence,CON,Fall
+D22.Oct.2022,Cyanobacterium,12204.5904,,10/17/2022,D22,Oct,2022,Confluence,CON,Fall
+D22.Oct.2022,Green Alga,4517.9472,,10/17/2022,D22,Oct,2022,Confluence,CON,Fall
+D22.Oct.2022,Pennate Diatom,29806.1856,,10/17/2022,D22,Oct,2022,Confluence,CON,Fall
+D4.Oct.2022,Centric Diatom,12041.516,,10/17/2022,D4,Oct,2022,Confluence,CON,Fall
+D4.Oct.2022,Cryptophyte,129406.4312,,10/17/2022,D4,Oct,2022,Confluence,CON,Fall
+D4.Oct.2022,Cyanobacterium,13873.2984,,10/17/2022,D4,Oct,2022,Confluence,CON,Fall
+D4.Oct.2022,Green Alga,7436.505,,10/17/2022,D4,Oct,2022,Confluence,CON,Fall
+EZ2.Oct.2022,Centric Diatom,36577.9956,,10/17/2022,EZ2,Oct,2022,Entrapment Zone,EZ,Fall
+EZ2.Oct.2022,Cryptophyte,92516.5534,,10/17/2022,EZ2,Oct,2022,Entrapment Zone,EZ,Fall
+EZ2.Oct.2022,Cyanobacterium,10584.4668,,10/17/2022,EZ2,Oct,2022,Entrapment Zone,EZ,Fall
+EZ2.Oct.2022,Green Alga,16226.79,,10/17/2022,EZ2,Oct,2022,Entrapment Zone,EZ,Fall
+EZ2.Oct.2022,Pennate Diatom,23079.9469,,10/17/2022,EZ2,Oct,2022,Entrapment Zone,EZ,Fall
+EZ6.Oct.2022,Centric Diatom,44042.193,,10/17/2022,EZ6,Oct,2022,Entrapment Zone,EZ,Fall
+EZ6.Oct.2022,Cryptophyte,265196.8254,,10/17/2022,EZ6,Oct,2022,Entrapment Zone,EZ,Fall
+EZ6.Oct.2022,Cyanobacterium,6340.1832,,10/17/2022,EZ6,Oct,2022,Entrapment Zone,EZ,Fall
+EZ6.Oct.2022,Pennate Diatom,46368.0659,,10/17/2022,EZ6,Oct,2022,Entrapment Zone,EZ,Fall
+NZ068.Oct.2022,Centric Diatom,185942.2234,,10/17/2022,NZ068,Oct,2022,Northern Interior Delta,NID,Fall
+NZ068.Oct.2022,Cryptophyte,221424.3694,,10/17/2022,NZ068,Oct,2022,Northern Interior Delta,NID,Fall
+NZ068.Oct.2022,Cyanobacterium,9090.124,,10/17/2022,NZ068,Oct,2022,Northern Interior Delta,NID,Fall
+NZ068.Oct.2022,Green Alga,4957.088,,10/17/2022,NZ068,Oct,2022,Northern Interior Delta,NID,Fall
+NZ068.Oct.2022,Pennate Diatom,58576.363,,10/17/2022,NZ068,Oct,2022,Northern Interior Delta,NID,Fall
+D10.Oct.2022,Centric Diatom,5017.102,,10/18/2022,D10,Oct,2022,Confluence,CON,Fall
+D10.Oct.2022,Cryptophyte,256206.9594,,10/18/2022,D10,Oct,2022,Confluence,CON,Fall
+D10.Oct.2022,Cyanobacterium,17189.324,,10/18/2022,D10,Oct,2022,Confluence,CON,Fall
+D10.Oct.2022,Green Alga,86343.5588,,10/18/2022,D10,Oct,2022,Confluence,CON,Fall
+D10.Oct.2022,Pennate Diatom,27568.507,,10/18/2022,D10,Oct,2022,Confluence,CON,Fall
+D6.Oct.2022,Centric Diatom,1507822.083,,10/18/2022,D6,Oct,2022,San Pablo Bay,SPB,Fall
+D6.Oct.2022,Cryptophyte,108382.002,,10/18/2022,D6,Oct,2022,San Pablo Bay,SPB,Fall
+D6.Oct.2022,Cyanobacterium,6467.85,,10/18/2022,D6,Oct,2022,San Pablo Bay,SPB,Fall
+D6.Oct.2022,Green Alga,20813.5413,,10/18/2022,D6,Oct,2022,San Pablo Bay,SPB,Fall
+D8.Oct.2022,Centric Diatom,34370.6616,,10/18/2022,D8,Oct,2022,Grizzly and Suisun Bay,GSB,Fall
+D8.Oct.2022,Cryptophyte,263255.4144,,10/18/2022,D8,Oct,2022,Grizzly and Suisun Bay,GSB,Fall
+D8.Oct.2022,Cyanobacterium,7688.304,,10/18/2022,D8,Oct,2022,Grizzly and Suisun Bay,GSB,Fall
+D8.Oct.2022,Green Alga,78068.594,,10/18/2022,D8,Oct,2022,Grizzly and Suisun Bay,GSB,Fall
+D8.Oct.2022,Pennate Diatom,16113.6776,,10/18/2022,D8,Oct,2022,Grizzly and Suisun Bay,GSB,Fall
+D7.Oct.2022,Centric Diatom,9329.5984,,10/19/2022,D7,Oct,2022,Grizzly and Suisun Bay,GSB,Fall
+D7.Oct.2022,Cyanobacterium,20163.6216,,10/19/2022,D7,Oct,2022,Grizzly and Suisun Bay,GSB,Fall
+D7.Oct.2022,Pennate Diatom,9973.5788,,10/19/2022,D7,Oct,2022,Grizzly and Suisun Bay,GSB,Fall
+NZ032.Oct.2022,Centric Diatom,46537.2384,,10/19/2022,NZ032,Oct,2022,Grizzly and Suisun Bay,GSB,Fall
+NZ032.Oct.2022,Cryptophyte,154580.9088,,10/19/2022,NZ032,Oct,2022,Grizzly and Suisun Bay,GSB,Fall
+NZ032.Oct.2022,Cyanobacterium,11650.7376,,10/19/2022,NZ032,Oct,2022,Grizzly and Suisun Bay,GSB,Fall
+NZ032.Oct.2022,Green Alga,3785.8326,,10/19/2022,NZ032,Oct,2022,Grizzly and Suisun Bay,GSB,Fall
+NZS42.Oct.2022,Cyanobacterium,55161.6624,,10/19/2022,NZS42,Oct,2022,Grizzly and Suisun Bay,GSB,Fall
+NZS42.Oct.2022,Pennate Diatom,408258.9724,,10/19/2022,NZS42,Oct,2022,Grizzly and Suisun Bay,GSB,Fall
+D41.Oct.2022,Centric Diatom,19785.1984,,10/20/2022,D41,Oct,2022,San Pablo Bay,SPB,Fall
+D41.Oct.2022,Cryptophyte,20418.2376,,10/20/2022,D41,Oct,2022,San Pablo Bay,SPB,Fall
+D41.Oct.2022,Cyanobacterium,8714.88,,10/20/2022,D41,Oct,2022,San Pablo Bay,SPB,Fall
+D41.Oct.2022,Dinoflagellate,120909.882,,10/20/2022,D41,Oct,2022,San Pablo Bay,SPB,Fall
+D41.Oct.2022,Green Alga,4814.9712,,10/20/2022,D41,Oct,2022,San Pablo Bay,SPB,Fall
+D41A.Oct.2022,Centric Diatom,241686.62,,10/20/2022,D41A,Oct,2022,San Pablo Bay,SPB,Fall
+D41A.Oct.2022,Cyanobacterium,16427.5488,,10/20/2022,D41A,Oct,2022,San Pablo Bay,SPB,Fall
+D41A.Oct.2022,Green Alga,19279.2512,,10/20/2022,D41A,Oct,2022,San Pablo Bay,SPB,Fall
+NZ002.Oct.2022,Centric Diatom,28891.6428,,10/20/2022,NZ002,Oct,2022,San Pablo Bay,SPB,Fall
+NZ002.Oct.2022,Cryptophyte,19596.376,,10/20/2022,NZ002,Oct,2022,San Pablo Bay,SPB,Fall
+NZ002.Oct.2022,Cyanobacterium,8671.3056,,10/20/2022,NZ002,Oct,2022,San Pablo Bay,SPB,Fall
+NZ002.Oct.2022,Pennate Diatom,1914.8528,,10/20/2022,NZ002,Oct,2022,San Pablo Bay,SPB,Fall
+NZ004.Oct.2022,Centric Diatom,7319.98,,10/20/2022,NZ004,Oct,2022,San Pablo Bay,SPB,Fall
+NZ004.Oct.2022,Cryptophyte,54950.68,,10/20/2022,NZ004,Oct,2022,San Pablo Bay,SPB,Fall
+NZ004.Oct.2022,Cyanobacterium,6607.44,,10/20/2022,NZ004,Oct,2022,San Pablo Bay,SPB,Fall
+NZ004.Oct.2022,Green Alga,1219.92,,10/20/2022,NZ004,Oct,2022,San Pablo Bay,SPB,Fall
+NZ325.Oct.2022,Centric Diatom,28973.6175,,10/20/2022,NZ325,Oct,2022,San Pablo Bay,SPB,Fall
+NZ325.Oct.2022,Cryptophyte,106531.6185,,10/20/2022,NZ325,Oct,2022,San Pablo Bay,SPB,Fall
+NZ325.Oct.2022,Cyanobacterium,9019.2798,,10/20/2022,NZ325,Oct,2022,San Pablo Bay,SPB,Fall
+NZ325.Oct.2022,Green Alga,23100.1443,,10/20/2022,NZ325,Oct,2022,San Pablo Bay,SPB,Fall
+NZ325.Oct.2022,Pennate Diatom,3979.9959,,10/20/2022,NZ325,Oct,2022,San Pablo Bay,SPB,Fall
+C10A.Nov.2022,Centric Diatom,123992.9964,,11/10/2022,C10A,Nov,2022,Southern Interior Delta,SID,Fall
+C10A.Nov.2022,Chrysophyte,50095.3348,,11/10/2022,C10A,Nov,2022,Southern Interior Delta,SID,Fall
+C10A.Nov.2022,Cryptophyte,84579.0364,,11/10/2022,C10A,Nov,2022,Southern Interior Delta,SID,Fall
+C10A.Nov.2022,Cyanobacterium,211220.4976,,11/10/2022,C10A,Nov,2022,Southern Interior Delta,SID,Fall
+C10A.Nov.2022,Green Alga,31404.0468,,11/10/2022,C10A,Nov,2022,Southern Interior Delta,SID,Fall
+C10A.Nov.2022,Pennate Diatom,330036.02,,11/10/2022,C10A,Nov,2022,Southern Interior Delta,SID,Fall
+C3A.Nov.2022,Cryptophyte,11244.8754,,11/10/2022,C3A,Nov,2022,Northern Interior Delta,NID,Fall
+C3A.Nov.2022,Cyanobacterium,5710.4289,,11/10/2022,C3A,Nov,2022,Northern Interior Delta,NID,Fall
+C3A.Nov.2022,Green Alga,14252.2413,,11/10/2022,C3A,Nov,2022,Northern Interior Delta,NID,Fall
+C3A.Nov.2022,Pennate Diatom,16061.3937,,11/10/2022,C3A,Nov,2022,Northern Interior Delta,NID,Fall
+C9.Nov.2022,Centric Diatom,6051.3948,,11/10/2022,C9,Nov,2022,Southern Interior Delta,SID,Fall
+C9.Nov.2022,Chrysophyte,16595.1892,,11/10/2022,C9,Nov,2022,Southern Interior Delta,SID,Fall
+C9.Nov.2022,Cryptophyte,122509.4256,,11/10/2022,C9,Nov,2022,Southern Interior Delta,SID,Fall
+C9.Nov.2022,Cyanobacterium,12704.9636,,11/10/2022,C9,Nov,2022,Southern Interior Delta,SID,Fall
+C9.Nov.2022,Pennate Diatom,28868.6452,,11/10/2022,C9,Nov,2022,Southern Interior Delta,SID,Fall
+D12.Nov.2022,Cryptophyte,45696.4288,,11/14/2022,D12,Nov,2022,Confluence,CON,Fall
+D12.Nov.2022,Cyanobacterium,14682.8808,,11/14/2022,D12,Nov,2022,Confluence,CON,Fall
+D12.Nov.2022,Pennate Diatom,13502.2398,,11/14/2022,D12,Nov,2022,Confluence,CON,Fall
+D19.Nov.2022,Centric Diatom,81770.9222,,11/14/2022,D19,Nov,2022,Central Delta,CED,Fall
+D19.Nov.2022,Cryptophyte,459923.2032,,11/14/2022,D19,Nov,2022,Central Delta,CED,Fall
+D19.Nov.2022,Cyanobacterium,4001.652,,11/14/2022,D19,Nov,2022,Central Delta,CED,Fall
+D19.Nov.2022,Green Alga,9033.9977,,11/14/2022,D19,Nov,2022,Central Delta,CED,Fall
+D19.Nov.2022,Pennate Diatom,2816.4884,,11/14/2022,D19,Nov,2022,Central Delta,CED,Fall
+D28A.Nov.2022,Centric Diatom,9935.6782,,11/14/2022,D28A,Nov,2022,Central Delta,CED,Fall
+D28A.Nov.2022,Chrysophyte,11550.3206,,11/14/2022,D28A,Nov,2022,Central Delta,CED,Fall
+D28A.Nov.2022,Cryptophyte,490145.1541,,11/14/2022,D28A,Nov,2022,Central Delta,CED,Fall
+D28A.Nov.2022,Cyanobacterium,9095.891,,11/14/2022,D28A,Nov,2022,Central Delta,CED,Fall
+D28A.Nov.2022,Green Alga,1135.2278,,11/14/2022,D28A,Nov,2022,Central Delta,CED,Fall
+D28A.Nov.2022,Pennate Diatom,73248.707,,11/14/2022,D28A,Nov,2022,Central Delta,CED,Fall
+EZ2-SJR.Nov.2022,Centric Diatom,26558.11,,11/14/2022,EZ2-SJR,Nov,2022,Entrapment Zone,EZ,Fall
+EZ2-SJR.Nov.2022,Cryptophyte,445220.6032,,11/14/2022,EZ2-SJR,Nov,2022,Entrapment Zone,EZ,Fall
+EZ2-SJR.Nov.2022,Cyanobacterium,12110.3704,,11/14/2022,EZ2-SJR,Nov,2022,Entrapment Zone,EZ,Fall
+EZ2-SJR.Nov.2022,Green Alga,5218.3572,,11/14/2022,EZ2-SJR,Nov,2022,Entrapment Zone,EZ,Fall
+EZ2-SJR.Nov.2022,Pennate Diatom,7232.4936,,11/14/2022,EZ2-SJR,Nov,2022,Entrapment Zone,EZ,Fall
+EZ6-SJR.Nov.2022,Centric Diatom,19751.61,,11/14/2022,EZ6-SJR,Nov,2022,Entrapment Zone,EZ,Fall
+EZ6-SJR.Nov.2022,Cryptophyte,30428.3022,,11/14/2022,EZ6-SJR,Nov,2022,Entrapment Zone,EZ,Fall
+EZ6-SJR.Nov.2022,Cyanobacterium,12922.4232,,11/14/2022,EZ6-SJR,Nov,2022,Entrapment Zone,EZ,Fall
+D16.Nov.2022,Centric Diatom,63212.5728,,11/15/2022,D16,Nov,2022,Central Delta,CED,Fall
+D16.Nov.2022,Cryptophyte,173856.9183,,11/15/2022,D16,Nov,2022,Central Delta,CED,Fall
+D16.Nov.2022,Cyanobacterium,26025.7686,,11/15/2022,D16,Nov,2022,Central Delta,CED,Fall
+D16.Nov.2022,Green Alga,3824.613,,11/15/2022,D16,Nov,2022,Central Delta,CED,Fall
+D16.Nov.2022,Pennate Diatom,7192.7258,,11/15/2022,D16,Nov,2022,Central Delta,CED,Fall
+D26.Nov.2022,Centric Diatom,495562.4308,,11/15/2022,D26,Nov,2022,Central Delta,CED,Fall
+D26.Nov.2022,Cryptophyte,216061.7756,,11/15/2022,D26,Nov,2022,Central Delta,CED,Fall
+D26.Nov.2022,Cyanobacterium,11113.9284,,11/15/2022,D26,Nov,2022,Central Delta,CED,Fall
+D26.Nov.2022,Pennate Diatom,10995.5584,,11/15/2022,D26,Nov,2022,Central Delta,CED,Fall
+MD10A.Nov.2022,Centric Diatom,16764.888,,11/15/2022,MD10A,Nov,2022,Southern Interior Delta,SID,Fall
+MD10A.Nov.2022,Chrysophyte,2973.1002,,11/15/2022,MD10A,Nov,2022,Southern Interior Delta,SID,Fall
+MD10A.Nov.2022,Cryptophyte,1190245.728,,11/15/2022,MD10A,Nov,2022,Southern Interior Delta,SID,Fall
+MD10A.Nov.2022,Cyanobacterium,43144.752,,11/15/2022,MD10A,Nov,2022,Southern Interior Delta,SID,Fall
+MD10A.Nov.2022,Green Alga,3866.226,,11/15/2022,MD10A,Nov,2022,Southern Interior Delta,SID,Fall
+MD10A.Nov.2022,Pennate Diatom,30505.4736,,11/15/2022,MD10A,Nov,2022,Southern Interior Delta,SID,Fall
+P8.Nov.2022,Centric Diatom,495466.382,,11/15/2022,P8,Nov,2022,Southern Interior Delta,SID,Fall
+P8.Nov.2022,Cryptophyte,183308.4584,,11/15/2022,P8,Nov,2022,Southern Interior Delta,SID,Fall
+P8.Nov.2022,Cyanobacterium,9642.7584,,11/15/2022,P8,Nov,2022,Southern Interior Delta,SID,Fall
+P8.Nov.2022,Green Alga,14351.1788,,11/15/2022,P8,Nov,2022,Southern Interior Delta,SID,Fall
+P8.Nov.2022,Pennate Diatom,145100.6516,,11/15/2022,P8,Nov,2022,Southern Interior Delta,SID,Fall
+D22.Nov.2022,Cyanobacterium,29430.1008,,11/16/2022,D22,Nov,2022,Confluence,CON,Fall
+D22.Nov.2022,Green Alga,84422.3224,,11/16/2022,D22,Nov,2022,Confluence,CON,Fall
+D22.Nov.2022,Pennate Diatom,801196.6508,,11/16/2022,D22,Nov,2022,Confluence,CON,Fall
+D4.Nov.2022,Centric Diatom,74311.1376,,11/16/2022,D4,Nov,2022,Confluence,CON,Fall
+D4.Nov.2022,Cryptophyte,385186.6026,,11/16/2022,D4,Nov,2022,Confluence,CON,Fall
+D4.Nov.2022,Cyanobacterium,15854.8212,,11/16/2022,D4,Nov,2022,Confluence,CON,Fall
+D4.Nov.2022,Green Alga,2788.5075,,11/16/2022,D4,Nov,2022,Confluence,CON,Fall
+D4.Nov.2022,Pennate Diatom,3227.7693,,11/16/2022,D4,Nov,2022,Confluence,CON,Fall
+EZ2.Nov.2022,Centric Diatom,244562.1108,,11/16/2022,EZ2,Nov,2022,Entrapment Zone,EZ,Fall
+EZ2.Nov.2022,Cryptophyte,137536.9003,,11/16/2022,EZ2,Nov,2022,Entrapment Zone,EZ,Fall
+EZ2.Nov.2022,Cyanobacterium,10064.6748,,11/16/2022,EZ2,Nov,2022,Entrapment Zone,EZ,Fall
+EZ2.Nov.2022,Green Alga,32403.3082,,11/16/2022,EZ2,Nov,2022,Entrapment Zone,EZ,Fall
+EZ2.Nov.2022,Pennate Diatom,98653.0742,,11/16/2022,EZ2,Nov,2022,Entrapment Zone,EZ,Fall
+EZ6.Nov.2022,Centric Diatom,87429.4221,,11/16/2022,EZ6,Nov,2022,Entrapment Zone,EZ,Fall
+EZ6.Nov.2022,Cryptophyte,294079.4394,,11/16/2022,EZ6,Nov,2022,Entrapment Zone,EZ,Fall
+EZ6.Nov.2022,Cyanobacterium,23891.4288,,11/16/2022,EZ6,Nov,2022,Entrapment Zone,EZ,Fall
+EZ6.Nov.2022,Green Alga,4356.4404,,11/16/2022,EZ6,Nov,2022,Entrapment Zone,EZ,Fall
+EZ6.Nov.2022,Pennate Diatom,12481.2346,,11/16/2022,EZ6,Nov,2022,Entrapment Zone,EZ,Fall
+NZ068.Nov.2022,Centric Diatom,126419.5,,11/16/2022,NZ068,Nov,2022,Northern Interior Delta,NID,Fall
+NZ068.Nov.2022,Cryptophyte,73993.76,,11/16/2022,NZ068,Nov,2022,Northern Interior Delta,NID,Fall
+NZ068.Nov.2022,Cyanobacterium,6226.56,,11/16/2022,NZ068,Nov,2022,Northern Interior Delta,NID,Fall
+NZ068.Nov.2022,Green Alga,3569.6,,11/16/2022,NZ068,Nov,2022,Northern Interior Delta,NID,Fall
+NZ068.Nov.2022,Pennate Diatom,114621.88,,11/16/2022,NZ068,Nov,2022,Northern Interior Delta,NID,Fall
+D10.Nov.2022,Centric Diatom,2805124.998,,11/17/2022,D10,Nov,2022,Confluence,CON,Fall
+D10.Nov.2022,Cryptophyte,81672.9504,,11/17/2022,D10,Nov,2022,Confluence,CON,Fall
+D10.Nov.2022,Cyanobacterium,17909.0784,,11/17/2022,D10,Nov,2022,Confluence,CON,Fall
+D6.Nov.2022,Centric Diatom,271442.2542,,11/17/2022,D6,Nov,2022,San Pablo Bay,SPB,Fall
+D6.Nov.2022,Cyanobacterium,19364.8212,,11/17/2022,D6,Nov,2022,San Pablo Bay,SPB,Fall
+D6.Nov.2022,Green Alga,72501.8088,,11/17/2022,D6,Nov,2022,San Pablo Bay,SPB,Fall
+D8.Nov.2022,Centric Diatom,8058.4992,,11/17/2022,D8,Nov,2022,Grizzly and Suisun Bay,GSB,Fall
+D8.Nov.2022,Cryptophyte,9621.2133,,11/17/2022,D8,Nov,2022,Grizzly and Suisun Bay,GSB,Fall
+D8.Nov.2022,Cyanobacterium,16558.56,,11/17/2022,D8,Nov,2022,Grizzly and Suisun Bay,GSB,Fall
+D8.Nov.2022,Green Alga,1927.2324,,11/17/2022,D8,Nov,2022,Grizzly and Suisun Bay,GSB,Fall
+D8.Nov.2022,Pennate Diatom,10261.7076,,11/17/2022,D8,Nov,2022,Grizzly and Suisun Bay,GSB,Fall
+D7.Nov.2022,Centric Diatom,3878977.096,,11/18/2022,D7,Nov,2022,Grizzly and Suisun Bay,GSB,Fall
+D7.Nov.2022,Cyanobacterium,26264.4012,,11/18/2022,D7,Nov,2022,Grizzly and Suisun Bay,GSB,Fall
+NZ032.Nov.2022,Centric Diatom,479211.9112,,11/18/2022,NZ032,Nov,2022,Grizzly and Suisun Bay,GSB,Fall
+NZ032.Nov.2022,Cryptophyte,94843.9642,,11/18/2022,NZ032,Nov,2022,Grizzly and Suisun Bay,GSB,Fall
+NZ032.Nov.2022,Cyanobacterium,21319.5168,,11/18/2022,NZ032,Nov,2022,Grizzly and Suisun Bay,GSB,Fall
+NZS42.Nov.2022,Centric Diatom,2204505.904,,11/18/2022,NZS42,Nov,2022,Grizzly and Suisun Bay,GSB,Fall
+NZS42.Nov.2022,Cryptophyte,37097.8709,,11/18/2022,NZS42,Nov,2022,Grizzly and Suisun Bay,GSB,Fall
+NZS42.Nov.2022,Cyanobacterium,20066.2128,,11/18/2022,NZS42,Nov,2022,Grizzly and Suisun Bay,GSB,Fall
+D41.Nov.2022,Centric Diatom,136504.4067,,11/21/2022,D41,Nov,2022,San Pablo Bay,SPB,Fall
+D41.Nov.2022,Cyanobacterium,11618.154,,11/21/2022,D41,Nov,2022,San Pablo Bay,SPB,Fall
+D41.Nov.2022,Pennate Diatom,14055.2955,,11/21/2022,D41,Nov,2022,San Pablo Bay,SPB,Fall
+D41A.Nov.2022,Centric Diatom,52449.6756,,11/21/2022,D41A,Nov,2022,San Pablo Bay,SPB,Fall
+D41A.Nov.2022,Cyanobacterium,13306.68,,11/21/2022,D41A,Nov,2022,San Pablo Bay,SPB,Fall
+D41A.Nov.2022,Green Alga,2178.3528,,11/21/2022,D41A,Nov,2022,San Pablo Bay,SPB,Fall
+D41A.Nov.2022,Pennate Diatom,61822.671,,11/21/2022,D41A,Nov,2022,San Pablo Bay,SPB,Fall
+NZ002.Nov.2022,Centric Diatom,43732.137,,11/21/2022,NZ002,Nov,2022,San Pablo Bay,SPB,Fall
+NZ002.Nov.2022,Cyanobacterium,11649.852,,11/21/2022,NZ002,Nov,2022,San Pablo Bay,SPB,Fall
+NZ004.Nov.2022,Cyanobacterium,21836.9808,,11/21/2022,NZ004,Nov,2022,San Pablo Bay,SPB,Fall
+NZ004.Nov.2022,Green Alga,11092.4158,,11/21/2022,NZ004,Nov,2022,San Pablo Bay,SPB,Fall
+NZ325.Nov.2022,Centric Diatom,556644.3729,,11/21/2022,NZ325,Nov,2022,San Pablo Bay,SPB,Fall
+NZ325.Nov.2022,Cryptophyte,5925.2501,,11/21/2022,NZ325,Nov,2022,San Pablo Bay,SPB,Fall
+NZ325.Nov.2022,Cyanobacterium,10935.2628,,11/21/2022,NZ325,Nov,2022,San Pablo Bay,SPB,Fall
+NZ325.Nov.2022,Green Alga,1538.614,,11/21/2022,NZ325,Nov,2022,San Pablo Bay,SPB,Fall
+NZ325.Nov.2022,Pennate Diatom,27690.2934,,11/21/2022,NZ325,Nov,2022,San Pablo Bay,SPB,Fall
+C10A.Dec.2022,Centric Diatom,35049.525,,12/9/2022,C10A,Dec,2022,Southern Interior Delta,SID,Winter
+C10A.Dec.2022,Cryptophyte,135222.3564,,12/9/2022,C10A,Dec,2022,Southern Interior Delta,SID,Winter
+C10A.Dec.2022,Cyanobacterium,2491.4412,,12/9/2022,C10A,Dec,2022,Southern Interior Delta,SID,Winter
+C10A.Dec.2022,Green Alga,1675.4367,,12/9/2022,C10A,Dec,2022,Southern Interior Delta,SID,Winter
+C10A.Dec.2022,Pennate Diatom,141493.7922,,12/9/2022,C10A,Dec,2022,Southern Interior Delta,SID,Winter
+C3A.Dec.2022,Centric Diatom,102219.123,,12/9/2022,C3A,Dec,2022,Northern Interior Delta,NID,Winter
+C3A.Dec.2022,Cyanobacterium,11355.0336,,12/9/2022,C3A,Dec,2022,Northern Interior Delta,NID,Winter
+C3A.Dec.2022,Green Alga,7791.8004,,12/9/2022,C3A,Dec,2022,Northern Interior Delta,NID,Winter
+C3A.Dec.2022,Pennate Diatom,248618.8878,,12/9/2022,C3A,Dec,2022,Northern Interior Delta,NID,Winter
+C9.Dec.2022,Centric Diatom,18782.925,,12/9/2022,C9,Dec,2022,Southern Interior Delta,SID,Winter
+C9.Dec.2022,Cryptophyte,160353.7245,,12/9/2022,C9,Dec,2022,Southern Interior Delta,SID,Winter
+C9.Dec.2022,Cyanobacterium,5243.886,,12/9/2022,C9,Dec,2022,Southern Interior Delta,SID,Winter
+C9.Dec.2022,Green Alga,18191.394,,12/9/2022,C9,Dec,2022,Southern Interior Delta,SID,Winter
+C9.Dec.2022,Pennate Diatom,35461.5975,,12/9/2022,C9,Dec,2022,Southern Interior Delta,SID,Winter
+D12.Dec.2022,Centric Diatom,167043.2295,,12/13/2022,D12,Dec,2022,Confluence,CON,Winter
+D12.Dec.2022,Cryptophyte,130703.9622,,12/13/2022,D12,Dec,2022,Confluence,CON,Winter
+D12.Dec.2022,Cyanobacterium,31776.8724,,12/13/2022,D12,Dec,2022,Confluence,CON,Winter
+D12.Dec.2022,Green Alga,3186.8865,,12/13/2022,D12,Dec,2022,Confluence,CON,Winter
+D19.Dec.2022,Centric Diatom,6608.4368,,12/13/2022,D19,Dec,2022,Central Delta,CED,Winter
+D19.Dec.2022,Cryptophyte,82480.881,,12/13/2022,D19,Dec,2022,Central Delta,CED,Winter
+D19.Dec.2022,Cyanobacterium,207905.1016,,12/13/2022,D19,Dec,2022,Central Delta,CED,Winter
+D19.Dec.2022,Green Alga,38724.903,,12/13/2022,D19,Dec,2022,Central Delta,CED,Winter
+D19.Dec.2022,Pennate Diatom,264761.0406,,12/13/2022,D19,Dec,2022,Central Delta,CED,Winter
+D28A.Dec.2022,Centric Diatom,15213.9708,,12/13/2022,D28A,Dec,2022,Central Delta,CED,Winter
+D28A.Dec.2022,Cryptophyte,180130.5558,,12/13/2022,D28A,Dec,2022,Central Delta,CED,Winter
+D28A.Dec.2022,Cyanobacterium,7037.7552,,12/13/2022,D28A,Dec,2022,Central Delta,CED,Winter
+D28A.Dec.2022,Green Alga,10891.764,,12/13/2022,D28A,Dec,2022,Central Delta,CED,Winter
+D28A.Dec.2022,Pennate Diatom,46784.4798,,12/13/2022,D28A,Dec,2022,Central Delta,CED,Winter
+EZ2-SJR.Dec.2022,Centric Diatom,5644.387,,12/13/2022,EZ2-SJR,Dec,2022,Entrapment Zone,EZ,Winter
+EZ2-SJR.Dec.2022,Cryptophyte,109359.2794,,12/13/2022,EZ2-SJR,Dec,2022,Entrapment Zone,EZ,Winter
+EZ2-SJR.Dec.2022,Cyanobacterium,13282.038,,12/13/2022,EZ2-SJR,Dec,2022,Entrapment Zone,EZ,Winter
+EZ2-SJR.Dec.2022,Green Alga,10138.814,,12/13/2022,EZ2-SJR,Dec,2022,Entrapment Zone,EZ,Winter
+EZ2-SJR.Dec.2022,Pennate Diatom,276139.8948,,12/13/2022,EZ2-SJR,Dec,2022,Entrapment Zone,EZ,Winter
+EZ6-SJR.Dec.2022,Centric Diatom,18659.1968,,12/13/2022,EZ6-SJR,Dec,2022,Entrapment Zone,EZ,Winter
+EZ6-SJR.Dec.2022,Cyanobacterium,20823.8368,,12/13/2022,EZ6-SJR,Dec,2022,Entrapment Zone,EZ,Winter
+EZ6-SJR.Dec.2022,Green Alga,46431.528,,12/13/2022,EZ6-SJR,Dec,2022,Entrapment Zone,EZ,Winter
+EZ6-SJR.Dec.2022,Pennate Diatom,213641.8506,,12/13/2022,EZ6-SJR,Dec,2022,Entrapment Zone,EZ,Winter
+D16.Dec.2022,Centric Diatom,29801.7525,,12/14/2022,D16,Dec,2022,Central Delta,CED,Winter
+D16.Dec.2022,Cryptophyte,94147.69,,12/14/2022,D16,Dec,2022,Central Delta,CED,Winter
+D16.Dec.2022,Cyanobacterium,6166.6956,,12/14/2022,D16,Dec,2022,Central Delta,CED,Winter
+D16.Dec.2022,Green Alga,2200.1382,,12/14/2022,D16,Dec,2022,Central Delta,CED,Winter
+D16.Dec.2022,Pennate Diatom,58697.9523,,12/14/2022,D16,Dec,2022,Central Delta,CED,Winter
+D26.Dec.2022,Centric Diatom,149028.1946,,12/14/2022,D26,Dec,2022,Central Delta,CED,Winter
+D26.Dec.2022,Cryptophyte,94585.2322,,12/14/2022,D26,Dec,2022,Central Delta,CED,Winter
+D26.Dec.2022,Cyanobacterium,12659.9005,,12/14/2022,D26,Dec,2022,Central Delta,CED,Winter
+D26.Dec.2022,Green Alga,49555.8024,,12/14/2022,D26,Dec,2022,Central Delta,CED,Winter
+D26.Dec.2022,Pennate Diatom,121971.2957,,12/14/2022,D26,Dec,2022,Central Delta,CED,Winter
+MD10A.Dec.2022,Centric Diatom,632877.1638,,12/14/2022,MD10A,Dec,2022,Southern Interior Delta,SID,Winter
+MD10A.Dec.2022,Cryptophyte,270797.118,,12/14/2022,MD10A,Dec,2022,Southern Interior Delta,SID,Winter
+MD10A.Dec.2022,Cyanobacterium,6093.9864,,12/14/2022,MD10A,Dec,2022,Southern Interior Delta,SID,Winter
+MD10A.Dec.2022,Euglenoid,42893.6712,,12/14/2022,MD10A,Dec,2022,Southern Interior Delta,SID,Winter
+MD10A.Dec.2022,Green Alga,10536.1704,,12/14/2022,MD10A,Dec,2022,Southern Interior Delta,SID,Winter
+MD10A.Dec.2022,Pennate Diatom,35309.6124,,12/14/2022,MD10A,Dec,2022,Southern Interior Delta,SID,Winter
+P8.Dec.2022,Centric Diatom,189074.224,,12/14/2022,P8,Dec,2022,Southern Interior Delta,SID,Winter
+P8.Dec.2022,Cyanobacterium,24242.9584,,12/14/2022,P8,Dec,2022,Southern Interior Delta,SID,Winter
+P8.Dec.2022,Green Alga,93175.6304,,12/14/2022,P8,Dec,2022,Southern Interior Delta,SID,Winter
+P8.Dec.2022,Pennate Diatom,353733.7712,,12/14/2022,P8,Dec,2022,Southern Interior Delta,SID,Winter
+D22.Dec.2022,Cryptophyte,178486.172,,12/15/2022,D22,Dec,2022,Confluence,CON,Winter
+D22.Dec.2022,Cyanobacterium,24286.5216,,12/15/2022,D22,Dec,2022,Confluence,CON,Winter
+D22.Dec.2022,Green Alga,11407.3056,,12/15/2022,D22,Dec,2022,Confluence,CON,Winter
+D22.Dec.2022,Pennate Diatom,45750.178,,12/15/2022,D22,Dec,2022,Confluence,CON,Winter
+D4.Dec.2022,Centric Diatom,18658.5072,,12/15/2022,D4,Dec,2022,Confluence,CON,Winter
+D4.Dec.2022,Cryptophyte,91284.9066,,12/15/2022,D4,Dec,2022,Confluence,CON,Winter
+D4.Dec.2022,Cyanobacterium,46851.9012,,12/15/2022,D4,Dec,2022,Confluence,CON,Winter
+D4.Dec.2022,Green Alga,112026.8028,,12/15/2022,D4,Dec,2022,Confluence,CON,Winter
+D4.Dec.2022,Pennate Diatom,24949.2597,,12/15/2022,D4,Dec,2022,Confluence,CON,Winter
+EZ2.Dec.2022,Centric Diatom,23045.1984,,12/15/2022,EZ2,Dec,2022,Entrapment Zone,EZ,Winter
+EZ2.Dec.2022,Cryptophyte,204959.2874,,12/15/2022,EZ2,Dec,2022,Entrapment Zone,EZ,Winter
+EZ2.Dec.2022,Cyanobacterium,13523.5296,,12/15/2022,EZ2,Dec,2022,Entrapment Zone,EZ,Winter
+EZ2.Dec.2022,Green Alga,1859.102,,12/15/2022,EZ2,Dec,2022,Entrapment Zone,EZ,Winter
+EZ2.Dec.2022,Pennate Diatom,19682.5237,,12/15/2022,EZ2,Dec,2022,Entrapment Zone,EZ,Winter
+EZ6.Dec.2022,Centric Diatom,49648.254,,12/15/2022,EZ6,Dec,2022,Entrapment Zone,EZ,Winter
+EZ6.Dec.2022,Cyanobacterium,13394.9088,,12/15/2022,EZ6,Dec,2022,Entrapment Zone,EZ,Winter
+EZ6.Dec.2022,Green Alga,84905.9764,,12/15/2022,EZ6,Dec,2022,Entrapment Zone,EZ,Winter
+EZ6.Dec.2022,Pennate Diatom,203317.6244,,12/15/2022,EZ6,Dec,2022,Entrapment Zone,EZ,Winter
+NZ068.Dec.2022,Centric Diatom,24278.336,,12/15/2022,NZ068,Dec,2022,Northern Interior Delta,NID,Winter
+NZ068.Dec.2022,Cryptophyte,4414.1886,,12/15/2022,NZ068,Dec,2022,Northern Interior Delta,NID,Winter
+NZ068.Dec.2022,Cyanobacterium,8731.5984,,12/15/2022,NZ068,Dec,2022,Northern Interior Delta,NID,Winter
+NZ068.Dec.2022,Euglenoid,83676.6232,,12/15/2022,NZ068,Dec,2022,Northern Interior Delta,NID,Winter
+NZ068.Dec.2022,Green Alga,2002.4848,,12/15/2022,NZ068,Dec,2022,Northern Interior Delta,NID,Winter
+NZ068.Dec.2022,Pennate Diatom,72240.595,,12/15/2022,NZ068,Dec,2022,Northern Interior Delta,NID,Winter
+D10.Dec.2022,Centric Diatom,18658.5072,,12/16/2022,D10,Dec,2022,Confluence,CON,Winter
+D10.Dec.2022,Cryptophyte,91284.9066,,12/16/2022,D10,Dec,2022,Confluence,CON,Winter
+D10.Dec.2022,Cyanobacterium,37501.002,,12/16/2022,D10,Dec,2022,Confluence,CON,Winter
+D10.Dec.2022,Green Alga,97080.516,,12/16/2022,D10,Dec,2022,Confluence,CON,Winter
+D10.Dec.2022,Pennate Diatom,195968.4396,,12/16/2022,D10,Dec,2022,Confluence,CON,Winter
+D6.Dec.2022,Centric Diatom,199868.524,,12/16/2022,D6,Dec,2022,San Pablo Bay,SPB,Winter
+D6.Dec.2022,Cyanobacterium,15928.5888,,12/16/2022,D6,Dec,2022,San Pablo Bay,SPB,Winter
+D6.Dec.2022,Green Alga,1593.516,,12/16/2022,D6,Dec,2022,San Pablo Bay,SPB,Winter
+D6.Dec.2022,Pennate Diatom,76005.7848,,12/16/2022,D6,Dec,2022,San Pablo Bay,SPB,Winter
+D8.Dec.2022,Centric Diatom,9329.5984,,12/16/2022,D8,Dec,2022,Grizzly and Suisun Bay,GSB,Winter
+D8.Dec.2022,Cyanobacterium,18702.4896,,12/16/2022,D8,Dec,2022,Grizzly and Suisun Bay,GSB,Winter
+D8.Dec.2022,Green Alga,67325.7156,,12/16/2022,D8,Dec,2022,Grizzly and Suisun Bay,GSB,Winter
+D8.Dec.2022,Pennate Diatom,14630.2606,,12/16/2022,D8,Dec,2022,Grizzly and Suisun Bay,GSB,Winter
+D7.Dec.2022,Centric Diatom,90140.3955,,12/19/2022,D7,Dec,2022,Grizzly and Suisun Bay,GSB,Winter
+D7.Dec.2022,Cryptophyte,224914.0182,,12/19/2022,D7,Dec,2022,Grizzly and Suisun Bay,GSB,Winter
+D7.Dec.2022,Cyanobacterium,48342.7419,,12/19/2022,D7,Dec,2022,Grizzly and Suisun Bay,GSB,Winter
+D7.Dec.2022,Green Alga,15097.806,,12/19/2022,D7,Dec,2022,Grizzly and Suisun Bay,GSB,Winter
+D7.Dec.2022,Pennate Diatom,32709.2073,,12/19/2022,D7,Dec,2022,Grizzly and Suisun Bay,GSB,Winter
+NZ032.Dec.2022,Centric Diatom,125286.6588,,12/19/2022,NZ032,Dec,2022,Grizzly and Suisun Bay,GSB,Winter
+NZ032.Dec.2022,Cyanobacterium,47322.0828,,12/19/2022,NZ032,Dec,2022,Grizzly and Suisun Bay,GSB,Winter
+NZ032.Dec.2022,Green Alga,2409.0824,,12/19/2022,NZ032,Dec,2022,Grizzly and Suisun Bay,GSB,Winter
+NZ032.Dec.2022,Pennate Diatom,389233.546,,12/19/2022,NZ032,Dec,2022,Grizzly and Suisun Bay,GSB,Winter
+NZS42.Dec.2022,Centric Diatom,586234.9656,,12/19/2022,NZS42,Dec,2022,Grizzly and Suisun Bay,GSB,Winter
+NZS42.Dec.2022,Cyanobacterium,44869.8784,,12/19/2022,NZS42,Dec,2022,Grizzly and Suisun Bay,GSB,Winter
+NZS42.Dec.2022,Green Alga,167727.3312,,12/19/2022,NZS42,Dec,2022,Grizzly and Suisun Bay,GSB,Winter
+D41.Dec.2022,Centric Diatom,45270.6146,,12/20/2022,D41,Dec,2022,San Pablo Bay,SPB,Winter
+D41.Dec.2022,Cryptophyte,35241.5214,,12/20/2022,D41,Dec,2022,San Pablo Bay,SPB,Winter
+D41.Dec.2022,Cyanobacterium,11836.6128,,12/20/2022,D41,Dec,2022,San Pablo Bay,SPB,Winter
+D41.Dec.2022,Green Alga,36813.0924,,12/20/2022,D41,Dec,2022,San Pablo Bay,SPB,Winter
+D41.Dec.2022,Pennate Diatom,11138.9886,,12/20/2022,D41,Dec,2022,San Pablo Bay,SPB,Winter
+D41A.Dec.2022,Centric Diatom,140078.0841,,12/20/2022,D41A,Dec,2022,San Pablo Bay,SPB,Winter
+D41A.Dec.2022,Cyanobacterium,17248.95,,12/20/2022,D41A,Dec,2022,San Pablo Bay,SPB,Winter
+D41A.Dec.2022,Green Alga,62428.422,,12/20/2022,D41A,Dec,2022,San Pablo Bay,SPB,Winter
+D41A.Dec.2022,Pennate Diatom,217072.2861,,12/20/2022,D41A,Dec,2022,San Pablo Bay,SPB,Winter
+NZ002.Dec.2022,Centric Diatom,1555678.245,,12/20/2022,NZ002,Dec,2022,San Pablo Bay,SPB,Winter
+NZ002.Dec.2022,Cryptophyte,6042.3412,,12/20/2022,NZ002,Dec,2022,San Pablo Bay,SPB,Winter
+NZ002.Dec.2022,Cyanobacterium,10787.5952,,12/20/2022,NZ002,Dec,2022,San Pablo Bay,SPB,Winter
+NZ002.Dec.2022,Green Alga,50485.2096,,12/20/2022,NZ002,Dec,2022,San Pablo Bay,SPB,Winter
+NZ004.Dec.2022,Centric Diatom,123406.519,,12/20/2022,NZ004,Dec,2022,San Pablo Bay,SPB,Winter
+NZ004.Dec.2022,Cyanobacterium,16473.8592,,12/20/2022,NZ004,Dec,2022,San Pablo Bay,SPB,Winter
+NZ004.Dec.2022,Green Alga,4576.072,,12/20/2022,NZ004,Dec,2022,San Pablo Bay,SPB,Winter
+NZ325.Dec.2022,Centric Diatom,207730.17,,12/20/2022,NZ325,Dec,2022,San Pablo Bay,SPB,Winter
+NZ325.Dec.2022,Cryptophyte,140735.7495,,12/20/2022,NZ325,Dec,2022,San Pablo Bay,SPB,Winter
+NZ325.Dec.2022,Cyanobacterium,6897.042,,12/20/2022,NZ325,Dec,2022,San Pablo Bay,SPB,Winter
+NZ325.Dec.2022,Green Alga,1270.827,,12/20/2022,NZ325,Dec,2022,San Pablo Bay,SPB,Winter
+NZ325.Dec.2022,Pennate Diatom,5413.905,,12/20/2022,NZ325,Dec,2022,San Pablo Bay,SPB,Winter

@@ -142,12 +142,12 @@ df_phyto$RegionAbbv <- factor(as.character(df_phyto$RegionAbbv), levels = region
 
 ```{r combine}
 df_phyto_type <- df_phyto %>% 
-  group_by(SampleDate,StationCode,Month,Year,Region,RegionAbbv,AlgalType) %>% 
+  group_by(SampleDate,StationCode,Month,Year,Season,Region,RegionAbbv,AlgalType) %>% 
   summarize(across(Units.per.mL:BV.um3.per.mL, ~sum(.x, na.rm = TRUE))) %>% 
   ungroup()
 
 df_phyto_gen <- df_phyto %>% 
-  group_by(SampleDate,StationCode,Month,Year,Region,RegionAbbv,Genus) %>% 
+  group_by(SampleDate,StationCode,Month,Year,Season,Region,RegionAbbv,Genus) %>% 
   summarize(across(Units.per.mL:BV.um3.per.mL, ~sum(.x, na.rm = TRUE))) %>% 
   ungroup()
 
