@@ -1,0 +1,108 @@
+---
+title: "Sonde Uptime for Table 5 Stations in D-1641"
+author: "Ted Flynn"
+date: "2023-06-02"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(lubridate)
+library(janitor)
+library(here)
+library(cder)
+
+# Set output directory 
+output <- here("01_WaterQuality","D1641-table5-sonde-uptime","output")
+
+# Set visual theme in ggplot
+theme_set(theme_bw())
+
+# Suppress summarise info
+options(tidyverse.quiet = TRUE)
+options(dplyr.summarise.inform = FALSE)
+
+# Create date variables --------------------------------------------------------
+start <- as.Date("2022-01-01")
+end <- as.Date("2022-12-31")
+
+```
+
+## Import sonde data from CDEC
+
+```{r import}
+# Pull non-QA'd data from CDEC
+df_flow <- cdec_query("OBI", sensors = c(100,25,221), 
+                    start.date = start, 
+                    end.date = end)
+
+df_flow <- df_flow %>% 
+  select(StationID,SensorType,DateTime,Value)
+
+df_flow <- df_flow %>%
+  mutate(Year = year(df_flow$DateTime)) %>%
+  mutate(Month = month(df_flow$DateTime, label = TRUE)) %>%
+  mutate(Date = date(df_flow$DateTime)) %>% 
+  mutate(Julian = yday(df_flow$DateTime))
+
+# Change sonde names to more complete
+
+# unique(df_flow$SensorType)
+
+df_flow <- df_flow %>% 
+  mutate(SensorType = str_replace(SensorType, "EL COND", "EC")) %>% 
+  mutate(SensorType = str_replace(SensorType, "TEMP W", "Water Temp")) %>% 
+  mutate(SensorType = str_replace(SensorType, "TURB WF", "Turb"))
+
+```
+
+## Summarize data
+```{r summarize data}
+
+df_flow_mean <- df_flow %>% 
+  group_by(StationID,SensorType,Date) %>% 
+  summarise(Mean_Value = mean(Value)) %>% 
+  ungroup()
+
+```
+
+## Categorize days when data is available
+```{r categorize}
+
+df_flow_mean <- df_flow_mean %>% 
+  mutate(Status = case_when(is.na(Mean_Value) ~ "Down",
+                            TRUE ~ "Up"))
+
+df_flow_sum <- df_flow_mean %>% 
+  group_by(StationID,SensorType) %>%
+  count(Status) %>% 
+  ungroup()
+
+```
+
+## Plot Status
+```{r plotting}
+p_status <- ggplot(df_flow_sum, aes(x = SensorType,
+                                     y = n,
+                                     fill = Status)) +
+  geom_col() +
+  labs(x = NULL,
+       y = "Days",
+       fill = "Sonde Status",
+       title = "Water Quality Sensor Status - OBI - 2022")
+
+p_status +
+  scale_fill_brewer(palette = "Set1")
+
+ggsave(path = output,
+       filename = "OBI-sonde-status-2022.png",
+       device = "png",
+       scale=1.0,
+       units="in",
+       height=3,
+       width=5,
+       dpi="print")
+```
+
