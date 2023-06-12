@@ -57,18 +57,18 @@ df_wq$Station <- unlist(lapply(df_wq$Station, function(x) if(x %in% names(statio
 df_wq$Date <- as.Date(df_wq$DateTime, format = '%m/%d/%Y %H:%M')
 df_wq$Time <- format(as.POSIXct(df_wq$DateTime, format = '%m/%d/%Y %H:%M'), '%H:%M:%S')
 
-# combine DOC, TOC, TSS, and VSS columns (EPA and Std methods)
-df_wq <- df_wq %>%
-  mutate(
-    DOC = case_when(is.na(DOC_EPA) ~ DOC_Std,
-                    TRUE ~ DOC_EPA),
-    TOC = case_when(is.na(TOC_EPA) ~ TOC_Std,
-                    TRUE ~ TOC_EPA),
-    TSS = case_when(is.na(TSS_EPA) ~ TSS_Std,
-                    TRUE ~ TSS_EPA),
-    VSS = case_when(is.na(VSS_EPA) ~ VSS_Std,
-                    TRUE ~ VSS_EPA),
-  )
+# # combine DOC, TOC, TSS, and VSS columns (EPA and Std methods)
+# df_wq <- df_wq %>%
+#   mutate(
+#     DOC = case_when(is.na(DOC_EPA) ~ DOC_Std,
+#                     TRUE ~ DOC_EPA),
+#     TOC = case_when(is.na(TOC_EPA) ~ TOC_Std,
+#                     TRUE ~ TOC_EPA),
+#     TSS = case_when(is.na(TSS_EPA) ~ TSS_Std,
+#                     TRUE ~ TSS_EPA),
+#     VSS = case_when(is.na(VSS_EPA) ~ VSS_Std,
+#                     TRUE ~ VSS_EPA),
+#   )
 
 # check that missing column names make sense
 print(colnames(df_edi)[colnames(df_edi) %!in% colnames(df_wq)])
@@ -84,36 +84,50 @@ df_wq[setdiff(colnames(df_edi), colnames(df_wq))] <- NA
 ```
 
 ```{r}
-# join dfs
-df_join <- rbind(df_edi, df_wq)
-
 # remove lab duplicates
-cols_signs <- names(df_join)[grepl('_Sign',names(df_join))]
+cols_signs <- names(df_wq)[grepl('_Sign',names(df_wq))]
 cols_nosigns <- sub('_Sign','',cols_signs)
 
-df_join <- df_join %>%
+df_wq <- df_wq %>%
   mutate(
     across(all_of(cols_nosigns),
            ~ str_split(.x, ',', simplify = TRUE)[,1]))
 
 # add sign to RL columns
-df_join <- df_join %>%
+df_wq <- df_wq %>%
   mutate(
     across(ends_with('_Sign'),
            ~ case_when(grepl('<',get(sub('_Sign','',cur_column()))) ~ '<',
                    TRUE ~ '=')))
 
 # remove sign from analyte columns
-df_join <- df_join %>%
+df_wq <- df_wq %>%
   mutate(
     across(all_of(cols_nosigns),
            ~ sub('<','',.)))
+
+df_wq <- df_wq %>%
+    mutate(
+    across(c(all_of(cols_nosigns), NorthLat, WestLong, Secchi, SpCndBottom,DOBottom,DOpercentBottom,WTBottom,TurbidityBottom_FNU,pHBottom),
+           as.numeric))
+
+# join dfs
+df_join <- rbind(df_edi, df_wq)
 ```
+
+```{r}
+# test data is same as previous EDI publication for previous years
+df_test <- df_join %>% subset(year(Date) < 2022)
+
+identical(df_test, df_edi)
+all.equal(df_test, df_edi)
+```
+
 
 ```{r}
 # export csv
 # get year
 year <- year(Sys.Date())-1
 
-write_csv(df_join,paste0('01_WaterQuality/edi-annual-updates/data/final/SACSJ_delta_water_quality_1975_',year,'.csv'))
+write_csv(df_join,paste0('01_WaterQuality/edi-annual-updates/data/final/EMP_DWQ_1975_',year,'.csv'))
 ```

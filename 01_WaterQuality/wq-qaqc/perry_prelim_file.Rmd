@@ -1,0 +1,48 @@
+Title:
+Author:
+Description:
+Date Modified:
+
+
+```{r}
+# import packages
+library(tidyverse)
+library(readxl)
+
+# import data
+df_raw <- read_excel('01_WaterQuality/wq-qaqc/raw-data/test-import.xlsx', skip = 1) # skip lets us skip the first row, which is just the lab data line
+```
+Oh no! It imported blank columns, which we don't want. So, we must **subset** the data.
+Google has told us to use subset :)
+
+```{r}
+colnames(df_raw)
+```
+Any function used after the pipe will use the dataframe (or object) before the pipe.
+```{r}
+df_raw <- df_raw %>% select(-contains('...'))
+```
+
+
+# Subset blanks!
+We see that blanks are indicated in the "Sample Type" column, so we can use that.
+First, lets double check that there's no typos or anything else that could be "blank" in that column
+
+```{r}
+unique(df_raw$`Sample Type`)
+```
+Hmmm, that sample type is bad. Also the NAs?
+We checked, we understand, it's the extra columns. We will ignore that for now.
+
+```{r}
+df_test <- df_raw %>% subset(`Sample Type` == 'Blank; Equipment')
+```
+
+It works, but the field data is really messing things up :(
+
+```{r}
+print('hi')
+
+print('second hi')
+```
+

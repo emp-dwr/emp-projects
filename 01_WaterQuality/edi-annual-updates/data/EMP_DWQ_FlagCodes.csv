@@ -1,0 +1,6 @@
+﻿Flag Code,Description
+1,blank above reporting limit
+2,"duplicate pair flagged as an outlier (Perry & Perry, in prep.)"
+3,fair sonde rating
+4,poor sonde rating
+5,no QC sample
