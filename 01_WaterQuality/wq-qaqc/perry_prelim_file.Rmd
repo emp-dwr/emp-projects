@@ -1,48 +1,124 @@
-Title:
-Author:
-Description:
-Date Modified:
+|                                                                                        |
+|------------------------------------------------------------------------|
+| Title: Monthly D-WQ Review and Formatting (Prelim)                                     |
+| Authors: Sarah Perry & Morgan Battey                                                   |
+| Description: preliminary practice version of reusable code to format monthly D-WQ data |
+| Date Modified: 6/19/23                                                                 |
 
+Goal is to have 4 sheets in an Excel notebook: - laboratory data - blank data - duplicate data - field data (Perry doesn't do this, but! Can be a good idea to first write out exactly what columns you need, how you'd differentiate them, etc. etc. before starting. That way, you know your general flow before you even start writing code.)
+
+# Prelim: some basic R stuff
 
 ```{r}
+# str is the structure function. it will print the data type of the argument you put in it
+str("text contained within quotations (shows up as blue by default) is a data type called 'character'")
+
+# this 2 is in quotes. is it a character or a number data type?
+str("2")
+str(2)
+```
+R is silly. Sometimes, when working with dataframes, you can write them out as character strings. However, sometimes you need to keep it in "object type".
+**Character strings can have spaces. Objects cannot. If your object name (ie. a column name) has a space, you must put backticks (`) around it.** Text in backticks will not turn blue.
+
+
+# Step 1: Import Data
+
+(side note: formatting outside of code blocks is done in *markdown*)
+
+```{r message = FALSE}
 # import packages
 library(tidyverse)
 library(readxl)
 
 # import data
-df_raw <- read_excel('01_WaterQuality/wq-qaqc/raw-data/test-import.xlsx', skip = 1) # skip lets us skip the first row, which is just the lab data line
+df_raw <- read_excel('01_WaterQuality/wq-qaqc/raw-data/test-import.xlsx') # skip lets us skip the first row, which is just the lab data line
+head(df_raw)
 ```
-Oh no! It imported blank columns, which we don't want. So, we must **subset** the data.
-Google has told us to use subset :)
+
+Oh no! It imported blank columns, which we don't want. So, we must **subset** the data. Google has told us to use subset :)
+
+```{r}
+df_raw <- read_excel('01_WaterQuality/wq-qaqc/raw-data/test-import.xlsx', skip = 1) # skip lets us skip the first row, which is just the lab data line skip = 1
+head(df_raw)
+```
+
+Now we need to check the columns
 
 ```{r}
 colnames(df_raw)
 ```
-Any function used after the pipe will use the dataframe (or object) before the pipe.
+
+Oh no! We have columns that end in "...". Looking at them, they have no data. We need to remove these, but we want this to be reusable, so we don't want to type out the column names.
+
+The easiest way to do this is to **select** the columns that *do not* **contain** the string "...".
+
 ```{r}
+# Any function used after the pipe will use the dataframe (or object) before the pipe.
 df_raw <- df_raw %>% select(-contains('...'))
+
+colnames(df_raw)
 ```
 
+# Step 2 (Maybe???): Subset Blanks
 
-# Subset blanks!
-We see that blanks are indicated in the "Sample Type" column, so we can use that.
-First, lets double check that there's no typos or anything else that could be "blank" in that column
+Our goal is to have four different Excel tabs. We will do this by creating 4 separate dataframes, one for each tab, that contains the relevant info. Let's look at our data to see how we can differentiate it.
+
+We see that blanks are indicated in the "Sample Type" column, so we can use that. First, lets double check that there's no typos or anything else that could be "blank" in that column
 
 ```{r}
+# if your column name contains a space, R will break where the space is
 unique(df_raw$`Sample Type`)
 ```
-Hmmm, that sample type is bad. Also the NAs?
-We checked, we understand, it's the extra columns. We will ignore that for now.
+
+Hmmm, that Sample Type is bad. Also the NAs? We don't like those things, but for now, We will ignore them for learning purposes.
+
+What we want to do now is **subset** our data frame by taking the rows where the `Sample Type` column is **equal to (==)** `Blank; Equipment`.
+
+\*sidenote: when manipulating raw data, I like to create a test copy of the object (in this case, a dataframe) I am working on. That way, if I mess it up, I don't have to re-import it.
 
 ```{r}
 df_test <- df_raw %>% subset(`Sample Type` == 'Blank; Equipment')
 ```
 
-It works, but the field data is really messing things up :(
+(We're going to look at this data from the Environment Pane.) It works, but the field data is really messing things up :(
+
+We realize that we're not going down a great path; the code we would need to write to fix these issues wouldn't be complicated and not based on the actual data. Therefore, we will go back and start from df_raw again (normally, you could just delete the above code if you're sure it's bad; **HOWEVER**, once you delete a code chunk, you cannot get it back. Instead, you can comment it out (ctrl+shift+c)).
+
+# Step 2 (Real): Subset Out Lab Data
+
+We realize we first need to subset the laboratory data. What we want is two *mutually exclusive* data frames. One (Field) will have all the rows below the row where `Station Name == '<<<Field Results>>>'`. The other (Lab) will be all the rows above that.
+
+Let's first make sure our logic to subset the row that contains "<<<Field Results>>>" works.
+```{r}
+df_test <- df_raw %>% subset(`Station Name` == `<<<Field Results>>>`)
+```
+Oh no! An error! It's saying Field Results is not an object. Looking at our Environment Pane, we can see that that is true, because it doesn't exist there (all objects will exist in the Environment Pane). The issue, we know, is we used backticks (which define the object data type) instead of quotes (which define the character data type)
 
 ```{r}
-print('hi')
+df_test <- df_raw %>% subset(`Station Name` == '<<<Field Results>>>')
 
-print('second hi')
+print(df_test)
+```
+Yay! Our logic worked! And, most importantly, it's dependent on names and not row numbers.
+
+Now to make our dataframes. Important concept, what you see in the visual display of a dataframe is not its actual structure (hence why you can just click on columns to sort them however).
+
+https://www.google.com/search?q=read_csv+skip+until+condition+met+tidyverse&sxsrf=APwXEdcTG1P871BOfyk0v0rbBZ-B6jkjQQ%3A1687217640281&ei=6OWQZKnlEPmF0PEPt9uwsAE&ved=0ahUKEwip-e3Av9D_AhX5AjQIHbctDBYQ4dUDCBE&uact=5&oq=read_csv+skip+until+condition+met+tidyverse&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIFCCEQoAE6CggAEEcQ1gQQsAM6BAgjECc6BQghEKsCSgQIQRgAUKcGWKwRYJwSaAFwAXgAgAGPAYgBygiSAQMwLjmYAQCgAQHAAQHIAQg&sclient=gws-wiz-serp
+
+https://stackoverflow.com/questions/6592219/read-csv-from-specific-row
+```{r}
+
+row.names(df_raw %>% subset(`Station Name` == '<<<Field Results>>>'))
+
+df_raw[df_raw$`Station Name` == '<<<Field Results>>>',]
+```
+```{r}
+library(sqldf)
+df_test2 <- read.csv.sql('01_WaterQuality/wq-qaqc/raw-data/test-import.xlsx', sql = 'select * from file where `Station Name` == "<<< Field Results >>>"')
+```
+
+```{r}
+# subsetting convention: row, column
+df_raw[1,3]
 ```
 
