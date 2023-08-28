@@ -1,0 +1,35 @@
+﻿Field_Old,Field_New
+Station Name,Station Name
+Station Number,Station Number
+Sample Date,Date
+Sample Code,Sample Code
+Sample Depth,Sample Depth
+Sample Description,Sample Description
+Sample Type,Sample Type
+Parent Sample Code,Parent Sample Code
+"(Bottom) Chlorophyll Fluorescence RFU Fluorescence, Sonde - [1]*",(B) Chlorophyll Fluorescence RFU 
+"(Bottom) Chlorophyll Fluorescence ug/L of Chl Fluorescence, Sonde - [1]*",(B) Chlorophyll Fluorescence ug/L 
+"Chlorophyll Fluorescence RFU Fluorescence, Sonde - [1]*",Chlorophyll Fluorescence RFU
+"Chlorophyll Fluorescence ug/L of Chl Fluorescence, Sonde - [1]*",Chlorophyll Fluorescence ug/L
+Chlorophyll Volume mL Chlorophyll Volume Filtered - [1]*,Chlorophyll Volume
+(Bottom) Specific Conductance µmhos/cm@25°C EPA 120.1 (Field) - [1]*,(B) Specific Conductance
+Specific Conductance µmhos/cm@25°C EPA 120.1 (Field) - [1]*,Specific Conductance
+Field Notes Notes (Field) - [1]*,Field Notes
+North Latitude Decimal Degrees GPS Location - [1]*,North Latitude
+West Longitude Decimal Degrees GPS Location - [1]*,West Longitude
+Microcystis aeruginosa Field Observations (Water) - [1]*,Microcystis Score
+(Bottom) Dissolved Oxygen % Saturation ASTM Method D888-09-C (Field) - [1]*,(B) Dissolved Oxygen % Saturation
+(Bottom) Dissolved Oxygen mg/L ASTM Method D888-09-C (Field) - [1]*,(B) Dissolved Oxygen mg/L
+Dissolved Oxygen % Saturation ASTM Method D888-09-C (Field) - [1]*,Dissolved Oxygen % Saturation
+Dissolved Oxygen mg/L ASTM Method D888-09-C (Field) - [1]*,Dissolved Oxygen mg/L
+Secchi Depth Centimeters Secchi Depth - [1]*,Secchi Depth
+(Bottom) Water Temperature °C EPA 170.1 (Field) - [1]*,(B) Water Temperature
+"Air Temperature °F Temperature, Air - [1]*",Air Temperature
+Water Temperature °C EPA 170.1 (Field) - [1]*,Water Temperature
+(Bottom) Turbidity F.N.U. EPA 180.1 (Field) - [1]*,(B) Turbidity
+Turbidity F.N.U. EPA 180.1 (Field) - [1]*,Turbidity
+Water Depth at Station Feet Depth of Water Column - [1]*,Water Depth
+Weather Observations Weather Observations - [1]*,Weather Observations
+Wind Velocity Miles/hr Wind Velocity - [1]*,Wind Velocity
+(Bottom) pH pH Units EPA 150.1 (Field) - [1]*,(B) pH
+pH pH Units EPA 150.1 (Field) - [1]*,pH

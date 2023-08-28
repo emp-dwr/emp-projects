@@ -1,0 +1,66 @@
+# Part 1: Intro
+
+Before we start, let's talk about some basic tenants of coding.
+
+Coding is essentially a way to solve a giant puzzle (eg. I want to take this input Excel file and output a modified one; how do I do that?). This question is made up of smaller puzzles (eg. how do I create an Excel sheet with only blank data?), which, in turn, has even more puzzles (eg. how do I subset blanks in a data frame?) etc. etc.
+
+### Tenets Part 1
+
+Therefore, it's best to approach every step of script writing as solving a small puzzle. Four things to keep in mind (note, however, that these are just guidelines):
+
+-   You want the logic of your code *to be explainable by your dataset*. This helps with readability, reproducibility, and catching errors.
+
+    -   An example: I have a data frame where column `Fruit` is fruits and column `Color` is the common color associated with them. If I subset `df[2,2]`, do you know what color I get? What if I subset by `df %>% subset(fruit == 'banana')`?
+
+-   For every question, ask yourself: is my solution **mutually exclusive**? ie., will the output always be the product I want, and nothing else?
+
+-   You don't want to duplicate code. This can increase errors, especially if you need to change something later. You can solve this by either re-evaluating your process or writing functions (but that's more advanced). However, if you need to do it, that's okay.
+
+-   If you find yourself writing code that violates these tenets, while it might still work, that might indicate it's time to take a step back and re-evaluate how you're approaching the puzzle. **Coding is not a sequential process; do not be afraid to go backward. It does not mean you wasted time.**
+
+-   **GOAL OF FOLLOWING THESE TENETS: to end up with a logic question that is easy to Google and will give you the coding results you want**
+
+These tenets work no matter sort of coding your doing, but is especially applicable when working with data frames. Let's do a worked example based on our data.
+
+## Thought Experiment
+
+TODO: re-write with actual example
+
+Let's look at the data again from where we left off.
+
+```{r message = FALSE}
+# import packages
+library(tidyverse)
+library(readxl)
+
+# import data
+df_raw <- read_excel('01_WaterQuality/wq-qaqc/raw-data/test-import.xlsx', skip = 1) # skip initial row; can do "1" because we know with 100% certainty it's always the first row
+
+df_raw <- df_raw %>% select(-contains('...')) # remove columns containing '...'; know with 100% certainty that those columns are blanks
+
+df_test <- df_raw %>% subset(`Sample Type` == 'Blank; Equipment') # filter by Blanks
+```
+
+We know we can't easily go back and subset by "\<<Field Results>\>". What else could we do?
+
+Well, we could use the logic "Chla is always NA for field data, so if we use the logic `!is.na(df$Chla)`, then we will only get lab results back! However, is this actually **mutually exclusive**? What if the Chla samples were ruined one day, so no result was entered? In that case, by excluding `is.na(Chla)`, we could be excluding lab data. So the answer is **no**.
+
+Well, taking that a step further, every lab column is NA for field data. So how about we use the logic `is.na(<all lab columns>)`? Is that mutually exclusive? (no).
+
+There is the possibility that a catastrophic failure happened during sampling (maybe all our bottles broke), and in that case, all the lab entries would be NA for lab data. Therefore, this logic solution is still not mutually exclusive. However, events like those are incredibly rare, so can we still use this logic?
+
+### Tenets Part 2
+
+This leads to our next set of tenets. If your solution is *almost* completely mutually exclusive (ME), ask yourself:
+
+-   are there checks we can put in place to flag when a non-ME event occurs (either in the code or in real life)? (In this example, yes.)
+
+-   if our code tells us the results are not ME, this is useful information, because we now know with 100% certainty that the flagged data is 1) not ME and 2) not what we want. Given this information, is there a further differentiator we could use to distinguish our output?
+
+-   repeat this process until satisfied with the level of ME
+
+While these tenets are important, and very useful, once you start going through this loop, you run the risk of writing code that is too complex, messy, and not based on the dataset itself. So, before diving into this, **let's take a step back again and re-evaluate**.
+
+### Re-evaluate
+
+*(Will re-write this with simpler example)*

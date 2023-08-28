@@ -1,31 +1,12 @@
-# Intro
+# Goal:
+Excel notebook with 4 sheets
+- Lab
+- Blanks
+- Duplicates
+- Field
+# Part 1: Read in and Clean Data
 
-Last time, we ended with a major issue: we didn't know how to grab all the rows below a certain one, and Google wasn't helping. We couldn't figure out a way to write a logical statement to grab the data we want.
-
-Before looking for a solution, let's take a step back and talk about some basic tenants of coding.
-
-Coding is essentially a giant puzzle (I want to take this input Excel file and output a different one; how do I do that?). This question is made up of smaller puzzles (how do I create an Excel sheet with only blank data?), which, in turn, has even more puzzles (how do I subset blanks in a data frame?) Etc. etc.
-
-### Tenets 1
-
-Therefore, it's best to approach every step of script writing as solving a small puzzle. Three things to keep in mind:
-
--   You want the logic of your code *to be explainable by your dataset*. This helps with readability, reproducibility, and catching errors.
-
-    -   An example: I have a data frame where column `Fruit` is fruits and column `Color` is the common color associated with them. If I subset `df[2,2]`, do you know what color I get? What if I subset by `df %>% subset(fruit == 'banana')`?
-
--   For every question, ask yourself: is my solution **mutually exclusive**? Ie., will the output always be the product I want, and nothing else?
-
--   If you find yourself writing code that violates these two tenets, while it might still work, that might indicate it's time to take a step back and re-evaluate how you're approaching the puzzle.
-
-- **GOAL OF TENETS: to end up with a logic question that is easy to Google and will give you the coding results you want**
-
-These tenets work no matter sort of coding your doing, but is especially applicable when working with data frames. Let's do a worked example based on our data.
-
-## Thought Experiment
-
-Let's look at the data again from where we left off.
-
+# TODO: found out the old ... columns were real data, need to fix
 ```{r message = FALSE}
 # import packages
 library(tidyverse)
@@ -36,114 +17,71 @@ df_raw <- read_excel('01_WaterQuality/wq-qaqc/raw-data/test-import.xlsx', skip =
 
 df_raw <- df_raw %>% select(-contains('...')) # remove columns containing '...'; know with 100% certainty that those columns are blanks
 
-df_test <- df_raw %>% subset(`Sample Type` == 'Blank; Equipment') # filter by Blanks
+df_raw <- df_raw %>% 
+  mutate(id = row_number())
+```
+```{r}
+str(df_raw)
 ```
 
-We know we can't easily go back and subset by "\<<Field Results>\>". What else could we do?
-
-Well, we could use the logic "Chla is always NA for field data, so if we use the logic `!is.na(df$Chla)`, then we will only get lab results back! However, is this actually **mutually exclusive**? What if the Chla samples were ruined one day, so no result was entered? In that case, by excluding `is.na(Chla)`, we could be excluding lab data. So the answer is **no**.
-
-Well, taking that a step further, every lab column is NA for field data. So how about we use the logic `is.na(<all lab columns>)`? Is that mutually exclusive? (no).
-
-There is the possibility that a catastrophic failure happened during sampling (maybe all our bottles broke), and in that case, all the lab entries would be NA for lab data. Therefore, this logic solution is still not mutually exclusive. However, events like those are incredibly rare, so can we still use this logic?
-
-### Tenets 2
-
-This leads to our next set of tenets. If your solution is *almost* completely mutually exclusive (ME), ask yourself:
-
--   are there checks we can put in place to flag when a non-ME event occurs? (Either in the code or in real life) (yes)
-
--   if the code flags that they're not ME, this is useful information, because We now have 100% certainty that the flagged data is 1) not ME and 2) not what we want. Given this information, is there a further differentiator we could use to distinguish them?
-
--   repeat this process until satisfied with the level of ME
-
-While these tenants are important, and very useful, once you start going through this loop, you run the risk of writing code that is too complex, messy, and not based on the dataset itself. So, before diving into this, **let's take a step back again and re-evaluate**.
-
-### Re-evaluate
-
-Our core puzzle is we want a way to subset field data. It still would be easiest if we could just grab all the data below a certain row; `df %>% subset(<a differentiator> >= <the value @ that column that gives us the Field Result row>)`. We couldn't do this solely by filtering, because the output:
+# Part 2: Split Field and Lab
 
 ```{r}
-print(df_raw %>% subset(`Station Name` == '<<<Field Results>>>'))
+vari_id <- df_id$id[df_id$`Station Name` == '<<<Field Results>>>'][[1]]
+
+df_field <- df_raw %>% subset(id > vari_id) # vari_id is id element for the row that starts the field data
+df_lab <- df_raw %>% subset(id < vari_id)
 ```
 
-doesn't give us a differentiator that we could use to subset the rows below it. We need some sort of numerical list...like an index.... Then the logic `Field Data = df %>% subset(<id row> >= <id number>)` would work. Let's Google if adding an index is possible:
 
-<https://stackoverflow.com/questions/23518605/add-an-index-numeric-id-column-to-large-data-frame>
+Now that we have field and lab, let's look at them.
 
-(I looked up "read_csv skip until condition met tidyverse")
+**For Lab**
+- think about how to deal with lab dupes
+    - do the RPD calcs in the same sheet? add them to their own sheet? do them in a separate column?
+    
+    - currently, add another row below the parent and the dupe and have it be the RPD
+    
+    
+- fix up names (uploaded csvs)
 
+**For Field**
+- first row is actually column names
+- rename columns
+
+## Reassign column names
 ```{r}
-# !add index row so that we can pull the "Field Results" row and everything below it
-
-
-df_test <- df_raw %>%
-  mutate(id = row_number()) %>% # add index column
-  relocate(id, .before = `Station Name`) # relocate to before Station Name, which we're 99% certain will be the first col
-  
-
-print(df_test %>% subset(`Station Name` == '<<<Field Results>>>'))
+# assign column names to the first row of the dataframe
+colnames(df_field) <- df_field[1,]
 ```
 
-Nice! However, this doesn't mean the data is sequentially listed as we see it in the viewer. There are fancy ways to check this. However, for now, we know that the next row should be the column names; so let's subset by that index value and check:
-
+## Rename column headers
 ```{r}
-# subset notation is [row,column]; don't have to put a value in either if not neeeded
-df_test[42,] # 42 because it's the one below our <<<Field Results>>> column. we know what it should be if our data is structred correctly
+df_headers <- read_csv('01_WaterQuality/wq-qaqc/WDL_Column_Headers.csv')
+df_headers <- df_headers %>% select(-contains('...')) 
+
+# we know in this case that the order is correct, but need to double check
+# we are NOT FUTURE PROOFING this code right now
+
+# if you want to turn a tibble into a vector, use [[1]]
+colnames(df_field) <- df_headers[,2][[1]]
 ```
-
-Yup, that's what we expected!
-
-While a little messy, we do have logic now that - is fairly readable (especially with comments) and mostly based on data - is mutually exclusive
-
-```{r}
-df_test2 <- df_test %>% subset(id >= 41) # we want a different variable to input than 41, because 41 is not resuable
-```
-
-We know "41" is meaningless; it represents something. Specifically, it is the *variable* in the ID column when `Station Name ==`\<\<<Field Results>\>\>\``.
-
-```{r}
-vari_id <- df_test %>% subset(`Station Name` == '<<<Field Results>>>', select = c(id))
-vari_id
-```
-Yay! We have the 41! But it looks kind of weird, why is the ID column still there??? Let's check if it's acutally 41
 
 ```{r}
 
 ```
-It says true, but in this weird way. Why is there still id? What is that [1,]? Hm. Let's check the type
 
-```{r}
-typeof(vari_id)
-```
-!! Oh no, it's a list!
 
-```{r}
-typeof(41) == typeof(vari_id)
-```
-This isn't the number 41! It's a list that contains the number. How do we extract it?
-```{r}
-unlist(vari_id)
-```
+# Part 3: Fix up Field Data
 
-```{r}
-typeof(unlist(vari_id))
-```
-```{r}
-41 == vari_id
-```
-Still not there. We googled "extract variable out of tibble r" (https://statisticaloddsandends.wordpress.com/2018/10/16/extracting-elements-from-a-tibble/). It told us to use [[]] or $. So let's do that.
 
-```{r}
-vari_id <- vari_id[[1]] # 1 because we know it is the first element of vari_id; can check by looking at the vari_id table
-```
+# Part 4: Fix up Lab Data
 
-```{r}
-print(41 == vari_id)
-print(typeof(41) == typeof(vari_id)) # this prints FALSE; don't worry; very technical issue, but integers and doubles are both numbers, that's what matters
-```
-```{r}
-df_field <- df_test %>% subset(id > vari_id) # vari_id is id element for the row that starts the field data
-df_lab <- df_test %>% subset(id < vari_id)
-```
 
+# Part 5: Recombine Data
+
+
+# Part 6: Split out Blanks
+
+
+# Part 7: Split out Duplicates

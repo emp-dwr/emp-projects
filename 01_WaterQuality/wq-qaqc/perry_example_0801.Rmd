@@ -1,0 +1,151 @@
+# Goal/General Plan:
+
+Excel notebook with 4 sheets
+
+Part 1: - Split Lab and Field
+
+Part 2: - Fix up Lab and Field
+
+Part 3: - Merge back together
+
+Part 4: - Split blanks and duplicates
+
+## Specifics
+
+-   Fix up Lab
+
+    -   delete columns with `…` in names
+
+-   Fix up Field
+
+    -   Splice based on `Station Name == '<< Field Results >>>'`
+
+    -   Rename columns
+
+    -   Reorder columns
+
+-   *Blanks*
+
+    -   *Splice based on `Sample Type`*
+
+-   *Duplicates*
+
+    -   *Splice based on `Sample Type`*
+    -   *exists in both field and lab*
+        -   *for lab, just chla volume*
+            -   *add this column to main duplicate df*
+
+## Part 1: Import Data
+
+Let's start with our original code.
+
+```{r message = FALSE}
+# # import packages
+# library(tidyverse)
+# library(readxl)
+# 
+# # import data
+# df_raw <- read_excel('01_WaterQuality/wq-qaqc/raw-data/test-import.xlsx', skip = 1) # skip initial row; can do "1" because we know with 100% certainty it's always the first row
+# 
+# df_raw <- df_raw %>% select(-contains('...')) # remove columns containing '...'; know with 100% certainty that those columns are blanks
+# 
+# df_test <- df_raw %>% subset(`Sample Type` == 'Blank; Equipment') # filter by Blanks
+# 
+# str(df_raw)
+```
+
+Oh no! We messed up! We actually need those "..." columns.
+
+Let's not do that then, and just do a straight import. Then, we can move into splitting up field and lab.
+
+```{r message = FALSE}
+# import packages
+library(tidyverse)
+library(readxl)
+
+# import data
+df_raw <- read_excel('01_WaterQuality/wq-qaqc/raw-data/test-import.xlsx', skip = 1) # skip initial row; can do "1" because we know with 100% certainty it's always the first row
+```
+
+# Part 2: Split Field and Lab
+
+```{r}
+df_raw <- df_raw %>%
+  mutate(id = row_number()) %>% # add index column
+  relocate(id, .before = `Station Name`) # relocate to before Station Name, which we're 99% certain will be the first col
+
+mid_idrow <- df_raw %>% subset(`Station Name` == '<<<Field Results>>>')
+
+vari_id <- mid_idrow$id
+
+df_field <- df_raw %>% subset(id > vari_id)
+df_lab <- df_raw %>% subset(id < vari_id)
+```
+
+# Part 3: Fix up Lab Data
+
+```{r}
+# remove columns containing '...'; know with 100% certainty that those columns are blanks
+# also remove id column
+# (when removing more than one thing, they need to be put into a vector `c()`)
+# to remove, use `-`
+df_lab <- df_lab %>% select(-c(id,contains('...'))) 
+```
+
+# Part 4: Fix up Field Data
+
+## Step 1: Remove extra rows of df_field
+```{r}
+# remove rows in df_field that we don't need (ie. the bottom 4 after `Station Name` == NA)
+# use same process that we used to subset df_lab and df_field
+
+field_idrow <- df_field %>% subset(is.na(df_field$`Station Name`))
+
+vari_id <- field_idrow$id
+
+df_field <- df_field %>% subset(id < vari_id)
+```
+
+
+## Step 2: Rename columns
+```{r}
+# We are going to replace ("map") the column headers of 'df_field' with the 'Field New' column of 'df_fieldnames'
+# This assumes the columns in 'df_field' are ordered in same way as the rows for the 'Field New' column in 'df_fieldnames'.
+
+# import field colnames csv
+df_fieldnames <- read_csv('01_WaterQuality/wq-qaqc/WDL_Column_Headers.csv')
+
+# get rid of ID column because 'df_fieldnames' doesn't have it
+df_field <- df_field %>%
+  select(-'id')
+
+# "map" df_fieldnames$`Field New` onto the colnames for df_field
+colnames(df_field) <- df_fieldnames$Field_New
+
+# remove first row; always will be old column names
+df_field <- df_field %>% slice(-1)
+```
+
+## Step 3: Reorder columns
+```{r}
+# import field order csv
+df_fieldorder <- read_csv('01_WaterQuality/wq-qaqc/WDL_Column_Order.csv')
+
+# select 'New Order' column from df_fieldorder
+vec_fieldorder <- df_fieldorder$New_Order
+
+# rebuild df_field with columns in the correct order
+df_test <- df_field %>% select(vec_fieldorder)    
+
+# check that the column names for df_field and df_test are the same 
+colnames(df_field) %in% colnames(df_test)
+
+# if true, rename df_test to df_field
+df_field <- df_test  
+```
+
+# Part 4: Recombine Data
+
+# Part 5: Split out Blanks
+
+# Part 6: Split out Duplicates

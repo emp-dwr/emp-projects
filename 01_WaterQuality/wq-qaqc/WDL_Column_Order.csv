@@ -1,0 +1,35 @@
+﻿WDL_Order,New_Order
+Station Name,Station Name
+Station Number,Station Number
+Date,Date
+Sample Code,Sample Code
+Sample Depth,Water Temperature
+Sample Description,Specific Conductance 
+Sample Type,pH
+Parent Sample Code,Turbidity
+(B) Chlorophyll Fluorescence RFU ,Chlorophyll Fluorescence ug/L
+(B) Chlorophyll Fluorescence ug/L ,Chlorophyll Fluorescence RFU
+Chlorophyll Fluorescence RFU,Dissolved Oxygen mg/L
+Chlorophyll Fluorescence ug/L,Dissolved Oxygen % Saturation
+Chlorophyll Volume,(B) Water Temperature
+(B) Specific Conductance,(B) Specific Conductance
+Specific Conductance,(B) pH
+Field Notes,(B) Turbidity
+North Latitude,(B) Chlorophyll Fluorescence ug/L 
+West Longitude,(B) Chlorophyll Fluorescence RFU 
+Microcystis Score,(B) Dissolved Oxygen mg/L
+(B) Dissolved Oxygen % Saturation,(B) Dissolved Oxygen % Saturation
+(B) Dissolved Oxygen mg/L,Secchi Depth
+Dissolved Oxygen % Saturation,Water Depth
+Dissolved Oxygen mg/L,Air Temperature
+Secchi Depth,Wind Velocity
+(B) Water Temperature,Weather Observations
+Air Temperature,Microcystis Score
+Water Temperature,Chlorophyll Volume
+(B) Turbidity,Field Notes
+Turbidity,North Latitude
+Water Depth,West Longitude
+Weather Observations,Sample Depth
+Wind Velocity,Sample Description
+(B) pH,Sample Type
+pH,Parent Sample Code
