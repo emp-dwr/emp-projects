@@ -22,15 +22,17 @@ theme_set(theme_bw())
 rm(list=ls()) 
 
 ## File names 
-FP_data <- "Fluoroprobe_MD1_Oct22.txt"
-MOPED_data <- "MOPED_Export_15_10132022_MD1.csv"
+FP_data <- "Fluoroprobe_SP_Jul23.txt"
+MOPED_data <- "MOPED_Export_82_07172023_SP.csv"
 
 ## Map settings
-time_unit <- "1 minute"
+time_unit <- "3 minute"
 xlat.MD2 <- c(37.9, 38.15)
 ylon.MD2 <- c(-121.8, -121.3)
 xlat.MD1 <- c(37.95, 38.15)
 ylon.MD1 <- c(-121.8, -121.5)
+xlat.SP <- c(37.9, 38.3)
+ylon.SP <- c(-122.6, -122.2)
 
 # Read in FluoroProbe data
 col_names <- names(read_tsv(FP_data, n_max = 0))
@@ -76,6 +78,7 @@ run_name <- unique(df_MOPED$Extension[!is.na(df_MOPED$Extension)])
 
 ## Covert to datetime
 df_MOPED <- df_MOPED %>% rename("DateTime" = "TimeStamp")
+
 df_MOPED$DateTime <- mdy_hms(df_MOPED$DateTime, tz = "US/Pacific")
 
 ## Average data to same time interval as FluoroProbe data
@@ -142,19 +145,19 @@ for (group in groups) {
                         y = lat, 
                         label = name)) +
     #scale_y_continuous() +
-    ylim(xlat.MD1) +
-    xlim(ylon.MD1) +
+    ylim(xlat.SP) +
+    xlim(ylon.SP) +
     theme_bw()
   
   plot + labs(x = "Longitude",
               y = "Latitude",
               color = "Fluorescence (ug/L)",
-              title = paste0("Interior Delta, Day 1 - 10/13/2022 - ", group)) +
+              title = paste0("San Pablo Bay - 7/17/2023 - ", group)) +
     guides(size = "none")
   
   
   ggsave(path="plots",
-         filename = paste0("FP.map.MD1.Oct.2022.",group,".png"), 
+         filename = paste0("FP.map.SP.Jul.2023.",group,".png"), 
          device = "png",
          scale=1.0, 
          units="in",

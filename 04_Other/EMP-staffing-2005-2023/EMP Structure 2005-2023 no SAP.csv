@@ -1,0 +1,138 @@
+﻿Title,Affiliation,LastName,Year
+EPM-I,EWQES,Breuer,2005
+Student Asst.,EWQES,Talley,2005
+SES-Supv,BDMA,Messer,2005
+WR-Eng-Assoc,BDMA,Waller,2005
+"Chief Eng, Fish Vessel",BDMA,Vacant,2005
+"Chief Eng, Fish Vessel",BDMA,Santos,2005
+ES,BDMA,Philippart,2005
+ES-PI,BDMA,Gehrts,2005
+ES-PI,BDMA,Giovannini,2005
+ES-PI,BDMA,Peterson,2005
+Sr. Ctrl. Eng. (Supv),ERTM&S,Kaff,2005
+Ctrl. Sys. Tech,ERTM&S,Dempsey,2005
+Ctrl. Sys. Tech,ERTM&S,Rafuse,2005
+Ctrl. Sys. Tech,ERTM&S,Aldrich,2005
+EPM-I,EWQES,Breuer,2007
+Student Asst.,EWQES,Talley,2007
+SES-Supv,BDMA,Vacant,2007
+WR-Eng-Assoc,BDMA,Waller,2007
+"Chief Eng, Fish Vessel",BDMA,Santos,2007
+ES,BDMA,Gehrts,2007
+ES,BDMA,Brown,2007
+ES,BDMA,Riordan,2007
+ES,BDMA,Noble,2007
+ES,BDMA,Veldhuizen,2007
+ES,BDMA,Vacant,2007
+ES-PI,BDMA,Peterson,2007
+"Mate, F&G Vessel",BDMA,Schmidt,2007
+F&W Scientific Aid,BDMA,Barnett,2007
+F&W Scientific Aid,BDMA,Bell,2007
+Sr. Ctrl. Eng. (Supv),ERTM&S,Kaff,2007
+Ctrl. Sys. Tech,ERTM&S,Dempsey,2007
+Ctrl. Sys. Tech,ERTM&S,Rafuse,2007
+Ctrl. Sys. Tech,ERTM&S,Aldrich,2007
+EPM-I,EWQES,Breuer,2009
+ES,EWQES,Mejia,2009
+Student Asst.,EWQES,Talley,2009
+SES-Supv,BDMA,Gehrts,2009
+WR-Eng-Assoc,BDMA,Waller,2009
+"Chief Eng, Fish Vessel",BDMA,Santos,2009
+ES,BDMA,Fuller,2009
+ES,BDMA,Brown,2009
+ES,BDMA,Riordan,2009
+ES,BDMA,Noble,2009
+ES,BDMA,Templin,2009
+"Mate, F&G Vessel",BDMA,Schmidt,2009
+F&W Scientific Aid,BDMA,Evans,2009
+F&W Scientific Aid,BDMA,Jones,2009
+F&W Scientific Aid,BDMA,Jensen,2009
+Sr. Ctrl. Eng. (Supv),ERTM&S,Vacant,2009
+Sr. Engineer WR,ERTM&S,Batmanghilich,2009
+Ctrl. Sys. Tech,ERTM&S,Dempsey,2009
+Ctrl. Sys. Tech,ERTM&S,Rafuse,2009
+Ctrl. Sys. Tech,ERTM&S,Aldrich,2009
+EPM-I,EWQES,Gehrts,2013
+SES-Supv,BDMA,Vacant,2013
+WR-Eng-Assoc,BDMA,Waller,2013
+"Chief Eng, Fish Vessel",BDMA,Santos,2013
+"Mate, F&G Vessel",BDMA,Van Ark,2013
+ES,BDMA,Fuller,2013
+ES,BDMA,Brown,2013
+ES,BDMA,Vacant,2013
+ES,BDMA,Vacant,2013
+ES,BDMA,Templin,2013
+F&W Scientific Aid,BDMA,Ander,2013
+F&W Scientific Aid,BDMA,Rojas,2013
+F&W Scientific Aid,BDMA,Jensen,2013
+Sr. Engineer WR,ERTM&S,Batmanghilich,2013
+Ctrl. Sys. Tech,ERTM&S,Dempsey,2013
+Ctrl. Sys. Tech,ERTM&S,Rafuse,2013
+Ctrl. Sys. Tech,ERTM&S,Aldrich,2013
+EPM-I,EWQES,Gehrts,2015
+SES-Supv,BDMA,Philippart,2015
+WR-Eng-Assoc,BDMA,Waller,2015
+"Chief Eng, Fish Vessel",BDMA,Santos,2015
+"Mate, F&G Vessel",BDMA,Van Ark,2015
+ES,BDMA,Wells,2015
+ES,BDMA,Brown,2015
+ES,BDMA,Lesmeister,2015
+ES,BDMA,Templin,2015
+F&W Scientific Aid,BDMA,Ander,2015
+F&W Scientific Aid,BDMA,Martinez,2015
+F&W Scientific Aid,BDMA,Tran,2015
+Sr. Engineer WR,ERTM&S,Batmanghilich,2015
+ES,ERTM&S,Vacant,2015
+Ctrl. Sys. Tech,ERTM&S,Dempsey,2015
+Ctrl. Sys. Tech,ERTM&S,Aldrich,2015
+EPM-I,EWQES,Gehrts,2017
+SES-Supv,D-EMP,Vacant,2017
+ES,D-EMP,Wells,2017
+ES,D-EMP,Brown,2017
+ES,D-EMP,Rasmussen,2017
+ES,D-EMP,Rinde,2017
+F&W Scientific Aid,D-EMP,Vacant,2017
+F&W Scientific Aid,D-EMP,Vacant,2017
+SES-Supv,C-EMP,Waller,2017
+"Chief Eng, Fish Vessel",C-EMP,Santos,2017
+"Mate, F&G Vessel",C-EMP,Van Ark,2017
+ES,C-EMP,Martinez,2017
+ES,C-EMP,Nelson,2017
+ES,C-EMP,Tran,2017
+Ctrl. Sys. Tech,C-EMP,Dempsey,2017
+Ctrl. Sys. Tech,C-EMP,Aldrich,2017
+F&W Scientific Aid,C-EMP,Treleaven,2017
+EPM-I,EWQES,Newcomb,2019
+SES-Supv,D-EMP,Lesmeister,2019
+ES,D-EMP,Wells,2019
+ES,D-EMP,Brown,2019
+ES,D-EMP,Martinez,2019
+ES,D-EMP,Flynn,2019
+ES,D-EMP,Rinde,2019
+F&W Scientific Aid,D-EMP,Watkins,2019
+F&W Scientific Aid,D-EMP,Perry,2019
+SES-Supv,C-EMP,Waller,2019
+"Chief Eng, Fish Vessel",C-EMP,Santos,2019
+"Mate, F&G Vessel",C-EMP,Van Ark,2019
+ES,C-EMP,Nelson,2019
+ES,C-EMP,Tran,2019
+Ctrl. Sys. Tech,C-EMP,Dempsey,2019
+Ctrl. Sys. Tech,C-EMP,Aldrich,2019
+F&W Scientific Aid,C-EMP,Pluton,2019
+EPM-I,EMA,Philippart,2023
+SES-Supv,D-EMP,Flynn,2023
+ES,D-EMP,Wells,2023
+ES,D-EMP,Brown,2023
+ES,D-EMP,Stuart,2023
+ES,D-EMP,Perry,2023
+ES,D-EMP,Manning,2023
+F&W Scientific Aid,D-EMP,Klotz,2023
+F&W Scientific Aid,D-EMP,Carpenter,2023
+SES-Supv,C-EMP,Waller,2023
+"Master, F&G Vessel",C-EMP,Van Ark,2023
+"Mate, F&G Vessel",C-EMP,Vacant,2023
+ES,C-EMP,Nelson,2023
+ES,C-EMP,Tran,2023
+"Engineer, WR",C-EMP,Neumayr,2023
+Ctrl. Sys. Tech,C-EMP,Aldrich,2023
+F&W Scientific Aid,C-EMP,Sigurdson,2023

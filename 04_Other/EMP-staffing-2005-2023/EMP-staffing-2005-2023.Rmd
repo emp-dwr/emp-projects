@@ -1,0 +1,85 @@
+---
+title: "EMP Staffing 2005-2023"
+author: "Ted Flynn"
+date: "2023-09-05"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+library(tidyverse)
+library(lubridate)
+library(janitor)
+library(vegan)
+library(here)
+
+# Set output directory 
+output <- here("04_Other",
+               "EMP-staffing-2005-2023",
+               "plots")
+
+# Set visual theme in ggplot
+theme_set(theme_bw())
+
+# Suppress summarise info
+options(tidyverse.quiet = TRUE)
+options(dplyr.summarise.inform = FALSE)
+```
+
+### Read in raw data. 
+
+```{r read input, echo = TRUE}
+# Read input data from JT ------------------------------------------------------
+df_staff <- read_csv(here("04_Other",
+                          "EMP-staffing-2005-2023", 
+                          "EMP Structure 2005-2023 no SAP.csv"), show_col_types = FALSE)
+
+df_staff$Year <- as_factor(df_staff$Year)
+
+Title <- sort(unique(df_staff$Title))
+Category <- c("Boat Ops", "Technician","Engineer", "Management", "ES",
+              "ES-PI","Sci Aide","Boat Ops","Boat Ops","Management","Management",
+              "Engineer","Student","Technician")
+
+df_categories <- tibble(Title,Category)
+
+df_staff <- left_join(df_staff,df_categories)
+
+```
+
+```{r summarize}
+
+df_sum <- df_staff %>% 
+  count(Year,Title,Category,Affiliation, name = "TotalPositions")
+
+unique(df_staff$Title)
+
+```
+
+
+
+
+```{r plot}
+
+p_staff_by_year <- ggplot(df_sum, aes(x = Year, y = TotalPositions, fill = Category)) +
+  geom_col(width = 0.7) +
+  scale_fill_brewer(palette = "Set2")
+
+p_staff_by_year +
+  labs(x = "Year",
+       y = "Total Positions",
+       fill = "Position Type",
+       title = "Distribution of Positions in EMP, 2005 - 2023")
+
+ggsave(path = output,
+       filename = "EMP-staffing-2005-23.png", 
+       device = "png",
+       scale=1.0, 
+       units="in",
+       height=4,
+       width=6, 
+       dpi="print")
+
+```
+
