@@ -40,26 +40,7 @@ Part 4: - Split blanks and duplicates
 
 # Part 1: Import Data
 
-Let's start with our original import code. We originally deleted the "..." columns, believing they contained no data.
-
-```{r message = FALSE}
-# # import packages
-# library(tidyverse)
-# library(readxl)
-# 
-# # import data
-# df_raw <- read_excel('01_WaterQuality/wq-qaqc/raw-data/test-import.xlsx', skip = 1) # skip initial row; can do "1" because we know with 100% certainty it's always the first row
-# 
-# df_raw <- df_raw %>% select(-contains('...')) # remove columns containing '...'; know with 100% certainty that those columns are blanks
-# 
-# df_test <- df_raw %>% subset(`Sample Type` == 'Blank; Equipment') # filter by Blanks
-# 
-# str(df_raw)
-```
-
-Oh no! We messed up! We actually need those "..." columns; they don't contain lab data, but they do have field data.
-
-So, let's do a straight import. After, we can move into splitting up field and lab.
+Let's do a straight import. After, we can move into splitting up field and lab.
 
 ```{r message = FALSE}
 # import packages
@@ -126,7 +107,7 @@ df_field <- df_field %>% subset(id < vari_id)
 # This assumes the columns in 'df_field' are ordered in same way as the rows for the 'Field New' column in 'df_fieldnames'.
 
 # import field colnames csv
-df_fieldnames <- read_csv('01_WaterQuality/wq-qaqc/WDL_Column_Headers.csv')
+df_fieldnames <- read_csv('01_WaterQuality/wq-qaqc/WDL_Column_Headers.csv', show_col_types = FALSE)
 
 # get rid of ID column because 'df_fieldnames' doesn't have it
 df_field <- df_field %>%
@@ -143,7 +124,7 @@ df_field <- df_field %>% slice(-1)
 
 ```{r}
 # import field order csv
-df_fieldorder <- read_csv('01_WaterQuality/wq-qaqc/WDL_Column_Order.csv')
+df_fieldorder <- read_csv('01_WaterQuality/wq-qaqc/WDL_Column_Order.csv', show_col_types = FALSE)
 
 # select 'New Order' column from df_fieldorder
 vec_fieldorder <- df_fieldorder$New_Order
@@ -271,7 +252,7 @@ Thinking about it, there are definitely other ways to single out the data. We co
 
 This is where I would recommend asking for help.
 
-Here, I've written some functions that satisfy the requirements. If you're curious about the logic, open the "func_rl.R" file.
+Here, I've written some functions that satisfy the requirements. If you're curious about the logic, open the "func_wqclean.R" file.
 
 One note: in order to modify the Excel export, we must first create the Excel file. Usually, this is done at the top of the code for clarity, but we'll create it here because this is when it's first in use.
 
@@ -280,7 +261,7 @@ I figured out how to do this by Googling "create tabbed Excel file for export R"
 ```{r}
 # source the file that contains the function we want to use (this usually goes at the top of the code)
 # you *must be in the the R project environment* for this to work
-source(file = '01_WaterQuality/wq-qaqc/func_rl.R')
+source(file = '01_WaterQuality/wq-qaqc/func_wqclean.R')
 
 # create the Excel workbook to use for export
 # I am tagging the package used so you know what it is; it is not necessary to do this (in most situations)
@@ -290,13 +271,15 @@ wkbk <- openxlsx::createWorkbook()
 add_sheet(wkbk, df_blank, 'Blank')
 
 # add formatting to the sheet; this function is from the sourced R script
-add_formatting(wkbk, 'Blank', df_blank)
+add_formatting_rl(wkbk, 'Blank', df_blank)
 
 # you can see that this works by exporting a test
 saveWorkbook(wkbk, file = '01_WaterQuality/wq-qaqc/test.xlsx', overwrite = TRUE)
 ```
 
 # Part 6: Split out Duplicates
+
+## Step 1: Figure out logic
 
 ```{r}
 # create dupe data frame using `Sample Type` filter
@@ -306,23 +289,28 @@ df_dupes <- df_combined %>%
 # we need to remove the extra result columns, like with df_blank; can use the same code
 df_dupes <- df_dupes %>%
   select(!all_of(vec_lab))
+```
 
-# TODO: (i'll write this in more detail later)
-# we know we want to apply a function to two columns. right now, the values we want from those two columns are in different rows. however, we know that the rows are linked by the parent sample code. therefore, we can get the data into one row by using `join`.
+We know we want to apply a function where the input is two columns: f(parent, duplicate) -\> RPD. Right now, the values we want from those two columns are in different rows, which makes it difficult to apply a function. However, we know that the rows are linked by `Parent Sample Code`. Therefore, we can get the data into one row by using `join`.
 
-# this data fame is super ugly. however, we can use it to create `RPD` columns, which we can then join back with the original `df_dupes`, since that one is not ugly, and only needs those RPD columns added in.
-
+```{r}
 df_rpd <- left_join(df_dupes, df_combined, by = c('Parent Sample Code' = 'Sample Code'))
 ```
 
-How to deal with non-numeric columns:
-- if one of the pairs is:
-  - NA: have RPD column = NA
-  - <: NA; if one is not <, maybe flag (can calc min RPD, can calc range, etc etc)
-  
-  - multiple values: take first value, go from there
+Note this dataframe has '.x' and '.y' columns, which are the duplicate and parent values, respectively. Also, this datafame is super ugly. However, we don't have to keep the whole thing. We can use it to create `RPD` columns, which we can then join back with the original `df_dupes`. This is valid be and because `df_dupes` is formatted exactly as we want, minus the RPD columns we'll add in.
+
+## Step 2: Clean data
+
+We need to make executive decisions on how to handle the value data for RPD calculations, especially for cells that have non-numeric characters.
+
+How to deal with non-numeric columns: - if one of the pairs is: - NA: have RPD column = NA - \<: NA; if one is not \<, maybe flag (can calc min RPD, can calc range, etc etc)
+
+-   multiple values: take first value, go from there
+
+First, let's deal with taking the first value from multiple values.
 
 ```{r}
+# trying out methods
 x <- '122,123**'
 y <- '23,35**'
 z <- '<0.5,<0.7**'
@@ -335,40 +323,219 @@ test[[2]] <- c('see','here')
 test[[1]][1]
 
 # take the first lists ([[1]]) first element ([1]) from the output of the `strsplit` function
-strsplit(y, ',')[[1]][1]
+str_split_fixed(y, ',', n = 2)
 
+# str_split works; let's write a function for it to apply to our dataframes
 func_split <- function(cell){
-  strsplit(cell, ',')[[1]][1]
+  cell_str <- str_split(cell, ',', simplify = TRUE)[1]
+  return(cell_str)
 }
 
+as.data.frame(apply(df_rpd, c(1, 2), function(x) str_split(x, ',', simplify = TRUE)[1]))
+```
+
+Originally, we tried to apply the function using tidyverse. However, this doesn't work b/c of how R handles data (vectorization, but more complicated than just that, haha).
+
+```{r}
 df_test <- df_rpd %>%                       # Apply function to each element
   mutate_all(., func_split)
+
+df_test # note that they're all the same
 ```
 
+Instead, we use `apply`, which applies a function to the margins of an array/matrix (eg. a dataframe)
 
+c(1,2) tells us the the margins to apply the function to, with 1 = rows and 2 = columns; therefore, c(1,2) is the entire dataframe
 
 ```{r}
-
-
-df_test <- left_join(df_dupes, df_combined, by = c('Parent Sample Code' = 'Sample Code'))
-colnames(df_test)
-
-df_test$`Total Organic Carbon mg/L as C Std Method 5310C (T) 919 [1]*.y`[1]
-df_test$`Total Organic Carbon mg/L as C Std Method 5310C (T) 919 [1]*.x`[1]
-
-x <- str_remove(colnames(df_dupes)[colnames(df_dupes) %in% colnames(df_combined)],'Parent Sample Code')
-x
+df_test <- as.data.frame(apply(df_rpd, c(1, 2), func_split))
 ```
 
-# test
+When we look in the environment pane, we see df_test isn't a dataframe; it appears to be a vector. When we click it, however, the view shows us a dataframe. Why is that?
 
 ```{r}
-# str_split(df_test$`Total Organic Carbon mg/L as C Std Method 5310C (T) 919 [1]*.y`[1],',')[[1]][1]
+typeof(df_test); class(df_test)
+```
 
-test_func <- function(x){
-  str_split(x,',')[[1]][1]
+We see that the class of df_test is a matrix. A matrix is, in essence, a more specialized form of a dataframe; while data frames can have multiple column types, all values in a matrix are the same type (here, character). We can convert this to a dataframe using the `as.data.frame` function.
+
+```{r}
+df_clean <- as.data.frame(df_test)
+
+typeof(df_clean); class(df_clean)
+```
+
+## Step 3: Create RPD columns
+
+Now that we cleaned our data, we can create an RPD column! Let's remember our rules for it:
+
+-   if both values are numeric, apply RPD *function*
+
+-   if one of the pairs is:
+
+    -   NA: have RPD column = NA
+    -   \<: NA; if one is not \<, maybe flag (can calc min RPD, can calc range, etc etc)
+
+Two things to note:
+
+1) We want to apply an RPD function to all of our data. The easiest way to do this is to, ofc, create our own custom function.
+
+2) How the column is populated is **conditional** on the input values. Therefore, when we create the column with `mutate`, we need to account for this.
+
+```{r}
+# create RPD function
+func_rpd <- function(x,y){
+  x <- as.numeric(x)
+  y <- as.numeric(y)
+  out <- abs((y-x)/((y+x)/2)*100)
+  out <- round(out, 2)
+  return(out)
+}
+```
+
+To create conditional statements within mutate, we use `case_when`:
+
+```{r}
+# df_test <- df_clean %>%
+#   mutate(
+#     RPD =
+#       case_when()
+#   )
+```
+
+!!! Wait, `case_when` what? What columns do you input?
+
+Our data is currently in wide format; there are two columns for each analyte. However, short of typing out every pair, how would you tell the `case_when` statement which columns are associated with each other?
+
+We know pair columns have partial string matches. However, writing a statement to account for this would be tedious (especially within tidyverse, bleh). Wouldn't it be easier to just have a parent and duplicate column? (This isn't intuitive; I've just been down this path before.)
+
+Still, creating these columns is complicated. I Googled "pivot_longer two columns r" and used this link as a reference: <https://stackoverflow.com/questions/61367186/pivot-longer-into-multiple-columns>
+
+```{r}
+# columns to use in pivot (\\ to escape the characters, as they have specific regex meanings)
+piv_cols <- colnames(df_clean)[str_detect(colnames(df_clean),'\\*\\.')]
+
+# pivot! PIVOT!!
+df_long <- pivot_longer(df_clean, cols = all_of(piv_cols), names_pattern = "(.*)\\.(.)$", names_to = c('analyte','type'))
+
+df_wide <- pivot_wider(df_long, names_from = type, values_from = value) %>%
+  rename('parent' = x,
+         'dupe' = y)
+
+# lil cleaning
+rm(df_long)
+
+# now I can create the RPD column with case_when
+# NOTE: the first logic string (~ 9999) will be used to flag if one is '<' but the other isn't. 9999 is a dummy value.
+
+# (throws 'NA introduced by coercion' warning, but when checked, don't see any)
+df_rpd <- df_wide %>%
+  mutate(
+    RPD =
+      case_when((str_detect(parent, '<') | str_detect(dupe, '<')) & (str_detect(parent, '<') != str_detect(dupe, '<')) ~ 9999,
+                str_detect(parent, 'N/A') | str_detect(parent, 'N/A') ~ NA_real_,
+                str_detect(parent, '<') | str_detect(dupe, '<') ~ NA_real_,
+                TRUE ~ func_rpd(parent,dupe)))
+```
+
+Yay! Now we have RPD values. However, they're in long format; we want them in wide format. The logic for these columns is that their names will be a combination of the `analyte` column name and '\_RPD', with the value being under 'RPD'.
+
+Looks like we want to take long format data and pivot it to wide...
+
+```{r}
+df_wide <- df_rpd %>% pivot_wider(names_from = analyte, names_glue = '{analyte}_RPD', values_from = RPD) %>%
+  select('Station Name.x','Date.x','Sample Code', contains('_RPD')) # to clean up a lil
+
+# looks correct, but data is disjointed; need to coalesce (i googled 'coalesce columns tidyverse': https://stackoverflow.com/questions/45515218/combine-rows-in-data-frame-containing-na-to-make-complete-row)
+
+# create custom function
+coalesce_by_column <- function(df) {
+  return(dplyr::coalesce(!!! as.list(df)))
 }
 
-test <- df_test %>%                       # Apply function to each element
-  mutate_all(test_func)
+df_rpd <- df_wide %>%
+  group_by(`Station Name.x`, Date.x, `Sample Code`) %>%
+  summarise_all(coalesce_by_column)
+```
+
+Yay again! Now we have our RPD columns.
+
+## Step 4: Merge back with orig df
+
+All that's left to do is to merge them back with df_dupes. Like before, we can do this with `Sample Code`.
+
+```{r}
+df_finaldupes <- left_join(df_dupes, df_rpd, by = 'Sample Code') %>%
+  select(-contains('.x'))
+```
+
+Now to re-arrange. We want to do this by partial/substring match; I Googled that and found this: <https://codereview.stackexchange.com/questions/115217/order-columns-in-r-by-substring>. Wordier than I usually like, but it's a weird situation, so I doubt I'll find much better.
+
+*NOTE*: This solution assumes I have a common character to str_split by, but only some columns have "*". Therefore, I need to add a dummy "*" to columns that don't have it.
+
+I can do this by **applying**, to the column names, an if/else function that adds a "\_" if it doesn't already exist.
+
+```{r}
+func_names <- function(x){
+  ifelse(str_detect(x,'_'), x, paste0(x,'_Dupe'))
+}
+
+colnames(df_finaldupes) <- lapply(colnames(df_finaldupes), func_names) # lapply is apply for 1 dimensional vectors/lists
+```
+
+Now I can apply the solution from that Google answer.
+
+TODO: add parent right around this step
+
+```{r}
+m <- names(df_finaldupes) # extract column names
+
+r <- strsplit(m,'_') # split the column names based on the _
+
+# create a data.frame with two columns X1 being x or y
+q <- data.frame(matrix(unlist(r),nrow=length(m),byrow=T)) 
+
+# order q according to spec
+q <- q[order(q$X1, decreasing = TRUE),]
+
+# reformat names
+m <- paste0(q$X1,'_',q$X2)
+
+# rearrange columns
+df_finaldupes <- df_finaldupes[,m]
+
+# remove dummy '_999'
+colnames(df_finaldupes) <- unlist(lapply(colnames(df_finaldupes), function(x) str_remove(x,'_Dupe')))
+
+# final rearrangement/cleanup
+meta_cols <- colnames(df_finaldupes)[unlist(lapply(colnames(df_finaldupes),function(x) !grepl('[1]',x)))]
+
+df_finaldupes <- df_finaldupes %>%
+  relocate(meta_cols, .before = everything())
+```
+
+All done! Well, almost. We created our duplicate df, but we have one more piece to our logic:
+
+-   if both values are numeric, apply RPD function
+
+-   if one of the pairs is:
+
+    -   NA: have RPD column = NA
+    -   \<: NA; *if one is not \<, maybe flag*
+
+So, we need to flag this value. Luckily, we built a dummy value (9999) into the df to indicate when that occurs. Let's apply a function to take those cells and highlight them.
+
+```{r}
+# change from dummy value '9999' to 'mismatch'
+# df_finaldupes <- as.data.frame(lapply(df_finaldupes, function(x) as.character(x)))
+# df_finaldupes[df_finaldupes=='9999'] <- 'mismatch'
+
+# create the sheet I want to add my data to; this function comes from the sourced R script
+add_sheet(wkbk, df_finaldupes, 'Duplicate')
+
+# add formatting to the sheet; this function is from the sourced R script
+add_formatting_dupe(wkbk, 'Duplicate', df_finaldupes)
+
+# you can see that this works by exporting a test
+saveWorkbook(wkbk, file = '01_WaterQuality/wq-qaqc/test.xlsx', overwrite = TRUE)
 ```

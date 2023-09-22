@@ -1,0 +1,27 @@
+# WQ Monthly Format
+
+Code to format monthly WQ data.
+
+Input: filepath to exported WDL Excel file Output: formatted file in same folder
+
+```{r}
+fn <- '01_WaterQuality/wq-qaqc/test-import.xlsx'
+```
+
+**CODE STARTS HERE**
+
+*You can ignore the "NAs introduced by coercion" error*
+
+```{r}
+source('01_WaterQuality/wq-qaqc/admin_files/func_wqclean.R')
+
+df_raw <- format_raw(fn)
+
+df_data <- format_data(df_raw)
+
+df_blanks <- format_blanks(df_raw)
+
+df_dupes <- format_dupes(df_raw)
+
+create_wkbk(df_data, df_blanks, df_dupes)
+```
