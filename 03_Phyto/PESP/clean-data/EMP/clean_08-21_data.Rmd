@@ -1,5 +1,6 @@
-# Format EMP phyto data
-## contact: Sarah Perry (sarah.perry@water.ca.gov)
+# Intial clean of EMP Phyto Data
+# Update: 06/23, add cell/ml
+
 ```{r message = FALSE}
 library(tidyverse)
 library(fuzzyjoin)
@@ -10,13 +11,12 @@ library(lubridate)
 ## Read in data
 ```{r}
 # read in data
-df_syn <- read_csv('03_Phyto/PESP/data/EMP/Phyto Classification.csv', show_col_types = FALSE)
-df_data <- read_csv('03_Phyto/PESP/data/EMP/Phyto Data 2008-present_012723.csv', show_col_types = FALSE)
+df_syn <- read_csv('03_Phyto/PESP/data/EMP/Phyto Classification.csv', show_col_types = FALSE) # synonym list for comparison
+df_data <- read_csv('03_Phyto/PESP/data/EMP/Phyto Data 2008-present_012723.csv', show_col_types = FALSE) # raw data
 
 # remove unnecessary columns/rename
 df_data <- df_data %>%
-  select(-c(Taxonomist, LabNumber, TIN, SynonymOrig)) %>%
-  rename('Name' = 'Taxon')
+  select(-c(Taxonomist, LabNumber, TIN, SynonymOrig))
 
 # remove percents from percent col, fix dates/times, colony codes
 df_data$Percent_Sample_Counted <- gsub('%','',df_data$Percent_Sample_Counted)
@@ -54,12 +54,12 @@ unknown_syns <- 'unknown|unidentified|Unidentified|Undetermined|undetermined'
 df_data <- df_data %>%
   # update Taxon column to standardize Unknown
   mutate(
-    Name = case_when(grepl(unknown_syns,Name,ignore.case = TRUE) ~ str_replace_all(Name, unknown_syns, 'Unknown'),
-                      TRUE ~ Name)
+    Taxon = case_when(grepl(unknown_syns,Taxon,ignore.case = TRUE) ~ str_replace_all(Taxon, unknown_syns, 'Unknown'),
+                      TRUE ~ Taxon)
     ) %>%
   # Update Genus column if unknown Species
   mutate(
-    Genus = case_when(grepl('Unknown', Name) ~ 'Unknown',
+    Genus = case_when(grepl('Unknown', Taxon) ~ 'Unknown',
                       is.na(Genus) ~ 'Unknown',
                       Genus == 'Other' ~ 'Unknown',
                       Genus == 'genus' ~ 'Unknown',
@@ -76,33 +76,34 @@ df_data <- df_data %>%
 ### Add in higher level taxa/current names
 ```{r}
 # subset synonym/taxon columns
-df_syn <- df_syn %>% select(c('Kingdom':'AlgalGroup','Name','CurrentName'))
+df_syn <- df_syn %>% select(c('Kingdom':'AlgalGroup','Taxon','CurrentTaxon'))
 
 # standardize spp. to sp.
-df_data$Name <- str_replace_all(df_data$Name, 'spp.', 'sp.')
+df_data$Taxon <- str_replace_all(df_data$Taxon, 'spp.', 'sp.')
 df_data$Species <- str_replace_all(df_data$Species, 'spp.', 'sp.')
 
 # standardize unknown names before synonym join
 df_data <- df_data %>%
   mutate(
-    Name = case_when(Name == 'LGBs' ~ 'Little Green Balls',
-                     Name == 'Unknown Banana Blue Green' | Name == 'Unknown Cyanobacteria sp.' ~ 'Unknown cyanobacterium',
-                     Name == 'Unknown centrales sp.' | Name == 'Unknown centric sp.' | Name == 'Unknown Centric diatom'  ~ 'Unknown centric diatom',
-                     Name == 'Unknown Chlorophyte alga sp.' | Name == 'Unknown Chlorophyte filament' ~ 'Unknown green alga',
-                     Name == 'Unknown dinoflagellate sp.' | Name == 'Unknown Dinoflagellate sp.' | Name == 'small dinoflagellates'~ 'Unknown dinoflagellate',
-                     Name == 'Unknown girdle sp.' | Name == 'Unknown pennales sp.' | Name == 'Unknown pennate girdle sp.' ~ 'Unknown pennate diatom',
-                     Name == 'Small nano-flagellates' | Name == 'small nano-flagellates' ~ 'Unknown nanoflagellate',
-                     Name == 'Unknown Euglenoids' ~ 'Unknown euglenoid',
-                     Name == 'Unknown Genus' ~ 'Unknown genus',
-                     TRUE ~ Name)
+    Taxon = case_when(Taxon == 'LGBs' ~ 'Little Green Balls',
+                     Taxon == 'Unknown Banana Blue Green' | Taxon == 'Unknown Cyanobacteria sp.' ~ 'Unknown cyanobacterium',
+                     Taxon == 'Unknown centrales sp.' | Taxon == 'Unknown centric sp.' | Taxon == 'Unknown Centric diatom'  ~ 'Unknown centric diatom',
+                     Taxon == 'Unknown Chlorophyte alga sp.' | Taxon == 'Unknown Chlorophyte filament' ~ 'Unknown green alga',
+                     Taxon == 'Unknown dinoflagellate sp.' | Taxon == 'Unknown Dinoflagellate sp.' | Taxon == 'small dinoflagellates'~ 'Unknown dinoflagellate',
+                     Taxon == 'Unknown girdle sp.' | Taxon == 'Unknown pennales sp.' | Taxon == 'Unknown pennate girdle sp.' ~ 'Unknown pennate diatom',
+                     Taxon == 'Small nano-flagellates' | Taxon == 'small nano-flagellates' ~ 'Unknown nanoflagellate',
+                     Taxon == 'Unknown Euglenoids' ~ 'Unknown euglenoid',
+                     Taxon == 'Unknown Genus' ~ 'Unknown genus',
+                     Taxon == 'Unknown Algae' ~ 'Unknown',
+                     TRUE ~ Taxon)
     )
 
 # join with main dataset
 df_joined <- df_data %>%
-  left_join(df_syn, by = 'Name') %>%
+  left_join(df_syn, by = 'Taxon') %>%
   # mutate(Genus = Genus.y) %>%
   select(-c(ends_with('.y'), ends_with('.x'))) %>%
-  relocate(c(Name, Kingdom:AlgalGroup), .after = StationCode) %>%
+  relocate(c(Taxon, Kingdom:AlgalGroup), .after = StationCode) %>%
   relocate(c(Genus, Species), .after = AlgalGroup)
 
 # figure out switching to military time (add)
@@ -115,43 +116,43 @@ df_joined <- df_data %>%
 # TODO: so many functions
 df_joined <- df_joined %>%
   mutate(
-    Genus = case_when(Name == CurrentName | grepl('None|Unknown',CurrentName) | is.na(CurrentName) ~ Genus,
-                      TRUE ~ str_remove(str_squish(str_remove(CurrentName, 'cf.')), ' .*')),
-    Species = case_when(Name == CurrentName | grepl('None|Unknown',CurrentName) | is.na(CurrentName) ~ Species,
-                        TRUE ~ str_remove(str_squish(str_remove(CurrentName, 'cf.')), '.*? ')),
-    OrigName = case_when(Name == CurrentName | grepl('None|Unknown',CurrentName) | is.na(CurrentName) ~ NA_character_,
-                         TRUE ~ Name),
-    Name = case_when(grepl('None|Unknown',CurrentName) | is.na(CurrentName) ~ Name,
-                      TRUE ~ CurrentName
+    Genus = case_when(Taxon == CurrentTaxon | grepl('None|Unknown',CurrentTaxon) | is.na(CurrentTaxon) ~ Genus,
+                      TRUE ~ str_remove(str_squish(str_remove(CurrentTaxon, 'cf.')), ' .*')),
+    Species = case_when(Taxon == CurrentTaxon | grepl('None|Unknown',CurrentTaxon) | is.na(CurrentTaxon) ~ Species,
+                        TRUE ~ str_remove(str_squish(str_remove(CurrentTaxon, 'cf.')), '.*? ')),
+    OrigTaxon = case_when(Taxon == CurrentTaxon | grepl('None|Unknown',CurrentTaxon) | is.na(CurrentTaxon) ~ NA_character_,
+                         TRUE ~ Taxon),
+    Taxon = case_when(grepl('None|Unknown',CurrentTaxon) | is.na(CurrentTaxon) ~ Taxon,
+                      TRUE ~ CurrentTaxon
                       )) %>%
-  select(-CurrentName) %>%
-  relocate(OrigName, .after = StationCode)
+  select(-CurrentTaxon) %>%
+  relocate(OrigTaxon, .after = StationCode)
 
-# standardize specific unknown name cases
+# standardize specific unknown Taxon cases
 df_joined <- df_joined %>%
   mutate(
-    AlgalGroup = case_when(Name == 'Little Green Balls' ~ 'Unknown',
-                           Name == 'Unknown cyanobacteria' ~ 'Cyanobacteria',
-                           Name == 'Unknown centric diatom' ~ 'Centric Diatoms',
-                           Name == 'Unknown green alga' ~ 'Green Algae',
-                           Name == 'Unknown dinoflagellate' ~ 'Dinoflagellates',
-                           Name == 'Unknown pennate diatom' ~ 'Pennate Diatoms',
-                           Name == 'Unknown nanoflagellate' ~ 'Nanflagellates',
-                           Name == 'Unknown euglenoid' ~ 'Euglenoids',
+    AlgalGroup = case_when(Taxon == 'Little Green Balls' ~ 'Unknown',
+                           Taxon == 'Unknown cyanobacteria' ~ 'Cyanobacteria',
+                           Taxon == 'Unknown centric diatom' ~ 'Centric Diatoms',
+                           Taxon == 'Unknown green alga' ~ 'Green Algae',
+                           Taxon == 'Unknown dinoflagellate' ~ 'Dinoflagellates',
+                           Taxon == 'Unknown pennate diatom' ~ 'Pennate Diatoms',
+                           Taxon == 'Unknown nanoflagellate' ~ 'Nanflagellates',
+                           Taxon == 'Unknown euglenoid' ~ 'Euglenoids',
                            TRUE ~ AlgalGroup)
   )
 ```
 
 ### Check taxa for errors
 ```{r}
-df_error_check <- df_joined %>% select(c('Name':'Species'))
+df_error_check <- df_joined %>% select(c('Taxon':'Species'))
 
 check <- df_error_check %>% subset(is.na(AlgalGroup) | is.na(Class) | is.na(Phylum) | is.na(Kingdom) | is.na(Genus) | is.na(Species))
 check <- check[!duplicated(check),]
-check <- check %>% arrange(Name)
-syn_check <- df_error_check %>% subset(is.na(Name) | Name == 'Unknown')
+check <- check %>% arrange(Taxon)
+syn_check <- df_error_check %>% subset(is.na(Taxon) | Taxon == 'Unknown')
 syn_check <- syn_check[!duplicated(syn_check),]
-syn_check <- syn_check %>% arrange(Name)
+syn_check <- syn_check %>% arrange(Taxon)
 
 print(check)
 print(syn_check)
@@ -161,6 +162,13 @@ print(syn_check)
 ### Average Biovolume, Biovolume Density
 ```{r}
 df_joined$Total_Cells_Counted <- as.numeric(df_joined$Total_Cells_Counted)
+
+df_joined <- df_joined %>%
+  mutate(Cells_per_mL =
+    case_when(
+      Lab == 'EcoAnalysts' ~ Organisms_per_mL*Cells_per_Unit,
+      Lab == 'BSA' ~ Total_Cells_Counted*Factor)
+  )
 
 df_joined <- df_joined %>%
   mutate(AverageBiovolume = round(rowMeans(select(., starts_with('Biovolume')), na.rm = TRUE),2),
@@ -198,6 +206,46 @@ df_joined <- df_joined[!duplicated(df_joined),]
 
 ## Export
 ```{r}
-write_csv(df_joined,'03_Phyto/PESP/data/EMP/EMP_Phyto_Data_2008-2021_TEST3323.csv')
+write_csv(df_joined,'03_Phyto/PESP/data/EMP/EMP_Phyto_Data_2008-2021_CELLSADDITION063023.csv')
 ```
+# ------
+# ADD IN CELL/ML
+# ------
+
+```{r message=FALSE}
+df_edi <- read_csv('03_Phyto/PESP/data/EMP/phytoedi_2022_wcoords.csv')
+df_newcells <- read_csv('03_Phyto/PESP/data/EMP/EMP_Phyto_Data_2008-2021_CELLSADDITION063023.csv')
+```
+
+```{r}
+library(tidylog)
+df_newcells <- df_newcells %>% subset(select = c('Taxon','SampleDate','StationCode','Organisms_per_mL','Cells_per_mL','Shape','AverageBiovolume_per_mL'))
+df_edi$SampleDate <- as.Date(df_edi$SampleDate, '%m/%d/%Y')
+df_newcells$SampleDate <- as.Date(df_newcells$SampleDate, '%m/%d/%Y')
+df_edi <- df_edi %>% rename(Taxon = Name) %>% rename(OrigTaxon = OrigName)
+
+# checks; all should be false before merging
+unique(!(df_edi$Taxon == df_newcells$Taxon))
+unique(!(df_edi$SampleDate == df_newcells$SampleDate))
+unique(!(df_edi$StationCode == df_newcells$StationCode))
+unique(!(df_edi$Organisms_per_mL == df_newcells$Organisms_per_mL))
+unique(!(df_edi$Shape == df_newcells$Shape))
+unique(!(df_edi$AverageBiovolume_per_mL == df_newcells$AverageBiovolume_per_mL))
+
+
+df_check <- anti_join(df_edi, df_newcells, by = c('Taxon','SampleDate','StationCode','Organisms_per_mL','Shape','AverageBiovolume_per_mL'))
+
+df_export <- left_join(df_edi, df_newcells, by = c('Taxon','SampleDate','StationCode','Organisms_per_mL','Shape','AverageBiovolume_per_mL'))
+
+df_export <- df_export %>% relocate('Cells_per_mL', .after = 'Organisms_per_mL') %>%
+  select (-'AverageBiovolume') %>%
+  rename('Taxon' = 'Taxon') %>%
+  rename('OrigTaxon' = 'OrigTaxon')
+
+nrow(df_edi) == nrow(df_newcells)
+nrow(df_export) == nrow(df_newcells)
+
+write_csv(df_export, '03_Phyto/PESP/data/EMP/phytoedi_2022_wcellscoords.csv')
+```
+
 
