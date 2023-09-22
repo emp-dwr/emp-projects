@@ -1,11 +1,5 @@
-setwd("C:/Users/ahtran/OneDrive - California Department of Water Resources/Documents - DWR Continuous Environmental Monitoring Program/Annual Reports/2022")
-
-library(tidyverse)
-library(lubridate)
-library(ggplot2)
-
 #Import data
-data_avg_all <- read.csv("./data/data_avg_all.csv")
+data_avg_all <- readr::read_csv("admin/data/c-emp/data_avg_all.csv")
 
 ####Create plots ####
 year <- year(Sys.Date())-1

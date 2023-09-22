@@ -29,9 +29,10 @@ dl_data <- function(df) {
   ## builds url based on inputs
   url <- paste("https://dwrmsweb0263.ad.water.ca.gov/TelemetryDirect/api/Results/ResultData?program=100&resultid=",id,"&6&start=",startdt,"&end=",enddt,"&version=1",sep = "")
   data <- read.csv(url(url),sep = '|')
+  # data <- readr::read_delim(url(url), delim = '|')
   
   ## Converts columns to correct data types
-  data$time <- as_datetime(data$time)
+  data$time <- lubridate::as_datetime(data$time)
   suppressWarnings(data$value <- as.numeric(data$value))
   
   # Adds missing datetime stamps
@@ -67,7 +68,7 @@ avg_data <- function(df) {
   station <- df$station[1]
   station_name <- df$site_code[1]
   par <- df$parameter[1]
-  df$time <- as_datetime(df$time)
+  df$time <- lubridate::as_datetime(df$time)
   df <- df %>% arrange(df$time)
   data <-  df %>% mutate(value = ifelse(qaqc_flag_id  != "G", NA, value)) #Removes non-good data
   data$date <- as.Date(data$time)
@@ -89,7 +90,7 @@ avg_data <- function(df) {
 }
 
 ####Download metadata table####
-  id_data <- read.csv(url('https://dwrmsweb0263.ad.water.ca.gov/TelemetryDirect/api/Results/ResultDetails?program=100'),sep = "|")
+  id_data <- readr::read_delim(url('https://dwrmsweb0263.ad.water.ca.gov/TelemetryDirect/api/Results/ResultDetails?program=100'), delim = '|')
   id_data$station_name <- substr(id_data$station_name, 2, regexpr("\\)", id_data$station_name)-1)
   
   #list of sonde WQ constituent IDs in WQP
@@ -141,10 +142,11 @@ data_files <- setNames(
 )
 #bottom data
 data_files_bot <- setNames(
-  lapply(seq_len(nrow(id_data_bottom)), function(i) {
-    dl_data(id_data_bottom[i,])
-  }),
-  paste0(id_data_bottom$cdec_code,"_",id_data_bottom$analyte_name)
+  lapply(
+    seq_len(nrow(id_data_bottom)),
+    function(i) {dl_data(id_data_bottom[i,])}
+    ),
+  paste0(id_data_bottom$cdec_code, '_', id_data_bottom$analyte_name)
 )
 ####Average Data####
 #Uses avg_data to calculate averages, saves to list
