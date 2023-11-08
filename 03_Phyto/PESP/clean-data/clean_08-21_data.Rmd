@@ -181,18 +181,33 @@ df_joined$AverageBiovolume[is.nan(df_joined$AverageBiovolume)] <- NA
 df_joined$AverageBiovolume_per_mL[is.nan(df_joined$AverageBiovolume_per_mL)] <- NA
 ```
 
-### Change Comments to QA
+### Change Comments to QA, add debris column
 ```{r}
 df_joined <- df_joined %>%
   mutate(
-    QC_1 = case_when(grepl('broken\\.|cannot meet|did not reach|delete', Comments, ignore.case = TRUE) ~ 'BadData'),
-    QC_2 = case_when(grepl('degraded', Comments, ignore.case = TRUE) ~ 'Degraded'),
-    QC_3 = case_when(grepl('poorly preserved', Comments, ignore.case = TRUE) ~ 'PoorlyPreserved'),
-    QC_4 = case_when(grepl('fragment\\.', Comments, ignore.case = TRUE) ~ 'Fragmented')
+    QC_1 = case_when(grepl('delete|cross contamination', Comments, ignore.case = TRUE) ~ 'BadData'),
+    QC_2 = case_when(grepl('did not reach|cannot meet tally|cannot meet natural unit', Comments, ignore.case = TRUE) ~ 'TallyNotMet'),
+    QC_3 = case_when(grepl('degraded', Comments, ignore.case = TRUE) ~ 'Degraded'),
+    QC_4 = case_when(grepl('poor preservation|poorly preserved|weak preservation|weakly preserved|fungus', Comments, ignore.case = TRUE) ~ 'PoorlyPreserved'),
+    QC_5 = case_when(grepl('obscured', Comments, ignore.case = TRUE) ~ 'Obscured'),
+    QC_6 = case_when(grepl('fragment\\.|diatom fragment', Comments, ignore.case = TRUE) ~ 'Fragmented'),
+    QC_7 = case_when(grepl('broken diatom', Comments, ignore.case = TRUE) & !grepl('broken diatom fragment', x, ignore.case = TRUE) ~ 'BrokenDiatoms'),
   ) %>%
   unite(QualityCheck, starts_with('QC'), remove = TRUE, na.rm = TRUE, sep = ' ')
 
 df_joined$QualityCheck[df_joined$QualityCheck == ''] <- 'Good'
+
+# R assigns sequentially, so column priority will always be the "highest" level of debris
+df_joined <- df_joined %>%
+  mutate(
+    Debris =
+      case_when(
+        grepl('high detritus|high sediment|heavy detritus|heavy sediment', Comments, ignore.case = TRUE) ~ 'high',
+        grepl('moderate detritus|moderate sediment', Comments, ignore.case = TRUE) ~ 'moderate',
+        grepl('low detritus|low sediment', Comments, ignore.case = TRUE) ~ 'low',
+        TRUE ~ NA_character_
+      )
+  )
 ```
 
 ### Remove Columns and Duplicates
@@ -244,6 +259,15 @@ df_export <- df_export %>% relocate('Cells_per_mL', .after = 'Organisms_per_mL')
 
 nrow(df_edi) == nrow(df_newcells)
 nrow(df_export) == nrow(df_newcells)
+
+# add in coordinates for EZs
+df_wq <- read_csv('03_Phyto/PESP/EMP_DWQ_1975_2022.csv') #TODO: auto-download
+
+coord_cols <- df_wq %>%
+  select('Station','Date','NorthLat','WestLong') %>%
+  filter(Station %in% c('EZ6','EZ2','EZ6-SJR','EZ2-SJR'))
+
+df_joined <- left_join(df_phyto, coord_cols, by = c('StationCode' = 'Station','SampleDate' = 'Date'))
 
 write_csv(df_export, '03_Phyto/PESP/data/EMP/phytoedi_2022_wcellscoords.csv')
 ```
