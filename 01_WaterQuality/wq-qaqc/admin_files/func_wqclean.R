@@ -235,7 +235,7 @@ add_parent <- function(df){
   # determine metadata cols
   col_overlap <- colnames(df_data)[colnames(df_data) %in% colnames(df)]
   meta_cols <- col_overlap[unlist(lapply(col_overlap, function(x) !grepl('[1]',x)))]
-  meta_cols <- stringr::str_subset(meta_cols, 'Sample Type|Parent Sample Code|Sample Code|Chlorophyll Volume', negate = TRUE)
+  meta_cols <- stringr::str_subset(meta_cols, 'Sample Type|Parent Sample Code|Sample Code|Chlorophyll Volume mL Chlorophyll Volume Filtered - [1]*', negate = TRUE)
   
   # subset by non-lab data
   df_parent <- df_data %>%
@@ -314,10 +314,10 @@ format_raw <- function(fn){
   df_field <- df_field %>% subset(id < vari_id)
   
   # rename columns
-  df_field <- rename_cols(df_field)
+  # df_field <- rename_cols(df_field)
   
   # reorder columns
-  df_field <- reorder_cols(df_field)
+  # df_field <- reorder_cols(df_field)
   
   # recombine data
   vec_names <-
@@ -331,7 +331,7 @@ format_raw <- function(fn){
   colnames_lab <<- colnames(df_lab)
   
   #* remove unnecessary analytes (field + chla vol)
-  vec_field <<- colnames(df_field)[(!(colnames(df_field) == 'Chlorophyll Volume')) & (!(colnames(df_field) %in% colnames(df_lab)))]
+  vec_field <<- colnames(df_field)[(!(colnames(df_field) == 'Chlorophyll Volume mL Chlorophyll Volume Filtered - [1]*')) & (!(colnames(df_field) %in% colnames(df_lab)))]
   
   return(df_combined)
 }
@@ -347,7 +347,7 @@ format_blanks <- function(df){
     dplyr::filter(`Sample Type` == 'Blank; Equipment')  
   
   df_blank <- df_blank %>%
-    dplyr::select(!c(all_of(vec_field),`Chlorophyll Volume`))
+    dplyr::select(!c(all_of(vec_field))) #TODO: look into this ,`Chlorophyll Volume mL Chlorophyll Volume Filtered - [1]*`))
 }
 
 format_dupes <- function(df){

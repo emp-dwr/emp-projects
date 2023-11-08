@@ -2,15 +2,20 @@
 
 Code to format monthly WQ data.
 
+Exports formatted data in the same directory as the input data.
+
 Input: filepath to exported WDL Excel file Output: formatted file in same folder
 
 ```{r}
-fn <- '01_WaterQuality/wq-qaqc/test-import.xlsx'
+fn <- 'S:/M & A BRANCH/Discrete EMP/Misc Files/Data/Jan 23 Data.xlsx'
+# fn <- '01_WaterQuality/wq-qaqc/test-import.xlsx'
 ```
 
 **CODE STARTS HERE**
 
 *You can ignore the "NAs introduced by coercion" error*
+
+TODO: robust to changes in col names
 
 ```{r}
 source('01_WaterQuality/wq-qaqc/admin_files/func_wqclean.R')
