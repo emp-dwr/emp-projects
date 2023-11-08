@@ -1,6 +1,8 @@
 ﻿WDL,EDI
 Station Name,Station
 Sample Description,SampleDescription
+Flag,Flag
+FlagDescription,FlagDescription
 Total Alkalinity mg/L as CaCO3 Std Method 2320 B 916 [1]*,TotAlkalinity
 Dissolved Ammonia mg/L as N EPA 350.1 (D) 925 [1]*,DissAmmonia
 Dissolved Bromide mg/L EPA 300.0 356 [1]*,DissBromide
@@ -52,3 +54,7 @@ Wind Direction,WindDirection
 (Bottom) pH pH Units EPA 150.1 (Field) - [1]*,pHBottom
 pH pH Units EPA 150.1 (Field) - [1]*,pHSurface
 Sample Date,DateTime
+Station Number,REMOVE
+Sample Code,REMOVE
+Sample Type,REMOVE
+Parent Sample Code,REMOVE

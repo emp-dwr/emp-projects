@@ -1,13 +1,19 @@
 ```{r}
 `%!in%` = Negate(`%in%`)
 library(tidyverse)
+library(glue)
 library(lubridate)
 
+# get year for EDI publication
+year <- year(Sys.Date())-1
+
 # import all data (check EDI data is most recent)
-df_edi <- read_csv('https://portal.edirepository.org/nis/dataviewer?packageid=edi.458.7&entityid=dfeaee030be901ae00b8c0449ea39e9c', col_types = c(Time = 'c'))
-df_wq <- read_csv('01_WaterQuality/edi-annual-updates/data/component/2022 WQ Data.csv')
-df_analytes <- read_csv('01_WaterQuality/edi-annual-updates/data/cleaning/analyte_names.csv')
-df_stations <- read_csv('01_WaterQuality/edi-annual-updates/data/cleaning/station_names.csv')
+df_edi <- read_csv('https://portal.edirepository.org/nis/dataviewer?packageid=edi.458.7&entityid=dfeaee030be901ae00b8c0449ea39e9c',
+                   col_types = c(Time = 'c'),
+                   show_col_type = FALSE)
+df_wq <- read_csv('01_WaterQuality/edi-annual-updates/data/component/2022 WQ Data.csv', show_col_type = FALSE)
+df_analytes <- read_csv('01_WaterQuality/edi-annual-updates/data/cleaning/analyte_names.csv', show_col_type = FALSE)
+df_stations <- read_csv('01_WaterQuality/edi-annual-updates/data/cleaning/station_names.csv', show_col_type = FALSE)
 ```
 
 ```{r}
@@ -39,40 +45,75 @@ df_edi <- df_edi %>%
 )
 ```
 
+Prep new data for merging
 ```{r}
-# prep new data for merging
-
 # convert 'N/A' to NA
 df_wq[df_wq == 'N/A'] <- NA
 
 # rename WDL data columns
 analytes_dict <- with(df_analytes, setNames(EDI,WDL))
+col_check <- colnames(df_wq)[colnames(df_wq) %!in% c(names(analytes_dict),'REMOVE')]
+
+# check if all columns are accounted for
+if (!rlang::is_empty(col_check)){
+  warning(glue('Unexpected columns: {toString(col_check)}.\nUpdate "analyte_names.csv". If column should be removed, set to REMOVE.'))
+}
+
 colnames(df_wq) <- unlist(lapply(colnames(df_wq), function(x) if(x %in% names(analytes_dict)) analytes_dict[[x]] else x))
+df_wq <- df_wq %>% dplyr::select(-REMOVE)
+```
 
-# update station names
+Update station names
+```{r}
 stations_dict <- with(df_stations, setNames(EDI,WDL))
-df_wq$Station <- unlist(lapply(df_wq$Station, function(x) if(x %in% names(stations_dict)) stations_dict[[x]] else x))
 
-# split datetime column
+station_check <- df_wq$Station[df_wq$Station %!in% c(names(stations_dict),'REMOVE')]
+
+if (!rlang::is_empty(station_check)){
+  warning(glue('Unexpected stations: {toString(station_check)}.\nUpdate "station_names.csv". If column should be removed, set to REMOVE.'))
+}
+
+df_wq$Station <- unlist(lapply(df_wq$Station, function(x) if(x %in% names(stations_dict)) stations_dict[[x]] else x))
+df_wq <- df_wq %>% filter(!(Station == 'REMOVE'))
+```
+
+Split DateTime column
+```{r}
 df_wq$Date <- as.Date(df_wq$DateTime, format = '%m/%d/%Y %H:%M')
 df_wq$Time <- format(as.POSIXct(df_wq$DateTime, format = '%m/%d/%Y %H:%M'), '%H:%M:%S')
 
-# # combine DOC, TOC, TSS, and VSS columns (EPA and Std methods)
-# df_wq <- df_wq %>%
-#   mutate(
-#     DOC = case_when(is.na(DOC_EPA) ~ DOC_Std,
-#                     TRUE ~ DOC_EPA),
-#     TOC = case_when(is.na(TOC_EPA) ~ TOC_Std,
-#                     TRUE ~ TOC_EPA),
-#     TSS = case_when(is.na(TSS_EPA) ~ TSS_Std,
-#                     TRUE ~ TSS_EPA),
-#     VSS = case_when(is.na(VSS_EPA) ~ VSS_Std,
-#                     TRUE ~ VSS_EPA),
-#   )
+if (!rlang::is_empty(df_wq$DateTime[is.na(df_wq$Date)])){
+  warning(glue('"Date" NA on {toString(df_wq$DateTime[is.na(df_wq$Date)])}.\n Check DateTime stamp.'))
+}
 
+if (!rlang::is_empty(df_wq$DateTime[is.na(df_wq$Date)])){
+  warning(glue('"Time" NA on {toString(df_wq$DateTime[is.na(df_wq$Date)])}.\n Check DateTime stamp.'))
+}
+```
+
+Misc
+```{r}
+# combine DOC, TOC, TSS, and VSS columns (EPA and Std methods)
+df_wq <- df_wq %>%
+  mutate(
+    DOC = case_when(is.na(DOC_EPA) ~ DOC_Std,
+                    TRUE ~ DOC_EPA),
+    TOC = case_when(is.na(TOC_EPA) ~ TOC_Std,
+                    TRUE ~ TOC_EPA),
+    TSS = case_when(is.na(TSS_EPA) ~ TSS_Std,
+                    TRUE ~ TSS_EPA),
+    VSS = case_when(is.na(VSS_EPA) ~ VSS_Std,
+                    TRUE ~ VSS_EPA),
+  )
+```
+
+Final Column Checks
+```{r}
 # check that missing column names make sense
-print(colnames(df_edi)[colnames(df_edi) %!in% colnames(df_wq)])
+print('columns in EDI but not WDL:')
+(colnames(df_edi)[colnames(df_edi) %!in% colnames(df_wq)])
 print('*******')
+print('columns in WDL but not EDI:')
 print(colnames(df_wq)[colnames(df_wq) %!in% colnames(df_edi)])
 
 # remove unnecessary cols
@@ -83,6 +124,7 @@ df_wq <- df_wq %>% subset(select = keep_cols)
 df_wq[setdiff(colnames(df_edi), colnames(df_wq))] <- NA
 ```
 
+Clean duplicates, add RL sign
 ```{r}
 # remove lab duplicates
 cols_signs <- names(df_wq)[grepl('_Sign',names(df_wq))]
@@ -115,19 +157,70 @@ df_wq <- df_wq %>%
 df_join <- rbind(df_edi, df_wq)
 ```
 
+Final Tests
 ```{r}
 # test data is same as previous EDI publication for previous years
-df_test <- df_join %>% subset(year(Date) < 2022)
+df_test_old <- df_join %>% subset(year(Date) < year)
 
-identical(df_test, df_edi)
-all.equal(df_test, df_edi)
+print((glue('old data is identical: {identical(df_test_old, df_edi)}')))
+print((glue('old data is equal: {all.equal(df_test_old, df_edi)}')))
+
+# check new data isn't empty:
+df_test_new <- df_join %>% subset(year(Date) == year)
+expected_na <- c('WindDirection','TotAmmonia','TotChloride','TON','LightExtinction','TurbiditySurface_NTU','TurbidityBottom_NTU')
+actual_na <- colnames(df_test_new)[sapply(df_test_new, function(x) all(is.na(x)))]
+
+print(glue('Columns with all NAs for new data:\n{toString(actual_na)}'))
+
+if (!rlang::is_empty(actual_na[actual_na %!in% expected_na])){
+  warning(glue('Unexpected column is all NA: {toString(actual_na[actual_na %!in% expected_na])}.\n Check data.'))
+}
+```
+```{r}
+# create graphs to check
+check_graph <- function(param, df = df_join, select_year = 'all'){
+  if (select_year != 'all'){
+      df <- df[year(df$Date) %in% select_year,]
+  }
+
+  if(nrow(df) == 0){
+    return('no data')
+  }
+
+  df$Month <- month.abb[month(df$Date)]
+  df <- df %>% mutate(Month = factor(Month, levels = month.abb))
+
+  plt <- ggplot(df, aes(Date, .data[[param]])) +
+    geom_point(shape = 21) +
+    geom_line() + 
+    theme_bw() +
+    facet_wrap(~ Station, ncol = 4, scales = 'free')
+
+  # create directory
+  fp <- glue('01_WaterQuality/edi-annual-updates/plots/{year}')
+  dir.create(file.path(fp), showWarnings = FALSE)
+
+  # create filename
+  if(select_year == select_year[length(select_year)]){
+    save_years <- select_year
+  } else{
+    save_years <- glue('{select_year[1]}-{select_year[length(select_year)]}')
+  }
+
+  ggsave(glue('{fp}/QC_{param}_{save_years}.png'), width = 20, height = 20)
+}
+
+
+for (col in colnames(select_if(df_join, is.numeric))){
+  check_graph(col, select_year = c(year-1,year))
+}
+
+
+
 ```
 
 
 ```{r}
 # export csv
-# get year
-year <- year(Sys.Date())-1
-
 write_csv(df_join,paste0('01_WaterQuality/edi-annual-updates/data/final/EMP_DWQ_1975_',year,'.csv'))
 ```
