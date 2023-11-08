@@ -1,0 +1,107 @@
+```{r}
+library(tidyverse)
+library(lubridate)
+library(glue)
+
+get_edi_file = function(pkg_id, fnames, verbose = TRUE){
+  # get revision
+  revision_url = glue::glue("https://pasta.lternet.edu/package/eml/edi/{pkg_id}")
+  all_revisions = readLines(revision_url, warn = FALSE) 
+  latest_revision = tail(all_revisions, 1)
+  if (verbose) {
+    message("Latest revision: ", latest_revision)
+  }
+  # get entities 
+  pkg_url = glue::glue("https://pasta.lternet.edu/package/data/eml/edi/{pkg_id}/{latest_revision}")
+  all_entities = readLines(pkg_url, warn = FALSE)
+  name_urls = glue::glue("https://pasta.lternet.edu/package/name/eml/edi/{pkg_id}/{latest_revision}/{all_entities}")
+  names(all_entities) = purrr::map_chr(name_urls, readLines, warn = FALSE)
+  if (verbose) {
+    message("Package contains files:\n", 
+            stringr::str_c("    ", names(all_entities), sep = "", collapse = "\n"))
+  }
+  # select entities that match fnames
+  fname_regex = stringr::str_c(glue::glue("({fnames})"), collapse = "|")
+  included_entities = all_entities[stringr::str_detect(names(all_entities), fname_regex)]
+  if(length(included_entities) != length(fnames)){
+    stop("Not all specified filenames are included in package")
+  }
+  # download data
+  if (verbose) {
+    message("Downloading files:\n",
+            stringr::str_c("    ", names(included_entities), sep = "", collapse = "\n"))
+  }
+  dfs = purrr::map(glue::glue("https://portal.edirepository.org/nis/dataviewer?packageid=edi.{pkg_id}.{latest_revision}&entityid={included_entities}"),
+                   readr::read_csv, guess_max = 1000000)
+  names(dfs) = names(included_entities)
+  dfs
+}
+
+download_dwq_data <- function(){
+  df <- get_edi_file(458, glue::glue('EMP_DWQ_1975_2022'))
+  df <- df[[1]]
+#  readr::write_csv(df, 'admin/data/dwq/data_dwq_all.csv')
+}
+
+df_wq <- download_dwq_data()
+
+df_phyto <- get_edi_file(1320, glue::glue('EMP_Phyto_Data_2008-2022'))
+df_phyto <- df_phyto[[1]]
+
+df_stations <- get_edi_file(1320, glue::glue('EMP_Phyto_Stations_2008-2022'))
+df_stations <- df_stations[[1]]
+
+df_phyto$Station[df_phyto$Station == 'NZ328'] <- 'NZ325'
+
+`%!in%` <- function(x,y)!('%in%'(x,y))
+
+```
+
+
+CODE STARTS HERE
+
+```{r}
+df_missing <- df_test %>% filter(Station %in% c('EZ2','EZ6','EZ2-SJR','EZ6-SJR') & (is.na(Latitude) | is.na(Longitude)))
+
+df_phyto <- df_phyto %>%
+  mutate(Month = month(df_phyto$Date),
+         Year = year(df_phyto$Date))
+
+
+df_wq <- df_wq %>%
+  rename(Latitude = NorthLat, Longitude = WestLong) %>%
+  mutate(Month = month(df_wq$Date),
+         Year = year(df_wq$Date))
+
+df_stations <- df_stations %>% rename(Station = StationCode)
+
+df_wq <- df_wq %>% select(Station, Date, Time, Latitude, Longitude, Year, Month)
+
+df_wq <- left_join(df_wq, df_stations, by = 'Station') %>%
+  unite(Latitude, c(Latitude.x, Latitude.y), na.rm = TRUE) %>%
+  unite(Longitude, c(Longitude.x, Longitude.y), na.rm = TRUE)
+
+df_test <- left_join(df_phyto, df_wq, by = c('Station','Month','Year')) %>%
+  select(!c('Date.x','Time.x','Latitude.x','Longitude.x','Month','Year')) %>%
+  rename(Date = Date.y, Time = Time.y, Latitude = Latitude.y, Longitude = Longitude.y)
+
+df_test$Longitude[df_test$Longitude == '-121.80717_-121.8063'] <- -121.8063
+
+write_csv(df_test, 'phyto_new_vals.csv')
+```
+
+
+```{r}
+df_stat <- df_test %>% select(Station, Latitude, Longitude)
+df_stat <- unique(df_stat)
+df_stat <- df_stat %>% filter(Station %!in% c('EZ2','EZ6','EZ2-SJR','EZ6-SJR'))
+```
+
+```{r}
+df_missing <- df_test %>% filter(Station %in% c('EZ2','EZ6','EZ2-SJR','EZ6-SJR') & (is.na(Latitude) | is.na(Longitude)))
+
+df_test <- df_test %>% filter(!(Station == 'EZ2-SJR' & Date == '2016-07-11'))
+
+df_test$Date[df_test$Station == 'EZ2-SJR' & df_test$AverageBiovolume_per_mL == 200008.94] <- '2016-07-11'
+```
+
