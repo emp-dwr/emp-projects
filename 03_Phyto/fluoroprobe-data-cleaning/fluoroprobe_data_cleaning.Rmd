@@ -4,10 +4,10 @@
 # ---
 
 # declare filename for fluoroprobe data (.txt)
-fn_fl <- 'September 2022 Mid Delta Day 2.txt'
+fn_fl <- 'Fluoroprobe_GB_Apr23.txt'
 
 # declare filename for water quality data (.csv)
-fn_wq <- 'MOPED September 2022 Mid Delta Day 2.csv'
+fn_wq <- 'MOPED_Export_60_04172023_GB.csv'
 ```
 
 ```{r}
@@ -25,7 +25,8 @@ library(sp)
 source('03_Phyto/fluoroprobe-data-cleaning/functions/region_assign_funcs.R')
 
 # read in data
-year <- str_extract(fn_fl, '\\d{4}')
+year <- extract_year(fn_fl)
+month <- extract_month(fn_wq)
 fp_fl <- abs_path(paste0(year,'/',fn_fl), type = 'fluoro')
 df_fl <- read_tsv(fp_fl)
 
