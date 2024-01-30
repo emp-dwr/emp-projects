@@ -1,0 +1,35 @@
+Title: Phycoprobe Data - Yearly Combine
+
+Description: Combine cleaned phycoprobe files from a given year
+
+By: Perry
+
+Date: 11/2023
+
+
+```{r}
+# ---
+# EDIT THIS
+# ---
+
+# define year of interest
+year <- 2023
+```
+
+```{r}
+# ---
+# CODE STARTS HERE
+# ---
+
+# read in packages
+library(tidyverse)
+library(data.table)
+source('03_Phyto/phycoprobe/functions/phyco_funcs.R')
+
+fp_phyco <- clean_path(2023)
+
+fp_phyco
+df_test <- rbindlist(lapply(fp_phyco, fread), fill = TRUE)
+```
+
+
