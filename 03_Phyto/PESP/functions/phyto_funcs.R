@@ -1,3 +1,16 @@
+# read in AR data
+abs_path_ar <- function(fp_rel = NULL) {
+  fp_emp <- 'California Department of Water Resources/Environmental Monitoring Program - Documents/Phyto/Phyto Annual Report'
+  
+  if (is.null(fp_rel)) {
+    fp_abs <- normalizePath(file.path(Sys.getenv('USERPROFILE'), fp_emp))
+  } else {
+    fp_abs <- normalizePath(file.path(Sys.getenv('USERPROFILE'), fp_emp, fp_rel))
+  }
+  
+  return(fp_abs)
+}
+
 # read in data
 abs_path <- function(fp_rel = NULL, type = NULL) {
   fp_emp <- 'California Department of Water Resources/Environmental Monitoring Program - Documents/Phyto/Phyto EDI Data/'

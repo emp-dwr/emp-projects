@@ -1,0 +1,171 @@
+Title: Phycoprobe Data - Monthly Cleaning
+
+Description: Add lat/lon coordinates to phycoprobe data
+
+By: Perry
+
+Date: 11/2023
+
+```{r}
+# ---
+# EDIT THIS
+# ---
+
+# declare the run year of interest
+year <- 2023
+```
+
+```{r}
+# ---
+# CODE STARTS HERE
+# ---
+
+# import packages
+library(tidyverse)
+library(lubridate)
+library(deltamapr)
+library(readxl)
+library(sf)
+library(sp)
+source('03_Phyto/phycoprobe/functions/phyco_funcs.R')
+
+# read in run names and regions
+df_names <- read_csv('03_Phyto/phycoprobe/supp_files/run_names.csv', show_col_types = FALSE)
+df_regions <- read_csv('03_Phyto/phycoprobe/supp_files/regions_fluoro.csv', show_col_types = FALSE)
+
+# obtain all filepaths and create combo df
+fp_all_phy <- archive_path(2023, 'phyco')
+fp_all_wq <- archive_path(2023, 'MOPED')
+
+df_combo_phy <- create_combo_df(fp_all_phy)
+df_combo_wq <- create_combo_df(fp_all_wq)
+
+df_combo <- inner_join(df_combo_wq, df_combo_phy, by = c('month','run'))
+
+# run code for all combos
+for(i in 1:nrow(df_combo)){ 
+  # define variables
+  month <- df_combo[i,]$month
+  run <- df_combo[i,]$run
+  
+  print(glue::glue('month: {month} and run: {run}'))
+  
+  # read in data
+  fp_phy <- data_path(run, month, year, type = 'phyco')
+  df_phy <- read_tsv(fp_phy, show_col_types = FALSE)
+  
+  # remove first row and save for later
+  first_row <- df_phy[1,]
+  df_phy <- df_phy[-1,]
+  
+  # change col types to relevant ones
+  df_phy$`Date/Time` <- as.POSIXct(df_phy$`Date/Time`, format = '%m/%d/%Y %H:%M:%S')
+  df_phy <- df_phy %>% mutate_if(is.character,as.numeric)
+  
+  # round to nearest 10 mins and calc average
+  df_phy <- df_phy %>%
+    mutate(`Date/Time` = round_date(`Date/Time`, unit='1 minute')) %>%
+    group_by(`Date/Time`) %>%
+    summarize_all(~round(mean(., na.rm = TRUE),2))
+  
+  # convert date/time col back to character
+  df_phy$`Date/Time` <- as.character(df_phy$`Date/Time`)
+  
+  # clean up col names
+  colnames(df_phy) <- paste(colnames(df_phy), first_row, sep='_')
+  colnames(df_phy) <- colnames(df_phy) %>% str_replace('_1_', '_')
+  colnames(df_phy) <- colnames(df_phy) %>% str_replace('�g', 'ug')
+  colnames(df_phy) <- colnames(df_phy) %>% str_replace('�C', 'degC')
+  colnames(df_phy) <- colnames(df_phy) %>% str_replace('\\.\\.\\.', '-')
+  colnames(df_phy) <- colnames(df_phy) %>% str_replace_all('\\.|\\[|\\]|#', '')
+  df_phy <- df_phy %>% rename(DateTime = `Date/Time_date`, Temp_degC = `Temp Sample_degC`)
+  
+  # keep relevant columns
+  keep_cols <- c(colnames(df_phy)[grepl('Green Algae|Bluegreen|Diatoms|Cryptophyta', colnames(df_phy))],'Temp_degC','DateTime')
+  
+  df_phy <- subset(df_phy, select = keep_cols)
+  
+  df_phy <- df_phy %>%
+    mutate(Year = year(df_phy$DateTime),
+           Month = month.abb[month(df_phy$DateTime)],
+           Date = as.Date(df_phy$DateTime, format = '%Y-%m-%d %H:%M:%S'))
+  
+  # read in WQ data
+  fp_wq <- data_path(run, month, year, type = 'MOPED')
+  df_wq <- read_csv(fp_wq, skip = 2, show_col_types = FALSE)
+  
+  # clean up, including WQ variables
+  df_wq$TimeStamp <- parse_date_time(df_wq$TimeStamp, c('mdY HMS', 'mdY HM'))
+  df_wq$TimeStamp <- as.POSIXct(df_wq$TimeStamp, format = '%m/%d/%Y %H:%M:%S')
+  
+  df_wq$Analyte <- paste0(df_wq$Header,'_',df_wq$Unit)
+  
+  df_wq <- df_wq %>%
+    subset(select = c(Longitude, Latitude, TimeStamp, Analyte, Value)) %>%
+    mutate(TimeStamp = round_date(TimeStamp, unit='1 minute')) %>%
+    group_by(TimeStamp, Analyte) %>%
+    summarize_all(~mean(., na.rm = TRUE)) %>%
+    rename(DateTime = TimeStamp) %>%
+    pivot_wider(names_from = Analyte, values_from = Value) %>%
+    summarize_all(~mean(., na.rm = TRUE))
+  
+  # convert date/time col back to character
+  df_wq$DateTime <- as.character(df_wq$DateTime)
+  
+  # combine fl and wq dfs
+  df_comb <- left_join(df_phy, df_wq, by = 'DateTime')
+  df_comb <- df_comb %>% filter(!is.na(Longitude) | !is.na(Latitude))
+  
+  # add label col
+  df_comb$Label <- paste(df_comb$Month, df_comb$Year, run, row_number(df_comb$Month))
+  df_comb <- df_comb %>% relocate(Label)
+  
+  # import delta sf
+  sf_delta <- R_EDSM_Subregions_Mahardja
+  
+  # convert wq to spdf
+  coords <- df_comb[,c('Longitude', 'Latitude')]
+  data   <- subset(df_comb, select = -c(Latitude, Longitude))
+  crs    <- CRS('+init=epsg:4326 +proj=longlat')
+  spdf_wq <- SpatialPointsDataFrame(coords = coords,
+                                 data = data, 
+                                 proj4string = crs)
+  
+  # convert delta to spdf
+  spdf_delta <- as(sf_delta, 'Spatial')
+  spdf_delta <- spTransform(spdf_delta, CRS('+init=epsg:4326 +proj=longlat'))
+  
+  # add subregion to df
+  col_sr <- sp::over(spdf_wq, spdf_delta[,'SubRegion'])
+  spdf_wq$SubRegion <- col_sr$SubRegion
+  
+  # convert to shapefile
+  sf_wq <- st_as_sf(spdf_wq)
+  sf_wq <- st_transform(sf_wq, st_crs = sf_delta)
+  sf_wq <- sf_wq %>% filter(!is.na(SubRegion))
+  
+  # check data
+  # ggplot() +
+  #   geom_sf(data = sf_delta) +
+  #   geom_sf(data = sf_wq, color = 'red')
+  
+  # clean up regions in final df
+  df_final <- as_tibble(sf_wq)
+  df_final <- left_join(df_final, df_regions, 'SubRegion')
+  
+  df_final <- df_final %>%
+    extract(geometry, c('Latitude', 'Longitude'), '\\((.*), (.*)\\)', convert = TRUE) %>%
+    select(-c(SubRegion, SONDEDEPTH_ft, Date, Month, Year)) %>%
+    relocate(c(Label, DateTime, Latitude, Longitude, Region))
+  
+  
+  # export
+  fn_exp <- str_remove(str_extract(fp_phy, '[^/]*$'), '.txt')
+  
+  fp_folder <- create_dir(year)
+  fp_exp <- paste0(fp_folder,'/',fn_exp,'_summary.csv')
+  
+  write_csv(df_final, fp_exp)
+}
+```
+

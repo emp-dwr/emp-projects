@@ -2,7 +2,7 @@ Title: Nutrient Preservation Comparison Study
 Contact: sarah.perry@water.ca.gov
 Date: 01/2023
 
-Summary: independent t-test to determine if there's a significant difference between acidified and frozen samples from Bryte
+Summary: 2-way paired t-test to determine if there's a significant difference between acidified and frozen samples from Bryte
 
 # Read in data
 ```{r message = FALSE}
@@ -15,12 +15,24 @@ library(stats)
 # read in data
 df_wq <- read_csv('01_WaterQuality/nutrient-comparison-study/data/nutrient_data.csv')
 
+vec_analytes <- unique(df_wq$Analyte)
+
 # mutate df, drop NAs (< RL values)
-df_wq <- df_wq %>%
-  pivot_longer(cols = c(Frozen, Acidified),
-               names_to = 'PresType',
-               values_to = 'Result') %>%
+df_wq_pivot <- df_wq %>%
+   mutate(Difference = Frozen-Acidified,
+          StationType = case_when(
+             StationName %in% c('D22','P8','D19','D16 - Twitchell') ~ 'freshwater',
+             StationName == 'D7' ~ 'brackish',
+             StationName == 'D41' ~ 'saline'
+          )) %>%
    drop_na()
+
+df_wq_pivot <- rowid_to_column(df_wq_pivot, 'sample')
+
+df_wq <- df_wq_pivot %>%
+   pivot_longer(cols = c(Frozen, Acidified),
+               names_to = 'PresType',
+               values_to = 'Result')
 ```
 
 # Descriptive analysis
@@ -31,61 +43,44 @@ by(data = df_wq,
    INDICES = c(df_wq[,'Analyte'],df_wq[,'PresType']), 
    FUN = summary)
 ```
-# Check boxplot
+
+# Check boxplots (individual and difference)
+
+First, we look at the individual preservation types to see if there are any outliers
 ```{r}
 ggplot(df_wq, aes(PresType, Result)) +
   geom_boxplot()+
    facet_wrap(~Analyte)
 ```
-# Check variances are homogeneous
+
+As we don't see any, we can move on.
+
+The boxplot of the differences gives us a qualitative take on the data.
 ```{r}
-for (analyte in unique(df_wq$Analyte)){
-   df_test <- df_wq %>% subset(Analyte == analyte)
-   barlett_test <- bartlett.test(df_test$Result ~ df_test$PresType)
-   
-   print(paste0('--',analyte,'--'))
-   print(barlett_test)
-}
+ggplot(df_wq, aes(,Difference)) +
+  geom_boxplot()+
+   facet_wrap(~Analyte)
 ```
-Variances are homogeneous for all analytes.
+TKN seems to have a higher variance, but a mean close to 0 still. All the rest look okay.
 
 # Check normality
-```{r}
-for (analyte in unique(df_wq$Analyte)){
-   df_test <- df_wq %>% subset(df_wq$Analyte == analyte)
-   
-   qq_test <- qqnorm(df_test$Result[df_test$PresType == 'Frozen'], pch = 1, frame = FALSE)
-   title(sub = analyte)
-   
-   print(qq_test)
-}
-```
 
-```{r}
-for (analyte in unique(df_wq$Analyte)){
-   df_test <- df_wq %>% subset(df_wq$Analyte == analyte)
-   
-   qq_test <- qqnorm(df_test$Result[df_test$PresType == 'Acidified'], pch = 1, frame = FALSE)
-   title(sub = analyte)
-   
-   print(qq_test)
-}
-```
-For all, data is close enough to normal for a t-test. A bit debateable for NitrateNitrite and Orthophosphate, but I feel comfortable not applying any normalization transformations.
+Residuals aren't normal; however, we are assuming we have enough data for the CLT to be valid, and therefore are unconcerned. To be safe, we will also run the model using log-transformed values (which more closely approximate normality):
 
 # linear regression
 ```{r}
-for (analyte in unique(df_wq$Analyte)){
+for (analyte in vec_analytes){
    df_test <- df_wq %>% subset(Analyte == analyte)
    
-   df_test <- df_test %>%
+   df_test_pivot <- df_test %>%
       pivot_wider(names_from = 'PresType',
                   values_from = 'Result')
    
-   plt <- ggplot(df_test, aes(Acidified, Frozen)) +
+   plt <- ggplot(df_test_pivot, aes(Acidified, Frozen, color = StationType)) +
       geom_point(size=2) +
       geom_smooth(method='lm') +
       theme_bw() +
+      facet_wrap(~StationName, scales = 'free') +
       ggtitle(analyte)
    
    print(plt)
@@ -96,23 +91,48 @@ for (analyte in unique(df_wq$Analyte)){
           width = 4.5)
    }
 ```
+```{r}
+for (analyte in vec_analytes){
+   df_test <- df_wq %>% subset(Analyte == analyte)
+   test <- bartlett.test(df_test$Result ~ df_test$PresType)
+   print(test)
+}
+```
+
+# f-test
+```{r}
+var.test(df_wq_pivot$Frozen, df_wq_pivot$Acidified, alternative = 'two.sided')
+```
 
 # t-test
+
+First, we run the model with no transformations.
 ```{r}
-for (analyte in unique(df_wq$Analyte)){
-   df_test <- df_wq %>% subset(Analyte == analyte)
+for (analyte in vec_analytes){
+   df_test <- df_wq %>% subset(Analyte == analyte) 
    
    ttest <- t.test(formula = df_test$Result ~ df_test$PresType,
                    alternative = 'two.sided',
                    mu = 0, 
-                   paired = FALSE,   
-                   var.equal = TRUE,
+                   paired = TRUE,   
+                   var.equal = FALSE,
                    conf.level = 0.95)
    
-   print(paste0('--',analyte,'--'))
+   print(paste0('~~~',analyte,'~~~'))
    print(ttest)
+   print('~~~~~~~~')
+
+   # (for fun, also do with linear mixed effect model; *assumes equal variance*, which we won't, so results don't matter)
+   df_test <- df_wq %>% subset(df_wq$Analyte == analyte)
+   model <- summary(lmerTest::lmer(Result ~ PresType + (1|sample), df_test), ddf = 'Kenward-Roger')
+   print(model)
+}
+```
    }
 ```
 p > 0.05 for all analytes.
 
 Accept null hypothesis of no difference -- the two are the same -- for all analytes.
+
+
+To check that our violation of the non-normality assumption does not affect the 
