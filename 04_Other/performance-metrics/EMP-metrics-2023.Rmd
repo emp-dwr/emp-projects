@@ -32,104 +32,87 @@ options(dplyr.summarise.inform = FALSE)
 ## Read in raw data
 
 ```{r read input, echo = TRUE}
-# Import data files 
-df_sondes <- read_csv(file = here("04_Other","performance-metrics","DEMP_sonde_ratings_2022.csv"))
-
-# Rename headers 
-df_sondes <- df_sondes %>%
-  rename("DO (%)" = "DO.per") %>%
-  rename("Temperature" = "Temp") %>%
-  rename("Turbidity" = "Turb") %>%
-  rename("Conductivity" = "SpCond") %>%
-  rename("Chlorophyll" = "Chla")
-
-df_sondes <- pivot_longer(df_sondes, 
-                          values_to = "PercentPass",
-                          names_to = "Sensor",
-                          cols = Conductivity:Turbidity)
-
-# Get ratings to sort in order good -> bad
-rating.order <- c("Excellent","Good","Fair","Poor","MAL")
-
-df_sondes$Rating <- factor(as.character(df_sondes$Rating), 
-                           levels = rating.order)
-
 # Import C-EMP data files 
-df_CEMP <- read_csv(file = here("04_Other","performance-metrics","data","CEMP-sonde-ratings-2019-2022.csv"))
+df_CEMP <- read_csv(file = here("04_Other","performance-metrics","data","2023_wagner.csv"))
 
-# Rename column headers
+## Combine date and time column
 df_CEMP <- df_CEMP %>% 
-  rename("Exchange_Date" = "Field Date") %>% 
-  rename("Rating" = "Wagner Rating")
+  unite(exchange_time, c("visit_date","visit_time"), sep = " ") 
 
-# Convert dates to date format
-df_CEMP$Exchange_Date <- mdy(df_CEMP$Exchange_Date)
+df_CEMP$exchange_time <- ymd_hms(df_CEMP$exchange_time,
+                             tz = "US/Pacific")
+
+# Check for missing dates
+df_CEMP %>% filter(is.na(exchange_time)) # No missing dates
 
 # Select only needed columns
 df_CEMP <- df_CEMP %>% 
-  select(Filename,Group,Parameter,Exchange_Date,Rating)
+  select(site:exchange_time,analyte_name,rating)
 
-# Filter to C-EMP Stations Only
-df_CEMP <- df_CEMP %>% 
-  filter(Group == "CEMP")
+# Check for station completeness
+unique(df_CEMP$site)
+summary(unique(df_CEMP$site)) # Lists all 15 sites
 
-# Pull StationID out of the filename using regular expressions and stringr
-df_CEMP <- df_CEMP %>% 
-  mutate(StationCode = str_extract(Filename, pattern = "(?<=DRIFT_)[^_]+"))
+# Check for duplicated lines with 
+df_duplicates <- janitor::get_dupes(df_CEMP) # 1 duplicated row
 
-# Remove unneeded stations and years
-df_CEMP <- df_CEMP %>% 
-  filter(StationCode %nin% c("GZB","2022","RRI A","RRI B","RRI C","RRI D")) %>%
-  filter(Exchange_Date >= "2022-01-01")
+# Retain only distinct rows (remove duplicates)
+df_CEMP <- distinct(df_CEMP)
 
 ```
 
 ```{r process CEMP data, echo = FALSE}
-
-df_CEMP_w <- pivot_wider(df_CEMP, names_from = Parameter, values_from = Rating)
+df_CEMP_w <- pivot_wider(df_CEMP, names_from = analyte_name, values_from = rating)
 
 # Sort samples by date (early to late)
 df_CEMP_w <- df_CEMP_w %>% 
-  group_by(StationCode) %>% 
-  arrange(Exchange_Date) %>% 
+  group_by(site) %>% 
+  arrange(exchange_time) %>% 
   ungroup()
 
 df_CEMP_w <- df_CEMP_w %>% 
-  group_by(StationCode) %>% 
-  mutate(Start_Date = lag(Exchange_Date)) %>%
+  group_by(site) %>% 
+  mutate(start_time = lag(exchange_time)) %>%
   ungroup()
 
 df_CEMP_w <- df_CEMP_w %>% 
-  mutate(Start_Date = case_when(is.na(Start_Date) ~ "2022-01-01",
-                          TRUE ~ as.character(Start_Date)))
-
-# Convert dates back to date format
-df_CEMP_w$Start_Date <- ymd(df_CEMP_w$Start_Date)
+  mutate(start_time = case_when(is.na(start_time) ~ ymd_hms("2023-01-01 00:00:00"),
+                          TRUE ~ ymd_hms(start_time)))
 
 # Relocate Start Date column
 df_CEMP_w <- df_CEMP_w %>% 
-  relocate(Start_Date, .before = Exchange_Date)
+  relocate(start_time, .before = exchange_time)
 
 # Calculate number of days between sonde exchanges
 df_CEMP_w <- df_CEMP_w %>%
-  mutate(Days_Rated = as.integer(Exchange_Date - Start_Date))
+  mutate(days_rated = as.integer(exchange_time - start_time))
 
 # Summarize rating data for graphing -------------------------------------------
-df_CEMP_sum <- pivot_longer(df_CEMP_w, cols = DO:pH,
-                            values_to = "Rating",
-                            names_to = "Parameter")
+df_CEMP_sum <- pivot_longer(df_CEMP_w, cols = `Water Temperature`:Turbidity,
+                            values_to = "rating",
+                            names_to = "parameter")
 
 # Select needed data
 df_CEMP_sum <- df_CEMP_sum %>% 
-  select(StationCode:Rating)
+  select(site,days_rated:rating)
 
 df_CEMP_sum <- df_CEMP_sum %>% 
-  group_by(StationCode, Parameter, Rating) %>% 
-  summarize(Total_Days = sum(Days_Rated)) %>% 
+  group_by(site, parameter, rating) %>% 
+  summarize(total_days = sum(days_rated)) %>% 
   ungroup()
 
-df_CEMP_sum$Rating <- factor(as.character(df_CEMP_sum$Rating), 
+# Get ratings to sort in order good -> bad
+rating.order <- c("Excellent","Good","Fair","Poor","MAL")
+
+df_CEMP_sum$rating <- factor(as.character(df_CEMP_sum$rating), 
                              levels = rating.order)
+
+# Check how many days each sonde was rated for 
+df_CEMP_totals <- df_CEMP_sum %>% 
+  group_by(site, parameter) %>%
+  summarize(days_rated = sum(total_days)) %>%
+  ungroup()
+
 
 ```
 
@@ -137,21 +120,50 @@ df_CEMP_sum$Rating <- factor(as.character(df_CEMP_sum$Rating),
 
 ```{r plot CEMP, echo = FALSE}
 
-rating.plot.CEMP <- ggplot(data = df_CEMP_sum, aes(x = Total_Days, 
-                                            y = Parameter, 
-                                            fill = Rating)) +
+colors = c("darkgreen","darkblue","yellow3","darkred","purple")
+
+p1 <- ggplot(data = df_CEMP_sum, aes(x = total_days, 
+                                            y = parameter, 
+                                            fill = rating)) +
   geom_bar(position = "stack",  
            width = .6, 
            stat = "summary", 
            fun = "sum") +
   scale_fill_manual(values = colors)
 
-rating.plot.CEMP +
+p1 +
   labs(x = "Rating of Data Collected (Days)",
        y = "Sensor",
        fill = "Sonde Rating",
        title = "EXO2 Sonde Probe Ratings - C-EMP - 2022 ") +
-  facet_wrap(StationCode ~ ., ncol = 5)
+  facet_wrap(site ~ ., ncol = 5)
+
+# Make plots without Turbidity ratings
+p2 <- ggplot(data = df_CEMP_sum, aes(x = total_days, 
+                                            y = parameter, 
+                                            fill = rating)) +
+  geom_bar(data = subset(df_CEMP_sum, parameter != "Turbidity"),
+    position = "stack",  
+           width = .6, 
+           stat = "summary", 
+           fun = "sum") +
+  scale_fill_manual(values = colors)
+
+p2 +
+  labs(x = "Rating of Data Collected (Days)",
+       y = "Sensor",
+       fill = "Sonde Rating",
+       title = "EXO2 Sonde Probe Ratings - C-EMP - 2023 ") +
+  facet_wrap(site ~ ., ncol = 5)
+
+ggsave(path = output,
+       filename = "CEMP_sonde_scores_2023.pdf", 
+       device = "pdf",
+       scale=1.0, 
+       units="in",
+       height=6.5,
+       width=9, 
+       dpi="print")
 
 ```
 
