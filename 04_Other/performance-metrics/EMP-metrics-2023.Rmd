@@ -1,9 +1,10 @@
 ---
 title: "EMP Continuous WQ Metrics - 2023"
 author: "Ted Flynn"
-date: "2024-02-06"
+date: "2024-02-16"
 output: html_document
 ---
+Process and plot Wagner rating data from C-EMP sondes.
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
@@ -13,6 +14,7 @@ suppressWarnings(suppressMessages(library(tidyverse)))
 suppressWarnings(suppressMessages(library(RColorBrewer)))
 suppressWarnings(suppressMessages(library(janitor)))
 suppressWarnings(suppressMessages(library(here)))
+suppressWarnings(suppressMessages(library(scales)))
 
 # Set output directory 
 output <- here("04_Other","performance-metrics","output")
@@ -29,141 +31,173 @@ options(dplyr.summarise.inform = FALSE)
                       
 ```
 
-## Read in raw data
+## Read in Raw Data
+Import the raw data from C-EMP and perform basic QA-QC. Check station 
+completeness and screen for duplicates.
 
-```{r read input, echo = TRUE}
+```{r read input, echo = TRUE, results = FALSE}
 # Import C-EMP data files 
-df_CEMP <- read_csv(file = here("04_Other","performance-metrics","data","2023_wagner.csv"))
+df_CEMP <- read_csv(file = here("04_Other",
+                                "performance-metrics",
+                                "data",
+                                "2023_wagner.csv"),
+                    show_col_types = FALSE)
 
-## Combine date and time column
+## Remove date time column (will only consider rating by date)
 df_CEMP <- df_CEMP %>% 
-  unite(exchange_time, c("visit_date","visit_time"), sep = " ") 
-
-df_CEMP$exchange_time <- ymd_hms(df_CEMP$exchange_time,
-                             tz = "US/Pacific")
+  select(site:visit_date,lname:sonde_verif) 
 
 # Check for missing dates
-df_CEMP %>% filter(is.na(exchange_time)) # No missing dates
+df_CEMP %>% filter(is.na(visit_date)) # No missing dates
 
 # Select only needed columns
 df_CEMP <- df_CEMP %>% 
-  select(site:exchange_time,analyte_name,rating)
+  select(site:visit_date,analyte_name,rating)
 
 # Check for station completeness
 unique(df_CEMP$site)
 summary(unique(df_CEMP$site)) # Lists all 15 sites
 
 # Check for duplicated lines with 
-df_duplicates <- janitor::get_dupes(df_CEMP) # 1 duplicated row
+df_CEMP %>% janitor::get_dupes(site:rating) # 1 duplicated row
 
 # Retain only distinct rows (remove duplicates)
 df_CEMP <- distinct(df_CEMP)
 
+
 ```
 
-```{r process CEMP data, echo = FALSE}
-df_CEMP_w <- pivot_wider(df_CEMP, names_from = analyte_name, values_from = rating)
+## Process Sonde Data
+Calculate sonde rating intervals and summarize.
 
-# Sort samples by date (early to late)
-df_CEMP_w <- df_CEMP_w %>% 
-  group_by(site) %>% 
-  arrange(exchange_time) %>% 
-  ungroup()
-
-df_CEMP_w <- df_CEMP_w %>% 
-  group_by(site) %>% 
-  mutate(start_time = lag(exchange_time)) %>%
-  ungroup()
-
-df_CEMP_w <- df_CEMP_w %>% 
-  mutate(start_time = case_when(is.na(start_time) ~ ymd_hms("2023-01-01 00:00:00"),
-                          TRUE ~ ymd_hms(start_time)))
-
-# Relocate Start Date column
-df_CEMP_w <- df_CEMP_w %>% 
-  relocate(start_time, .before = exchange_time)
-
-# Calculate number of days between sonde exchanges
-df_CEMP_w <- df_CEMP_w %>%
-  mutate(days_rated = as.integer(exchange_time - start_time))
-
-# Summarize rating data for graphing -------------------------------------------
-df_CEMP_sum <- pivot_longer(df_CEMP_w, cols = `Water Temperature`:Turbidity,
-                            values_to = "rating",
-                            names_to = "parameter")
-
-# Select needed data
-df_CEMP_sum <- df_CEMP_sum %>% 
-  select(site,days_rated:rating)
-
-df_CEMP_sum <- df_CEMP_sum %>% 
-  group_by(site, parameter, rating) %>% 
-  summarize(total_days = sum(days_rated)) %>% 
-  ungroup()
-
+```{r process CEMP data, echo = TRUE}
 # Get ratings to sort in order good -> bad
 rating.order <- c("Excellent","Good","Fair","Poor","MAL")
 
-df_CEMP_sum$rating <- factor(as.character(df_CEMP_sum$rating), 
+df_CEMP$rating <- factor(as.character(df_CEMP$rating), 
                              levels = rating.order)
 
-# Check how many days each sonde was rated for 
-df_CEMP_totals <- df_CEMP_sum %>% 
-  group_by(site, parameter) %>%
-  summarize(days_rated = sum(total_days)) %>%
+df_CEMP_w <- pivot_wider(df_CEMP, names_from = analyte_name, values_from = rating)
+
+# Sort samples by date (early to late)
+# Add previous exchange data as end point for range of rating data
+
+df_CEMP_w <- df_CEMP_w %>% 
+  group_by(site) %>% 
+  arrange(visit_date) %>% 
+  mutate(start_date = lag(visit_date)) %>%
   ungroup()
+
+df_CEMP_w <- df_CEMP_w %>% 
+  mutate(start_date = case_when(is.na(start_date) ~ ymd("2023-01-01"),
+                                TRUE ~ ymd(start_date)))
+
+# Relocate Start Date column
+df_CEMP_w <- df_CEMP_w %>% 
+  relocate(start_date, .before = visit_date)
+
+# Calculate number of days between sonde exchanges
+df_CEMP_w <- df_CEMP_w %>%
+  mutate(days_rated = as.integer(visit_date - start_date))
 
 
 ```
 
-## Plots
+## Expand rating data from intervals to daily
+Only data rating intervals are given but we need a daily value to properly
+graph the results. Also remove turbidity data because it is not useful
+to apply Wagner method to this data.
+```{r expand data, echo = TRUE}
+# Create tibble with exchange intervals for each station
+df_CEMP_l <- pivot_longer(df_CEMP_w, 
+                          names_to = "Parameter", 
+                          values_to = "Rating",
+                          cols = `Water Temperature`:Turbidity)
 
-```{r plot CEMP, echo = FALSE}
+df_CEMP_l <- df_CEMP_l %>% 
+  select(site:visit_date,Parameter:Rating)
 
+# Fill in ratings data for each individual day
+df_CEMP_c <- df_CEMP_l %>% 
+  mutate(across(ends_with("_date"), ymd)) %>% 
+  mutate(Date = map2(start_date, 
+                     visit_date, ~ seq.Date(.x, .y, by = "1 day")), 
+         .before = start_date) %>% 
+  unnest(Date) %>% 
+  select(!ends_with("_date"))
+
+# Convert date formats and add Julian Date
+df_CEMP_c <- df_CEMP_c %>% 
+  mutate(Julian = yday(Date)) %>% 
+  ungroup()
+
+# Remove turbidity data and data after 1/1/2024
+df_CEMP_c <- df_CEMP_c %>% 
+  filter(Parameter != "Turbidity") %>% 
+  filter(Date <= "2024-01-01")
+
+```
+
+## Results
+Plot sonde rating for all stations by probe.
+
+```{r plot CEMP, echo = FALSE, fig.cap = "C-EMP Sonde Ratings.", fig.align="center"}
+# Plot rating data faceted by probe
 colors = c("darkgreen","darkblue","yellow3","darkred","purple")
 
-p1 <- ggplot(data = df_CEMP_sum, aes(x = total_days, 
-                                            y = parameter, 
-                                            fill = rating)) +
-  geom_bar(position = "stack",  
-           width = .6, 
-           stat = "summary", 
-           fun = "sum") +
-  scale_fill_manual(values = colors)
+p1 <- ggplot(data = df_CEMP_c, aes(x = Date,
+                                   y = site,
+                                   color = Rating)) +
+  geom_line(linewidth = 5) +
+  scale_color_manual(values = colors) + 
+  scale_y_discrete(limits=rev) +
+  scale_x_date(breaks = ymd(c("2023-01-01","2023-05-01","2023-09-01","2024-01-01")),
+               labels = date_format("%b"))
 
 p1 +
-  labs(x = "Rating of Data Collected (Days)",
-       y = "Sensor",
+  labs(x = "Daily Rating of Data Collected",
+       y = "Station ID",
        fill = "Sonde Rating",
-       title = "EXO2 Sonde Probe Ratings - C-EMP - 2022 ") +
-  facet_wrap(site ~ ., ncol = 5)
-
-# Make plots without Turbidity ratings
-p2 <- ggplot(data = df_CEMP_sum, aes(x = total_days, 
-                                            y = parameter, 
-                                            fill = rating)) +
-  geom_bar(data = subset(df_CEMP_sum, parameter != "Turbidity"),
-    position = "stack",  
-           width = .6, 
-           stat = "summary", 
-           fun = "sum") +
-  scale_fill_manual(values = colors)
-
-p2 +
-  labs(x = "Rating of Data Collected (Days)",
-       y = "Sensor",
-       fill = "Sonde Rating",
-       title = "EXO2 Sonde Probe Ratings - C-EMP - 2023 ") +
-  facet_wrap(site ~ ., ncol = 5)
+       title = "EXO2 Probe Ratings - 2023") +
+  facet_wrap(Parameter ~ ., ncol = 4)
 
 ggsave(path = output,
-       filename = "CEMP_sonde_scores_2023.pdf", 
-       device = "pdf",
+       filename = "CEMP_sonde_scores_test.png", 
+       device = "png",
        scale=1.0, 
        units="in",
        height=6.5,
        width=9, 
        dpi="print")
+```
 
+Plot sonde rating for all probes at each station.
+
+```{r, echo = FALSE, fig.cap = "C-EMP Sonde Ratings for each station.", fig.align="center"}
+# Plot rating data faceted by station
+p2 <- ggplot(data = df_CEMP_c, aes(x = Date,
+                                   y = Parameter,
+                                   color = Rating)) +
+  geom_line(linewidth = 5) +
+  scale_color_manual(values = colors) + 
+  scale_y_discrete(limits=rev) +
+  scale_x_date(breaks = ymd(c("2023-01-01","2023-05-01","2023-09-01","2024-01-01")),
+               labels = date_format("%b"))
+
+p2 +
+  labs(x = "Daily Rating of Data Collected)",
+       y = "Sensor",
+       fill = "Sonde Rating",
+       title = "EXO2 Probe Ratings - 2023 ") +
+  facet_wrap(site ~ ., ncol = 5)
+
+ggsave(path = output,
+       filename = "CEMP_sonde_scores_2023.png", 
+       device = "png",
+       scale=1.0, 
+       units="in",
+       height=6.5,
+       width=9, 
+       dpi="print")
 ```
 
