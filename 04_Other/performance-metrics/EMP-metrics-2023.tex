@@ -1,0 +1,259 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={EMP Continuous WQ Metrics - 2023},
+  pdfauthor={Ted Flynn},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{EMP Continuous WQ Metrics - 2023}
+\author{Ted Flynn}
+\date{2024-02-16}
+
+\begin{document}
+\maketitle
+
+Process and plot Wagner rating data from C-EMP sondes.
+
+\hypertarget{read-in-raw-data}{%
+\subsection{Read in Raw Data}\label{read-in-raw-data}}
+
+Import the raw data from C-EMP and perform basic QA-QC. Check station
+completeness and screen for duplicates.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Import C{-}EMP data files }
+\NormalTok{df\_CEMP }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\AttributeTok{file =} \FunctionTok{here}\NormalTok{(}\StringTok{"04\_Other"}\NormalTok{,}
+                                \StringTok{"performance{-}metrics"}\NormalTok{,}
+                                \StringTok{"data"}\NormalTok{,}
+                                \StringTok{"2023\_wagner.csv"}\NormalTok{),}
+                    \AttributeTok{show\_col\_types =} \ConstantTok{FALSE}\NormalTok{)}
+
+\DocumentationTok{\#\# Remove date time column (will only consider rating by date)}
+\NormalTok{df\_CEMP }\OtherTok{\textless{}{-}}\NormalTok{ df\_CEMP }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(site}\SpecialCharTok{:}\NormalTok{visit\_date,lname}\SpecialCharTok{:}\NormalTok{sonde\_verif) }
+
+\CommentTok{\# Check for missing dates}
+\NormalTok{df\_CEMP }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(visit\_date)) }\CommentTok{\# No missing dates}
+
+\CommentTok{\# Select only needed columns}
+\NormalTok{df\_CEMP }\OtherTok{\textless{}{-}}\NormalTok{ df\_CEMP }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(site}\SpecialCharTok{:}\NormalTok{visit\_date,analyte\_name,rating)}
+
+\CommentTok{\# Check for station completeness}
+\FunctionTok{unique}\NormalTok{(df\_CEMP}\SpecialCharTok{$}\NormalTok{site)}
+\FunctionTok{summary}\NormalTok{(}\FunctionTok{unique}\NormalTok{(df\_CEMP}\SpecialCharTok{$}\NormalTok{site)) }\CommentTok{\# Lists all 15 sites}
+
+\CommentTok{\# Check for duplicated lines with }
+\NormalTok{df\_CEMP }\SpecialCharTok{\%\textgreater{}\%}\NormalTok{ janitor}\SpecialCharTok{::}\FunctionTok{get\_dupes}\NormalTok{(site}\SpecialCharTok{:}\NormalTok{rating) }\CommentTok{\# 1 duplicated row}
+
+\CommentTok{\# Retain only distinct rows (remove duplicates)}
+\NormalTok{df\_CEMP }\OtherTok{\textless{}{-}} \FunctionTok{distinct}\NormalTok{(df\_CEMP)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{process-sonde-data}{%
+\subsection{Process Sonde Data}\label{process-sonde-data}}
+
+Calculate sonde rating intervals and summarize.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Get ratings to sort in order good {-}\textgreater{} bad}
+\NormalTok{rating.order }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Excellent"}\NormalTok{,}\StringTok{"Good"}\NormalTok{,}\StringTok{"Fair"}\NormalTok{,}\StringTok{"Poor"}\NormalTok{,}\StringTok{"MAL"}\NormalTok{)}
+
+\NormalTok{df\_CEMP}\SpecialCharTok{$}\NormalTok{rating }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(}\FunctionTok{as.character}\NormalTok{(df\_CEMP}\SpecialCharTok{$}\NormalTok{rating), }
+                             \AttributeTok{levels =}\NormalTok{ rating.order)}
+
+\NormalTok{df\_CEMP\_w }\OtherTok{\textless{}{-}} \FunctionTok{pivot\_wider}\NormalTok{(df\_CEMP, }\AttributeTok{names\_from =}\NormalTok{ analyte\_name, }\AttributeTok{values\_from =}\NormalTok{ rating)}
+
+\CommentTok{\# Sort samples by date (early to late)}
+\CommentTok{\# Add previous exchange data as end point for range of rating data}
+
+\NormalTok{df\_CEMP\_w }\OtherTok{\textless{}{-}}\NormalTok{ df\_CEMP\_w }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(site) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{arrange}\NormalTok{(visit\_date) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{start\_date =} \FunctionTok{lag}\NormalTok{(visit\_date)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ungroup}\NormalTok{()}
+
+\NormalTok{df\_CEMP\_w }\OtherTok{\textless{}{-}}\NormalTok{ df\_CEMP\_w }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{start\_date =} \FunctionTok{case\_when}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(start\_date) }\SpecialCharTok{\textasciitilde{}} \FunctionTok{ymd}\NormalTok{(}\StringTok{"2023{-}01{-}01"}\NormalTok{),}
+                                \ConstantTok{TRUE} \SpecialCharTok{\textasciitilde{}} \FunctionTok{ymd}\NormalTok{(start\_date)))}
+
+\CommentTok{\# Relocate Start Date column}
+\NormalTok{df\_CEMP\_w }\OtherTok{\textless{}{-}}\NormalTok{ df\_CEMP\_w }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{relocate}\NormalTok{(start\_date, }\AttributeTok{.before =}\NormalTok{ visit\_date)}
+
+\CommentTok{\# Calculate number of days between sonde exchanges}
+\NormalTok{df\_CEMP\_w }\OtherTok{\textless{}{-}}\NormalTok{ df\_CEMP\_w }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{days\_rated =} \FunctionTok{as.integer}\NormalTok{(visit\_date }\SpecialCharTok{{-}}\NormalTok{ start\_date))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{expand-rating-data-from-intervals-to-daily}{%
+\subsection{Expand rating data from intervals to
+daily}\label{expand-rating-data-from-intervals-to-daily}}
+
+Only data rating intervals are given but we need a daily value to
+properly graph the results. Also remove turbidity data because it is not
+useful to apply Wagner method to this data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create tibble with exchange intervals for each station}
+\NormalTok{df\_CEMP\_l }\OtherTok{\textless{}{-}} \FunctionTok{pivot\_longer}\NormalTok{(df\_CEMP\_w, }
+                          \AttributeTok{names\_to =} \StringTok{"Parameter"}\NormalTok{, }
+                          \AttributeTok{values\_to =} \StringTok{"Rating"}\NormalTok{,}
+                          \AttributeTok{cols =} \StringTok{\textasciigrave{}}\AttributeTok{Water Temperature}\StringTok{\textasciigrave{}}\SpecialCharTok{:}\NormalTok{Turbidity)}
+
+\NormalTok{df\_CEMP\_l }\OtherTok{\textless{}{-}}\NormalTok{ df\_CEMP\_l }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(site}\SpecialCharTok{:}\NormalTok{visit\_date,Parameter}\SpecialCharTok{:}\NormalTok{Rating)}
+
+\CommentTok{\# Fill in ratings data for each individual day}
+\NormalTok{df\_CEMP\_c }\OtherTok{\textless{}{-}}\NormalTok{ df\_CEMP\_l }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\FunctionTok{across}\NormalTok{(}\FunctionTok{ends\_with}\NormalTok{(}\StringTok{"\_date"}\NormalTok{), ymd)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Date =} \FunctionTok{map2}\NormalTok{(start\_date, }
+\NormalTok{                     visit\_date, }\SpecialCharTok{\textasciitilde{}} \FunctionTok{seq.Date}\NormalTok{(.x, .y, }\AttributeTok{by =} \StringTok{"1 day"}\NormalTok{)), }
+         \AttributeTok{.before =}\NormalTok{ start\_date) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{unnest}\NormalTok{(Date) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{ends\_with}\NormalTok{(}\StringTok{"\_date"}\NormalTok{))}
+
+\CommentTok{\# Convert date formats and add Julian Date}
+\NormalTok{df\_CEMP\_c }\OtherTok{\textless{}{-}}\NormalTok{ df\_CEMP\_c }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Julian =} \FunctionTok{yday}\NormalTok{(Date)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ungroup}\NormalTok{()}
+
+\CommentTok{\# Remove turbidity data and data after 1/1/2024}
+\NormalTok{df\_CEMP\_c }\OtherTok{\textless{}{-}}\NormalTok{ df\_CEMP\_c }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(Parameter }\SpecialCharTok{!=} \StringTok{"Turbidity"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(Date }\SpecialCharTok{\textless{}=} \StringTok{"2024{-}01{-}01"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{results}{%
+\subsection{Results}\label{results}}
+
+Plot sonde rating for all stations by probe.
+
+\begin{figure}
+
+{\centering \includegraphics{EMP-metrics-2023_files/figure-latex/plot CEMP-1} 
+
+}
+
+\caption{C-EMP Sonde Ratings.}\label{fig:plot CEMP}
+\end{figure}
+
+Plot sonde rating for all probes at each station.
+
+\begin{figure}
+
+{\centering \includegraphics{EMP-metrics-2023_files/figure-latex/unnamed-chunk-1-1} 
+
+}
+
+\caption{C-EMP Sonde Ratings for each station.}\label{fig:unnamed-chunk-1}
+\end{figure}
+
+\end{document}
