@@ -40,7 +40,7 @@ completeness and screen for duplicates.
 df_CEMP <- read_csv(file = here("04_Other",
                                 "performance-metrics",
                                 "data",
-                                "2023_wagner.csv"),
+                                "2023_wagner_newer.csv"),
                     show_col_types = FALSE)
 
 ## Remove date time column (will only consider rating by date)
