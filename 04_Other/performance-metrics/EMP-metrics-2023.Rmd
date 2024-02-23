@@ -32,8 +32,7 @@ options(dplyr.summarise.inform = FALSE)
 ```
 
 ## Read in Raw Data
-Import the raw data from C-EMP and perform basic QA-QC. Check station 
-completeness and screen for duplicates.
+Import the raw data from C-EMP and perform basic QA-QC. Check station completeness and screen for duplicates.
 
 ```{r read input, echo = TRUE, results = FALSE}
 # Import C-EMP data files 
@@ -44,15 +43,13 @@ df_CEMP <- read_csv(file = here("04_Other",
                     show_col_types = FALSE)
 
 ## Remove date time column (will only consider rating by date)
-df_CEMP <- df_CEMP %>% 
-  select(site:visit_date,lname:sonde_verif) 
+df_CEMP <- df_CEMP %>% select(-visit_time) 
 
 # Check for missing dates
 df_CEMP %>% filter(is.na(visit_date)) # No missing dates
 
 # Select only needed columns
-df_CEMP <- df_CEMP %>% 
-  select(site:visit_date,analyte_name,rating)
+df_CEMP <- df_CEMP %>% select(site, visit_date, analyte_name, rating)
 
 # Check for station completeness
 unique(df_CEMP$site)
@@ -68,6 +65,7 @@ df_CEMP <- distinct(df_CEMP)
 ```
 
 ## Process Sonde Data
+
 Calculate sonde rating intervals and summarize.
 
 ```{r process CEMP data, echo = TRUE}
@@ -80,21 +78,17 @@ df_CEMP$rating <- factor(as.character(df_CEMP$rating),
 df_CEMP_w <- pivot_wider(df_CEMP, names_from = analyte_name, values_from = rating)
 
 # Sort samples by date (early to late)
-# Add previous exchange data as end point for range of rating data
+# Add previous exchange data plus one day (to prevent overlap in time series
+# figures) as end point for range of rating data
 
 df_CEMP_w <- df_CEMP_w %>% 
   group_by(site) %>% 
   arrange(visit_date) %>% 
-  mutate(start_date = lag(visit_date)) %>%
+  mutate(start_date = lag(visit_date) + days(1), .before = visit_date) %>%
   ungroup()
 
 df_CEMP_w <- df_CEMP_w %>% 
-  mutate(start_date = case_when(is.na(start_date) ~ ymd("2023-01-01"),
-                                TRUE ~ ymd(start_date)))
-
-# Relocate Start Date column
-df_CEMP_w <- df_CEMP_w %>% 
-  relocate(start_date, .before = visit_date)
+  mutate(start_date = if_else(is.na(start_date), ymd("2023-01-01"), start_date))
 
 # Calculate number of days between sonde exchanges
 df_CEMP_w <- df_CEMP_w %>%
@@ -104,18 +98,15 @@ df_CEMP_w <- df_CEMP_w %>%
 ```
 
 ## Expand rating data from intervals to daily
-Only data rating intervals are given but we need a daily value to properly
-graph the results. Also remove turbidity data because it is not useful
-to apply Wagner method to this data.
+Only data rating intervals are given but we need a daily value to properly graph the results. Also remove turbidity data because it is not useful to apply Wagner method to this data.
 ```{r expand data, echo = TRUE}
 # Create tibble with exchange intervals for each station
 df_CEMP_l <- pivot_longer(df_CEMP_w, 
                           names_to = "Parameter", 
                           values_to = "Rating",
-                          cols = `Water Temperature`:Turbidity)
+                          cols = where(is.factor))
 
-df_CEMP_l <- df_CEMP_l %>% 
-  select(site:visit_date,Parameter:Rating)
+df_CEMP_l <- df_CEMP_l %>% select(-days_rated)
 
 # Fill in ratings data for each individual day
 df_CEMP_c <- df_CEMP_l %>% 
@@ -139,17 +130,18 @@ df_CEMP_c <- df_CEMP_c %>%
 ```
 
 ## Results
+
 Plot sonde rating for all stations by probe.
 
 ```{r plot CEMP, echo = FALSE, fig.cap = "C-EMP Sonde Ratings.", fig.align="center"}
 # Plot rating data faceted by probe
-colors = c("darkgreen","darkblue","yellow3","darkred","purple")
+colors <- c("darkgreen","darkblue","yellow3","darkred","purple")
 
 p1 <- ggplot(data = df_CEMP_c, aes(x = Date,
                                    y = site,
-                                   color = Rating)) +
-  geom_line(linewidth = 5) +
-  scale_color_manual(values = colors) + 
+                                   fill = Rating)) +
+  geom_tile(height = 0.5) +
+  scale_fill_manual(values = colors) + 
   scale_y_discrete(limits=rev) +
   scale_x_date(breaks = ymd(c("2023-01-01","2023-05-01","2023-09-01","2024-01-01")),
                labels = date_format("%b"))
@@ -177,9 +169,9 @@ Plot sonde rating for all probes at each station.
 # Plot rating data faceted by station
 p2 <- ggplot(data = df_CEMP_c, aes(x = Date,
                                    y = Parameter,
-                                   color = Rating)) +
-  geom_line(linewidth = 5) +
-  scale_color_manual(values = colors) + 
+                                   fill = Rating)) +
+  geom_tile(height = 0.5) +
+  scale_fill_manual(values = colors) + 
   scale_y_discrete(limits=rev) +
   scale_x_date(breaks = ymd(c("2023-01-01","2023-05-01","2023-09-01","2024-01-01")),
                labels = date_format("%b"))
