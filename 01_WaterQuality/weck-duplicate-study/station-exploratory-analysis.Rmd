@@ -1,0 +1,29 @@
+Check which stations have the smallest probability for non-detects
+
+```{r}
+source('00_GlobalFunctions/functions.R')
+library(tidyverse)
+library(lubridate)
+```
+
+```{r}
+df_wq <- import_emp_data()
+
+df_wq <- df_wq %>% filter(year(df_wq$Date) >= 2021)
+
+
+df_wq <- df_wq %>%
+  mutate_at(vars(contains('Sign')), factor) %>%
+  filter(!(Station %in% c('EZ2','EZ6','EZ2-SJR','EZ6-SJR')))
+```
+
+```{r}
+df_RL <- df_wq %>%
+  group_by(Station) %>%
+  reframe(across(contains('Sign'), ~sum(str_count(.,'<')))) %>%
+  mutate(RL_count = rowSums(across(where(is.numeric)))) %>%
+  arrange(RL_count) %>%
+  relocate(RL_count, .after = 'Station')
+
+write_csv(df_RL, '01_WaterQuality/weck-duplicate-study/station_rl_count_21-23.csv')
+```

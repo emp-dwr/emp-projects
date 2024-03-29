@@ -33,7 +33,7 @@ create_wkbk <- function(df_data, df_blanks, df_dupes) {
   
   # export data
   fp <- stringr::str_remove(fn,'.xlsx$') # gsub('.*/(.*?)$','\\1')
-  openxlsx::saveWorkbook(wkbk, file = glue::glue('{fp}_cleaned.xlsx'), overwrite = TRUE)
+  openxlsx::saveWorkbook(wkbk, file = glue::glue('{fp}_formatted.xlsx'), overwrite = TRUE)
 }
 
 # Add Formatting ----------------------------------------------------------
@@ -373,4 +373,17 @@ format_dupes <- function(df){
   df_out[df_out=='9999!'] <- 'mismatch'
   
   return(df_out)
+}
+
+# * Read in data --------------------------------------------------
+abs_path_data <- function(fp_rel = NULL) {
+  fp_emp <- 'California Department of Water Resources/Environmental Monitoring Program - Documents/Water Quality/Database Migration/Yearly WDL Data'
+  
+  if (is.null(fp_rel)) {
+    fp_abs <- normalizePath(file.path(Sys.getenv('USERPROFILE'), fp_emp))
+  } else {
+    fp_abs <- normalizePath(file.path(Sys.getenv('USERPROFILE'), fp_emp, fp_rel))
+  }
+  
+  return(fp_abs)
 }

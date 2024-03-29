@@ -14,9 +14,9 @@ Date: 11/2023
 # declare the run year, month, and run of interest
 year <- 2023
 
-month <- 'April' # full name
+month <- 'November' # full name
 
-run <- 'GB' # abbreviation
+run <- 'SP' # abbreviation
 ```
 
 ```{r}
@@ -47,7 +47,7 @@ df_phy <- df_phy[-1,]
 df_phy$`Date/Time` <- as.POSIXct(df_phy$`Date/Time`, format = '%m/%d/%Y %H:%M:%S')
 df_phy <- df_phy %>% mutate_if(is.character,as.numeric)
 
-# round to nearest 10 mins and calc average
+# round to nearest 1 mins and calc average
 df_phy <- df_phy %>%
   mutate(`Date/Time` = round_date(`Date/Time`, unit='1 minute')) %>%
   group_by(`Date/Time`) %>%
@@ -136,7 +136,7 @@ ggplot() +
 
 # clean up regions in final df
 df_final <- as_tibble(sf_wq)
-df_regions <- read_csv('03_Phyto/fluoroprobe-data-cleaning/supp_files/regions_fluoro.csv')
+df_regions <- read_csv('03_Phyto/phycoprobe/supp_files/regions_fluoro.csv')
 df_final <- left_join(df_final, df_regions, 'SubRegion')
 
 df_final <- df_final %>%

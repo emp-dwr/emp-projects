@@ -1,0 +1,95 @@
+
+
+```{r}
+`%>%` <- magrittr::`%>%`
+
+abs_path_data <- function(fp_rel = NULL) {
+  fp_emp <<- 'California Department of Water Resources/Environmental Monitoring Program - Documents/Water Quality/Database Migration'
+  
+  if (is.null(fp_rel)) {
+    fp_abs <- normalizePath(file.path(Sys.getenv('USERPROFILE'), fp_emp))
+  } else {
+    fp_abs <- normalizePath(file.path(Sys.getenv('USERPROFILE'), fp_emp, fp_rel))
+  }
+  
+  return(fp_abs)
+}
+
+format_dfs <- function(fn){
+  df_raw <- readxl::read_excel(fn, skip = 1)
+  
+  df_raw <- df_raw %>%
+    dplyr::mutate(id = dplyr::row_number()) %>%
+    dplyr::relocate(id, .before = `Station Name`) 
+  
+  # determine row where `Station Name` is `<<<Field Results>>>`
+  mid_idrow <- df_raw %>% subset(`Station Name` == '<<<Field Results>>>')
+  
+  # grab the ID for this row
+  vari_id <- mid_idrow$id
+  
+  # subset field and lab dataframes using this ID
+  df_field <- df_raw %>% subset(id > vari_id)
+  df_lab <- df_raw %>% subset(id < vari_id)
+  
+  # remove columns containing '...' for lab
+  # df_lab <- df_lab %>% dplyr::select(-c(id, contains('...'))) 
+  
+  # rename columns for easier combining later
+  # df_lab <- df_lab %>% dplyr::rename(Date = `Sample Date`)
+  
+  out <- list('df_field' = df_field, 'df_lab' = df_lab)
+}
+
+format_raw <- function(fn){
+  # format data
+  df_list <- format_dfs(fn)
+  
+  # define varis
+  df_field <- df_list$df_field
+  df_lab <- df_list$df_lab
+  
+  # remove extra rows
+  field_idrow <- df_field %>% subset(is.na(df_field$`Station Name`))
+  
+  vari_id <- field_idrow$id
+  
+  df_field <- df_field %>% subset(id < vari_id)
+  
+  # rename columns and remove empty ones
+  colnames(df_field) <- df_field[1,]
+  df_field <- Filter(function(x)!all(is.na(x)), df_field)
+
+  # fix up indices
+  df_field <- df_field[-1,] # remove first row (col names)
+  df_field <- df_field[-1] # remove id col
+  df_lab <- df_lab[-1]
+  
+  # reorder columns
+  # df_field <- reorder_cols(df_field)
+  
+  # recombine data
+  vec_names <- colnames(df_field)[colnames(df_field) %in% colnames(df_lab)]
+  
+  # recombine by vec names
+  df_combined <- dplyr::full_join(df_lab, df_field, by = vec_names)
+  
+  return(df_combined)
+}
+```
+
+```{r}
+fp_file <- list.files(abs_path_data('Yearly WDL Data/'), full.names = TRUE, recursive = TRUE)
+
+for (wq_file in fp_file){
+  fn <- wq_file
+  
+  df <- format_raw(fn)
+  
+  # export
+  fp_exp <- abs_path_data(paste0('Formatted WDL Data/',gsub('.*/(\\d{4})\\.xlsx', '\\1', fn),'_formatted.csv'))
+  
+  readr::write_csv(df, fp_exp)
+}
+```
+
