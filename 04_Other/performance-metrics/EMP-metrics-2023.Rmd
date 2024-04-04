@@ -2,7 +2,7 @@
 title: "EMP Continuous WQ Metrics - 2023"
 author: "Ted Flynn"
 date: "2024-02-16"
-output: html_document
+output: pdf_document
 ---
 Process and plot Wagner rating data from C-EMP sondes.
 
