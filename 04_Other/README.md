@@ -3,6 +3,9 @@
 [format-bsa-files](../04_Other/format-bsa-files): format BSA zooplankton files
 - *lead: Sarah Perry*
 
+[performance-metrics](../04_Other/performance-metrics): Analyze quality metrics for D-1641 compliance stations. 
+- *lead: Ted Flynn*
+
 ## **Completed**
 [particle-size](../04_Other/particle-size): analysis of particle size data
 - *leads: Morgan Battey, Sarah Perry*
