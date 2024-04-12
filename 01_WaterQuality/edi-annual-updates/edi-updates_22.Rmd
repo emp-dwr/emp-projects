@@ -219,7 +219,6 @@ for (col in colnames(select_if(df_join, is.numeric))){
 
 ```
 
-
 ```{r}
 # export csv
 write_csv(df_join,paste0('01_WaterQuality/edi-annual-updates/data/final/EMP_DWQ_1975_',year,'.csv'))

@@ -20,10 +20,12 @@ df_wq <- df_wq %>%
 ```{r}
 df_RL <- df_wq %>%
   group_by(Station) %>%
-  reframe(across(contains('Sign'), ~sum(str_count(.,'<')))) %>%
-  mutate(RL_count = rowSums(across(where(is.numeric)))) %>%
-  arrange(RL_count) %>%
-  relocate(RL_count, .after = 'Station')
+  reframe(across(contains('Sign'), ~round(sum((str_count(.,'<')/36)*100),0))) %>%
+  mutate(RL_perc = round(rowSums(across(where(is.numeric)))/ncol(df_RL),2)) %>%
+  arrange(RL_perc) %>%
+  relocate(RL_perc, .after = 'Station')
 
 write_csv(df_RL, '01_WaterQuality/weck-duplicate-study/station_rl_count_21-23.csv')
+
+ncol(df_RL)
 ```

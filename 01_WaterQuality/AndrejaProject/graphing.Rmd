@@ -1,0 +1,130 @@
+```{r}
+library(tidyverse)
+library(lubridate)
+
+df_wq <- read_csv('01_WaterQuality/AndrejaProject/wq_andreja_graph_formatted.csv')
+
+df <- df_wq %>%
+    dplyr::mutate(Month = lubridate::month(Date))
+
+cols_signs <- names(df)[grepl('_Sign',names(df))]
+cols_nosigns <- sub('_Sign','',cols_signs)
+
+colnames(df)[colnames(df) %in% cols_nosigns] <- paste(colnames(df)[colnames(df) %in% cols_nosigns], 'Value', sep = '_')
+
+
+# df <- df %>%
+#   unite('ID', c(Station, Month))
+
+write_csv(df, '01_WaterQuality/AndrejaProject/data_with_id.csv')
+
+df <- df %>%
+  select(Station, Month, Chla_Sign:TKN_Value)
+
+df <- df %>%
+  tidyr::pivot_longer(
+    cols = Chla_Sign:TKN_Value,
+    names_to = c('Analyte','.value'),
+    names_sep = '_'
+  )
+
+# facet by analyte
+# base graph
+base_graph <- function(m, analyte, df_vert, df_horz){
+  y_ftsize <- 2
+  x_ftsize <- 1
+  m$GraphValue <- ifelse(m$Sign == '<', NA, m$Value)
+  
+  df_m <<- m %>% dplyr::filter(Analyte == analyte)
+  rl_exists <- length(unique(df_m$Sign))
+  
+  p <- ggplot2::ggplot() +
+    theme_bw()
+  
+  # if > RL data exists
+  if(!all(is.na(df_m$Value))){
+    p <- p +
+      ggplot2::geom_line(data = df_m, mapping = ggplot2::aes(Month, GraphValue, group = Station, color = Station), na.rm = TRUE, linewidth = .6) +
+      ggplot2::geom_point(data = df_m, mapping = ggplot2::aes(Month, GraphValue, group = Station, color = Station), na.rm = TRUE, size = 2)
+
+    # if < RL data exists
+    if(rl_exists == 2){
+        #create segment subset
+        seg_subset <- subset(df_m, df_m$Sign == '<')
+        
+        #create segment df
+        df_seg_vert <<- data.frame(
+          x = seg_subset$Month,
+          xend = seg_subset$Month,
+          y = 0,
+          yend = seg_subset$Value,
+          Analyte = seg_subset$Analyte,
+          Station = seg_subset$Station,
+          stringsAsFactors = FALSE
+        )
+        
+        # create segment df
+        df_seg_horz <<- data.frame(
+          x = seg_subset$Month-0.2,
+          xend = seg_subset$Month+0.2,
+          y = seg_subset$Value,
+          yend = seg_subset$Value,
+          Analyte = seg_subset$Analyte,
+          Station = seg_subset$Station,
+          stringsAsFactors = FALSE
+        )
+        
+      p <- p +
+        ggplot2::geom_segment(data = df_vert, mapping = ggplot2::aes(x = x, xend = xend, y = y, yend = yend, color = Station), linewidth = .6, lty
+                              = 5) +
+        ggplot2::geom_segment(data = df_horz, mapping = ggplot2::aes(x = x, xend = xend, y = y, yend = yend, color = Station), linewidth = .6,
+                              lineend = 'square')
+    }
+  
+    
+    # finish formatting
+    p <- p +
+      ggplot2::facet_wrap('Station', nrow = 2) +
+      ggplot2::scale_x_continuous(breaks = seq_along(month.name), labels = month.abb) +
+      ggtitle(analyte)
+    
+    ggsave(glue::glue('01_WaterQuality/AndrejaProject/plots/{analyte}.jpg'), plot = p, width = 12, height = 6)
+  }
+  print(analyte)
+  return(NA)
+}
+
+base_graph(df, 'DissOrthophos', df_seg_vert, df_seg_horz)
+
+for (vari in unique(df$Analyte)){
+  base_graph(df, vari, df_seg_vert, df_seg_horz)
+}
+
+
+```
+
+```{r}
+# THIS CODE IS TO HELP WITH ANNUAL REPORTS LATER
+# df_wq <- read_csv('01_WaterQuality/AndrejaProject/wq_andreja_graph_formatted.csv')
+# station <- 'D28A'
+# 
+# df <- df_wq %>%
+#     # dplyr::filter(Station == station) %>%
+#     dplyr::mutate(Month = factor(months(Date), levels = month.name, labels = month.abb)) %>%
+#     dplyr::select(c(Month, Station, Chla_Sign, Chla, Pheophytin_Sign, Pheophytin)) %>%
+#     dplyr::rename(Chla_Value = Chla,
+#                   Pheophytin_Value = Pheophytin)
+#   
+#   df <- df %>%
+#     tidyr::pivot_longer(
+#       cols = Chla_Sign:Pheophytin_Value,
+#       names_to = c('Analyte','.value'),
+#       names_sep = '_'
+#     )
+# df$Sign[1] <- '<'
+#   
+# df <- df %>%
+#     dplyr::group_by(Analyte, Month) %>%
+#     dplyr::add_count(Sign)
+```
+

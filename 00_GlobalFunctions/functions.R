@@ -92,3 +92,16 @@ assign_run_regions <- function(df_edi, subset_regions = FALSE, subset_EZs = FALS
   
   return(df_edi)
 }
+
+# abs path
+abs_path_emp <- function(fp_rel = NULL) {
+  fp_emp <- 'California Department of Water Resources/Environmental Monitoring Program - Documents/'
+  
+  if (is.null(fp_rel)) {
+    fp_abs <- normalizePath(file.path(Sys.getenv('USERPROFILE'), fp_emp))
+  } else {
+    fp_abs <- normalizePath(file.path(Sys.getenv('USERPROFILE'), fp_emp, fp_rel))
+  }
+  
+  return(fp_abs)
+}

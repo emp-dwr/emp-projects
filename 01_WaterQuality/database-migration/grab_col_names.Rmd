@@ -1,0 +1,20 @@
+```{r}
+library(tidyverse)
+source('00_GlobalFunctions/functions.R')
+
+uni_cols <-
+    list.files(path = abs_path_emp('Water Quality/Database Migration/Corrected WDL Data'),
+               pattern = '\\.csv$',
+               full.names = T) %>%
+    map(~colnames(read_csv(., show_col_types = FALSE))) %>%
+  unlist()
+
+df_cols <- data.frame(colname = uni_cols) %>%
+  group_by(colname) %>%
+  summarize(count = n())
+
+export_path <- abs_path_emp('Water Quality/Database Migration/')
+
+write_csv(df_cols,glue::glue('{export_path}/unique_cols.csv'))
+```
+

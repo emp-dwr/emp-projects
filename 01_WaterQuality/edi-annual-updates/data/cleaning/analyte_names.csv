@@ -30,8 +30,11 @@ Dissolved ortho-Phosphate mg/L as P EPA 365.1 924 [1]*,DissOrthophos
 "Chlorophyll Fluorescence RFU Fluorescence, Sonde - [1]*",ChlaSondeRFU_Top
 "Chlorophyll Fluorescence ug/L of Chl Fluorescence, Sonde - [1]*",ChlaSondeugl_Top
 Chlorophyll Volume mL Chlorophyll Volume Filtered - [1]*,ChlaVol
-(Bottom) Specific Conductance uS/cm@25 °C EPA 120.1 (Field) - [1]*,SpCndBottom
-Specific Conductance uS/cm@25 °C EPA 120.1 (Field) - [1]*,SpCndSurface
+(Bottom) Specific Conductance uS/cm@25 °C EPA 120.1 (Field) - [1]*,SpCndBottom_1
+(Bottom) Specific Conductance µmhos/cm@25°C EPA 120.1 (Field) - [1]*,SpCndBottom_2
+Specific Conductance uS/cm@25 °C EPA 120.1 (Field) - [1]*,SpCndSurface_1
+Specific Conductance µmhos/cm@25°C EPA 120.1 (Field) - [1]*,SpCndSurface_2
+Specific Conductance µmhos/cm@25°C Std Method 2510-B 917 [1]*,SpCndSurface_3
 Field Notes Notes (Field) - [1]*,FieldNotes
 North Latitude Decimal Degrees GPS Location - [1]*,NorthLat
 West Longitude Decimal Degrees GPS Location - [1]*,WestLong
@@ -52,9 +55,10 @@ Weather Observations Weather Observations - [1]*,Weather
 Wind Velocity Miles/hr Wind Velocity - [1]*,WindVelocity
 Wind Direction,WindDirection
 (Bottom) pH pH Units EPA 150.1 (Field) - [1]*,pHBottom
-pH pH Units EPA 150.1 (Field) - [1]*,pHSurface
+pH pH Units EPA 150.1 (Field) - [1]*,pHSurface_1
+pH pH Units Std Method 2320 B 916 [1]*,pHSurface_2
 Sample Date,DateTime
-Station Number,REMOVE
-Sample Code,REMOVE
-Sample Type,REMOVE
-Parent Sample Code,REMOVE
+Station Number,REMOVE_1
+Sample Code,REMOVE_2
+Sample Type,REMOVE_3
+Parent Sample Code,REMOVE_4
