@@ -32,7 +32,7 @@ if (!rlang::is_empty(col_check)){
 
 colnames(df_wq) <- unlist(lapply(colnames(df_wq), function(x) if(x %in% names(analytes_dict)) analytes_dict[[x]] else x))
 
-df_wq <- df_wq %>% dplyr::select(-c(contains('REMOVE'),'SpCndSurface_3','pHSurface_2')) %>%
+df_wq <- df_wq %>% dplyr::select(-c(contains('REMOVE'),'SpCndSurface_3','pHSurface_2'),contains('...')) %>%
   rename('SpCndSurface' = 'SpCndSurface_2',
          'SpCndBottom' = 'SpCndBottom_2',
          'pHSurface' = 'pHSurface_1',
@@ -90,7 +90,7 @@ df_wq[setdiff(colnames(df_edi), colnames(df_wq))] <- NA
 Clean duplicates, add RL sign
 ```{r}
 # remove lab duplicates
-cols_signs <- names(df_wq)[grepl('_Sign',names(df_wq))]
+cols_signs <- names(df_edi)[grepl('_Sign',names(df_edi))]
 cols_nosigns <- sub('_Sign','',cols_signs)
 
 df_wq <- df_wq %>%

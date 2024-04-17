@@ -1,48 +1,52 @@
+Setup; can run as is
+
+TODO:
+- field vs lab csv for formatting
+- add back in station and month
+- modify for field (add in _Sign and _Value)
+
 ```{r}
+# import packages
 library(tidyverse)
 library(lubridate)
 
-df_wq <- read_csv('01_WaterQuality/AndrejaProject/wq_andreja_graph_formatted.csv')
+# read in data
+df_wq <- read_csv('01_WaterQuality/AndrejaProject/wq_andreja_graph_formatted.csv', show_col_types = FALSE)
 
+# subset data
 df <- df_wq %>%
-    dplyr::mutate(Month = lubridate::month(Date))
+  select(ID, Chla_Sign:TKN_Value)
 
-cols_signs <- names(df)[grepl('_Sign',names(df))]
-cols_nosigns <- sub('_Sign','',cols_signs)
-
-colnames(df)[colnames(df) %in% cols_nosigns] <- paste(colnames(df)[colnames(df) %in% cols_nosigns], 'Value', sep = '_')
-
-
-# df <- df %>%
-#   unite('ID', c(Station, Month))
-
-write_csv(df, '01_WaterQuality/AndrejaProject/data_with_id.csv')
-
-df <- df %>%
-  select(Station, Month, Chla_Sign:TKN_Value)
-
+# pivot df to longer
 df <- df %>%
   tidyr::pivot_longer(
     cols = Chla_Sign:TKN_Value,
     names_to = c('Analyte','.value'),
     names_sep = '_'
   )
+```
 
+Setup function; run as is, unless you want to modify the graph output
+```{r}
 # facet by analyte
-# base graph
-base_graph <- function(m, analyte, df_vert, df_horz){
+# base graph; DO NOT EDIT
+base_graph <- function(m, analyte, save_file = TRUE){
+  # set graph defaults
   y_ftsize <- 2
   x_ftsize <- 1
+  
+  # format for RL data and check if it exists
   m$GraphValue <- ifelse(m$Sign == '<', NA, m$Value)
   
-  df_m <<- m %>% dplyr::filter(Analyte == analyte)
-  rl_exists <- length(unique(df_m$Sign))
+  df_m <- m %>% dplyr::filter(Analyte == analyte)
+  rl_exists <- length(unique(df_m$Sign)) #1 if only =, 2 if = & <
   
+  # initiate plot
   p <- ggplot2::ggplot() +
     theme_bw()
   
-  # if > RL data exists
-  if(!all(is.na(df_m$Value))){
+  # adds data to graph
+  if(!all(is.na(df_m$Value))){ # skip if all NAs in value col
     p <- p +
       ggplot2::geom_line(data = df_m, mapping = ggplot2::aes(Month, GraphValue, group = Station, color = Station), na.rm = TRUE, linewidth = .6) +
       ggplot2::geom_point(data = df_m, mapping = ggplot2::aes(Month, GraphValue, group = Station, color = Station), na.rm = TRUE, size = 2)
@@ -53,7 +57,7 @@ base_graph <- function(m, analyte, df_vert, df_horz){
         seg_subset <- subset(df_m, df_m$Sign == '<')
         
         #create segment df
-        df_seg_vert <<- data.frame(
+        df_seg_vert <- data.frame(
           x = seg_subset$Month,
           xend = seg_subset$Month,
           y = 0,
@@ -64,7 +68,7 @@ base_graph <- function(m, analyte, df_vert, df_horz){
         )
         
         # create segment df
-        df_seg_horz <<- data.frame(
+        df_seg_horz <- data.frame(
           x = seg_subset$Month-0.2,
           xend = seg_subset$Month+0.2,
           y = seg_subset$Value,
@@ -75,12 +79,9 @@ base_graph <- function(m, analyte, df_vert, df_horz){
         )
         
       p <- p +
-        ggplot2::geom_segment(data = df_vert, mapping = ggplot2::aes(x = x, xend = xend, y = y, yend = yend, color = Station), linewidth = .6, lty
-                              = 5) +
-        ggplot2::geom_segment(data = df_horz, mapping = ggplot2::aes(x = x, xend = xend, y = y, yend = yend, color = Station), linewidth = .6,
-                              lineend = 'square')
+        ggplot2::geom_segment(data = df_vert, mapping = ggplot2::aes(x = x, xend = xend, y = y, yend = yend, color = Station), linewidth = .6, lty = 5) +
+        ggplot2::geom_segment(data = df_horz, mapping = ggplot2::aes(x = x, xend = xend, y = y, yend = yend, color = Station), linewidth = .6, lineend = 'square')
     }
-  
     
     # finish formatting
     p <- p +
@@ -88,21 +89,32 @@ base_graph <- function(m, analyte, df_vert, df_horz){
       ggplot2::scale_x_continuous(breaks = seq_along(month.name), labels = month.abb) +
       ggtitle(analyte)
     
-    ggsave(glue::glue('01_WaterQuality/AndrejaProject/plots/{analyte}.jpg'), plot = p, width = 12, height = 6)
+    if(save_file){
+      ggsave(glue::glue('01_WaterQuality/AndrejaProject/plots/{analyte}.jpg'), plot = p, width = 12, height = 6)
+    }
   }
-  print(analyte)
-  return(NA)
+
+  return(p)
 }
 
-base_graph(df, 'DissOrthophos', df_seg_vert, df_seg_horz)
-
-for (vari in unique(df$Analyte)){
-  base_graph(df, vari, df_seg_vert, df_seg_horz)
-}
-
+# test graph
+# base_graph(df, 'DissOrthophos', df_seg_vert, df_seg_horz, save_file = FALSE)
 
 ```
 
+Actually create the graphs
+```{r}
+# creates all the graphs
+for (vari in c('Chla')){ #unique(df$Analyte)){
+  x <- base_graph(df, vari, FALSE)
+}
+
+# add field = FALSE, lab = TRUE
+# add a field/lab pivot col? no, based on csv
+```
+
+
+Extra stuff - ignore
 ```{r}
 # THIS CODE IS TO HELP WITH ANNUAL REPORTS LATER
 # df_wq <- read_csv('01_WaterQuality/AndrejaProject/wq_andreja_graph_formatted.csv')
@@ -126,5 +138,21 @@ for (vari in unique(df$Analyte)){
 # df <- df %>%
 #     dplyr::group_by(Analyte, Month) %>%
 #     dplyr::add_count(Sign)
+```
+
+```{r}
+# OLD CODE - USED TO CREATE THE INPUT FILE FOR THIS RMD
+# df <- df %>%
+#   unite('ID', c(Station, Month))
+# df <- df_wq %>%
+#   mutate(Month = lubridate::month(Date))
+# 
+# cols_signs <- names(df)[grepl('_Sign',names(df))]
+# cols_nosigns <- sub('_Sign','',cols_signs)
+# 
+# colnames(df)[colnames(df) %in% cols_nosigns] <- paste(colnames(df)[colnames(df) %in% cols_nosigns], 'Value', sep = '_')
+
+# 
+# write_csv(df, '01_WaterQuality/AndrejaProject/data_with_id.csv')
 ```
 
