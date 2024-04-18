@@ -301,14 +301,14 @@ df_sum_yr$PassFail <- factor(as.character(df_sum_yr$PassFail),levels=order)
 
 # Make barplot for which % of samples fail and which pass
 p_barplot <- ggplot(df_sum_yr, aes(x = Year, y = Total, fill = PassFail)) +
-  geom_col() +
+  geom_col(width = 0.7) +
   scale_fill_manual(values = c("darkgreen","red3"))
                       
 p_barplot +
-    labs(title = "Occurrences of < 400 Unit Counts",
+    labs(title = "Occurrences of Total Algal Unit Counts < 400 ",
        x = "Year",
        y = "Number of Samples",
-       fill = "Count Threshold")
+       fill = "Count\nThreshold")
 
 ggsave(path = plots,
        filename = "pass-fail-by-year.png", 
