@@ -1,0 +1,324 @@
+---
+title: "BSA Phytoplankton Count Tallies"
+author: "Ted Flynn"
+date: "2024-04-18"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+suppressWarnings(suppressMessages(library(tidyverse)))
+suppressWarnings(suppressMessages(library(knitr)))
+suppressWarnings(suppressMessages(library(lubridate)))
+suppressWarnings(suppressMessages(library(RColorBrewer)))
+suppressWarnings(suppressMessages(library(vegan)))
+suppressWarnings(suppressMessages(library(janitor)))
+suppressWarnings(suppressMessages(library(here)))
+
+```
+
+## Import EMP Data
+
+Import phytoplankton data collected by the Environmental Monitoring Program. 
+
+```{r import EMP, echo=FALSE, message=FALSE}
+
+# Import EMP data files
+phyto_files_EMP <- list.files(path = here("03_Phyto","bsa-count-tallies","data","csv"), 
+                   pattern = "\\.csv", 
+                   full.names = T)
+
+df_phyto <- map(phyto_files_EMP, ~read_csv(.x, show_col_types = FALSE)) %>% 
+  list_rbind()
+
+# Remove blank columns
+df_phyto <- df_phyto %>% select_if(~ !all(is.na(.)))
+
+# Read in files with non-standard headers individually
+df_Dec2021 <- read_csv(here("03_Phyto","bsa-count-tallies","data","oddballs","December 2021.csv"), show_col_types = FALSE)
+
+df_Nov2021 <- read_csv(here("03_Phyto","bsa-count-tallies","data","oddballs","November 2021.csv"), show_col_types = FALSE)
+
+df_Sep2013 <- read_csv(here("03_Phyto","bsa-count-tallies","data","oddballs","September 2013.csv"), show_col_types = FALSE)
+
+df_Nov2013 <- read_csv(here("03_Phyto","bsa-count-tallies","data","oddballs","November 2013.csv"), show_col_types = FALSE)
+
+# Combine like oddball dfs
+df_phyto2013 <- bind_rows(df_Sep2013, df_Nov2013)
+df_phyto2021 <- bind_rows(df_Dec2021, df_Nov2021)
+
+# Remove individual dfs
+rm(df_Dec2021)
+rm(df_Nov2021)
+rm(df_Nov2013)
+rm(df_Sep2013)
+
+# Remove blank columns
+df_phyto2013 <- df_phyto2013 %>% select_if(~ !all(is.na(.)))
+df_phyto2021 <- df_phyto2021 %>% select_if(~ !all(is.na(.)))
+
+# Remove orgs/mL data pre-calculated in 2013 data. Will re-calculate later
+df_phyto2013 <- df_phyto2013 %>% select(!"Organisms per mL")
+
+# Rename headers to match standard BSA headers Oddballs actually have the 
+# "correct" name of Total Cells rather than the incorrect "Number of cells per 
+# unit"
+
+df_phyto <- df_phyto %>% 
+  rename("Unit Abundance (# of Natural Units)" = "Unit Abundance") %>% 
+  rename("Total Number of Cells" = "Number of cells per unit")
+
+df_phyto2013 <- df_phyto2013 %>%
+  rename("Total Number of Cells" = "Total Cells Counted") %>% 
+  rename("Unit Abundance (# of Natural Units)" = "Unit Abundance")
+
+# Combine oddball files with others
+df_phyto <- bind_rows(df_phyto, df_phyto2013)
+df_phyto <- bind_rows(df_phyto, df_phyto2021)
+
+# Remove unneeded dfs
+rm(df_phyto2013)
+rm(df_phyto2021)
+
+# Remove empty rows
+df_phyto <- df_phyto %>% filter_all(any_vars(!is.na(.)))
+
+# Correct GALD, which is imported into two separate columns
+# Test to see if NAs are 'either/or' and that there aren't some rows with a 
+# value in both GALD and GALD 1
+
+sum(is.na(df_phyto$GALD)) # Total is 5585
+sum(is.na(df_phyto$`GALD 1`)) # Total is 8367
+
+# Sum of NAs is 13952 which is the same as the number of rows in the df.
+# This shows that there aren't any rows with two values so that we can 
+# Combine them without any issues.
+
+# Move GALD header
+df_phyto <- df_phyto %>% relocate(`GALD 1`, .after = GALD)
+
+# Combine both GALD columns
+df_phyto <- df_phyto %>%
+  rowwise() %>%
+  mutate(GALD.Tot = sum(c_across(GALD:`GALD 1`), na.rm = TRUE))
+
+# Remove old GALD columns and rename GALD.Tot
+df_phyto <- df_phyto %>% 
+  select(!(GALD:`GALD 1`)) %>%
+  rename("GALD" = "GALD.Tot")
+
+# Read in data from 2022
+df_phyto2022 <- read_csv(here("03_Phyto","bsa-count-tallies","data","2022 Data for EDI.csv"),
+                              show_col_types = FALSE)
+
+df_phyto2023 <- read_csv(here("03_Phyto","bsa-count-tallies","data","All 2023 Data.csv"),
+                              show_col_types = FALSE)
+
+df_phyto_20s <- bind_rows(df_phyto2022, df_phyto2023)
+
+# Remove extra columns from 2022 data
+df_phyto_20s <- df_phyto_20s %>% 
+  select(!c("Synonym","GALD 2","GALD 3","Full Code","Algal Type","Depth (m)")) %>% 
+  rename("GALD" = "GALD 1")
+
+df_phyto <- bind_rows(df_phyto, df_phyto_20s)
+
+# Remove unneeded dfs
+rm(df_phyto2022)
+rm(df_phyto2023)
+rm(df_phyto_20s)
+
+# Remove columns that just have the method code "Phyto"
+df_phyto <- df_phyto %>% select(!MethodCode)
+
+# Add column to indicate what study it came from
+df_phyto <- df_phyto %>% mutate(Study = "EMP", .after = StationCode)
+
+# Clean up column names
+df_phyto <- df_phyto %>% clean_names(case = "big_camel")
+
+df_phyto <- df_phyto %>% rename("GALD" = "Gald")
+
+# Relocate GALD column
+df_phyto <- df_phyto %>% 
+  relocate(GALD, .before = Biovolume1)
+
+```
+
+## Process Data for Consistency
+
+```{r process, echo=FALSE}
+
+# Average all 10 biovolume measurements for each taxon
+df_phyto <- df_phyto %>% 
+  rowwise() %>% 
+  mutate(BV.Avg = mean(c_across(Biovolume1:Biovolume10), na.rm = T)) %>% 
+  select(!(Biovolume1:Biovolume10)) # Remove Individual Biovolume Columns
+
+# Fix samples with missing times
+# Just replace with 12:00:00 b/c aren't doing any time-based analyses
+df_phyto <- df_phyto %>% replace_na(list(SampleTime = "12:00:00"))
+
+# Get dates in the right format. Some are 1/1/14 and others 1/1/2014.
+df_phyto$SampleDate <- mdy(df_phyto$SampleDate)
+
+# Combine date and time column
+df_phyto <- df_phyto %>% unite(DateTime, c("SampleDate","SampleTime"), sep = " ") #, remove = FALSE, na.rm = FALSE)
+
+df_phyto$DateTime <- as_datetime(df_phyto$DateTime, 
+                              tz = "US/Pacific",
+                              format = c("%Y-%m-%d %H:%M:%OS"))
+
+# Check for missing dates
+df_phyto %>% filter(is.na(DateTime)) # No missing dates
+
+# Correct BSA header
+df_phyto <- df_phyto %>% rename("UnitAbundance" = "UnitAbundanceNumberOfNaturalUnits")
+
+# Calculate Unit Density & Biovolume Density
+df_phyto <- df_phyto %>%
+  mutate(Units.per.mL = UnitAbundance * Factor) %>%
+  mutate(BV.um3.per.mL= TotalNumberOfCells * BV.Avg * Factor) %>% 
+  mutate(Cells.per.mL = TotalNumberOfCells * Factor) 
+
+# Add column for year and month for highlighting data
+df_phyto <- df_phyto %>% 
+  mutate(Year = year(df_phyto$DateTime)) %>%
+  mutate(Month = month(df_phyto$DateTime, label = T))
+
+# Order month in calendar order rather than (default) alphabetical
+df_phyto$Month = factor(df_phyto$Month, levels = month.abb)
+
+# Reorder date/time columns
+df_phyto <- df_phyto %>% 
+  relocate(Year, .after = DateTime) %>% 
+  relocate(Month, .after = DateTime)
+
+# Remove 2013 data (data is limited)
+df_phyto <- df_phyto %>% filter(Year != 2013)
+
+```
+
+## Data Cleaning 
+Clean up typos etc.
+
+```{r clean, echo=FALSE}
+# Fix EMP site names
+df_phyto$StationCode <- gsub("EZ6 SAC","EZ6",df_phyto$StationCode)
+df_phyto$StationCode <- gsub("EZ6SAC","EZ6",df_phyto$StationCode)
+df_phyto$StationCode <- gsub("EZ6SJR","EZ6-SJR",df_phyto$StationCode)
+df_phyto$StationCode <- gsub("EZ2SAC","EZ2",df_phyto$StationCode)
+df_phyto$StationCode <- gsub("EZ2 SAC","EZ2",df_phyto$StationCode)
+df_phyto$StationCode <- gsub("EZ2SJR","EZ2-SJR",df_phyto$StationCode)
+df_phyto$StationCode <- gsub("EZ2 SJR","EZ2-SJR",df_phyto$StationCode)
+df_phyto$StationCode <- gsub("EZ6 SJR","EZ6-SJR",df_phyto$StationCode)
+df_phyto$StationCode <- gsub("D16-Twitchell","D16",df_phyto$StationCode)
+df_phyto$StationCode <- gsub("D16-Twitchel","D16",df_phyto$StationCode)
+df_phyto$StationCode <- gsub("D16 - Twitchell","D16",df_phyto$StationCode)
+df_phyto$StationCode <- gsub("D16 Twitchell","D16",df_phyto$StationCode)
+df_phyto$StationCode <- gsub("NZ328","NZ325",df_phyto$StationCode) # Typo in August 2019
+df_phyto$StationCode <- gsub("C3A-HOOD","C3A",df_phyto$StationCode)
+df_phyto$StationCode <- gsub("C3A Hood","C3A",df_phyto$StationCode)
+df_phyto$StationCode <- gsub("C3A- Hood","C3A",df_phyto$StationCode)
+df_phyto$StationCode <- gsub("C3A-Hood","C3A",df_phyto$StationCode)
+df_phyto$StationCode <- gsub("NZ542","NZS42",df_phyto$StationCode)
+df_phyto$StationCode <- gsub("E26","EZ6",df_phyto$StationCode)
+df_phyto$StationCode <- gsub("E22","EZ2",df_phyto$StationCode) # Typo in May 2018
+
+# Remove extra Microcystis tows at D19
+df_phyto <- df_phyto %>% filter(StationCode != "D19 MC Tow")
+
+# Confirm total number of stations and lack of typos
+table(df_phyto$StationCode)
+
+unique(table(df_phyto$StationCode))
+
+```
+
+## Summarize Tallies for Each Sample
+Total up the number of counts for each sample at each station over time.
+
+```{r tally, echo=FALSE}
+
+# Set location to save plots
+plots <- here("03_Phyto","bsa-count-tallies","plots")
+
+# Use the black-and-white theme
+theme_set(theme_bw())
+
+# Set the theme
+theme_update(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    plot.background = element_rect(fill = "white", colour = NA),
+    panel.background = element_rect(fill = "white", colour = NA),
+    panel.border = element_rect(fill = NA, colour = "black"),
+    strip.background = element_rect(fill = "gray", colour = "black"),
+    legend.position = "right",
+    legend.key = element_rect(fill = "white", colour = NA)
+    )
+
+df_tally <- df_phyto %>% 
+  group_by(Year, Month, DateTime, StationCode) %>% 
+  summarize("Tally" = sum(UnitAbundance)) %>% 
+  ungroup()
+
+histogram_plot <- ggplot(df_tally, aes(x = Tally)) +
+  geom_histogram(binwidth = 5, fill = "darkblue") +
+  labs(title = "Total Algal Units Counted in EMP Phytoplankton Samples",
+       x = "Units Counted",
+       y = "Frequency (# of samples)")
+
+histogram_plot
+
+ggsave(path = plots,
+       filename = "algal-units-hist.png", 
+       device = "png",
+       scale=1.0, 
+       units="in",
+       height=4,
+       width=6, 
+       dpi="print")
+
+```
+## Frequency of Sub-400 Tallies
+```{r yearly, echo=FALSE}
+
+df_tally <- df_tally %>% 
+  mutate(PassFail = case_when(Tally >= 400 ~ "Pass",
+                              TRUE ~ "Fail"))
+
+df_sum_yr <- df_tally %>% 
+  group_by(Year, PassFail) %>% 
+  summarize(Total = n()) %>% 
+  ungroup()
+
+# Order the new ActionPhase so that it plots in the order Pre < During < Post
+order <- c("Pass","Fail")
+df_sum_yr$PassFail <- factor(as.character(df_sum_yr$PassFail),levels=order)
+
+
+# Make barplot for which % of samples fail and which pass
+p_barplot <- ggplot(df_sum_yr, aes(x = Year, y = Total, fill = PassFail)) +
+  geom_col() +
+  scale_fill_manual(values = c("darkgreen","red3"))
+                      
+p_barplot +
+    labs(title = "Occurrences of < 400 Unit Counts",
+       x = "Year",
+       y = "Number of Samples",
+       fill = "Count Threshold")
+
+ggsave(path = plots,
+       filename = "pass-fail-by-year.png", 
+       device = "png",
+       scale=1.0, 
+       units="in",
+       height=4,
+       width=6, 
+       dpi="print")
+
+```
+
+
