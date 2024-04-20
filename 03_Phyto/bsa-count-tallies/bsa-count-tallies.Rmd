@@ -12,7 +12,6 @@ suppressWarnings(suppressMessages(library(tidyverse)))
 suppressWarnings(suppressMessages(library(knitr)))
 suppressWarnings(suppressMessages(library(lubridate)))
 suppressWarnings(suppressMessages(library(RColorBrewer)))
-suppressWarnings(suppressMessages(library(vegan)))
 suppressWarnings(suppressMessages(library(janitor)))
 suppressWarnings(suppressMessages(library(here)))
 
