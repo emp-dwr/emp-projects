@@ -233,6 +233,9 @@ table(df_phyto$StationCode)
 
 unique(table(df_phyto$StationCode))
 
+# Save df to use for importing elsewhere
+save(df_phyto, file = "df_phyto.RData")
+
 ```
 
 ## Summarize Tallies for Each Sample
@@ -293,7 +296,7 @@ df_sum_yr <- df_tally %>%
   summarize(Total = n()) %>% 
   ungroup()
 
-# Order the new ActionPhase so that it plots in the order Pre < During < Post
+# Order the new column so it puts Pass first then Fail
 order <- c("Pass","Fail")
 df_sum_yr$PassFail <- factor(as.character(df_sum_yr$PassFail),levels=order)
 
