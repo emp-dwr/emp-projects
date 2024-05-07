@@ -8,11 +8,11 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
-library(tidyverse)
-library(lubridate)
-library(janitor)
-library(here)
-library(cder)
+suppressWarnings(suppressMessages(library(tidyverse)))
+suppressWarnings(suppressMessages(library(lubridate)))
+suppressWarnings(suppressMessages(library(janitor)))
+suppressWarnings(suppressMessages(library(here)))
+suppressWarnings(suppressMessages(library(cder)))
 
 # Set output directory 
 output <- here("01_WaterQuality","D1641-table5-sonde-uptime","output")
@@ -25,8 +25,8 @@ options(tidyverse.quiet = TRUE)
 options(dplyr.summarise.inform = FALSE)
 
 # Create date variables --------------------------------------------------------
-start <- as.Date("2022-01-01")
-end <- as.Date("2022-12-31")
+start <- as.Date("2023-01-01")
+end <- as.Date("2023-12-31")
 
 ```
 
