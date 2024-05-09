@@ -25,84 +25,207 @@ options(tidyverse.quiet = TRUE)
 options(dplyr.summarise.inform = FALSE)
 
 # Create date variables --------------------------------------------------------
-start <- as.Date("2023-01-01")
-end <- as.Date("2023-12-31")
+start <- as.Date("2020-01-01")
+end <- as.Date("2024-05-08")
 
 ```
 
 ## Import sonde data from CDEC
+Pull in data from six D-1641 continuous water quality stations that are maintained by USBR: Sacramento River @ Collinsville (CLL), San Joaquin River @ San Andreas Landing (SAL), Contra Costa Canal @ Pumping Plant #1 (CNT), Old River near Middle River (UNI), Sacramento River @ Port Chicago (PCT), Delta-Mendota Canal at Tracy Pumping Plant (DMC). 
 
 ```{r import}
-# Pull non-QA'd data from CDEC
-df_flow <- cdec_query("OBI", sensors = c(100,25,221), 
+# Pull USBR station data from CDEC
+USBR_stations <- c("CLL","SAL","CNT","UNI","PCT","DMC")
+
+df_WQ_all <- cdec_query(USBR_stations, sensors = c(100,25), 
                     start.date = start, 
                     end.date = end)
 
-df_flow <- df_flow %>% 
-  select(StationID,SensorType,DateTime,Value)
+# Remove all data from years apart from 2023
+df_WQ <- df_WQ_all %>% 
+  mutate(Year = year(df_WQ_all$DateTime)) %>% 
+  filter(Year == 2023)
 
-df_flow <- df_flow %>%
-  mutate(Year = year(df_flow$DateTime)) %>%
-  mutate(Month = month(df_flow$DateTime, label = TRUE)) %>%
-  mutate(Date = date(df_flow$DateTime)) %>% 
-  mutate(Julian = yday(df_flow$DateTime))
-
-# Change sonde names to more complete
-
-# unique(df_flow$SensorType)
-
-df_flow <- df_flow %>% 
-  mutate(SensorType = str_replace(SensorType, "EL COND", "EC")) %>% 
-  mutate(SensorType = str_replace(SensorType, "TEMP W", "Water Temp")) %>% 
-  mutate(SensorType = str_replace(SensorType, "TURB WF", "Turb"))
+# Add more detailed description of each station
+df_WQ <- df_WQ %>% 
+  mutate(Description = case_when(StationID == "CLL" ~ "C2 - Sac River @ Collinsville",
+                                 StationID == "SAL" ~ "C4 - SJ River @ San Andreas Landing",
+                                 StationID == "CNT" ~ "C5 - Contra Costa Canal @ Pumping Plant 1",
+                                 StationID == "UNI" ~ "C8 - Old River near Middle River",
+                                 StationID == "PCT" ~ "C14 - Sac River @ Port Chicago",
+                                 StationID == "DMC" ~ "DMC1 - Delta-Mendota Canal @ Tracy Pumping Plant"
+                                 ))
 
 ```
 
-## Summarize data
+## Clean Up Data
+Create graphs that differentiate between different data types (Daily, Event, and Hourly) for SpC. 
+```{r clean}
+# Remove any duplicate rows
+df_WQ <- df_WQ %>% distinct() # no rows removed
+  
+# Check CDEC column values
+unique(df_WQ$DataFlag) # no values, not used for these stations
+
+# Filter out unneeded columns
+df_WQ <- df_WQ %>% 
+  select(!DataFlag) %>% # just a blank column
+  select(!SensorNumber) %>% # CDEC codes for each analyte
+  select(!SensorUnits) # we know what the units are
+
+# Add additional date units for grouping and plotting
+df_WQ <- df_WQ %>%
+  mutate(Year = year(df_WQ$DateTime)) %>%
+  mutate(Month = month(df_WQ$DateTime, label = TRUE)) %>%
+  mutate(Date = date(df_WQ$DateTime))
+
+# Rename output from CDEC for clarify
+df_WQ <- df_WQ %>% 
+  mutate(SensorType = str_replace(SensorType, "EL COND", "SpC")) %>% 
+  mutate(SensorType = str_replace(SensorType, "TEMP W", "Water Temp"))
+
+# Interpret content in the "Duration" column
+unique(df_WQ$Duration) # H = hourly, E = event, D = daily
+
+# Replace duration codes with more verbose descriptions
+durations <- c("D" = "Daily","E" = "Event","H" = "Hourly")
+
+df_WQ <- df_WQ %>% 
+  mutate(Duration = str_replace_all(Duration, durations))
+
+```
+
+## Create a Blank Data Frame for the Data
+```{r blank}
+# Create a blank data frame with all combinations of stations and months for 2023
+months <- seq(ymd("2024-01-01"), by = "month", length.out = 12)
+
+df_intervals <- crossing(
+  MonthNum = month(months, abbr = TRUE),
+  StationID = USBR_stations,
+  SensorType = c("SpC", "Water Temp")
+  )
+
+df_intervals <- df_intervals %>% 
+  mutate(Daily = days_in_month(MonthNum)) %>% 
+  mutate(Month = month(MonthNum, abbr = TRUE, label = TRUE)) %>% 
+  mutate(Hourly = Daily * 24) %>% 
+  mutate(Event = Daily * 96) %>% 
+  select(-MonthNum) %>% 
+  relocate(Month, .after = StationID)
+
+df_intervals <- pivot_longer(df_intervals, 
+                             cols = Daily:Event, 
+                             values_to = "TotalIntervals",
+                             names_to = "Duration")
+
+# Remove "Daily" and "Event" categories for Water Temp data (only ever Hourly)
+df_intervals <- df_intervals %>% 
+  filter(!(SensorType == "Water Temp" & Duration %in% c("Daily","Event")))
+
+
+```
+
+
+## Summarize WQ Data by Month
 ```{r summarize data}
 
-df_flow_mean <- df_flow %>% 
-  group_by(StationID,SensorType,Date) %>% 
-  summarise(Mean_Value = mean(Value)) %>% 
+# Create summary table for how many individual measurements exist for each station
+df_WQ_m <- df_WQ %>% 
+  filter(!is.na(Value)) %>% # Remove entries with an NA for the measured parameter
+  filter(Value > 0) %>% # Remove entries with a 0 or negative number for the measured parameter
+  select(-Year) %>% 
+  group_by(StationID,Description,Month,SensorType,Duration) %>% 
+  summarize(Total_Measurements = sum(n())) %>% 
   ungroup()
 
+# Merge with df with total intervals per month
+df_WQ_sum <- left_join(df_intervals, df_WQ_m, join_by(Month,StationID,SensorType,Duration))
+
+# Calculate Percent Data Recovery
+df_WQ_sum <- df_WQ_sum %>% 
+  mutate(Present = (Total_Measurements / TotalIntervals) * 100) %>% 
+  mutate(Missing = 100 - Present) %>% 
+  select(-c("TotalIntervals","Total_Measurements"))
+
+# Pivot to long for plotting
+df_WQ_sum <- pivot_longer(df_WQ_sum,
+                          cols = Present:Missing,
+                          values_to = "PercentData",
+                          names_to = "PresenceAbsence")
+
+  
 ```
 
-## Categorize days when data is available
-```{r categorize}
 
-df_flow_mean <- df_flow_mean %>% 
-  mutate(Status = case_when(is.na(Mean_Value) ~ "Down",
-                            TRUE ~ "Up"))
-
-df_flow_sum <- df_flow_mean %>% 
-  group_by(StationID,SensorType) %>%
-  count(Status) %>% 
-  ungroup()
-
-```
-
-## Plot Status
+## Plot Overall Status
 ```{r plotting}
-p_status <- ggplot(df_flow_sum, aes(x = SensorType,
-                                     y = n,
-                                     fill = Status)) +
-  geom_col() +
-  labs(x = NULL,
-       y = "Days",
-       fill = "Sonde Status",
-       title = "Water Quality Sensor Status - OBI - 2022")
 
-p_status +
-  scale_fill_brewer(palette = "Set1")
+# Use the black-and-white theme
+theme_set(theme_bw())
+
+# Set the theme
+theme_update(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    plot.background = element_rect(fill = "white", colour = NA),
+    panel.background = element_rect(fill = "white", colour = NA),
+    panel.border = element_rect(fill = NA, colour = "black"),
+    strip.background = element_rect(fill = "gray", colour = "black"),
+    legend.position = "bottom",
+    legend.key = element_rect(fill = "white", colour = NA)
+    )
+
+# Plot sonde uptime for specific conductancy
+p_SpC <- ggplot(df_WQ_sum, aes(x = Month,
+                                  y = PercentData,
+                                  fill = PresenceAbsence)) +
+  geom_col(data = subset(df_WQ_sum, SensorType == "SpC" & Duration == "Event"),
+           width = 0.7) +
+  scale_y_continuous(breaks = seq(from = 0, to = 100, by = 50)) +
+  labs(x = NULL,
+       y = "Data Availability - SpC (% of Total)",
+       fill = "Data Status on CDEC",
+       title = "Data Recovery - SpC - 2023") +
+  scale_fill_manual(values = c("red3","darkgreen"))
+
+p_SpC +
+    facet_wrap(Description ~ ., ncol = 1)
 
 ggsave(path = output,
-       filename = "OBI-sonde-status-2022.png",
+       filename = "USBR-sonde-status-2023-SpC.png",
        device = "png",
        scale=1.0,
        units="in",
-       height=3,
+       height=6,
        width=5,
        dpi="print")
+
+# Plot sonde uptime for water temperature
+p_Temp <- ggplot(df_WQ_sum, aes(x = Month,
+                                  y = PercentData,
+                                  fill = PresenceAbsence)) +
+  geom_col(data = subset(df_WQ_sum, SensorType == "Water Temp" & Duration == "Hourly"),
+           width = 0.7) +
+  scale_y_continuous(breaks = seq(from = 0, to = 100, by = 50)) +
+  labs(x = NULL,
+       y = "Data Availability - Water T (% of Total)",
+       fill = "Data Status on CDEC",
+       title = "Data Recovery - Water Temp - 2023") +
+  scale_fill_manual(values = c("red3","darkgreen"))
+
+p_Temp +
+    facet_wrap(Description ~ ., ncol = 1)
+
+ggsave(path = output,
+       filename = "USBR-sonde-status-2023-Temp.png",
+       device = "png",
+       scale=1.0,
+       units="in",
+       height=6,
+       width=5,
+       dpi="print")
+
+
 ```
 
