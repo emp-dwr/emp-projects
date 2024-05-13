@@ -67,6 +67,12 @@ df_WQ <- df_WQ %>% distinct() # no rows removed
 # Check CDEC column values
 unique(df_WQ$DataFlag) # no values, not used for these stations
 
+#quick check to see if there are the same number of samples per station per duration
+table(df_WQ$SensorType, df_WQ$StationID, df_WQ$Duration)
+```
+
+
+```{r clean}
 # Filter out unneeded columns
 df_WQ <- df_WQ %>% 
   select(!DataFlag) %>% # just a blank column
@@ -212,7 +218,7 @@ p_Temp <- ggplot(df_WQ_sum, aes(x = Month,
        y = "Data Availability - Water T (% of Total)",
        fill = "Data Status on CDEC",
        title = "Data Recovery - Water Temp - 2023") +
-  scale_fill_manual(values = c("red3","darkgreen"))
+  scale_fill_manual(values = c("red3","lightcyan")) # red-green is the worst for color blind people!
 
 p_Temp +
     facet_wrap(Description ~ ., ncol = 1)
@@ -225,6 +231,35 @@ ggsave(path = output,
        height=6,
        width=5,
        dpi="print")
+
+
+```
+```{r}
+#quick plot of EC and temp over time
+ggplot(filter(df_WQ, Duration == "Hourly", !is.na(Value), Value >0), aes(x = Date, y = Value, color = SensorType))+
+  facet_wrap(~StationID, scales = "free_y")+ geom_point()
+
+#what's goin gon with those super high values?
+test = filter(df_WQ, Value >50000)
+```
+```{r}
+#check the event data nad make sure no other weird shit happened.
+ggplot(filter(df_WQ, Duration == "Event", !is.na(Value), Value >0), aes(x = Date, y = Value, color = SensorType))+
+  facet_wrap(~StationID, scales = "free_y")+ geom_point()
+#some of those points look odd
+test2 = filter(df_WQ, Value <10 & SensorType=="SpC")
+```
+
+
+```{r}
+#let's flag them
+df_WQ = mutate(df_WQ, Flag = case_when(Value <10 & SensorType=="SpC" ~ "Suspicious",
+                                       Value >100000 & SensorType=="SpC" ~ "Suspicious",
+                                       Value <2 & SensorType=="Water Temp" ~ "Suspicious",
+                                       TRUE ~ "Probably OK"))
+
+ggplot(filter(df_WQ, Duration == "Event", !is.na(Value), Value >0), aes(x = Date, y = Value, color = Flag))+
+  facet_wrap(~StationID, scales = "free_y")+ geom_point()
 
 
 ```
