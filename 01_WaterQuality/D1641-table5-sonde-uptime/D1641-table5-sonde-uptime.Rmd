@@ -69,10 +69,7 @@ unique(df_WQ$DataFlag) # no values, not used for these stations
 
 #quick check to see if there are the same number of samples per station per duration
 table(df_WQ$SensorType, df_WQ$StationID, df_WQ$Duration)
-```
 
-
-```{r clean}
 # Filter out unneeded columns
 df_WQ <- df_WQ %>% 
   select(!DataFlag) %>% # just a blank column
@@ -131,7 +128,6 @@ df_intervals <- df_intervals %>%
 
 
 ```
-
 
 ## Summarize WQ Data by Month
 ```{r summarize data}
