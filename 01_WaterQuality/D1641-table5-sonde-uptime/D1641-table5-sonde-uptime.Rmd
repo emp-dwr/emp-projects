@@ -35,7 +35,7 @@ Pull in data from six D-1641 continuous water quality stations that are maintain
 
 ```{r import}
 # Pull USBR station data from CDEC
-USBR_stations <- c("CLL","SAL","CNT","UNI","PCT","DMC")
+USBR_stations <- c("CLL","SAL","CNT","UNI","PCT","DMC","EMM")
 
 df_WQ_all <- cdec_query(USBR_stations, sensors = c(100,25), 
                     start.date = start, 
@@ -53,7 +53,8 @@ df_WQ <- df_WQ %>%
                                  StationID == "CNT" ~ "C5 - Contra Costa Canal @ Pumping Plant 1",
                                  StationID == "UNI" ~ "C8 - Old River near Middle River",
                                  StationID == "PCT" ~ "C14 - Sac River @ Port Chicago",
-                                 StationID == "DMC" ~ "DMC1 - Delta-Mendota Canal @ Tracy Pumping Plant"
+                                 StationID == "DMC" ~ "DMC1 - Delta-Mendota Canal @ Tracy Pumping Plant",
+                                 StationID == "EMM" ~ "EMM - Sac River @ Emmaton"
                                  ))
 
 ```
@@ -189,7 +190,7 @@ p_SpC <- ggplot(df_WQ_sum, aes(x = Month,
        y = "Data Availability - SpC (% of Total)",
        fill = "Data Status on CDEC",
        title = "Data Recovery - SpC - 2023") +
-  scale_fill_manual(values = c("red3","darkgreen"))
+  scale_fill_manual(values = c("red3","darkcyan"))
 
 p_SpC +
     facet_wrap(Description ~ ., ncol = 1)
@@ -214,7 +215,7 @@ p_Temp <- ggplot(df_WQ_sum, aes(x = Month,
        y = "Data Availability - Water T (% of Total)",
        fill = "Data Status on CDEC",
        title = "Data Recovery - Water Temp - 2023") +
-  scale_fill_manual(values = c("red3","lightcyan")) # red-green is the worst for color blind people!
+  scale_fill_manual(values = c("red3","darkcyan")) # red-green is the worst for color blind people!
 
 p_Temp +
     facet_wrap(Description ~ ., ncol = 1)
