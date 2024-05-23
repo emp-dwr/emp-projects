@@ -31,7 +31,7 @@ end <- as.Date("2024-05-08")
 ```
 
 ## Import sonde data from CDEC
-Pull in data from six D-1641 continuous water quality stations that are maintained by USBR: Sacramento River @ Collinsville (CLL), San Joaquin River @ San Andreas Landing (SAL), Contra Costa Canal @ Pumping Plant #1 (CNT), Old River near Middle River (UNI), Sacramento River @ Port Chicago (PCT), Delta-Mendota Canal at Tracy Pumping Plant (DMC). Also pull DWR station at Collinsville (CSE) to compare.
+Pull in data from six D-1641 continuous water quality stations that are maintained by USBR: Sacramento River @ Collinsville (CLL), San Joaquin River @ San Andreas Landing (SAL), Contra Costa Canal @ Pumping Plant #1 (CNT), Old River near Middle River (UNI), Sacramento River @ Port Chicago (PCT), Delta-Mendota Canal at Tracy Pumping Plant (DMC).
 
 ```{r import, echo=FALSE}
 # Pull USBR station data from CDEC
