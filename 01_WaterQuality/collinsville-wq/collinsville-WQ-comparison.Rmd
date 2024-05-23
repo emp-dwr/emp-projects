@@ -1,0 +1,92 @@
+---
+title: "Collinsville WQ Station Comparison"
+author: "Ted Flynn"
+date: "2024-05-23"
+output: html_document
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+suppressWarnings(suppressMessages(library(tidyverse)))
+suppressWarnings(suppressMessages(library(lubridate)))
+suppressWarnings(suppressMessages(library(janitor)))
+suppressWarnings(suppressMessages(library(here)))
+suppressWarnings(suppressMessages(library(cder)))
+
+# Set output directory 
+output <- here("01_WaterQuality","D1641-table5-sonde-uptime","output")
+
+# Set visual theme in ggplot
+theme_set(theme_bw())
+
+# Suppress summarise info
+options(tidyverse.quiet = TRUE)
+options(dplyr.summarise.inform = FALSE)
+
+# Create date variables --------------------------------------------------------
+start <- as.Date("2020-01-01")
+end <- as.Date("2024-05-08")
+
+```
+
+## Import sonde data from CDEC
+Pull in data from six D-1641 continuous water quality stations that are maintained by USBR: Sacramento River @ Collinsville (CLL), San Joaquin River @ San Andreas Landing (SAL), Contra Costa Canal @ Pumping Plant #1 (CNT), Old River near Middle River (UNI), Sacramento River @ Port Chicago (PCT), Delta-Mendota Canal at Tracy Pumping Plant (DMC). Also pull DWR station at Collinsville (CSE) to compare.
+
+```{r import, echo=FALSE}
+# Pull USBR station data from CDEC
+# stations <- c("CLL","SAL","CNT","UNI","PCT","DMC","EMM","CSE")
+# 
+# df_WQ_all <- cdec_query(stations, sensors = c(100,25), 
+#                     start.date = start, 
+#                     end.date = end)
+
+# Add more detailed description of each station
+# df_WQ_all <- df_WQ_all %>% 
+#   mutate(Description = case_when(StationID == "CLL" ~ "C2 - Sac River @ Collinsville",
+#                                  StationID == "SAL" ~ "C4 - SJ River @ San Andreas Landing",
+#                                  StationID == "CNT" ~ "C5 - Contra Costa Canal @ Pumping Plant 1",
+#                                  StationID == "UNI" ~ "C8 - Old River near Middle River",
+#                                  StationID == "PCT" ~ "C14 - Sac River @ Port Chicago",
+#                                  StationID == "DMC" ~ "DMC1 - Delta-Mendota Canal @ Tracy Pumping Plant",
+#                                  StationID == "EMM" ~ "EMM - Sac River @ Emmaton",
+#                                  StationID == "CSE" ~ "Collinsville on Sacramento River"
+#                                  ))
+
+# Takes a long time to download from CDEC so save as RData file
+# save(df_WQ_all, file = here("01_WaterQuality","D1641-table5-sonde-uptime","df_WQ_all.RData"))
+
+load(here("01_WaterQuality","D1641-table5-sonde-uptime","df_WQ_all.RData"))
+
+```
+
+## Add Useful Metadata
+```{r metadata, echo=FALSE}
+# Add column distinguishing USBR and DWR stations
+df_WQ <- df_WQ %>% 
+  mutate(Agency = case_when(StationID == "CSE" ~ "DWR",
+                             TRUE ~ "USBR"))
+```
+
+
+## Compare Collinsville Stations
+```{r Collinsville, echo=TRUE}
+# Subset collinsville data
+df_WQ_CLL <- df_WQ %>% 
+  filter(StationID %in% c("CSE","CLL"))
+
+# Plot Temp values
+p_CLL_T <- ggplot(df_WQ, aes(x = DateTime, y = Value, color=StationID)) +
+  geom_line(data = subset(df_WQ_CLL, SensorType == "Water Temp" & Duration %in% c("Event","Hourly")))
+
+p_CLL_T
+
+# Plot EC values
+p_CLL_EC <- ggplot(df_WQ, aes(x = DateTime, y = Value, color=StationID)) +
+  geom_line(data = subset(df_WQ_CLL, SensorType == "SpC" & Duration %in% c("Event","Hourly")))
+
+p_CLL_EC
+
+```
+
