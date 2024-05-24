@@ -32,7 +32,6 @@ end <- as.Date("2024-05-08")
 ```
 
 ## Import sonde data from CDEC
-Pull in data from six D-1641 continuous water quality stations that are maintained by USBR: Sacramento River @ Collinsville (CLL), San Joaquin River @ San Andreas Landing (SAL), Contra Costa Canal @ Pumping Plant #1 (CNT), Old River near Middle River (UNI), Sacramento River @ Port Chicago (PCT), Delta-Mendota Canal at Tracy Pumping Plant (DMC). Also pull DWR station at Collinsville (CSE) to compare.
 
 ```{r import, echo=FALSE}
 # Pull station data from CDEC
@@ -151,6 +150,15 @@ p_CLL_EC <- ggplot(df_WQ, aes(x = DateTime, y = Value, color=StationID)) +
   geom_line(data = subset(df_WQ, SensorType == "SpC"))
 
 p_CLL_EC
+
+```
+```{r}
+# Ideas from Rosie:
+# Substract one from the other, plot the difference
+# Add autoregressive term
+# Calculate daily average
+# Look at management triggers. Would changing stations make a different decision?
+
 
 ```
 
