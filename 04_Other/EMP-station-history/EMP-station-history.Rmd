@@ -1,0 +1,388 @@
+---
+title: "EMP Station History"
+author: "Ted Flynn"
+date: "2024-06-7"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+suppressWarnings(suppressMessages(library(tidyverse)))
+suppressWarnings(suppressMessages(library(lubridate)))
+suppressWarnings(suppressMessages(library(janitor)))
+suppressWarnings(suppressMessages(library(here)))
+suppressWarnings(suppressMessages(library(cder)))
+
+# Set output directory 
+output <- here("04_Other","EMP-station-history","output")
+
+# Set visual theme in ggplot
+theme_set(theme_bw())
+
+# Suppress summarise info
+options(tidyverse.quiet = TRUE)
+options(dplyr.summarise.inform = FALSE)
+
+# Create date variables --------------------------------------------------------
+start <- as.Date("2020-01-01")
+end <- as.Date("2024-05-08")
+
+```
+
+## Import Data from EMP Components
+```{r import, echo=FALSE}
+# Import phyto data sent by Tiffany (2007 and earlier)
+df_phyto <- read_csv(file = here("04_Other","EMP-station-history","data","phyto-dates-and-stations.csv"))
+
+df_phyto <- df_phyto %>% 
+  rename("Date" = "SampleDate") %>% 
+  rename("Station" = "StationCode") %>% 
+  mutate(Date = mdy(Date))
+
+# Read in station data from 2008 onwards (from EDI)
+df_phyto_EDI <- read_csv(file = here("04_Other","EMP-station-history","data","EMP_Phyto_Data_2008-present.csv")) %>% 
+  mutate(Date = mdy(Date))
+
+# Add year metadata
+df_phyto <- df_phyto %>% mutate(Year = year(Date))
+df_phyto_EDI <- df_phyto_EDI %>% mutate(Year = year(Date))
+
+# Import WQ data from EDI
+df_WQ <- read_csv(file = "https://portal.edirepository.org/nis/dataviewer?packageid=edi.458.10&entityid=cf231071093ac2861893793517db26f3")
+
+# Add year metadata
+df_WQ <- df_WQ %>% mutate(Year = year(Date))
+
+# Import zoop data from EDI ()
+df_zoop_CB <- read_csv(file = "https://portal.edirepository.org/nis/dataviewer?packageid=edi.522.11&entityid=c0916b64396edab85b07038e32ff0342")
+
+df_zoop_CB <- df_zoop_CB %>% 
+  select(SampleDate,Year,StationNZ,DWRStationNo) %>% 
+  rename("Date" = "SampleDate") %>% 
+  rename("Station" = "DWRStationNo")
+
+# Remove non-DWR stations
+df_zoop_CB <- df_zoop_CB %>%
+  filter(!is.na(Station)) %>% 
+  select(!StationNZ)
+
+# Import benthic CPUE data downloaded from EDI
+df_ben <- read_csv(file = here("04_Other","EMP-station-history","data","DWR Benthic CPUE data 1975-2023.csv"))
+
+df_ben <- df_ben %>% 
+  select(SampleDate,Year,StationCode) %>% 
+  rename("Station" = "StationCode")
+
+```
+
+## Summarize data by component
+```{r summarize, echo=FALSE}
+# Summarize phyto data
+df_phyto_sum <- df_phyto %>% 
+  group_by(Station,Year) %>% 
+  summarize(Visits = sum(n())) %>% 
+  mutate(Station = str_replace_all(Station, c("^S42$" ="NZS42"))) %>% 
+  mutate(Study = "Phytoplankton")
+
+df_phyto_EDI_sum <- df_phyto_EDI %>% 
+  group_by(Station,Year) %>% 
+  summarize(Visits = sum(n())) %>% 
+  mutate(Station = str_replace_all(Station, c("^S42$" ="NZS42"))) %>% 
+  mutate(Study = "Phytoplankton")
+
+df_phyto_sum <- bind_rows(df_phyto_sum, df_phyto_EDI_sum)
+
+# Summarize WQ data
+df_WQ_sum <- df_WQ %>% 
+  group_by(Station,Year) %>% 
+  summarize(Visits = sum(n())) %>% 
+  mutate(Station = str_replace_all(Station, c("^S42$" ="NZS42"))) %>% 
+  mutate(Study = "Discrete WQ")
+
+# Summarize zoop data
+df_zoop_sum <- df_zoop_CB %>% 
+  group_by(Station,Year) %>% 
+  summarize(Visits = sum(n())) %>% 
+  mutate(Study = "Zooplankton")
+
+# Summarize benthic data
+df_ben_sum <- df_ben %>% 
+  group_by(Station,Year) %>% 
+  summarize(Visits = sum(n())) %>% 
+  mutate(Study = "Benthic")
+
+```
+
+## Fix Station Metadata
+```{r metadata, echo=FALSE}
+
+# Change benthic metadata to match regular DWR station IDs
+df_ben_station_list <- as_tibble(sort(unique(df_ben$Station)))
+
+# Add text to convert benthic station IDs
+df_ben_stations <- c("C3-L" = "C3",
+                     "C3-R" = "C3",
+                     "C7-C" = "C7",
+                     "C7-L" = "C7",
+                     "C7-R" = "C7",
+                     "C9-C" = "C9",
+                     "C9-L" = "C9",
+                     "D10-C" = "D10",
+                     "D10-L" = "D10",
+                     "D10-R" = "D10",
+                     "D11-C" = "D11",
+                     "D11-L" = "D11",
+                     "D11-R" = "D11",
+                     "D12-C" = "D12",
+                     "D14A-C" = "D14A",
+                     "D14A-L" = "D14A",
+                     "D14A-R" = "D14A",
+                     "D16-C" = "D16",
+                     "D16-L" = "D16",
+                     "D19-C" = "D19",
+                     "D19-L" = "D19",
+                     "D19-R" = "D19",
+                     "D24-L" = "D24",
+                     "D26-C" = "D26",
+                     "D26-L" = "D26",
+                     "D26-R" = "D26",
+                     "D28A-C" = "D28A",
+                     "D28A-L" = "D28A",
+                     "D28A-R" = "D28A",
+                     "D4-C" = "D4",
+                     "D4-L" = "D4",
+                     "D4-R" = "D4",
+                     "D41-C" = "D41",
+                     "D41A-C" = "D41A",
+                     "D6-C" = "D6",
+                     "D6-L" = "D6",
+                     "D6-R" = "D6",
+                     "D7-C" = "D7",
+                     "D7-L" = "D7",
+                     "D7-R" = "D7",
+                     "D8-C" = "D8",
+                     "D9-C" = "D9",
+                     "D9-R" = "D9",
+                     "MD6-C" = "MD6",
+                     "MD6-L" = "MD6",
+                     "MD6-R" = "MD6",
+                     "MD7-C" = "MD7",
+                     "MD7-L" = "MD7",
+                     "MD7-R" = "MD7",
+                     "P8-C" = "P8",
+                     "P8-L" = "P8",
+                     "P8-R" = "P8"
+                     )
+
+df_ben_sum <- df_ben_sum %>% 
+  mutate(Station = str_replace_all(Station, df_ben_stations)
+)
+
+df_ben_sum <- unique(df_ben_sum)
+
+stations <- as_tibble(c("C2", "C3", "C4", "C5", "C6", "C7", "C8", "C9", "C10", "C13", "C14", "C19", 
+                        "D4", "D6", "D7", "D8", "D9", "D10", "D11", "D12", "D15", "D16", "D19", 
+                        "D22", "D24", "D26", "D28A", "D29", "D41", "D41A", "DMC1", "P8", "P12", 
+                        "MD10", "S21", "S35", "S49", "S64", "S97", "NZ032", "EZ2", "EZ6", 
+                        "EZ2-SJR", "EZ6-SJR", "NZ002", "NZ004", "NZ325"))
+
+current_stations <- as_tibble(c("C2", "C3A", "C4", "C5", "C6", "C7A", "C8", "C9", "C10A", "C13", "C14", "C19","D4", "D6A",
+                                "D7A", "D8A", "D9", "D9A", "D10A", "D11", "D11A", "D12", "D12A", 
+                                "D15", "D16", "D16A", "D19", "D19A", "D22", "D24", "D24A", "NZ068", "D26", 
+                                "D28A", "D29A", "D41", "D41A", "DMC1", "P8", "P8A", "MD10A", "NZ032", "S21", 
+                                "S35", "NZS42", "S49", "S64", "S97"))
+
+stations_all <- bind_rows(stations,current_stations)
+
+df_stations <- as_tibble(sort(unique(stations_all$value))) %>% 
+  rename("Station" = "value")
+
+# Join all elements together
+df_EMP <- bind_rows(df_WQ_sum,df_phyto_sum,df_zoop_sum,df_ben_sum)
+
+# Filter pre-1975 data
+df_EMP <- df_EMP %>% filter(Year >= 1975)
+
+```
+
+
+## Create blank data frame
+
+```{r blank, echo=FALSE}
+# Create a sequence of years from 1972 to 2024
+years <- seq(1975, 2022)
+
+df_intervals <- crossing(
+  Year = years,
+  Station = df_stations$Station,
+  Study = c("Phytoplankton", "Discrete WQ","Zooplankton","Benthic")
+  )
+
+# Add EMP dates to blank data frame
+df_EMP <- left_join(df_intervals,df_EMP, join_by(Year,Station,Study))
+
+# Classify stations as active or inactive
+df_EMP <- df_EMP %>% 
+  mutate(Activity = case_when(Visits > 0 ~ "Active",
+                              TRUE ~ "Inactive"))
+
+# Remove stations that aren't currently monitored
+df_active_stations <- df_EMP %>% 
+  group_by(Station) %>% 
+  summarise(Visits = sum(Visits, na.rm = TRUE)) %>% 
+  filter(Visits != 0) %>% 
+  select(!Visits) %>% 
+  ungroup()
+
+df_EMP_active <- df_EMP %>% 
+  filter(Station %in% df_active_stations$Station)
+
+# Set correct sort order
+sort_stations <- c("C3", "C3A", "C6", "C7", "C9", "C10", "C10A", "D4", "D6", "D7", "D8", "D9", "D10", "D11", "D12", "D15", "D16", "D19", "D22", "D24", "D26", "D28A", "D41", "D41A", "EZ2", "EZ2-SJR", "EZ6", "EZ6-SJR", "MD10", "MD10A", "P8", "P12", "NZ002", "NZ004", "NZ032", "NZ068", "NZ325", "NZS42")
+
+df_EMP_active$Station <- factor(as.character(df_EMP_active$Station), levels = sort_stations) 
+```
+
+## Plot Activity Timelines for Each Component
+```{r plot, echo=FALSE}
+# Plot benthic activity
+ggplot(df_EMP_active %>% 
+         group_by(Station) %>% 
+         filter(Study == "Benthic") %>%
+         filter(Year >= 1975) %>% 
+         filter(any(Activity == "Active")) %>%
+         select(!Visits) %>% 
+         ungroup(), aes(x = Year, 
+                        y = reorder(Station, desc(Station)), 
+                        fill = Activity)) +
+  geom_tile(height = 0.6) +
+  scale_fill_manual(values = c("darkgreen","darkgray")) +
+  facet_wrap(Study ~ ., ncol = 2) +
+  labs(x = NULL,
+       y = "Station Name",
+       title = "EMP Benthic Monitoring Activity (1980-Present)")
+
+ggsave(path = output,
+       filename = "timeline-benthic.png",
+       device = "png",
+       scale=1.0,
+       units="in",
+       height=5,
+       width=6.5,
+       dpi="print")
+
+# Plot Zooplankton Activity
+ggplot(df_EMP_active %>% 
+         group_by(Station) %>% 
+         filter(Study == "Zooplankton") %>%
+         filter(any(Activity == "Active")) %>%
+         select(!Visits) %>% 
+         ungroup(), aes(x = Year, 
+                        y = reorder(Station, desc(Station)), 
+                        fill = Activity)) +
+  geom_tile(height = 0.6) +
+  scale_fill_manual(values = c("darkgreen","darkgray")) +
+  facet_wrap(Study ~ ., ncol = 2) +
+  labs(x = NULL,
+       y = "Station Name",
+       title = "EMP Zooplankton Monitoring Activity (1975-Present)")
+
+ggsave(path = output,
+       filename = "timeline-zoop.png",
+       device = "png",
+       scale=1.0,
+       units="in",
+       height=9,
+       width=6.5,
+       dpi="print")
+
+# Plot Discrete WQ Activity
+ggplot(df_EMP_active %>% 
+         group_by(Station) %>% 
+         filter(Study == "Discrete WQ") %>%
+         filter(any(Activity == "Active")) %>%
+         select(!Visits) %>% 
+         ungroup(), aes(x = Year, 
+                        y = reorder(Station, desc(Station)), 
+                        fill = Activity)) +
+  geom_tile(height = 0.6) +
+  scale_fill_manual(values = c("darkgreen","darkgray")) +
+  facet_wrap(Study ~ ., ncol = 2) +
+  labs(x = NULL,
+       y = "Station Name",
+       title = "EMP Discrete WQ Monitoring Activity (1975-Present)")
+
+ggsave(path = output,
+       filename = "timeline-D-WQ.png",
+       device = "png",
+       scale=1.0,
+       units="in",
+       height=9,
+       width=6.5,
+       dpi="print")
+
+# Plot Phytoplankton Activity
+ggplot(df_EMP_active %>% 
+         group_by(Station) %>% 
+         filter(Study == "Phytoplankton") %>%
+         filter(any(Activity == "Active")) %>%
+         select(!Visits) %>% 
+         ungroup(), aes(x = Year, 
+                        y = reorder(Station, desc(Station)), 
+                        fill = Activity)) +
+  geom_tile(height = 0.6) +
+  scale_fill_manual(values = c("darkgreen","darkgray")) +
+  facet_wrap(Study ~ ., ncol = 2) +
+  labs(x = NULL,
+       y = "Station Name",
+       title = "EMP Phytoplankton Monitoring Activity (1975-Present)")
+
+ggsave(path = output,
+       filename = "timeline-phyto.png",
+       device = "png",
+       scale=1.0,
+       units="in",
+       height=9,
+       width=6.5,
+       dpi="print")
+
+```
+
+## Individual Station Plots
+```{r plot by station, echo=FALSE}
+
+# Create biovolume plots for each year
+test <- unique(df_EMP_active$Station) 
+test <- sort(test, decreasing = F, na.last = T)
+
+for (x in test) {
+  df_temp <- df_EMP_active %>%
+    filter(Station == x)
+  
+  ggplot(df_temp,
+         aes(x = Year, 
+             y = Study, 
+             fill = Activity)) +
+    geom_tile(height = 0.6) +
+    scale_fill_manual(values = c("darkgreen","darkgray")) +
+    labs(x = NULL,
+         y = NULL,
+         title = paste0("EMP Monitoring History at ",x))
+  
+    ggsave(path = output,
+         filename = paste0("site-history-at-",x,".png"), 
+         device = "png",
+         scale=1.0, 
+         units="in",
+         height=3.5,
+         width=7, 
+         dpi="print")
+  
+  rm(df_temp)
+  
+}
+
+
+```
+

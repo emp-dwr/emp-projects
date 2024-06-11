@@ -1,0 +1,70 @@
+---
+title: "Projects Compliance Monitoring Report - 2023"
+author: "Ted Flynn"
+date: "2024-05-24"
+output: html_document
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+suppressWarnings(suppressMessages(library(tidyverse)))
+suppressWarnings(suppressMessages(library(lubridate)))
+suppressWarnings(suppressMessages(library(here)))
+suppressWarnings(suppressMessages(library(cder)))
+
+# Set output directory 
+output <- here("04_Other","PCM-report-2023","output")
+
+# Set visual theme in ggplot
+theme_set(theme_bw())
+
+# Suppress summarise info
+options(tidyverse.quiet = TRUE)
+options(dplyr.summarise.inform = FALSE)
+
+# Create date variables --------------------------------------------------------
+start <- as.Date("2023-01-01")
+end <- as.Date("2023-12-31")
+
+```
+
+## Import QC'd Data from DWR Teams
+Pull in data provided by various teams responsible for compliance monitoring. 
+```{r import CSV, echo=FALSE}
+data_folder <- here("04_Other","PCM-report-2023","data")
+
+
+```
+
+
+
+## Import USBR data from CDEC
+QC'd data is not available from USBR-run stations so pulling from CDEC.
+
+```{r import CDEC, echo=FALSE}
+# Pull USBR station data from CDEC
+USBR_stations <- c("CLL","SAL","CNT","UNI","PCT","DMC","EMM")
+ 
+df_WQ_all <- cdec_query(USBR_stations, sensors = c(100,25),
+                        start.date = start,
+                        end.date = end)
+
+# Add more detailed description of each station
+df_WQ_all <- df_WQ_all %>% 
+   mutate(Description = case_when(StationID == "CLL" ~ "C2 - Sac River @ Collinsville",
+                                  StationID == "SAL" ~ "C4 - SJ River @ San Andreas Landing",
+                                  StationID == "CNT" ~ "C5 - Contra Costa Canal @ Pumping Plant 1",
+                                  StationID == "UNI" ~ "C8 - Old River near Middle River",
+                                  StationID == "PCT" ~ "C14 - Sac River @ Port Chicago",
+                                  StationID == "DMC" ~ "DMC1 - Delta-Mendota Canal @ Tracy Pumping Plant",
+                                  StationID == "EMM" ~ "EMM - Sac River @ Emmaton"
+                                  ))
+
+# Takes a long time to download from CDEC so save as RData file
+save(df_WQ_all, file = here("01_WaterQuality","D1641-table5-sonde-uptime","df_WQ_all.RData"))
+
+load(here("01_WaterQuality","D1641-table5-sonde-uptime","df_WQ_all.RData"))
+
+```
