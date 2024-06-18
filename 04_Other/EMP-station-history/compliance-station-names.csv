@@ -1,0 +1,80 @@
+﻿StationID,CombinedID,CDEC,ShortName
+C2,C2,CLL,Collinsville
+C3,C3-C3A,SRH,Hood
+C3A,C3-C3A,SRH,Hood
+C4,C4,SAL,San Andreas Landing
+C5,C5,CNT,Contra Costa Canal
+C6,C6,BDT,Brandt Bridge
+C7,C7-C7A,MSD,Mossdale Bridge
+C7A,C7-C7A,MSD,Mossdale Bridge
+C8,C8,UNI,Old River
+C9,C9,WCI,West Canal
+C10,C10-C10A,SJR,Vernalis
+C10A,C10-C10A,SJR,Vernalis
+C13,C13,MOK,Terminous
+C14,C14,PCT,Port Chicago
+C19,C19,CCS,Cache Slough
+D2,D2,,Preston Point
+D4,D4,,Point Sacramento
+D6,D6-D6A,MRZ,Martinez
+D6A,D6-D6A,MRZ,Martinez
+D7,D7-D7A,GZL,Grizzly Bay
+D7A,D7-D7A,GZL,Grizzly Bay
+D8,D8-D8A,RYC,Suisun Bay
+D8A,D8-D8A,RYC,Suisun Bay
+D9,D9-D9A,HON,Honker Bay
+D9A,D9-D9A,HON,Honker Bay
+D10,D10-D10A,MAL,Chipps Island
+D10A,D10-D10A,MAL,Chipps Island
+D11,D11-D11A,SSI,Sherman Island
+D11A,D11-D11A,SSI,Sherman Island
+D12,D12-D12A,ANH,Antioch
+D12A,D12-D12A,ANH,Antioch
+D14A,D14A,,Big Break
+D15,D15,SJJ,Jersey Point
+D16,D16-D16A,TWI,Twitchell Island
+D16A,D16-D16A,TWI,Twitchell Island
+D19,D19-D19A,FRK,Franks Tract
+D19A,D19-D19A,FRK,Franks Tract
+D22,D22,EMM,Emmaton
+D24,D24-D24A-NZ068,RVB,Rio Vista
+D24A,D24-D24A-NZ068,RVB,Rio Vista
+NZ068,D24-D24A-NZ068,RVB,Rio Vista
+D26,D26,,Potato Point
+D28A,D28A,OBI,Rancho Del Rio
+D29,D29,PPT,Prisoner's Point
+D41,D41,,Pinole Point
+D41A,D41A,,San Pablo Bay
+D42,D42,,Mare Island
+DMC1,DMC1,DMC,Tracy Pumping Plant
+MD6,MD6,,Sycamore Slough
+MD7,MD7-MD7A,,Little Potato Slough
+MD7A,MD7-MD7A,,Little Potato Slough
+MD10,MD10-MD10A,,Disappointment Slough
+MD10A,MD10-MD10A,,Disappointment Slough
+P2,P2,,Franklin Road
+P8,P8-P8A,RRI,Buckley Cove
+P8A,P8-P8A,RRI,Buckley Cove
+P10,P10-P10A,,Victoria Canal
+P10A,P10-P10A,,Victoria Canal
+P12,P12-P12A,OLD,Tracy Road
+P12A,P12-P12A,OLD,Tracy Road
+S42,S42-NZS42,VOL,Volanti Slough
+NZS42,S42-NZS42,,Volanti Slough
+NZ002,NZ002,,Glencove Harbor
+NZ004,NZ004,,Ozol Pier
+NZ032,NZ032,,Montezuma Slough
+NZ325,NZ325,,Rock Wall
+EZ2,EZ2,,EZ2
+EZ2-SJR,EZ2-SJR,,EZ6
+EZ6,EZ6,,EZ2 San Joaquin
+EZ6-SJR,EZ6-SJR,,EZ6 San Joaquin
+S21,S21,SNC,Chadbourne Slough
+S35,S35,GYS,Goodyear Slough
+S49,S49,BDL,Beldon Landing
+S64,S64,NSL,National Steel
+S97,S97,IBS,Cordelia Slough
+SLBAR3,SLBAR3,BKS,Barker Slough
+TRN,TRN,TRN,Turner Cut
+FPT,FPT,FPT,Freeport
+ROR,ROR,ROR,Roaring River

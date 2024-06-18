@@ -1,0 +1,146 @@
+---
+title: "Historic WQ Compliance Stations"
+author: "Ted Flynn"
+date: "2024-06-11"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+suppressWarnings(suppressMessages(library(tidyverse)))
+suppressWarnings(suppressMessages(library(lubridate)))
+suppressWarnings(suppressMessages(library(janitor)))
+suppressWarnings(suppressMessages(library(here)))
+suppressWarnings(suppressMessages(library(cder)))
+
+# Set output directory 
+output <- here("04_Other","historic-WQ-records","output")
+
+# Set visual theme in ggplot
+theme_set(theme_bw())
+
+# Suppress summarise info
+options(tidyverse.quiet = TRUE)
+options(dplyr.summarise.inform = FALSE)
+
+# Create date variables --------------------------------------------------------
+start <- as.Date("1980-01-01")
+end <- Sys.Date()
+
+```
+
+## Import sonde data from CDEC
+
+```{r import, echo=FALSE}
+# Import list of compliance stations
+df_stations <- read_csv(file = here("04_Other",
+                                    "historic-WQ-records",
+                                    "stations-C-WQ.csv"))
+
+# Make list of all compliance stations
+stations <- unique(df_stations$`CDEC ID`)
+
+# Create blank data frame to store CDEC data
+df_WQ_all <- as_tibble(
+  data.frame(
+    StationID = character(),
+    Year = numeric(),
+    Measurements = numeric()
+  )
+)
+
+# Create summary for CDEC data for each year (EC and WT)
+for (x in stations) {
+  
+  # Query each station one at a time
+  df_temp <- cdec_query(x, sensors = c(100,25),
+                        start.date = start,
+                        end.date = end)
+  
+  df_temp <- df_temp %>% 
+    select(StationID,DateTime,SensorType,Value)
+  
+  # Summarize data record for EMP
+  df_temp <- df_temp %>%
+    filter(!is.na(Value)) %>% 
+    mutate(Year = year(DateTime)) %>%
+    group_by(StationID,Year) %>% 
+    summarise(Measurements = n()) %>% 
+    ungroup()
+  
+  df_WQ_all <- bind_rows(df_WQ_all, df_temp)
+  
+  rm(df_temp)
+  
+}
+
+```
+
+## Create blank data frame to check data completeness
+```{r blank, echo=TRUE}
+# Create copy to modify
+df_WQ <- df_WQ_all
+
+# Remove years with < 10 total measurements stations that aren't currently monitored
+df_WQ <- df_WQ %>% filter(Measurements > 10)
+
+# Create a sequence of years from 1972 to 2024
+years <- seq(1988, 2024)
+
+df_intervals <- crossing(
+  Year = years,
+  StationID = df_WQ_all$StationID,
+  Study = c("Continuous WQ")
+  )
+
+# Add EMP dates to blank data frame
+df_WQ <- left_join(df_intervals,df_WQ, join_by(Year,StationID))
+
+# Classify stations as active or inactive
+df_WQ <- df_WQ %>% 
+  mutate(Activity = case_when(Measurements > 0 ~ "Active",
+                              TRUE ~ "Inactive"))
+
+# Check for stations that are inactive over the period of record
+df_active_stations <- df_WQ %>% 
+  group_by(StationID) %>% 
+  summarise(Measurements = sum(Measurements, na.rm = TRUE)) %>% 
+  filter(Measurements != 0) %>% 
+  select(!Measurements) %>% 
+  ungroup()
+
+df_WQ_active <- df_WQ %>% 
+  filter(StationID %in% df_active_stations$StationID)
+
+# Save df for use in other scripts
+save(df_WQ, 
+     file = here("04_Other",
+     "historic-WQ-records",
+     "CDEC-station-history-cont-WQ.RData"))
+
+```
+
+## Create completeness plot
+```{r plots, echo=FALSE}
+ggplot(df_WQ_active,
+       aes(x = Year, 
+           y = reorder(StationID, desc(StationID)), 
+           fill = Activity)) +
+  geom_tile(height = 0.6) +
+  scale_fill_manual(values = c("darkgreen","darkgray")) +
+  labs(x = NULL,
+       y = NULL,
+       title = "Projects Compliance Monitoring - Continuous WQ ")
+
+ggsave(path = output,
+       filename = "site-history-CWQ.png", 
+       device = "png",
+       scale=1.0, 
+       units="in",
+       height=8,
+       width=6.5, 
+       dpi="print")
+
+```
+

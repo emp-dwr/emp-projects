@@ -26,7 +26,7 @@ options(tidyverse.quiet = TRUE)
 options(dplyr.summarise.inform = FALSE)
 
 # Create date variables --------------------------------------------------------
-start <- as.Date("2020-01-01")
+start <- as.Date("1980-01-01")
 end <- as.Date("2024-05-08")
 
 ```
@@ -48,12 +48,18 @@ df_WQ_all <- df_WQ_all %>%
                                  ))
 
 # Takes a long time to download from CDEC so save as RData file
-save(df_WQ_all, file = here("01_WaterQuality","D1641-table5-sonde-uptime","df_WQ_all.RData"))
+#save(df_WQ_all, file = here("01_WaterQuality","D1641-table5-sonde-uptime","df_WQ_all.RData"))
 
-load(here("01_WaterQuality","collinsville-wq","df_WQ_all.RData"))
+#load(here("01_WaterQuality","collinsville-wq","df_WQ_all.RData"))
 
 # Save new df for editing and cleaning
 df_WQ <- df_WQ_all
+
+df_WQ <- df_WQ %>% 
+  mutate(Year = year(DateTime)) %>% 
+  group_by(StationID,Year) %>% 
+  summarise(Measurements = n()) %>% 
+  ungroup()
 
 ```
 

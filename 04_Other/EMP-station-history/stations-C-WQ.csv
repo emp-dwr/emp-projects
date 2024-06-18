@@ -1,0 +1,43 @@
+﻿Historical Identifier,Current Identifier,CDEC ID,Location Description,Latitude,Longitude,Operator,Group
+C2,,CLL,Sacramento River @ Collinsville,38.073981,-121.850123,USBR,SCCAO
+C3,C3A,SRH,Sacramento River @ Greens Landing,38.367710,-121.520500,DWR,EMP
+C4,,SAL,San Joaquin River @ San Andreas Landing,38.103301,-121.591315,USBR,SCCAO
+C5,,CNT,Contra Costa Canal @ Pumping Plant #1,37.994950,-121.702809,USBR,SCCAO
+C6,,BDT,San Joaquin River @ Brandt Bridge site,37.865000,-121.323100,DWR,NCRO
+C7,C7A,MSD,San Joaquin River @ Mossdale Bridge,37.786144,-121.306474,DWR,EMP
+C8,,UNI,Old River near Middle River,37.833900,-121.386000,USBR,SCCAO
+C9,,WCI,West Canal at mouth of Clifton Court Forebay,37.831600,-121.554000,DWR,NCRO
+C10,C10A,SJR,San Joaquin River near Vernalis,37.679340,-121.264700,DWR,EMP
+C13,,MOK,Mokelumne River @ Terminous,38.106100,-121.571100,DWR,NCRO
+C14,,PCT,Sacramento River @ Port Chicago,38.056788,-121.999971,USBR,SCCAO
+C19,,CCS,Cache Slough @ City of Vallejo Intake,38.291800,-121.742000,USBR,SCCAO
+D6,D6A,MRZ,Suisun Bay @ Bulls Head Point near Martinez,38.027620,-122.140520,DWR,EMP
+D7,D7A,GZL,Grizzly Bay @ Dolphin near Suisun Slough,38.124281,-122.037962,DWR,EMP
+D8,D8A,RYC,Suisun Bay off Middle Point near Nichols,38.083961,-121.995641,DWR,EMP
+D9,D9A,HON,Sacramento River above Point Sacramento,38.072229,-121.937180,DWR,EMP
+D10,D10A,MAL,Sacramento River @ Chipps Island,38.042799,-121.920130,DWR,EMP
+D11,D11A,SSI,Sacramento River near Sherman Island,38.074153,-121.761764,DWR,EMP
+D12,D12A,ANH,San Joaquin River @ Antioch Ship Canal,38.017854,-121.802939,DWR,EMP
+D15,,SJJ,San Joaquin River @ Jersey Point,38.052000,-121.689000,USGS,CAWSC
+D16,D16A,TWI,San Joaquin River @ Twitchell Island,38.097455,-121.668718,DWR,EMP
+D19,D19A,FRK,Franks Tract Mid Tract,38.046499,-121.598063,DWR,EMP
+D22,,EMM,Sacramento River @ Emmaton,38.084272,-121.738924,USBR,SCCAO
+D24,D24A,RVB,Sacramento River below Rio Vista Bridge,38.157780,-121.684700,DWR,EMP
+D28A,,OBI,Old River near Rancho Del Rio,37.969368,-121.572220,DWR,NCRO
+D29,D29A,PPT,San Joaquin River @ Prisoners Point,38.056296,-121.549973,DWR,EMP
+DMC1,,DMC,Delta-Mendota Canal at Tracy Pumping Plant,37.781567,-121.590239,USBR,SCCAO
+P8,P8A,RRI,San Joaquin River @ Buckley Cove,37.962726,-121.365603,DWR,EMP
+P12,,OLD,Old River @ Tracy Road Bridge,37.804810,-121.449562,DWR,NCRO
+S21,,SNC,Chadbourne Slough @ Sunrise Duck Club,38.185000,-122.083000,DWR,WQA
+S35,,GYS,Goodyear Slough @ Morrow Island Clubhouse,38.118000,-122.095000,DWR,WQA
+S42,,VOL,Suisun Slough 300' south of Volanti Slough,38.181000,-122.046000,DWR,WQA
+S49,,BDL,Montezuma Slough near Beldon Landing,38.186900,-121.970800,DWR,WQA
+S64,,NSL,Montezuma Slough @ National Steel,38.122100,-121.888100,DWR,WQA
+S97,,IBS,Cordelia Slough @ Ibis Club,38.157000,-122.113000,DWR,WQA
+,SLBAR3,BKS,Barker Slough at North Bay Aqueduct (SLBAR3),37.822101,-121.374990,DWR,O&M
+,,TRN,San Joaquin River (Turner Cut to Stockton),37.992800,-121.454200,DWR,NCRO
+,,FPT,Sacramento River (I St. Bridge to Freeport),38.456112,-121.500300,USGS,CAWSC
+,,ROR,Water supply intakes for waterfowl management areas on Van Sickle Island and Chipps Island,38.093100,-121.887500,DWR,WQA
+,,,,,,,
+,,,,,,,
+,,,,,,,

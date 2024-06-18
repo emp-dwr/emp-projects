@@ -24,105 +24,301 @@ theme_set(theme_bw())
 options(tidyverse.quiet = TRUE)
 options(dplyr.summarise.inform = FALSE)
 
-# Create date variables --------------------------------------------------------
-start <- as.Date("2020-01-01")
-end <- as.Date("2024-05-08")
+# Create date variables for CDEC import-----------------------------------------
+start <- as.Date("1980-01-01")
+end <- Sys.Date()
 
 ```
 
-## Import Data from EMP Components
-```{r import, echo=FALSE}
-# Import phyto data sent by Tiffany (2007 and earlier)
-df_phyto <- read_csv(file = here("04_Other","EMP-station-history","data","phyto-dates-and-stations.csv"))
+## Import Data from Discrete Components
+```{r discrete, echo=FALSE}
+# Import phytoplankton data ----------------------------------------------------
+# Start with CSV sent by Tiffany with historical data (2007 and earlier)
+df_phyto <- read_csv(file = here("04_Other",
+                                 "EMP-station-history",
+                                 "data",
+                                 "phyto-dates-and-stations.csv"), 
+                     show_col_types = FALSE)
 
+# Rename headers to match others and convert dates
 df_phyto <- df_phyto %>% 
   rename("Date" = "SampleDate") %>% 
-  rename("Station" = "StationCode") %>% 
-  mutate(Date = mdy(Date))
+  rename("StationID" = "StationCode") %>% 
+  mutate(Date = mdy(Date)) %>% 
+  mutate(Year = year(Date))
 
-# Read in station data from 2008 onwards (from EDI)
-df_phyto_EDI <- read_csv(file = here("04_Other","EMP-station-history","data","EMP_Phyto_Data_2008-present.csv")) %>% 
-  mutate(Date = mdy(Date))
+# Read in more recent phyto data from 2008 onwards (from EDI)
+df_phyto_EDI <- read_csv(file = here("04_Other",
+                                     "EMP-station-history",
+                                     "data",
+                                     "EMP_Phyto_Data_2008-present.csv"),
+                         show_col_types = FALSE) %>% 
+  mutate(Date = mdy(Date)) %>% 
+  mutate(Year = year(Date)) %>% 
+  rename("StationID" = "Station")
 
-# Add year metadata
-df_phyto <- df_phyto %>% mutate(Year = year(Date))
-df_phyto_EDI <- df_phyto_EDI %>% mutate(Year = year(Date))
+# Import discrete Water quality data -------------------------------------------
+# Read in CSV downloaded from EDI (data through 2022)
+df_DWQ <- read_csv(file = here("04_Other",
+                   "EMP-station-history",
+                   "data",
+                   "EMP_DWQ_1975_2022.csv"),
+                   show_col_types = FALSE) %>% 
+  mutate(Year = year(Date)) %>% 
+  rename("StationID" = "Station")
 
-# Import WQ data from EDI
-df_WQ <- read_csv(file = "https://portal.edirepository.org/nis/dataviewer?packageid=edi.458.10&entityid=cf231071093ac2861893793517db26f3")
+# Import zooplankton data ------------------------------------------------------
+# Read in CSV downloaded from EDI (data through 2021)
+# Use Clarke-Bumpus data (maybe check if other records are more complete later)
+df_zoop <- read_csv(file = here("04_Other",
+                                "EMP-station-history",
+                                "data",
+                                "cb_matrix.csv"), 
+                    show_col_types = FALSE)
 
-# Add year metadata
-df_WQ <- df_WQ %>% mutate(Year = year(Date))
-
-# Import zoop data from EDI ()
-df_zoop_CB <- read_csv(file = "https://portal.edirepository.org/nis/dataviewer?packageid=edi.522.11&entityid=c0916b64396edab85b07038e32ff0342")
-
-df_zoop_CB <- df_zoop_CB %>% 
+# Select columns needed, rename headers to match others and convert dates
+df_zoop <- df_zoop %>% 
   select(SampleDate,Year,StationNZ,DWRStationNo) %>% 
   rename("Date" = "SampleDate") %>% 
-  rename("Station" = "DWRStationNo")
+  rename("StationID" = "DWRStationNo")
 
-# Remove non-DWR stations
-df_zoop_CB <- df_zoop_CB %>%
-  filter(!is.na(Station)) %>% 
+# Remove non-compliance zooplankton stations
+df_zoop <- df_zoop %>%
+  filter(!is.na(StationID)) %>% 
   select(!StationNZ)
 
-# Import benthic CPUE data downloaded from EDI
-df_ben <- read_csv(file = here("04_Other","EMP-station-history","data","DWR Benthic CPUE data 1975-2023.csv"))
+# Import benthic invert data ---------------------------------------------------
+# Import CPUE data downloaded from EDI (current through 2023)
+df_ben <- read_csv(file = here("04_Other",
+                               "EMP-station-history",
+                               "data",
+                               "DWR Benthic CPUE data 1975-2023.csv"), 
+                   show_col_types = FALSE)
 
+# Select columns needed, rename headers to match others
 df_ben <- df_ben %>% 
   select(SampleDate,Year,StationCode) %>% 
-  rename("Station" = "StationCode")
+  rename("StationID" = "StationCode")
 
 ```
 
-## Summarize data by component
+## Import Continuous WQ Data from CDEC
+```{r import continuous, echo=TRUE}
+# Import list of all compliance stations with additional metadata
+df_stations <- read_csv(file = here("04_Other",
+                                    "EMP-station-history",
+                                    "compliance-station-names.csv"),
+                        show_col_types = FALSE)
+
+# Make list of all compliance stations and remove NAs
+stations <- unique(df_stations$CDEC)
+stations <- na.omit(stations)
+
+# Download WQ station data from CDEC and summarize by Year ---------------------
+# First create a blank data frame to store CDEC data
+df_stations_all <- as_tibble(
+  data.frame(
+    StationID = character(),
+    Year = numeric(),
+    Measurements = numeric()
+  )
+)
+
+# Download only EC and WT data (most common)
+for (x in stations) {
+  
+  # Query each station one at a time
+  df_temp <- cdec_query(x, sensors = c(100,25),
+                        start.date = start,
+                        end.date = end)
+  
+  df_temp <- df_temp %>% 
+    select(StationID,DateTime,SensorType,Value)
+  
+  # Summarize data record for EMP
+  df_temp <- df_temp %>%
+    filter(!is.na(Value)) %>% 
+    mutate(Year = year(DateTime)) %>%
+    group_by(StationID,Year) %>% 
+    summarise(Measurements = n()) %>% 
+    ungroup()
+  
+  df_CWQ_all <- bind_rows(df_stations_all, df_temp)
+  
+  rm(df_temp)
+  
+}
+
+# Create copy to modify
+df_WQ <- df_CWQ_all
+
+# Remove years with < 10 total measurements stations that aren't monitored
+df_WQ <- df_WQ %>% filter(Measurements > 10)
+
+# Save df for use in other scripts
+save(df_CWQ, 
+     file = here("04_Other",
+     "EMP-station-history",
+     "CDEC-station-history.RData"))
+
+# After doing above 1X, just import continuous WQ data downloaded from EDI
+load(file = here("04_Other",
+                 "EMP-station-history",
+                 "CDEC-station-history.RData"))
+
+# Add missing Combined Station Metadata
+df_CWQ <- left_join(df_CWQ,
+                    df_stations %>% 
+                      select(CombinedID,CDEC) %>% 
+                      distinct(),
+                    join_by(CDEC))
+
+# Add in known historical data for EMP sites not in CDEC
+
+# C7A CDEC data starts in 2002, actually began in 1984
+# D6A CDEC data starts in 1994, actually began in 1983
+# D10A CDEC data starts in 1988, actually began in 1984
+# D12A CDEC data starts in 1995, actually began in 1983
+# D24A CDEC data starts in 2003, actually began in 1983
+# P8A CDEC data starts in 2000, actually began in 1983
+
+# Remove rows with no measurements for these stations
+df_CWQ <- df_CWQ %>% 
+  filter(!(CDEC == "MSD" & Year <= 2001)) %>% 
+  filter(!(CDEC == "MRZ" & Year <= 1993)) %>%
+  filter(!(CDEC == "MAL" & Year <= 1987)) %>%
+  filter(!(CDEC == "ANH" & Year <= 1994)) %>%
+  filter(!(CDEC == "RVB" & Year <= 2002)) %>%
+  filter(!(CDEC == "RRI" & Year <= 1999))
+
+# Create a new df for each of these stations giving active measurements
+df_C7A <- tibble(
+  Year = seq(1984,2001),
+  CombinedID = "C7-C7A",
+  CDEC = "MSD",
+  Study = "Continuous WQ",
+  Measurements = 100
+)
+
+df_D6A <- tibble(
+  Year = seq(1984,1993),
+  CombinedID = "D6-D6A",
+  CDEC = "MRZ",
+  Study = "Continuous WQ",
+  Measurements = 100
+)
+
+df_D10A <- tibble(
+  Year = seq(1983,1987),
+  CombinedID = "D10-D10A",
+  CDEC = "MAL",
+  Study = "Continuous WQ",
+  Measurements = 100
+)
+
+df_D12A <- tibble(
+  Year = seq(1983,1994),
+  CombinedID = "D12-D12A",
+  CDEC = "ANH",
+  Study = "Continuous WQ",
+  Measurements = 100
+)
+
+df_D24A <- tibble(
+  Year = seq(1983,2002),
+  CombinedID = "D24-D24A-NZ068",
+  CDEC = "RVB",
+  Study = "Continuous WQ",
+  Measurements = 100
+)
+
+df_P8A <- tibble(
+  Year = seq(1983,1999),
+  CombinedID = "P8-P8A",
+  CDEC = "RRI",
+  Study = "Continuous WQ",
+  Measurements = 100
+)
+
+# Add in the historical data years for these 6 stations
+df_CWQ <- bind_rows(df_CWQ,df_C7A,df_D6A,df_D10A,df_D12A,df_D24A,df_P8A)
+
+# Create a sequence of years from 1972 to 2023
+years <- seq(1975, 2023)
+
+df_intervals <- crossing(
+  Year = years,
+  CombinedID = df_stations$CombinedID,
+  Study = c("Continuous WQ")
+  )
+
+# Add EMP dates to blank data frame
+df_CWQ <- left_join(df_intervals,df_CWQ, join_by(Year,Study,CombinedID))
+
+# Classify stations as active or inactive
+df_CWQ <- df_CWQ %>% 
+  mutate(Activity = case_when(Measurements > 0 ~ "Active",
+                              TRUE ~ "Inactive"))
+
+```
+
+
+## Summarize Discrete Data by Component
 ```{r summarize, echo=FALSE}
-# Summarize phyto data
+# Summarize phyto data ---------------------------------------------------------
 df_phyto_sum <- df_phyto %>% 
-  group_by(Station,Year) %>% 
-  summarize(Visits = sum(n())) %>% 
-  mutate(Station = str_replace_all(Station, c("^S42$" ="NZS42"))) %>% 
+  group_by(StationID,Year) %>% 
+  summarize(Measurements = sum(n())) %>% 
+  mutate(StationID = str_replace_all(StationID, c("^S42$" ="NZS42"))) %>% 
   mutate(Study = "Phytoplankton")
 
 df_phyto_EDI_sum <- df_phyto_EDI %>% 
-  group_by(Station,Year) %>% 
-  summarize(Visits = sum(n())) %>% 
-  mutate(Station = str_replace_all(Station, c("^S42$" ="NZS42"))) %>% 
+  group_by(StationID,Year) %>% 
+  summarize(Measurements = sum(n())) %>% 
+  mutate(StationID = str_replace_all(StationID, c("^S42$" ="NZS42"))) %>% 
   mutate(Study = "Phytoplankton")
 
+# Combine two phyto datasets 
 df_phyto_sum <- bind_rows(df_phyto_sum, df_phyto_EDI_sum)
 
-# Summarize WQ data
-df_WQ_sum <- df_WQ %>% 
-  group_by(Station,Year) %>% 
-  summarize(Visits = sum(n())) %>% 
-  mutate(Station = str_replace_all(Station, c("^S42$" ="NZS42"))) %>% 
+# Summarize WQ data ------------------------------------------------------------
+df_DWQ_sum <- df_DWQ %>% 
+  group_by(StationID,Year) %>% 
+  summarize(Measurements = sum(n())) %>% 
+  mutate(StationID = str_replace_all(StationID, c("^S42$" ="NZS42"))) %>% 
   mutate(Study = "Discrete WQ")
 
-# Summarize zoop data
-df_zoop_sum <- df_zoop_CB %>% 
-  group_by(Station,Year) %>% 
-  summarize(Visits = sum(n())) %>% 
+# Summarize zoop data ----------------------------------------------------------
+df_zoop_sum <- df_zoop %>% 
+  group_by(StationID,Year) %>% 
+  summarize(Measurements = sum(n())) %>% 
   mutate(Study = "Zooplankton")
 
-# Summarize benthic data
+# Summarize benthic data -------------------------------------------------------
 df_ben_sum <- df_ben %>% 
-  group_by(Station,Year) %>% 
-  summarize(Visits = sum(n())) %>% 
+  group_by(StationID,Year) %>% 
+  summarize(Measurements = sum(n())) %>% 
   mutate(Study = "Benthic")
 
 ```
 
 ## Fix Station Metadata
 ```{r metadata, echo=FALSE}
+# Continuous WQ Metadata -------------------------------------------------------
+# 
+# # Create cross-walk table for C-WQ stations
+# df_CDEC_metadata <- df_stations %>% select(CDEC,CombinedID,ShortName)
+# 
+# # Remove duplicate entries
+# df_CDEC_metadata <- unique(df_CDEC_metadata)
+# 
+# # Add to C-WQ dataframe
+# df_CWQ <- left_join(df_CWQ,df_CDEC_metadata, join_by(CDEC))
 
-# Change benthic metadata to match regular DWR station IDs
-df_ben_station_list <- as_tibble(sort(unique(df_ben$Station)))
-
-# Add text to convert benthic station IDs
+# Convert benthic station IDs --------------------------------------------------
 df_ben_stations <- c("C3-L" = "C3",
                      "C3-R" = "C3",
+                     "C3-C" = "C3",
                      "C7-C" = "C7",
                      "C7-L" = "C7",
                      "C7-R" = "C7",
@@ -175,86 +371,112 @@ df_ben_stations <- c("C3-L" = "C3",
                      "P8-R" = "P8"
                      )
 
+# Replace benthic station names
 df_ben_sum <- df_ben_sum %>% 
-  mutate(Station = str_replace_all(Station, df_ben_stations)
-)
+  mutate(StationID = str_replace_all(StationID, df_ben_stations))
 
+# Remove duplicate entries
 df_ben_sum <- unique(df_ben_sum)
-
-stations <- as_tibble(c("C2", "C3", "C4", "C5", "C6", "C7", "C8", "C9", "C10", "C13", "C14", "C19", 
-                        "D4", "D6", "D7", "D8", "D9", "D10", "D11", "D12", "D15", "D16", "D19", 
-                        "D22", "D24", "D26", "D28A", "D29", "D41", "D41A", "DMC1", "P8", "P12", 
-                        "MD10", "S21", "S35", "S49", "S64", "S97", "NZ032", "EZ2", "EZ6", 
-                        "EZ2-SJR", "EZ6-SJR", "NZ002", "NZ004", "NZ325"))
-
-current_stations <- as_tibble(c("C2", "C3A", "C4", "C5", "C6", "C7A", "C8", "C9", "C10A", "C13", "C14", "C19","D4", "D6A",
-                                "D7A", "D8A", "D9", "D9A", "D10A", "D11", "D11A", "D12", "D12A", 
-                                "D15", "D16", "D16A", "D19", "D19A", "D22", "D24", "D24A", "NZ068", "D26", 
-                                "D28A", "D29A", "D41", "D41A", "DMC1", "P8", "P8A", "MD10A", "NZ032", "S21", 
-                                "S35", "NZS42", "S49", "S64", "S97"))
-
-stations_all <- bind_rows(stations,current_stations)
-
-df_stations <- as_tibble(sort(unique(stations_all$value))) %>% 
-  rename("Station" = "value")
-
-# Join all elements together
-df_EMP <- bind_rows(df_WQ_sum,df_phyto_sum,df_zoop_sum,df_ben_sum)
-
-# Filter pre-1975 data
-df_EMP <- df_EMP %>% filter(Year >= 1975)
 
 ```
 
+## 
 
-## Create blank data frame
+```{r combine discrete, echo=FALSE}
+# Join all discrete elements together into a single data frame
+df_EMP <- bind_rows(df_DWQ_sum,df_phyto_sum,df_zoop_sum,df_ben_sum,)
 
-```{r blank, echo=FALSE}
-# Create a sequence of years from 1972 to 2024
-years <- seq(1975, 2022)
-
+# Create new blank df for discrete data
 df_intervals <- crossing(
   Year = years,
-  Station = df_stations$Station,
+  StationID = df_stations$StationID,
   Study = c("Phytoplankton", "Discrete WQ","Zooplankton","Benthic")
   )
 
 # Add EMP dates to blank data frame
-df_EMP <- left_join(df_intervals,df_EMP, join_by(Year,Station,Study))
+df_EMP <- left_join(df_intervals,df_EMP, join_by(Year,StationID,Study))
+
+# # Remove stations that aren't currently monitored
+# df_active_stations <- df_EMP %>% 
+#   group_by(StationID) %>% 
+#   summarise(Measurements = sum(Measurements, na.rm = TRUE)) %>% 
+#   filter(Measurements != 0) %>% 
+#   select(!Measurements) %>% 
+#   ungroup()
+# 
+# df_EMP <- df_EMP %>% 
+#   filter(StationID %in% df_active_stations$StationID)
+
+# Add additional station metadata
+df_EMP <- left_join(df_EMP, 
+                    df_stations,
+                    join_by(StationID))
 
 # Classify stations as active or inactive
 df_EMP <- df_EMP %>% 
-  mutate(Activity = case_when(Visits > 0 ~ "Active",
+  group_by(CombinedID,Year,Study,CDEC,ShortName) %>% 
+  summarise(Measurements = sum(Measurements, na.rm = TRUE)) %>%
+  mutate(Activity = case_when(Measurements > 0 ~ "Active",
                               TRUE ~ "Inactive"))
 
-# Remove stations that aren't currently monitored
-df_active_stations <- df_EMP %>% 
-  group_by(Station) %>% 
-  summarise(Visits = sum(Visits, na.rm = TRUE)) %>% 
-  filter(Visits != 0) %>% 
-  select(!Visits) %>% 
-  ungroup()
-
-df_EMP_active <- df_EMP %>% 
-  filter(Station %in% df_active_stations$Station)
-
-# Set correct sort order
-sort_stations <- c("C3", "C3A", "C6", "C7", "C9", "C10", "C10A", "D4", "D6", "D7", "D8", "D9", "D10", "D11", "D12", "D15", "D16", "D19", "D22", "D24", "D26", "D28A", "D41", "D41A", "EZ2", "EZ2-SJR", "EZ6", "EZ6-SJR", "MD10", "MD10A", "P8", "P12", "NZ002", "NZ004", "NZ032", "NZ068", "NZ325", "NZS42")
-
-df_EMP_active$Station <- factor(as.character(df_EMP_active$Station), levels = sort_stations) 
 ```
+
+## Combine Discrete and Continuous Data Frames
+```{r combine, echo=FALSE}
+# Combine discrete and continuous data
+df_EMP <- bind_rows(df_EMP,df_CWQ)
+
+# Add data for years 2022 (zoop) and 2023 (phyto, DWQ, zoop)
+# Basically just assumes all active stations from 2021 are also active in 2022 and 2023
+
+df_EMP <- df_EMP %>% filter(Year <= 2021)
+
+df_EMP_2021 <- df_EMP %>% filter(Year == 2021)
+
+df_EMP_2022 <- df_EMP_2021 %>% mutate(Year = case_when(Year == 2021 ~ 2022))
+df_EMP_2023 <- df_EMP_2021 %>% mutate(Year = case_when(Year == 2021 ~ 2023))
+df_EMP_2024 <- df_EMP_2021 %>% mutate(Year = case_when(Year == 2021 ~ 2024))
+
+df_EMP <- bind_rows(df_EMP,df_EMP_2022,df_EMP_2023,df_EMP_2024)
+
+# Make specific changes to add back in known gaps
+df_EMP <- df_EMP %>% 
+  mutate(Activity = case_when(Year == "2024" & CDEC == "IBS" ~ "Inactive",
+                              TRUE ~ Activity)) %>% 
+  mutate(Activity = case_when(Year > 2021 & CDEC == "ROR" ~ "Inactive",
+                              TRUE ~ Activity)) 
+  
+# Add additional data frame for coloring
+df_EMP <- df_EMP %>% 
+  mutate(StudyActivity = case_when(Study == "Zooplankton" & Activity == "Active" ~ "Zoop-Active",
+                                   Study == "Continuous WQ" & Activity == "Active" ~ "CWQ-Active",
+                                   Study == "Discrete WQ" & Activity == "Active" ~ "DWQ-Active",
+                                   Study == "Phytoplankton" & Activity == "Active" ~ "Phyto-Active",
+                                   Study == "Benthic" & Activity == "Active" ~ "Benthic-Active",
+                                   TRUE ~ "Inactive"))
+
+# Set Sort Order for Plots
+study_order <- c("Continuous WQ","Discrete WQ","Phytoplankton","Zooplankton","Benthic")
+studyactivity_order <- c("Zoop-Active","CWQ-Active","DWQ-Active","Phyto-Active","Benthic-Active","Inactive")
+
+df_EMP$Study <- factor(df_EMP$Study, levels = study_order)
+df_EMP$StudyActivity <- factor(df_EMP$StudyActivity, levels = studyactivity_order)
+
+         
+```
+
 
 ## Plot Activity Timelines for Each Component
 ```{r plot, echo=FALSE}
 # Plot benthic activity
-ggplot(df_EMP_active %>% 
-         group_by(Station) %>% 
+ggplot(df_EMP %>% 
+         group_by(CombinedID) %>% 
          filter(Study == "Benthic") %>%
-         filter(Year >= 1975) %>% 
+         filter(Year >= 1980) %>% 
          filter(any(Activity == "Active")) %>%
-         select(!Visits) %>% 
+         select(!Measurements) %>% 
          ungroup(), aes(x = Year, 
-                        y = reorder(Station, desc(Station)), 
+                        y = reorder(CombinedID, desc(CombinedID)), 
                         fill = Activity)) +
   geom_tile(height = 0.6) +
   scale_fill_manual(values = c("darkgreen","darkgray")) +
@@ -273,13 +495,13 @@ ggsave(path = output,
        dpi="print")
 
 # Plot Zooplankton Activity
-ggplot(df_EMP_active %>% 
-         group_by(Station) %>% 
+ggplot(df_EMP %>% 
+         group_by(CombinedID) %>% 
          filter(Study == "Zooplankton") %>%
          filter(any(Activity == "Active")) %>%
-         select(!Visits) %>% 
+         select(!Measurements) %>% 
          ungroup(), aes(x = Year, 
-                        y = reorder(Station, desc(Station)), 
+                        y = reorder(CombinedID, desc(CombinedID)), 
                         fill = Activity)) +
   geom_tile(height = 0.6) +
   scale_fill_manual(values = c("darkgreen","darkgray")) +
@@ -298,13 +520,13 @@ ggsave(path = output,
        dpi="print")
 
 # Plot Discrete WQ Activity
-ggplot(df_EMP_active %>% 
-         group_by(Station) %>% 
+ggplot(df_EMP %>% 
+         group_by(CombinedID) %>% 
          filter(Study == "Discrete WQ") %>%
          filter(any(Activity == "Active")) %>%
-         select(!Visits) %>% 
+         select(!Measurements) %>% 
          ungroup(), aes(x = Year, 
-                        y = reorder(Station, desc(Station)), 
+                        y = reorder(CombinedID, desc(CombinedID)), 
                         fill = Activity)) +
   geom_tile(height = 0.6) +
   scale_fill_manual(values = c("darkgreen","darkgray")) +
@@ -323,13 +545,13 @@ ggsave(path = output,
        dpi="print")
 
 # Plot Phytoplankton Activity
-ggplot(df_EMP_active %>% 
-         group_by(Station) %>% 
+ggplot(df_EMP %>% 
+         group_by(CombinedID) %>% 
          filter(Study == "Phytoplankton") %>%
          filter(any(Activity == "Active")) %>%
-         select(!Visits) %>% 
+         select(!Measurements) %>% 
          ungroup(), aes(x = Year, 
-                        y = reorder(Station, desc(Station)), 
+                        y = reorder(CombinedID, desc(CombinedID)), 
                         fill = Activity)) +
   geom_tile(height = 0.6) +
   scale_fill_manual(values = c("darkgreen","darkgray")) +
@@ -347,42 +569,89 @@ ggsave(path = output,
        width=6.5,
        dpi="print")
 
+# Plot Continuous WQ Activity
+ggplot(df_EMP %>% 
+         group_by(CombinedID) %>% 
+         filter(Study == "Continuous WQ") %>%
+         filter(any(Activity == "Active")) %>%
+         ungroup(), aes(x = Year, 
+                        y = reorder(CombinedID, desc(CombinedID)), 
+                        fill = Activity)) +
+  geom_tile(height = 0.6) +
+  scale_fill_manual(values = c("darkgreen","darkgray")) +
+  facet_wrap(Study ~ ., ncol = 2) +
+  labs(x = NULL,
+       y = "Station Name",
+       title = "EMP Continuous WQ Monitoring Activity (1975-Present)")
+
+ggsave(path = output,
+       filename = "timeline-CWQ.png",
+       device = "png",
+       scale=1.0,
+       units="in",
+       height=9,
+       width=6.5,
+       dpi="print")
+
 ```
 
 ## Individual Station Plots
 ```{r plot by station, echo=FALSE}
 
-# Create biovolume plots for each year
-test <- unique(df_EMP_active$Station) 
-test <- sort(test, decreasing = F, na.last = T)
+# Rename so as not to create folders
+# df_EMP$CombinedID <- gsub("/","-",df_EMP$CombinedID)
 
-for (x in test) {
-  df_temp <- df_EMP_active %>%
-    filter(Station == x)
+# Use the black-and-white theme
+theme_set(theme_bw())
+
+# Create a ggplot2 theme
+theme_update(
+    #panel.grid.major = element_blank(),
+    #panel.grid.minor = element_blank(),
+    plot.background = element_rect(fill = "white", colour = NA),
+    panel.background = element_rect(fill = "white", colour = NA),
+    panel.border = element_rect(fill = NA, colour = "black"),
+    strip.background = element_rect(fill = "gray", colour = "black"),
+    legend.position = "none",
+    legend.key = element_rect(fill = "white", colour = NA)
+    )
+
+# Create history plots for each year
+stations <- unique(df_EMP$CombinedID) 
+stations <- sort(stations, decreasing = F, na.last = T)
+
+for (x in stations) {
+  df_temp <- df_EMP %>%
+    filter(CombinedID == x)
   
   ggplot(df_temp,
          aes(x = Year, 
-             y = Study, 
-             fill = Activity)) +
+             y = reorder(Study, desc(Study)), 
+             fill = StudyActivity)) +
     geom_tile(height = 0.6) +
-    scale_fill_manual(values = c("darkgreen","darkgray")) +
+    scale_fill_manual(values = c("Zoop-Active" = "#FF7F00", 
+                                 "CWQ-Active" = "#984EA3",
+                                 "DWQ-Active" = "#377EB8",
+                                 "Phyto-Active" = "#4DAF4A",
+                                 "Benthic-Active" = "#E41A1C",
+                                 "Inactive" = "lightgray")) +
     labs(x = NULL,
          y = NULL,
-         title = paste0("EMP Monitoring History at ",x))
+         #title = paste0("EMP Monitoring History at ",df_temp$ShortName)
+         )
   
     ggsave(path = output,
          filename = paste0("site-history-at-",x,".png"), 
          device = "png",
          scale=1.0, 
          units="in",
-         height=3.5,
-         width=7, 
+         height=2,
+         width=4.5, 
          dpi="print")
   
   rm(df_temp)
   
 }
-
 
 ```
 
