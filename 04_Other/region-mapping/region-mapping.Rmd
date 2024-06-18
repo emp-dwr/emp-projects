@@ -28,15 +28,23 @@ options(dplyr.summarise.inform = FALSE)
 
 ```
 
+## Import Rosie's Regions
+```{r regions, echo=FALSE}
 
+Regions<-read_csv(here("04_Other","region-mapping","data","Rosies_regions.csv"))
 
+## Load Delta Shapefile from Brian
+Delta<-deltamapr::R_EDSM_Subregions_Mahardja_FLOAT%>%
+  filter(SubRegion%in%unique(Regions$SubRegion))%>%  #Filter to regions of interest
+  dplyr::select(SubRegion)
+
+Regs = unique(Regions[,c(1,5)])
+
+Delta = merge(Delta, Regs)
+```
+
+## Assign Region Data
 ```{r setup, echo=FALSE}
-#Map for Ted
-
-library(deltamapr)
-library(sf)
-library(tidyverse)
-
 
 #if you are cool with the EMP station file already in deltamapr, 
 #all you have to do is:
@@ -81,5 +89,6 @@ Benthic2 = st_transform(Benthicsf, crs = st_crs(EMPregions)) %>%
 ggplot()+
   geom_sf(data = WW_Delta)+
   geom_sf(data = Benthic2, aes(color = Region))
+
 ```
 
