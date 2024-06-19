@@ -21,7 +21,21 @@ color_EMP <- c("#E41A1C","#984EA3","#4DAF4A","#FF7F00","#377EB8")
 # Read in EMP station and city location data -----------------------------------
 df_EMP <- read_csv(here(file = "04_Other",
                         "EMP-station-maps",
-                        "EMP_Stations_All.csv"))
+                        "EMP_Stations_All.csv")) %>% 
+  rename("StationID" = "Station_ID")
+
+df_regions <- read_csv(here(file = "04_Other",
+                            "EMP-station-maps",
+                            "regions.csv")) 
+
+
+df_EMP <- left_join(df_EMP, df_regions)
+
+# Set sort order for Regions
+region_sort <- c("North Delta","Confluence","Central Delta","South Delta",
+                 "Suisun & Grizzly Bays","Suisun Marsh","Carquinez","San Pablo Bay")
+
+df_EMP$Region <- factor(df_EMP$Region, levels = region_sort)
 
 # Set order that station types appear in 
 #unique(df_EMP$StationType)
@@ -79,17 +93,18 @@ theme_set(theme_bw())
 
 plot <- ggplot(WW_Delta) + 
   geom_sf(fill = "lightblue") + 
-  geom_point(data = df_EMP,
+  geom_point(data = df_EMP %>% 
+               filter(StationType != "WQ - Continuous"),
              aes(x = Longitude,
                  y = Latitude,
-                 fill = StationType,
+                 fill = Region,
                  size = 3),
              pch = 21,
              color = "black") +
   annotation_scale(location = "bl", 
                    width_hint = 0.4, 
                    unit_category = "imperial") +
-  scale_fill_manual(values = color_EMP) +
+  scale_fill_brewer(palette = "Set1") +
   geom_point(data = cities %>% arrange(pop) %>% tail(250),
              aes(x = long,
                  y = lat)) +
@@ -97,23 +112,22 @@ plot <- ggplot(WW_Delta) +
                   aes(x = long,
                       y = lat, 
                       label = name)) +
-  ylim(37.65, 38.6) +
+  ylim(37.65, 38.4) +
   xlim(-122.41, -121.2)
-
 
 plot + labs(x = NULL,
             y = NULL,
             fill = NULL,
-            title = "EMP Monitoring Stations") +
+            title = "EMP Discrete Monitoring Stations") +
   guides(size = "none")
 
 ggsave(path=plots,
-       filename = "EMP-stations-all.png", 
+       filename = "EMP-stations-all-region.png", 
        device = "png",
        scale=1.0, 
        units="in",
-       height=4,
-       width=6, 
+       height=6.5,
+       width=9, 
        dpi="print")
 
 # Plot stations for each EMP element -------------------------------------------
