@@ -182,6 +182,7 @@ if (!rlang::is_empty(actual_na[actual_na %!in% expected_na])){
   warning(glue('Unexpected column is all NA: {toString(actual_na[actual_na %!in% expected_na])}.\n Check data.'))
 }
 ```
+
 ```{r}
 # create graphs to check
 check_graph <- function(param, df = df_join, select_year = 'all'){
@@ -204,8 +205,8 @@ check_graph <- function(param, df = df_join, select_year = 'all'){
     facet_wrap(~ Station, ncol = 4, scales = 'free')
 
   # create directory
-  fp <- glue('01_WaterQuality/edi-annual-updates/plots/{cur_year}')
-  dir.create(file.path(fp), showWarnings = FALSE)
+  fp <- glue('Water Quality/EDI Data/EDI Graph Checks/{cur_year}')
+  dir.create(abs_path_emp(file.path(fp)), showWarnings = FALSE)
 
   # create filename
   if (length(select_year) == 1) {
