@@ -1,20 +1,90 @@
 ```{r}
+# import packages
 library(tidyverse)
+library(lubridate)
 source('00_GlobalFunctions/functions.R')
 
-uni_cols <-
-    list.files(path = abs_path_emp('Water Quality/Database Migration/Corrected WDL Data'),
-               pattern = '\\.csv$',
-               full.names = T) %>%
-    map(~colnames(read_csv(., show_col_types = FALSE))) %>%
-  unlist()
+# define functions
+year_range <- function(years) {
+  ranges <- c()
+  start_year <- NA
+  end_year <- NA
+  for (i in 1:length(years)) {
+    if (is.na(start_year)) {
+      start_year <- years[i]
+      end_year <- years[i]
+    } else if (years[i] == end_year + 1) {
+      end_year <- years[i]
+    } else {
+      if (start_year == end_year) {
+        ranges <- c(ranges, start_year)
+      } else {
+        ranges <- c(ranges, paste(start_year, end_year, sep = '-'))
+      }
+      start_year <- years[i]
+      end_year <- years[i]
+    }
+  }
+  
+  if (!is.na(start_year)) {
+    if (start_year == end_year) {
+      ranges <- c(ranges, start_year)
+    } else {
+      ranges <- c(ranges, paste(start_year, end_year, sep = '-'))
+    }
+  }
+  
+  return(paste(ranges, collapse = ','))
+}
 
-df_cols <- data.frame(colname = uni_cols) %>%
-  group_by(colname) %>%
-  summarize(count = n())
-
-export_path <- abs_path_emp('Water Quality/Database Migration/')
-
-write_csv(df_cols,glue::glue('{export_path}/unique_cols.csv'))
+get_years <- function(clmn){
+  uni_years <- unique(df_names[!is.na(df_names[clmn]),]$Year)
+  num_years <- length(uni_years)
+  # if(length(uni_years)==0){}
+  range_years <- year_range(uni_years)
+  df_ret <- data.frame(colname = clmn, year_count = num_years, year_range = range_years)
+  
+  return(list(df_ret))
+}
 ```
 
+```{r}
+# define raw df
+df_names <-
+  list.files(path = abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration/Corrected WDL Data'),
+               pattern = '\\.csv$',
+               full.names = T) %>%
+  map_df(~read_csv(., show_col_types = FALSE, col_types = cols(.default = 'c'))) %>%
+  mutate(Year = year(mdy_hm(`Sample Date`)))
+
+# define cols
+start_col <- which(colnames(df_names)=='Parent Sample Code')+1
+char_cols <- c('Field Notes Notes (Field) - [1]*','Weather Observations Weather Observations - [1]*')
+num_cols <- colnames(df_names[start_col:length(df_names)])[!(colnames(df_names[start_col:length(df_names)]) %in% char_cols)]
+
+# convert relevant cols to numeric
+df_names[num_cols] <- sapply(df_names[num_cols], as.numeric)
+no_data <- Filter(function(x)all(is.na(x)), df_names)
+df_names <- Filter(function(x)!all(is.na(x)), df_names)
+
+# define relevant cols
+all_cols <- colnames(df_names[start_col:length(df_names)])
+
+# get df with year data
+col_years <- lapply(all_cols, function(x) get_years(x))
+df_years <- bind_rows(col_years)
+
+# get df with entry data
+df_sums <- data.frame(total_count = colSums(!is.na(df_names[start_col:length(df_names)])))
+df_sums <- rownames_to_column(df_sums, 'colname')
+
+df_totals <- df_sums %>%
+  full_join(df_years, by = 'colname') %>%
+  filter(colname != 'Year')
+```
+
+```{r}
+export_path <- abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration')
+
+write_csv(df_totals,glue::glue('{export_path}/unique_cols_new.csv'))
+```

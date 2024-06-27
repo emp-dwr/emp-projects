@@ -1,64 +1,58 @@
 ﻿WDL,EDI
-Station Name,Station
-Sample Description,SampleDescription
+(Bottom) Chlorophyll Fluorescence RFU Fluorescence,ChlaSondeRFUBottom
+(Bottom) Chlorophyll Fluorescence ug/L of Chl Fluorescence,ChlaSondeuglBottom
+(Field) (Bottom) Dissolved Oxygen % Saturation,DOpercentBottom
+(Field) (Bottom) Dissolved Oxygen mg/L,DOBottom
+(Field) (Bottom) Specific Conductance uS/cm@25 °C,SpCndBottom
+(Field) (Bottom) Turbidity F.N.U.,TurbidityBottom
+(Field) (Bottom) Water Temperature °C,WTBottom
+"Air Temperature °F Temperature, Air",AirTemp
+Chlorophyll a ug/L,Chla
+Chlorophyll Fluorescence RFU Fluorescence,ChlaSondeRFUSurface
+Chlorophyll Fluorescence ug/L of Chl Fluorescence,ChlaSondeuglSurface
+Chlorophyll Volume mL Chlorophyll Volume Filtered,ChlaVol
+Dissolved Ammonia mg/L as N,DissAmmonia
+Dissolved Bromide mg/L,DissBromide
+Dissolved Calcium mg/L,DissCalcium
+Dissolved Chloride mg/L,DissChloride
+Dissolved Nitrate + Nitrite mg/L as N,DissNitrateNitrite
+Dissolved Organic Carbon mg/L as C,DOC
+Dissolved Organic Nitrogen mg/L as N,DON
+Dissolved ortho-Phosphate mg/L as P,DissOrthophos
+(Field) Dissolved Oxygen % Saturation,DOpercentSurface
+(Field) Dissolved Oxygen mg/L,DOSurface
+Dissolved Silica (SiO2) mg/L ,DissSilica
+(Field) Field Notes Notes,FieldNotes
 Flag,Flag
 FlagDescription,FlagDescription
-Total Alkalinity mg/L as CaCO3 Std Method 2320 B 916 [1]*,TotAlkalinity
-Dissolved Ammonia mg/L as N EPA 350.1 (D) 925 [1]*,DissAmmonia
-Dissolved Bromide mg/L EPA 300.0 356 [1]*,DissBromide
-Dissolved Calcium mg/L EPA 200.7 (D) 130 [1]*,DissCalcium
-Dissolved Chloride mg/L EPA 300.0 356 [1]*,DissChloride
-Chlorophyll a ug/L Std Method 10200 H 274 [1]*,Chla
-Dissolved Nitrate + Nitrite mg/L as N Std Method 4500-NO3-F 923 [1]*,DissNitrateNitrite
-Dissolved Organic Carbon mg/L as C EPA 415.3 (D) 915 [1]*,DOC_EPA
-Dissolved Organic Carbon mg/L as C Std Method 5310C (D) 920 [1]*,DOC_Std
-Total Organic Carbon mg/L as C EPA 415.3 (T) 914 [1]*,TOC_EPA
-Total Organic Carbon mg/L as C Std Method 5310C (T) 919 [1]*,TOC_Std
-Dissolved Organic Nitrogen mg/L as N EPA 351.2/EPA 350.1 (D) 929 [1]*,DON
-Pheophytin a ug/L Std Method 10200 H 274 [1]*,Pheophytin
-Total Phosphorus mg/L as P EPA 365.4 928 [1]*,TotPhos
-Dissolved Silica (SiO2) mg/L EPA 200.7 (D) 130 [1]*,DissSilica
-Total Dissolved Solids mg/L Std Method 2540 C 203 [1]*,TDS
-Total Suspended Solids mg/L EPA 160.2 64 [1]*,TSS_EPA
-Total Suspended Solids mg/L Std Method 2540 D 918 [1]*,TSS_Std
-Volatile Suspended Solids mg/L EPA 160.4 72 [1]*,VSS_EPA
-Volatile Suspended Solids mg/L Std Method 2540 E 317 [1]*,VSS_Std
-Total Kjeldahl Nitrogen mg/L as N EPA 351.2 927 [1]*,TKN
-Dissolved ortho-Phosphate mg/L as P EPA 365.1 924 [1]*,DissOrthophos
-"(Bottom) Chlorophyll Fluorescence RFU Fluorescence, Sonde - [1]*",ChlaSondeRFU_Bot
-"(Bottom) Chlorophyll Fluorescence ug/L of Chl Fluorescence, Sonde - [1]*",ChlaSondeugl_Bot
-"Chlorophyll Fluorescence RFU Fluorescence, Sonde - [1]*",ChlaSondeRFU_Top
-"Chlorophyll Fluorescence ug/L of Chl Fluorescence, Sonde - [1]*",ChlaSondeugl_Top
-Chlorophyll Volume mL Chlorophyll Volume Filtered - [1]*,ChlaVol
-(Bottom) Specific Conductance uS/cm@25 °C EPA 120.1 (Field) - [1]*,SpCndBottom_1
-(Bottom) Specific Conductance µmhos/cm@25°C EPA 120.1 (Field) - [1]*,SpCndBottom_2
-Specific Conductance uS/cm@25 °C EPA 120.1 (Field) - [1]*,SpCndSurface_1
-Specific Conductance µmhos/cm@25°C EPA 120.1 (Field) - [1]*,SpCndSurface_2
-Specific Conductance µmhos/cm@25°C Std Method 2510-B 917 [1]*,SpCndSurface_3
-Field Notes Notes (Field) - [1]*,FieldNotes
-North Latitude Decimal Degrees GPS Location - [1]*,NorthLat
-West Longitude Decimal Degrees GPS Location - [1]*,WestLong
-Microcystis aeruginosa Field Observations (Water) - [1]*,Microcystis
-(Bottom) Dissolved Oxygen % Saturation ASTM Method D888-09-C (Field) - [1]*,DOpercentBottom
-(Bottom) Dissolved Oxygen mg/L ASTM Method D888-09-C (Field) - [1]*,DOBottom
-Dissolved Oxygen % Saturation ASTM Method D888-09-C (Field) - [1]*,DOpercentSurface
-Dissolved Oxygen mg/L ASTM Method D888-09-C (Field) - [1]*,DOSurface
-Secchi Depth Centimeters Secchi Depth - [1]*,Secchi
-(Bottom) Water Temperature °C EPA 170.1 (Field) - [1]*,WTBottom
-"Air Temperature °F Temperature, Air - [1]*",AirTemp
-Water Temperature °C EPA 170.1 (Field) - [1]*,WTSurface
-(Bottom) Turbidity F.N.U. EPA 180.1 (Field) - [1]*,TurbidityBottom_FNU
-Turbidity F.N.U. EPA 180.1 (Field) - [1]*,TurbiditySurface_FNU
-Sample Depth,SampleDepth
-Water Depth at Station Feet Depth of Water Column - [1]*,Depth
-Weather Observations Weather Observations - [1]*,Weather
-Wind Velocity Miles/hr Wind Velocity - [1]*,WindVelocity
-Wind Direction,WindDirection
-(Bottom) pH pH Units EPA 150.1 (Field) - [1]*,pHBottom
-pH pH Units EPA 150.1 (Field) - [1]*,pHSurface_1
-pH pH Units Std Method 2320 B 916 [1]*,pHSurface_2
-Sample Date,DateTime
-Station Number,REMOVE_1
-Sample Code,REMOVE_2
-Sample Type,REMOVE_3
+Microcystis aeruginosa Field Observations (Water),Microcystis
+North Latitude Decimal Degrees GPS Location,NorthLat
 Parent Sample Code,REMOVE_4
+pH pH Units,pHSurfaceLab
+(Field) pH pH Units,pHSurface
+(Field) (Bottom) pH pH Units,pHBottom
+Pheophytin a ug/L,Pheophytin
+Sample Code,REMOVE_2
+Sample Date,DateTime
+Sample Depth,SampleDepth
+Sample Description,SampleDescription
+Sample Type,REMOVE_3
+Secchi Depth Centimeters Secchi Depth,Secchi
+(Field) Specific Conductance uS/cm@25 °C,SpCndSurface
+Specific Conductance uS/cm@25 °C,SpCndSurfaceLab
+Station Name,Station
+Station Number,REMOVE_1
+Total Alkalinity mg/L as CaCO3,TotAlkalinity
+Total Dissolved Solids mg/L,TDS
+Total Kjeldahl Nitrogen mg/L as N,TKN
+Total Organic Carbon mg/L as C,TOC
+Total Phosphorus mg/L as P,TotPhos
+Total Suspended Solids mg/L,TSS
+(Field) Turbidity F.N.U.,TurbiditySurface
+Volatile Suspended Solids mg/L,VSS
+Water Depth at Station Feet Depth of Water Column,Depth
+(Field) Water Temperature °C,WTSurface
+Weather Observations Weather Observations,Weather
+West Longitude Decimal Degrees GPS Location,WestLong
+Wind Direction,WindDirection
+Wind Velocity Miles/hr Wind Velocity,WindVelocity

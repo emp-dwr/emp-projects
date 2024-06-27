@@ -13,8 +13,7 @@ library(sp)
 # --Read in Data--
 path <- 'C:/Users/pcarpent/Desktop/Fluroprobe_Data/2020' # manually set path bc Rmd is weird with dirs
 
-df_fl <- Fluoroprobe_Data_2020_1_minute_intervals
-    list.files(path = 'C:/Users/pcarpent/Desktop/Fluoroprobe_Data/2020',
+df_fl <- list.files(path = 'C:/Users/pcarpent/Desktop/Fluoroprobe_Data/2020',
                pattern = '*.csv') %>% # this part pulls all files in that directory that end in ".csv"
   map_df(~read_csv(paste0(path,.), show_col_types = FALSE)) # this merges them all together into one dataframe
 

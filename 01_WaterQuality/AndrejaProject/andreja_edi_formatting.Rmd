@@ -14,6 +14,7 @@ df_edi <- read_csv('https://portal.edirepository.org/nis/dataviewer?packageid=ed
 df_wq <- read_csv('01_WaterQuality/AndrejaProject/wq_andreja_formatted.csv', show_col_type = FALSE)
 df_analytes <- read_csv('01_WaterQuality/edi-annual-updates/data/cleaning/analyte_names.csv', show_col_type = FALSE)
 df_stations <- read_csv('01_WaterQuality/edi-annual-updates/data/cleaning/station_names.csv', show_col_type = FALSE)
+df_cols <- read_csv('01_WaterQuality/edi-annual-updates/data/cleaning/col_types.csv', show_col_type = FALSE)
 ```
 
 Prep new data for merging
@@ -70,7 +71,7 @@ if (!rlang::is_empty(df_wq$DateTime[is.na(df_wq$Date)])){
 }
 ```
 
-Final Column Checks
+Remove other cols
 ```{r}
 # check that missing column names make sense
 print('columns in EDI but not WDL:')
