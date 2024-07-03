@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Confluence.kml</name>
+	<StyleMap id="msn_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sn_ylw-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<LineStyle>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>80ff1ac6</color>
+		</PolyStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<LineStyle>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>80ff1ac6</color>
+		</PolyStyle>
+	</Style>
+	<Placemark>
+		<name>Confluence</name>
+		<styleUrl>#msn_ylw-pushpin</styleUrl>
+		<Polygon>
+			<tessellate>1</tessellate>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						-121.802947229227,38.0626052512901,0 -121.820637720947,38.06910037073001,0 -121.8326867137472,38.07111970851854,0 -121.8407774688791,38.07717066855738,0 -121.8524663851453,38.07456329049924,0 -121.8641609989116,38.07206172706403,0 -121.8652873849715,38.07021563702748,0 -121.8660971875277,38.06599681650646,0 -121.8689565991984,38.06289572818093,0 -121.8822428129443,38.0555191015851,0 -121.8930671696355,38.05391292806031,0 -121.8976689096675,38.05776520088551,0 -121.9053382302381,38.0593939991174,0 -121.9108108936267,38.06711817531188,0 -121.9086661877233,38.07474709907738,0 -121.9066172074295,38.07501711108418,0 -121.9057049485866,38.07961499203969,0 -121.9130520267722,38.08482251464949,0 -121.9727365013574,38.07374949002985,0 -121.9709031205028,38.04529151233353,0 -121.9465976207253,38.04829396265594,0 -121.9285275073081,38.04336049311404,0 -121.9063760492131,38.03951532656394,0 -121.8881884636165,38.0419633101601,0 -121.879791890036,38.03454686825226,0 -121.867185780133,38.02971093410284,0 -121.8538809605592,38.02887629122581,0 -121.8405114330574,38.02476000468749,0 -121.8263877517852,38.02370842867046,0 -121.8155963578341,38.01796616958815,0 -121.7800708574306,38.01473876776059,0 -121.7618954419553,38.02009526669259,0 -121.7516822972983,38.01967329272659,0 -121.7518300511886,38.02960302377629,0 -121.710317638783,38.08261647719875,0 -121.7065703798255,38.08828469926222,0 -121.7032811986424,38.10550170650728,0 -121.7138360611456,38.1118315202617,0 -121.7406167881095,38.09290192614536,0 -121.7736058844482,38.07713658208321,0 -121.7901431559874,38.06757448618572,0 -121.802947229227,38.0626052512901,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+</Document>
+</kml>

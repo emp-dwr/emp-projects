@@ -9,15 +9,17 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 
 suppressWarnings(suppressMessages(library(tidyverse)))
-suppressWarnings(suppressMessages(library(lubridate)))
-suppressWarnings(suppressMessages(library(janitor)))
 suppressWarnings(suppressMessages(library(here)))
-suppressWarnings(suppressMessages(library(cder)))
 suppressWarnings(suppressMessages(library(deltamapr)))
 suppressWarnings(suppressMessages(library(sf)))
+suppressWarnings(suppressMessages(library(maps)))
+suppressWarnings(suppressMessages(library(ggspatial)))
+suppressWarnings(suppressMessages(library(ggrepel)))
 
 # Set output directory 
-output <- here("04_Other","region-mapping","output")
+output <- here("04_Other",
+               "region-mapping",
+               "output")
 
 # Set visual theme in ggplot
 theme_set(theme_bw())
@@ -28,67 +30,223 @@ options(dplyr.summarise.inform = FALSE)
 
 ```
 
-## Import Rosie's Regions
-```{r regions, echo=FALSE}
+## Import EMP Regions
+```{r import, echo=FALSE}
+# Import EMP regions from KML files made in Google Earth
+kml_files <- list.files(path = here("04_Other",
+                             "region-mapping",
+                             "data"),
+                        pattern = "\\.kml$",
+                        full.names = TRUE)
 
-Regions<-read_csv(here("04_Other","region-mapping","data","Rosies_regions.csv"))
+kml_list <- lapply(kml_files, st_read)
 
-## Load Delta Shapefile from Brian
-Delta<-deltamapr::R_EDSM_Subregions_Mahardja_FLOAT%>%
-  filter(SubRegion%in%unique(Regions$SubRegion))%>%  #Filter to regions of interest
-  dplyr::select(SubRegion)
+EMP_regions <- bind_rows(kml_list)
 
-Regs = unique(Regions[,c(1,5)])
+# Rename headers
+EMP_regions <- EMP_regions %>% rename("Region" = "Name")
 
-Delta = merge(Delta, Regs)
+# Set display order for regions
+EMP_regions$Region <- factor(EMP_regions$Region, levels = c("North Delta",
+                                                          "Central Delta",
+                                                          "South Delta",
+                                                          "Confluence",
+                                                          "Suisun Marsh",
+                                                          "Suisun & Grizzly Bay",
+                                                          "Carquinez Strait",
+                                                          "San Pablo Bay"))
+
+# Drop blank Description column
+EMP_regions <- EMP_regions %>% select(!Description)
+
+# Check if regions are valid (no overlaps)
+st_is_valid(EMP_regions, reason = TRUE) # All are valid
+
+# Plot the base map and overlay the new polygons
+ggplot() +
+  geom_sf(data = WW_Delta) +
+  geom_sf(data = EMP_regions, aes(fill = Region), alpha = 0.5) + 
+  coord_sf(xlim = c(-122.6, -121.2), ylim = c(37.7, 38.5)) +
+  scale_fill_brewer(palette = "Set1")
+
+ggsave(path = output,
+       filename = "EMP-region-map.png",
+       device = "png",
+       scale=1.0,
+       units="in",
+       height=6.5,
+       width=9,
+       dpi="print")
+
 ```
 
-## Assign Region Data
+## Assign Region to EMP Stations
 ```{r setup, echo=FALSE}
+# Read in station locations for all compliance monitoring stations
+EMP_stations <- read_csv(here("04_Other",
+                              "region-mapping",
+                              "data",
+                              "EMP-stations.csv"))
 
-#if you are cool with the EMP station file already in deltamapr, 
-#all you have to do is:
-EMPstas = filter(P_Stations, Source == "EMP")
+# Convert to sf object
+sf_EMP <- st_as_sf(EMP_stations,
+                   coords = c("Longitude", "Latitude"), 
+                   crs = 4326)
 
-#then pick your region file
-
-#There are a bunch in deltamapr, if you want one of those,
-#just make sure it's in the same CRS as your stations file
-EMPregions = R_EDSM_Regions_1617P1 %>%
-  st_transform(crs = st_crs(EMPstas)) #transform the coordinate reference system
+# Make sure crs matches
+sf_regions <-  st_transform(EMP_regions, crs = st_crs(sf_EMP))
 
 #then merge the two using a spatial join
-EMPstas2 = st_join(EMPstas, EMPregions)
+sf_EMP <-  st_join(sf_EMP, sf_regions)
 
-
-#plot it
-
+#Plot Regions
 ggplot()+
-  geom_sf(data = WW_Delta)+
-  geom_sf(data = EMPstas2, aes(color = Region))
+  geom_sf(data = WW_Delta) +
+  geom_sf(data = sf_regions, aes(fill = Region), alpha = 0.5) +
+  geom_sf(data = sf_EMP, 
+          aes(shape = Component),
+          fill = "white",
+          size = 3) +
+  coord_sf(xlim = c(-122.6, -121.2), ylim = c(37.7, 38.5)) +
+  scale_fill_brewer(palette = "Set1") +
+  scale_shape_manual(values = c(21,22,23)) +
+  labs(title = "Water Projects Compliance Monitoring - 2024")
 
+ggsave(path = output,
+       filename = "EMP-station-map.png",
+       device = "png",
+       scale=1.0,
+       units="in",
+       height=6,
+       width=9,
+       dpi="print")
 
-#if you are dealing with a .csv file of latitudes and longitudes,
-#you first need to turn it into a spatial object
+# Write out CSV of each station with name of region
+write_csv(sf_EMP, file = here("04_Other",
+               "region-mapping",
+               "output",
+               "compliance-monitoring-station-regions.csv"))
 
-#thsese are the benthic stations from EDI
-Benthic = read_csv("https://portal.edirepository.org/nis/dataviewer?packageid=edi.1036.4&entityid=4e6948186ad756dc2b6de4de41b601f3")
+```
 
-#we need to tell it what the coordinate columns are, and the coordinate reference system (WGS 86, wich is 4326)
-Benthicsf = st_as_sf(Benthic, coords = c("Longitude", "Latitude"), crs = 4326) 
+## Classify all Compliance Monitoring Stations Including Historical
+```{r setup, echo=FALSE}
+# Read in station locations for all compliance monitoring stations
+df_EMP_all <- read_csv(here("04_Other",
+                         "region-mapping",
+                         "data",
+                         "EMP-historic-stations.csv"))
 
-#If you have a shapefile somewhere else, you can import it using 'st_read'
+# Read in additional station metadata and combine
+df_EMP_station_meta <- read_csv(here("04_Other",
+                                     "region-mapping",
+                                     "data",
+                                     "compliance-station-names.csv"))
 
-#If not, use one of hte deltamapr ones
-Benthic2 = st_transform(Benthicsf, crs = st_crs(EMPregions)) %>%
-  st_join(EMPregions)
+df_EMP_all <- left_join(df_EMP_all,df_EMP_station_meta, 
+                        join_by(StationID))
 
+# Convert to sf object
+sf_EMP_all <- st_as_sf(df_EMP_all,
+                   coords = c("Longitude", "Latitude"), 
+                   crs = 4326)
 
-#plot it
+# Make sure crs matches
+sf_regions <-  st_transform(EMP_regions, crs = st_crs(sf_EMP_all))
 
+#then merge the two using a spatial join
+sf_EMP_all <-  st_join(sf_EMP_all, sf_regions)
+
+#Plot Regions
 ggplot()+
-  geom_sf(data = WW_Delta)+
-  geom_sf(data = Benthic2, aes(color = Region))
+  geom_sf(data = WW_Delta) +
+  geom_sf(data = sf_regions, aes(fill = Region), alpha = 0.5) +
+  geom_sf(data = sf_EMP_all, 
+          aes(shape = Component),
+          fill = "white",
+          size = 3) +
+  coord_sf(xlim = c(-122.6, -121.2), ylim = c(37.7, 38.5)) +
+  scale_fill_brewer(palette = "Set1") +
+  #scale_shape_manual(values = c(21,22,23)) +
+  labs(title = "Water Projects Compliance Monitoring - Historical")
+
+ggsave(path = output,
+       filename = "EMP-station-map-historical.png",
+       device = "png",
+       scale=1.0,
+       units="in",
+       height=6,
+       width=9,
+       dpi="print")
+
+# Plot all stations with region polygons
+
+# Write out CSV of each station with name of region
+df_EMP_all <- as_tibble(sf_EMP_all)
+
+EMP_all_coords <- st_coordinates(sf_EMP_all)
+
+df_EMP_all <- df_EMP_all %>% 
+  mutate(Latitude = EMP_all_coords[,2], Longitude = EMP_all_coords[,1]) %>% 
+  relocate(c(Latitude,Longitude), .after = Location) %>% 
+  select(!geometry)
+
+write_csv(df_EMP_all, file = here("04_Other",
+               "region-mapping",
+               "output",
+               "compliance-monitoring-stations-historical-regions.csv"))
+
+
+```
+
+## Create Maps of each EMP Region
+```{r region maps, echo = FALSE}
+# Create history plots for each year
+# Can't do for loop b/c each map needs custom coordinates
+
+# Use the black-and-white theme
+theme_set(theme_bw())
+
+# Create a ggplot2 theme
+theme_update(
+    plot.background = element_rect(fill = "white", colour = NA),
+    panel.background = element_rect(fill = "white", colour = NA),
+    panel.border = element_rect(fill = NA, colour = "black"),
+    strip.background = element_rect(fill = "gray", colour = "black"),
+    legend.position = "none",
+    legend.key = element_rect(fill = "white", colour = NA)
+    )
+
+# Plot for South Delta
+ggplot()+
+  theme(aspect.ratio = 1) +
+  geom_sf(data = WW_Delta) +
+  geom_sf(data = subset(sf_regions, Region == "South Delta"), 
+          aes(fill = Region), 
+          alpha = 0.5) +
+  geom_sf(data = subset(sf_EMP, Region == "South Delta"),
+          aes(),
+          fill = "darkgray",
+          pch = 21,
+          size = 3) +
+  geom_label_repel(data = subset(sf_EMP, Region == "South Delta"),
+          aes(label = StationID, geometry = geometry), stat = "sf_coordinates") +
+  coord_sf(xlim = c(-121.65, -121.2), ylim = c(37.65, 38.0)) +
+  scale_fill_manual(values = "#4DAF4A") +
+  scale_shape_manual(values = c(21,22,23)) +
+  scale_y_continuous(breaks = seq(37.7, 38.0, by = 0.1)) +
+  labs(title = "Compliance Monitoring - South Delta Region",
+       x = NULL,
+       y = NULL)
+
+ggsave(path = output,
+       filename = "station-map-South-Delta.png",
+       device = "png",
+       scale=1.0,
+       units="in",
+       height=4,
+       width=6,
+       dpi="print")
 
 ```
 

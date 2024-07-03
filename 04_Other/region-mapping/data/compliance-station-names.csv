@@ -1,0 +1,133 @@
+﻿StationID,CombinedID,ShortName
+C10,C10-C10A,Vernalis
+C10A,C10-C10A,Vernalis
+C13,C13,Terminous
+C14,C14,Port Chicago
+C19,C19,Cache Slough
+C2,C2,Collinsville
+C3,C3-C3A,Hood
+C3A,C3-C3A,Hood
+C3-C,C3-C3A,Hood
+C3-L,C3-C3A,Hood
+C3-R,C3-C3A,Hood
+C4,C4,San Andreas Landing
+C5,C5,Contra Costa Canal
+C6,C6,Brandt Bridge
+C7,C7-C7A,Mossdale Bridge
+C7A,C7-C7A,Mossdale Bridge
+C7-C,C7-C7A,Mossdale Bridge
+C7-L,C7-C7A,Mossdale Bridge
+C7-R,C7-C7A,Mossdale Bridge
+C8,C8,Old River
+C9,C9,West Canal
+C9-C,C9,West Canal
+C9-L,C9,West Canal
+D10,D10-D10A,Chipps Island
+D10A,D10-D10A,Chipps Island
+D10-C,D10-D10A,Chipps Island
+D10-L,D10-D10A,Chipps Island
+D10-R,D10-D10A,Chipps Island
+D11,D11-D11A,Sherman Island
+D11A,D11-D11A,Sherman Island
+D11-C,D11-D11A,Sherman Island
+D11-L,D11-D11A,Sherman Island
+D11-R,D11-D11A,Sherman Island
+D12,D12-D12A,Antioch
+D12A,D12-D12A,Antioch
+D12-C,D12-D12A,Antioch
+D14A,D14A,Big Break
+D14A-C,D14A,Big Break
+D14A-L,D14A,Big Break
+D14A-R,D14A,Big Break
+D15,D15,Jersey Point
+D16,D16-D16A,Twitchell Island
+D16A,D16-D16A,Twitchell Island
+D16-C,D16-D16A,Twitchell Island
+D16-L,D16-D16A,Twitchell Island
+D19,D19-D19A,Franks Tract
+D19A,D19-D19A,Franks Tract
+D19-C,D19-D19A,Franks Tract
+D19-L,D19-D19A,Franks Tract
+D19-R,D19-D19A,Franks Tract
+D2,D2,Preston Point
+D22,D22,Emmaton
+D24,D24-D24A-NZ068,Rio Vista
+D24A,D24-D24A-NZ068,Rio Vista
+D24-L,D24-D24A-NZ069,Rio Vista
+D26,D26,Potato Point
+D26-C,D26,Potato Point
+D26-L,D26,Potato Point
+D26-R,D26,Potato Point
+D28A,D28A,Rancho Del Rio
+D28A-C,D28A,Rancho Del Rio
+D28A-L,D28A,Rancho Del Rio
+D28A-R,D28A,Rancho Del Rio
+D29,D29,Prisoner's Point
+D41,D41,Pinole Point
+D41A,D41A,San Pablo Bay
+D41A-C,D41A,San Pablo Bay
+D41-C,D41A,San Pablo Bay
+D42,D42,Mare Island
+D4,D4,Point Sacramento
+D4-C,D4,Point Sacramento
+D4-L,D4,Point Sacramento
+D4-R,D4,Point Sacramento
+D6,D6-D6A,Martinez
+D6A,D6-D6A,Martinez
+D6-C,D6-D6A,Martinez
+D6-L,D6-D6A,Martinez
+D6-R,D6-D6A,Martinez
+D7,D7-D7A,Grizzly Bay
+D7A,D7-D7A,Grizzly Bay
+D7-C,D7-D7A,Grizzly Bay
+D7-L,D7-D7A,Grizzly Bay
+D7-R,D7-D7A,Grizzly Bay
+D8,D8-D8A,Suisun Bay
+D8A,D8-D8A,Suisun Bay
+D8-C,D8-D8A,Suisun Bay
+D9,D9-D9A,Honker Bay
+D9A,D9-D9A,Honker Bay
+D9-C,D9-D9A,Honker Bay
+D9-R,D9-D9A,Honker Bay
+DMC1,DMC1,Tracy Pumping Plant
+EZ2,EZ2,EZ2
+EZ2-SJR,EZ2-SJR,EZ6
+EZ6,EZ6,EZ2 San Joaquin
+EZ6-SJR,EZ6-SJR,EZ6 San Joaquin
+FPT,FPT,Freeport
+MD10,MD10-MD10A,Disappointment Slough
+MD10A,MD10-MD10A,Disappointment Slough
+MD6,MD6,Sycamore Slough
+MD6-C,MD6,Sycamore Slough
+MD6-L,MD6,Sycamore Slough
+MD6-R,MD6,Sycamore Slough
+MD7,MD7-MD7A,Little Potato Slough
+MD7A,MD7-MD7A,Little Potato Slough
+MD7-C,MD7-MD7A,Little Potato Slough
+MD7-L,MD7-MD7A,Little Potato Slough
+MD7-R,MD7-MD7A,Little Potato Slough
+NZ002,NZ002,Glencove Harbor
+NZ004,NZ004,Ozol Pier
+NZ032,NZ032,Montezuma Slough
+NZ068,D24-D24A-NZ068,Rio Vista
+NZ325,NZ325,Rock Wall
+NZS42,S42-NZS42,Volanti Slough
+P10,P10-P10A,Victoria Canal
+P10A,P10-P10A,Victoria Canal
+P12,P12-P12A,Tracy Road
+P12A,P12-P12A,Tracy Road
+P2,P2,Franklin Road
+P8,P8-P8A,Buckley Cove
+P8A,P8-P8A,Buckley Cove
+P8-C,P8-P8A,Buckley Cove
+P8-L,P8-P8A,Buckley Cove
+P8-R,P8-P8A,Buckley Cove
+ROR,ROR,Roaring River
+S21,S21,Chadbourne Slough
+S35,S35,Goodyear Slough
+S42,S42-NZS42,Volanti Slough
+S49,S49,Beldon Landing
+S64,S64,National Steel
+S97,S97,Cordelia Slough
+SLBAR3,SLBAR3,Barker Slough
+TRN,TRN,Turner Cut
