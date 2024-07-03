@@ -1,17 +1,29 @@
 ```{r message = FALSE}
 # read in packages
 library(tidyverse)
+library(lubridate)
 library(stats)
 library(plotly)
 library(broom)
 ```
 
+```{r}
+# df_cwq <- read_csv('01_WaterQuality/00_archive/data/spc/MRZ_data_final.csv')
+# 
+# df_cwq <- df_cwq %>%
+#   mutate(Month = factor(month(mdy(date))),
+#          Year = factor(year(mdy(date)))) %>%
+#   group_by(Month, Year) %>%
+#   summarize(MRZ = round(mean(spc, na.rm = TRUE)), .groups = 'drop')
+```
+
+
 ```{r message = FALSE}
 # read in data
-df_wq <- read_csv('01_WaterQuality/misc/data/spc/spc.csv')
+df_dwq <- read_csv('01_WaterQuality/00_archive/data/spc/dwq_20-23.csv')
 
 # mutate df, drop NAs (< RL values)
-df_wq <- df_wq %>%
+df_dwq <- df_dwq %>%
   subset(select = c(`Short Station Name`, Analyte, Result, `Collection Date`)) %>%
   rename(Station = `Short Station Name`, Date = `Collection Date`) %>%
   drop_na() %>%
@@ -20,70 +32,144 @@ df_wq <- df_wq %>%
 ```
 
 ```{r}
-ggplot(df_wq, aes(Analyte, Result)) +
+ggplot(df_dwq, aes(Analyte, Result)) +
   geom_violin(draw_quantiles = c(0.25, 0.5, 0.75)) +
   geom_jitter(pch = 21, color = 'black', size = 2) +
   theme_bw()
 ```
-```{r}
-lm_wq <- lm(Result ~ Analyte, data = df_wq)
-
-df_resid <- data.frame(Residuals = 'Residuals', Value =lm_wq$residuals)
-
-ggplot(df_resid, aes(Residuals, Value)) +
-  geom_violin(draw_quantiles = c(0.25, 0.5, 0.75)) +
-  geom_jitter(pch = 21, color = 'black', size = 2) +
-  theme_bw()
-```
-```{r}
-ggplot(df_resid, aes(Residuals, Value)) +
-  geom_boxplot() +
-  theme_bw()
-```
-
 
 ```{r}
-augment(lm_wq) %>%
-  ggplot(aes(sample = .resid))+
-  geom_qq()+
-  geom_qq_line() +
-  xlab('theoretical') +
-  ylab('sample') +
-  theme_bw()
-```
-```{r}
-t.test(Result ~ Analyte, data = df_wq, var.equal = TRUE) %>% tidy()
-```
-
-
-```{r}
-df_qq <- df_wq %>%
+df_qq <- df_dwq %>%
   rowid_to_column() %>%
   pivot_wider(id_cols = c(Station, Date), names_from = Analyte, values_from = Result) %>%
   rename(SpC = `Specific Conductance`, FieldSpC = `Field Specific Conductance`)
 
 df_qq <- df_qq %>%
   separate(col = Date, into = c('Date', 'Time'), sep = ' ') %>%
-  mutate(RPD = abs((SpC-FieldSpC)/SpC),
-    Dif = SpC-FieldSpC,
-         Mean = rowMeans(cbind(SpC, FieldSpC), na.rm = TRUE),
-         Month = format(as.Date(Date, format='%m/%d/%Y'),'%b'),
-         Difference = 'Difference')
+  mutate(Month = factor(month(mdy(Date))),
+         Year = factor(year(mdy(Date))),
+         RPD = (SpC-FieldSpC)/SpC,
+         Dif = SpC-FieldSpC,
+         Mean = rowMeans(cbind(SpC, FieldSpC), na.rm = TRUE))
 
-df_qq$Month <- factor(df_qq$Month, levels = month.abb)
+df_qq <- df_qq[!is.na(df_qq$RPD),]
+# df_qq <- df_qq %>% right_join(df_cwq, by = c('Year', 'Month')) %>%
+#   pivot_longer(cols = c(SpC, FieldSpC, MRZ), names_to = 'SpC_Type', values_to = 'Value')
 
+qqnorm(df_qq$RPD, pch = 1, frame = FALSE)
+qqnorm(df_qq$Dif, pch = 1, frame = FALSE)
 
-qq_test <- qqnorm(df_qq$Dif, pch = 1, frame = FALSE)
-
-plt <- ggplot(df_qq, aes(Mean, Dif, fill = Month, label = Date)) +
-  geom_point(pch=21, size = 4, color='black') +
+rpd_plt <- ggplot(df_qq, aes(Mean, RPD, label = Date)) +
+  geom_point(pch=21, size = 3, color='black', alpha  = 0.5, fill = 'gray') +
+  facet_wrap(~Year, scales = 'free_y') +
+  geom_smooth(method = 'lm', color = 'blue') +
+  geom_hline(yintercept = 0, linetype = 'dashed', color = 'red', size=1) +
   theme_bw()
-print(plt)
+
+
+print(rpd_plt)
+
+ggsave('01_WaterQuality/00_archive/data/spc/rpd.png', rpd_plt, height = 4, width = 7)
 ```
+
+```{r}
+# norm_plt <- ggplot(df_qq, aes(Mean, Dif, fill = Year, label = Date)) +
+#   geom_point(pch=21, size = 3, color='black', alpha = 0.8) +
+#   theme_bw() +
+#   facet_wrap(~Year, scales = 'free_y') +
+#   geom_smooth(method = 'lm') +
+#   geom_hline(yintercept = 0, linetype = 'dashed', color = 'red', size=1)
+
+```
+
+
+```{r}
+lm_overall <- lm(Dif ~ Mean, data = df_qq)
+summary(lm_overall)
+
+df_qq <- df_qq %>%
+  mutate(Pred = lm_overall$coefficients[[1]]+Mean*lm_overall$coefficients[[2]],
+         Norm = Pred - Dif)
+
+lm_sim <- lm(abs_dif ~ samp_mean, data = df_sim)
+summary(lm_sim)
+
+
+df_sim <- df_sim %>%
+  mutate(Pred = lm_sim$coefficients[[1]]+samp_mean*lm_sim$coefficients[[2]])
+
+df_test <- df_qq %>% subset(Mean >= 4000 & Mean <= 6000)
+
+length(df_test$Norm[df_test$Norm > 0])/length(df_test$Norm)
+
+length(df_test$Dif[df_test$Dif < df_test$Pred])/length(df_test$Dif)
+
+length(df_test$Dif[df_test$Dif > df_test$Pred])/length(df_test$Dif)
+
+length(df_sim$abs_dif[df_sim$abs_dif < df_sim$Pred])/length(df_sim$abs_dif)
+
+```
+
+```{r}
+norm_plt <- ggplot(df_test, aes(Mean, Dif, label = Date)) +
+  geom_point(pch=21, size = 3, color='black', alpha = 0.8, aes(fill = Year)) +
+  theme_bw() +
+  # facet_wrap(~Year, scales = 'free_y') +
+  # geom_smooth(method = 'lm', color = 'black') +
+  geom_hline(yintercept = 0, linetype = 'dashed', color = 'black', size=1)
+
+norm_plt
+# print(plt)
+ggsave('01_WaterQuality/00_archive/data/spc/norm_all.png', norm_plt, height = 4, width = 7)
+
+length(df_qq$Norm[df_qq$Norm > 0])
+length(df_qq$Norm)
+
+```
+
 
 ```{r}
 ggplotly(plt, tooltip = 'Date')
 ```
 
 
+    def __init__(self, value_independent_sd: float, value_dependent_sd: float):
+        self.value_independent_sd: float = value_independent_sd
+        self.value_dependent_sd: float = value_dependent_sd
+
+    def sample(self, value: float) -> float:
+        value_independent_error = random.normalvariate(0, self.value_independent_sd)
+        value_dependent_error = random.normalvariate(0, value * self.value_dependent_sd)
+        return value_independent_error + value_dependent_error
+        
+        
+        value = true_value + self.combined_error_distribution.sample(true_value)
+
+
+```{r}
+set.seed(42)
+
+sd = 5
+df_sim <- data.frame(samp_one = as.integer(runif(n = 2000, min = 50, max = 45000))) %>%
+  mutate(
+    samp_two = as.integer((rnorm(n = 2000, mean = samp_one, sd = 6)+rnorm(n = 2000, mean = samp_one, sd = 0.001*samp_one))/2),
+    samp_mean = as.integer((samp_one+samp_two)/2),
+    abs_dif = samp_one - samp_two,
+    rel_dif = (samp_one-samp_two)/(samp_mean))
+
+plt_sim <- ggplot(df_sim, aes(samp_mean, abs_dif)) +
+  geom_point(pch = 21, size = 3, fill = 'gray', alpha = 0.6) +
+  theme_bw() +
+  geom_hline(yintercept = 0, linetype = 'dashed', color = 'red', size=1)
+
+ggsave('01_WaterQuality/00_archive/data/spc/sim_abs.png', plt_sim, height = 4, width = 7)
+
+```
+
+```{r}
+length(df_qq$RPD[df_qq$RPD < 0])/length(df_qq$RPD)
+
+length(df_qq$Dif[df_qq$Dif < df_qq$Pred])/length(df_qq$Dif)
+length(df_qq$Dif[df_qq$Dif < df_qq$Pred])/length(df_qq$Dif)
+```
 

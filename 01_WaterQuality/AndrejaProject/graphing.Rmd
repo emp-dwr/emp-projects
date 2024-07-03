@@ -89,9 +89,7 @@ base_graph <- function(m, analyte, save_file = TRUE){
       ggplot2::scale_x_continuous(breaks = seq_along(month.name), labels = month.abb) +
       ggtitle(analyte)
     
-    if(save_file){
-      ggsave(glue::glue('01_WaterQuality/AndrejaProject/plots/{analyte}.jpg'), plot = p, width = 12, height = 6)
-    }
+   ggplot2::ggsave(paste('admin/plots/dwq/ARGraph_',analytes[i],'.jpg', sep=''), graph, width = 4.5, height = 5.3, unit = 'in')
   }
 
   return(p)

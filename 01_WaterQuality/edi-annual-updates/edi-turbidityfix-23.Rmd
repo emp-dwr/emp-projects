@@ -1,0 +1,72 @@
+```{r}
+source('00_GlobalFunctions/functions.R')
+library(tidyverse)
+
+# import manually for annoying reasons
+df_edi <- read_csv('01_WaterQuality/edi-annual-updates/data/component/EMP_DWQ_1975_2022.csv', show_col_types = FALSE) %>%
+  mutate(Date = as.Date(Date, format = '%m/%d/%Y'))
+
+# TODO: put in GlobalFunctions
+df_names <- read_csv('00_GlobalFunctions/station_names.csv', show_col_types = FALSE)
+```
+
+```{r}
+df_turb <- merge_csv_files(abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration/Corrected WDL Data/')) %>%
+  rename(Date = `Sample Date`,
+           Station = `Station Name`) %>%
+  mutate(Date = as.Date(Date, format = '%m/%d/%Y %H:%M'))
+
+df_turb <- df_turb %>% select('Station','Date','Sample Type',colnames(.)[str_detect(colnames(.), pattern = 'Turbidity')]) %>%
+  filter(`Sample Type` == 'Normal Sample') %>%
+  select(-`Sample Type`)
+
+merge_turbidity_cols <- function(df) {
+  # convert 'N/A' to NA
+  df <- df %>%
+    mutate(across(where(is.character), ~ na_if(.x, 'N/A')))
+  
+  # unite bottom/surface cols
+  df <- df %>%
+    unite('TurbidityBottom', contains('(Bottom)'), sep = '; ', na.rm = TRUE, remove = TRUE)
+  
+  df <- df %>%
+    unite('TurbiditySurface', -Station, -Date, -TurbidityBottom, sep = '; ', na.rm = TRUE, remove = TRUE)
+  
+  # select final cols
+  df <- df %>%
+    select(Station, Date, TurbidityBottom, TurbiditySurface)
+  
+  # check rows with multiple vals
+  problem_rows <- df %>%
+    filter(str_detect(TurbidityBottom, ';') | str_detect(TurbiditySurface, ';'))
+  
+  if (nrow(problem_rows) > 0) {
+    warning('Some rows contain multiple entries in the concatenated columns (see df)')
+    print(problem_rows)
+  }
+  
+  return(df)
+}
+
+df_turb <- remove_labdupes(df_turb)
+
+df_turb <- merge_turbidity_cols(df_turb)
+
+# checked that all the errors are duplicates; take only the first value
+df_turb <- df_turb %>%
+  mutate(across(everything(), ~ str_extract(., '^[^;]*')))
+
+df_turb <- replace_station(df_turb, df_names)
+
+df_edi <- replace_station(df_edi, df_names)
+```
+```{r}
+df_turb$Date <- as.Date(df_turb$Date)
+
+df_join <- df_edi %>%
+  left_join(df_turb, by = c('Date', 'Station')) %>%
+  select(-c(TurbidityBottom_NTU, TurbiditySurface_FNU, TurbidityBottom_FNU))
+
+
+```
+
