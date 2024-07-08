@@ -160,8 +160,16 @@ save(df_CWQ,
      file = here("04_Other",
      "EMP-station-history",
      "CDEC-station-history.RData"))
+```
 
+```{r load continuous, echo=TRUE}
 # After doing above 1X, just import continuous WQ data downloaded from EDI
+# Import list of all compliance stations with additional metadata
+df_stations <- read_csv(file = here("04_Other",
+                                    "EMP-station-history",
+                                    "compliance-station-names.csv"),
+                        show_col_types = FALSE)
+
 load(file = here("04_Other",
                  "EMP-station-history",
                  "CDEC-station-history.RData"))
@@ -653,5 +661,27 @@ for (x in stations) {
   
 }
 
+```
+
+## Create data summary plots
+```{r data summaries}
+df_DWQ_sum <- df_DWQ %>% 
+  mutate(Year = year(Date)) %>% 
+  mutate(Month = month(Date, label = TRUE, )) %>% 
+  relocate(c(Year,Month), .after = Date) %>% 
+  group_by(StationID,Year,Month) %>% 
+  summarise(TSSAvg = mean(TSS, na.rm = TRUE)) %>% 
+  filter(!is.nan(TSSAvg))
+
+test <- df_DWQ_sum %>% 
+  filter(StationID %in% c("P8","C10","C10A","C9","C9A"))
+
+ggplot() +
+  geom_smooth(data = test,
+              method = "loess",
+              span = 0.8,
+              aes(x = Year,
+                  y = TSSAvg,
+                  color = StationID))
 ```
 
