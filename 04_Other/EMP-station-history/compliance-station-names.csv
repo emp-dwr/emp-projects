@@ -45,7 +45,8 @@ D28A,D28A,OBI,Rancho Del Rio
 D29,D29,PPT,Prisoner's Point
 D41,D41,,Pinole Point
 D41A,D41A,,San Pablo Bay
-D42,D42,,Mare Island
+D42,D42-NZ325,,Mare Island
+NZ325,D42-NZ325,,Mare Island
 DMC1,DMC1,DMC,Tracy Pumping Plant
 MD6,MD6,,Sycamore Slough
 MD7,MD7-MD7A,,Little Potato Slough
@@ -64,7 +65,6 @@ NZS42,S42-NZS42,,Volanti Slough
 NZ002,NZ002,,Glencove Harbor
 NZ004,NZ004,,Ozol Pier
 NZ032,NZ032,,Montezuma Slough
-NZ325,NZ325,,Rock Wall
 EZ2,EZ2,,EZ2
 EZ2-SJR,EZ2-SJR,,EZ6
 EZ6,EZ6,,EZ2 San Joaquin

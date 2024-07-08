@@ -82,6 +82,16 @@ df_zoop <- df_zoop %>%
   rename("Date" = "SampleDate") %>% 
   rename("StationID" = "DWRStationNo")
 
+# Update DWR Station IDs where they are missing from zoop metadata
+df_zoop <- df_zoop %>% 
+  mutate(StationID = case_when(StationNZ == "NZD14" ~ "D14A",
+                               StationNZ == "NZM06" ~ "MD6",
+                               StationNZ == "NZM07" ~ "MD7",
+                               StationNZ == "NZ040" ~ "D9",
+                               StationNZ == "NZD11" ~ "D11",
+                               StationNZ == "NZD15" ~ "D15",
+                               StationNZ == "NZP10" ~ "P10")) # only 1973
+
 # Remove non-compliance zooplankton stations
 df_zoop <- df_zoop %>%
   filter(!is.na(StationID)) %>% 
