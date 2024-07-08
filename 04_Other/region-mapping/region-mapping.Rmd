@@ -34,8 +34,8 @@ options(dplyr.summarise.inform = FALSE)
 ```{r import, echo=FALSE}
 # Import EMP regions from KML files made in Google Earth
 kml_files <- list.files(path = here("04_Other",
-                             "region-mapping",
-                             "data"),
+                                    "region-mapping",
+                                    "data"),
                         pattern = "\\.kml$",
                         full.names = TRUE)
 
@@ -123,9 +123,9 @@ ggsave(path = output,
 
 # Write out CSV of each station with name of region
 write_csv(sf_EMP, file = here("04_Other",
-               "region-mapping",
-               "output",
-               "compliance-monitoring-station-regions.csv"))
+                              "region-mapping",
+                              "output",
+                              "compliance-monitoring-station-regions.csv"))
 
 ```
 
