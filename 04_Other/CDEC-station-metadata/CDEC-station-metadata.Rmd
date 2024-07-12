@@ -1,0 +1,158 @@
+---
+title: "CDEC Station Metadata"
+author: "Ted Flynn"
+date: "2024-07-09"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+suppressWarnings(suppressMessages(library(tidyverse)))
+suppressWarnings(suppressMessages(library(lubridate)))
+suppressWarnings(suppressMessages(library(here)))
+suppressWarnings(suppressMessages(library(cder)))
+
+# Set output directory 
+output <- here("04_Other","CDEC-station-metadata","output")
+plots <- here("04_Other","CDEC-station-metadata","plots")
+
+# Suppress summarise info
+options(tidyverse.quiet = TRUE)
+options(dplyr.summarise.inform = FALSE)
+
+```
+
+## Import Data from Discrete Components
+```{r import, echo=TRUE}
+
+files <- here("04_Other","CDEC-station-metadata","data")
+
+file_list <- list.files(path = files, pattern = "\\.csv$",full.names = TRUE)
+
+df_CDEC <- file_list %>%
+  map_dfr(~ {
+    read_csv(.x, skip = 8, show_col_types = FALSE) %>%
+      mutate(StationID = tools::file_path_sans_ext(basename(.x)))
+  })
+
+```
+
+## Process Metadata
+```{r metadata, echo=TRUE}
+# Parse data availability column into Start and End dates
+df_CDEC <- df_CDEC %>% 
+  separate(`Data Available`, into = c("Start_Date", "End_Date"), sep = " to ") %>%
+  mutate(Start_Date = mdy(Start_Date),
+         End_Date = if_else(End_Date == "present", today(), mdy(End_Date)))
+
+# Convert sensor numbers into text
+df_CDEC$`Sensor Number` <- as.factor(df_CDEC$`Sensor Number`)
+
+```
+
+## Filter Out Stage and Flow Data
+```{r filter, echo = TRUE}
+# Filter down to data types
+df_WQ <- df_CDEC %>% 
+  select(`Sensor Description`:`Sensor Number`)
+
+df_WQ <- unique(df_WQ)
+
+# Remove non-sonde data by CDEC sensor number
+# EC = 5, 100
+# Water Temp = 25, 146
+# Turbidity = 27, 221
+# Chlorophyll = 28
+# DO = 61
+# pH = 62
+
+sonde_data <- c(5,100,25,146,27,221,28,61,62)
+
+# Filter main df for WQ only
+df_WQ <- df_CDEC %>% 
+  filter(`Sensor Number` %in% sonde_data)
+
+
+```
+
+## Summarize Data for Plotting
+```{r summarize, echo=TRUE}
+
+# Create new column for similar components with different names
+df_WQ <- df_WQ %>% 
+  mutate(Component = case_when(
+    str_detect(`Sensor Description`, "TEMPERATURE") ~ "Water Temp",
+    str_detect(`Sensor Description`, "CHLOROPHYLL") ~ "fChl-a",
+    str_detect(`Sensor Description`, "ELECTRICAL CONDUCTIVTY") ~ "SpCond",
+    str_detect(`Sensor Description`, "DISSOLVED OXYGEN") ~ "DO",
+    str_detect(`Sensor Description`, "PH VALUE") ~ "pH",
+    str_detect(`Sensor Description`, "TURBIDITY") ~ "Turbidity",
+    TRUE ~ NA  # Keep existing values if no match
+  ))
+
+# Summarize for earliest start dates across all WQ components
+df_WQ_sum <- df_WQ %>% 
+  group_by(StationID,Component) %>% 
+  summarize(Begin = min(Start_Date),
+            End = max(End_Date))
+
+n_distinct(df_WQ_sum$StationID)
+
+```
+
+## Plot Timeline for All Components
+```{r timelines, echo=TRUE, fig.height=}
+# Use the black-and-white theme
+theme_set(theme_bw())
+
+# Create a ggplot2 theme
+theme_update(
+    #panel.grid.major = element_blank(),
+    #panel.grid.minor = element_blank(),
+    plot.background = element_rect(fill = "white", colour = NA),
+    panel.background = element_rect(fill = "white", colour = NA),
+    panel.border = element_rect(fill = NA, colour = "black"),
+    strip.background = element_rect(fill = "gray", colour = "black"),
+    legend.position = "none",
+    legend.key = element_rect(fill = "white", colour = NA)
+    )
+
+# Create history plots for each year
+stations <- unique(df_WQ_sum$StationID) 
+stations <- sort(stations, decreasing = F, na.last = T)
+
+for (x in stations) {
+  df_temp <- df_WQ_sum %>%
+    filter(StationID == x)
+  
+  p <- ggplot(df_temp, 
+         aes(x = Begin, 
+             xend = End, 
+             y = Component,
+             yend = Component,
+             color = Component)) +
+    geom_segment(linewidth = 4) + 
+    scale_x_date(limits = c(ymd("1975-01-01", ymd("2025-01-01")))) +
+    scale_color_brewer(palette = "Set2") + 
+    labs(x = NULL,
+         y = NULL,
+         title = paste0("Continuous WQ Monitoring - ",x))
+  
+  
+  plot_height <- max(1, nrow(df_temp) * 0.5 + 1.5)
+
+  ggsave(path = plots,
+         filename = paste0(x,"-metadata-timeline-CDEC.png"),
+         device = "png",
+         scale=1.0,
+         units="cm",
+         height=plot_height,
+         width=11.43,
+         dpi="print")
+  
+  print(p)
+}
+
+
+```

@@ -1,0 +1,16 @@
+Station ID,CLL,Elevation,0 ft,,
+River Basin,DELTA,County,SOLANO,,
+Hydrologic Area,SACRAMENTO RIVER,Nearby City,COLLINSVILLE,,
+Latitude,38.073981°,Longitude,-121.850123°,,
+Operator,US Bureau of Reclamation,Maintenance,US Bureau of Reclamation,,
+,,,,,
+The following data types are available online. Select one of the links below to retrieve recent data.,,,,,
+,,,,,
+Sensor Description,Sensor Number,Duration,Plot,Data Collection,Data Available
+"ELECTRICAL CONDUCTIVTY MICRO S, uS/cm",100,(daily),(EL COND),COMPUTED,08/24/1999 to present
+"ELECTRICAL COND BOTTOM MICRO S, uS/cm",102,(event),(EL CONDB),SATELLITE,05/03/1999 to present
+"ELECTRICAL CONDUCTIVTY MICRO S, uS/cm",100,(event),(EL COND),SATELLITE,05/03/1999 to present
+"BATTERY VOLTAGE, VOLTS",14,(hourly),(BAT VOL),SATELLITE,02/23/1999 to present
+"ELECTRICAL COND BOTTOM MICRO S, uS/cm",102,(hourly),(EL CONDB),FROM 15-MINUTE DATA,02/23/1999 to present
+"ELECTRICAL CONDUCTIVTY MICRO S, uS/cm",100,(hourly),(EL COND),FROM 15-MINUTE DATA,03/31/1988 to present
+"TEMPERATURE, WATER, DEG F",25,(hourly),(TEMP W),SATELLITE,02/23/1999 to present

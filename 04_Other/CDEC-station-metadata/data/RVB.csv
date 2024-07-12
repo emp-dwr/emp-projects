@@ -1,0 +1,41 @@
+Station ID,RVB,Elevation,0 ft,,
+River Basin,SACRAMENTO RIVER,County,SOLANO,,
+Hydrologic Area,SACRAMENTO RIVER,Nearby City,RIO VISTA,,
+Latitude,38.159737°,Longitude,-121.686355°,,
+Operator,CA Dept of Water Resources/Div of Integrated Science and Eng,Maintenance,CA Dept of Water Resources/Div of Integrated Science and Eng,,
+,,,,,
+The following data types are available online. Select one of the links below to retrieve recent data.,,,,,
+,,,,,
+Sensor Description,Sensor Number,Duration,Plot,Data Collection,Data Available
+"ELECTRICAL CONDUCTIVTY MICRO S, uS/cm",100,(daily),(EL COND),COMPUTED,10/17/2003 to present
+"TEMPERATURE, WATER, DEG F",25,(daily),(TEMP W),COMPUTED,10/10/2010 to present
+"TEMPERATURE, WATER C, DEG C",146,(daily),(TEMPW C),COMPUTED,12/06/2011 to present
+"BATTERY VOLTAGE, VOLTS",14,(event),(BAT VOL),DATA XCHG-DWR ISE,09/23/2008 to present
+"CHLOROPHYLL, ug/L",28,(event),(CHLORPH),DATA XCHG-DWR ISE,09/23/2008 to present
+"ELECTRICAL CONDUCTIVTY MICRO S, uS/cm",100,(event),(EL COND),DATA XCHG-DWR ISE,09/23/2008 to present
+"RIVER STAGE, FEET",1,(event),(RIV STG),DATA XCHG-DWR ISE,02/24/1995 to present
+"SOLAR RADIATION, W/M^2",26,(event),(SOLAR R),DATA XCHG-DWR ISE,09/23/2008 to present
+"TEMPERATURE, AIR, DEG F",4,(event),(TEMP),DATA XCHG-DWR ISE,09/23/2008 to present
+"TEMPERATURE, WATER, DEG F",25,(event),(TEMP W),DATA XCHG-DWR ISE,09/23/2008 to present
+"WATER, DISSOLVED OXYGEN, MG/L",61,(event),(DIS OXY),DATA XCHG-DWR ISE,09/23/2008 to present
+"WATER, PH VALUE, PH",62,(event),(PH VAL),DATA XCHG-DWR ISE,09/23/2008 to present
+"WATER, TURBIDITY, NTU",27,(event),(TURB W),DATA XCHG-DWR ISE,09/23/2008 to present
+"WIND, DIRECTION, DEG",10,(event),(WIND DR),DATA XCHG-DWR ISE,09/23/2008 to present
+"WIND, SPEED, MPH",9,(event),(WIND SP),DATA XCHG-DWR ISE,09/23/2008 to present
+"CHLOROPHYLL, ug/L",28,(hourly),(CHLORPH),DATA XCHG-DWR ISE,01/29/2008 to present
+"ELECTRICAL CONDUCTIVTY MICRO S, uS/cm",100,(hourly),(EL COND),DATA XCHG-DWR ISE,10/17/2003 to present
+"RIVER STAGE, FEET",1,(hourly),(RIV STG),DATA XCHG-DWR ISE,01/01/1984 to present
+"SOLAR RADIATION, W/M^2",26,(hourly),(SOLAR R),DATA XCHG-DWR ISE,01/01/1995 to present
+"TEMPERATURE, AIR, DEG F",4,(hourly),(TEMP),DATA XCHG-DWR ISE,01/29/2008 to present
+"TEMPERATURE, WATER, DEG F",25,(hourly),(TEMP W),DATA XCHG-DWR ISE,05/30/2007 to present
+"WATER, DISSOLVED OXYGEN, MG/L",61,(hourly),(DIS OXY),DATA XCHG-DWR ISE,05/30/2007 to present
+"WATER, PH VALUE, PH",62,(hourly),(PH VAL),DATA XCHG-DWR ISE,01/29/2008 to present
+"WATER, TURBIDITY, NTU",27,(hourly),(TURB W),DATA XCHG-DWR ISE,01/29/2008 to present
+"WIND, DIRECTION, DEG",10,(hourly),(WIND DR),DATA XCHG-DWR ISE,01/29/2008 to present
+"WIND, SPEED, MPH",9,(hourly),(WIND SP),DATA XCHG-DWR ISE,01/01/1995 to present
+"FORECASTED STAGE, FEET",169,(hourly),(STAGE F),DATA XCHG-NWS,05/29/2012 to 05/29/2012
+"BATTERY VOLTAGE, VOLTS",14,(hourly),(BAT VOL),DATA XCHG-DWR ISE,01/01/1995 to 09/24/2008
+"RIVER STAGE NAVD88, FEET",141,(event),(RIVST88),COMPUTED,02/01/2006 to 09/30/2006
+"RIVER STAGE NAVD88, FEET",141,(hourly),(RIVST88),COMPUTED,02/01/2006 to 09/30/2006
+"ELECTRICAL CONDUCTIVTY MILLI S, mS/cm",5,(daily),(EL CND),COMPUTED,12/01/1995 to 10/17/2003
+"ELECTRICAL CONDUCTIVTY MILLI S, mS/cm",5,(hourly),(EL CND),SATELLITE,01/01/1984 to 10/16/2003

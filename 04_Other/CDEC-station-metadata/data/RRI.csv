@@ -1,0 +1,30 @@
+Station ID,RRI,Elevation,15 ft,,
+River Basin,SAN JOAQUIN RIVER,County,SAN JOAQUIN,,
+Hydrologic Area,SAN JOAQUIN RIVER,Nearby City,STOCKTON,,
+Latitude,37.963000°,Longitude,-121.365000°,,
+Operator,CA Dept of Water Resources/Div of Integrated Science and Eng,Maintenance,CA Dept of Water Resources/Div of Integrated Science and Eng,,
+,,,,,
+The following data types are available online. Select one of the links below to retrieve recent data.,,,,,
+,,,,,
+Sensor Description,Sensor Number,Duration,Plot,Data Collection,Data Available
+"ELECTRICAL CONDUCTIVTY MICRO S, uS/cm",100,(daily),(EL COND),COMPUTED,07/01/2004 to present
+"TEMPERATURE, AIR AVERAGE, DEG F",30,(daily),(TEMP AV),COMPUTED,10/01/2005 to present
+"TEMPERATURE, AIR MAXIMUM, DEG F",31,(daily),(TEMP MX),COMPUTED,10/01/2005 to present
+"TEMPERATURE, AIR MINIMUM, DEG F",32,(daily),(TEMP MN),COMPUTED,10/01/2005 to present
+"TEMPERATURE, WATER, DEG F",25,(daily),(TEMP W),COMPUTED,05/01/2004 to present
+"BATTERY VOLTAGE, VOLTS",14,(event),(BAT VOL),SATELLITE,08/28/2000 to present
+"CHLOROPHYLL, ug/L",28,(event),(CHLORPH),SATELLITE,11/13/2001 to present
+"ELECTRICAL CONDUCTIVTY MICRO S, uS/cm",100,(event),(EL COND),SATELLITE,11/26/2002 to present
+"RIVER STAGE, FEET",1,(event),(RIV STG),SATELLITE,08/28/2000 to present
+"SOLAR RADIATION, W/M^2",26,(event),(SOLAR R),SATELLITE,01/23/2008 to present
+"TEMPERATURE, AIR, DEG F",4,(event),(TEMP),SATELLITE,08/28/2000 to present
+"TEMPERATURE, WATER, DEG F",25,(event),(TEMP W),SATELLITE,08/28/2000 to present
+"WATER, DISSOLVED OXYGEN, MG/L",61,(event),(DIS OXY),SATELLITE,08/28/2000 to present
+"WATER, PH VALUE, PH",62,(event),(PH VAL),SATELLITE,12/06/2007 to present
+"WATER, TURBIDITY, NTU",27,(event),(TURB W),SATELLITE,11/13/2001 to present
+"WIND, DIRECTION, DEG",10,(event),(WIND DR),SATELLITE,01/23/2008 to present
+"WIND, SPEED, MPH",9,(event),(WIND SP),SATELLITE,01/23/2008 to present
+"FLOW, RIVER DISCHARGE, CFS",20,(event),(FLOW),SATELLITE,08/28/2000 to 09/07/2018
+"WATER, VELOCITY, FT/SEC",21,(event),(VLOCITY),SATELLITE,08/28/2000 to 09/07/2018
+"RIVER STAGE NAVD88, FEET",141,(event),(RIVST88),COMPUTED,02/02/2006 to 09/30/2006
+"ELECTRICAL CONDUCTIVTY MILLI S, mS/cm",5,(event),(EL CND),SATELLITE,08/28/2000 to 11/26/2002

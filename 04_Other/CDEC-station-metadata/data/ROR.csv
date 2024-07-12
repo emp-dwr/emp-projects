@@ -1,0 +1,20 @@
+Station ID,ROR,Elevation,10 ft,,
+River Basin,DELTA,County,SOLANO,,
+Hydrologic Area,SACRAMENTO RIVER,Nearby City,MONTEZUMA,,
+Latitude,38.093100°,Longitude,-121.887500°,,
+Operator,CA Dept of Water Resources/Div of Integrated Science and Eng,Maintenance,CA Dept of Water Resources/Div of Integrated Science and Eng,,
+,,,,,
+The following data types are available online. Select one of the links below to retrieve recent data.,,,,,
+,,,,,
+Sensor Description,Sensor Number,Duration,Plot,Data Collection,Data Available
+"BATTERY VOLTAGE, VOLTS",14,(event),(BAT VOL),DATA XCHG-DWR ISE,05/28/2009 to present
+"RESERVOIR ELEVATION, FEET",6,(event),(RES ELE),DATA XCHG-DWR ISE,05/28/2009 to present
+"BATTERY VOLTAGE, VOLTS",14,(hourly),(BAT VOL),DATA XCHG-DWR ISE,01/01/1995 to present
+"RESERVOIR ELEVATION, FEET",6,(hourly),(RES ELE),DATA XCHG-DWR ISE,10/06/2005 to present
+"ELECTRICAL CONDUCTIVTY MICRO S, uS/cm",100,(event),(EL COND),DATA XCHG-DWR ISE,05/28/2009 to 10/05/2021
+"TEMPERATURE, WATER, DEG F",25,(event),(TEMP W),DATA XCHG-DWR ISE,05/28/2009 to 10/05/2021
+"ELECTRICAL CONDUCTIVTY MICRO S, uS/cm",100,(hourly),(EL COND),DATA XCHG-DWR ISE,05/15/2008 to 10/05/2021
+"TEMPERATURE, WATER, DEG F",25,(hourly),(TEMP W),DATA XCHG-DWR ISE,05/15/2008 to 10/05/2021
+"RIVER STAGE, FEET",1,(event),(RIV STG),DATA XCHG-DWR ISE,05/28/2009 to 10/07/2011
+"RIVER STAGE, FEET",1,(hourly),(RIV STG),DATA XCHG-DWR ISE,01/01/1987 to 10/07/2011
+"ELECTRICAL CONDUCTIVTY MILLI S, mS/cm",5,(hourly),(EL CND),MICROWAVE,01/09/1987 to 01/20/1997

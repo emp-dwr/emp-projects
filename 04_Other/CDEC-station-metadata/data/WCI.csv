@@ -1,0 +1,18 @@
+Station ID,WCI,Elevation,0 ft,,
+River Basin,SAN JOAQUIN RIVER,County,CONTRA COSTA,,
+Hydrologic Area,SAN JOAQUIN RIVER,Nearby City,BYRON,,
+Latitude,37.831600°,Longitude,-121.554000°,,
+Operator,CA Dept of Water Resources/North Central Region Office,Maintenance,CA Dept of Water Resources/North Central Region Office,,
+,,,,,
+The following data types are available online. Select one of the links below to retrieve recent data.,,,,,
+,,,,,
+Sensor Description,Sensor Number,Duration,Plot,Data Collection,Data Available
+"CHLOROPHYLL, ug/L",28,(event),(CHLORPH),DATA XCHG-DWR NCRO,04/11/2018 to present
+"ELECTRICAL CONDUCTIVTY MICRO S, uS/cm",100,(event),(EL COND),DATA XCHG-DWR NCRO,04/11/2018 to present
+"FLOW, RIVER DISCHARGE, CFS",20,(event),(FLOW),DATA XCHG-DWR NCRO,06/30/2009 to present
+"RIVER STAGE, FEET",1,(event),(RIV STG),DATA XCHG-DWR NCRO,09/15/2017 to present
+"TEMPERATURE, WATER, DEG F",25,(event),(TEMP W),DATA XCHG-DWR NCRO,09/20/2011 to present
+"WATER, DISSOLVED OXYGEN, MG/L",61,(event),(DIS OXY),DATA XCHG-DWR NCRO,04/11/2018 to present
+"WATER, PH VALUE, PH",62,(event),(PH VAL),DATA XCHG-DWR NCRO,04/11/2018 to present
+"WATER, TURBIDITY FNU, FNU",221,(event),(TURB WF),DATA XCHG-DWR NCRO,04/11/2018 to present
+"WATER, VELOCITY, FT/SEC",21,(event),(VLOCITY),DATA XCHG-DWR NCRO,06/30/2009 to present

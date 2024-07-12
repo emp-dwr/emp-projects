@@ -1,0 +1,42 @@
+Station ID,MAL,Elevation,0 ft,,
+River Basin,SACRAMENTO RIVER,County,CONTRA COSTA,,
+Hydrologic Area,SACRAMENTO RIVER,Nearby City,PITTSBURG,,
+Latitude,38.042805°,Longitude,-121.920090°,,
+Operator,CA Dept of Water Resources/Div of Integrated Science and Eng,Maintenance,CA Dept of Water Resources/Div of Integrated Science and Eng,,
+,,,,,
+The following data types are available online. Select one of the links below to retrieve recent data.,,,,,
+,,,,,
+Sensor Description,Sensor Number,Duration,Plot,Data Collection,Data Available
+"ELECTRICAL CONDUCTIVTY MICRO S, uS/cm",100,(daily),(EL COND),COMPUTED,01/18/2008 to present
+"BATTERY VOLTAGE, VOLTS",14,(event),(BAT VOL),DATA XCHG-DWR ISE,10/03/2008 to present
+"CHLOROPHYLL, ug/L",28,(event),(CHLORPH),DATA XCHG-DWR ISE,10/03/2008 to present
+"ELECTRICAL COND BOTTOM MICRO S, uS/cm",102,(event),(EL CONDB),DATA XCHG-DWR ISE,10/03/2008 to present
+"ELECTRICAL CONDUCTIVTY MICRO S, uS/cm",100,(event),(EL COND),DATA XCHG-DWR ISE,10/03/2008 to present
+"FLOW, RIVER DISCHARGE, CFS",20,(event),(FLOW),DATA XCHG-USGS,07/08/2011 to present
+"RIVER STAGE, FEET",1,(event),(RIV STG),DATA XCHG-DWR ISE,10/03/2008 to present
+"SOLAR RADIATION, W/M^2",26,(event),(SOLAR R),DATA XCHG-DWR ISE,10/03/2008 to present
+"TEMPERATURE, AIR, DEG F",4,(event),(TEMP),DATA XCHG-DWR ISE,10/03/2008 to present
+"TEMPERATURE, WATER, DEG F",25,(event),(TEMP W),DATA XCHG-DWR ISE,10/03/2008 to present
+"WATER, DISSOLVED OXYGEN, MG/L",61,(event),(DIS OXY),DATA XCHG-DWR ISE,10/03/2008 to present
+"WATER, PH VALUE, PH",62,(event),(PH VAL),DATA XCHG-DWR ISE,10/03/2008 to present
+"WATER, TURBIDITY, NTU",27,(event),(TURB W),DATA XCHG-DWR ISE,10/03/2008 to present
+"WATER, VELOCITY, FT/SEC",21,(event),(VLOCITY),DATA XCHG-USGS,07/08/2011 to present
+"WIND, DIRECTION, DEG",10,(event),(WIND DR),DATA XCHG-DWR ISE,10/03/2008 to present
+"WIND, SPEED, MPH",9,(event),(WIND SP),DATA XCHG-DWR ISE,10/03/2008 to present
+"CHLOROPHYLL, ug/L",28,(hourly),(CHLORPH),SATELLITE,06/13/1986 to present
+"ELECTRICAL COND BOTTOM MICRO S, uS/cm",102,(hourly),(EL CONDB),SATELLITE,01/17/2008 to present
+"ELECTRICAL CONDUCTIVTY MICRO S, uS/cm",100,(hourly),(EL COND),SATELLITE,01/17/2008 to present
+"RIVER STAGE, FEET",1,(hourly),(RIV STG),SATELLITE,10/01/1987 to present
+"SOLAR RADIATION, W/M^2",26,(hourly),(SOLAR R),SATELLITE,01/25/2008 to present
+"TEMPERATURE, AIR, DEG F",4,(hourly),(TEMP),SATELLITE,01/25/2008 to present
+"TEMPERATURE, WATER, DEG F",25,(hourly),(TEMP W),SATELLITE,06/13/1986 to present
+"WATER, DISSOLVED OXYGEN, MG/L",61,(hourly),(DIS OXY),SATELLITE,06/18/2007 to present
+"WATER, PH VALUE, PH",62,(hourly),(PH VAL),SATELLITE,01/17/2008 to present
+"WATER, TURBIDITY, NTU",27,(hourly),(TURB W),SATELLITE,01/17/2008 to present
+"WIND, DIRECTION, DEG",10,(hourly),(WIND DR),SATELLITE,01/22/2008 to present
+"WIND, SPEED, MPH",9,(hourly),(WIND SP),SATELLITE,01/22/2008 to present
+"BATTERY VOLTAGE, VOLTS",14,(hourly),(BAT VOL),SATELLITE,01/01/1995 to 10/01/2008
+"ELECTRICAL CONDUCTIVTY MILLI S, mS/cm",5,(daily),(EL CND),COMPUTED,10/01/1995 to 01/17/2008
+"ELECTRICAL COND BOTTOM MILLI S, mS/cm",92,(hourly),(EL CONDB),MICROWAVE,02/01/1995 to 01/17/2008
+"ELECTRICAL CONDUCTIVTY MILLI S, mS/cm",5,(hourly),(EL CND),MICROWAVE,01/01/1984 to 01/17/2008
+"RIVER STAGE NAVD88, FEET",141,(hourly),(RIVST88),COMPUTED,02/02/2006 to 09/30/2006

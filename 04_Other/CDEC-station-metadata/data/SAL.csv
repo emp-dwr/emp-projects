@@ -1,0 +1,14 @@
+Station ID,SAL,Elevation,0 ft,,
+River Basin,DELTA,County,SAN JOAQUIN,,
+Hydrologic Area,SACRAMENTO RIVER,Nearby City,RIO VISTA,,
+Latitude,38.103301°,Longitude,-121.591315°,,
+Operator,US Bureau of Reclamation,Maintenance,US Bureau of Reclamation,,
+,,,,,
+The following data types are available online. Select one of the links below to retrieve recent data.,,,,,
+,,,,,
+Sensor Description,Sensor Number,Duration,Plot,Data Collection,Data Available
+"ELECTRICAL CONDUCTIVTY MICRO S, uS/cm",100,(daily),(EL COND),COMPUTED,08/24/1999 to present
+"ELECTRICAL CONDUCTIVTY MICRO S, uS/cm",100,(event),(EL COND),SATELLITE,03/27/1999 to present
+"BATTERY VOLTAGE, VOLTS",14,(hourly),(BAT VOL),SATELLITE,02/23/1999 to present
+"ELECTRICAL CONDUCTIVTY MICRO S, uS/cm",100,(hourly),(EL COND),FROM 15-MINUTE DATA,03/31/1988 to present
+"TEMPERATURE, WATER, DEG F",25,(hourly),(TEMP W),SATELLITE,02/23/1999 to present

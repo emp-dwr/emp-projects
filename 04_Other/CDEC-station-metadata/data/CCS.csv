@@ -1,0 +1,14 @@
+Station ID,CCS,Elevation,0 ft,,
+River Basin,DELTA,County,SOLANO,,
+Hydrologic Area,SACRAMENTO RIVER,Nearby City,RIO VISTA,,
+Latitude,38.291800°,Longitude,-121.742000°,,
+Operator,US Bureau of Reclamation,Maintenance,.None Specified,,
+,,,,,
+The following data types are available online. Select one of the links below to retrieve recent data.,,,,,
+,,,,,
+Sensor Description,Sensor Number,Duration,Plot,Data Collection,Data Available
+"ELECTRICAL CONDUCTIVTY MICRO S, uS/cm",100,(daily),(EL COND),COMPUTED,08/24/1999 to 01/01/2015
+"ELECTRICAL CONDUCTIVTY MICRO S, uS/cm",100,(event),(EL COND),SATELLITE,05/03/1999 to 01/01/2015
+"BATTERY VOLTAGE, VOLTS",14,(hourly),(BAT VOL),SATELLITE,02/22/1999 to 01/01/2015
+"ELECTRICAL CONDUCTIVTY MICRO S, uS/cm",100,(hourly),(EL COND),FROM 15-MINUTE DATA,03/31/1988 to 01/01/2015
+"TEMPERATURE, WATER, DEG F",25,(hourly),(TEMP W),SATELLITE,02/22/1999 to 01/01/2015

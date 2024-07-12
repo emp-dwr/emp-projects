@@ -1,0 +1,26 @@
+Station ID,BKS,Elevation,0 ft,,
+River Basin,DELTA,County,SOLANO,,
+Hydrologic Area,SAN FRANCISCO BAY,Nearby City,RIO VISTA,,
+Latitude,38.275900°,Longitude,-121.796500°,,
+Operator,CA Dept of Water Resources/Operations and Maintenance,Maintenance,CA Dept of Water Resources/Operations and Maintenance,,
+,,,,,
+The following data types are available online. Select one of the links below to retrieve recent data.,,,,,
+,,,,,
+Sensor Description,Sensor Number,Duration,Plot,Data Collection,Data Available
+"DISCHARGE, PUMPING, CFS",70,(daily),(DC PUMP),DATA XCHG-DWR O&M,04/08/2008 to present
+"ELECTRICAL CONDUCTIVTY MICRO S, uS/cm",100,(daily),(EL COND),COMPUTED,02/03/1989 to present
+"OUTFLOW, VOLUME, AF",272,(daily),(OUTFLWV),COMPUTED,10/01/2019 to present
+"TEMPERATURE, WATER C, DEG C",146,(daily),(TEMPW C),DATA XCHG-DWR O&M,09/15/2009 to present
+"WATER, PH VALUE, PH",62,(daily),(PH VAL),COMPUTED,10/30/1992 to present
+"WATER, TURBIDITY, NTU",27,(daily),(TURB W),COMPUTED,06/01/1989 to present
+"ELECTRICAL CONDUCTIVTY MICRO S, uS/cm",100,(hourly),(EL COND),DATA XCHG-DWR O&M,02/03/1989 to present
+"OUTFLOW, VOLUME, AF",272,(hourly),(OUTFLWV),COMPUTED,04/29/2021 to present
+"RESERVOIR OUTFLOW, CFS",23,(hourly),(OUTFLOW),DATA XCHG-DWR O&M,04/29/2021 to present
+"TEMPERATURE, WATER C, DEG C",146,(hourly),(TEMPW C),DATA XCHG-DWR O&M,09/15/2009 to present
+"WATER, PH VALUE, PH",62,(hourly),(PH VAL),DATA XCHG-DWR O&M,10/30/1992 to present
+"WATER, TURBIDITY, NTU",27,(hourly),(TURB W),DATA XCHG-DWR O&M,06/01/1989 to present
+"WATER, DISSOLVED BROMIDE, Br, mg/L",149,(daily),(Diss Br),DATA XCHG-DWR O&M,01/29/2009 to 01/31/2011
+"TEMPERATURE, WATER, DEG F",25,(daily),(TEMP W),COMPUTED,06/01/1989 to 09/15/2009
+"TEMPERATURE, WATER, DEG F",25,(hourly),(TEMP W),DATA XCHG-DWR O&M,06/01/1989 to 09/15/2009
+"FLUORESCES N RHODAMINE/CHLOROP, FLUORO",114,(daily),(FLUORO),COMPUTED,06/01/1989 to 10/31/2002
+"FLUORESCES N RHODAMINE/CHLOROP, FLUORO",114,(hourly),(FLUORO),DATA XCHG-DWR O&M,06/01/1989 to 10/31/2002
