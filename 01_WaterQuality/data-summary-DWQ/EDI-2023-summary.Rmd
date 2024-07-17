@@ -1,0 +1,69 @@
+---
+title: "Discrete WQ Summary for EDI 2023 publication"
+author: "Ted Flynn"
+date: "2024-07-12"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+suppressWarnings(suppressMessages(library(tidyverse)))
+suppressWarnings(suppressMessages(library(lubridate)))
+suppressWarnings(suppressMessages(library(janitor)))
+suppressWarnings(suppressMessages(library(here)))
+suppressWarnings(suppressMessages(library(skimr)))
+suppressWarnings(suppressMessages(library(mice)))
+
+# Set visual theme in ggplot
+theme_set(theme_bw())
+
+# Suppress summarise info
+options(tidyverse.quiet = TRUE)
+options(dplyr.summarise.inform = FALSE)
+
+```
+
+## Import Data from Discrete Components
+```{r discrete, echo=FALSE}
+# Import discrete Water quality data -------------------------------------------
+# Read in CSV downloaded from EDI (data through 2023)
+df_DWQ <- read_csv(file = here("04_Other",
+                   "EMP-station-history",
+                   "data",
+                   "EMP_DWQ_1975_2023.csv"),
+                   show_col_types = FALSE) %>% 
+  mutate(Year = year(Date)) %>% 
+  mutate(Month = month(Date, label = TRUE)) %>% 
+  rename("StationID" = "Station")
+
+```
+
+## Summarize Data
+```{r summarize, echo=FALSE}
+
+summary <- df_DWQ %>% 
+  #group_by(StationID) %>% 
+  skim() %>% 
+  focus(n_missing,numeric.mean)
+
+# Print out the fields with the least number of missing fields
+fields <- summary %>% 
+  filter(n_missing > 0 & n_missing < 3000) %>% 
+  as_tibble()
+
+fields <- fields$skim_variable
+
+df_DWQ_sel <- df_DWQ %>% 
+  select(StationID,Date,all_of(fields))
+
+summary2 <- df_DWQ_sel %>% 
+  group_by(StationID) %>% 
+  select(!c("Date","Time")) %>% 
+  skim() %>% 
+  focus(StationID,n_missing,numeric.mean)
+
+test <- df_DWQ %>% filter(StationID %in% c("D41","D41A","NZ002","NZ004","NZ325")) %>% select(StationID:Month,DissNitrateNitrite,SampleDescription)
+
+```
+

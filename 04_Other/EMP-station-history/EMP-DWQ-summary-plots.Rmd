@@ -12,9 +12,6 @@ suppressWarnings(suppressMessages(library(tidyverse)))
 suppressWarnings(suppressMessages(library(lubridate)))
 suppressWarnings(suppressMessages(library(janitor)))
 suppressWarnings(suppressMessages(library(here)))
-suppressWarnings(suppressMessages(library(skimr)))
-suppressWarnings(suppressMessages(library(mice)))
-suppressWarnings(suppressMessages(library(vegan)))
 
 # Set output directory 
 plots <- here("04_Other","EMP-station-history","plots-WQ")
