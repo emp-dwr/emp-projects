@@ -1,7 +1,7 @@
 ---
 title: "EMP Station History"
 author: "Ted Flynn"
-date: "2024-06-7"
+date: "2024-06-07"
 output: html_document
 ---
 
@@ -105,6 +105,8 @@ df_ben <- read_csv(file = here("04_Other",
                                "data",
                                "DWR Benthic CPUE data 1975-2023.csv"), 
                    show_col_types = FALSE)
+
+
 
 # Select columns needed, rename headers to match others
 df_ben <- df_ben %>% 

@@ -1,0 +1,469 @@
+---
+title: "Discrete WQ Summary Plots"
+author: "Ted Flynn"
+date: "2024-07-12"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+suppressWarnings(suppressMessages(library(tidyverse)))
+suppressWarnings(suppressMessages(library(lubridate)))
+suppressWarnings(suppressMessages(library(janitor)))
+suppressWarnings(suppressMessages(library(here)))
+suppressWarnings(suppressMessages(library(skimr)))
+suppressWarnings(suppressMessages(library(mice)))
+suppressWarnings(suppressMessages(library(vegan)))
+
+# Set output directory 
+plots <- here("04_Other","EMP-station-history","plots-WQ")
+
+# Set visual theme in ggplot
+theme_set(theme_bw())
+
+# Suppress summarise info
+options(tidyverse.quiet = TRUE)
+options(dplyr.summarise.inform = FALSE)
+
+```
+
+## Import Data from Discrete Components
+```{r discrete, echo=FALSE}
+# Import discrete Water quality data -------------------------------------------
+# Read in CSV downloaded from EDI (data through 2023)
+df_DWQ <- read_csv(file = here("04_Other",
+                   "EMP-station-history",
+                   "data",
+                   "EMP_DWQ_1975_2023.csv"),
+                   show_col_types = FALSE) %>% 
+  mutate(Year = year(Date)) %>% 
+  mutate(Month = month(Date, label = TRUE)) %>% 
+  rename("StationID" = "Station")
+
+```
+
+## Summarize Data
+```{r summarize, echo=FALSE}
+
+summary <- df_DWQ %>% 
+  #group_by(StationID) %>% 
+  skim() %>% 
+  focus(n_missing,numeric.mean)
+
+# Print out the fields with the least number of missing fields
+fields <- summary %>% 
+  filter(n_missing > 0 & n_missing < 3000) %>% 
+  as_tibble()
+
+fields <- fields$skim_variable
+
+df_DWQ_sel <- df_DWQ %>% 
+  select(StationID,Date,all_of(fields))
+
+summary2 <- df_DWQ_sel %>% 
+  group_by(StationID) %>% 
+  select(!c("Date","Time")) %>% 
+  skim() %>% 
+  focus(StationID,n_missing,numeric.mean)
+
+test <- df_DWQ %>% filter(StationID %in% c("D41","D41A","NZ002","NZ004","NZ325")) %>% select(StationID:Month,DissNitrateNitrite,SampleDescription)
+
+```
+
+
+## Add Metadata for Grouping
+```{r metadata}
+df_data <- read_csv(file = here("04_Other",
+                                "EMP-station-history",
+                                "data",
+                                "compliance-monitoring-station-metadata.csv"),
+                    show_col_types = FALSE)
+
+# Select only the discrete WQ data
+df_data <- df_data %>% 
+  filter(Component == "Discrete WQ") %>% 
+  select(!`CDEC ID`)
+
+# Add regional abbreviation
+df_data <- df_data %>% 
+  mutate(RegionAbbv = case_when(Region == "San Pablo Bay" ~ "SPB",
+                                Region == "Carquinez Strait" ~ "CS",
+                                Region == "Suisun & Grizzly Bay" ~ "SGB",
+                                Region == "Suisun Marsh" ~ "SM",
+                                Region == "Confluence" ~ "CF",
+                                Region == "Low Salinity Zone" ~ "LSZ",
+                                Region == "North Delta" ~ "ND",
+                                Region == "Central Delta" ~ "CD",
+                                Region == "South Delta" ~ "SD"))
+  
+# Add to water quality data frame
+df_DWQ <- left_join(df_DWQ,df_data, join_by(StationID))
+
+# Add seasonal data
+df_DWQ <- df_DWQ %>% 
+  mutate(Season = case_when(Month %in% c("Dec","Jan","Feb") ~ "Winter",
+                            Month %in% c("Mar","Apr","May") ~ "Spring",
+                            Month %in% c("Jun","Jul","Aug") ~ "Summer",
+                            Month %in% c("Sep","Oct","Nov") ~ "Fall"))
+
+# Add Water Year Index data
+# Calculate water year for each row (new WY starts October 1)
+df_DWQ <- df_DWQ %>% 
+  mutate(WaterYear = case_when(Month %in% c("Oct","Nov","Dec") ~ Year + 1,
+                               TRUE ~ Year)) %>% 
+  relocate(Year,WaterYear, Month, .after = Date)
+
+# Import classification of Water Years
+df_WY <- read_csv(file = here("04_Other",
+                              "EMP-station-history",
+                              "data",
+                              "water-year-assignments.csv"),
+                  show_col_types = FALSE) %>% 
+  rename("WaterYearType" = "Yr_type") %>% 
+  rename("WaterYear" = "Year") %>% 
+  select(!Index)
+
+# Substitute in abbreviations
+df_WY <- df_WY %>% 
+  mutate(WaterYearTypeAbbv = case_when(WaterYearType == "Wet" ~ "W",
+                                       WaterYearType == "Above Normal" ~ "AN",
+                                       WaterYearType == "Below Normal" ~ "BN",
+                                       WaterYearType == "Dry" ~ "D",
+                                       WaterYearType == "Critical" ~ "C"))
+# Add to WQ df
+df_DWQ <- left_join(df_DWQ, df_WY, join_by(WaterYear)) %>% 
+  relocate(WaterYearType,WaterYearTypeAbbv, .after = WaterYear)
+
+# Remove dates from WY 2024 (not classified yet)
+df_DWQ <- df_DWQ %>% filter(!(Date >= ymd("2023-10-01")))
+
+# Get seasons to display correctly
+df_DWQ$Season <- factor(df_DWQ$Season, 
+                        levels = c("Winter","Spring","Summer","Fall"))
+
+# Get regions to order correctly (West to East)
+df_DWQ$Region <- factor(df_DWQ$Region, 
+                        levels = c("San Pablo Bay",
+                                   "Carquinez Strait",
+                                   "Suisun & Grizzly Bay",
+                                   "Suisun Marsh",
+                                   "Confluence",
+                                   "Low Salinity Zone",
+                                   "North Delta",
+                                   "Central Delta",
+                                   "South Delta"
+                        ))
+
+df_DWQ$RegionAbbv <- factor(df_DWQ$RegionAbbv, 
+                            levels = c("SPB","CS","SGB","SM","CF","LSZ","ND","CD","SD"))
+
+# Order WY Index
+df_DWQ$WaterYearType <- factor(df_DWQ$WaterYearType,
+                               levels = c("Wet",
+                                          "Above Normal",
+                                          "Below Normal",
+                                          "Dry",
+                                          "Critical"))
+
+df_DWQ$WaterYearTypeAbbv <- factor(df_DWQ$WaterYearTypeAbbv,
+                                   levels = c("W","AN","BN","D","C"))
+
+```
+
+## Summarize Discrete Data by Month
+```{r summarize}
+# Summarize WQ data ------------------------------------------------------------
+# Calculate Seasonal Averages
+df_DWQ_sum <- df_DWQ %>% 
+  filter(!Status == "Inactive") %>% 
+  group_by(StationID,Year,Season,Region,RegionAbbv,WaterYearType,WaterYearTypeAbbv,ShortName,CombinedID,Status) %>% 
+  summarize(Chla_Med = median(Chla, na.rm = TRUE),
+            DO_Med = median(DOSurface, na.rm = TRUE),
+            NO3NO2_Med = median(DissNitrateNitrite, na.rm = TRUE),
+            SpC_Med = median(SpCndSurface, na.rm = TRUE)) %>% 
+  ungroup()
+
+df_DWQ_sum <- pivot_longer(df_DWQ_sum, 
+                           cols = Chla_Med:SpC_Med,
+                           names_to = "Analyte",
+                           values_to = "Value")
+
+# Calculate Yearly Averages
+df_DWQ_yr <- df_DWQ %>% 
+  filter(!Status == "Inactive") %>% 
+  group_by(StationID,WaterYear,CombinedID,Status,Region,RegionAbbv,WaterYearType,WaterYearTypeAbbv) %>% 
+  summarize(Chla_Med = median(Chla, na.rm = TRUE),
+            DO_Med = median(DOSurface, na.rm = TRUE),
+            NO3NO2_Med = median(DissNitrateNitrite, na.rm = TRUE),
+            SpC_Med = median(SpCndSurface, na.rm = TRUE)) %>% 
+  ungroup()
+
+df_DWQ_yr <- pivot_longer(df_DWQ_yr, 
+                           cols = Chla_Med:SpC_Med,
+                           names_to = "Analyte",
+                           values_to = "Value")
+
+```
+
+## Plot data at Station Level
+```{r plots}
+# Use the black-and-white theme
+theme_set(theme_bw())
+
+# Create a ggplot2 theme
+theme_update(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    plot.background = element_rect(fill = "white", colour = NA),
+    panel.background = element_rect(fill = "white", colour = NA),
+    panel.border = element_rect(fill = NA, colour = "black"),
+    strip.background = element_rect(fill = "gray", colour = "black"),
+    legend.position = "right",
+    legend.key = element_rect(fill = "white", colour = NA)
+    )
+
+# Create history plots for each year
+regions <- unique(df_DWQ_sum$Region) 
+regions <- sort(regions, decreasing = F, na.last = T)
+
+# Create Overall Regional DWQ Plots
+for (x in regions) {
+  df_temp <- df_DWQ_sum %>%
+    filter(Region == x)
+  
+  p <- ggplot(df_temp, 
+         aes(y = Value, 
+             x = CombinedID,
+             color = Season)) +
+    geom_boxplot(width = 0.6) + 
+    scale_color_manual(values = c("blue3","green4","yellow3","brown4")) + 
+    #scale_color_brewer(palette = "Set1") + 
+    labs(x = NULL,
+         y = "Analyte Concentration",
+         title = paste0("Regional Water Quality - ",x," - 1975-2023")) +
+    facet_wrap(Analyte ~ ., ncol = 1, scales = "free_y")
+
+  ggsave(path = plots,
+         filename = paste0(x,"-DWQ-by-Region-1975-2023.png"),
+         device = "png",
+         scale=1.0,
+         units="in",
+         height=8,
+         width=6.5,
+         dpi="print")
+  
+  print(p)
+}
+
+# Create TSS Plots
+for (x in regions) {
+  df_temp <- df_DWQ_sum %>%
+    filter(Region == x)
+  
+  p <- ggplot(df_temp, 
+         aes(y = TSS_Mean, 
+             x = Year,
+             color = Season)) +
+    geom_point(size = 2) + 
+    scale_color_manual(values = c("blue3","green4","yellow3","brown4")) + 
+    labs(x = NULL,
+         y = "Total Suspended Sediments (mean)",
+         title = paste0("Mean TSS - ",x," - 1975-2023")) +
+    facet_wrap(CombinedID ~ ., ncol = 2)
+
+
+  ggsave(path = plots,
+         filename = paste0(x,"-TSS-1975-2023.png"),
+         device = "png",
+         scale=1.0,
+         units="in",
+         height=6,
+         width=6.5,
+         dpi="print")
+  
+  print(p)
+}
+
+# Create NO3+NO2 Plots
+for (x in regions) {
+  df_temp <- df_DWQ_sum %>%
+    filter(Region == x)
+  
+  p <- ggplot(df_temp, 
+         aes(y = NO3NO2_Mean, 
+             x = WaterYearTypeAbbv,
+             color = Season)) +
+    geom_point(size = 2) + 
+    scale_color_manual(values = c("blue3","green4","yellow3","brown4")) + 
+    labs(x = NULL,
+         y = "Mean Diss. NO3+NO2 (mg/L)",
+         title = paste0("Mean NO3+NO2 - ",x," - 1975-2023")) +
+    facet_wrap(CombinedID ~ ., ncol = 3)
+
+
+  ggsave(path = plots,
+         filename = paste0(x,"-NO3-NO2-1975-2023.png"),
+         device = "png",
+         scale=1.0,
+         units="in",
+         height=6,
+         width=6.5,
+         dpi="print")
+  
+  print(p)
+}
+
+# Create TDS Plots
+for (x in regions) {
+  df_temp <- df_DWQ_sum %>%
+    filter(Region == x)
+  
+  p <- ggplot(df_temp, 
+         aes(y = TDS_Mean, 
+             x = Year,
+             color = Season)) +
+    geom_point(size = 2) + 
+    scale_color_manual(values = c("blue3","green4","yellow3","brown4")) + 
+    labs(x = NULL,
+         y = "Total Diss. Solids (mean)",
+         title = paste0("Mean TDS - ",x," - 1975-2023")) +
+    facet_wrap(CombinedID ~ ., ncol = 2)
+
+
+  ggsave(path = plots,
+         filename = paste0(x,"-TDS-1975-2023.png"),
+         device = "png",
+         scale=1.0,
+         units="in",
+         height=6,
+         width=6.5,
+         dpi="print")
+  
+  print(p)
+}
+
+```
+
+## Plot Regional Data
+```{r regional plots, echo=TRUE}
+# Use the black-and-white theme
+theme_set(theme_bw())
+
+# Create a ggplot2 theme
+theme_update(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    plot.background = element_rect(fill = "white", colour = NA),
+    panel.background = element_rect(fill = "white", colour = NA),
+    panel.border = element_rect(fill = NA, colour = "black"),
+    strip.background = element_rect(fill = "gray", colour = "black"),
+    legend.position = "right",
+    legend.key = element_rect(fill = "white", colour = NA)
+    )
+
+# Plot by WY Type
+p <- ggplot(df_DWQ, 
+            aes(x = WaterYear, 
+                y = SpCndSurface,
+                )) +
+  geom_boxplot(width = 0.5) + 
+  scale_color_manual(values = c("blue3","green4","yellow3","brown4")) + 
+  labs(x = NULL,
+       y = "Chlorophyll-a (ug/L)",
+       title = paste0("Chl-a by Water Year Type (1975-2023)")) +
+  facet_wrap(WaterYearType ~ ., ncol = 2)
+
+print(p)
+
+ggsave(path = plots,
+       filename = paste0("Chla-by-WY-Type.png"),
+       device = "png",
+       scale=1.0,
+       units="in",
+       height=6,
+       width=6.5,
+       dpi="print")
+
+# Plot Yearly Median by 
+p <- ggplot(data = df_DWQ_yr %>% filter(RegionAbbv %in% c("SPB",
+                                                          "SGB",
+                                                          "SM",
+                                                          "CF",
+                                                          "ND",
+                                                          "CD",
+                                                          "SD")), 
+            aes(x = RegionAbbv, 
+                y = Chla_Med)) +
+  geom_point(size = 1) + 
+  #scale_color_manual(values = c("blue3","green4","yellow3","brown4")) + 
+  labs(x = NULL,
+       y = "Specific Conductance (uS/cm)",
+       title = paste0("Surface SpC by Year (1975-2023)")) +
+  facet_wrap(WaterYearType ~ ., ncol = 3)
+
+print(p)
+
+ggsave(path = plots,
+       filename = paste0("SpC-by-WY-Type.png"),
+       device = "png",
+       scale=1.0,
+       units="in",
+       height=6,
+       width=6.5,
+       dpi="print")
+
+```
+
+## Multivariate Analyses
+```{r multivariate, echo=FALSE}
+
+# Fill NA values using MICE
+
+df_DWQ_sel$Time <- NULL
+
+df_DWQ_imp <- mice(df_DWQ_sel, 
+                   m = 5, 
+                   method = "pmm", 
+                   seed = 500)
+
+completed_data <- complete(df_DWQ_imp, 1)
+
+test <- completed_data %>% 
+  filter(StationID %in% c("D4","D6","D7","D8","P8")) %>% 
+  filter(Year >= 20)
+
+test <- pivot_longer(completed_data, cols = 3:14, values_to = "Value", names_to = "Analyte")
+
+test_sum <- test %>% 
+  mutate(Year = year(Date)) %>% 
+  group_by(StationID,Year,Analyte) %>% 
+  summarize(Median = median(Value)) %>% 
+  ungroup()
+
+test_med <- pivot_wider(test_sum, names_from = "Analyte", values_from = "Median")
+
+# Calculate distance matrix using Euclidean distance
+WQ.dist2 <- vegdist(test_med[c(3:14)], method = "bray")
+
+nmds_results <- metaMDS(WQ.dist2, k = 2, trymax = 100)
+
+# Extract the coordinates
+nmds_coords <- as.data.frame(scores(nmds_results))
+
+# Add metadata back
+nmds_coords$StationID <- test_med$StationID
+
+# Plot
+p <- ggplot(nmds_coords, aes(x = NMDS1, y = NMDS2, color = as.factor(StationID))) +
+  geom_point(size = 2) +
+  labs(title = "NMDS Plot from Euclidean Distance Matrix",
+       x = "NMDS1",
+       y = "NMDS2",
+       color = "Station ID") +
+  theme_minimal()
+
+print(p)
+
+```
+
