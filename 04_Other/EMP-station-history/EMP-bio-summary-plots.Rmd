@@ -1,0 +1,303 @@
+---
+title: "Discrete WQ Summary Plots"
+author: "Ted Flynn"
+date: "2024-07-12"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+suppressWarnings(suppressMessages(library(tidyverse)))
+suppressWarnings(suppressMessages(library(lubridate)))
+suppressWarnings(suppressMessages(library(janitor)))
+suppressWarnings(suppressMessages(library(here)))
+suppressWarnings(suppressMessages(library(cder)))
+
+# Set visual theme in ggplot
+theme_set(theme_bw())
+
+# Suppress summarise info
+options(tidyverse.quiet = TRUE)
+options(dplyr.summarise.inform = FALSE)
+
+```
+
+
+## Import Data from Discrete Components
+```{r discrete, echo=FALSE}
+# Import zooplankton data ------------------------------------------------------
+# Read in CSV downloaded from EDI (data through 2021)
+# Use Clarke-Bumpus data (maybe check if other records are more complete later)
+df_zoop <- read_csv(file = here("04_Other",
+                                "EMP-station-history",
+                                "data",
+                                "cb_matrix.csv"), 
+                    show_col_types = FALSE)
+
+# Select columns needed, rename headers to match others and convert dates
+df_zoop <- df_zoop %>% 
+  select(SampleDate,Year,StationNZ,DWRStationNo,ALLCALADULTS,ALLCYCADULTS,ALLCLADOCERA) %>% 
+  rename("Date" = "SampleDate") %>% 
+  rename("StationID" = "DWRStationNo")
+
+# Update DWR Station IDs where they are missing from zoop metadata
+df_zoop <- df_zoop %>% 
+  mutate(StationID = case_when(StationNZ == "NZD14" ~ "D14A",
+                               StationNZ == "NZM06" ~ "MD6",
+                               StationNZ == "NZM07" ~ "MD7",
+                               StationNZ == "NZ040" ~ "D9",
+                               StationNZ == "NZD11" ~ "D11",
+                               StationNZ == "NZD15" ~ "D15",
+                               StationNZ == "NZP10" ~ "P10",
+                               TRUE ~ StationID)) # only 1973
+
+# Remove non-compliance zooplankton stations
+df_zoop <- df_zoop %>%
+  mutate(Date = mdy(Date)) %>% 
+  mutate(Year = year(Date)) %>% 
+  mutate(Month = month(Date, label = TRUE)) %>% 
+  filter(!is.na(StationID)) %>% 
+  select(!StationNZ)
+
+# Import benthic invert data ---------------------------------------------------
+# Import CPUE data downloaded from EDI (current through 2023)
+df_ben <- read_csv(file = here("04_Other",
+                               "EMP-station-history",
+                               "data",
+                               "DWR Benthic CPUE data 1975-2023.csv"), 
+                   show_col_types = FALSE)
+
+# Select columns needed, rename headers to match others
+df_clams <- df_ben %>% 
+  rename("StationID" = "StationCode",
+         "Date" = "SampleDate") %>% 
+  mutate(Year = year(Date)) %>% 
+  mutate(Month = month(Date, label = TRUE)) %>% 
+  filter(Genus %in% c("Potamocorbula","Corbicula"))
+
+```
+
+## Add Metadata for Grouping
+```{r metadata}
+df_data <- read_csv(file = here("04_Other",
+                                "EMP-station-history",
+                                "data",
+                                "compliance-monitoring-station-metadata.csv"),
+                    show_col_types = FALSE)
+
+
+# Select only the discrete WQ data
+df_data <- df_data %>% 
+  filter(Component %in% c("Discrete WQ","Benthic")) %>% 
+  select(!`CDEC ID`)
+
+# Add to bio data frame
+df_zoop <- left_join(df_zoop,df_data, join_by(StationID))
+df_clams <- left_join(df_clams,df_data, join_by(StationID))
+
+
+# Add seasonal data
+df_zoop <- df_zoop %>% 
+  mutate(Season = case_when(Month %in% c("Dec","Jan","Feb") ~ "Winter",
+                            Month %in% c("Mar","Apr","May") ~ "Spring",
+                            Month %in% c("Jun","Jul","Aug") ~ "Summer",
+                            Month %in% c("Sep","Oct","Nov") ~ "Fall"))
+
+df_clams <- df_clams %>% 
+  mutate(Season = case_when(Month %in% c("Dec","Jan","Feb") ~ "Winter",
+                            Month %in% c("Mar","Apr","May") ~ "Spring",
+                            Month %in% c("Jun","Jul","Aug") ~ "Summer",
+                            Month %in% c("Sep","Oct","Nov") ~ "Fall"))
+
+# Get seasons to display correctly
+df_zoop$Season <- factor(df_zoop$Season, levels = c("Winter","Spring","Summer","Fall"))
+df_clams$Season <- factor(df_clams$Season, levels = c("Winter","Spring","Summer","Fall"))
+
+```
+
+## Summarize Discrete Data by Month
+```{r summarize}
+# Summarize zoop data ----------------------------------------------------------
+df_zoop_sum <- df_zoop %>% 
+  group_by(StationID,Year,Season, Region, ShortName, CombinedID, Status) %>% 
+  summarize(Calanoid_Mean = mean(ALLCALADULTS, na.rm = TRUE),
+            Cyclopoid_Mean = mean(ALLCYCADULTS, na.rm = TRUE),
+            Cladocera_Mean = mean(ALLCLADOCERA, na.rm = TRUE)) %>% 
+  ungroup()
+
+# Summarize benthic clam data --------------------------------------------------
+
+df_clams_sum <- df_clams %>%
+  filter(Status == "Active") %>% 
+  group_by(StationID,Year,Season,Region,ShortName,CombinedID,Status,Genus) %>% 
+  summarize(CPUE_Mean = mean(MeanCPUE, na.rm = TRUE)) %>% 
+  ungroup()
+
+```
+
+## Plot zooplankton data
+```{r plots}
+# Use the black-and-white theme
+theme_set(theme_bw())
+
+# Create a ggplot2 theme
+theme_update(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    plot.background = element_rect(fill = "white", colour = NA),
+    panel.background = element_rect(fill = "white", colour = NA),
+    panel.border = element_rect(fill = NA, colour = "black"),
+    strip.background = element_rect(fill = "gray", colour = "black"),
+    legend.position = "right",
+    legend.key = element_rect(fill = "white", colour = NA)
+    )
+
+# Create history plots for each year
+regions <- unique(df_zoop_sum$Region) 
+regions <- sort(regions, decreasing = F, na.last = T)
+
+# Create Calanoid Plots
+for (x in regions) {
+  df_temp <- df_zoop_sum %>%
+    filter(Region == x)
+  
+  p <- ggplot(df_temp, 
+         aes(y = Calanoid_Mean, 
+             x = Year,
+             color = CombinedID)) +
+    geom_point(size = 2) + 
+    scale_color_brewer(palette = "Set1") + 
+    #scale_color_manual(values = c("blue3","green4","yellow3","brown4")) + 
+    labs(x = NULL,
+         y = "Mean Calanoid CPUE",
+         title = paste0("Calanoid Copepods - ",x," - 1975-2023")) +
+    facet_wrap(Season ~ ., ncol = 2)
+
+
+  ggsave(path = here("04_Other","EMP-station-history","plots-zoop"),
+         filename = paste0(x,"-Calanoids-1975-2023.png"),
+         device = "png",
+         scale=1.0,
+         units="in",
+         height=6,
+         width=6.5,
+         dpi="print")
+  
+  print(p)
+}
+
+# Create Cyclopoid Plots
+for (x in regions) {
+  df_temp <- df_zoop_sum %>%
+    filter(Region == x)
+  
+  p <- ggplot(df_temp, 
+         aes(y = Cyclopoid_Mean, 
+             x = Year,
+             color = CombinedID)) +
+    geom_point(size = 2) + 
+    scale_color_brewer(palette = "Set1") + 
+    #scale_color_manual(values = c("blue3","green4","yellow3","brown4")) + 
+    labs(x = NULL,
+         y = "Mean Cyclopoid CPUE",
+         title = paste0("Cyclopoid Copepods - ",x," - 1975-2023")) +
+    facet_wrap(Season ~ ., ncol = 2)
+
+
+  ggsave(path = here("04_Other","EMP-station-history","plots-zoop"),
+         filename = paste0(x,"-Cyclopoids-1975-2023.png"),
+         device = "png",
+         scale=1.0,
+         units="in",
+         height=6,
+         width=6.5,
+         dpi="print")
+  
+  print(p)
+}
+
+# Create Cladoceran Plots
+for (x in regions) {
+  df_temp <- df_zoop_sum %>%
+    filter(Region == x)
+  
+  p <- ggplot(df_temp, 
+         aes(y = Cladocera_Mean, 
+             x = Year,
+             color = CombinedID)) +
+    geom_point(size = 2) + 
+    scale_color_brewer(palette = "Set1") + 
+    #scale_color_manual(values = c("blue3","green4","yellow3","brown4")) + 
+    labs(x = NULL,
+         y = "Mean Calanoid CPUE",
+         title = paste0("Cladocera - ",x," - 1975-2023")) +
+    facet_wrap(Season ~ ., ncol = 2)
+
+
+  ggsave(path = here("04_Other","EMP-station-history","plots-zoop"),
+         filename = paste0(x,"-Cladocera-1975-2023.png"),
+         device = "png",
+         scale=1.0,
+         units="in",
+         height=6,
+         width=6.5,
+         dpi="print")
+  
+  print(p)
+}
+
+
+```
+
+## Plot benthic data
+```{r plots}
+# Use the black-and-white theme
+theme_set(theme_bw())
+
+# Create a ggplot2 theme
+theme_update(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    plot.background = element_rect(fill = "white", colour = NA),
+    panel.background = element_rect(fill = "white", colour = NA),
+    panel.border = element_rect(fill = NA, colour = "black"),
+    strip.background = element_rect(fill = "gray", colour = "black"),
+    legend.position = "bottom",
+    legend.key = element_rect(fill = "white", colour = NA)
+    )
+
+# Create history plots for each year
+regions <- unique(df_clams_sum$Region) 
+regions <- sort(regions, decreasing = F, na.last = T)
+
+# Create Corbicula Plots
+for (x in regions) {
+  df_temp <- df_clams_sum %>%
+    filter(Region == x) 
+  
+  p <- ggplot(df_temp, 
+         aes(y = CPUE_Mean, 
+             x = Year,
+             color = Genus,
+             shape = StationID)) +
+    geom_point(size = 2) + 
+    scale_color_manual(values = c("blue3","green4","yellow3","brown4")) + 
+    labs(x = NULL,
+         y = "Mean Bivalve CPUE",
+         title = paste0("Mean Bivalve CPUE - ",x," - 1975-2023")) +
+    facet_wrap(Season ~ ., ncol = 2)
+
+
+  ggsave(path = here("04_Other","EMP-station-history","plots-benthic"),
+         filename = paste0(x,"-Clam-CPUE-1975-2023.png"),
+         device = "png",
+         scale=1.0,
+         units="in",
+         height=6,
+         width=6.5,
+         dpi="print")
+  
+  print(p)
+}
+```
