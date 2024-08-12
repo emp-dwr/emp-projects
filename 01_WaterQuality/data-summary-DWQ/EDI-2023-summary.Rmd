@@ -39,31 +39,105 @@ df_DWQ <- read_csv(file = here("04_Other",
 
 ```
 
-## Summarize Data
+## Check for Duplicates
+```{r dups, echo = FALSE}
+# Check for date duplicates
+df_dups <- df_DWQ %>% select(StationID:Date) %>% 
+  group_by(across(everything())) %>%
+  filter(n() > 1) %>%
+  ungroup()
+
+# Looks like the 2023 duplicates were left in. Also a weird one from 1982-09-14
+# at D11. 
+test <- df_DWQ %>% filter(StationID == "D11" & Date == ymd("1982-09-14"))
+  
+```
+
+
+## Summarize Non-Detects and Data Below Reporting Limit
 ```{r summarize, echo=FALSE}
+# Tally up the number of samples below the reporting limit
+# Select columns that end with "_Sign"
+df_signs <- df_DWQ %>% select(StationID:Date,ends_with("_Sign"))
 
-summary <- df_DWQ %>% 
-  #group_by(StationID) %>% 
-  skim() %>% 
-  focus(n_missing,numeric.mean)
+# Pivot longer to transform data frame to long format
+df_signs <- df_signs %>%
+  pivot_longer(cols = Chla_Sign:TKN_Sign, 
+               names_to = "Analyte", 
+               values_to = "Sign")
 
-# Print out the fields with the least number of missing fields
-fields <- summary %>% 
-  filter(n_missing > 0 & n_missing < 3000) %>% 
-  as_tibble()
+# Count the number of occurrences of each sign
+df_sign_sum <- df_signs %>%
+  mutate(Year = year(Date)) %>% 
+  group_by(Analyte,Year,Sign) %>%
+  summarize(Count = n())
 
-fields <- fields$skim_variable
+# Edit to remove the trailing "_Sign" characters
+df_sign_sum$Analyte <- sub("_Sign$","",df_sign_sum$Analyte)
 
-df_DWQ_sel <- df_DWQ %>% 
-  select(StationID,Date,all_of(fields))
 
-summary2 <- df_DWQ_sel %>% 
-  group_by(StationID) %>% 
-  select(!c("Date","Time")) %>% 
-  skim() %>% 
-  focus(StationID,n_missing,numeric.mean)
+test <- df_
 
-test <- df_DWQ %>% filter(StationID %in% c("D41","D41A","NZ002","NZ004","NZ325")) %>% select(StationID:Month,DissNitrateNitrite,SampleDescription)
 
+
+
+# Substitute symbols for words
+df_sign_sum <- df_sign_sum %>% 
+  filter(!is.na(Value)) %>%
+  mutate(Sign = case_when(Sign == "<" ~ "Below RL",
+                          Sign == "=" ~ "Value_or_NA"))
+
+# Pivot wider for joining later
+df_sign_sum <- pivot_wider(df_sign_sum,
+                          values_from = "Count",
+                          names_from = "Sign")
+
+# Count the number of missing values for each analyte
+df_NA_values <- df_values %>% 
+  group_by(Analyte,Year) %>% 
+  summarize(NAs = sum(is.na(Value)))
+
+# Add to main df
+df_DWQ_sum <- left_join(df_sign_sum,df_NA_values)
+
+
+
+
+# Calculate the total count
+total_count <- sum(df_sign_sum$Count)
+
+# Calculate the percentage for each sign
+df_sign_sum <- df_sign_sum %>%
+  mutate(Percentage = (Count / total_count) * 100)
+
+
+
+```
+
+# Scratch
+```{r scratch, echo=FALSE}
+# Tally total number of samples for each analyte, each year
+df_DWQ_tot <- df_values %>% 
+  group_by(Year,Analyte) %>% 
+  filter(!is.na(Value)) %>% 
+  summarize(Total = n())
+
+
+df_values <- df_DWQ %>% select(StationID:Date,!ends_with("_Sign"))
+
+df_values <- df_values %>% 
+  select(!SampleDescription:Longitude) %>% 
+  pivot_longer(cols = Chla:pHBottom,
+               names_to = "Analyte",
+               values_to = "Value")
+
+# Create a blank df to make sure we don't skip years and stations
+years <- sort(unique(df_DWQ$Year))
+
+df_intervals <- crossing(
+  Year = years,
+  Analyte = df_values_long$Analyte,
+  Sign = df_signs_long$Sign
+  )
 ```
 

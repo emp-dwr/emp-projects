@@ -82,6 +82,22 @@ ggsave(path = output,
 
 ## Assign Region to EMP Stations
 ```{r setup, echo=FALSE}
+# Use the black-and-white theme
+theme_set(theme_bw())
+
+# Create a ggplot2 theme
+theme_update(
+  axis.text = element_blank(),  # Hide axis text
+  axis.ticks = element_blank(), # Hide axis ticks
+  axis.title = element_blank(), 
+  plot.background = element_rect(fill = "white", colour = NA),
+  panel.background = element_rect(fill = "white", colour = NA),
+  panel.border = element_rect(fill = NA, colour = "black"),
+  strip.background = element_rect(fill = "gray", colour = "black"),
+  legend.position = "right",
+  legend.key = element_rect(fill = "white", colour = NA)
+)
+
 # Read in station locations for all compliance monitoring stations
 EMP_stations <- read_csv(here("04_Other",
                               "region-mapping",
@@ -101,24 +117,25 @@ sf_EMP <-  st_join(sf_EMP, sf_regions)
 
 #Plot Regions
 ggplot()+
-  geom_sf(data = WW_Delta) +
-  geom_sf(data = sf_regions, aes(fill = Region), alpha = 0.5) +
+  geom_sf(data = WW_Delta, fill = "lightblue") +
+  #geom_sf(data = sf_regions, aes(fill = Region), alpha = 0.5) +
   geom_sf(data = sf_EMP, 
           aes(shape = Component),
-          fill = "white",
+          fill = "black",
           size = 3) +
-  coord_sf(xlim = c(-122.6, -121.2), ylim = c(37.7, 38.5)) +
+  coord_sf(xlim = c(-122.5, -121.2), ylim = c(37.7, 38.5)) +
   scale_fill_brewer(palette = "Set1") +
   scale_shape_manual(values = c(21,22,23)) +
-  labs(title = "Water Projects Compliance Monitoring - 2024")
+  labs(x = NULL,
+       y = NULL)
 
 ggsave(path = output,
-       filename = "EMP-station-map.png",
-       device = "png",
+       filename = "EMP-station-map.pdf",
+       device = "pdf",
        scale=1.0,
        units="in",
-       height=6,
-       width=9,
+       height=10,
+       width=16,
        dpi="print")
 
 # Write out CSV of each station with name of region
@@ -131,6 +148,22 @@ write_csv(sf_EMP, file = here("04_Other",
 
 ## Classify all Compliance Monitoring Stations Including Historical
 ```{r setup, echo=FALSE}
+# Use the black-and-white theme
+theme_set(theme_bw())
+
+# Create a ggplot2 theme
+theme_update(
+  axis.text = element_blank(),  # Hide axis text
+  axis.ticks = element_blank(), # Hide axis ticks
+  axis.title = element_blank(), 
+  plot.background = element_rect(fill = "white", colour = NA),
+  panel.background = element_rect(fill = "white", colour = NA),
+  panel.border = element_rect(fill = NA, colour = "black"),
+  strip.background = element_rect(fill = "gray", colour = "black"),
+  legend.position = "none",
+  legend.key = element_rect(fill = "white", colour = NA)
+)
+
 # Read in station locations for all compliance monitoring stations
 df_EMP_all <- read_csv(here("04_Other",
                          "region-mapping",

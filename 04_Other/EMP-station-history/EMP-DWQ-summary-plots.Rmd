@@ -34,43 +34,98 @@ df_DWQ <- read_csv(file = here("04_Other",
                    "data",
                    "EMP_DWQ_1975_2023.csv"),
                    show_col_types = FALSE) %>% 
-  mutate(Year = year(Date)) %>% 
-  mutate(Month = month(Date, label = TRUE)) %>% 
   rename("StationID" = "Station")
+
+# Combine Date and Time columns into a DateTime column
+df_DWQ <- df_DWQ %>% 
+  mutate(Time = if_else(is.na(Time), hms("12:00:00"), hms(Time))) %>% 
+  mutate(DateTime = ymd_hms(paste(Date, Time))) %>% 
+  relocate(DateTime, .after = StationID) %>% 
+  filter(Date <= ymd("2023-01-01")) %>% # Remove 2023 data b/c dups
+  filter(!(Date == ymd("1982-09-14") & StationID == "D11")) %>% 
+  select(!c("Date","Time"))
+
+# Convert to long format
+# Select columns that end with "_Sign"
+df_signs <- df_DWQ %>% 
+  select(StationID:DateTime, ends_with("_Sign"))
+
+df_signs <- pivot_longer(df_signs, 
+                         names_to = "Analyte", 
+                         values_to = "Sign",
+                         cols = Chla_Sign:TKN_Sign)
+
+# Edit df to remove the trailing "_Sign" characters
+df_signs$Analyte <- sub("_Sign$","",df_signs$Analyte)
+
+# Select all other columns
+df_values <- df_DWQ %>% select(StationID:Longitude,!ends_with("_Sign"))
+
+df_values <- pivot_longer(df_values, 
+                         names_to = "Analyte", 
+                         values_to = "Value",
+                         cols = Chla:pHBottom)
+
+# Join together
+df_DWQ_l <- left_join(df_values,df_signs, join_by(StationID,DateTime,Analyte))
+
+# Tally up total number of monthly samples per year ----------------------------
+# Create new df of total # of analytes measured yearly
+df_tally <- df_DWQ_l %>% 
+  mutate(Year = year(DateTime)) %>% 
+  relocate(Year, .after = DateTime) %>% 
+  filter(!is.na(Sign)) # Remove Analytes that don't deal with reporting limits
+
+# Summarize df for total NAs and measurements
+df_tally <- df_tally %>% 
+  group_by(Year,Analyte,Sign) %>% 
+  summarize(NAs = sum(is.na(Value)),
+            Detects = sum(!is.na(Value)), 
+            Total = NAs + Detects)
+
+# Annotate missing, below RL, and measured samples
+df_tally <- df_tally %>% 
+  mutate(Sign = case_when(Sign == "<" ~ "Below RL",
+                          Sign == "=" ~ "Equals",
+                          TRUE ~ Sign))
+
+df_tally <- pivot_wider(df_tally, names_from = Sign, values_from = NAs)
+
+# Examine DissAmmonia Data That's below the RL
+test <- df_DWQ_l %>% 
+  mutate(Year = year(DateTime)) %>% 
+  select(StationID,Year,DateTime,Analyte,Sign,Value) %>% 
+  filter(Analyte == "Chla")
 
 ```
 
-## Summarize Data
-```{r summarize, echo=FALSE}
+## Remove Outliers
+```{r ouliers, echo=TRUE}
+# Print out samples that have "outlier" in the sample description
+df_outliers <- df_DWQ %>% 
+  filter(str_detect(SampleDescription, "outlier")) %>% 
+  select(StationID,DateTime,SampleDescription)
 
-summary <- df_DWQ %>% 
-  #group_by(StationID) %>% 
-  skim() %>% 
-  focus(n_missing,numeric.mean)
+# Add analyte column based on text in outlier
+analytes <- tibble(Analyte = c("DissNitrateNitrite", 
+                               "DissNitrateNitrite", 
+                               "DissNitrateNitrite", 
+                               "TotPhos"))
 
-# Print out the fields with the least number of missing fields
-fields <- summary %>% 
-  filter(n_missing > 0 & n_missing < 3000) %>% 
-  as_tibble()
+df_outliers <- cbind(df_outliers,analytes)
 
-fields <- fields$skim_variable
-
-df_DWQ_sel <- df_DWQ %>% 
-  select(StationID,Date,all_of(fields))
-
-summary2 <- df_DWQ_sel %>% 
-  group_by(StationID) %>% 
-  select(!c("Date","Time")) %>% 
-  skim() %>% 
-  focus(StationID,n_missing,numeric.mean)
-
-test <- df_DWQ %>% filter(StationID %in% c("D41","D41A","NZ002","NZ004","NZ325")) %>% select(StationID:Month,DissNitrateNitrite,SampleDescription)
+# Remove outlier measurements
+df_DWQ_l <- anti_join(df_DWQ_l, df_outliers, by = c("StationID","DateTime","Analyte"))
 
 ```
 
 
 ## Add Metadata for Grouping
 ```{r metadata}
+# Remove unneeded metadata from long file
+df_DWQ_l <- df_DWQ_l %>% 
+  select(!Weather:Longitude)
+
 df_data <- read_csv(file = here("04_Other",
                                 "EMP-station-history",
                                 "data",
@@ -80,6 +135,7 @@ df_data <- read_csv(file = here("04_Other",
 # Select only the discrete WQ data
 df_data <- df_data %>% 
   filter(Component == "Discrete WQ") %>% 
+  select(!Latitude:Longitude) %>% # lat/long not needed
   select(!`CDEC ID`)
 
 # Add regional abbreviation
@@ -95,10 +151,13 @@ df_data <- df_data %>%
                                 Region == "South Delta" ~ "SD"))
   
 # Add to water quality data frame
-df_DWQ <- left_join(df_DWQ,df_data, join_by(StationID))
+df_DWQ_l <- left_join(df_DWQ_l,df_data, join_by(StationID))
 
 # Add seasonal data
-df_DWQ <- df_DWQ %>% 
+df_DWQ_l <- df_DWQ_l %>% 
+  mutate(Month = month(DateTime, abbr = TRUE, label = TRUE),
+         Year = year(DateTime)) %>% 
+  relocate(Month:Year, .after = DateTime) %>% 
   mutate(Season = case_when(Month %in% c("Dec","Jan","Feb") ~ "Winter",
                             Month %in% c("Mar","Apr","May") ~ "Spring",
                             Month %in% c("Jun","Jul","Aug") ~ "Summer",
@@ -106,10 +165,10 @@ df_DWQ <- df_DWQ %>%
 
 # Add Water Year Index data
 # Calculate water year for each row (new WY starts October 1)
-df_DWQ <- df_DWQ %>% 
+df_DWQ_l <- df_DWQ_l %>% 
   mutate(WaterYear = case_when(Month %in% c("Oct","Nov","Dec") ~ Year + 1,
                                TRUE ~ Year)) %>% 
-  relocate(Year,WaterYear, Month, .after = Date)
+  relocate(Year,WaterYear,Season, Month, .after = DateTime)
 
 # Import classification of Water Years
 df_WY <- read_csv(file = here("04_Other",
@@ -129,18 +188,18 @@ df_WY <- df_WY %>%
                                        WaterYearType == "Dry" ~ "D",
                                        WaterYearType == "Critical" ~ "C"))
 # Add to WQ df
-df_DWQ <- left_join(df_DWQ, df_WY, join_by(WaterYear)) %>% 
+df_DWQ_l <- left_join(df_DWQ_l, df_WY, join_by(WaterYear)) %>% 
   relocate(WaterYearType,WaterYearTypeAbbv, .after = WaterYear)
 
 # Remove dates from WY 2024 (not classified yet)
-df_DWQ <- df_DWQ %>% filter(!(Date >= ymd("2023-10-01")))
+df_DWQ_l <- df_DWQ_l %>% filter(!(DateTime >= ymd_hms("2023-10-01 00:00:00")))
 
 # Get seasons to display correctly
-df_DWQ$Season <- factor(df_DWQ$Season, 
+df_DWQ_l$Season <- factor(df_DWQ_l$Season, 
                         levels = c("Winter","Spring","Summer","Fall"))
 
 # Get regions to order correctly (West to East)
-df_DWQ$Region <- factor(df_DWQ$Region, 
+df_DWQ_l$Region <- factor(df_DWQ_l$Region, 
                         levels = c("San Pablo Bay",
                                    "Carquinez Strait",
                                    "Suisun & Grizzly Bay",
@@ -152,18 +211,18 @@ df_DWQ$Region <- factor(df_DWQ$Region,
                                    "South Delta"
                         ))
 
-df_DWQ$RegionAbbv <- factor(df_DWQ$RegionAbbv, 
+df_DWQ_l$RegionAbbv <- factor(df_DWQ_l$RegionAbbv, 
                             levels = c("SPB","CS","SGB","SM","CF","LSZ","ND","CD","SD"))
 
 # Order WY Index
-df_DWQ$WaterYearType <- factor(df_DWQ$WaterYearType,
+df_DWQ_l$WaterYearType <- factor(df_DWQ_l$WaterYearType,
                                levels = c("Wet",
                                           "Above Normal",
                                           "Below Normal",
                                           "Dry",
                                           "Critical"))
 
-df_DWQ$WaterYearTypeAbbv <- factor(df_DWQ$WaterYearTypeAbbv,
+df_DWQ_l$WaterYearTypeAbbv <- factor(df_DWQ_l$WaterYearTypeAbbv,
                                    levels = c("W","AN","BN","D","C"))
 
 ```
@@ -172,38 +231,94 @@ df_DWQ$WaterYearTypeAbbv <- factor(df_DWQ$WaterYearTypeAbbv,
 ```{r summarize}
 # Summarize WQ data ------------------------------------------------------------
 # Calculate Seasonal Averages
-df_DWQ_sum <- df_DWQ %>% 
-  filter(!Status == "Inactive") %>% 
-  group_by(StationID,Year,Season,Region,RegionAbbv,WaterYearType,WaterYearTypeAbbv,ShortName,CombinedID,Status) %>% 
-  summarize(Chla_Med = median(Chla, na.rm = TRUE),
-            DO_Med = median(DOSurface, na.rm = TRUE),
-            NO3NO2_Med = median(DissNitrateNitrite, na.rm = TRUE),
-            SpC_Med = median(SpCndSurface, na.rm = TRUE)) %>% 
+df_DWQ_sum <- df_DWQ_l %>%
+  group_by(StationID,Year,Season,Region,RegionAbbv,WaterYearType,WaterYearTypeAbbv,ShortName,CombinedID,Analyte) %>% 
+  summarize(Median = median(Value, na.rm = TRUE)) %>% 
   ungroup()
 
-df_DWQ_sum <- pivot_longer(df_DWQ_sum, 
-                           cols = Chla_Med:SpC_Med,
-                           names_to = "Analyte",
-                           values_to = "Value")
-
-# Calculate Yearly Averages
-df_DWQ_yr <- df_DWQ %>% 
-  filter(!Status == "Inactive") %>% 
-  group_by(StationID,WaterYear,CombinedID,Status,Region,RegionAbbv,WaterYearType,WaterYearTypeAbbv) %>% 
-  summarize(Chla_Med = median(Chla, na.rm = TRUE),
-            DO_Med = median(DOSurface, na.rm = TRUE),
-            NO3NO2_Med = median(DissNitrateNitrite, na.rm = TRUE),
-            SpC_Med = median(SpCndSurface, na.rm = TRUE)) %>% 
+# Combine for Timelines
+df_timeline <- df_DWQ_l %>% 
+  group_by(CombinedID,ShortName,Year,Analyte) %>% 
+  summarize(Measurements = sum(!is.na(Value))) %>% 
   ungroup()
 
-df_DWQ_yr <- pivot_longer(df_DWQ_yr, 
-                           cols = Chla_Med:SpC_Med,
-                           names_to = "Analyte",
-                           values_to = "Value")
+# Classify stations as active or inactive
+df_timeline <- df_timeline %>% 
+  mutate(Status = case_when(Measurements > 0 ~ "Measured",
+                              TRUE ~ "Not Measured"))
 
 ```
 
+## Plot Activity Timelines for Analytes at Each Station
+```{r plot, echo=FALSE}
+# Categorize Analytes for Plotting
+df_timeline <- df_timeline %>% 
+  mutate(Measurement_Type = case_when(
+    grepl("Bottom", Analyte) ~ "Bottom",
+    TRUE ~ "Surface")) %>% 
+  mutate(Analyte_Type = case_when(
+    Analyte %in% c("LightExtinction","TON","TotAmmonia","TotChloride") ~ "Deprecated",
+    TRUE ~ "Current"))
+
+
+  mutate(Category = case_when( 
+    Analyte %in% c("DOBottom","DOSurface","DOpercentBottom","DOpercentSurface") ~ "DO",
+    Analyte %in% c()
+    ))
+
+# Use the black-and-white theme
+theme_set(theme_bw())
+
+# Create a ggplot2 theme
+theme_update(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    plot.background = element_rect(fill = "white", colour = NA),
+    panel.background = element_rect(fill = "white", colour = NA),
+    panel.border = element_rect(fill = NA, colour = "black"),
+    strip.background = element_rect(fill = "gray", colour = "black"),
+    legend.position = "bottom",
+    legend.key = element_rect(fill = "white", colour = NA)
+    )
+
+# Create history plots for each year
+stations <- unique(df_timeline$CombinedID) 
+stations <- sort(stations, decreasing = F, na.last = T)
+
+# Plot Discrete WQ Activity
+for (x in stations) {
+  df_temp <- df_timeline %>% 
+    filter(CombinedID == x) %>% 
+    filter(!Measurement_Type == "Bottom") %>% 
+    filter(!Analyte_Type == "Deprecated")
+  
+  p <- ggplot(df_temp, aes(x = Year,
+                           y = reorder(Analyte, desc(Analyte)),
+                           fill = Status)) +
+    geom_tile(height = 0.6) +
+    scale_fill_manual(values = c("darkgreen","darkgray")) +
+    scale_x_continuous(limits = c(1974,2025),
+                       breaks = c(1980,1990,2000,2010,2020)) +
+    #facet_wrap(Study ~ ., ncol = 2) +
+    labs(x = NULL,
+         y = "Station Name",
+         title = paste0("Analytes Measured at ",x," (1975-Present)"))
+  
+  print(p)
+  
+  ggsave(path = plots,
+         filename = paste0("timeline-D-WQ-",x,".png"),
+         device = "png",
+         scale=1.0,
+         units="in",
+         height=9,
+         width=6.5,
+         dpi="print")
+}
+```
+
 ## Plot data at Station Level
+
 ```{r plots}
 # Use the black-and-white theme
 theme_set(theme_bw())
@@ -216,33 +331,57 @@ theme_update(
     panel.background = element_rect(fill = "white", colour = NA),
     panel.border = element_rect(fill = NA, colour = "black"),
     strip.background = element_rect(fill = "gray", colour = "black"),
-    legend.position = "right",
+    legend.position = "bottom",
     legend.key = element_rect(fill = "white", colour = NA)
     )
 
 # Create history plots for each year
-regions <- unique(df_DWQ_sum$Region) 
-regions <- sort(regions, decreasing = F, na.last = T)
+stations <- unique(df_DWQ_sum$CombinedID) 
+stations <- sort(stations, decreasing = F, na.last = T)
+
+# Create Custom labels for facets
+custom_labels <- c("Chla" = "Chlorophyll a (ug/L)",
+                   "TSS" = "Total Suspended Sediments (mg/L)",
+                   "DissNitrateNitrite" = "Dissolved NO3+NO2 (mg/L)",
+                   "TDS" = "Total Dissolved Solids (mg/L)")
+
+custom_colors <- c("Wet" = "lightblue",
+                   "Above Normal" = "darkgreen",
+                   "Below Normal" = "yellow3",
+                   "Dry" = "darkorange",
+                   "Critical" =  "red4")
 
 # Create Overall Regional DWQ Plots
-for (x in regions) {
+for (x in stations) {
   df_temp <- df_DWQ_sum %>%
-    filter(Region == x)
+    filter(CombinedID == x) %>% 
+    filter(Analyte %in% c("Chla","TSS","TDS","DissNitrateNitrite")) %>% 
+    filter(Sign == "=" | is.na(Sign)) # Remove data below RL
   
   p <- ggplot(df_temp, 
          aes(y = Value, 
-             x = CombinedID,
-             color = Season)) +
-    geom_boxplot(width = 0.6) + 
-    scale_color_manual(values = c("blue3","green4","yellow3","brown4")) + 
-    #scale_color_brewer(palette = "Set1") + 
+             x = WaterYear,
+             group = WaterYear,
+             fill = WaterYearType)) +
+    geom_boxplot(width = 0.5,
+                 #outlier.fill = NULL,
+                 #outlier.shape = 21,
+                 outliers = FALSE) + 
+    #scale_color_manual(values = c("blue3","green4","yellow3","brown4")) + 
+    scale_fill_manual(values = custom_colors) + 
+    scale_x_continuous(limits = c(1974,2025),
+                       breaks = c(1975,1985,1995,2005,2015)) +
     labs(x = NULL,
          y = "Analyte Concentration",
-         title = paste0("Regional Water Quality - ",x," - 1975-2023")) +
-    facet_wrap(Analyte ~ ., ncol = 1, scales = "free_y")
+         title = paste0(" Water Quality - ",x," - 1975-2023"),
+         fill = "Water Year Type") +
+    facet_wrap(Analyte ~ ., 
+               ncol = 1, 
+               scales = "free_y",
+               labeller = labeller(Analyte = custom_labels)) 
 
   ggsave(path = plots,
-         filename = paste0(x,"-DWQ-by-Region-1975-2023.png"),
+         filename = paste0(x,"-DWQ-1975-2023.png"),
          device = "png",
          scale=1.0,
          units="in",
@@ -253,92 +392,6 @@ for (x in regions) {
   print(p)
 }
 
-# Create TSS Plots
-for (x in regions) {
-  df_temp <- df_DWQ_sum %>%
-    filter(Region == x)
-  
-  p <- ggplot(df_temp, 
-         aes(y = TSS_Mean, 
-             x = Year,
-             color = Season)) +
-    geom_point(size = 2) + 
-    scale_color_manual(values = c("blue3","green4","yellow3","brown4")) + 
-    labs(x = NULL,
-         y = "Total Suspended Sediments (mean)",
-         title = paste0("Mean TSS - ",x," - 1975-2023")) +
-    facet_wrap(CombinedID ~ ., ncol = 2)
-
-
-  ggsave(path = plots,
-         filename = paste0(x,"-TSS-1975-2023.png"),
-         device = "png",
-         scale=1.0,
-         units="in",
-         height=6,
-         width=6.5,
-         dpi="print")
-  
-  print(p)
-}
-
-# Create NO3+NO2 Plots
-for (x in regions) {
-  df_temp <- df_DWQ_sum %>%
-    filter(Region == x)
-  
-  p <- ggplot(df_temp, 
-         aes(y = NO3NO2_Mean, 
-             x = WaterYearTypeAbbv,
-             color = Season)) +
-    geom_point(size = 2) + 
-    scale_color_manual(values = c("blue3","green4","yellow3","brown4")) + 
-    labs(x = NULL,
-         y = "Mean Diss. NO3+NO2 (mg/L)",
-         title = paste0("Mean NO3+NO2 - ",x," - 1975-2023")) +
-    facet_wrap(CombinedID ~ ., ncol = 3)
-
-
-  ggsave(path = plots,
-         filename = paste0(x,"-NO3-NO2-1975-2023.png"),
-         device = "png",
-         scale=1.0,
-         units="in",
-         height=6,
-         width=6.5,
-         dpi="print")
-  
-  print(p)
-}
-
-# Create TDS Plots
-for (x in regions) {
-  df_temp <- df_DWQ_sum %>%
-    filter(Region == x)
-  
-  p <- ggplot(df_temp, 
-         aes(y = TDS_Mean, 
-             x = Year,
-             color = Season)) +
-    geom_point(size = 2) + 
-    scale_color_manual(values = c("blue3","green4","yellow3","brown4")) + 
-    labs(x = NULL,
-         y = "Total Diss. Solids (mean)",
-         title = paste0("Mean TDS - ",x," - 1975-2023")) +
-    facet_wrap(CombinedID ~ ., ncol = 2)
-
-
-  ggsave(path = plots,
-         filename = paste0(x,"-TDS-1975-2023.png"),
-         device = "png",
-         scale=1.0,
-         units="in",
-         height=6,
-         width=6.5,
-         dpi="print")
-  
-  print(p)
-}
 
 ```
 
