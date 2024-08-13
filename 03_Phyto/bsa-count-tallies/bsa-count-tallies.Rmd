@@ -107,14 +107,17 @@ df_phyto <- df_phyto %>%
   select(!(GALD:`GALD 1`)) %>%
   rename("GALD" = "GALD.Tot")
 
-# Read in data from 2022
+# Read in data from 2022 and 2023
 df_phyto2022 <- read_csv(here("03_Phyto","bsa-count-tallies","data","2022 Data for EDI.csv"),
                               show_col_types = FALSE)
 
 df_phyto2023 <- read_csv(here("03_Phyto","bsa-count-tallies","data","All 2023 Data.csv"),
                               show_col_types = FALSE)
 
-df_phyto_20s <- bind_rows(df_phyto2022, df_phyto2023)
+df_phyto2024 <- read_csv(here("03_Phyto","bsa-count-tallies","data","All 2024 Data.csv"),
+                              show_col_types = FALSE)
+
+df_phyto_20s <- bind_rows(df_phyto2022, df_phyto2023,df_phyto2024)
 
 # Remove extra columns from 2022 data
 df_phyto_20s <- df_phyto_20s %>% 
@@ -131,17 +134,13 @@ rm(df_phyto_20s)
 # Remove columns that just have the method code "Phyto"
 df_phyto <- df_phyto %>% select(!MethodCode)
 
-# Add column to indicate what study it came from
-df_phyto <- df_phyto %>% mutate(Study = "EMP", .after = StationCode)
-
 # Clean up column names
 df_phyto <- df_phyto %>% clean_names(case = "big_camel")
 
 df_phyto <- df_phyto %>% rename("GALD" = "Gald")
 
 # Relocate GALD column
-df_phyto <- df_phyto %>% 
-  relocate(GALD, .before = Biovolume1)
+df_phyto <- df_phyto %>% relocate(GALD, .before = Biovolume1)
 
 ```
 
@@ -298,6 +297,7 @@ df_sum_yr <- df_tally %>%
 
 # Order the new column so it puts Pass first then Fail
 order <- c("Pass","Fail")
+
 df_sum_yr$PassFail <- factor(as.character(df_sum_yr$PassFail),levels=order)
 
 
