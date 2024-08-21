@@ -2,29 +2,27 @@
 ## Started Summer 2021
 ## Ted Flynn
 
-library("tidyverse");packageVersion("tidyverse")
-library("lubridate");packageVersion("lubridate")
-library("timetk");packageVersion("timetk")
-library("cder");packageVersion("cder")
-
-# Set working directory
-setwd("./01_WaterQuality/SDO-DO-graphs")
-getwd()
+suppressWarnings(suppressMessages(library(tidyverse)))
+suppressWarnings(suppressMessages(library(lubridate)))
+suppressWarnings(suppressMessages(library(timetk)))
+suppressWarnings(suppressMessages(library(cder)))
+suppressWarnings(suppressMessages(library(here)))
 
 # Set Black-and-white color scheme
 theme_set(theme_bw())
-
-# Clean workspace
-rm(list=ls())
 
 ## Create date variables
 start <- as.Date("2024-07-01")
 end <- Sys.Date()
 
+## Set output folder
+plots <- here("01_WaterQuality","00_archive","SDO-DO-graphs","plots")
+
 ## Pull non-QA'd data from CDEC
-df_DO <- cdec_query("SDO", sensors = c(61, 201, 202), 
-                       start.date = start, 
-                       end.date = end)
+df_DO <- cdec_query("SDO", 
+                    sensors = c(61, 201, 202), 
+                    start.date = start, 
+                    end.date = end)
 
 ## Remove Single Midnight-only data point
 df_DO <- df_DO %>% filter(df_DO$DateTime < end)
@@ -151,7 +149,7 @@ daily_min_plot <- ggplot(df_DO_daily, aes(x = Date, y = min_DO, color = passfail
 daily_min_plot +
   facet_wrap(Depth ~ ., ncol = 1, dir = "h")
 
-ggsave(path="plots",
+ggsave(path = plots,
        filename = "daily.min.DO.RRI.Summer2022.png", 
        device = "png",
        scale=1.0, 
