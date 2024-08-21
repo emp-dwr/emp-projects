@@ -18,7 +18,7 @@ theme_set(theme_bw())
 rm(list=ls())
 
 ## Create date variables
-start <- as.Date("2022-09-01")
+start <- as.Date("2024-07-01")
 end <- Sys.Date()
 
 ## Pull non-QA'd data from CDEC
@@ -116,13 +116,13 @@ daily_mean_plot <- ggplot(df_DO_daily, aes(x = Date, y = mean_DO, color = passfa
   #stat_smooth(method="glm", level=0.95, color = "darkred", size = 2) +
   labs(x = "Date",
        y = "[Dissolved Oxygen] (mg/L)", 
-       title = "Daily Mean DO at RRI, Summer-Fall 2022") 
+       title = "Daily Mean DO at RRI, Summer 2024") 
 
 daily_mean_plot +
   facet_wrap(Depth ~ ., ncol = 1, dir = "h")
 
 ggsave(path="plots",
-       filename = "daily.mean.DO.RRI.Summer-Fall.2022.png", 
+       filename = "daily-mean-DO-RRI-Summer-2024.png", 
        device = "png",
        scale=1.0, 
        units="in",
