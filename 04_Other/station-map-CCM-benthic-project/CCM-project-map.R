@@ -63,6 +63,11 @@ ggplot() +
                    aes(label = StationID,
                        geometry = geometry),
                    stat = "sf_coordinates") +
+  annotation_scale(location = "bl", 
+                   width_hint = 0.5,
+                   unit_category = "imperial") +
+  annotation_north_arrow(location = "tl", which_north = "true", 
+                         style = north_arrow_fancy_orienteering()) +
   labs(x = NULL,
        y = NULL)
 
