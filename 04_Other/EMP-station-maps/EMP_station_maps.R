@@ -2,14 +2,13 @@
 ## 9/23/2022 (updated 4/3/2024 TMF)
 
 # Load required libraries ------------------------------------------------------
-
-library(tidyverse)
-library(deltamapr)
-library(sf)
-library(ggrepel)
-library(ggspatial)
-library(maps)
-library(here)
+suppressWarnings(suppressMessages(library(tidyverse)))
+suppressWarnings(suppressMessages(library(here)))
+suppressWarnings(suppressMessages(library(deltamapr)))
+suppressWarnings(suppressMessages(library(sf)))
+suppressWarnings(suppressMessages(library(maps)))
+suppressWarnings(suppressMessages(library(ggspatial)))
+suppressWarnings(suppressMessages(library(ggrepel)))
 
 # Set plot themes --------------------------------------------------------------
 
