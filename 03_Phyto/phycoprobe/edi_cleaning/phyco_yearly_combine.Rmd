@@ -28,8 +28,15 @@ source('03_Phyto/phycoprobe/functions/phyco_funcs.R')
 
 fp_phyco <- clean_path(2023)
 
-fp_phyco
-df_test <- rbindlist(lapply(fp_phyco, fread), fill = TRUE)
+df_comb <- rbindlist(lapply(fp_phyco, fread), fill = TRUE) %>%
+  arrange(DateTime)
+
+df_comb <- df_comb %>%
+  mutate(Date = as.Date(DateTime),
+         Time = format(DateTime, format = "%H:%M:%S")) %>%
+  select(-c(DateTime,Year))
+
+write_csv(df_comb, fp_main_export(year))
 ```
 
 

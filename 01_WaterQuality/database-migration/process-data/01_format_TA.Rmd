@@ -1,0 +1,136 @@
+# prep Test America data to add to main data
+
+```{r}
+library(tidyverse)
+library(lubridate)
+source('00_GlobalFunctions/functions.R')
+```
+
+```{r}
+fp_ta <- paste0(abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration/Test America Data'),'/October 2019-March 2020 Test America Data.csv')
+
+df_ta <- read_csv(fp_ta)
+```
+
+```{r}
+# add QC type
+df_ta <- df_ta %>%
+  mutate(
+    `QC: Type` = case_when(
+    grepl('BLANK', `Location ID`) ~ 'Blank',
+    grepl('DUP', `Location ID`) ~ 'Replicate',
+    TRUE ~ 'Normal'
+    ),
+    `Location ID` = case_when(
+      grepl('BLANK', `Location ID`) ~ 'Blank; Equipment',
+      grepl('DUP', `Location ID`) ~ trimws(gsub('DUP', '', `Location ID`)),
+      TRUE ~ `Location ID`
+      )
+    ) %>%
+  filter(!(`Observed Property ID` == 'Specific Conductance'))
+
+# separate DateTime
+df_ta <- df_ta %>%
+  separate(`Observed DateTime`, into = c('Sample Date', 'Sample Time'), sep = ' ') %>%
+  mutate(`Sample Date` = as.Date(`Sample Date`, format = '%m/%d/%Y'))
+
+# add data classification
+df_ta$`Data Classification` <- 'LAB'
+
+# add lab
+df_ta$`Lab: From Laboratory` <- 'Test America'
+```
+
+```{r}
+# add in nondetect column
+df_ta <- df_ta %>%
+  mutate(
+    `Lab: Detection Condition` = case_when(
+      `Result Value` == 'ND' ~ 'Not detected',
+      TRUE ~ NA_character_
+    ),
+    `Result Value` = case_when(
+      `Result Value` == 'ND' ~ NA_character_,
+      TRUE ~ `Result Value`
+    ),
+    `Result Value` = as.numeric(`Result Value`)
+  )
+
+# check it worked properly
+df_check <- df_ta %>%
+  filter(is.na(`Result Value`))
+
+unique(df_check$`Lab: Detection Condition`)
+```
+
+```{r}
+# add in Parent Activity ID
+df_ta <- df_ta %>%
+  group_by(`Location ID`, `Sample Date`) %>%
+  mutate(`Parent Activity Name_ex` = case_when(
+    `QC: Type` == 'Replicate' ~ `Activity Name`[which(`QC: Type` != 'Replicate')[1]],
+    TRUE ~ NA_character_
+  )) %>%
+  ungroup()
+```
+
+
+```{r}
+# conversions
+
+# convert ug/L to mg/L
+df_ta <- df_ta %>%
+  mutate(
+    `Result Value` = case_when(
+      `Result Unit` == 'ug/L' ~ `Result Value`/1000,
+      TRUE ~ `Result Value`
+    )
+  )
+
+# Diss Ammonia: mg/L to mg/L as N (EPA 350.1)
+# Diss Nitrate Nitrite: mg/L to mg/L as N (EPA 353.2)
+# Dissolved Organic Carbon: mg/L to mg/L as N (Std Method 5310 C (D))
+# Dissolved Organic Nitrogen: mg/L to mg/L as N (?)
+# Total Alkalinity: mg/L to mg/L as CaCO3 (think it is; Std Method 2320 B)
+# Total Kjeldahl Nitrogen: mg/L to mg/L as N (EPA 351.2)
+
+# Total Organic Carbon: mg/L to mg/L as N (Std Method 5310 C (T))
+# Total Phosphorus: mg/L to mg/L as P (EPA 365.4 and EPA 365.3)
+
+
+# fix numeric formatting
+
+df_ta <- df_ta %>%
+  mutate(
+    `Result Value` = formatC(`Result Value`, format = 'f', digits = 2, drop0trailing = TRUE),
+    `Result Value` = case_when(
+      `Result Value` == ' NA' ~ NA,
+      TRUE ~ `Result Value`
+    )
+  ) %>%
+  select(-`Result Unit`)
+```
+
+
+```{r}
+# append methods
+fp_methods <- paste0(abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration/Lists to Import'),'/Analytes_Methods_Units_Test_America.csv')
+
+df_methods <- read_csv(fp_methods) %>%
+  select(c(`Specific Method`,`Observed Property ID`,`Lab: Analysis Method`,`Result Unit`))
+
+df_ta <- left_join(df_ta, df_methods, by = c('Specific Method','Observed Property ID')) %>%
+  select(-`Specific Method`)
+```
+
+```{r}
+col_order <- c('Location ID','Observed Property ID','Sample Date','Sample Time','Data Classification','Result Value','Result Unit','Activity Name','Parent Activity Name_ex','Lab: Analysis Method','Lab: Detection Condition','Lab: MDL','Lab: MRL','Lab: Reports To_ex','Lab: Quality Flag','Lab: Prepared DateTime','Lab: From Laboratory','QC: Type')
+
+df_ta <- df_ta[, col_order]
+
+fp_export <- abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration/Prelim WDL Data')
+
+write_csv(df_ta, file = paste0(fp_export, '/prelim_ta.csv'))
+```
+
+

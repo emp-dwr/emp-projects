@@ -1,0 +1,164 @@
+```{r}
+library(tidyverse)
+library(qqplotr)
+library(here)
+source(here::here('00_GlobalFunctions/functions.R'))
+```
+
+```{r}
+df_wq <- read_csv(here('01_WaterQuality/sigfig-issue/data/lab_data_21-23.csv')) %>%
+  mutate(across(TotAlkalinity:DissOrthophos, ~ map_chr(str_split(., ','), 1)),
+         across(TotAlkalinity:DissOrthophos, ~ na_if(., 'N/A')),
+         across(TotAlkalinity:DissOrthophos, as.numeric),
+         `Sample Date` = as.Date(`Sample Date`, format = '%m/%d/%Y %H:%M'))
+
+df_dup <- df_wq[df_wq$`Sample Type` == 'Duplicate, Specific Analyte(s)',] %>%
+  select(-c('Sample Code')) %>%
+  rename(`Sample Code` = `Parent Sample Code`)
+
+df_par <- df_wq[df_wq$`Sample Type` == 'Normal Sample',] %>%
+    select(-c('Station Name':'Sample Date','Sample Depth':'Parent Sample Code'))
+
+df_wq <- left_join(df_dup, df_par, by = 'Sample Code', suffix = c('_dup','_par')) %>%
+  select(-c('Sample Type','Sample Description','Sample Depth'))
+
+write_csv(df_wq,'C:/Users/sperry/Desktop/ex.csv')
+```
+
+```{r}
+analyte_cols <- gsub('_dup$', '', grep('_dup', colnames(df_wq), value = TRUE))
+
+# Initialize an empty dataframe to store the results
+df_stats <- tibble()
+
+# Iterate over each analyte column
+for (analyte in analyte_cols) {
+  dup_col <- paste0(analyte, '_dup')
+  par_col <- paste0(analyte, '_par')
+  
+  # Calculate the absolute difference, mean, and relative difference
+  df_temp <- df_wq %>%
+    transmute(
+      station = `Station Name`,
+      date = `Sample Date`,
+      analyte = analyte,
+      parent = .data[[par_col]],
+      dup = .data[[dup_col]],
+      abs_dif = round(abs(.data[[par_col]] - .data[[dup_col]]), 7),
+      dif = round((.data[[par_col]] - .data[[dup_col]]), 7),
+      mean = round(((.data[[par_col]] + .data[[dup_col]]) / 2), 7)
+    )
+  
+  # Append the results to the final dataframe
+  df_stats <- bind_rows(df_stats, df_temp) %>%
+    filter(complete.cases(.))
+}
+
+df_stats <- 
+  df_stats %>% filter(
+  !((analyte == 'DissAmmonia' & dif < -0.1) | (analyte == 'DissAmmonia' & dif > 0.02)),
+  !(analyte == 'TDS' & dif < -5000),
+  !(analyte == 'DissChloride' & dif > 1000),
+  !(analyte == 'DissNitrateNitrite' & dif > .2),
+  !(analyte == 'TSS' & dif < -60)
+  )
+```
+
+```{r}
+for (ind in unique(df_stats$analyte)) {
+  df <- df_stats %>%
+    filter(analyte == ind)
+
+  plt <- ggplot(df, aes(x = mean, y = dif)) +
+    geom_point(shape = 21, size = 2, fill = 'gray') +
+    labs(title = paste(ind),
+         x = 'mean',
+         y = 'dif') +
+    theme_bw()
+  
+  print(plt)
+}
+```
+
+```{r}
+for (ind in unique(df_stats$analyte)) {
+  df <- df_stats %>%
+    filter(analyte == ind)
+
+  plt <- ggplot(df, aes(sample = dif)) +
+    stat_qq_point(shape = 21, size = 2.3, fill = 'blue', color = 'blue') +
+    stat_qq_line(color = 'red', linewidth = 1.5) +
+    ggtitle(ind) +
+    xlab('Theoretical Quantiles') +
+    ylab('Sample Quantiles') +
+    theme_bw()
+
+  print(plt)
+}
+```
+
+```{r}
+for (ind in unique(df_stats$analyte)) {
+  df <- df_stats %>%
+    filter(analyte == ind) %>%
+    count(dif, name = 'freq') %>%
+    arrange(desc(freq)) %>%
+    mutate(analyte = ind) %>%
+    relocate(analyte)
+  
+  print(df)
+}
+```
+
+```{r}
+for (ind in unique(df_stats$analyte)) {
+  df <- df_stats %>%
+    filter(analyte == ind) %>%
+    count(dif, name = 'freq') %>%
+    arrange(desc(freq)) %>%
+    mutate(analyte = ind) %>%
+    relocate(analyte)
+  
+  sd_diff <- sd(df$dif, na.rm = TRUE)
+  
+  plt <- ggplot(df, aes(x = dif, y = freq)) +
+    geom_point(shape = 21, size = 2, fill = 'gray') +
+    ggtitle(glue::glue('{ind} sd: {round(sd_diff,4)}')) +
+    xlab('Dif') +
+    ylab('Freq') +
+    theme_bw()
+
+  print(plt)
+}
+```
+
+```{r}
+# 68% 
+
+for (ind in unique(df_stats$analyte)) {
+  df <- df_stats %>%
+    filter(analyte == ind) %>%
+    count(dif, name = 'freq') %>%
+    arrange(desc(freq)) %>%
+    mutate(analyte = ind) %>%
+    relocate(analyte)
+  
+  mad_diff <- stats::mad(df$dif)
+  median_diff <- median(df$dif, na.rm = TRUE)
+
+  mad_perc <- df %>% filter(dif <= (median_diff - mad_diff) | dif >= (median_diff + mad_diff))
+  mad_perc <- 100-round((nrow(mad_perc)/nrow(df))*100,2)
+  
+  plt <- ggplot(df, aes(x = dif, y = freq)) +
+    geom_point(shape = 21, size = 2, fill = 'gray') +
+    geom_vline(aes(xintercept = median_diff), color = 'green', linetype = "dashed", size = 1) +
+    geom_vline(aes(xintercept = median_diff + mad_diff), color = 'purple', linetype = "dotted", size = 1) +
+    geom_vline(aes(xintercept = median_diff - mad_diff), color = 'purple', linetype = "dotted", size = 1) +
+    ggtitle(glue::glue('{ind} ({mad_perc}% inside MAD)')) +
+    xlab('Dif') +
+    ylab('Freq') +
+    theme_bw()
+
+  print(plt)
+}
+```

@@ -1,0 +1,81 @@
+# prep solids data to add to main data
+
+```{r}
+library(tidyverse)
+library(lubridate)
+source('00_GlobalFunctions/functions.R')
+```
+
+```{r}
+# import data
+fp <- abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration/Historic Solids Data')
+
+ls_files <- list.files(fp, full.names = TRUE, pattern = '\\.csv$')
+
+ls_data <- lapply(ls_files, function(f) {
+  read_csv(f, col_types = cols(.default = 'c'))
+})
+
+
+ls_cols <- unique(unlist(lapply(ls_data, colnames)))
+
+ls_alldata <- lapply(ls_data, function(df) {
+  missing_cols <- setdiff(ls_cols, colnames(df))
+  df[missing_cols] <- NA
+  df
+})
+
+df_all <- bind_rows(ls_alldata) %>%
+  mutate(SampleDate = as.Date(SampleDate, format = '%m/%d/%Y'))
+
+rm(ls_alldata, ls_data)
+```
+
+```{r}
+# filter relevant analytes and add metadata cols
+df_solids <- df_all %>%
+  filter(ConstituentName %in% c('Solids (Total Suspended)','Solids (Volatile Suspended)','Solids (Total Dissolved)')) %>%
+  filter(SampleDate < '1997-11-30') %>%
+  mutate(
+    Result = case_when(
+      ResultPrefix == '<' ~ paste0(ResultPrefix, ReportingLimit),
+      TRUE ~ Result
+    )
+  )
+
+# filter out bottom readings
+df_solids$Depth[df_solids$Depth == 'n/p'] <- 3
+
+df_solids <- df_solids %>%
+  mutate(Depth = as.numeric(Depth)) %>%
+  filter(Depth <= 3)
+
+df_solids <- df_solids %>%
+  rename('Station Name' = StationCode,
+         'Sample Date' = SampleDate)
+
+df_solids <- df_solids %>%
+  select(-c(Project, SubProject, ResultPrefix, ReportingLimit, LabAnalysisRemarks, Group, UnitName, Depth))
+```
+
+```{r}
+# Check for duplicates
+check_dups <- df_solids %>%
+  filter(duplicated(df_solids))
+
+check_dups
+```
+
+```{r}
+# convert to wide
+df_solids <- df_solids %>%
+  pivot_wider(names_from = ConstituentName,
+              values_from = Result)
+```
+
+
+```{r}
+# export
+write_csv(df_solids, paste0(abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration/Lists to Import/'),'/Import_Solids.csv'))
+```
+

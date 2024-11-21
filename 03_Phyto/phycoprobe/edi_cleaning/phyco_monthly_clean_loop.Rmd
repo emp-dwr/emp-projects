@@ -126,14 +126,14 @@ for(i in 1:nrow(df_combo)){
   # convert wq to spdf
   coords <- df_comb[,c('Longitude', 'Latitude')]
   data   <- subset(df_comb, select = -c(Latitude, Longitude))
-  crs    <- CRS('+init=epsg:4326 +proj=longlat')
+  crs    <- CRS('EPSG:4326')
   spdf_wq <- SpatialPointsDataFrame(coords = coords,
                                  data = data, 
                                  proj4string = crs)
   
   # convert delta to spdf
   spdf_delta <- as(sf_delta, 'Spatial')
-  spdf_delta <- spTransform(spdf_delta, CRS('+init=epsg:4326 +proj=longlat'))
+  spdf_delta <- spTransform(spdf_delta, CRS('EPSG:4326'))
   
   # add subregion to df
   col_sr <- sp::over(spdf_wq, spdf_delta[,'SubRegion'])

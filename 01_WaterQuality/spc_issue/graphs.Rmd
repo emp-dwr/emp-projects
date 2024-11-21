@@ -1,0 +1,68 @@
+```{r}
+source('00_GlobalFunctions/functions.R')
+library(tidyverse)
+library(stats)
+library(plotly)
+```
+
+```{r}
+fp_data <- abs_path_emp('Water Quality/Special Studies/SpC Checks/experiment_checks.csv') 
+df_data <- read_csv(fp_data)
+
+df_exp <- df_data %>% filter(Type %in% c('experiment','std')) %>%
+  group_by(Cal_Std) %>%
+  mutate(Cal_Std = factor(Cal_Std, levels = c('1000','10000','5000','25000','50000')))
+
+df_cal <- df_data %>% filter(Type %in% c('precal','postcal','std'))
+```
+
+```{r}
+ggplot(df_exp) +
+  geom_line(aes(SpC_Std,SpC_Std), color = 'blue', size = 1) +
+  geom_line(aes(SpC_Std, SpC_Reading), color = 'red', size = 1) +
+  facet_wrap(vars(Cal_Std)) +
+  theme_bw()
+```
+
+```{r}
+plot_ly(df_exp, x = ~SpC_Std, y = ~SpC_Reading, color = ~Cal_Std, type = 'scatter', mode = 'lines+markers')
+```
+
+```{r}
+df_exponly <- df_exp %>% filter(Type == 'experiment')
+
+vec_exp <- df_exponly %>%
+  group_by(SpC_Std) %>%
+  summarise(ls_read = list(SpC_Reading))
+
+vec_exp <- setNames(as.list(vec_exp$ls_read), vec_exp$SpC_Std)
+
+# Function to perform t-test
+func_ttest <- function(spc_vals, cal_val) {
+  output <- t.test(spc_vals, mu = cal_val)
+  return(output)
+}
+
+# Iterate over each group and perform t-test
+ttest_results <- lapply(names(vec_exp), function(SpC_Std) {
+  spc <- vec_exp[[SpC_Std]]
+  cal <- as.numeric(SpC_Std)
+  output <- func_ttest(spc, cal)
+  return(output)
+})
+
+ttest_results
+```
+
+```{r}
+ggplot(df_cal) +
+  geom_line(aes(SpC_Std,SpC_Std), color = 'blue', size = 1) +
+  geom_line(aes(SpC_Std, SpC_Reading), color = 'red', size = 1) +
+  facet_wrap(vars(Type)) +
+  theme_bw()
+```
+
+```{r}
+plot_ly(df_cal, x = ~SpC_Std, y = ~SpC_Reading, color = ~Type, type = 'scatter', mode = 'lines+markers')
+```
+

@@ -1,0 +1,288 @@
+Clean Corrected Data
+09/16/2024
+
+# PART 1: GENERAL CLEANING
+
+```{r}
+library(tidyverse)
+library(lubridate)
+source('00_GlobalFunctions/functions.R')
+```
+
+```{r}
+# import data
+fp <- abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration/Corrected WDL Data')
+
+ls_files <- list.files(fp, full.names = TRUE, pattern = '\\.csv$')
+
+ls_data <- lapply(ls_files, function(f) {
+  read_csv(f, col_types = cols(.default = 'c'))
+})
+
+
+ls_cols <- unique(unlist(lapply(ls_data, colnames)))
+
+ls_alldata <- lapply(ls_data, function(df) {
+  missing_cols <- setdiff(ls_cols, colnames(df))
+  df[missing_cols] <- NA
+  df
+})
+
+df_wide <- bind_rows(ls_alldata)
+
+rm(ls_alldata, ls_data)
+```
+
+```{r}
+# standardize station names
+df_stations <- read_csv(abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration/Lists to Import/Station_Names.csv'))
+
+df_wide <- left_join(df_wide, df_stations, by = 'Station Name') %>%
+  mutate(
+    `Station Name` = case_when(
+      `Station Number` %in% c('EZ2-SJR','EZ6-SJR') ~ `Station Number`,
+      TRUE ~ `New Station Name`
+    )
+  ) %>%
+  select(-`New Station Name`)
+
+# standardize NA
+df_wide <- df_wide %>%
+  mutate(across(where(is.character), ~ na_if(.x, 'N/A') %>% na_if('N.S.')))
+
+# standardize date
+df_wide <- df_wide %>%
+  separate(`Sample Date`, into = c('Sample Date', 'Sample Time'), sep = ' ') %>%
+  mutate(`Sample Date` = as.Date(`Sample Date`, format = '%m/%d/%Y'))
+```
+
+```{r}
+# checks
+anyNA(df_wide$`Sample Date`)
+anyNA(df_wide$`Sample Time`)
+
+df_check <- df_wide %>%
+  mutate(TimeTest = as.POSIXct(`Sample Time`, format = '%H:%M'))
+
+df_check %>%
+  mutate(TimeRounded = floor_date(TimeTest, '5 minutes')) %>%
+  filter(TimeTest != TimeRounded)
+
+df_check %>%
+  mutate(TimeRange = hour(TimeTest) < 5 | hour(TimeTest) >= 20) %>%
+  filter(TimeRange) %>%
+  select(`Station Name`, `Sample Date`, `Sample Time`, TimeRange) %>%
+  arrange(`Sample Date`)
+
+df_wide %>%
+  group_by(`Station Name`, `Sample Date`, `Sample Time`) %>%
+  filter(n() >= 3) %>%
+  ungroup()
+
+df_wide %>%
+  filter(`Sample Type` == 'Blank; Field') %>%
+  mutate(
+    blank_check = ifelse(`Sample Type` == 'Blank; Field' & `Station Name` == lag(`Station Name`), TRUE, FALSE)
+  ) %>%
+  filter(blank_check == FALSE)
+```
+
+```{r}
+# convert degC to degF for Air Temperature
+df_wide$`Air Temperature °C Temperature, Air - [1]*` <- as.character((as.numeric(df_wide$`Air Temperature °C Temperature, Air - [1]*`)*(9/5))+32)
+```
+
+
+```{r}
+# add solids data
+df_solids <- read_csv(abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration/Lists to Import/Import_Solids.csv'), col_types = cols(.default = 'c')) %>%
+  mutate(`Sample Date` = as.Date(`Sample Date`, format = '%Y-%m-%d'))
+
+df_wide <- left_join(df_wide, df_solids, by = c('Station Name','Sample Date'))
+
+# df_check where all data is NA during relevant timeframe
+df_check <- df_wide %>%
+  select('Station Name','Sample Date','Solids (Total Suspended)','Solids (Volatile Suspended)','Solids (Total Dissolved)') %>%
+  filter(`Sample Date` < '1997-11-30')
+
+df_check <- df_check %>%
+  filter(is.na(`Solids (Total Suspended)`) & 
+         is.na(`Solids (Volatile Suspended)`) & 
+         is.na(`Solids (Total Dissolved)`)) %>%
+  mutate(Month = month(`Sample Date`),
+         Year = year(`Sample Date`))
+
+df_solids <- df_solids %>%
+  mutate(Month = month(`Sample Date`),
+         Year = year(`Sample Date`))
+
+df_compare <- left_join(df_check,
+                        df_solids, by = c('Station Name','Month','Year'),
+                        suffix = c('.data', '.solids')) %>%
+  filter(!is.na(`Solids (Total Suspended).solids`) & 
+         !is.na(`Solids (Volatile Suspended).solids`) & 
+         !is.na(`Solids (Total Dissolved).solids`))
+
+
+df_compare <- left_join(df_check, df_solids, 
+                        by = c('Station Name', 'Month', 'Year'), 
+                        suffix = c('.data', '.solids')) %>%
+  group_by(`Station Name`, Month, Year) %>%
+  filter(all(!is.na(`Solids (Total Suspended).solids`) & 
+             !is.na(`Solids (Volatile Suspended).solids`) & 
+             !is.na(`Solids (Total Dissolved).solids`))) %>%
+  ungroup()
+
+# determined these are due to multi-month sampling where TSS/VSS/TDS weren't recorded on the second run
+```
+
+
+
+```{r}
+# convert from wide to long
+cols_fixed <- c('Station Name', 'Station Number', 'Sample Date', 'Sample Time', 'Sample Code', 'Sample Depth', 'Sample Description', 'Sample Type', 'Parent Sample Code')
+
+df_long <- df_wide %>%
+  pivot_longer(cols = -all_of(cols_fixed),
+               names_to = 'original_colname',
+               values_to = 'Result Value') %>%
+  filter(!is.na(`Result Value`))  
+```
+
+```{r}
+# assign method metadata
+df_method <- read_csv(abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration/Lists to Import/Analytes_Methods_Units_Bryte.csv')) %>%
+  mutate(modified_first_date = as.Date(modified_first_date, format = '%m/%d/%Y'),
+         modified_last_date = as.Date(modified_last_date, format = '%m/%d/%Y'))
+
+df_long <- left_join(df_long, df_method, by = 'original_colname')
+
+# df_check that all colnames have a match
+unique(df_long$original_colname[is.na(df_long$observed_property)])
+
+# add modified column
+df_long <- df_long %>%
+  mutate('Lab: Modified Method_ex' = ifelse(`Sample Date` >= modified_first_date & 
+                           `Sample Date` <= modified_last_date, 'TRUE', 'FALSE'))
+```
+
+```{r}
+# remove extra columns
+df_long <- df_long %>%
+  select(-c(original_colname, modified_first_date, modified_last_date, modified_years, year_range, notes, TA_data))
+```
+
+```{r}
+# pick random val when there's a lab duplicate
+set.seed(42)
+
+pick_val <- function(cell) {
+  if (grepl("**", cell, fixed = TRUE) && grepl(",", cell)) {
+    cell_vals <- unlist(strsplit(gsub("\\*\\*", "", cell), ","))
+    select_val <- sample(cell_vals, 1)
+    return(select_val)
+  } else {
+    return(cell)
+  }
+}
+
+df_long <- df_long %>%
+  mutate('Result Value' = sapply(`Result Value`, pick_val))
+```
+
+# PART 2: AI SPECIFIC THINGS (NO TA)
+
+```{r}
+# update Sample Type
+df_long <- df_long %>%
+  mutate(
+    'QC: Type' = case_when(
+      `Sample Type` == 'Normal Sample' ~ 'Normal',
+      `Sample Type` == 'Blank; Equipment' ~ 'Blank',
+      `Sample Type` == 'Blank; Field' ~ 'Blank',
+      `Sample Type` == 'Duplicate, Specific Analyte(s)' ~ 'Replicate',
+      `Sample Type` == 'Replicate (Split), Spec. Analyte(s)' ~ 'Replicate',
+      `Sample Type` == 'Replicate (Split) Sample' ~ 'Replicate'
+    )
+  ) %>%
+  select(-`Sample Type`)
+```
+
+```{r}
+# add RL and Detection columns
+df_long <- df_long %>%
+  mutate(
+    'Lab: MRL' = case_when(
+      grepl('<', `Result Value`) ~ gsub('<', '', `Result Value`),
+      TRUE ~ NA
+    ),
+    'Lab: Detection Condition' = case_when(
+      grepl('<', `Result Value`) ~ 'Not detected',
+      TRUE ~ NA
+    ),
+    'Result Value' = case_when(
+      grepl('<', `Result Value`) ~ NA,
+      TRUE ~ `Result Value`
+    ),
+  )
+```
+
+```{r}
+# add lab col
+df_long$`Lab: From Laboratory` <- 'Bryte'
+
+# add Reports To col
+df_long$`Lab: Reports To_ex` <- 'MRL'
+```
+
+# PART 3: ADD TEST AMERICA
+
+
+# PART 4: FINAL AI SPECIFIC THINGS (INCLUDING TA)
+
+```{r}
+# combine DateTime
+df_long <- df_long %>%
+  mutate('Observed DateTime' = paste(`Sample Date`,`Sample Time`)) %>%
+  select(-c(`Sample Date`,`Sample Time`))
+
+# remove Sample Depth and add new ones
+df_long <- df_long %>%
+  select(-`Sample Depth`) %>%
+  mutate(Depth = 3,
+         'Depth Unit' = 'ft')
+
+# rename cols
+df_long <- df_long %>%
+  rename(
+    'Activity Name' = 'Sample Code',
+    'Location ID' = 'Station Name',
+    'Parent Activity Name_ex' = 'Parent Sample Code'
+    ) %>%
+  select(-c('Station Number'))
+
+col_order <- c('Location ID','Observed Property ID','Observed DateTime','Depth','Depth Unit','Data Classification','Result Value','Result Unit','Activity Name','Parent Activity Name_ex','Field: Device Type','Sample Description','Lab: Analysis Method','Lab: Modified Method_ex', 'Lab: Detection Condition','Lab: MRL','Lab: From Laboratory','QC: Type')
+  
+df_long <- df_long[, col_order]
+```
+
+
+# PART 5: EXPORT
+```{r}
+# export
+# Define the filepath for saving
+fp_export <- abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration/Prelim WDL Data')
+
+write_csv(df_long, file = paste0(fp_export, '/prelim_data.csv'))
+
+# df_list <- split(df_long, year(df_long$`Sample Date`))
+# 
+# # Define the filepath for saving
+# fp_export <- abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration/Prelim WDL Data')
+# 
+# # Loop through each dataframe and write to CSV
+# lapply(names(df_list), function(year) {
+#   write_csv(df_list[[year]], file = paste0(fp_export, '/', year, '_prelim.csv'))
+# })
+```
+

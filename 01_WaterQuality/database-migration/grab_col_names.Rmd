@@ -64,8 +64,8 @@ num_cols <- colnames(df_names[start_col:length(df_names)])[!(colnames(df_names[s
 
 # convert relevant cols to numeric
 df_names[num_cols] <- sapply(df_names[num_cols], as.numeric)
-no_data <- Filter(function(x)all(is.na(x)), df_names)
-df_names <- Filter(function(x)!all(is.na(x)), df_names)
+no_data <- Filter(function(x) all(is.na(x)), df_names)
+df_names <- Filter(function(x) !all(is.na(x)), df_names)
 
 # define relevant cols
 all_cols <- colnames(df_names[start_col:length(df_names)])
@@ -86,5 +86,5 @@ df_totals <- df_sums %>%
 ```{r}
 export_path <- abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration')
 
-write_csv(df_totals,glue::glue('{export_path}/unique_cols_new.csv'))
+write_csv(df_totals,glue::glue('{export_path}/unique_cols_new070224.csv'))
 ```

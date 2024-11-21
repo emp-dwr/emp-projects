@@ -9,15 +9,17 @@ library(deltamapr)
 library(readxl)
 library(sf)
 library(sp)
+source('03_Phyto/phycoprobe/functions/phyco_funcs.R')
+
+# declare the run year of interest
+year <- 2023
 
 # --Read in Data--
-path <- 'C:/Users/pcarpent/Desktop/Fluroprobe_Data/2020' # manually set path bc Rmd is weird with dirs
+fp <- create_dir(year)
 
-df_fl <- list.files(path = 'C:/Users/pcarpent/Desktop/Fluoroprobe_Data/2020',
+df_fl <- list.files(path = fp,
                pattern = '*.csv') %>% # this part pulls all files in that directory that end in ".csv"
-  map_df(~read_csv(paste0(path,.), show_col_types = FALSE)) # this merges them all together into one dataframe
-
-# don't worry about the parsing errors; it imports as expected
+  map_df(~read_csv(paste0(fp,'/',.), col_types = cols(DateTime = col_datetime()), show_col_types = FALSE)) # this merges them all together into one dataframe
 ```
 
 
@@ -70,14 +72,14 @@ Since data has large gaps, it's best to check on a day-by-day basis.
 ```{r}
 # to be slightly fancy, let's set the variables that change up here. that way we don't have to change every instance of them later
 region = 'Western Delta'
-year = '2022'
-month = 'December'
+year = '2023'
+month = 'November'
 
 # add DateTime for graphing (eg. create x-axis)
-df_fl$DateTime <- as.POSIXct(paste(df_fl$Date, df_fl$Time), format="%m/%d/%Y %H:%M:%S")
+# df_fl$DateTime <- as.POSIXct(paste(df_fl$Date, df_fl$Time), format="%m/%d/%Y %H:%M:%S")
 
-# factor month so it's in order
-df_fl$Month <- factor(df_fl$Month, levels = month.name)
+# factor month so it's in order# 
+# df_fl$Month <- factor(df_fl$Month, levels = month.name)
 
 # best not to reuse names, so renamed these
 Region_ug <- df_fl %>% 

@@ -5,6 +5,12 @@ create_dir <- function(year){
   return(dir_test)
 }
 
+fp_main_export <- function(year){
+  fp_emp <- '/California Department of Water Resources/Environmental Monitoring Program - Documents/Water Quality/'
+  fp_full <- paste0(Sys.getenv('USERPROFILE'),fp_emp,'EDI Data/',year,' Data Publishing/EMP_Phycoprobe_',year)
+  return(fp_full)
+}
+
 month_num <- function(name){
   df_month <- data.frame(name = array(month.name), abbrv = array(month.abb), num = 1:12)
   

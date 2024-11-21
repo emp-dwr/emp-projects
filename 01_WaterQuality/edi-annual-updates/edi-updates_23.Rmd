@@ -47,11 +47,14 @@ match_and_return <- function(x, y, use_fixed = TRUE) {
   }
   return(results)
 }
+
+unique(df_wq$`Sample Type`)
 ```
 
 Prep data for merging
 ```{r}
 df_wq[df_wq == 'N/A'] <- NA
+df_wq <- df_wq %>% filter(`Sample Type` == 'Normal Sample')
 
 # Apply the function to the vector of strings
 colnames(df_wq) <- sapply(colnames(df_wq), id_field)
@@ -167,9 +170,14 @@ Final Tests
 cur_year <- max(year(df_wq$Date))
 
 # test data is same as previous EDI publication for previous years
-df_test_old <- df_join %>% subset(year(Date) < cur_year)
+df_test_old <- df_join %>% subset(year(Date) < cur_year) %>%
+  arrange(Station, Date, Time)
+
+df_edi <- df_edi %>%
+  arrange(Station, Date, Time)
+
 print((glue('old data is identical: {identical(df_test_old, df_edi)}')))
-print((glue('old data is equal: {all.equal(df_test_old, df_edi)}')))
+print((glue('old data is equal: {all.equal(df_test_old, df_edi, check.attributes = FALSE)}')))
 
 # check new data isn't empty:
 df_test_new <- df_join %>% subset(year(Date) == cur_year)
@@ -206,7 +214,7 @@ check_graph <- function(param, df = df_join, select_year = 'all'){
 
   # create directory
   fp <- glue('Water Quality/EDI Data/EDI Graph Checks/{cur_year}')
-  dir.create(abs_path_emp(file.path(fp)), showWarnings = FALSE)
+  dir.create(abs_path_emp(file.path(fp)), showWarnings = FALSE, create.dir = TRUE)
 
   # create filename
   if (length(select_year) == 1) {
@@ -226,5 +234,5 @@ for (col in colnames(select_if(df_join, is.numeric))){
 
 ```{r}
 # export csv
-write_csv(df_join, paste0('01_WaterQuality/edi-annual-updates/data/final/EMP_DWQ_1975_',cur_year,'.csv'))
+write_csv(df_join, paste0('01_WaterQuality/edi-annual-updates/data/final/TRUE_EMP_DWQ_1975_',cur_year,'.csv'))
 ```

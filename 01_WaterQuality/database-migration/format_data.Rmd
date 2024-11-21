@@ -4,7 +4,7 @@
 `%>%` <- magrittr::`%>%`
 
 abs_path_data <- function(fp_rel = NULL) {
-  fp_emp <<- 'California Department of Water Resources/Environmental Monitoring Program - Documents/Water Quality/AQUARIUS Samples Database/Database Migration'
+  fp_emp <<- 'California Department of Water Resources/Environmental Monitoring Program - Documents/Water Quality/AQUARIUS Samples Database/Database Migration/2024'
   
   if (is.null(fp_rel)) {
     fp_abs <- normalizePath(file.path(Sys.getenv('USERPROFILE'), fp_emp))
@@ -91,5 +91,7 @@ for (wq_file in fp_file){
   
   readr::write_csv(df, fp_exp)
 }
+
+fp_exp
 ```
 
