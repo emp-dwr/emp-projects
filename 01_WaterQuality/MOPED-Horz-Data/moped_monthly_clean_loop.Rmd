@@ -1,10 +1,10 @@
-Title: Phycoprobe Data - Monthly Cleaning
+Title: MOPED Data - Monthly Cleaning
 
-Description: Add lat/lon coordinates to phycoprobe data
+Description: Annual Moped data combine and clean. Subset by 1 minute measurements
 
-By: Perry
+By: Craig (ref: Perry's code)
 
-Date: 11/2023
+Date: 12/2024
 
 ```{r}
 # ---
@@ -23,7 +23,6 @@ year <- 2023
 # import packages
 library(tidyverse)
 library(lubridate)
-#library(deltamapr)
 library(readxl)
 library(sf)
 library(sp)
@@ -34,24 +33,23 @@ source(here('03_Phyto/phycoprobe/functions/phyco_funcs.R'))
 df_names <- read_csv('03_Phyto/phycoprobe/supp_files/run_names.csv', show_col_types = FALSE)
 df_regions <- read_csv('03_Phyto/phycoprobe/supp_files/regions_fluoro.csv', show_col_types = FALSE)
 
-# obtain all filepaths and create combo df
-fp_all_phy <- archive_path(2023, 'phyco')
+# obtain all file paths and create combo df
+#fp_all_phy <- archive_path(2023, 'phyco')
 fp_all_wq <- archive_path(2023, 'MOPED')
 
-df_combo_phy <- create_combo_df(fp_all_phy)
+#df_combo_phy <- create_combo_df(fp_all_phy)
 df_combo_wq <- create_combo_df(fp_all_wq)
 
-df_combo <- inner_join(df_combo_wq, df_combo_phy, by = c('month','run'))
+#df_combo <- inner_join(df_combo_wq, df_combo_phy, by = c('month','run'))
 
 # run code for all combos
-for(i in 1:nrow(df_combo)){ 
+for(i in 1:nrow(df_combo_wq)){ 
   # define variables
-  month <- df_combo[i,]$month
-  run <- df_combo[i,]$run
+  month <- df_combo_wq[i,]$month
+  run <- df_combo_wq[i,]$run
   
   print(glue::glue('month: {month} and run: {run}'))
   
- 
   # read in WQ data
   fp_wq <- data_path(run, month, year, type = 'MOPED')
   df_wq <- read_csv(fp_wq, skip = 2, show_col_types = FALSE)
@@ -62,58 +60,29 @@ for(i in 1:nrow(df_combo)){
   
   df_wq$Analyte <- paste0(df_wq$Header,'_',df_wq$Unit)
   
-  #floor/ceiling timestamps 
+  #floor/ceiling timestamps subset
+  
+# Define the range of seconds (e.g., 0 to 5 seconds past the minute) 
+  floor_seconds <- 0 
+  ceiling_seconds <- 5
+  
   df_wq <- df_wq %>%
-    subset(select = c(Longitude, Latitude, TimeStamp, Analyte, Value)) %>%
-    mutate(TimeStamp = round_date(TimeStamp, unit='1 minute')) %>%
-    group_by(TimeStamp, Analyte) %>%
-    summarize_all(~mean(., na.rm = TRUE)) %>%
-    rename(DateTime = TimeStamp) %>%
-    pivot_wider(names_from = Analyte, values_from = Value) %>%
-    summarize_all(~mean(., na.rm = TRUE))
-  
-  # convert date/time col back to character
-  df_wq$DateTime <- as.character(df_wq$DateTime)
-  
+    filter(second(TimeStamp) >= floor_seconds & second(TimeStamp) <=
+             ceiling_seconds)
 
   
-  # import delta sf
-  #sf_delta <- R_EDSM_Subregions_Mahardja
+    #df_wq <- df_wq %>%
+    # subset(select = c(Longitude, Latitude, TimeStamp, Analyte, Value)) %>%
+    # mutate(TimeStamp = round_date(TimeStamp, unit='1 minute')) %>%
+    # group_by(TimeStamp, Analyte) %>%
+    # summarize_all(~mean(., na.rm = TRUE)) %>%
+    # rename(DateTime = TimeStamp) %>%
+    # pivot_wider(names_from = Analyte, values_from = Value) %>%
+    # summarize_all(~mean(., na.rm = TRUE))
+    
   
-  # convert wq to spdf
- # coords <- df_comb[,c('Longitude', 'Latitude')]
-  #data   <- subset(df_comb, select = -c(Latitude, Longitude))
-  #crs    <- CRS('+init=epsg:4326 +proj=longlat')
-  #spdf_wq <- SpatialPointsDataFrame(coords = coords,
-                               #  data = data, 
-                                # proj4string = crs)
-  
-  # # convert delta to spdf
-  # spdf_delta <- as(sf_delta, 'Spatial')
-  # spdf_delta <- spTransform(spdf_delta, CRS('+init=epsg:4326 +proj=longlat'))
-  # 
-  # # add subregion to df
-  # col_sr <- sp::over(spdf_wq, spdf_delta[,'SubRegion'])
-  # spdf_wq$SubRegion <- col_sr$SubRegion
-  # 
-  # # convert to shapefile
-  # sf_wq <- st_as_sf(spdf_wq)
-  # sf_wq <- st_transform(sf_wq, st_crs = sf_delta)
-  # sf_wq <- sf_wq %>% filter(!is.na(SubRegion))
-  # 
-  # check data
-  # ggplot() +
-  #   geom_sf(data = sf_delta) +
-  #   geom_sf(data = sf_wq, color = 'red')
-  
-  # # clean up regions in final df
-  # df_final <- as_tibble(sf_wq)
-  # df_final <- left_join(df_final, df_regions, 'SubRegion')
-  # 
-  # df_final <- df_final %>%
-  #   extract(geometry, c('Latitude', 'Longitude'), '\\((.*), (.*)\\)', convert = TRUE) %>%
-  #   select(-c(SubRegion, SONDEDEPTH_ft, Date, Month, Year)) %>%
-  #   relocate(c(Label, DateTime, Latitude, Longitude, Region))
+# convert date/time col back to character
+  df_wq$TimeStamp <- as.character(df_wq$TimeStamp)
   
   
   # export
@@ -124,5 +93,14 @@ for(i in 1:nrow(df_combo)){
   # 
   # write_csv(df_final, fp_exp)
 }
+```
+
+```{r}
+ #Remove unnecessary columns and rows with Vertical Sonde Data
+  text_to_remove <- "EXO Vertical"
+
+  df_wq <- df_wq %>%
+    filter(Equipment != text_to_remove) %>%
+    select(-Station, -SerialNumber, -Flag, -Tow, -Interpolated, -...18)
 ```
 
