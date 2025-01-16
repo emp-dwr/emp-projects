@@ -1,0 +1,21 @@
+Station ID,OLD,Elevation,5 ft,,
+River Basin,DELTA,County,SAN JOAQUIN,,
+Hydrologic Area,SACRAMENTO RIVER,Nearby City,TRACY,,
+Latitude,37.804810°,Longitude,-121.449562°,,
+Operator,CA Dept of Water Resources/Operations and Maintenance,Maintenance,CA Dept of Water Resources/Operations and Maintenance,,
+,,,,,
+The following data types are available online. Select one of the links below to retrieve recent data.,,,,,
+,,,,,
+Sensor Description,Sensor Number,Duration,Plot,Data Collection,Data Available
+"ELECTRICAL CONDUCTIVTY MICRO S, uS/cm",100,(daily),(EL COND),COMPUTED,06/22/2006 to present
+"ELECTRICAL CONDUCTIVTY MICRO S, uS/cm",100,(event),(EL COND),SATELLITE,04/06/2005 to present
+"FLOW, RIVER DISCHARGE, CFS",20,(event),(FLOW),DATA XCHG-DWR NCRO,03/02/2011 to present
+"RIVER STAGE, FEET",1,(event),(RIV STG),SATELLITE,04/06/2005 to present
+"TEMPERATURE, WATER, DEG F",25,(event),(TEMP W),SATELLITE,04/06/2005 to present
+"WATER, VELOCITY, FT/SEC",21,(event),(VLOCITY),DATA XCHG-DWR NCRO,03/02/2011 to present
+"BATTERY VOLTAGE, VOLTS",14,(hourly),(BAT VOL),SATELLITE,01/01/1995 to present
+"RIVER STAGE, FEET",1,(hourly),(RIV STG),FROM 15-MINUTE DATA,03/29/1985 to present
+"RIVER STAGE NAVD88, FEET",141,(event),(RIVST88),COMPUTED,02/02/2006 to 09/30/2006
+"RIVER STAGE NAVD88, FEET",141,(hourly),(RIVST88),COMPUTED,02/02/2006 to 09/30/2006
+"ELECTRICAL CONDUCTIVTY MILLI S, mS/cm",5,(daily),(EL CND),COMPUTED,06/22/2006 to 08/09/2006
+"ELECTRICAL CONDUCTIVTY MILLI S, mS/cm",5,(event),(EL CND),SATELLITE,04/06/2005 to 08/09/2006

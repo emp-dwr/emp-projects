@@ -1,0 +1,19 @@
+Station ID,SNC,Elevation,0 ft,,
+River Basin,DELTA,County,SOLANO,,
+Hydrologic Area,SACRAMENTO RIVER,Nearby City,CORDELIA,,
+Latitude,38.185000°,Longitude,-122.083000°,,
+Operator,CA Dept of Water Resources/Div of Integrated Science and Eng,Maintenance,CA Dept of Water Resources/Div of Integrated Science and Eng,,
+,,,,,
+The following data types are available online. Select one of the links below to retrieve recent data.,,,,,
+,,,,,
+Sensor Description,Sensor Number,Duration,Plot,Data Collection,Data Available
+"ELECTRICAL CONDUCTIVTY MICRO S, uS/cm",100,(daily),(EL COND),COMPUTED,03/01/2008 to present
+"BATTERY VOLTAGE, VOLTS",14,(event),(BAT VOL),DATA XCHG-DWR ISE,06/05/2009 to present
+"ELECTRICAL CONDUCTIVTY MICRO S, uS/cm",100,(event),(EL COND),DATA XCHG-DWR ISE,06/05/2009 to present
+"RIVER STAGE, FEET",1,(event),(RIV STG),DATA XCHG-DWR ISE,06/05/2009 to present
+"TEMPERATURE, WATER, DEG F",25,(event),(TEMP W),DATA XCHG-DWR ISE,06/05/2009 to present
+"BATTERY VOLTAGE, VOLTS",14,(hourly),(BAT VOL),SATELLITE,01/01/1995 to present
+"ELECTRICAL CONDUCTIVTY MICRO S, uS/cm",100,(hourly),(EL COND),SATELLITE,05/24/2007 to present
+"RIVER STAGE, FEET",1,(hourly),(RIV STG),SATELLITE,07/01/1994 to present
+"TEMPERATURE, WATER, DEG F",25,(hourly),(TEMP W),SATELLITE,05/24/2007 to present
+"ELECTRICAL CONDUCTIVTY MILLI S, mS/cm",5,(hourly),(EL CND),MICROWAVE,07/01/1994 to 05/23/2007

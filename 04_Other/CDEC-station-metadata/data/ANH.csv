@@ -1,0 +1,41 @@
+Station ID,ANH,Elevation,10 ft,,
+River Basin,SAN JOAQUIN RIVER,County,CONTRA COSTA,,
+Hydrologic Area,SACRAMENTO RIVER,Nearby City,ANTIOCH,,
+Latitude,38.017830°,Longitude,-121.802963°,,
+Operator,CA Dept of Water Resources/Div of Integrated Science and Eng,Maintenance,CA Dept of Water Resources/Div of Integrated Science and Eng,,
+,,,,,
+The following data types are available online. Select one of the links below to retrieve recent data.,,,,,
+,,,,,
+Sensor Description,Sensor Number,Duration,Plot,Data Collection,Data Available
+"ELECTRICAL CONDUCTIVTY MICRO S, uS/cm",100,(daily),(EL COND),COMPUTED,01/18/2008 to present
+"TEMPERATURE, WATER, DEG F",25,(daily),(TEMP W),COMPUTED,01/01/2002 to present
+"TEMPERATURE, WATER C, DEG C",146,(daily),(TEMPW C),COMPUTED,12/06/2011 to present
+"BATTERY VOLTAGE, VOLTS",14,(event),(BAT VOL),DATA XCHG-DWR ISE,10/16/2008 to present
+"CHLOROPHYLL, ug/L",28,(event),(CHLORPH),DATA XCHG-DWR ISE,10/16/2008 to present
+"ELECTRICAL COND BOTTOM MICRO S, uS/cm",102,(event),(EL CONDB),DATA XCHG-DWR ISE,10/16/2008 to present
+"ELECTRICAL CONDUCTIVTY MICRO S, uS/cm",100,(event),(EL COND),DATA XCHG-DWR ISE,10/16/2008 to present
+"RIVER STAGE, FEET",1,(event),(RIV STG),DATA XCHG-DWR ISE,10/16/2008 to present
+"SOLAR RADIATION, W/M^2",26,(event),(SOLAR R),DATA XCHG-DWR ISE,10/16/2008 to present
+"TEMPERATURE, AIR, DEG F",4,(event),(TEMP),DATA XCHG-DWR ISE,10/16/2008 to present
+"TEMPERATURE, WATER, DEG F",25,(event),(TEMP W),DATA XCHG-DWR ISE,10/16/2008 to present
+"WATER, DISSOLVED OXYGEN, MG/L",61,(event),(DIS OXY),DATA XCHG-DWR ISE,10/16/2008 to present
+"WATER, PH VALUE, PH",62,(event),(PH VAL),DATA XCHG-DWR ISE,10/16/2008 to present
+"WATER, TURBIDITY, NTU",27,(event),(TURB W),DATA XCHG-DWR ISE,10/16/2008 to present
+"WIND, DIRECTION, DEG",10,(event),(WIND DR),DATA XCHG-DWR ISE,10/16/2008 to present
+"WIND, SPEED, MPH",9,(event),(WIND SP),DATA XCHG-DWR ISE,10/16/2008 to present
+"BATTERY VOLTAGE, VOLTS",14,(hourly),(BAT VOL),DATA XCHG-DWR ISE,01/01/1995 to present
+"CHLOROPHYLL, ug/L",28,(hourly),(CHLORPH),DATA XCHG-DWR ISE,01/17/2008 to present
+"ELECTRICAL COND BOTTOM MICRO S, uS/cm",102,(hourly),(EL CONDB),DATA XCHG-DWR ISE,01/17/2008 to present
+"ELECTRICAL CONDUCTIVTY MICRO S, uS/cm",100,(hourly),(EL COND),DATA XCHG-DWR ISE,01/18/2008 to present
+"RIVER STAGE, FEET",1,(hourly),(RIV STG),SATELLITE,01/01/1984 to present
+"SOLAR RADIATION, W/M^2",26,(hourly),(SOLAR R),DATA XCHG-DWR ISE,01/17/2008 to present
+"TEMPERATURE, AIR, DEG F",4,(hourly),(TEMP),SATELLITE,01/17/2008 to present
+"TEMPERATURE, WATER, DEG F",25,(hourly),(TEMP W),DATA XCHG-DWR ISE,01/01/1995 to present
+"WATER, DISSOLVED OXYGEN, MG/L",61,(hourly),(DIS OXY),DATA XCHG-DWR ISE,02/06/2003 to present
+"WATER, PH VALUE, PH",62,(hourly),(PH VAL),SATELLITE,01/18/2008 to present
+"WATER, TURBIDITY, NTU",27,(hourly),(TURB W),DATA XCHG-DWR ISE,01/17/2008 to present
+"WIND, DIRECTION, DEG",10,(hourly),(WIND DR),DATA XCHG-DWR ISE,02/01/1995 to present
+"WIND, SPEED, MPH",9,(hourly),(WIND SP),DATA XCHG-DWR ISE,02/01/1995 to present
+"ELECTRICAL CONDUCTIVTY MILLI S, mS/cm",5,(daily),(EL CND),COMPUTED,12/01/1995 to 01/18/2008
+"ELECTRICAL CONDUCTIVTY MILLI S, mS/cm",5,(hourly),(EL CND),MICROWAVE,02/01/1984 to 01/18/2008
+"RIVER STAGE NAVD88, FEET",141,(hourly),(RIVST88),COMPUTED,02/01/2006 to 09/30/2006

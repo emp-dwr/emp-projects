@@ -1,0 +1,28 @@
+Station ID,PPT,Elevation,0 ft,,
+River Basin,DELTA,County,SAN JOAQUIN,,
+Hydrologic Area,SACRAMENTO RIVER,Nearby City,STOCKTON,,
+Latitude,38.066000°,Longitude,-121.562000°,,
+Operator,CA Dept of Water Resources/Div of Integrated Science and Eng,Maintenance,CA Dept of Water Resources/Div of Integrated Science and Eng,,
+,,,,,
+The following data types are available online. Select one of the links below to retrieve recent data.,,,,,
+,,,,,
+Sensor Description,Sensor Number,Duration,Plot,Data Collection,Data Available
+"ELECTRICAL CONDUCTIVTY MICRO S, uS/cm",100,(daily),(EL COND),COMPUTED,12/01/2007 to present
+"TEMPERATURE, WATER, DEG F",25,(daily),(TEMP W),COMPUTED,05/01/2020 to present
+"TEMPERATURE, WATER C, DEG C",146,(daily),(TEMPW C),COMPUTED,05/01/2020 to present
+"WATER, TURBIDITY, NTU",27,(daily),(TURB W),COMPUTED,07/01/2015 to present
+"BATTERY VOLTAGE, VOLTS",14,(event),(BAT VOL),DATA XCHG-DWR ISE,04/01/1997 to present
+"CHLOROPHYLL, ug/L",28,(event),(CHLORPH),DATA XCHG-DWR ISE,08/12/2008 to present
+"ELECTRICAL CONDUCTIVTY MICRO S, uS/cm",100,(event),(EL COND),DATA XCHG-DWR ISE,08/12/2008 to present
+"TEMPERATURE, WATER, DEG F",25,(event),(TEMP W),DATA XCHG-DWR ISE,04/01/1997 to present
+"WATER, DISSOLVED OXYGEN, MG/L",61,(event),(DIS OXY),DATA XCHG-DWR ISE,08/12/2008 to present
+"WATER, PH VALUE, PH",62,(event),(PH VAL),DATA XCHG-DWR ISE,08/12/2008 to present
+"WATER, TURBIDITY, NTU",27,(event),(TURB W),DATA XCHG-DWR ISE,08/12/2008 to present
+"BATTERY VOLTAGE, VOLTS",14,(hourly),(BAT VOL),DATA XCHG-DWR ISE,08/30/2006 to present
+"CHLOROPHYLL, ug/L",28,(hourly),(CHLORPH),DATA XCHG-DWR ISE,03/02/2006 to present
+"ELECTRICAL CONDUCTIVTY MICRO S, uS/cm",100,(hourly),(EL COND),COMPUTED,03/02/2006 to present
+"TEMPERATURE, WATER, DEG F",25,(hourly),(TEMP W),DATA XCHG-DWR ISE,03/02/2006 to present
+"WATER, DISSOLVED OXYGEN, MG/L",61,(hourly),(DIS OXY),DATA XCHG-DWR ISE,03/02/2006 to present
+"WATER, PH VALUE, PH",62,(hourly),(PH VAL),DATA XCHG-DWR ISE,03/02/2006 to present
+"WATER, TURBIDITY, NTU",27,(hourly),(TURB W),DATA XCHG-DWR ISE,03/02/2006 to present
+"ELECTRICAL CONDUCTIVTY MILLI S, mS/cm",5,(event),(EL CND),SATELLITE,04/01/1997 to 02/01/2006

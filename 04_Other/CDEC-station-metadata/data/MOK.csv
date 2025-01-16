@@ -1,0 +1,15 @@
+Station ID,MOK,Elevation,0 ft,,
+River Basin,MOKELUMNE RIVER,County,SAN JOAQUIN,,
+Hydrologic Area,SAN JOAQUIN RIVER,Nearby City,ISLETON,,
+Latitude,38.106100°,Longitude,-121.571100°,,
+Operator,USGS/DWR,Maintenance,.None Specified,,
+,,,,,
+The following data types are available online. Select one of the links below to retrieve recent data.,,,,,
+,,,,,
+Sensor Description,Sensor Number,Duration,Plot,Data Collection,Data Available
+"ELECTRICAL CONDUCTIVTY MICRO S, uS/cm",100,(event),(EL COND),DATA XCHG-USGS,06/17/2008 to present
+"FLOW, RIVER DISCHARGE, CFS",20,(event),(FLOW),DATA XCHG-USGS,02/09/2007 to present
+"RIVER STAGE, FEET",1,(event),(RIV STG),DATA XCHG-USGS,02/09/2007 to present
+"TEMPERATURE, WATER, DEG F",25,(event),(TEMP W),DATA XCHG-USGS,06/17/2008 to present
+"WATER, TURBIDITY FNU, FNU",221,(event),(TURB WF),DATA XCHG-USGS,06/17/2008 to present
+"WATER, VELOCITY, FT/SEC",21,(event),(VLOCITY),DATA XCHG-USGS,02/09/2007 to present

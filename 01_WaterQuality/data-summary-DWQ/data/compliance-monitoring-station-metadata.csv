@@ -1,0 +1,215 @@
+StationID,CDEC ID,Component,Location,Latitude,Longitude,Status,CombinedID,ShortName,Region
+D12A,ANH,Continuous WQ,San Joaquin River @ Antioch Ship Canal,38.01783,-121.802963,Active,D12-D12A,Antioch,Confluence
+S49,BDL,Continuous WQ,Montezuma Slough near Beldon Landing,38.1869,-121.9708,Active,S49,Beldon Landing,Suisun Marsh
+C6,BDT,Continuous WQ,San Joaquin River @ Brandt Bridge site,37.865,-121.3231,Active,C6,Brandt Bridge,South Delta
+SLBAR3,BKS,Continuous WQ,Barker Slough at North Bay Aqueduct (SLBAR3),38.2759,-121.7965,Active,SLBAR3,Barker Slough,North Delta
+C19,CCS,Continuous WQ,Cache Slough @ City of Vallejo Intake,38.2918,-121.742,Inactive,C19,Cache Slough,North Delta
+C2,CLL,Continuous WQ,Sacramento River @ Collinsville,38.073981,-121.850123,Active,C2,Collinsville,Confluence
+C5,CNT,Continuous WQ,Contra Costa Canal @ Pumping Plant #1,37.99495,-121.702809,Active,C5,Contra Costa Canal,Central Delta
+DMC1,DMC,Continuous WQ,Delta-Mendota Canal at Tracy Pumping Plant,37.781567,-121.590239,Active,DMC1,Tracy Pumping Plant,South Delta
+D22,EMM,Continuous WQ,Sacramento River @ Emmaton,38.084272,-121.738924,Active,D22,Emmaton,Confluence
+FPT,FPT,Continuous WQ,Sacramento River (I St. Bridge to Freeport),38.456112,-121.5003,Active,FPT,Freeport,North Delta
+D19A,FRK,Continuous WQ,Franks Tract Mid Tract,38.046417,-121.5981,Active,D19-D19A,Franks Tract,Central Delta
+S35,GYS,Continuous WQ,Goodyear Slough @ Morrow Island Clubhouse,38.118,-122.095,Active,S35,Goodyear Slough,Suisun Marsh
+D7A,GZL,Continuous WQ,Grizzly Bay @ Dolphin near Suisun Slough,38.12425,-122.038117,Active,D7-D7A,Grizzly Bay,Suisun & Grizzly Bay
+D9A,HON,Continuous WQ,Sacramento River above Point Sacramento,38.0724,-121.9392,Active,D9-D9A,Honker Bay,Confluence
+S97,IBS,Continuous WQ,Cordelia Slough @ Ibis Club,38.157,-122.113,Active,S97,Cordelia Slough,Suisun Marsh
+D10A,MAL,Continuous WQ,Sacramento River @ Chipps Island,38.042805,-121.92009,Active,D10-D10A,Chipps Island,Confluence
+C13,MOK,Continuous WQ,Mokelumne River @ Terminous,38.1061,-121.5711,Active,C13,Terminous,Central Delta
+D6A,MRZ,Continuous WQ,Suisun Bay @ Bulls Head Point near Martinez,38.027637,-122.140488,Active,D6-D6A,Martinez,Carquinez Strait
+C7A,MSD,Continuous WQ,San Joaquin River @ Mossdale Bridge,37.786,-121.306,Active,C7-C7A,Mossdale Bridge,South Delta
+S64,NSL,Continuous WQ,Montezuma Slough @ National Steel,38.1221,-121.8881,Active,S64,National Steel,Suisun Marsh
+D28A,OBI,Continuous WQ,Old River @ Rancho Del Rio,37.969368,-121.57222,Active,D28A,Rancho Del Rio,Central Delta
+P12,OLD,Continuous WQ,Old River @ Tracy Road Bridge,37.80481,-121.449562,Active,P12-P12A,Tracy Road,South Delta
+C14,PCT,Continuous WQ,Sacramento River @ Port Chicago,38.056788,-121.999971,Active,C14,Port Chicago,Suisun & Grizzly Bay
+D29,PPT,Continuous WQ,San Joaquin River @ Prisoners Point,38.066,-121.562,Active,D29,Prisoner's Point,Central Delta
+ROR,ROR,Continuous WQ,Water supply intakes for waterfowl management areas on Van Sickle Island and Chipps Island,38.0931,-121.8875,Inactive,ROR,Roaring River,Suisun Marsh
+P8A,RRI,Continuous WQ,San Joaquin River @ Rough and Ready Island,37.963,-121.365,Active,P8-P8A,Buckley Cove,South Delta
+D24A,RVB,Continuous WQ,Sacramento River below Rio Vista Bridge,38.159737,-121.686355,Active,D24-D24A-NZ068,Rio Vista,North Delta
+D8A,RYC,Continuous WQ,Suisun Bay off Middle Point near Nichols,38.083971,-121.995878,Active,D8-D8A,Suisun Bay,Suisun & Grizzly Bay
+C4,SAL,Continuous WQ,San Joaquin River @ San Andreas Landing,38.103301,-121.591315,Active,C4,San Andreas Landing,Central Delta
+D15,SJJ,Continuous WQ,San Joaquin River @ Jersey Point,38.052,-121.689,Active,D15,Jersey Point,Central Delta
+C10A,SJR,Continuous WQ,San Joaquin River near Vernalis @ SJR Club,37.67929,-121.26511,Active,C10-C10A,Vernalis,South Delta
+S21,SNC,Continuous WQ,Chadbourne Slough @ Sunrise Duck Club,38.185,-122.083,Active,S21,Chadbourne Slough,Suisun Marsh
+C3A,SRH,Continuous WQ,Sacramento River @ Hood,38.367981,-121.519958,Active,C3-C3A,Hood,North Delta
+D11A,SSI,Continuous WQ,Sacramento River near Sherman Island,38.074097,-121.761736,Active,D11-D11A,Sherman Island,Confluence
+TRN,TRN,Continuous WQ,San Joaquin River (Turner Cut to Stockton),37.9928,-121.4542,Active,TRN,Turner Cut,Central Delta
+D16A,TWI,Continuous WQ,San Joaquin River @ Twitchell Island,38.0969,-121.6691,Active,D16-D16A,Twitchell Island,Central Delta
+C8,UNI,Continuous WQ,Old River near Middle River,37.822101,-121.37499,Active,C8,Old River,South Delta
+S42,VOL,Continuous WQ,Suisun Slough 300' south of Volanti Slough,38.181,-122.046,Active,S42-NZS42,Volanti Slough,Suisun Marsh
+C9,WCI,Continuous WQ,West Canal @ Clifton Court Intake,37.8316,-121.554,Active,C9,West Canal,South Delta
+C10,NA,Discrete WQ,San Joaquin River near Vernalis,37.67575,-121.265,Inactive,C10-C10A,Vernalis,South Delta
+C10A,NA,Discrete WQ,San Joaquin River near Vernalis @ SJR Club,37.67934,-121.2647,Active,C10-C10A,Vernalis,South Delta
+C3,NA,Discrete WQ,Sacramento River @ Green's Landing,38.34575,-121.5461,Inactive,C3-C3A,Hood,North Delta
+C3A,NA,Discrete WQ,Sacramento River @ Hood,38.36771,-121.5205,Active,C3-C3A,Hood,North Delta
+C7,NA,Discrete WQ,San Joaquin River from Boat Dock @ Mossdale Bridge,37.78607,-121.3077,Inactive,C7-C7A,Mossdale Bridge,South Delta
+C9,NA,Discrete WQ,West Canal @ Clifton Court Intake,37.83095,-121.554,Active,C9,West Canal,South Delta
+D10,NA,Discrete WQ,Sacramento River @ Chipps Island,38.04631,-121.9183,Active,D10-D10A,Chipps Island,Confluence
+D11,NA,Discrete WQ,Sherman Lake near Antioch,38.04229,-121.7995,Inactive,D11-D11A,Sherman Island,Confluence
+D12,NA,Discrete WQ,San Joaquin River @ Antioch Ship Channel,38.02161,-121.8063,Active,D12-D12A,Antioch,Confluence
+D14A,NA,Discrete WQ,Big Break near Oakley,38.01776,-121.7114,Inactive,D14A,Big Break,Central Delta
+D15,NA,Discrete WQ,San Joaquin River @ Jersey Point,38.05217,-121.6896,Inactive,D15,Jersey Point,Central Delta
+D16,NA,Discrete WQ,San Joaquin River @ Twitchell Island,38.0969,-121.6691,Active,D16-D16A,Twitchell Island,Central Delta
+D19,NA,Discrete WQ,Frank's Tract near Russo's Landing,38.04376,-121.6148,Active,D19-D19A,Franks Tract,Central Delta
+D2,NA,Discrete WQ,Suisun Bay near Preston Point,38.06544,-122.0545,Inactive,D2,Preston Point,Suisun & Grizzly Bay
+D22,NA,Discrete WQ,Sacramento River @ Emmaton,38.08453,-121.7391,Active,D22,Emmaton,Confluence
+D24,NA,Discrete WQ,Sacramento River below Rio Vista Bridge,38.15778,-121.6847,Inactive,D24-D24A-NZ068,Rio Vista,North Delta
+D26,NA,Discrete WQ,San Joaquin River @ Potato Slough,38.07664,-121.5669,Active,D26,Potato Point,Central Delta
+D28A,NA,Discrete WQ,Old River @ Rancho Del Rio,37.97048,-121.573,Active,D28A,Rancho Del Rio,Central Delta
+D4,NA,Discrete WQ,Sacramento River above Point Sacramento,38.06248,-121.8205,Active,D4,Point Sacramento,Confluence
+D41,NA,Discrete WQ,San Pablo Bay near Pinole Point,38.03022,-122.3729,Active,D41,Pinole Point,San Pablo Bay
+D41A,NA,Discrete WQ,San Pablo Bay near Mouth of Petaluma River,38.08472,-122.3907,Active,D41A,San Pablo Bay,San Pablo Bay
+D42,NA,Discrete WQ,San Pablo Bay near Mare Island,38.05872,-122.2847,Inactive,D42,Mare Island,San Pablo Bay
+D6,NA,Discrete WQ,Suisun Bay @ Bulls Head nr. Martinez,38.04436,-122.1177,Active,D6-D6A,Martinez,Suisun & Grizzly Bay
+D7,NA,Discrete WQ,Grizzly Bay @ Dolphin nr. Suisun Slough,38.11714,-122.0397,Active,D7-D7A,Grizzly Bay,Suisun & Grizzly Bay
+D8,NA,Discrete WQ,Suisun Bay off Middle Point nr. Nichols,38.05992,-121.99,Active,D8-D8A,Suisun Bay,Suisun & Grizzly Bay
+D9,NA,Discrete WQ,Honker Bay near Wheeler Point,38.07244,-121.9392,Inactive,D9-D9A,Honker Bay,Confluence
+MD10,NA,Discrete WQ,Disappointment Slough @ Bishop Cut,38.04381,-121.4188,Inactive,MD10-MD10A,Disappointment Slough,Central Delta
+MD10A,NA,Discrete WQ,Disapointment Slough @ Bishop Cut,38.04226,-121.4199,Active,MD10-MD10A,Disappointment Slough,Central Delta
+MD6,NA,Discrete WQ,Sycamore Slough near Mouth,38.1415,-121.4687,Inactive,MD6,Sycamore Slough,North Delta
+MD7,NA,Discrete WQ,South Fork Mokelumne below Sycamore Slough,38.12513,-121.497,Inactive,MD7-MD7A,Little Potato Slough,North Delta
+MD7A,NA,Discrete WQ,Little Potato Slough @ Terminous,38.11382,-121.498,Inactive,MD7-MD7A,Little Potato Slough,Central Delta
+NZ002,NA,Discrete WQ,Carquinez Strait near Glencove Harbor,38.06529,-122.2152,Active,NZ002,Glencove Harbor,Carquinez Strait
+NZ004,NA,Discrete WQ,Carquinez Strait near Ozol Pier,38.03576,-122.1616,Active,NZ004,Ozol Pier,Carquinez Strait
+NZ032,NA,Discrete WQ,Montezuma Slough; 2nd bend from mouth,38.16991,-122.0211,Active,NZ032,Montezuma Slough,Suisun Marsh
+NZ068,NA,Discrete WQ,Sacramento River below Rio Vista Bridge near United States Coast Guard station,38.14272,-121.6895,Active,D24-D24A-NZ068,Rio Vista,North Delta
+NZ325,NA,Discrete WQ,San Pablo Bay near Rock Wall and Light 15,38.05798,-122.2919,Active,NZ325,Rock Wall,San Pablo Bay
+NZS42,NA,Discrete WQ,Suisun Slough @ Volanti Slough,38.18045,-122.0476,Active,S42-NZS42,Volanti Slough,Suisun Marsh
+P10,NA,Discrete WQ,Middle River @ Victoria Canal,37.8912,-121.4894,Inactive,P10-P10A,Victoria Canal,South Delta
+P10A,NA,Discrete WQ,Middle River @ Union Point,37.89126,-121.4883,Inactive,P10-P10A,Victoria Canal,South Delta
+P12,NA,Discrete WQ,Old River @ Tracy Road Bridge,37.80472,-121.45,Inactive,P12-P12A,Tracy Road,South Delta
+P12A,NA,Discrete WQ,Old River @ Oak Island,37.80284,-121.4569,Inactive,P12-P12A,Tracy Road,South Delta
+P2,NA,Discrete WQ,Mokelumne River @ Franklin Road Bridge,38.25542,-121.4403,Inactive,P2,Franklin Road,North Delta
+P8,NA,Discrete WQ,San Joaquin River @ Buckley Cove,37.97817,-121.3823,Active,P8-P8A,Buckley Cove,South Delta
+S42,NA,Discrete WQ,Suisun Slough 300' south of Volanti Slough,38.18047,-122.0469,Inactive,S42-NZS42,Volanti Slough,Suisun Marsh
+D41-C,NA,Benthic,San Pablo Bay near Pinole Point (center),38.0160546,-122.3647171,Active,D41A,San Pablo Bay,San Pablo Bay
+D41A-C,NA,Benthic,San Pablo Bay near Pinole Point -north central (center),38.0847167,-122.3906667,Active,D41A,San Pablo Bay,San Pablo Bay
+C9-L,NA,Benthic,Old River upstream of Clifton Court Forebay Intake (left),37.8271721,-121.5522898,Active,C9,West Canal,South Delta
+D7-C,NA,Benthic,Grizzly Bay at Dolphin near Suisun Slough (center),38.1171292,-122.0395539,Active,D7-D7A,Grizzly Bay,Suisun & Grizzly Bay
+D4-L,NA,Benthic,Sacramento River @ Sherman Island Upstream of Point Sacramento (left),38.0581151,-121.8193499,Active,D4,Point Sacramento,Confluence
+D16-L,NA,Benthic,San Joaquin River at Bradford Island (left),38.093031,-121.6697445,Active,D16-D16A,Twitchell Island,Central Delta
+D24-L,NA,Benthic,Sacramento River downstream of Rio Vista bridge (left),38.154719299999996,-121.6814495,Active,D24-D24A-NZ069,Rio Vista,North Delta
+D6-R,NA,Benthic,Suisun Bay upstream of I-680 bridge (right),38.0577031,-122.1149585,Active,D6-D6A,Martinez,Suisun & Grizzly Bay
+P8-R,NA,Benthic,San Joaquin River at Buckley Cove (right),37.9778522,-121.3799929,Active,P8-P8A,Buckley Cove,South Delta
+D28A-L,NA,Benthic,Old River upstream of Rock Slough (left),37.9701652,-121.5741188,Active,D28A,Rancho Del Rio,Central Delta
+C3-C,NA,Benthic,Sacramento River @ Greens Landing - Center,38.346149,-121.547031,Inactive,C3-C3A,Hood,North Delta
+C3-L,NA,Benthic,Sacramento River @ Greens Landing - Left,38.34567,-121.546926,Inactive,C3-C3A,Hood,North Delta
+C3-R,NA,Benthic,Sacramento River @ Greens Landing - Right,38.346681,-121.547089,Inactive,C3-C3A,Hood,North Delta
+C7-C,NA,Benthic,San Joaquin River @ Mossdale Bridge - Center,37.785905,-121.306903,Inactive,C7-C7A,Mossdale Bridge,South Delta
+C7-L,NA,Benthic,San Joaquin River @ Mossdale Bridge - Left,37.785648,-121.307249,Inactive,C7-C7A,Mossdale Bridge,South Delta
+C7-R,NA,Benthic,San Joaquin River @ Mossdale Bridge - Right,37.786143,-121.307,Inactive,C7-C7A,Mossdale Bridge,South Delta
+C9-C,NA,Benthic,West Canal @ Clifton Court Forebay Intake - Center,37.828237,-121.552374,Inactive,C9,West Canal,South Delta
+D10-C,NA,Benthic,Sacramento River @ Chipps Island - Center,38.046312,-121.913069,Inactive,D10-D10A,Chipps Island,Confluence
+D10-L,NA,Benthic,Sacramento River @ Chipps Island - Left,38.041657,-121.913559,Inactive,D10-D10A,Chipps Island,Confluence
+D10-R,NA,Benthic,Sacramento River @ Chipps Island - Right,38.050357,-121.912918,Inactive,D10-D10A,Chipps Island,Confluence
+D11-C,NA,Benthic,Sherman Lake - Center,38.04223788,-121.7994595,Inactive,D11-D11A,Sherman Island,Confluence
+D11-L,NA,Benthic,Sherman Lake - Left,38.03676129,-121.7861405,Inactive,D11-D11A,Sherman Island,Confluence
+D11-R,NA,Benthic,Sherman Lake - Right,38.05243011,-121.8004779,Inactive,D11-D11A,Sherman Island,Confluence
+D12-C,NA,Benthic,San Joaquin River @ Antioch Ship Channel - Center,38.024132,-121.751559,Inactive,D12-D12A,Antioch,Central Delta
+D14A-C,NA,Benthic,Big Break - Center,38.017715,-121.711397,Inactive,D14A,Big Break,Central Delta
+D14A-L,NA,Benthic,Big Break - Left,38.014774,-121.709512,Inactive,D14A,Big Break,Central Delta
+D14A-R,NA,Benthic,Big Break - Right,38.021058,-121.712968,Inactive,D14A,Big Break,Central Delta
+D16-C,NA,Benthic,San Joaquin River @ Twitchell Island - Center,38.095334,-121.668217,Inactive,D16-D16A,Twitchell Island,Central Delta
+D19-C,NA,Benthic,Franks Tract - Center,38.050708,-121.613922,Inactive,D19-D19A,Franks Tract,Central Delta
+D19-L,NA,Benthic,Franks Tract - Left,38.046592,-121.623322,Inactive,D19-D19A,Franks Tract,Central Delta
+D19-R,NA,Benthic,Franks Tract - Right,38.057049,-121.616686,Inactive,D19-D19A,Franks Tract,Central Delta
+D26-C,NA,Benthic,San Joaquin River @ Potato Point - Center,38.080164,-121.572879,Inactive,D26,Potato Point,Central Delta
+D26-L,NA,Benthic,San Joaquin River @ Potato Point - Left,38.079944,-121.578,Inactive,D26,Potato Point,Central Delta
+D26-R,NA,Benthic,San Joaquin River @ Potato Point - Right,38.080219,-121.569241,Inactive,D26,Potato Point,Central Delta
+D28A-C,NA,Benthic,Old River @ Rancho Del Rio- Center,37.97048,-121.573104,Inactive,D28A,Rancho Del Rio,Central Delta
+D28A-R,NA,Benthic,Old River @ Rancho Del Rio - Right,37.970633,-121.572327,Inactive,D28A,Rancho Del Rio,Central Delta
+D4-C,NA,Benthic,Sacramento River above Point Sacramento - Center,38.062148,-121.817927,Inactive,D4,Point Sacramento,Confluence
+D4-R,NA,Benthic,Sacramento River above Point Sacramento - Right,38.066575,-121.817297,Inactive,D4,Point Sacramento,Confluence
+D6-L,NA,Benthic,Suisun Bay @ Bulls Head nr. Martinez - Left,38.038616,-122.113947,Inactive,D6-D6A,Martinez,Suisun & Grizzly Bay
+D6-C,NA,Benthic,Suisun Bay upstream of I-680 bridge (center),38.04674265,-122.124652,Inactive,D6-D6A,Martinez,Suisun & Grizzly Bay
+D7-L,NA,Benthic,Grizzly bay @ Dolphin nr. Suisun Slough - Left,38.100326,-122.0222,Inactive,D7-D7A,Grizzly Bay,Suisun & Grizzly Bay
+D7-R,NA,Benthic,Grizzly bay @ Dolphin nr. Suisun Slough - Right,38.116688,-122.052305,Inactive,D7-D7A,Grizzly Bay,Suisun & Grizzly Bay
+D8-C,NA,Benthic,Suisun Bay off Middle Point near Nichols - Center,38.059913,-121.99,Inactive,D8-D8A,Suisun Bay,Suisun & Grizzly Bay
+D9-C,NA,Benthic,Honker Bay near Wheeler Point - Center,38.079212,-121.930289,Inactive,D9-D9A,Honker Bay,Confluence
+D9-R,NA,Benthic,Honker Bay near Wheeler Point - Right,38.07591,-121.945227,Inactive,D9-D9A,Honker Bay,Confluence
+MD6-C,NA,Benthic,Sycamore Slough near mouth - Center,38.14238,-121.469539,Inactive,MD6,Sycamore Slough,North Delta
+MD6-L,NA,Benthic,Sycamore Slough near mouth - Left,38.141756,-121.470066,Inactive,MD6,Sycamore Slough,North Delta
+MD6-R,NA,Benthic,Sycamore Slough near mouth - Right,38.14295,-121.469002,Inactive,MD6,Sycamore Slough,North Delta
+MD7-C,NA,Benthic,South Fork Mokelumne River - Center,38.125089,-121.496983,Inactive,MD7-MD7A,Little Potato Slough,North Delta
+MD7-L,NA,Benthic,South Fork Mokelumne River - Left,38.125008,-121.496266,Inactive,MD7-MD7A,Little Potato Slough,North Delta
+MD7-R,NA,Benthic,South Fork Mokelumne River - Right,38.125128,-121.497895,Inactive,MD7-MD7A,Little Potato Slough,North Delta
+P8-C,NA,Benthic,San Joaquin River @ Buckley Cove - Center,37.97802,-121.382149,Inactive,P8-P8A,Buckley Cove,South Delta
+P8-L,NA,Benthic,San Joaquin River @ Buckley Cove - Left,37.977611,-121.382511,Inactive,P8-P8A,Buckley Cove,South Delta
+NZ002,NA,Zooplankton,Carquinez Strait at Glencove Harbor.,38.060278,-122.206944,Active,NZ002,Glencove Harbor,Carquinez Strait
+NZ004,NA,Zooplankton,Carquinez Strait 46 m - 91 m off Ozol pier.,38.029167,-122.158333,Active,NZ004,Ozol Pier,Carquinez Strait
+D7,NA,Zooplankton,Grizzly Bay SE of Dolphin near Suisun Slough.,38.117222,-122.047222,Active,D7-D7A,Grizzly Bay,Suisun & Grizzly Bay
+NZ032,NA,Zooplankton,Montezuma Slough 2nd bend from mouth.,38.170278,-122.020833,Active,NZ032,Montezuma Slough,Suisun Marsh
+D8,NA,Zooplankton,"Suisun Bay channel, off Middle Point (upstrm of light 19).",38.06,-121.995833,Active,D8-D8A,Suisun Bay,Suisun & Grizzly Bay
+D10,NA,Zooplankton,"Sacramento River at mouth of Mallard Slough, near Chipps Island.",38.045833,-121.906389,Active,D10-D10A,Chipps Island,Confluence
+D4,NA,Zooplankton,Sacramento River abover Point Sacramento (bet. Lights 5 & 9).,38.064444,-121.828889,Active,D4,Point Sacramento,Confluence
+D22,NA,Zooplankton,Sacramento River at Emmaton (upstrm of lights 13 & 14).,38.084722,-121.738056,Active,D22,Emmaton,Confluence
+NZ068,NA,Zooplankton,Sacramento River at Rio Vista Coast Guard Sta.,38.148056,-121.683611,Inactive,D24-D24A-NZ068,Rio Vista,North Delta
+D12,NA,Zooplankton,San Joaquin River at Antioch Ship Canal (bet. lights 7 & 8).,38.022222,-121.803611,Active,D12-D12A,Antioch,Confluence
+D26,NA,Zooplankton,San Joaquin River at Potato Point (light 53).,38.077778,-121.570278,Active,D26,Potato Point,Central Delta
+P8,NA,Zooplankton,San Joaquin River at Buckley Cover (downstrm from lights 39 & 40).,37.978333,-121.381944,Active,P8-P8A,Buckley Cove,South Delta
+NZ325,NA,Zooplankton,San Pablo Bay at light 15.,38.057778,-122.288889,Active,NZ325,Rock Wall,San Pablo Bay
+D41A,NA,Zooplankton,San Pablo Bay near mouth of Petaluma River,38.070833,-122.411111,Active,D41A,San Pablo Bay,San Pablo Bay
+C3,NA,Zooplankton,Sacramento River at Greens Landing.,38.347778,-121.540278,Inactive,C3-C3A,Hood,North Delta
+C9,NA,Zooplankton,West Canal 230 m downstream of Clifton Court gate.,37.834444,-121.553889,Inactive,C9,West Canal,South Delta
+D6,NA,Zooplankton,"Suisun Bay at Bulls Head Point near Martinez (east of SP RR bridge), replaced NZ042 in 1994.",38.044444,-122.116667,Active,D6-D6A,Martinez,Suisun & Grizzly Bay
+D16,NA,Zooplankton,"San Joaquin River at Twitchell Island.  Core station, replaced NZ080 in 1994 (core 1994-present).",38.097222,-121.666667,Active,D16-D16A,Twitchell Island,Central Delta
+D19,NA,Zooplankton,Franks Tract near Russo's Landing.,38.043889,-121.613611,Active,D19-D19A,Franks Tract,Central Delta
+D28A,NA,Zooplankton,"Old River near Rancho Del Oro, south end of Holland Tract.",37.982778,-121.577222,Active,D28A,Rancho Del Rio,Central Delta
+D41,NA,Zooplankton,San Pablo Bay near Point Pinole.,38.030556,-122.370833,Active,D41,Pinole Point,San Pablo Bay
+MD10A,NA,Zooplankton,Disappointment Slough near Bishop Cut (downstream of Rindge Tract Bridge).,38.043611,-121.426389,Active,MD10-MD10A,Disappointment Slough,Central Delta
+P2,NA,Zooplankton,Mokelumne River 1.6 km upstream of fork.,38.233333,-121.488889,Inactive,P2,Franklin Road,North Delta
+NZS42,NA,Zooplankton,Suisun Slough at mouth of Volanti Slough.,38.180556,-122.047222,Active,S42-NZS42,Volanti Slough,Suisun Marsh
+C10,NA,Phytoplankton,San Joaquin River near Vernalis,37.67575,-121.265,Inactive,C10-C10A,Vernalis,South Delta
+C10A,NA,Phytoplankton,San Joaquin River near Vernalis @ SJR Club,37.67934,-121.2647,Active,C10-C10A,Vernalis,South Delta
+C3,NA,Phytoplankton,Sacramento River @ Green's Landing,38.34575,-121.5461,Inactive,C3-C3A,Hood,North Delta
+C3A,NA,Phytoplankton,Sacramento River @ Hood,38.36771,-121.5205,Active,C3-C3A,Hood,North Delta
+C7,NA,Phytoplankton,San Joaquin River from Boat Dock @ Mossdale Bridge,37.78607,-121.3077,Inactive,C7-C7A,Mossdale Bridge,South Delta
+C9,NA,Phytoplankton,West Canal @ Clifton Court Intake,37.83095,-121.554,Active,C9,West Canal,South Delta
+D10,NA,Phytoplankton,Sacramento River @ Chipps Island,38.04631,-121.9183,Active,D10-D10A,Chipps Island,Confluence
+D11,NA,Phytoplankton,Sherman Lake near Antioch,38.04229,-121.7995,Inactive,D11-D11A,Sherman Island,Confluence
+D12,NA,Phytoplankton,San Joaquin River @ Antioch Ship Channel,38.02161,-121.8063,Active,D12-D12A,Antioch,Confluence
+D14A,NA,Phytoplankton,Big Break near Oakley,38.01776,-121.7114,Active,D14A,Big Break,Central Delta
+D15,NA,Phytoplankton,San Joaquin River @ Jersey Point,38.05217,-121.6896,Inactive,D15,Jersey Point,Central Delta
+D16,NA,Phytoplankton,San Joaquin River @ Twitchell Island,38.0969,-121.6691,Active,D16-D16A,Twitchell Island,Central Delta
+D19,NA,Phytoplankton,Frank's Tract near Russo's Landing,38.04376,-121.6148,Active,D19-D19A,Franks Tract,Central Delta
+D2,NA,Phytoplankton,Suisun Bay near Preston Point,38.06544,-122.0545,Inactive,D2,Preston Point,Suisun & Grizzly Bay
+D22,NA,Phytoplankton,Sacramento River @ Emmaton,38.08453,-121.7391,Active,D22,Emmaton,Confluence
+D24,NA,Phytoplankton,Sacramento River below Rio Vista Bridge,38.15778,-121.6847,Inactive,D24-D24A-NZ068,Rio Vista,North Delta
+D26,NA,Phytoplankton,San Joaquin River @ Potato Slough,38.07664,-121.5669,Active,D26,Potato Point,Central Delta
+D28A,NA,Phytoplankton,Old River @ Rancho Del Rio,37.97048,-121.573,Active,D28A,Rancho Del Rio,Central Delta
+D4,NA,Phytoplankton,Sacramento River above Point Sacramento,38.06248,-121.8205,Active,D4,Point Sacramento,Confluence
+D41,NA,Phytoplankton,San Pablo Bay near Pinole Point,38.03022,-122.3729,Active,D41,Pinole Point,San Pablo Bay
+D41A,NA,Phytoplankton,San Pablo Bay near Mouth of Petaluma River,38.08472,-122.3907,Active,D41A,San Pablo Bay,San Pablo Bay
+D42,NA,Phytoplankton,San Pablo Bay near Mare Island,38.05872,-122.2847,Inactive,D42,Mare Island,San Pablo Bay
+D6,NA,Phytoplankton,Suisun Bay @ Bulls Head nr. Martinez,38.04436,-122.1177,Active,D6-D6A,Martinez,Suisun & Grizzly Bay
+D7,NA,Phytoplankton,Grizzly Bay @ Dolphin nr. Suisun Slough,38.11714,-122.0397,Active,D7-D7A,Grizzly Bay,Suisun & Grizzly Bay
+D8,NA,Phytoplankton,Suisun Bay off Middle Point nr. Nichols,38.05992,-121.99,Active,D8-D8A,Suisun Bay,Suisun & Grizzly Bay
+D9,NA,Phytoplankton,Honker Bay near Wheeler Point,38.07244,-121.9392,Inactive,D9-D9A,Honker Bay,Confluence
+MD10,NA,Phytoplankton,Disappointment Slough @ Bishop Cut,38.04381,-121.4188,Inactive,MD10-MD10A,Disappointment Slough,Central Delta
+MD10A,NA,Phytoplankton,Disappointment Slough @ Bishop Cut,38.04226,-121.4199,Active,MD10-MD10A,Disappointment Slough,Central Delta
+MD6,NA,Phytoplankton,Sycamore Slough near Mouth,38.1415,-121.4687,Inactive,MD6,Sycamore Slough,North Delta
+MD7,NA,Phytoplankton,South Fork Mokelumne below Sycamore Slough,38.12513,-121.497,Inactive,MD7-MD7A,Little Potato Slough,North Delta
+MD7A,NA,Phytoplankton,Little Potato Slough @ Terminous,38.11382,-121.498,Inactive,MD7-MD7A,Little Potato Slough,Central Delta
+NZ002,NA,Phytoplankton,Carquinez Strait near Glencove Harbor,38.06529,-122.2152,Active,NZ002,Glencove Harbor,Carquinez Strait
+NZ004,NA,Phytoplankton,Carquinez Strait near Ozol Pier,38.03576,-122.1616,Active,NZ004,Ozol Pier,Carquinez Strait
+NZ032,NA,Phytoplankton,Montezuma Slough; 2nd bend from mouth,38.16991,-122.0211,Active,NZ032,Montezuma Slough,Suisun Marsh
+NZ068,NA,Phytoplankton,Sacramento River below Rio Vista Bridge near United States Coast Guard station,38.14272,-121.6895,Active,D24-D24A-NZ068,Rio Vista,North Delta
+NZ325,NA,Phytoplankton,San Pablo Bay near Rock Wall and Light 15,38.05798,-122.2919,Active,NZ325,Rock Wall,San Pablo Bay
+NZS42,NA,Phytoplankton,Suisun Slough @ Volanti Slough,38.18045,-122.0476,Active,S42-NZS42,Volanti Slough,Suisun Marsh
+P10,NA,Phytoplankton,Middle River @ Victoria Canal,37.8912,-121.4894,Inactive,P10-P10A,Victoria Canal,South Delta
+P12,NA,Phytoplankton,Old River @ Tracy Road Bridge,37.80472,-121.45,Inactive,P12-P12A,Tracy Road,South Delta
+P12A,NA,Phytoplankton,Old River @ Oak Island,37.80284,-121.4569,Inactive,P12-P12A,Tracy Road,South Delta
+P2,NA,Phytoplankton,Mokelumne River @ Franklin Road Bridge,38.25542,-121.4403,Inactive,P2,Franklin Road,North Delta
+P8,NA,Phytoplankton,San Joaquin River @ Buckley Cove,37.97817,-121.3823,Active,P8-P8A,Buckley Cove,South Delta
+EZ2,NA,Discrete WQ,"Low Salinity Zone, bottom EC = 2 mS/cm",,,Active,EZ2,Low Salinity Zone,Low Salinity Zone
+EZ6,NA,Discrete WQ,"Low Salinity Zone, bottom EC = 6 mS/cm",,,Active,EZ6,Low Salinity Zone,Low Salinity Zone
+EZ2-SJR,NA,Discrete WQ,"Low Salinity Zone in San Joaquin River, bottom EC = 2 mS/cm",,,Active,EZ2-SJR,Low Salinity Zone (SJR),Low Salinity Zone
+EZ6-SJR,NA,Discrete WQ,"Low Salinity Zone in San Joaquin River, bottom EC = 6 mS/cm",,,Active,EZ6-SJR,Low Salinity Zone (SJR),Low Salinity Zone
+EZ2,NA,Zooplankton,"Low Salinity Zone, bottom EC = 2 mS/cm",,,Active,EZ2,Low Salinity Zone,Low Salinity Zone
+EZ6,NA,Zooplankton,"Low Salinity Zone, bottom EC = 6 mS/cm",,,Active,EZ6,Low Salinity Zone,Low Salinity Zone
+EZ2-SJR,NA,Zooplankton,"Low Salinity Zone in San Joaquin River, bottom EC = 2 mS/cm",,,Active,EZ2-SJR,Low Salinity Zone (SJR),Low Salinity Zone
+EZ6-SJR,NA,Zooplankton,"Low Salinity Zone in San Joaquin River, bottom EC = 6 mS/cm",,,Active,EZ6-SJR,Low Salinity Zone (SJR),Low Salinity Zone
+EZ2,NA,Phytoplankton,"Low Salinity Zone, bottom EC = 2 mS/cm",,,Active,EZ2,Low Salinity Zone,Low Salinity Zone
+EZ6,NA,Phytoplankton,"Low Salinity Zone, bottom EC = 6 mS/cm",,,Active,EZ6,Low Salinity Zone,Low Salinity Zone
+EZ2-SJR,NA,Phytoplankton,"Low Salinity Zone in San Joaquin River, bottom EC = 2 mS/cm",,,Active,EZ2-SJR,Low Salinity Zone (SJR),Low Salinity Zone
+EZ6-SJR,NA,Phytoplankton,"Low Salinity Zone in San Joaquin River, bottom EC = 6 mS/cm",,,Active,EZ6-SJR,Low Salinity Zone (SJR),Low Salinity Zone

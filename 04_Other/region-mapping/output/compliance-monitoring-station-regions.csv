@@ -1,0 +1,74 @@
+StationID,Component,geometry,Region
+C10A,"Discrete (WQ, P, Z)","c(-121.2647, 37.67934)",South Delta
+C3A,"Discrete (WQ, P, Z)","c(-121.5205, 38.36771)",North Delta
+C9,"Discrete (WQ, P, Z)","c(-121.554, 37.83095)",South Delta
+D10,"Discrete (WQ, P, Z)","c(-121.918587, 38.048364)",Confluence
+D12,"Discrete (WQ, P, Z)","c(-121.806965, 38.021427)",Confluence
+D16,"Discrete (WQ, P, Z)","c(-121.681134, 38.087988)",Central Delta
+D19,"Discrete (WQ, P, Z)","c(-121.622335, 38.047662)",Central Delta
+D22,"Discrete (WQ, P, Z)","c(-121.747399, 38.08709)",Confluence
+D26,"Discrete (WQ, P, Z)","c(-121.573184, 38.083861)",Central Delta
+D28A,"Discrete (WQ, P, Z)","c(-121.573145, 37.969697)",Central Delta
+D4,"Discrete (WQ, P, Z)","c(-121.83486, 38.065164)",Confluence
+D41,"Discrete (WQ, P, Z)","c(-122.372771, 38.030135)",San Pablo Bay
+D41A,"Discrete (WQ, P, Z)","c(-122.396333, 38.083333)",San Pablo Bay
+D6,"Discrete (WQ, P, Z)","c(-122.121838, 38.046308)",Suisun & Grizzly Bay
+D7,"Discrete (WQ, P, Z)","c(-122.039512, 38.116854)",Suisun & Grizzly Bay
+D8,"Discrete (WQ, P, Z)","c(-121.992062, 38.059971)",Suisun & Grizzly Bay
+MD10A,"Discrete (WQ, P, Z)","c(-121.422196, 38.04208)",Central Delta
+NZ002,"Discrete (WQ, P, Z)","c(-122.214871, 38.064944)",Carquinez Strait
+NZ004,"Discrete (WQ, P, Z)","c(-122.159631, 38.030975)",Carquinez Strait
+NZ032,"Discrete (WQ, P, Z)","c(-122.020467, 38.171063)",Suisun Marsh
+NZ325,"Discrete (WQ, P, Z)","c(-122.289997, 38.057409)",San Pablo Bay
+NZS42,"Discrete (WQ, P, Z)","c(-122.049008, 38.1808)",Suisun Marsh
+P8,"Discrete (WQ, P, Z)","c(-121.38232, 37.978248)",South Delta
+NZ068,"Discrete (WQ, P, Z)","c(-121.68948, 38.142716)",North Delta
+D41-C,Benthic,"c(-122.364717, 38.016055)",San Pablo Bay
+D41A-C,Benthic,"c(-122.390667, 38.084717)",San Pablo Bay
+C9-L,Benthic,"c(-121.55229, 37.827172)",South Delta
+D7-C,Benthic,"c(-122.039554, 38.117129)",Suisun & Grizzly Bay
+D4-L,Benthic,"c(-121.82408, 38.060844)",Confluence
+D16-L,Benthic,"c(-121.669744, 38.093031)",Central Delta
+D24-L,Benthic,"c(-121.68145, 38.154719)",North Delta
+D6-R,Benthic,"c(-122.114959, 38.057703)",Suisun & Grizzly Bay
+P8-R,Benthic,"c(-121.379993, 37.977852)",South Delta
+D28A-L,Benthic,"c(-121.574119, 37.970165)",Central Delta
+C2,Continuous WQ,"c(-121.850123, 38.073981)",Confluence
+C3A,Continuous WQ,"c(-121.519958, 38.367981)",North Delta
+C4,Continuous WQ,"c(-121.591315, 38.103301)",Central Delta
+C5,Continuous WQ,"c(-121.702809, 37.99495)",Central Delta
+C6,Continuous WQ,"c(-121.3231, 37.865)",South Delta
+C7A,Continuous WQ,"c(-121.306, 37.786)",South Delta
+C8,Continuous WQ,"c(-121.37499, 37.822101)",South Delta
+C9,Continuous WQ,"c(-121.554, 37.8316)",South Delta
+C10A,Continuous WQ,"c(-121.26511, 37.67929)",South Delta
+C13,Continuous WQ,"c(-121.5711, 38.1061)",Central Delta
+C14,Continuous WQ,"c(-121.999971, 38.056788)",Suisun & Grizzly Bay
+C19,Continuous WQ,"c(-121.742, 38.2918)",North Delta
+D6A,Continuous WQ,"c(-122.140488, 38.027637)",Carquinez Strait
+D7A,Continuous WQ,"c(-122.038117, 38.12425)",Suisun & Grizzly Bay
+D8A,Continuous WQ,"c(-121.995878, 38.083971)",Suisun & Grizzly Bay
+D9A,Continuous WQ,"c(-121.9392, 38.0724)",Confluence
+D10A,Continuous WQ,"c(-121.92009, 38.042805)",Confluence
+D11A,Continuous WQ,"c(-121.761736, 38.074097)",Confluence
+D12A,Continuous WQ,"c(-121.802963, 38.01783)",Confluence
+D15,Continuous WQ,"c(-121.689, 38.052)",Central Delta
+D16A,Continuous WQ,"c(-121.6691, 38.0969)",Central Delta
+D19A,Continuous WQ,"c(-121.5981, 38.046417)",Central Delta
+D22,Continuous WQ,"c(-121.738924, 38.084272)",Confluence
+D24A,Continuous WQ,"c(-121.686355, 38.159737)",North Delta
+D28A,Continuous WQ,"c(-121.57222, 37.969368)",Central Delta
+D29,Continuous WQ,"c(-121.562, 38.066)",Central Delta
+DMC1,Continuous WQ,"c(-121.590239, 37.781567)",South Delta
+P8A,Continuous WQ,"c(-121.365, 37.963)",South Delta
+P12,Continuous WQ,"c(-121.449562, 37.80481)",South Delta
+S21,Continuous WQ,"c(-122.083202, 38.184378)",Suisun Marsh
+S35,Continuous WQ,"c(-122.095812, 38.119175)",Suisun Marsh
+S42,Continuous WQ,"c(-122.046849, 38.180287)",Suisun Marsh
+S49,Continuous WQ,"c(-121.970582, 38.186697)",Suisun Marsh
+S64,Continuous WQ,"c(-121.888179, 38.122006)",Suisun Marsh
+S97,Continuous WQ,"c(-122.113875, 38.156805)",Suisun Marsh
+SLBAR3,Continuous WQ,"c(-121.7965, 38.2759)",North Delta
+TRN,Continuous WQ,"c(-121.4542, 37.9928)",Central Delta
+FPT,Continuous WQ,"c(-121.5003, 38.456112)",North Delta
+MSL,Continuous WQ,"c(-121.887196, 38.093288)",Suisun Marsh

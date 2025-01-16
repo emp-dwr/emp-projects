@@ -1,0 +1,21 @@
+Station ID,FRK,Elevation,0 ft,,
+River Basin,DELTA,County,CONTRA COSTA,,
+Hydrologic Area,SAN JOAQUIN RIVER,Nearby City,ANTIOCH,,
+Latitude,38.046417°,Longitude,-121.598100°,,
+Operator,CA Dept of Water Resources/Div of Integrated Science and Eng,Maintenance,CA Dept of Water Resources/Div of Integrated Science and Eng,,
+,,,,,
+The following data types are available online. Select one of the links below to retrieve recent data.,,,,,
+,,,,,
+Sensor Description,Sensor Number,Duration,Plot,Data Collection,Data Available
+"BATTERY VOLTAGE, VOLTS",14,(event),(BAT VOL),DATA XCHG-DWR ISE,06/19/2015 to present
+"CHLOROPHYLL, ug/L",28,(event),(CHLORPH),DATA XCHG-DWR ISE,06/19/2015 to present
+"ELECTRICAL CONDUCTIVTY MICRO S, uS/cm",100,(event),(EL COND),DATA XCHG-DWR ISE,06/19/2015 to present
+"SOLAR RADIATION, W/M^2",26,(event),(SOLAR R),DATA XCHG-DWR ISE,12/29/2022 to present
+"TEMPERATURE, AIR, DEG F",4,(event),(TEMP),DATA XCHG-DWR ISE,12/29/2022 to present
+"TEMPERATURE, WATER, DEG F",25,(event),(TEMP W),DATA XCHG-DWR ISE,06/19/2015 to present
+"WATER, DISSOLVED OXYGEN, MG/L",61,(event),(DIS OXY),DATA XCHG-DWR ISE,06/19/2015 to present
+"WATER, PH VALUE, PH",62,(event),(PH VAL),DATA XCHG-DWR ISE,06/19/2015 to present
+"WATER, TURBIDITY, NTU",27,(event),(TURB W),DATA XCHG-DWR ISE,06/19/2015 to present
+"WIND, DIRECTION, DEG",10,(event),(WIND DR),DATA XCHG-DWR ISE,12/01/2016 to present
+"WIND, SPEED, MPH",9,(event),(WIND SP),DATA XCHG-DWR ISE,12/01/2016 to present
+"WATER, TURBIDITY, NTU",27,(hourly),(TURB W),DATA XCHG-DWR ISE,10/01/2016 to present

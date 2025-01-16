@@ -1,0 +1,25 @@
+Station ID,MSL,Elevation,0 ft,,
+River Basin,DELTA,County,SOLANO,,
+Hydrologic Area,SACRAMENTO RIVER,Nearby City,FAIRFIELD,,
+Latitude,38.093400°,Longitude,-121.887200°,,
+Operator,CA Dept of Water Resources/Div of Integrated Science and Eng,Maintenance,CA Dept of Water Resources/Div of Integrated Science and Eng,,
+,,,,,
+The following data types are available online. Select one of the links below to retrieve recent data.,,,,,
+,,,,,
+Sensor Description,Sensor Number,Duration,Plot,Data Collection,Data Available
+"BATTERY VOLTAGE, VOLTS",14,(event),(BAT VOL),DATA XCHG-DWR ISE,02/19/2009 to present
+"CHLOROPHYLL, ug/L",28,(event),(CHLORPH),DATA XCHG-DWR ISE,07/01/2018 to present
+"ELECTRICAL CONDUCTIVTY MICRO S, uS/cm",100,(event),(EL COND),DATA XCHG-DWR ISE,02/19/2009 to present
+"RIVER STAGE, FEET",1,(event),(RIV STG),DATA XCHG-DWR ISE,02/19/2009 to present
+"TEMPERATURE, WATER, DEG F",25,(event),(TEMP W),DATA XCHG-DWR ISE,02/19/2009 to present
+"WATER, DISSOLVED OXYGEN, MG/L",61,(event),(DIS OXY),DATA XCHG-DWR ISE,07/01/2018 to present
+"WATER, PH VALUE, PH",62,(event),(PH VAL),DATA XCHG-DWR ISE,07/01/2018 to present
+"WATER, TURBIDITY, NTU",27,(event),(TURB W),DATA XCHG-DWR ISE,07/01/2018 to present
+"BATTERY VOLTAGE, VOLTS",14,(hourly),(BAT VOL),DATA XCHG-DWR ISE,09/16/2009 to present
+"CHLOROPHYLL, ug/L",28,(hourly),(CHLORPH),DATA XCHG-DWR ISE,07/01/2018 to present
+"ELECTRICAL CONDUCTIVTY MICRO S, uS/cm",100,(hourly),(EL COND),DATA XCHG-DWR ISE,09/16/2009 to present
+"RIVER STAGE, FEET",1,(hourly),(RIV STG),DATA XCHG-DWR ISE,09/16/2009 to present
+"TEMPERATURE, WATER, DEG F",25,(hourly),(TEMP W),DATA XCHG-DWR ISE,09/16/2009 to present
+"WATER, DISSOLVED OXYGEN, MG/L",61,(hourly),(DIS OXY),DATA XCHG-DWR ISE,07/01/2018 to present
+"WATER, PH VALUE, PH",62,(hourly),(PH VAL),DATA XCHG-DWR ISE,07/01/2018 to present
+"WATER, TURBIDITY, NTU",27,(hourly),(TURB W),DATA XCHG-DWR ISE,07/01/2018 to present

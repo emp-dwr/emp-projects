@@ -107,14 +107,17 @@ df_phyto <- df_phyto %>%
   select(!(GALD:`GALD 1`)) %>%
   rename("GALD" = "GALD.Tot")
 
-# Read in data from 2022
+# Read in data from 2022 and 2023
 df_phyto2022 <- read_csv(here("03_Phyto","bsa-count-tallies","data","2022 Data for EDI.csv"),
                               show_col_types = FALSE)
 
 df_phyto2023 <- read_csv(here("03_Phyto","bsa-count-tallies","data","All 2023 Data.csv"),
                               show_col_types = FALSE)
 
-df_phyto_20s <- bind_rows(df_phyto2022, df_phyto2023)
+df_phyto2024 <- read_csv(here("03_Phyto","bsa-count-tallies","data","All 2024 Data.csv"),
+                              show_col_types = FALSE)
+
+df_phyto_20s <- bind_rows(df_phyto2022, df_phyto2023,df_phyto2024)
 
 # Remove extra columns from 2022 data
 df_phyto_20s <- df_phyto_20s %>% 
@@ -131,19 +134,52 @@ rm(df_phyto_20s)
 # Remove columns that just have the method code "Phyto"
 df_phyto <- df_phyto %>% select(!MethodCode)
 
-# Add column to indicate what study it came from
-df_phyto <- df_phyto %>% mutate(Study = "EMP", .after = StationCode)
-
 # Clean up column names
 df_phyto <- df_phyto %>% clean_names(case = "big_camel")
 
 df_phyto <- df_phyto %>% rename("GALD" = "Gald")
 
 # Relocate GALD column
-df_phyto <- df_phyto %>% 
-  relocate(GALD, .before = Biovolume1)
+df_phyto <- df_phyto %>% relocate(GALD, .before = Biovolume1)
 
 ```
+## Import DWQ Chlorophyll Data
+```{r DWR import, echo=FALSE}
+# Read in EDI data through 2023
+df_WQ <- read_csv(here("03_Phyto",
+                       "bsa-count-tallies",
+                       "data",
+                       "EMP_DWQ_1975_2023.csv"), 
+                  show_col_types = FALSE)
+
+df_WQ24 <- read_csv(here("03_Phyto",
+                       "bsa-count-tallies",
+                       "data",
+                       "EMP_DWQ_2024.csv"), 
+                  show_col_types = FALSE)
+
+# Fix Date/Time issues
+df_WQ <- df_WQ %>% 
+  mutate(Month = month(Date, label=TRUE, abbr=TRUE)) %>% 
+  mutate(Year = year(Date)) %>% 
+  rename("StationCode" = "Station")
+
+df_WQ24$DateTime <- mdy_hm(df_WQ24$DateTime)
+
+df_WQ24 <- df_WQ24 %>% 
+  mutate(Month = month(DateTime, label=TRUE, abbr=TRUE)) %>% 
+  mutate(Year = year(DateTime)) %>% 
+  rename("StationCode" = "Station Name")
+
+# Select needed columns
+df_WQ <- df_WQ %>% select(StationCode,Month,Year,Chla)
+
+df_WQ24 <- df_WQ24 %>% select(StationCode,Month,Year,Chla)
+
+df_WQ <- bind_rows(df_WQ,df_WQ24)
+
+```
+
 
 ## Process Data for Consistency
 
@@ -196,6 +232,23 @@ df_phyto <- df_phyto %>%
 
 # Remove 2013 data (data is limited)
 df_phyto <- df_phyto %>% filter(Year != 2013)
+
+# Rename Chroococcus microscopicus as Eucapsis microscopica
+df_phyto <- df_phyto %>% 
+  mutate(Taxon = case_when(Taxon == 'Chroococcus microscopicus' ~ 'Eucapsis microscopica',
+                           TRUE ~ Taxon)) %>%
+  mutate(Genus = case_when(Taxon == 'Eucapsis microscopica' ~ 'Eucapsis',
+                           TRUE ~ Genus))
+
+# Rename Plagioselmis lacustris as Rhodomonas lacustris
+df_phyto <- df_phyto %>% 
+  mutate(Taxon = case_when(Taxon == 'Plagioselmis lacustris' ~ 'Rhodomonas lacustris',
+                           TRUE ~ Taxon)) %>%
+  mutate(Genus = case_when(Taxon == 'Rhodomonas lacustris' ~ 'Rhodomonas',
+                           TRUE ~ Genus))
+
+# Correct the genus label for a Chlorella entry
+df_phyto$Genus <- gsub("cf Chlorella","Chlorella",df_phyto$Genus)
 
 ```
 
@@ -261,14 +314,16 @@ theme_update(
     legend.key = element_rect(fill = "white", colour = NA)
     )
 
+# Tally up total unit counts for each sample
 df_tally <- df_phyto %>% 
   group_by(Year, Month, DateTime, StationCode) %>% 
   summarize("Tally" = sum(UnitAbundance)) %>% 
   ungroup()
 
+# Plot unit count histogram (overall since 2014)
 histogram_plot <- ggplot(df_tally, aes(x = Tally)) +
   geom_histogram(binwidth = 5, fill = "darkblue") +
-  labs(title = "Total Algal Units Counted in EMP Phytoplankton Samples",
+  labs(title = "Total Algal Units Counted by BSA in EMP Samples (2014 - Current)",
        x = "Units Counted",
        y = "Frequency (# of samples)")
 
@@ -279,27 +334,58 @@ ggsave(path = plots,
        device = "png",
        scale=1.0, 
        units="in",
-       height=4,
-       width=6, 
+       height=6.5,
+       width=12.33, 
        dpi="print")
 
 ```
+
 ## Frequency of Sub-400 Tallies
 ```{r yearly, echo=FALSE}
 
+# Re-calculate 
 df_tally <- df_tally %>% 
   mutate(PassFail = case_when(Tally >= 400 ~ "Pass",
                               TRUE ~ "Fail"))
 
+# Add Chla data
+df_tally <- left_join(df_tally,df_WQ, join_by(StationCode,Month,Year))
+
+# Order the new column so it puts Pass first then Fail
+order <- c("Pass","Fail")
+
+df_tally$PassFail <- factor(as.character(df_tally$PassFail),levels=order)
+
+
+ptest <- ggplot(df_tally %>% filter(Year == 2023), 
+                aes(x = Month, y = Chla, fill = PassFail)) +
+  geom_boxplot(width = 0.6) +
+  scale_fill_manual(values = c("darkgreen","red3")) +
+  labs(x = "Month",
+       y = "[Chl-a] (ug/L)",
+       title = "Total Chl-a in Samples Above and Below Tally Threshold - 2023")
+
+ptest
+
+ggsave(path = plots,
+       filename = "pass-fail-boxplot.png", 
+       device = "png",
+       scale=1.0, 
+       units="in",
+       height=6.5,
+       width=12.33, 
+       dpi="print")
+
 df_sum_yr <- df_tally %>% 
-  group_by(Year, PassFail) %>% 
+  filter(Year >= 2023) %>% 
+  group_by(StationCode,PassFail) %>% 
   summarize(Total = n()) %>% 
   ungroup()
 
 # Order the new column so it puts Pass first then Fail
 order <- c("Pass","Fail")
-df_sum_yr$PassFail <- factor(as.character(df_sum_yr$PassFail),levels=order)
 
+df_sum_yr$PassFail <- factor(as.character(df_sum_yr$PassFail),levels=order)
 
 # Make barplot for which % of samples fail and which pass
 p_barplot <- ggplot(df_sum_yr, aes(x = Year, y = Total, fill = PassFail)) +
@@ -321,6 +407,26 @@ ggsave(path = plots,
        width=6, 
        dpi="print")
 
+# Plot by month for each year
+p_bp2 <- ggplot(df_sum_yr, aes(x = Month, y = Total, fill = PassFail)) +
+  geom_col(width = 0.7) +
+  scale_fill_manual(values = c("darkgreen","red3")) +
+  facet_wrap(~ Year, ncol = 2)
+                      
+p_bp2 +
+    labs(title = "Occurrences of Total Algal Unit Counts < 400 ",
+       x = "Year",
+       y = "Number of Samples",
+       fill = "Count\nThreshold")
+
+ggsave(path = plots,
+       filename = "pass-fail-by-mon.png", 
+       device = "png",
+       scale=1.0, 
+       units="in",
+       height=6.5,
+       width=12.33, 
+       dpi="print")
 ```
 
 

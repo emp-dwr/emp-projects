@@ -1,7 +1,7 @@
 ---
 title: "EMP Station History"
 author: "Ted Flynn"
-date: "2024-06-7"
+date: "2024-06-07"
 output: html_document
 ---
 
@@ -82,6 +82,17 @@ df_zoop <- df_zoop %>%
   rename("Date" = "SampleDate") %>% 
   rename("StationID" = "DWRStationNo")
 
+# Update DWR Station IDs where they are missing from zoop metadata
+df_zoop <- df_zoop %>% 
+  mutate(StationID = case_when(StationNZ == "NZD14" ~ "D14A",
+                               StationNZ == "NZM06" ~ "MD6",
+                               StationNZ == "NZM07" ~ "MD7",
+                               StationNZ == "NZ040" ~ "D9",
+                               StationNZ == "NZD11" ~ "D11",
+                               StationNZ == "NZD15" ~ "D15",
+                               StationNZ == "NZP10" ~ "P10",
+                               TRUE ~ StationID)) # only 1973
+
 # Remove non-compliance zooplankton stations
 df_zoop <- df_zoop %>%
   filter(!is.na(StationID)) %>% 
@@ -94,6 +105,8 @@ df_ben <- read_csv(file = here("04_Other",
                                "data",
                                "DWR Benthic CPUE data 1975-2023.csv"), 
                    show_col_types = FALSE)
+
+
 
 # Select columns needed, rename headers to match others
 df_ben <- df_ben %>% 
@@ -111,39 +124,54 @@ df_stations <- read_csv(file = here("04_Other",
                         show_col_types = FALSE)
 
 # Make list of all compliance stations and remove NAs
-stations <- unique(df_stations$CDEC)
-stations <- na.omit(stations)
+test_stations <- unique(df_stations$CDEC)
+test_stations <- na.omit(test_stations)
+
+last_stations <- c("GYS","BDL","NSL","IBS","BKS","TRN","FPT","ROR")
 
 # Download WQ station data from CDEC and summarize by Year ---------------------
 # First create a blank data frame to store CDEC data
-df_stations_all <- as_tibble(
+df_CWQ_all <- as_tibble(
   data.frame(
     StationID = character(),
     Year = numeric(),
-    Measurements = numeric()
+    Month = character(),
+    SensorNumber = numeric(),
+    SensorType = character(),
+    Duration = character(),
+    DailyMean = numeric()
   )
 )
 
+# df_temp <- cdec_query(stations = test_stations, 
+#                       sensors = c(5,100,25,146,27,221,28,61,62),
+#                       start.date = start,
+#                       end.date = end)
+
 # Download only EC and WT data (most common)
-for (x in stations) {
+for (x in last_stations) {
   
   # Query each station one at a time
-  df_temp <- cdec_query(x, sensors = c(100,25),
+  df_temp <- cdec_query(x, 
+                        sensors = c(5,100,25,146,27,221,28,61,62),
                         start.date = start,
                         end.date = end)
   
   df_temp <- df_temp %>% 
-    select(StationID,DateTime,SensorType,Value)
+    select(StationID:DateTime,Value)
   
   # Summarize data record for EMP
   df_temp <- df_temp %>%
     filter(!is.na(Value)) %>% 
     mutate(Year = year(DateTime)) %>%
-    group_by(StationID,Year) %>% 
-    summarise(Measurements = n()) %>% 
+    mutate(Month = month(DateTime, label = TRUE)) %>% 
+    mutate(Date = date(DateTime)) %>% 
+    group_by(StationID,Year,Month,Date,SensorNumber,SensorType,Duration) %>% 
+    summarise(Measurements = n(),
+              DailyMean = mean(Value)) %>%
     ungroup()
   
-  df_CWQ_all <- bind_rows(df_stations_all, df_temp)
+  df_CWQ_all <- bind_rows(df_CWQ_all, df_temp)
   
   rm(df_temp)
   
@@ -153,15 +181,61 @@ for (x in stations) {
 df_WQ <- df_CWQ_all
 
 # Remove years with < 10 total measurements stations that aren't monitored
-df_WQ <- df_WQ %>% filter(Measurements > 10)
+# df_WQ <- df_WQ %>% filter(Measurements > 10)
 
 # Save df for use in other scripts
-save(df_CWQ, 
+save(df_CWQ_all, 
      file = here("04_Other",
      "EMP-station-history",
-     "CDEC-station-history.RData"))
+     "CDEC-station-data-all.RData"))
+```
 
+## QC on Continuous WQ Data
+```{r CWQ QC, echo=FALSE}
 # After doing above 1X, just import continuous WQ data downloaded from EDI
+# Import list of all compliance stations with additional metadata
+df_stations <- read_csv(file = here("04_Other",
+                                    "EMP-station-history",
+                                    "compliance-station-names.csv"),
+                        show_col_types = FALSE)
+
+load(file = here("04_Other",
+                 "EMP-station-history",
+                 "CDEC-station-data-all.RData"))
+
+# Remove negative and zero values
+# Remove clearly erroneous values, like water temp > 100 or SpC > 100,000
+df_CWQ <- df_CWQ_all %>% 
+  filter(DailyMean > 0) %>% 
+  filter(!(SensorType == "TEMP W" & DailyMean > 100)) %>% 
+  filter(!(SensorType == "TEMP W" & DailyMean <= 32)) %>%
+  filter(!(SensorType == "EL COND"& DailyMean > 100000))
+
+df_CWQ %>% 
+  filter(StationID %in% c("ANH")) %>% 
+  ggplot(aes(x = Date, y = DailyMean, color = Duration)) + 
+  geom_point() +
+  facet_wrap(~ SensorType, ncol = 3, scales = "free_y")
+
+test <- df_CWQ %>% 
+  filter(StationID %in% c("CLL") & SensorType %in% c("EL CND", "EL COND"))
+
+df_CLL_ANH <- cdec_query(c("CLL","ANH") , 
+                        sensors = c(5,100),
+                        start.date = ymd("1985-01-01"),
+                        end.date = ymd("2000-01-01"))
+
+```
+
+
+```{r load continuous, echo=TRUE}
+# After doing above 1X, just import continuous WQ data downloaded from EDI
+# Import list of all compliance stations with additional metadata
+df_stations <- read_csv(file = here("04_Other",
+                                    "EMP-station-history",
+                                    "compliance-station-names.csv"),
+                        show_col_types = FALSE)
+
 load(file = here("04_Other",
                  "EMP-station-history",
                  "CDEC-station-history.RData"))
@@ -173,7 +247,7 @@ df_CWQ <- left_join(df_CWQ,
                       distinct(),
                     join_by(CDEC))
 
-# Add in known historical data for EMP sites not in CDEC
+# Add in historical start dates earlier than CDEC
 
 # C7A CDEC data starts in 2002, actually began in 1984
 # D6A CDEC data starts in 1994, actually began in 1983
@@ -620,8 +694,11 @@ theme_update(
 stations <- unique(df_EMP$CombinedID) 
 stations <- sort(stations, decreasing = F, na.last = T)
 
+df_DEMP <- df_EMP %>% 
+  filter(!Study == "Continuous WQ")
+
 for (x in stations) {
-  df_temp <- df_EMP %>%
+  df_temp <- df_DEMP %>%
     filter(CombinedID == x)
   
   ggplot(df_temp,
@@ -637,7 +714,7 @@ for (x in stations) {
                                  "Inactive" = "lightgray")) +
     labs(x = NULL,
          y = NULL,
-         #title = paste0("EMP Monitoring History at ",df_temp$ShortName)
+         title = paste0("Discrete Monitoring - ",df_temp$ShortName)
          )
   
     ggsave(path = output,
@@ -653,5 +730,27 @@ for (x in stations) {
   
 }
 
+```
+
+## Create data summary plots
+```{r data summaries}
+df_DWQ_sum <- df_DWQ %>% 
+  mutate(Year = year(Date)) %>% 
+  mutate(Month = month(Date, label = TRUE, )) %>% 
+  relocate(c(Year,Month), .after = Date) %>% 
+  group_by(StationID,Year,Month) %>% 
+  summarise(TSSAvg = mean(TSS, na.rm = TRUE)) %>% 
+  filter(!is.nan(TSSAvg))
+
+test <- df_DWQ_sum %>% 
+  filter(StationID %in% c("P8","C10","C10A","C9","C9A"))
+
+ggplot() +
+  geom_smooth(data = test,
+              method = "loess",
+              span = 0.8,
+              aes(x = Year,
+                  y = TSSAvg,
+                  color = StationID))
 ```
 

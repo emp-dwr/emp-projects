@@ -1,0 +1,143 @@
+---
+title: "Discrete WQ Summary for EDI 2023 publication"
+author: "Ted Flynn"
+date: "2024-07-12"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+suppressWarnings(suppressMessages(library(tidyverse)))
+suppressWarnings(suppressMessages(library(lubridate)))
+suppressWarnings(suppressMessages(library(janitor)))
+suppressWarnings(suppressMessages(library(here)))
+suppressWarnings(suppressMessages(library(skimr)))
+suppressWarnings(suppressMessages(library(mice)))
+
+# Set visual theme in ggplot
+theme_set(theme_bw())
+
+# Suppress summarise info
+options(tidyverse.quiet = TRUE)
+options(dplyr.summarise.inform = FALSE)
+
+```
+
+## Import Data from Discrete Components
+```{r discrete, echo=FALSE}
+# Import discrete Water quality data -------------------------------------------
+# Read in CSV downloaded from EDI (data through 2023)
+df_DWQ <- read_csv(file = here("04_Other",
+                   "EMP-station-history",
+                   "data",
+                   "EMP_DWQ_1975_2023.csv"),
+                   show_col_types = FALSE) %>% 
+  mutate(Year = year(Date)) %>% 
+  mutate(Month = month(Date, label = TRUE)) %>% 
+  rename("StationID" = "Station")
+
+```
+
+## Check for Duplicates
+```{r dups, echo = FALSE}
+# Check for date duplicates
+df_dups <- df_DWQ %>% select(StationID:Date) %>% 
+  group_by(across(everything())) %>%
+  filter(n() > 1) %>%
+  ungroup()
+
+# Looks like the 2023 duplicates were left in. Also a weird one from 1982-09-14
+# at D11. 
+test <- df_DWQ %>% filter(StationID == "D11" & Date == ymd("1982-09-14"))
+  
+```
+
+
+## Summarize Non-Detects and Data Below Reporting Limit
+```{r summarize, echo=FALSE}
+# Tally up the number of samples below the reporting limit
+# Select columns that end with "_Sign"
+df_signs <- df_DWQ %>% select(StationID:Date,ends_with("_Sign"))
+
+# Pivot longer to transform data frame to long format
+df_signs <- df_signs %>%
+  pivot_longer(cols = Chla_Sign:TKN_Sign, 
+               names_to = "Analyte", 
+               values_to = "Sign")
+
+# Count the number of occurrences of each sign
+df_sign_sum <- df_signs %>%
+  mutate(Year = year(Date)) %>% 
+  group_by(Analyte,Year,Sign) %>%
+  summarize(Count = n())
+
+# Edit to remove the trailing "_Sign" characters
+df_sign_sum$Analyte <- sub("_Sign$","",df_sign_sum$Analyte)
+
+
+test <- df_
+
+
+
+
+# Substitute symbols for words
+df_sign_sum <- df_sign_sum %>% 
+  filter(!is.na(Value)) %>%
+  mutate(Sign = case_when(Sign == "<" ~ "Below RL",
+                          Sign == "=" ~ "Value_or_NA"))
+
+# Pivot wider for joining later
+df_sign_sum <- pivot_wider(df_sign_sum,
+                          values_from = "Count",
+                          names_from = "Sign")
+
+# Count the number of missing values for each analyte
+df_NA_values <- df_values %>% 
+  group_by(Analyte,Year) %>% 
+  summarize(NAs = sum(is.na(Value)))
+
+# Add to main df
+df_DWQ_sum <- left_join(df_sign_sum,df_NA_values)
+
+
+
+
+# Calculate the total count
+total_count <- sum(df_sign_sum$Count)
+
+# Calculate the percentage for each sign
+df_sign_sum <- df_sign_sum %>%
+  mutate(Percentage = (Count / total_count) * 100)
+
+
+
+```
+
+# Scratch
+```{r scratch, echo=FALSE}
+# Tally total number of samples for each analyte, each year
+df_DWQ_tot <- df_values %>% 
+  group_by(Year,Analyte) %>% 
+  filter(!is.na(Value)) %>% 
+  summarize(Total = n())
+
+
+df_values <- df_DWQ %>% select(StationID:Date,!ends_with("_Sign"))
+
+df_values <- df_values %>% 
+  select(!SampleDescription:Longitude) %>% 
+  pivot_longer(cols = Chla:pHBottom,
+               names_to = "Analyte",
+               values_to = "Value")
+
+# Create a blank df to make sure we don't skip years and stations
+years <- sort(unique(df_DWQ$Year))
+
+df_intervals <- crossing(
+  Year = years,
+  Analyte = df_values_long$Analyte,
+  Sign = df_signs_long$Sign
+  )
+```
+

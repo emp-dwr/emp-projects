@@ -1,0 +1,106 @@
+Title: MOPED Data - Monthly Cleaning
+
+Description: Annual Moped data combine and clean. Subset by 1 minute measurements
+
+By: Craig (ref: Perry's code)
+
+Date: 12/2024
+
+```{r}
+# ---
+# EDIT THIS
+# ---
+
+# declare the run year of interest
+year <- 2023
+```
+
+```{r}
+# ---
+# CODE STARTS HERE
+# ---
+
+# import packages
+library(tidyverse)
+library(lubridate)
+library(readxl)
+library(sf)
+library(sp)
+library(here)
+source(here('03_Phyto/phycoprobe/functions/phyco_funcs.R'))
+
+# read in run names and regions
+df_names <- read_csv('03_Phyto/phycoprobe/supp_files/run_names.csv', show_col_types = FALSE)
+df_regions <- read_csv('03_Phyto/phycoprobe/supp_files/regions_fluoro.csv', show_col_types = FALSE)
+
+# obtain all file paths and create combo df
+#fp_all_phy <- archive_path(2023, 'phyco')
+fp_all_wq <- archive_path(2023, 'MOPED')
+
+#df_combo_phy <- create_combo_df(fp_all_phy)
+df_combo_wq <- create_combo_df(fp_all_wq)
+
+#df_combo <- inner_join(df_combo_wq, df_combo_phy, by = c('month','run'))
+
+# run code for all combos
+for(i in 1:nrow(df_combo_wq)){ 
+  # define variables
+  month <- df_combo_wq[i,]$month
+  run <- df_combo_wq[i,]$run
+  
+  print(glue::glue('month: {month} and run: {run}'))
+  
+  # read in WQ data
+  fp_wq <- data_path(run, month, year, type = 'MOPED')
+  df_wq <- read_csv(fp_wq, skip = 2, show_col_types = FALSE)
+  
+  # clean up, including WQ variables
+  df_wq$TimeStamp <- parse_date_time(df_wq$TimeStamp, c('mdY HMS', 'mdY HM'))
+  df_wq$TimeStamp <- as.POSIXct(df_wq$TimeStamp, format = '%m/%d/%Y %H:%M:%S')
+  
+  df_wq$Analyte <- paste0(df_wq$Header,'_',df_wq$Unit)
+  
+  #floor/ceiling timestamps subset
+  
+# Define the range of seconds (e.g., 0 to 5 seconds past the minute) 
+  floor_seconds <- 0 
+  ceiling_seconds <- 5
+  
+  df_wq <- df_wq %>%
+    filter(second(TimeStamp) >= floor_seconds & second(TimeStamp) <=
+             ceiling_seconds)
+
+  
+    #df_wq <- df_wq %>%
+    # subset(select = c(Longitude, Latitude, TimeStamp, Analyte, Value)) %>%
+    # mutate(TimeStamp = round_date(TimeStamp, unit='1 minute')) %>%
+    # group_by(TimeStamp, Analyte) %>%
+    # summarize_all(~mean(., na.rm = TRUE)) %>%
+    # rename(DateTime = TimeStamp) %>%
+    # pivot_wider(names_from = Analyte, values_from = Value) %>%
+    # summarize_all(~mean(., na.rm = TRUE))
+    
+  
+# convert date/time col back to character
+  df_wq$TimeStamp <- as.character(df_wq$TimeStamp)
+  
+  
+  # export
+  # fn_exp <- str_remove(str_extract(fp_phy, '[^/]*$'), '.txt')
+  # 
+  # fp_folder <- create_dir(year)
+  # fp_exp <- paste0(fp_folder,'/',fn_exp,'_summary.csv')
+  # 
+  # write_csv(df_final, fp_exp)
+}
+```
+
+```{r}
+ #Remove unnecessary columns and rows with Vertical Sonde Data
+  text_to_remove <- "EXO Vertical"
+
+  df_wq <- df_wq %>%
+    filter(Equipment != text_to_remove) %>%
+    select(-Station, -SerialNumber, -Flag, -Tow, -Interpolated, -...18)
+```
+
