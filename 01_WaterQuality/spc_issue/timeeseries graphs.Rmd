@@ -1,0 +1,214 @@
+```{r}
+library(tidyverse)
+library(lubridate)
+source('00_GlobalFunctions/functions.R')
+```
+
+```{r}
+df_raw <- get_edi_file(458, 'EMP_DWQ_1975_2023')[[1]]
+```
+
+```{r}
+df_wq <- df_raw %>% filter(year(Date) >= 2015)
+```
+
+```{r}
+df_filt <- df_wq %>%
+  dplyr::filter(Station == 'D41') %>% select(Date, WaterTempSurface)
+
+plt <- df_filt %>%
+  ggplot(ggplot2::aes(x = Date, y = WaterTempSurface)) +
+  geom_line(linewidth = 0.6, na.rm = TRUE, color = 'blue') +
+  geom_point(size = 2, na.rm = TRUE, color = 'blue') +
+  scale_x_date(date_breaks = '6 month', date_labels = '%b-%y') +
+  labs(
+    title = 'D41 Water Temperature',
+    x = 'Date',
+    y = '°C'
+  ) +
+  theme_bw() +
+  theme(
+    plot.title = element_text(hjust = 0.5),
+    legend.position = 'bottom',
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+
+plt
+```
+
+```{r}
+df_filt <- df_wq %>%
+  dplyr::filter(Station %in% c('D41', 'D12', 'D6')) %>%
+  select(Date, WaterTempSurface, Station)
+
+# Assign an offset for each station to stack them
+station_offsets <- tibble::tibble(
+  Station = c("D41", "D12", "D6"),
+  Offset = c(40, 20, 0) # Adjust these values to control the spacing
+)
+
+df_stacked <- df_filt %>%
+  dplyr::left_join(station_offsets, by = "Station") %>%
+  dplyr::mutate(AdjustedTemp = WaterTempSurface + Offset)
+
+plt <- df_stacked %>%
+  ggplot(ggplot2::aes(x = Date, y = AdjustedTemp, color = Station)) +
+  geom_line(linewidth = 0.6, na.rm = TRUE) +
+  geom_point(size = 2, na.rm = TRUE) +
+  scale_x_date(date_breaks = '6 month', date_labels = '%b-%y') +
+  scale_y_continuous(
+    breaks = c(15, 35, 55),  # Match offsets
+    labels = c("D6", "D12", "D41")
+  ) +
+  labs(
+    title = 'Water Temperature Across Stations',
+    x = 'Date',
+    y = 'Station'
+  ) +
+  theme_bw() +
+  theme(
+    plot.title = element_text(hjust = 0.5),
+    legend.position = 'none',
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+
+print(plt)
+```
+```{r}
+df_filt <- df_wq %>%
+  dplyr::filter(Station %in% c('D10', 'D12', 'D22', 'D4')) %>%
+  select(Date, SpCndSurface, Station)
+
+plt <- df_filt %>%
+  ggplot(ggplot2::aes(x = Date, y = SpCndSurface, color = Station)) +
+  geom_line(linewidth = 0.6, na.rm = TRUE) +
+  geom_point(size = 2, na.rm = TRUE) +
+  scale_x_date(date_breaks = '6 month', date_labels = '%b-%y') +
+  labs(
+    title = 'Specific Conductance in the Confluence',
+    x = 'Date',
+    y = 'µS/cm'
+  ) +
+  theme_bw() +
+  theme(
+    plot.title = element_text(hjust = 0.5),
+    legend.position = 'none',
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+
+print(plt)
+```
+
+```{r}
+df_wq <- df_wq %>% filter(year(Date) >= 2020)
+
+# Filter data for station D41 and DissAmmonia
+df_filt <- df_wq %>%
+  dplyr::filter(Station == 'D41') %>%
+  dplyr::select(Date, DissAmmonia, DissAmmonia_Sign) %>%
+  # Replace values below RL with NA for the line and point geoms
+  dplyr::mutate(
+    DissAmmonia_plot = dplyr::if_else(DissAmmonia_Sign == '<', NA_real_, DissAmmonia)
+  )
+
+# Identify rows where DissAmmonia is below RL (DissAmmonia_sign == '<')
+df_below_rl <- df_filt %>%
+  dplyr::filter(DissAmmonia_Sign == '<')
+
+# Create the plot
+plt <- df_filt %>%
+  ggplot(ggplot2::aes(x = Date, y = DissAmmonia_plot)) +
+  # Add the main line and points
+  geom_line(linewidth = 0.6, na.rm = TRUE, color = 'red') +
+  geom_point(size = 2, na.rm = TRUE, color = 'red') +
+  # Add vertical and horizontal segments for below RL values
+  ggplot2::geom_segment(
+    data = df_below_rl,
+    mapping = ggplot2::aes(
+      x = Date,
+      xend = Date,
+      y = 0,
+      yend = DissAmmonia
+    ),
+    linewidth = 0.6,
+    lty = 5,
+    color = 'red'
+  ) +
+  ggplot2::geom_segment(
+    data = df_below_rl,
+    mapping = ggplot2::aes(
+      x = Date - 15, # Shift horizontal segment slightly left
+      xend = Date + 15, # Shift horizontal segment slightly right
+      y = DissAmmonia,
+      yend = DissAmmonia
+    ),
+    linewidth = 0.6,
+    lineend = 'square',
+    color = 'red'
+  ) +
+  # Customize the axis and labels
+  scale_x_date(date_breaks = '6 month', date_labels = '%b-%y') +
+  labs(
+    title = 'D41 Dissolved Ammonia',
+    x = 'Date',
+    y = 'Concentration (mg/L)'
+  ) +
+  # Apply theme
+  theme_bw() +
+  theme(
+    plot.title = element_text(hjust = 0.5),
+    legend.position = 'bottom',
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+
+# Print the plot
+print(plt)
+```
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(lubridate)
+
+# Generate a sequence of months and years
+full_dates <- seq(
+  from = floor_date(min(df_wq$Date[df_wq$Station == 'D41']), unit = "month"),
+  to = floor_date(max(df_wq$Date[df_wq$Station == 'D41']), unit = "month"),
+  by = "month"
+)
+
+# Ensure all months and years are included
+df_filt <- df_wq %>%
+  filter(Station == 'D41') %>%
+  mutate(YearMonth = floor_date(Date, unit = "month")) %>% # Convert to month-year format
+  select(YearMonth, WaterTempSurface) %>%
+  full_join(
+    data.frame(YearMonth = full_dates), # Full sequence of months
+    by = "YearMonth"
+  ) %>%
+  arrange(YearMonth) %>%
+  mutate(Group = cumsum(is.na(WaterTempSurface)))
+
+# Plot the time series
+plt <- df_filt %>%
+  ggplot(aes(x = YearMonth, y = WaterTempSurface, group = Group)) +
+  geom_line(linewidth = 0.6, na.rm = TRUE, color = 'blue') +
+  geom_point(size = 2, na.rm = TRUE, color = 'blue') +
+  scale_x_date(date_breaks = '6 month', date_labels = '%b-%y') +
+  labs(
+    title = 'D41 Water Temperature',
+    x = 'Date',
+    y = '°C'
+  ) +
+  theme_bw() +
+  theme(
+    plot.title = element_text(hjust = 0.5),
+    legend.position = 'bottom',
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+
+print(plt)
+```
+
+
+

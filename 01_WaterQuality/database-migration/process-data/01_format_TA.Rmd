@@ -4,6 +4,7 @@
 library(tidyverse)
 library(lubridate)
 source('00_GlobalFunctions/functions.R')
+options(scipen = 999)
 ```
 
 ```{r}
@@ -22,12 +23,12 @@ df_ta <- df_ta %>%
     TRUE ~ 'Normal'
     ),
     `Location ID` = case_when(
-      grepl('BLANK', `Location ID`) ~ 'Blank; Equipment',
+      grepl('BLANK', `Location ID`) ~ 'Equipment Blank',
       grepl('DUP', `Location ID`) ~ trimws(gsub('DUP', '', `Location ID`)),
       TRUE ~ `Location ID`
       )
     ) %>%
-  filter(!(`Observed Property ID` == 'Specific Conductance'))
+  filter(!(TA_analyte_name == 'Specific Conductance'))
 
 # separate DateTime
 df_ta <- df_ta %>%
@@ -42,7 +43,7 @@ df_ta$`Lab: From Laboratory` <- 'Test America'
 ```
 
 ```{r}
-# add in nondetect column
+# add in non-detect column
 df_ta <- df_ta %>%
   mutate(
     `Lab: Detection Condition` = case_when(
@@ -67,42 +68,39 @@ unique(df_check$`Lab: Detection Condition`)
 # add in Parent Activity ID
 df_ta <- df_ta %>%
   group_by(`Location ID`, `Sample Date`) %>%
-  mutate(`Parent Activity Name_ex` = case_when(
+  mutate(`Lab: Source Sample ID` = case_when(
     `QC: Type` == 'Replicate' ~ `Activity Name`[which(`QC: Type` != 'Replicate')[1]],
     TRUE ~ NA_character_
   )) %>%
   ungroup()
+
+# add in modified method col
+df_ta <- df_ta %>%
+  mutate(`Lab: Modified Method_ex` = FALSE)
 ```
 
-
 ```{r}
-# conversions
-
 # convert ug/L to mg/L
 df_ta <- df_ta %>%
   mutate(
     `Result Value` = case_when(
       `Result Unit` == 'ug/L' ~ `Result Value`/1000,
       TRUE ~ `Result Value`
+    ),
+    `Lab: MRL` = case_when(
+      `Result Unit` == 'ug/L' ~ `Lab: MRL`/1000,
+      TRUE ~ `Lab: MRL`
+    ),
+    `Lab: MDL` = case_when(
+      `Result Unit` == 'ug/L' ~ `Lab: MDL`/1000,
+      TRUE ~ `Lab: MDL`
     )
   )
 
-# Diss Ammonia: mg/L to mg/L as N (EPA 350.1)
-# Diss Nitrate Nitrite: mg/L to mg/L as N (EPA 353.2)
-# Dissolved Organic Carbon: mg/L to mg/L as N (Std Method 5310 C (D))
-# Dissolved Organic Nitrogen: mg/L to mg/L as N (?)
-# Total Alkalinity: mg/L to mg/L as CaCO3 (think it is; Std Method 2320 B)
-# Total Kjeldahl Nitrogen: mg/L to mg/L as N (EPA 351.2)
-
-# Total Organic Carbon: mg/L to mg/L as N (Std Method 5310 C (T))
-# Total Phosphorus: mg/L to mg/L as P (EPA 365.4 and EPA 365.3)
-
-
 # fix numeric formatting
-
 df_ta <- df_ta %>%
   mutate(
-    `Result Value` = formatC(`Result Value`, format = 'f', digits = 2, drop0trailing = TRUE),
+    `Result Value` = formatC(`Result Value`, format = 'f', drop0trailing = TRUE),
     `Result Value` = case_when(
       `Result Value` == ' NA' ~ NA,
       TRUE ~ `Result Value`
@@ -111,22 +109,19 @@ df_ta <- df_ta %>%
   select(-`Result Unit`)
 ```
 
-
 ```{r}
-# append methods
-fp_methods <- paste0(abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration/Lists to Import'),'/Analytes_Methods_Units_Test_America.csv')
+# update method metadata
+df_method <- read_csv(abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration/Lists to Import/Analytes_Methods_Units_TestAmerica.csv')) %>%
+  select(`Specific Method`, TA_analyte_name, `Observed Property ID`,`Lab: Analysis Method`,`Result Unit`)
 
-df_methods <- read_csv(fp_methods) %>%
-  select(c(`Specific Method`,`Observed Property ID`,`Lab: Analysis Method`,`Result Unit`))
-
-df_ta <- left_join(df_ta, df_methods, by = c('Specific Method','Observed Property ID')) %>%
-  select(-`Specific Method`)
+df_ta <- left_join(df_ta, df_method, by = c('Specific Method','TA_analyte_name')) %>%
+  select(-c(`Specific Method`, TA_analyte_name))
 ```
 
 ```{r}
-col_order <- c('Location ID','Observed Property ID','Sample Date','Sample Time','Data Classification','Result Value','Result Unit','Activity Name','Parent Activity Name_ex','Lab: Analysis Method','Lab: Detection Condition','Lab: MDL','Lab: MRL','Lab: Reports To_ex','Lab: Quality Flag','Lab: Prepared DateTime','Lab: From Laboratory','QC: Type')
+col_order <- c('Location ID','Observed Property ID','Sample Date','Sample Time','Data Classification','Result Value','Result Unit','Activity Name','Lab: Sample ID', 'Lab: Source Sample ID','Lab: Analysis Method','Lab: Detection Condition','Lab: MDL','Lab: MRL','Lab: Reports To_ex','Lab: Modified Method_ex','Lab: Quality Flag','Lab: Analyzed DateTime','Lab: Prepared DateTime','Lab: From Laboratory','QC: Type')
 
-df_ta <- df_ta[, col_order]
+df_ta <- df_ta %>% select(all_of(col_order))
 
 fp_export <- abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration/Prelim WDL Data')
 
