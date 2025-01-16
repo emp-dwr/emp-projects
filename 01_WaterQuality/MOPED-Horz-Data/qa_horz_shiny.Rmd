@@ -1,0 +1,127 @@
+Shiny app to remove suspect data (water turned off)
+
+```{r}
+ui <- fluidPage(
+  titlePanel('Remove Suspect Values'),
+  sidebarLayout(
+    sidebarPanel(
+      fileInput(
+        inputId = 'file',
+        label = 'Upload File',
+        accept = c('.csv')
+      ),
+      uiOutput('analyte_selector'),
+      actionButton('remove', 'Remove Points'),
+      textInput(
+        inputId = 'file_name',
+        label = 'File Name',
+        value = 'edited_data.csv',
+        placeholder = 'Specify file name to save output'
+      ),
+      shinyDirButton(
+        id = 'output_dir',
+        label = 'Select Output Folder',
+        title = 'Choose folder to save the file'
+      ),
+      actionButton('Save File', 'Save edited .csv')
+    ),
+    mainPanel(
+      plotlyOutput('plot'),
+      tableOutput('tbl_selected_pts')
+    )
+  )
+)
+
+server <- function(input, output, session) {
+  # define root directories
+  roots <- c(home = normalizePath('~'),  C = 'C:/')
+  shinyDirChoose(input, 'output_dir', roots = roots, session = session)
+
+  df_react <- reactiveVal(NULL)
+  selected_pts <- reactiveVal(NULL)
+  output_dir <- reactiveVal(NULL)
+
+  # load data from uploaded file
+  observeEvent(input$file, {
+    req(input$file)
+    df <- read.csv(input$file$datapath)
+    df_react(df)
+  })
+
+  # store selected output dir
+  observe({
+    req(input$output_dir)
+    output_dir(parseDirPath(roots = roots, input$output_dir))
+  })
+
+  # generate the analyte selector
+  output$analyte_selector <- renderUI({
+    req(df_react())
+    selectInput(
+      inputId = 'analyte',
+      label = 'Analyte:',
+      choices = setdiff(names(df_react()), c('DateTime', 'Longitude', 'Latitude'))
+    )
+  })
+
+  # get selected analyte
+  analyte <- reactive({
+    req(input$analyte)
+    input$analyte
+  })
+
+  max_y <- reactive({
+    max(df_react[[analyte_col]], na.rm = TRUE)
+  })
+  
+  # render plot
+  output$plot <- renderPlotly({
+    req(df_react(), analyte())
+    plot_ly(
+      data = df_react(),
+      x = ~DateTime,
+      y = as.formula(paste0('~`', analyte(), '`')),
+      type = 'scatter',
+      mode = 'markers',
+      marker = list(size = 6, opacity = 0.7),
+      key = ~seq_len(nrow(df_react()))
+    ) %>%
+      layout(
+        title = paste(analyte()),
+        xaxis = list(title = 'DateTime'),
+        yaxis = list(title = analyte(), range = c(0, max_y))
+      )
+  })
+
+  # update selected points to NA
+  observeEvent(input$remove, {
+    req(df_react(), analyte())
+    selected <- event_data('plotly_selected')
+
+    if (!is.null(selected)) {
+      updated_rows <- selected$key
+      df_updated <- df_react()
+      df_updated[updated_rows, analyte()] <- NA
+      df_react(df_updated)
+      selected_pts(df_updated[updated_rows, ])
+      showNotification(paste(length(updated_rows), 'points updated to NA'), type = 'message')
+    }
+  })
+
+  # render table
+  output$tbl_selected_pts <- renderTable({
+    req(selected_pts())
+    selected_pts()
+  })
+
+  # save the edited data to .csv
+  observeEvent(input$save, {
+    req(df_react(), output_dir(), input$file_name)
+    output_path <- file.path(output_dir(), input$file_name)
+    write.csv(df_react(), output_path, row.names = FALSE)
+    showNotification(paste('File saved to', output_path), type = 'message')
+  })
+}
+
+shinyApp(ui, server)
+```
