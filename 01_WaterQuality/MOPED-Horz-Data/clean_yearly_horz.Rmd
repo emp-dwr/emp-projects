@@ -11,7 +11,7 @@ By: Perry
 # EDIT THIS
 # ---
 
-# declare the run year of interest
+# declare the run year of interest  
 year <- 2023
 ```
 
@@ -23,15 +23,9 @@ year <- 2023
 # import packages
 library(tidyverse)
 library(lubridate)
-library(deltamapr)
 library(leaflet)
-library(shinyFiles)
 library(leaflet.extras)
-library(plotly)
 library(readxl)
-library(shiny)
-library(sf)
-library(sp)
 source('03_Phyto/phycoprobe/functions/phyco_funcs.R')
 
 # read in run names and regions
@@ -55,7 +49,8 @@ for(i in 1:nrow(df_combo)){
   # read in WQ data
   fp_wq <- data_path(run, month, year, type = 'MOPED')
   df_wq <- read_csv(fp_wq, skip = 2, show_col_types = FALSE)
-  df_wq1 <- read_csv(fp_wq, skip = 2, show_col_types = FALSE)
+  df_wq <- df_wq %>% filter(Equipment == 'EXO Horizontal')
+  df_wq1 <- df_wq
   df_wq$TimeStamp <- parse_date_time(df_wq$TimeStamp, c('mdY HMS', 'mdY HM'))
   df_wq$TimeStamp <- as.POSIXct(df_wq$TimeStamp, format = '%m/%d/%Y %H:%M:%S')
   
@@ -67,9 +62,9 @@ for(i in 1:nrow(df_combo)){
     pivot_wider(
       names_from = Analyte,
       values_from = Value,
-      values_fn = list(Value = ~ mean(.x, na.rm = TRUE))
+      values_fn = list(Value = ~ mean(.x, na.rm = TRUE)) # can look into this more
     ) %>%
-    select(-SONDEDEPTH_ft) %>%
+    # select(-SONDEDEPTH_ft) %>%
     filter(!if_any(everything(), ~ .x == 0 | is.na(.x)))
 
   df_wq <- df_wq %>%
@@ -108,7 +103,9 @@ for(i in 1:nrow(df_combo)){
 # Combine all dataframes into one
 df_month <- bind_rows(df_list)
 
-# write_csv(df_wq, 'C:/Users/sperry/Desktop/wq_test.csv')
+write_csv(df_month, 'C:/Users/sperry/Desktop/wq_test_23.csv')
+
+write_csv(df_list[[1]], 'C:/Users/sperry/Desktop/wq_test_1month_23.csv')
 ```
 
 ```{r}

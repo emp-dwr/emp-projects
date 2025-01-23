@@ -1,32 +1,53 @@
 Shiny app to remove suspect data (water turned off)
 
 ```{r}
+library(shiny)
+library(plotly)
+library(shinyFiles)
+
 ui <- fluidPage(
   titlePanel('Remove Suspect Values'),
-  sidebarLayout(
-    sidebarPanel(
-      fileInput(
-        inputId = 'file',
-        label = 'Upload File',
-        accept = c('.csv')
-      ),
-      uiOutput('analyte_selector'),
-      actionButton('remove', 'Remove Points'),
-      textInput(
-        inputId = 'file_name',
-        label = 'File Name',
-        value = 'edited_data.csv',
-        placeholder = 'Specify file name to save output'
-      ),
-      shinyDirButton(
-        id = 'output_dir',
-        label = 'Select Output Folder',
-        title = 'Choose folder to save the file'
-      ),
-      actionButton('Save File', 'Save edited .csv')
+  fluidRow(
+    column(6,
+      wellPanel(
+        fileInput(
+          inputId = 'file',
+          label = 'Upload CSV File',
+          accept = c('.csv')
+        ),
+        textInput(
+          inputId = 'file_name',
+          label = 'File Name',
+          value = 'edited_data.csv',
+          placeholder = 'Specify file name to save output'
+        ),
+        shinyDirButton(
+          id = 'output_dir',
+          label = 'Select Output Folder',
+          title = 'Choose folder to save the file'
+        ),
+        actionButton('save', 'Save Edited CSV')
+      )
     ),
-    mainPanel(
-      plotlyOutput('plot'),
+    column(6,
+      wellPanel(
+        selectInput(
+          inputId = 'analyte',
+          label = 'Analyte:',
+          choices = NULL
+        ),
+        actionButton('remove', 'Remove Points'),
+        actionButton('remove_all', 'Remove Points for All Analytes')
+      )
+    )
+  ),
+  fluidRow(
+    column(12,
+      plotlyOutput('plot')
+    )
+  ),
+  fluidRow(
+    column(12,
       tableOutput('tbl_selected_pts')
     )
   )
@@ -34,7 +55,7 @@ ui <- fluidPage(
 
 server <- function(input, output, session) {
   # define root directories
-  roots <- c(home = normalizePath('~'),  C = 'C:/')
+  roots <- c(home = normalizePath('~'), C = 'C:/')
   shinyDirChoose(input, 'output_dir', roots = roots, session = session)
 
   df_react <- reactiveVal(NULL)
@@ -46,6 +67,13 @@ server <- function(input, output, session) {
     req(input$file)
     df <- read.csv(input$file$datapath)
     df_react(df)
+
+    updateSelectInput(
+      session,
+      inputId = 'analyte',
+      choices = setdiff(names(df), c('DateTime', 'Longitude', 'Latitude')),
+      selected = input$analyte
+    )
   })
 
   # store selected output dir
@@ -54,29 +82,21 @@ server <- function(input, output, session) {
     output_dir(parseDirPath(roots = roots, input$output_dir))
   })
 
-  # generate the analyte selector
-  output$analyte_selector <- renderUI({
-    req(df_react())
-    selectInput(
-      inputId = 'analyte',
-      label = 'Analyte:',
-      choices = setdiff(names(df_react()), c('DateTime', 'Longitude', 'Latitude'))
-    )
-  })
-
   # get selected analyte
   analyte <- reactive({
     req(input$analyte)
     input$analyte
   })
 
+  # calculate max_y dynamically
   max_y <- reactive({
-    max(df_react[[analyte_col]], na.rm = TRUE)
+    req(df_react(), analyte())
+    max(df_react()[[analyte()]], na.rm = TRUE)
   })
-  
+
   # render plot
   output$plot <- renderPlotly({
-    req(df_react(), analyte())
+    req(df_react(), analyte(), max_y())
     plot_ly(
       data = df_react(),
       x = ~DateTime,
@@ -89,23 +109,57 @@ server <- function(input, output, session) {
       layout(
         title = paste(analyte()),
         xaxis = list(title = 'DateTime'),
-        yaxis = list(title = analyte(), range = c(0, max_y))
+        yaxis = list(title = analyte(), range = c(0, max_y()))
       )
   })
 
   # update selected points to NA
-  observeEvent(input$remove, {
+  observeEvent(event_data('plotly_selected'), {
     req(df_react(), analyte())
     selected <- event_data('plotly_selected')
 
     if (!is.null(selected)) {
       updated_rows <- selected$key
-      df_updated <- df_react()
-      df_updated[updated_rows, analyte()] <- NA
-      df_react(df_updated)
-      selected_pts(df_updated[updated_rows, ])
-      showNotification(paste(length(updated_rows), 'points updated to NA'), type = 'message')
+      selected_pts(df_react()[updated_rows, ])
     }
+  })
+
+  # remove points and update reactive dataframe
+  observeEvent(input$remove, {
+    req(df_react(), analyte(), selected_pts())
+    df_updated <- df_react()
+    df_updated[as.numeric(rownames(selected_pts())), analyte()] <- NA
+    df_react(df_updated)
+
+    # Update selected points table
+    selected_pts(df_react()[as.numeric(rownames(selected_pts())), ])
+    showNotification(paste(nrow(selected_pts()), 'points updated to NA for analyte', analyte()), type = 'message')
+
+    # Maintain selected analyte after update
+    updateSelectInput(
+      session,
+      inputId = 'analyte',
+      choices = setdiff(names(df_updated), c('DateTime', 'Longitude', 'Latitude')),
+      selected = analyte()
+    )
+  })
+
+  # remove points for all analytes
+  observeEvent(input$remove_all, {
+    req(df_react(), selected_pts())
+    df_updated <- df_react()
+    analytes <- setdiff(names(df_updated), c('DateTime', 'Longitude', 'Latitude'))
+    rows_to_update <- as.numeric(rownames(selected_pts()))
+
+    for (analyte_col in analytes) {
+      df_updated[rows_to_update, analyte_col] <- NA
+    }
+
+    df_react(df_updated)
+
+    # Update selected points table
+    selected_pts(df_react()[rows_to_update, ])
+    showNotification(paste(nrow(selected_pts()), 'points updated to NA for all analytes'), type = 'message')
   })
 
   # render table
