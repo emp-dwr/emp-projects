@@ -113,7 +113,7 @@ for(i in 1:nrow(df_combo)){
 # Combine all dataframes into one
 df_month <- bind_rows(df_list)
 
-#write_csv(df_month, 'C:/Users/cstuart/Desktop/Annual Moped Files - Temp/MOPED_2019_combined.csv')
+write_csv(df_month, 'C:/Users/cstuart/Desktop/Annual Moped Files - Temp/MOPED_2019_combined_Jul-Dec.csv')
 
 #write_csv(df_month, 'C:/Users/sperry/Desktop/wq_test_23.csv')
 
