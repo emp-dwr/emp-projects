@@ -12,7 +12,7 @@ By: Perry
 # ---
 
 # declare the run year of interest
-year <- 2023
+year <- 2017
 ```
 
 ```{r}
@@ -38,7 +38,7 @@ source('03_Phyto/phycoprobe/functions/phyco_funcs.R')
 df_names <- read_csv('03_Phyto/phycoprobe/supp_files/run_names.csv', show_col_types = FALSE)
 
 # obtain all filepaths and create combo df
-fp_all_wq <- archive_path(2023, 'MOPED')
+fp_all_wq <- archive_path(2017, 'MOPED')
 
 df_combo <- create_combo_df(fp_all_wq)
 
@@ -54,8 +54,8 @@ for(i in 1:nrow(df_combo)){
   
   # read in WQ data
   fp_wq <- data_path(run, month, year, type = 'MOPED')
-  df_wq <- read_csv(fp_wq, skip = 2, show_col_types = FALSE)
-  df_wq1 <- read_csv(fp_wq, skip = 2, show_col_types = FALSE)
+  df_wq <- read_csv(fp_wq, show_col_types = FALSE)
+  df_wq1 <- read_csv(fp_wq, show_col_types = FALSE)
   df_wq$TimeStamp <- parse_date_time(df_wq$TimeStamp, c('mdY HMS', 'mdY HM'))
   df_wq$TimeStamp <- as.POSIXct(df_wq$TimeStamp, format = '%m/%d/%Y %H:%M:%S')
   
