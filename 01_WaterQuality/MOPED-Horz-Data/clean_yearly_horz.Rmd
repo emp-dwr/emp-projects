@@ -12,7 +12,7 @@ By: Perry
 # ---
 
 # declare the run year of interest  
-year <- 2023
+year <- 2019
 ```
 
 ```{r}
@@ -24,7 +24,7 @@ year <- 2023
 library(tidyverse)
 library(lubridate)
 #library(deltamapr)
-# library(leaflet)
+#library(leaflet)
 # library(shinyFiles)
 # library(leaflet.extras)
 # library(plotly)
@@ -42,7 +42,7 @@ source('03_Phyto/phycoprobe/functions/phyco_funcs.R')
 df_names <- read_csv('03_Phyto/phycoprobe/supp_files/run_names.csv', show_col_types = FALSE)
 
 # obtain all filepaths and create combo df
-fp_all_wq <- archive_path(2023, 'MOPED')
+fp_all_wq <- archive_path(2019, 'MOPED')
 
 df_combo <- create_combo_df(fp_all_wq)
 
@@ -67,7 +67,7 @@ for(i in 1:nrow(df_combo)){
   df_wq$Analyte <- paste0(df_wq$Header,'_',df_wq$Unit)
 
   df_wq <- df_wq %>%
-    subset(select = c(Longitude, Latitude, Equipment, TimeStamp, Analyte, Value)) %>%
+    subset(select = c(Longitude, Latitude, TimeStamp, Analyte, Value)) %>%
     rename(DateTime = TimeStamp) %>%
     pivot_wider(
       names_from = Analyte,
@@ -113,7 +113,7 @@ for(i in 1:nrow(df_combo)){
 # Combine all dataframes into one
 df_month <- bind_rows(df_list)
 
-#write_csv(df_month, 'C:/Users/cstuart/Desktop/Annual Moped Files - Temp/MOPED_2020_combined.csv')
+#write_csv(df_month, 'C:/Users/cstuart/Desktop/Annual Moped Files - Temp/MOPED_2019_combined.csv')
 
 #write_csv(df_month, 'C:/Users/sperry/Desktop/wq_test_23.csv')
 
