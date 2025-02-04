@@ -149,7 +149,7 @@ df_long <- df_wide %>%
                values_to = 'Result Value') %>%
   filter(!is.na(`Result Value`)) 
 
-# rm(df_wide, df_solids, df_compare, df_check)
+rm(df_wide, df_solids, df_compare, df_check)
 ```
 
 ```{r}
@@ -458,9 +458,5 @@ write_csv(df_all, file = paste0(fp_export, '/prelim_data.csv'), na = '')
 # lapply(names(df_list), function(year) {
 #   write_csv(df_list[[year]], file = paste0(fp_export, '/', year, '_prelim.csv'))
 # })
-```
-
-```{r}
-unique(df_all$`Lab: Comment`)
 ```
 

@@ -108,8 +108,8 @@ server <- function(input, output, session) {
     ) %>%
       layout(
         title = paste(analyte()),
-        xaxis = list(title = 'DateTime'),
-        yaxis = list(title = analyte(), range = c(0, max_y()))
+        xaxis = list(title = 'DateTime')#,
+        # yaxis = list(title = analyte(), range = c(0, max_y()+0.5))
       )
   })
 
