@@ -343,7 +343,7 @@ df_all <- df_all %>%
     Depth =
       case_when(`Observed Property ID` %in% no_depths ~ NA_real_,
                 `Observed Property ID` == 'Microcystis aeruginosa' ~ 0,
-                grepl('\\(Bottom\\)', `Observed Property ID`) ~ as.numeric(`Water Depth Value`)-3,
+                grepl('\\(Bottom\\)', `Observed Property ID`) ~ round(as.numeric(`Water Depth Value`)-3, 1),
                 TRUE ~ 3)
     ) %>%
   mutate(Depth = as.numeric(Depth)) %>%
@@ -369,7 +369,7 @@ df_all <- df_all %>%
 ```{r}
 # create/rename columns
 
-na_cols <- c('Observation ID','Activity ID','Collection Method','Field: Device ID','Lab: Limit Type','Lab: Received DateTime','Lab: Sample Fraction','EA_Data Review Flag','EA_Filter Container ID')
+na_cols <- c('Observation ID','Activity ID','Collection Method','Field: Device ID','Lab: Limit Type','Lab: Received DateTime','Lab: Prepared DateTime','Lab: Sample Fraction','EA_Data Review Flag','EA_Filter Container ID')
 
 profile_vals <- c('Water Temperature', '(Bottom) Water Temperature', '(Bottom) Specific Conductance', 'Specific Conductance', '(Bottom) pH', 'pH', 'Turbidity', '(Bottom) Turbidity','Dissolved Oxygen % Saturation', '(Bottom) Dissolved Oxygen % Saturation', 'Dissolved Oxygen mg/L', '(Bottom) Dissolved Oxygen mg/L', 'Chlorophyll Fluorescence RFU', '(Bottom) Chlorophyll Fluorescence RFU', '(Bottom) Chlorophyll Fluorescence ug/L', 'Chlorophyll Fluorescence ug/L') 
 
@@ -429,7 +429,7 @@ col_order <- c('Observation ID', 'Location ID', 'Observed Property ID', 'Observe
   'Result Grade', 'Medium', 'Activity Name', 'Activity ID', 'Collection Method', 'Field: Device ID', 
   'Field: Device Type', 'Field: Comment', 'Lab: Specimen Name', 'Lab: Analysis Method', 
   'Lab: Detection Condition', 'Lab: Limit Type', 'Lab: MDL', 'Lab: MRL', 'Lab: Quality Flag', 
-  'Lab: Received DateTime', 'Lab: Sample Fraction', 'Lab: From Laboratory', 
+  'Lab: Received DateTime','Lab: Prepared DateTime','Lab: Sample Fraction', 'Lab: From Laboratory', 
   'Lab: Sample ID', 'Lab: Dilution Factor', 'Lab: Comment', 'QC: Type', 'QC: Source Sample ID', 
   'EA_Modified Method', 'EA_Profile Type', 'EA_Project Type', 'EA_Reports To', 'EA_Parent Sample ID', 
   'EA_Data Review Flag', 'EA_Filter Container ID')
@@ -454,7 +454,7 @@ write_csv(df_all, file = paste0(fp_export, '/prelim_data.csv'), na = '')
 # # Define the filepath for saving
 # fp_export <- abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration/Prelim WDL Data')
 # 
-# # Loop through each dataframe and write to CSV
+# # Loop through each dataframe and write to .csv
 # lapply(names(df_list), function(year) {
 #   write_csv(df_list[[year]], file = paste0(fp_export, '/', year, '_prelim.csv'))
 # })
