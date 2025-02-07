@@ -437,6 +437,10 @@ col_order <- c('Observation ID', 'Location ID', 'Observed Property ID', 'Observe
    
 df_all <- df_all %>% select(all_of(col_order))
 
+df_all <- df_all %>%
+  arrange(`Observed DateTime`, `Location ID`)
+
+
 rm(df_analysis, df_depth, df_long, df_mdl, df_method, df_old, df_stations, df_ta)
 ```
 
@@ -447,16 +451,30 @@ rm(df_analysis, df_depth, df_long, df_mdl, df_method, df_old, df_stations, df_ta
 # Define the filepath for saving
 fp_export <- abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration/Prelim WDL Data')
 
-write_csv(df_all, file = paste0(fp_export, '/prelim_data.csv'), na = '')
+# write_csv(df_all, file = paste0(fp_export, '/prelim_data.csv'), na = '')
 
-# df_list <- split(df_long, year(df_long$`Sample Date`))
-# 
-# # Define the filepath for saving
-# fp_export <- abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration/Prelim WDL Data')
-# 
-# # Loop through each dataframe and write to .csv
-# lapply(names(df_list), function(year) {
-#   write_csv(df_list[[year]], file = paste0(fp_export, '/', year, '_prelim.csv'))
-# })
+df_list <- split(df_all, year(df_all$`Observed DateTime`))
+
+# define the filepath for saving
+fp_export <- abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration/Formatted WDL Data')
+
+df_list <- split(df_all, 
+                 list(year(df_all$`Observed DateTime`), 
+                      ifelse(month(df_all$`Observed DateTime`) <= 6, 'JanJun', 'JulDec'), 
+                      ifelse(df_all$`Data Classification` == 'FIELD_RESULT', 'Field', 'Lab')), 
+                 drop = TRUE)
+
+# split the dataframe
+lapply(names(df_list), function(name) {
+  name_parts <- unlist(strsplit(name, '\\.')) 
+  year <- name_parts[1]
+  half_year <- name_parts[2]
+  data_class <- name_parts[3]
+
+  fp_exp <- paste0(fp_export, '/', year, '-', half_year, '_', data_class, '_EMP-DWQ.csv')
+
+  # write to .csv
+  write_csv(df_list[[name]], file = fp_exp, na = '')
+})
 ```
 
