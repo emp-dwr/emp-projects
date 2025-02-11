@@ -34,6 +34,7 @@ df_head <- df %>%
 ```
 
 ```{r}
+# extract blank info
 df_blank <- df %>%
   select(...38, ...39, ...40, ...41, ...42, ...43, ...44) %>%
   filter(!is.na(...38) | ...38 == 'Equipment Blank') %>%
@@ -55,6 +56,7 @@ df_blank <- df %>%
 ```
 
 ```{r}
+# define each chunk of station info as a "batch"
 df_batch <- df %>%
   mutate(across(everything(), ~ str_replace_all(., '[\r\n]', ' '))) %>%
   mutate(
@@ -83,6 +85,7 @@ df_batch <- df_batch %>%
 ```
 
 ```{r}
+# format batches
 df_batch <- df_batch %>%
   group_by(batch_id) %>%
   mutate(
@@ -145,7 +148,7 @@ df_values <- df_long %>%
         param = case_when(
             is_discval ~ header_param,
             !is.na(`EA_Profile Type`) | !is.na(SurfBot) ~ header1_param,
-            TRUE ~ col  # Default to column name
+            TRUE ~ col
         )
     ) %>%
     filter(!(cell_value %in% c('Horizontal', 'Pre-Tow Surf.', 'Pre-Tow Bot.'))) %>%
@@ -164,13 +167,12 @@ df_latlong <- df_long %>%
     value = str_extract(cell_value, '-?\\d+\\.\\d+')
   ) %>%
   select(batch_id, param, value)
-
-df_final <- bind_rows(df_head, df_blank, df_station, df_values, df_notes, df_latlong) %>%
-  arrange(batch_id) %>%
-  relocate(batch_id)
 ```
 
 ```{r}
-write_csv(df_final, 'C:/Users/sperry/Desktop/SB_Jan25_draft.csv', na = '')
+# combine all batches
+df_final <- bind_rows(df_head, df_blank, df_station, df_values, df_notes, df_latlong) %>%
+  arrange(batch_id) %>%
+  relocate(batch_id)
 ```
 
