@@ -114,7 +114,7 @@ df_long <- df_batch %>%
                names_to = 'col', values_to = 'cell_value') %>%
   filter(!is.na(cell_value))  
 
-# 3. extract main station info
+# 3. extract station/time
 df_station <- df_long %>%
     filter(is_header1) %>%
     mutate(
@@ -130,6 +130,7 @@ df_station <- df_long %>%
     )) %>%
     filter(!is.na(value))
 
+# extract main information (sonde and observations)
 df_values <- df_long %>%
     filter(is_horz | is_pretow_surf | is_pretow_bot | is_discval) %>%
     mutate(
@@ -166,17 +167,9 @@ df_notes <- df_long %>%
     filter(value != 'Notes:') %>%
     select(batch_id, param, value)
 
+# 5. extract lat/lon
 df_latlong <- df_long %>%
   filter(is_lat | is_long) %>%
-  mutate(
-    param = case_when(is_lat ~ 'latitude', is_long ~ 'longitude'),
-    value = str_extract(cell_value, '-?\\d+\\.\\d+')
-  ) %>%
-  select(batch_id, param, value)
-
-# 5. extract lat/lon
-df_dup <- df_long %>%
-  filter(is_dup) %>%
   mutate(
     param = case_when(is_lat ~ 'latitude', is_long ~ 'longitude'),
     value = str_extract(cell_value, '-?\\d+\\.\\d+')
