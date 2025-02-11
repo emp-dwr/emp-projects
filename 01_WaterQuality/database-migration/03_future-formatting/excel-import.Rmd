@@ -1,0 +1,176 @@
+# Import data from Excel Field Data Sheets
+# 2/11/25
+
+```{r}
+library(readxl)
+library(stringr)
+library(tidyverse)
+source('00_GlobalFunctions/functions.R')
+
+fp <- abs_path_emp('Water Quality/00 - Monthly Run Docs/Raw Field Data/Water Quality 2025/01 - January/EMP Field Data Sheet_SB_Jan25.xlsx')
+
+df <- read_excel(fp, col_names = FALSE)
+```
+
+```{r}
+# extract top box info
+df_head <- df %>%
+  select('...7', '...9', '...18', '...24') %>%
+  rename(param1 = '...7', value1 = '...9', param2 = '...18', value2 = '...24') %>%
+  pivot_longer(cols = c(param1, param2), values_to = 'param', names_to = 'param_col') %>%
+  pivot_longer(cols = c(value1, value2), values_to = 'value', names_to = 'value_col') %>%
+  mutate(
+    param_suffix = str_extract(param_col, '\\d+$'),
+    value_suffix = str_extract(value_col, '\\d+$')
+  ) %>%
+  filter(param_suffix == value_suffix) %>%
+  select(param, value) %>%
+  filter(!is.na(param) & !is.na(value)) %>%
+  mutate(value = case_when(
+    param == 'Date:' ~ format(as.Date(as.numeric(value), origin = '1899-12-30'), '%m/%d/%Y'),
+    TRUE ~ value
+  ),
+  batch_id = 0)
+```
+
+```{r}
+df_blank <- df %>%
+  select(...38, ...39, ...40, ...41, ...42, ...43, ...44) %>%
+  filter(!is.na(...38) | ...38 == 'Equipment Blank') %>%
+  pivot_longer(cols = c(...39, ...40, ...41, ...42, ...43, ...44), values_to = 'value', names_to = 'value_col') %>%
+  filter(!is.na(value) | ...38 == 'Equipment Blank') %>%
+  mutate(
+    param = case_when(
+      ...38 == 'Equipment Blank' ~ 'Station',
+      TRUE ~ ...38
+    ),
+    value = case_when(
+      ...38 == 'Equipment Blank' ~ 'Equipment Blank',
+      TRUE ~ value
+    ),
+    batch_id = 999
+  ) %>%
+  filter(!(duplicated(param))) %>%
+  select(param, value, batch_id)
+```
+
+```{r}
+df_batch <- df %>%
+  mutate(across(everything(), ~ str_replace_all(., '[\r\n]', ' '))) %>%
+  mutate(
+    batch_start = ifelse(!is.na(...1) & str_detect(...1, 'Station:'), TRUE, FALSE),
+    batch_end = ifelse(!is.na(...1) & str_detect(...1, 'Notes:'), TRUE, FALSE),
+    batch_id = cumsum(batch_start)
+  ) %>%
+  fill(batch_id, .direction = 'down') %>%
+  group_by(batch_id) %>%
+  mutate(
+    in_batch = cumsum(batch_start) > cumsum(batch_end) | batch_end
+  ) %>%
+  ungroup() %>%
+  filter(in_batch | batch_start | batch_end) %>%
+  select(-batch_start, -batch_end, -in_batch) %>%
+  select(where(~ any(!is.na(.)))) %>%
+  filter(rowSums(!is.na(select(., -batch_id))) > 0)
+
+rm_batches <- df_batch %>%
+  filter(str_detect(...1, 'Station:') & str_detect(...1, 'Check')) %>%
+  pull(batch_id) %>%
+  unique()
+
+df_batch <- df_batch %>%
+  filter(!batch_id %in% rm_batches)
+```
+
+```{r}
+df_batch <- df_batch %>%
+  group_by(batch_id) %>%
+  mutate(
+    is_header1 = str_detect(...1, 'Station:'),
+    is_horz = str_detect(...1, 'Horizontal'),
+    is_pretow_surf = str_detect(...1, 'Pre-Tow Surf'),
+    is_pretow_bot = str_detect(...1, 'Pre-Tow Bot'),
+    is_header2 = str_detect(...1, 'Lab ID'),
+    is_discval = case_when(
+      lag(is_header2, default = FALSE) & !is.na(...1) ~ TRUE,
+      TRUE ~ FALSE),
+    is_notes = str_detect(...1, 'Notes:'),
+    is_lat = str_detect(...39, 'Lat:'),
+    is_long = str_detect(...39, 'Long:')
+  ) %>%
+  ungroup()
+
+df_long <- df_batch %>%
+  pivot_longer(cols = -c(batch_id, is_header1, is_horz, is_pretow_surf,
+                         is_pretow_bot, is_header2, is_discval, is_notes,
+                         is_lat, is_long),
+               names_to = 'col', values_to = 'cell_value') %>%
+  filter(!is.na(cell_value))  
+
+df_station <- df_long %>%
+    filter(is_header1) %>%
+    mutate(
+        station_value = str_extract(cell_value, '(?<=Station: )[^ ]+'),
+        time_value = str_extract(cell_value, '(?<=Time: )\\S+') 
+    ) %>%
+    select(batch_id, station_value, time_value) %>%
+    pivot_longer(cols = c(station_value, time_value), names_to = 'param', values_to = 'value') %>%
+    mutate(param = case_when(
+        param == 'station_value' ~ 'Station',
+        param == 'time_value' ~ 'Time',
+        TRUE ~ param
+    )) %>%
+    filter(!is.na(value))
+
+df_values <- df_long %>%
+    filter(is_horz | is_pretow_surf | is_pretow_bot | is_discval) %>%
+    mutate(
+        `EA_Profile Type` = case_when(
+            is_horz ~ 'horizontal',
+            is_pretow_surf ~ 'vertical',
+            is_pretow_bot ~ 'vertical',
+            TRUE ~ NA_character_
+        ),
+        SurfBot = case_when(
+            is_pretow_surf ~ 'surface',
+            is_pretow_bot ~ 'bottom',
+            TRUE ~ NA_character_
+        )
+    ) %>%
+    left_join(df_long %>% filter(is_header2) %>% select(batch_id, col, header_param = cell_value),
+              by = c('batch_id', 'col')) %>%
+    left_join(df_long %>% filter(is_header1) %>% select(batch_id, col, header1_param = cell_value),
+              by = c('batch_id', 'col')) %>%
+    mutate(
+        param = case_when(
+            is_discval ~ header_param,
+            !is.na(`EA_Profile Type`) | !is.na(SurfBot) ~ header1_param,
+            TRUE ~ col  # Default to column name
+        )
+    ) %>%
+    filter(!(cell_value %in% c('Horizontal', 'Pre-Tow Surf.', 'Pre-Tow Bot.'))) %>%
+    select(batch_id, param, value = cell_value, `EA_Profile Type`, SurfBot)
+
+df_notes <- df_long %>%
+    filter(is_notes) %>%
+    mutate(param = 'Notes', value = cell_value) %>%
+    filter(value != 'Notes:') %>%
+    select(batch_id, param, value)
+
+df_latlong <- df_long %>%
+  filter(is_lat | is_long) %>%
+  mutate(
+    param = case_when(is_lat ~ 'latitude', is_long ~ 'longitude'),
+    value = str_extract(cell_value, '-?\\d+\\.\\d+')
+  ) %>%
+  select(batch_id, param, value)
+
+df_final <- bind_rows(df_head, df_blank, df_station, df_values, df_notes, df_latlong) %>%
+  arrange(batch_id) %>%
+  relocate(batch_id)
+```
+
+```{r}
+write_csv(df_final, 'C:/Users/sperry/Desktop/SB_Jan25_draft.csv', na = '')
+```
+
