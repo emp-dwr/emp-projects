@@ -114,23 +114,7 @@ df_long <- df_batch %>%
                names_to = 'col', values_to = 'cell_value') %>%
   filter(!is.na(cell_value))  
 
-# 3. extract station/time
-df_station <- df_long %>%
-    filter(is_header1) %>%
-    mutate(
-        station_value = str_extract(cell_value, '(?<=Station: )[^ ]+'),
-        time_value = str_extract(cell_value, '(?<=Time: )\\S+') 
-    ) %>%
-    select(batch_id, station_value, time_value) %>%
-    pivot_longer(cols = c(station_value, time_value), names_to = 'param', values_to = 'value') %>%
-    mutate(param = case_when(
-        param == 'station_value' ~ 'Station',
-        param == 'time_value' ~ 'Time',
-        TRUE ~ param
-    )) %>%
-    filter(!is.na(value))
-
-# extract main information (sonde and observations)
+# 3. extract main information (sonde and observations)
 df_values <- df_long %>%
     filter(is_horz | is_pretow_surf | is_pretow_bot | is_discval) %>%
     mutate(
@@ -160,14 +144,30 @@ df_values <- df_long %>%
     filter(!(cell_value %in% c('Horizontal', 'Pre-Tow Surf.', 'Pre-Tow Bot.'))) %>%
     select(batch_id, param, value = cell_value, `EA_Profile Type`, SurfBot)
 
-# 4. extract notes
+# 4. extract station/time
+df_station <- df_long %>%
+    filter(is_header1) %>%
+    mutate(
+        station_value = str_extract(cell_value, '(?<=Station: )[^ ]+'),
+        time_value = str_extract(cell_value, '(?<=Time: )\\S+') 
+    ) %>%
+    select(batch_id, station_value, time_value) %>%
+    pivot_longer(cols = c(station_value, time_value), names_to = 'param', values_to = 'value') %>%
+    mutate(param = case_when(
+        param == 'station_value' ~ 'Station',
+        param == 'time_value' ~ 'Time',
+        TRUE ~ param
+    )) %>%
+    filter(!is.na(value))
+
+# 5. extract notes
 df_notes <- df_long %>%
     filter(is_notes) %>%
     mutate(param = 'Notes', value = cell_value) %>%
     filter(value != 'Notes:') %>%
     select(batch_id, param, value)
 
-# 5. extract lat/lon
+# 6. extract lat/lon
 df_latlong <- df_long %>%
   filter(is_lat | is_long) %>%
   mutate(
@@ -176,7 +176,7 @@ df_latlong <- df_long %>%
   ) %>%
   select(batch_id, param, value)
 
-# 6. extract duplicate info
+# 7. extract duplicate info
 df_dup <- df_long %>%
   filter(is_header1) %>%
   mutate(
