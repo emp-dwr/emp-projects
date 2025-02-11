@@ -49,10 +49,11 @@ df_blank <- df %>%
       ...38 == 'Equipment Blank' ~ 'Equipment Blank',
       TRUE ~ value
     ),
+    `QC: Type` = 'Blank',
     batch_id = 999
   ) %>%
   filter(!(duplicated(param))) %>%
-  select(param, value, batch_id)
+  select(param, value, batch_id, `QC: Type`)
 ```
 
 ```{r}
@@ -86,6 +87,8 @@ df_batch <- df_batch %>%
 
 ```{r}
 # format batches
+
+# 1. define batches
 df_batch <- df_batch %>%
   group_by(batch_id) %>%
   mutate(
@@ -103,13 +106,15 @@ df_batch <- df_batch %>%
   ) %>%
   ungroup()
 
+# 2. pivot to long
 df_long <- df_batch %>%
   pivot_longer(cols = -c(batch_id, is_header1, is_horz, is_pretow_surf,
                          is_pretow_bot, is_header2, is_discval, is_notes,
-                         is_lat, is_long),
+                         is_lat, is_long, is_dup),
                names_to = 'col', values_to = 'cell_value') %>%
   filter(!is.na(cell_value))  
 
+# 3. extract main station info
 df_station <- df_long %>%
     filter(is_header1) %>%
     mutate(
@@ -154,6 +159,7 @@ df_values <- df_long %>%
     filter(!(cell_value %in% c('Horizontal', 'Pre-Tow Surf.', 'Pre-Tow Bot.'))) %>%
     select(batch_id, param, value = cell_value, `EA_Profile Type`, SurfBot)
 
+# 4. extract notes
 df_notes <- df_long %>%
     filter(is_notes) %>%
     mutate(param = 'Notes', value = cell_value) %>%
@@ -167,11 +173,45 @@ df_latlong <- df_long %>%
     value = str_extract(cell_value, '-?\\d+\\.\\d+')
   ) %>%
   select(batch_id, param, value)
+
+# 5. extract lat/lon
+df_dup <- df_long %>%
+  filter(is_dup) %>%
+  mutate(
+    param = case_when(is_lat ~ 'latitude', is_long ~ 'longitude'),
+    value = str_extract(cell_value, '-?\\d+\\.\\d+')
+  ) %>%
+  select(batch_id, param, value)
+
+# 6. extract duplicate info
+df_dup <- df_long %>%
+  filter(is_header1) %>%
+  mutate(
+    duplicate_value = str_extract(cell_value, "(?<=Duplicate\\? )\\S+"),
+    churn_bucket_value = str_extract(cell_value, "(?<=Churn Bucket #: )\\S+"),
+    lab_id_value = str_extract(cell_value, "(?<=Lab ID )\\S+")
+  ) %>%
+  filter(duplicate_value == "True") %>%
+  select(batch_id, churn_bucket_value, lab_id_value) %>%
+  pivot_longer(
+    cols = c(churn_bucket_value, lab_id_value),
+    names_to = "param",
+    values_to = "value"
+  ) %>%
+  mutate(
+    param = case_when(
+      param == "churn_bucket_value" ~ "Churn Bucket #",
+      param == "lab_id_value" ~ "Lab ID",
+      TRUE ~ param
+    ),
+    `QC: Type` = 'Replicate'
+  ) %>%
+  filter(!is.na(value))
 ```
 
 ```{r}
 # combine all batches
-df_final <- bind_rows(df_head, df_blank, df_station, df_values, df_notes, df_latlong) %>%
+df_final <- bind_rows(df_head, df_station, df_values, df_notes, df_latlong, df_dup, df_blank) %>%
   arrange(batch_id) %>%
   relocate(batch_id)
 ```
