@@ -57,7 +57,7 @@ df_blank <- df %>%
 ```
 
 ```{r}
-# define each chunk of station info as a "batch"
+# define each chunk of station info as a 'batch'
 df_batch <- df %>%
   mutate(across(everything(), ~ str_replace_all(., '[\r\n]', ' '))) %>%
   mutate(
@@ -187,21 +187,21 @@ df_dup <- df_long %>%
 df_dup <- df_long %>%
   filter(is_header1) %>%
   mutate(
-    duplicate_value = str_extract(cell_value, "(?<=Duplicate\\? )\\S+"),
-    churn_bucket_value = str_extract(cell_value, "(?<=Churn Bucket #: )\\S+"),
-    lab_id_value = str_extract(cell_value, "(?<=Lab ID )\\S+")
+    duplicate_value = str_extract(cell_value, '(?<=Duplicate\\? )\\S+'),
+    churn_bucket_value = str_extract(cell_value, '(?<=Churn Bucket #: )\\S+'),
+    lab_id_value = str_extract(cell_value, '(?<=Lab ID )\\S+')
   ) %>%
-  filter(duplicate_value == "True") %>%
+  filter(duplicate_value == 'True') %>%
   select(batch_id, churn_bucket_value, lab_id_value) %>%
   pivot_longer(
     cols = c(churn_bucket_value, lab_id_value),
-    names_to = "param",
-    values_to = "value"
+    names_to = 'param',
+    values_to = 'value'
   ) %>%
   mutate(
     param = case_when(
-      param == "churn_bucket_value" ~ "Churn Bucket #",
-      param == "lab_id_value" ~ "Lab ID",
+      param == 'churn_bucket_value' ~ 'Churn Bucket #',
+      param == 'lab_id_value' ~ 'Lab ID',
       TRUE ~ param
     ),
     `QC: Type` = 'Replicate'
