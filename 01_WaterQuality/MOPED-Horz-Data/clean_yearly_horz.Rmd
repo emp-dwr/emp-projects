@@ -93,11 +93,11 @@ for(i in 1:nrow(df_combo)){
     select(-c(DateTime, TimeDiff)) %>%
     rename(DateTime = RoundedDateTime)
   
-  # filter out rows around Antioch
-  lat_min <- 38.015465
-  lat_max <- 38.032394
-  lon_min <- -121.762379
-  lon_max <- -121.741878
+#  filter out rows around Antioch
+  lat_min <- 38.016249
+  lat_max <- 38.023349
+  lon_min <- -121.759586
+  lon_max <- -121.746626
 
   df_wq <- df_wq %>%
   filter(!(Latitude >= lat_min & Latitude <= lat_max &
@@ -144,7 +144,7 @@ df_final <- df_final %>%
 # df_remove <- df_remove %>%
 #   arrange(TimeStamp)
 
-write_csv(df_final, 'C:/Users/cstuart/Desktop/Annual Moped Files - Temp/MOPED_2024_combined_final.csv')
+#write_csv(df_final, 'C:/Users/cstuart/Desktop/Annual Moped Files - Temp/MOPED_2024_combined_newbound.csv')
 
 #write_csv(df_final, 'C:/Users/sperry/Desktop/wq_test_19.csv')
 
