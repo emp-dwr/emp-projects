@@ -143,8 +143,13 @@ df_final <- df_final %>%
 
 # df_remove <- df_remove %>%
 #   arrange(TimeStamp)
+  
+#Reorder columns and do not include chlorophyll RFU
+df_final <- df_final %>% 
+  select(DateTime, Longitude, Latitude, WT_C, `SPC_uS/cm`, `PH_pH Units`, FNU_FNU, `FLUOR_ug/L`, `DO_mg/L`, `DOSAT_% SAT`)
 
-#write_csv(df_final, 'C:/Users/cstuart/Desktop/Annual Moped Files - Temp/MOPED_2024_combined_newbound.csv')
+#export csv to Craig's desktop folder - change file name according to the year
+#write_csv(df_final, 'C:/Users/cstuart/Desktop/Annual Moped Files - Temp/MOPED_2024_combined_final_newbound.csv')
 
 #write_csv(df_final, 'C:/Users/sperry/Desktop/wq_test_19.csv')
 
