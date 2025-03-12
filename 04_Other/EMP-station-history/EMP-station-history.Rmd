@@ -536,6 +536,10 @@ studyactivity_order <- c("Zoop-Active","CWQ-Active","DWQ-Active","Phyto-Active",
 df_EMP$Study <- factor(df_EMP$Study, levels = study_order)
 df_EMP$StudyActivity <- factor(df_EMP$StudyActivity, levels = studyactivity_order)
 
+df_test <- df_EMP %>% 
+  filter(StudyActivity == "Zoop-Active") %>% 
+  group_by(Year) %>% 
+  summarise(ActiveStations = n())
          
 ```
 

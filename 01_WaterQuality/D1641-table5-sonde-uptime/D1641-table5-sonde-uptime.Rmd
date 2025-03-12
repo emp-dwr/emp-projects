@@ -15,7 +15,7 @@ suppressWarnings(suppressMessages(library(here)))
 suppressWarnings(suppressMessages(library(cder)))
 
 # Set output directory 
-output <- here("01_WaterQuality","D1641-table5-sonde-uptime","output")
+plots <- here("01_WaterQuality","D1641-table5-sonde-uptime","output")
 
 # Set visual theme in ggplot
 theme_set(theme_bw())
@@ -26,34 +26,34 @@ options(dplyr.summarise.inform = FALSE)
 
 # Create date variables --------------------------------------------------------
 start <- as.Date("2020-01-01")
-end <- as.Date("2024-05-08")
+end <- as.Date("2024-12-31")
 
 ```
 
 ## Import sonde data from CDEC
-Pull in data from six D-1641 continuous water quality stations that are maintained by USBR: Sacramento River @ Collinsville (CLL), San Joaquin River @ San Andreas Landing (SAL), Contra Costa Canal @ Pumping Plant #1 (CNT), Old River near Middle River (UNI), Sacramento River @ Port Chicago (PCT), Delta-Mendota Canal at Tracy Pumping Plant (DMC).
+Pull in data from seven D-1641 continuous water quality stations maintained by USBR: Sacramento River @ Collinsville (CLL), San Joaquin River @ San Andreas Landing (SAL), Contra Costa Canal @ Pumping Plant #1 (CNT), Old River near Middle River (UNI), Sacramento River @ Port Chicago (PCT), Delta-Mendota Canal at Tracy Pumping Plant (DMC), and Emmaton (EMM).
 
 ```{r import, echo=FALSE}
 # Pull USBR station data from CDEC
 stations <- c("CLL","SAL","CNT","UNI","PCT","DMC","EMM")
  
-df_WQ_all <- cdec_query(stations, sensors = c(100,25),
-                        start.date = start,
-                        end.date = end)
-
-# Add more detailed description of each station
-df_WQ_all <- df_WQ_all %>% 
-   mutate(Description = case_when(StationID == "CLL" ~ "C2 - Sac River @ Collinsville",
-                                  StationID == "SAL" ~ "C4 - SJ River @ San Andreas Landing",
-                                  StationID == "CNT" ~ "C5 - Contra Costa Canal @ Pumping Plant 1",
-                                  StationID == "UNI" ~ "C8 - Old River near Middle River",
-                                  StationID == "PCT" ~ "C14 - Sac River @ Port Chicago",
-                                  StationID == "DMC" ~ "DMC1 - Delta-Mendota Canal @ Tracy Pumping Plant",
-                                  StationID == "EMM" ~ "EMM - Sac River @ Emmaton"
-                                  ))
-
-# Takes a long time to download from CDEC so save as RData file
-save(df_WQ_all, file = here("01_WaterQuality","D1641-table5-sonde-uptime","df_WQ_all.RData"))
+# df_WQ_all <- cdec_query(stations, sensors = c(100,25),
+#                         start.date = start,
+#                         end.date = end)
+# 
+# # Add more detailed description of each station
+# df_WQ_all <- df_WQ_all %>% 
+#    mutate(Description = case_when(StationID == "CLL" ~ "C2 - Sac River @ Collinsville",
+#                                   StationID == "SAL" ~ "C4 - SJ River @ San Andreas Landing",
+#                                   StationID == "CNT" ~ "C5 - Contra Costa Canal @ Pumping Plant 1",
+#                                   StationID == "UNI" ~ "C8 - Old River near Middle River",
+#                                   StationID == "PCT" ~ "C14 - Sac River @ Port Chicago",
+#                                   StationID == "DMC" ~ "DMC1 - Delta-Mendota Canal @ Tracy Pumping Plant",
+#                                   StationID == "EMM" ~ "EMM - Sac River @ Emmaton"
+#                                   ))
+# 
+# # Takes a long time to download from CDEC so save as RData file
+# save(df_WQ_all, file = here("01_WaterQuality","D1641-table5-sonde-uptime","df_WQ_all.RData"))
 
 load(here("01_WaterQuality","D1641-table5-sonde-uptime","df_WQ_all.RData"))
 
@@ -97,15 +97,115 @@ durations <- c("D" = "Daily","E" = "Event","H" = "Hourly")
 df_WQ <- df_WQ %>% 
   mutate(Duration = str_replace_all(Duration, durations))
 
+# Create summary table for how many individual measurements exist for each station
+df_WQ_sum <- df_WQ %>% 
+  filter(Duration == "Hourly") %>% 
+  filter(!is.na(Value)) %>% # Remove entries with an NA for the measured parameter
+  filter(Value > 0) %>% # Remove entries with a 0 or negative number for the measured parameter
+  group_by(StationID,Description,Year,Month,SensorType,Duration) %>% 
+  summarize(Total_Measurements = sum(n())) %>% 
+  ungroup()
+
+# Create data frame with all date time combinations from 1-1-2020 to 12-31-2024
+
+hourly_date_times <- tibble(
+  DateTime = seq.POSIXt(
+    from = as.POSIXct("2020-01-01 00:00:00"),
+    to = as.POSIXct("2024-12-31 23:00:00"),
+    by = "hour"
+  )
+)
+
+df_test <- crossing(StationID = stations, hourly_date_times)
+
+# Filter CDEC data for hourly EC data only
+df_WQ_EC <- df_WQ %>% 
+  filter(SensorType == "SpC") %>% 
+  filter(Duration == "Hourly") %>% 
+  select(-Duration,-ObsDate)
+
+df_test <- left_join(df_test,df_WQ_EC)
+
+df_test <- df_test %>% 
+  mutate(DataStatus = case_when(is.na(Value) ~ "Missing",
+                                Value == 0 ~ "Zero",
+                                TRUE ~ "Present"))
+
+# Plot rating data faceted by probe
+colors <- c("darkred","darkgreen","yellow3")
+
+p1 <- ggplot(data = df_test, aes(x = DateTime,
+                                 y = StationID,
+                                 fill = DataStatus)) +
+  geom_tile(height = 0.5) +
+  scale_fill_manual(values = colors) 
+
+p1 +
+  labs(x = "Daily Rating of Data Collected",
+       y = "Station ID",
+       fill = "Sonde Rating",
+       title = "EXO2 Probe Ratings - 2023")
+
+ggsave(path = output,
+       filename = "CEMP_sonde_scores_test.png", 
+       device = "png",
+       scale=1.0, 
+       units="in",
+       height=6.5,
+       width=9, 
+       dpi="print")
 ```
+
+```
+
+## Basic Plots for Data Review
+
+```{r basic plots}
+
+# Create history plots for SpC at each stations
+stations <- unique(df_WQ$StationID) 
+stations <- sort(stations, decreasing = F, na.last = T)
+
+for (x in stations) {
+  df_temp <- df_WQ %>%
+    filter(StationID == x) %>% 
+    filter(SensorType == "SpC")
+  
+  p <- ggplot(data = df_temp, aes(x = DateTime,
+                                  y = Value)) +
+    geom_point(size = 1) + 
+    scale_color_brewer(palette = "Set2") + 
+    facet_wrap(Duration ~ ., ncol = 1)
+  
+  print(p)
+
+  ggsave(path = plots,
+         filename = paste0(x,"-metadata-timeline-CDEC.png"),
+         device = "png",
+         scale=1.0,
+         units="in",
+         height=7,
+         width=6.5,
+         dpi="print")
+  
+}
+
+```
+
+
+
+
 
 ## Create a Blank Data Frame for the 2023 Data
 ```{r blank}
 # Create a blank data frame with all combinations of stations and months for 2023
 months <- seq(ymd("2024-01-01"), by = "month", length.out = 12)
 
+days <- as_tibble(seq(ymd("2024-01-01"), by = "day", length.out = 366))
+
 df_intervals <- crossing(
-  MonthNum = month(months, abbr = TRUE),
+  Month = month(months, abbr = TRUE, label = TRUE),
+  Year = c("2020","2021","2022","2023","2024"),
   StationID = stations,
   SensorType = c("SpC", "Water Temp")
   )
