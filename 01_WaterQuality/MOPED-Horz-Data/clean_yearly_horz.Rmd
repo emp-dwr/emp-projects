@@ -103,7 +103,7 @@ for(i in 1:nrow(df_combo)){
   filter(!(Latitude >= lat_min & Latitude <= lat_max &
              Longitude >= lon_min & Longitude <= lon_max))
   
-  # filter analytes
+  # filter        analytes
   # df_wq <- df_wq %>%
   #   filter(`SPC_uS/cm` > 50,
   #          WT_C > 0,
