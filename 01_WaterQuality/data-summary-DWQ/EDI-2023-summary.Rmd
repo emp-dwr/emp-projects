@@ -69,21 +69,14 @@ df_signs <- df_signs %>%
 # Count the number of occurrences of each sign
 df_sign_sum <- df_signs %>%
   mutate(Year = year(Date)) %>% 
-  group_by(Analyte,Year,Sign) %>%
+  group_by(Analyte,Sign) %>%
   summarize(Count = n())
 
 # Edit to remove the trailing "_Sign" characters
 df_sign_sum$Analyte <- sub("_Sign$","",df_sign_sum$Analyte)
 
-
-test <- df_
-
-
-
-
 # Substitute symbols for words
 df_sign_sum <- df_sign_sum %>% 
-  filter(!is.na(Value)) %>%
   mutate(Sign = case_when(Sign == "<" ~ "Below RL",
                           Sign == "=" ~ "Value_or_NA"))
 
@@ -92,52 +85,29 @@ df_sign_sum <- pivot_wider(df_sign_sum,
                           values_from = "Count",
                           names_from = "Sign")
 
-# Count the number of missing values for each analyte
-df_NA_values <- df_values %>% 
-  group_by(Analyte,Year) %>% 
-  summarize(NAs = sum(is.na(Value)))
-
-# Add to main df
-df_DWQ_sum <- left_join(df_sign_sum,df_NA_values)
-
-
-
-
-# Calculate the total count
-total_count <- sum(df_sign_sum$Count)
-
-# Calculate the percentage for each sign
-df_sign_sum <- df_sign_sum %>%
-  mutate(Percentage = (Count / total_count) * 100)
-
-
-
 ```
 
-# Scratch
-```{r scratch, echo=FALSE}
-# Tally total number of samples for each analyte, each year
-df_DWQ_tot <- df_values %>% 
-  group_by(Year,Analyte) %>% 
-  filter(!is.na(Value)) %>% 
-  summarize(Total = n())
+# Summarize Microcystis
+```{r MC, echo=FALSE}
+# Tally total number of MC measurements for each year
+df_MC <- df_DWQ %>% 
+  select(StationID:Time,Microcystis) %>% 
+  filter(!is.na(Microcystis)) %>% 
+  mutate(Year = year(Date)) %>% 
+  mutate(Month = month(Date, label = TRUE, abbr = TRUE))
 
+df_MC <- df_MC %>% 
+  mutate(Season = case_when(Month %in% c("Dec","Jan","Feb","Mar","Apr") ~ "Winter",
+                            TRUE ~ "Summer"))
 
-df_values <- df_DWQ %>% select(StationID:Date,!ends_with("_Sign"))
+df_MC_tally <- df_MC %>% 
+  count(Year,Season,Microcystis)
 
-df_values <- df_values %>% 
-  select(!SampleDescription:Longitude) %>% 
-  pivot_longer(cols = Chla:pHBottom,
-               names_to = "Analyte",
-               values_to = "Value")
+# Calculate Avg MC value at each station per year
+df_MC_avg <- df_MC %>% 
+  group_by(StationID) %>% 
+  summarise(MC_Avg = mean(Microcystis)) %>% 
+  ungroup()
 
-# Create a blank df to make sure we don't skip years and stations
-years <- sort(unique(df_DWQ$Year))
-
-df_intervals <- crossing(
-  Year = years,
-  Analyte = df_values_long$Analyte,
-  Sign = df_signs_long$Sign
-  )
 ```
 
