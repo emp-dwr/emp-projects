@@ -12,7 +12,7 @@ By: Perry
 # ---
 
 # declare the run year of interest  
-year <- 2024
+year <- 2020
 ```
 
 ```{r}
@@ -24,6 +24,7 @@ year <- 2024
 library(tidyverse)
 library(lubridate)
 library(readxl)
+library(zoo)
 options(digits = 10)
 source('03_Phyto/phycoprobe/functions/phyco_funcs.R')
 
@@ -84,6 +85,38 @@ for(i in 1:nrow(df_combo)){
     ) %>%
     filter(!if_any(everything(), ~ .x == 0 | is.na(.x)))
 
+  ########Outlier Detection######
+  
+  # Add a column for the day
+  df_wq$day <- as.Date(df_wq$DateTime)
+  
+  # Define the columns to run the outlier detection on
+  columns_to_check <- c("WT_C", "SPC_uS/cm", "PH_pH Units", "NTU_NTU", "FLUOR_ug/L",  "FLUORRFU_RFU", "DO_mg/L" ,"DOSAT_% SAT")
+  
+  # Function to calculate rolling median and detect outliers for a single column
+  detect_outliers <- function(column, window_size = 4) {
+  rolling_median <- rollapply(column, width = window_size, FUN = median, fill = NA, align = "center")
+  threshold <- 1.5 * IQR(column, na.rm = TRUE)
+  outliers <- abs(column - rolling_median) > threshold
+  return(outliers) # Return outlier flags
+}
+  
+  # Apply outlier detection to the specified columns, for each day, creating new outlier result columns
+  df_wq <- df_wq %>%
+  group_by(day) %>% 
+  mutate(across(all_of(columns_to_check), 
+                ~ detect_outliers(.x), 
+                .names = "{.col}_outlier")) %>% 
+  ungroup()
+  
+  #replace NA with FALSE so it does not drop values
+  df_wq[is.na(df_wq)] <- FALSE
+  
+  #Remove rows where cells equal TRUE
+  df_wq <- subset(df_wq, WT_C_outlier != TRUE & 'SPC_uS/cm_outlier' != TRUE & 'PH_pH Units_outlier' != TRUE & NTU_NTU_outlier != TRUE & 'FLUOR_ug/L_outlier' != TRUE & FLUORRFU_RFU_outlier != TRUE & 'DO_mg/L_outlier' != TRUE & 'DOSAT_% SAT' != TRUE)
+  
+  #######
+  
   df_wq <- df_wq %>%
     mutate(RoundedDateTime = round_date(DateTime, 'minute')) %>%
     mutate(TimeDiff = abs(as.numeric(difftime(DateTime, RoundedDateTime, units = 'secs')))) %>%
@@ -108,7 +141,7 @@ for(i in 1:nrow(df_combo)){
   #   filter(`SPC_uS/cm` > 50,
   #          WT_C > 0,
   #          `PH_pH Units` > 0,
-  #          FNU_FNU > 0,
+  #          FNU_NTU > 0,
   #          `FLUOR_ug/L` > 0,
   #          FLUORRFU_RFU > 0,
   #          `DO_mg/L` > 0,
@@ -134,7 +167,7 @@ df_final <- df_final %>%
     filter(`SPC_uS/cm` > 50,
            WT_C > 0,
            `PH_pH Units` > 0,
-           FNU_FNU > 0,
+           NTU_NTU > 0,
            `FLUOR_ug/L` > 0,
            FLUORRFU_RFU > 0,
            `DO_mg/L` > 0,
@@ -146,10 +179,10 @@ df_final <- df_final %>%
   
 #Reorder columns and do not include chlorophyll RFU
 df_final <- df_final %>% 
-  select(DateTime, Longitude, Latitude, WT_C, `SPC_uS/cm`, `PH_pH Units`, FNU_FNU, `FLUOR_ug/L`, `DO_mg/L`, `DOSAT_% SAT`)
+  select(DateTime, Longitude, Latitude, WT_C, `SPC_uS/cm`, `PH_pH Units`, NTU_NTU, `FLUOR_ug/L`, `DO_mg/L`, `DOSAT_% SAT`)
 
 #export csv to Craig's desktop folder - change file name according to the year
-#write_csv(df_final, 'C:/Users/cstuart/Desktop/Annual Moped Files - Temp/MOPED_2024_combined_final_newbound.csv')
+write_csv(df_final, 'C:/Users/cstuart/Desktop/Annual Moped Files - Temp/MOPED_2019_combined_final_jul-dec_outliersremoved.csv')
 
 #write_csv(df_final, 'C:/Users/sperry/Desktop/wq_test_19.csv')
 
