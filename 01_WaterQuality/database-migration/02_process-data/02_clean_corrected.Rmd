@@ -357,12 +357,27 @@ df_all <- df_all %>%
                 `Activity Name` == 'E0423B0757' & grepl('\\(Bottom\\)', `Observed Property ID`) ~ 10.3,
                 `Activity Name` == 'E0123B0002' & grepl('\\(Bottom\\)', `Observed Property ID`) ~ 13,
                 `Activity Name` == 'E0223B0222' & grepl('\\(Bottom\\)', `Observed Property ID`) ~ 10,
-                TRUE ~ Depth),
-    `Depth Unit` = 
-      case_when(!is.na(Depth) ~ 'ft',
-                is.na(Depth) ~ NA) 
-  )
+                TRUE ~ Depth)
+    )
 
+
+# re-format water and sampling depth
+df_all <- df_all %>% 
+  rename(`EA_Sampling Depth` = Depth) %>%
+  mutate(Depth = if_else(`Observed Property ID` == 'Water Depth', `Result Value`, NA)) %>%
+  group_by(`Location ID`, `Sample Date`) %>%
+  fill(Depth, .direction = 'downup') %>%
+  ungroup() %>%
+  mutate(`Depth Unit` =
+           case_when(!is.na(Depth) ~ 'ft',
+                     is.na(Depth) ~ NA))
+
+# re-format MRL
+df_all <- df_all %>%
+  mutate(`EA_Reports To` =
+           case_when(`Data Classification` == 'LAB' ~ `EA_Reports To`,
+                     TRUE ~ NA)
+         )
 ```
 
 
@@ -420,6 +435,10 @@ df_all <- df_all %>%
 # remove station number
 df_all <- df_all %>%
   select(-c('Station Number'))
+
+# remove `Water Depth` observed property
+df_all <- df_all %>%
+  filter(!(`Observed Property ID` == 'Water Depth'))
 ```
 
 ```{r}
@@ -432,7 +451,7 @@ col_order <- c('Observation ID', 'Location ID', 'Observed Property ID', 'Observe
   'Lab: Received DateTime','Lab: Prepared DateTime','Lab: Sample Fraction', 'Lab: From Laboratory', 
   'Lab: Sample ID', 'Lab: Dilution Factor', 'Lab: Comment', 'QC: Type', 'QC: Source Sample ID', 
   'EA_Modified Method', 'EA_Profile Type', 'EA_Project Type', 'EA_Reports To', 'EA_Parent Sample ID', 
-  'EA_Data Review Flag', 'EA_Filter Container ID')
+  'EA_Data Review Flag', 'EA_Filter Container ID', 'EA_Sampling Depth')
 
    
 df_all <- df_all %>% select(all_of(col_order))
@@ -458,23 +477,23 @@ df_list <- split(df_all, year(df_all$`Observed DateTime`))
 # define the filepath for saving
 fp_export <- abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration/Formatted WDL Data')
 
-df_list <- split(df_all, 
-                 list(year(df_all$`Observed DateTime`), 
-                      ifelse(month(df_all$`Observed DateTime`) <= 6, 'JanJun', 'JulDec'), 
-                      ifelse(df_all$`Data Classification` == 'FIELD_RESULT', 'Field', 'Lab')), 
+df_list <- split(df_all,
+                 list(year(df_all$`Observed DateTime`),
+                      ifelse(month(df_all$`Observed DateTime`) <= 6, 'JanJun', 'JulDec')),
+                      # ifelse(df_all$`Data Classification` == 'FIELD_RESULT', 'Field', 'Lab')),
                  drop = TRUE)
 
-# split the dataframe
+# # split the dataframe
 lapply(names(df_list), function(name) {
-  name_parts <- unlist(strsplit(name, '\\.')) 
+  name_parts <- unlist(strsplit(name, '\\.'))
   year <- name_parts[1]
   half_year <- name_parts[2]
-  data_class <- name_parts[3]
+  # data_class <- name_parts[3]
 
-  fp_exp <- paste0(fp_export, '/', year, '-', half_year, '_', data_class, '_EMP-DWQ.csv')
+  fp_exp <- paste0(fp_export, '/', year, '-', half_year, '_EMP-DWQ.csv')
 
   # write to .csv
-  write_csv(df_list[[name]], file = fp_exp, na = '')
+  write_csv(df_list[[name]], file = fp_exp, na = '') 
 })
 ```
 
