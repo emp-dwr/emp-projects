@@ -20,14 +20,10 @@ def extract_pdfs(fp_rel):
 
     fp_full = os.path.join(fp_pdf_qa, fp_rel)
 
-    if not os.path.exists(fp_full):
-        print(f'Folder does not exist: {fp_full}')
-        return pd.DataFrame()
-
     for filename in os.listdir(fp_full):
         if filename.lower().endswith('.pdf'):
             fp_file = os.path.join(fp_full, filename)
-            
+
             doc = fitz.open(fp_file)
             for page in doc:
                 widgets = page.widgets()
