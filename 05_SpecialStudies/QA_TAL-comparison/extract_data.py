@@ -106,7 +106,7 @@ def clean_dates(df, col_name, notes_col='Notes'):
         else:
             new_dates.append(standardize_date(val))
 
-    cleaned_col = f"{col_name}"
+    cleaned_col = f'{col_name}'
     df[cleaned_col] = new_dates
     df[notes_col] = new_notes
 
