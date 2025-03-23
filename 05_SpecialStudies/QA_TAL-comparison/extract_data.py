@@ -240,13 +240,13 @@ def clean_data(df, mode='2023'):
     df_final = clean_dates(df_final, 'Stock125PrepDate')
     df_final = clean_dates(df_final, 'CalibDate')
 
-
     col_order = [
         'Stock125PrepName', 'Stock125PrepDate', 'Cal625PrepName', 'Cal625PrepDate',
         'Hach625VerAbs', 'CalibratorName', 'CalibDate', 'ProcDCN', 'ProcVer',
         'CTSensorSN', 'OrigSondeID', 'TALSensorSN', 'Standard', 'Parameter', 'Units',
         'ExpectVal', 'PreCalVal', 'PostCalVal', 'SensorTemp', 'Notes'
     ]
+
     df_final = df_final.reindex(columns=col_order)
     df_final['Units'] = df_final['Units'].replace('gL', 'ug_L')
 
