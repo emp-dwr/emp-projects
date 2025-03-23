@@ -76,7 +76,7 @@ def standardize_date(date_str):
         if len(d) == 1:
             d = f'0{d}'
         if len(y) == 2:
-            y = f'20{y}' if int(y) < 50 else f'19{y}'
+            y = f'20{y}'
         try:
             return datetime.strptime(f'{m}/{d}/{y}', '%m/%d/%Y').date()
         except ValueError:
