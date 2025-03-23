@@ -27,40 +27,38 @@ def extract_pdfs(fp_rel):
     for filename in os.listdir(fp_full):
         if filename.lower().endswith('.pdf'):
             fp_file = os.path.join(fp_full, filename)
-            try:
-                doc = fitz.open(fp_file)
-                for page in doc:
-                    widgets = page.widgets()
-                    if widgets:
-                        for widget in widgets:
-                            all_fields.append({
-                                'file_index': file_index,
-                                'file_name': filename,
-                                'field_name': widget.field_name,
-                                'field_value': widget.field_value
-                            })
-                file_index += 1
-                doc.close()
-            except Exception as e:
-                print(f'Error reading {filename}: {e}')
+            
+            doc = fitz.open(fp_file)
+            for page in doc:
+                widgets = page.widgets()
+                if widgets:
+                    for widget in widgets:
+                        all_fields.append({
+                            'file_index': file_index,
+                            'file_name': filename,
+                            'field_name': widget.field_name,
+                            'field_value': widget.field_value
+                        })
+            file_index += 1
+            doc.close()
 
     return pd.DataFrame(all_fields)
 
+def rm_suffix(field_list):
+    cleaned = []
+    for i, val in enumerate(field_list):
+        base = re.sub(r'_\d+$', '', val)
+        if base == 'Date':
+            if i > 0:
+                prev_cleaned = cleaned[i - 1]
+                base = f'{prev_cleaned}Date'
+            else:
+                base = 'UnknownDate'
+        cleaned.append(base)
+    return cleaned
+
 # clean 2023 data
 def clean_data_three(df):
-
-    def rm_suffix(field_list):
-        cleaned = []
-        for i, val in enumerate(field_list):
-            base = re.sub(r'_\d+$', '', val)
-            if base == 'Date':
-                if i > 0:
-                    prev_cleaned = cleaned[i - 1]
-                    base = f'{prev_cleaned}Date'
-                else:
-                    base = 'UnknownDate'
-            cleaned.append(base)
-        return cleaned
 
     all_rows = []
 
@@ -173,40 +171,31 @@ def clean_data_three(df):
 
     final_df = pd.DataFrame(all_rows)
 
-    if not final_df.empty:
-        na_patterns = ['', ' ', 'N/A', 'na', 'NA']
-        for col in ['SensorTemp', 'Notes']:
-            if col in final_df.columns:
-                final_df[col] = final_df[col].replace(na_patterns, pd.NA)
-                final_df[col] = final_df[col].replace(r'^\s*$', pd.NA, regex=True)
+    na_patterns = ['', ' ', 'N/A', 'na', 'NA']
+    for col in ['SensorTemp', 'Notes']:
+        if col in final_df.columns:
+            final_df[col] = final_df[col].replace(na_patterns, pd.NA)
+            final_df[col] = final_df[col].replace(r'^\s*$', pd.NA, regex=True)
 
-        final_df = final_df.dropna(subset=['SensorTemp'])
+    final_df = final_df.dropna(subset=['SensorTemp'])
 
-        true_order = [
-            'Stock125PrepName', 'Stock125PrepDate', 'Cal625PrepName', 'Cal625PrepDate',
-            'Hach625VerAbs', 'CalibratorName', 'CalibDate', 'ProcDCN', 'ProcVer', 'CTSensorSN',
-            'OrigSondeID', 'TALSensorSN', 'Standard', 'Parameter', 'Units',
-            'ExpectVal', 'PreCalVal', 'PostCalVal', 'SensorTemp', 'Notes'
-        ]
+    true_order = [
+        'Stock125PrepName', 'Stock125PrepDate', 'Cal625PrepName', 'Cal625PrepDate',
+        'Hach625VerAbs', 'CalibratorName', 'CalibDate', 'ProcDCN', 'ProcVer', 'CTSensorSN',
+        'OrigSondeID', 'TALSensorSN', 'Standard', 'Parameter', 'Units',
+        'ExpectVal', 'PreCalVal', 'PostCalVal', 'SensorTemp', 'Notes'
+    ]
 
-        final_df = final_df.reindex(columns=true_order)
-        final_df['Units'] = final_df['Units'].replace('gL', 'ug_L')
+    final_df = final_df.reindex(columns=true_order)
+    final_df['Units'] = final_df['Units'].replace('gL', 'ug_L')
 
-        for col in ['SensorTemp', 'PreCalVal', 'PostCalVal']:
-            final_df[col] = pd.to_numeric(final_df[col], errors='coerce')
+    for col in ['SensorTemp', 'PreCalVal', 'PostCalVal']:
+        final_df[col] = pd.to_numeric(final_df[col], errors='coerce')
 
     return final_df
 
 # clean 2024 data
 def clean_data_four(df):
-    def rm_suffix(field_list):
-        cleaned = []
-        for i, val in enumerate(field_list):
-            base = re.sub(r'_\d+$', '', val)
-            if base == 'Date':
-                base = f'{cleaned[i - 1]}Date' if i > 0 else 'UnknownDate'
-            cleaned.append(base)
-        return cleaned
 
     all_rows = []
 
@@ -319,26 +308,26 @@ def clean_data_four(df):
 
     final_df = pd.DataFrame(all_rows)
 
-    if not final_df.empty:
-        na_patterns = ['', ' ', 'N/A', 'na', 'NA']
-        for col in ['SensorTemp', 'Notes']:
-            if col in final_df.columns:
-                final_df[col] = final_df[col].replace(na_patterns, pd.NA)
-                final_df[col] = final_df[col].replace(r'^\s*$', pd.NA, regex=True)
 
-        final_df = final_df.dropna(subset=['SensorTemp'])
+    na_patterns = ['', ' ', 'N/A', 'na', 'NA']
+    for col in ['SensorTemp', 'Notes']:
+        if col in final_df.columns:
+            final_df[col] = final_df[col].replace(na_patterns, pd.NA)
+            final_df[col] = final_df[col].replace(r'^\s*$', pd.NA, regex=True)
 
-        column_order = [
-            'Stock125PrepName', 'Stock125PrepDate', 'Cal625PrepName', 'Cal625PrepDate',
-            'Hach625VerAbs', 'CalibratorName', 'CalibDate', 'ProcDCN', 'ProcVer',
-            'CTSensorSN', 'OrigSondeID', 'TALSensorSN', 'Standard', 'Parameter', 'Units',
-            'ExpectVal', 'PreCalVal', 'PostCalVal', 'SensorTemp', 'Notes'
-        ]
+    final_df = final_df.dropna(subset=['SensorTemp'])
 
-        final_df = final_df.reindex(columns=column_order)
-        final_df['Units'] = final_df['Units'].replace('gL', 'ug_L')
+    column_order = [
+        'Stock125PrepName', 'Stock125PrepDate', 'Cal625PrepName', 'Cal625PrepDate',
+        'Hach625VerAbs', 'CalibratorName', 'CalibDate', 'ProcDCN', 'ProcVer',
+        'CTSensorSN', 'OrigSondeID', 'TALSensorSN', 'Standard', 'Parameter', 'Units',
+        'ExpectVal', 'PreCalVal', 'PostCalVal', 'SensorTemp', 'Notes'
+    ]
 
-        for col in ['SensorTemp', 'PreCalVal', 'PostCalVal']:
-            final_df[col] = pd.to_numeric(final_df[col], errors='coerce')
+    final_df = final_df.reindex(columns=column_order)
+    final_df['Units'] = final_df['Units'].replace('gL', 'ug_L')
+
+    for col in ['SensorTemp', 'PreCalVal', 'PostCalVal']:
+        final_df[col] = pd.to_numeric(final_df[col], errors='coerce')
 
     return final_df
