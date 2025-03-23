@@ -86,10 +86,10 @@ def standardize_date(date_str):
 
 # clean dates
 def clean_dates(df, col_name, notes_col='Notes'):
-    if '_original_notes' not in df.columns:
-        df['_original_notes'] = df[notes_col].copy()
+    if '_orig_notes' not in df.columns:
+        df['_orig_notes'] = df[notes_col].copy()
 
-    new_notes = df['_original_notes'].copy()
+    new_notes = df['_orig_notes'].copy()
     new_dates = []
 
     for i, val in enumerate(df[col_name]):
@@ -120,6 +120,7 @@ def clean_data(df, mode='2023'):
         temp_df = df[df['file_index'] == file_val].copy()
         temp_df['clean_field'] = rm_suffix(temp_df['field_name'].tolist())
 
+        # metadata
         block0_start = temp_df[temp_df['clean_field'] == 'Standard name'].index[0]
         block0_end = (
             temp_df[temp_df['clean_field'] == 'Procedure version'].index[0]
@@ -131,8 +132,9 @@ def clean_data(df, mode='2023'):
         block0_dict = dict(zip(block0['clean_field'], block0['field_value']))
         block0_dict['file_index'] = file_val
 
-        original_id_rows = temp_df[temp_df['clean_field'].str.match(r'^Original Sonde ID')]
-        block_start_idx = original_id_rows.index.tolist()
+        # block per sonde ID
+        orig_id_rows = temp_df[temp_df['clean_field'].str.match(r'^Original Sonde ID')]
+        block_start_idx = orig_id_rows.index.tolist()
         block_start_idx.append(temp_df.index[-1] + 1)
 
         for i in range(len(block_start_idx) - 1):
@@ -144,7 +146,8 @@ def clean_data(df, mode='2023'):
             notes_val = blk.loc[blk['clean_field'].str.contains('Notes', case=False), 'field_value'].iloc[0] if blk['clean_field'].str.contains('Notes', case=False).any() else None
             orig_sonde_id = blk.loc[blk['clean_field'].str.match(r'^Original Sonde ID'), 'field_value'].iloc[0] if blk['clean_field'].str.match(r'^Original Sonde ID').any() else None
             sensor_sn = blk.loc[blk['clean_field'].str.match(r'^Sensor Serial Number'), 'field_value'].iloc[0] if blk['clean_field'].str.match(r'^Sensor Serial Number').any() else None
-
+            
+            # row per sonde ID block
             subblocks = []
             if mode == '2023':
                 temp_rows = blk[blk['clean_field'].str.match(r'^Temp')]
@@ -224,30 +227,30 @@ def clean_data(df, mode='2023'):
 
                 all_rows.append(row)
 
-    final_df = pd.DataFrame(all_rows)
+    df_final = pd.DataFrame(all_rows)
 
     for col in ['SensorTemp', 'Notes']:
-        if col in final_df.columns:
-            final_df[col] = final_df[col].replace('', pd.NA)
-            final_df[col] = final_df[col].replace(r'^\s*$', pd.NA, regex=True)
+        if col in df_final.columns:
+            df_final[col] = df_final[col].replace('', pd.NA)
+            df_final[col] = df_final[col].replace(r'^\s*$', pd.NA, regex=True)
 
-    final_df = final_df.dropna(subset=['SensorTemp'])
+    df_final = df_final.dropna(subset=['SensorTemp'])
 
-    final_df = clean_dates(final_df, 'Cal625PrepDate')
-    final_df = clean_dates(final_df, 'Stock125PrepDate')
-    final_df = clean_dates(final_df, 'CalibDate')
+    df_final = clean_dates(df_final, 'Cal625PrepDate')
+    df_final = clean_dates(df_final, 'Stock125PrepDate')
+    df_final = clean_dates(df_final, 'CalibDate')
 
 
-    column_order = [
+    col_order = [
         'Stock125PrepName', 'Stock125PrepDate', 'Cal625PrepName', 'Cal625PrepDate',
         'Hach625VerAbs', 'CalibratorName', 'CalibDate', 'ProcDCN', 'ProcVer',
         'CTSensorSN', 'OrigSondeID', 'TALSensorSN', 'Standard', 'Parameter', 'Units',
         'ExpectVal', 'PreCalVal', 'PostCalVal', 'SensorTemp', 'Notes'
     ]
-    final_df = final_df.reindex(columns=column_order)
-    final_df['Units'] = final_df['Units'].replace('gL', 'ug_L')
+    df_final = df_final.reindex(columns=col_order)
+    df_final['Units'] = df_final['Units'].replace('gL', 'ug_L')
 
     for col in ['SensorTemp', 'PreCalVal', 'PostCalVal']:
-        final_df[col] = pd.to_numeric(final_df[col], errors='coerce')
+        df_final[col] = pd.to_numeric(df_final[col], errors='coerce')
 
-    return final_df
+    return df_final
