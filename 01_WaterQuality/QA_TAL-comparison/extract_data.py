@@ -2,6 +2,7 @@ import os
 import re
 import fitz
 import pandas as pd
+from datetime import datetime, date
 
 # define base file directory
 base_dir = os.path.expanduser('~')
@@ -40,6 +41,7 @@ def extract_pdfs(fp_rel):
 
     return pd.DataFrame(all_fields)
 
+# clean col names
 def rm_suffix(field_list):
     cleaned = []
     for i, val in enumerate(field_list):
@@ -52,6 +54,63 @@ def rm_suffix(field_list):
                 base = 'UnknownDate'
         cleaned.append(base)
     return cleaned
+
+# standardize dates
+def standardize_date(date_str):
+    if pd.isna(date_str) or not isinstance(date_str, str):
+        return None
+
+    date_str = date_str.replace('.', '/').strip()
+
+    for fmt in ('%m/%d/%Y', '%m/%d/%y'):
+        try:
+            return datetime.strptime(date_str, fmt).date()
+        except ValueError:
+            continue
+
+    parts = re.split(r'[/\-]', date_str)
+    if len(parts) == 3:
+        m, d, y = parts
+        if len(m) == 1:
+            m = f'0{m}'
+        if len(d) == 1:
+            d = f'0{d}'
+        if len(y) == 2:
+            y = f'20{y}' if int(y) < 50 else f'19{y}'
+        try:
+            return datetime.strptime(f'{m}/{d}/{y}', '%m/%d/%Y').date()
+        except ValueError:
+            return None
+
+    return None
+
+# clean dates
+def clean_dates(df, col_name, notes_col='Notes'):
+    if '_original_notes' not in df.columns:
+        df['_original_notes'] = df[notes_col].copy()
+
+    new_notes = df['_original_notes'].copy()
+    new_dates = []
+
+    for i, val in enumerate(df[col_name]):
+        if isinstance(val, str) and re.match(r'.+\s*-\s*.+', val):
+            parts = [v.strip() for v in val.split('-', maxsplit=1)]
+            date1 = standardize_date(parts[0])
+            date2 = standardize_date(parts[1]) if len(parts) > 1 else None
+
+            new_dates.append(date1)
+
+            if isinstance(date2, (datetime, date)):
+                note = new_notes.iloc[i] if pd.notna(new_notes.iloc[i]) else ''
+                new_notes.iloc[i] = f"{note} also calibrated on {date2.strftime('%Y-%m-%d')}".strip()
+        else:
+            new_dates.append(standardize_date(val))
+
+    cleaned_col = f"{col_name}"
+    df[cleaned_col] = new_dates
+    df[notes_col] = new_notes
+
+    return df
 
 # clean data
 def clean_data(df, mode='2023'):
@@ -173,6 +232,11 @@ def clean_data(df, mode='2023'):
             final_df[col] = final_df[col].replace(r'^\s*$', pd.NA, regex=True)
 
     final_df = final_df.dropna(subset=['SensorTemp'])
+
+    final_df = clean_dates(final_df, 'Cal625PrepDate')
+    final_df = clean_dates(final_df, 'Stock125PrepDate')
+    final_df = clean_dates(final_df, 'CalibDate')
+
 
     column_order = [
         'Stock125PrepName', 'Stock125PrepDate', 'Cal625PrepName', 'Cal625PrepDate',
