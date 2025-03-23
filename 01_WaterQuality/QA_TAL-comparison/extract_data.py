@@ -2,7 +2,7 @@ import os
 import fitz
 import pandas as pd
 
-# Define base file directory
+# define base file directory
 base_dir = os.path.expanduser('~')
 fp_pdf_qa = os.path.join(
     base_dir,
@@ -12,7 +12,7 @@ fp_pdf_qa = os.path.join(
     'Results-Calibration files-Regularized names'
 )
 
-# Extract PDF form fields for a given year folder
+# extract PDFs from folder
 def extract_pdfs(fp_rel):
     all_fields = []
     file_index = 1
@@ -25,7 +25,7 @@ def extract_pdfs(fp_rel):
 
     for filename in os.listdir(fp_full):
         if filename.lower().endswith('.pdf'):
-            fp_file = os.path.join(fp_full, filename)  # <-- FIX HERE
+            fp_file = os.path.join(fp_full, filename)
             try:
                 doc = fitz.open(fp_file)
                 for page in doc:
