@@ -12,7 +12,7 @@ By: Perry
 # ---
 
 # declare the run year of interest  
-year <- 2024
+year <- 2022
 ```
 
 ```{r}
@@ -91,10 +91,10 @@ for(i in 1:nrow(df_combo)){
   df_wq$day <- as.Date(df_wq$DateTime)
   
   # Define the columns to run the outlier detection on
-  columns_to_check <- c("WT_C", "SPC_uS/cm", "PH_pH Units", "FNU_FNU", "FLUOR_ug/L",  "FLUORRFU_RFU", "DO_mg/L" ,"DOSAT_% SAT")
+  columns_to_check <- c("WT_C", "SPC_uS/cm", "PH_pH Units", "FNU_FNU", "FLUOR_ug/L", "FLUORRFU_RFU", "DO_mg/L", "DOSAT_% SAT")
   
   # Function to calculate rolling median and detect outliers for a single column
-  detect_outliers <- function(column, window_size = 5) {
+  detect_outliers <- function(column, window_size = 4) {
   rolling_median <- rollapply(column, width = window_size, FUN = median, fill = NA, align = "center")
   threshold <- 1.5 * IQR(column, na.rm = TRUE)
   outliers <- abs(column - rolling_median) > threshold
@@ -113,8 +113,8 @@ for(i in 1:nrow(df_combo)){
   #df_wq[is.na(df_wq)] <- FALSE
   
   #Remove rows where cells equal TRUE
-df_wq <- df_wq %>%
-  filter(!if_any(c(WT_C_outlier, "SPC_uS/cm_outlier", "PH_pH Units_outlier", FNU_FNU_outlier, "FLUOR_ug/L_outlier", "FLUORRFU_RFU_outlier", "DO_mg/L_outlier", "DOSAT_% SAT_outlier" ), ~ . == TRUE))
+df_wq <- df_wq_results %>%
+  filter(!if_any(c("WT_C_outlier", "SPC_uS/cm_outlier", "PH_pH Units_outlier", "FNU_FNU_outlier", "FLUOR_ug/L_outlier", "FLUORRFU_RFU_outlier", "DO_mg/L_outlier", "DOSAT_% SAT_outlier" ), ~ . == TRUE))
   
   #######
   
@@ -183,7 +183,7 @@ df_final <- df_final %>%
   select(DateTime, Longitude, Latitude, WT_C, `SPC_uS/cm`, `PH_pH Units`, FNU_FNU, `FLUOR_ug/L`, `DO_mg/L`, `DOSAT_% SAT`)
 
 #export csv to Craig's desktop folder - change file name according to the year
-#write_csv(df_final, 'C:/Users/cstuart/Desktop/Annual Moped Files - Temp/MOPED_2024_combined_final_outliersremoved_test.csv')
+#write_csv(df_final, 'C:/Users/cstuart/Desktop/Annual Moped Files - Temp/MOPED_2021_combined_final_outliersremoved.csv')
 
 #write_csv(df_final, 'C:/Users/sperry/Desktop/wq_test_19.csv')
 

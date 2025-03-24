@@ -38,7 +38,6 @@ fp_all_wq <- archive_path(year, 'MOPED')
 df_combo <- create_combo_df(fp_all_wq)
 
 df_list <- list()
-# df_rmlist <- list()
 
 # run code for all combos
 for(i in 1:nrow(df_combo)){
@@ -80,12 +79,12 @@ for(i in 1:nrow(df_combo)){
   
     # bind to df list
   df_list[[i]] <- df_wq
-  #df_rmlist[[i]] <- df_removed
+ 
 }
 
 # Combine all data frames into one
 df_combined_raw <- bind_rows(df_list)
-#df_remove <- bind_rows(df_rmlist)
+
 ```
 
 #perform a rolling 20-second median outlier detection 
@@ -96,7 +95,7 @@ df_combined_raw <- bind_rows(df_list)
   df_combined_raw$day <- as.Date(df_combined_raw$DateTime)
   
   # Define the columns to run the outlier detection on
-  columns_to_check <- c("WT_C", "SPC_uS/cm", "PH_pH Units", "FNU_FNU", "FLUOR_ug/L",  "FLUORRFU_RFU", "DO_mg/L" ,"DOSAT_% SAT")
+  columns_to_check <- c("WT_C", "SPC_uS/cm", "PH_pH Units", "FNU_FNU", "FLUOR_ug/L", "FLUORRFU_RFU", "DO_mg/L", "DOSAT_% SAT")
   
   # Function to calculate rolling median and detect outliers for a single column
   detect_outliers <- function(column, window_size = 5) {
@@ -163,20 +162,14 @@ df_wq_outlier_final <- df_outlier_results %>%
            `DO_mg/L` > 0,
            `DOSAT_% SAT` > 0
            )
-
-# df_remove <- df_remove %>%
-#   arrange(TimeStamp)
   
 #Reorder columns and do not include chlorophyll RFU
 df_wq_final <- df_wq_final %>% 
   select(DateTime, Longitude, Latitude, WT_C, `SPC_uS/cm`, `PH_pH Units`, FNU_FNU, `FLUOR_ug/L`, `DO_mg/L`, `DOSAT_% SAT`)
 
 #export csv to Craig's desktop folder - change file name according to the year
-write_csv(df_wq_final, 'C:/Users/cstuart/Desktop/Annual Moped Files - Temp/MOPED_2024_combined_final_outliersremoved_test3.csv')
+#write_csv(df_wq_final, 'C:/Users/cstuart/Desktop/Annual Moped Files - Temp/MOPED_2024_combined_final_outliersremoved.csv')
 
-#write_csv(df_final, 'C:/Users/sperry/Desktop/wq_test_19.csv')
-
-# write_csv(df_remove, 'C:/Users/sperry/Desktop/wq_test_remove.csv')
 ```
 
 ```{r}
