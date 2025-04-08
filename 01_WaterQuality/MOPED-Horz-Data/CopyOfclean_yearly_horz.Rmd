@@ -12,9 +12,10 @@ By: Perry
 # ---
 
 # declare the run year of interest  
-year <- 2022
+year <- 2024
 ```
 
+#Combine the raw data into one dataframe
 ```{r}
 # ---
 # CODE STARTS HERE
@@ -37,7 +38,6 @@ fp_all_wq <- archive_path(year, 'MOPED')
 df_combo <- create_combo_df(fp_all_wq)
 
 df_list <- list()
-# df_rmlist <- list()
 
 # run code for all combos
 for(i in 1:nrow(df_combo)){
@@ -60,15 +60,7 @@ for(i in 1:nrow(df_combo)){
   
   df_wq$Analyte <- paste0(df_wq$Header,'_',df_wq$Unit)
 
-  # remove rows where Longitude&Latitude OR TimeStamp repeat for a given analyte
-  
-  # df_removed <- df_wq %>%
-  #   group_by(Header) %>%
-  #   filter((Latitude %in% Latitude[duplicated(Latitude)] & 
-  #           Longitude %in% Longitude[duplicated(Longitude)]) | 
-  #          TimeStamp %in% TimeStamp[duplicated(TimeStamp)]) %>%
-  #   ungroup()
-  
+
   df_wq <- df_wq %>%
     group_by(Header) %>%
     filter(!((Latitude %in% Latitude[duplicated(Latitude)] & 
@@ -84,17 +76,29 @@ for(i in 1:nrow(df_combo)){
       values_from = Value
     ) %>%
     filter(!if_any(everything(), ~ .x == 0 | is.na(.x)))
+  
+    # bind to df list
+  df_list[[i]] <- df_wq
+ 
+}
 
+# Combine all data frames into one
+df_combined_raw <- bind_rows(df_list)
+
+```
+
+#perform a rolling 20-second median outlier detection 
+```{r}
   ########Outlier Detection######
   
   # Add a column for the day
-  df_wq$day <- as.Date(df_wq$DateTime)
+  df_combined_raw$day <- as.Date(df_combined_raw$DateTime)
   
   # Define the columns to run the outlier detection on
   columns_to_check <- c("WT_C", "SPC_uS/cm", "PH_pH Units", "FNU_FNU", "FLUOR_ug/L", "FLUORRFU_RFU", "DO_mg/L", "DOSAT_% SAT")
   
   # Function to calculate rolling median and detect outliers for a single column
-  detect_outliers <- function(column, window_size = 4) {
+  detect_outliers <- function(column, window_size = 5) {
   rolling_median <- rollapply(column, width = window_size, FUN = median, fill = NA, align = "center")
   threshold <- 1.5 * IQR(column, na.rm = TRUE)
   outliers <- abs(column - rolling_median) > threshold
@@ -102,7 +106,7 @@ for(i in 1:nrow(df_combo)){
 }
   
   # Apply outlier detection to the specified columns, for each day, creating new outlier result columns
-  df_wq <- df_wq %>%
+  df_outlier_results <- df_combined_raw %>%
   group_by(day) %>% 
   mutate(across(all_of(columns_to_check), 
                 ~ detect_outliers(.x), 
@@ -113,12 +117,15 @@ for(i in 1:nrow(df_combo)){
   #df_wq[is.na(df_wq)] <- FALSE
   
   #Remove rows where cells equal TRUE
-df_wq <- df_wq_results %>%
-  filter(!if_any(c("WT_C_outlier", "SPC_uS/cm_outlier", "PH_pH Units_outlier", "FNU_FNU_outlier", "FLUOR_ug/L_outlier", "FLUORRFU_RFU_outlier", "DO_mg/L_outlier", "DOSAT_% SAT_outlier" ), ~ . == TRUE))
+df_wq_outlier_final <- df_outlier_results %>%
+  filter(!if_any(c(WT_C_outlier, "SPC_uS/cm_outlier", "PH_pH Units_outlier", FNU_FNU_outlier, "FLUOR_ug/L_outlier", "FLUORRFU_RFU_outlier", "DO_mg/L_outlier", "DOSAT_% SAT_outlier" ), ~ . == TRUE))
   
   #######
-  
-  df_wq <- df_wq %>%
+```
+
+```{r}
+#Preserved rows at 1 minute intervals
+  df_wq_final <- df_wq_outlier_final %>%
     mutate(RoundedDateTime = round_date(DateTime, 'minute')) %>%
     mutate(TimeDiff = abs(as.numeric(difftime(DateTime, RoundedDateTime, units = 'secs')))) %>%
     group_by(RoundedDateTime) %>%
@@ -133,38 +140,19 @@ df_wq <- df_wq_results %>%
   lon_min <- -121.759586
   lon_max <- -121.746626
 
-  df_wq <- df_wq %>%
+  df_wq_final <- df_wq_final %>%
   filter(!(Latitude >= lat_min & Latitude <= lat_max &
              Longitude >= lon_min & Longitude <= lon_max))
-  
-  # filter        analytes
-  # df_wq <- df_wq %>%
-  #   filter(`SPC_uS/cm` > 50,
-  #          WT_C > 0,
-  #          `PH_pH Units` > 0,
-  #          FNU_NTU > 0,
-  #          `FLUOR_ug/L` > 0,
-  #          FLUORRFU_RFU > 0,
-  #          `DO_mg/L` > 0,
-  #          `DOSAT_% SAT` > 0
-  #          )
+
 
   # convert date/time col back to character
-  df_wq$DateTime <- as.character(df_wq$DateTime)
+  df_wq_final$DateTime <- as.character(df_wq_final$DateTime)
   
-  # bind to df list
-  df_list[[i]] <- df_wq
-  #df_rmlist[[i]] <- df_removed
-}
 
-# Combine all data frames into one
-df_final <- bind_rows(df_list)
-#df_remove <- bind_rows(df_rmlist)
+  df_wq_final <- df_wq_final %>%
+   arrange(DateTime)
 
-df_final <- df_final %>%
-  arrange(DateTime)
-
-  df_final <- df_final %>%
+  df_wq_final <- df_wq_final %>%
     filter(`SPC_uS/cm` > 50,
            WT_C > 0,
            `PH_pH Units` > 0,
@@ -174,20 +162,14 @@ df_final <- df_final %>%
            `DO_mg/L` > 0,
            `DOSAT_% SAT` > 0
            )
-
-# df_remove <- df_remove %>%
-#   arrange(TimeStamp)
   
 #Reorder columns and do not include chlorophyll RFU
-df_final <- df_final %>% 
+df_wq_final <- df_wq_final %>% 
   select(DateTime, Longitude, Latitude, WT_C, `SPC_uS/cm`, `PH_pH Units`, FNU_FNU, `FLUOR_ug/L`, `DO_mg/L`, `DOSAT_% SAT`)
 
 #export csv to Craig's desktop folder - change file name according to the year
-#write_csv(df_final, 'C:/Users/cstuart/Desktop/Annual Moped Files - Temp/MOPED_2021_combined_final_outliersremoved.csv')
+#write_csv(df_wq_final, 'C:/Users/cstuart/Desktop/Annual Moped Files - Temp/MOPED_2024_combined_final_outliersremoved.csv')
 
-#write_csv(df_final, 'C:/Users/sperry/Desktop/wq_test_19.csv')
-
-# write_csv(df_remove, 'C:/Users/sperry/Desktop/wq_test_remove.csv')
 ```
 
 ```{r}
