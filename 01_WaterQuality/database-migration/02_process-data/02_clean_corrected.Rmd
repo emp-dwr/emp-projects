@@ -461,6 +461,11 @@ df_all <- df_all %>%
 
 
 rm(df_analysis, df_depth, df_long, df_mdl, df_method, df_old, df_stations, df_ta)
+
+# add PST to DateTime
+
+# df_all <- df_all %>%
+#   mutate(across(contains('DateTime'), ~ ifelse(is.na(.x), NA, paste0(.x, ' [PST]'))))
 ```
 
 # PART 5: EXPORT
@@ -468,7 +473,7 @@ rm(df_analysis, df_depth, df_long, df_mdl, df_method, df_old, df_stations, df_ta
 ```{r}
 # export
 # Define the filepath for saving
-fp_export <- abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration/Prelim WDL Data')
+fp_export <- abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration')
 
 # write_csv(df_all, file = paste0(fp_export, '/prelim_data.csv'), na = '')
 
@@ -479,21 +484,23 @@ fp_export <- abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migr
 
 df_list <- split(df_all,
                  list(year(df_all$`Observed DateTime`),
-                      ifelse(month(df_all$`Observed DateTime`) <= 6, 'JanJun', 'JulDec')),
-                      # ifelse(df_all$`Data Classification` == 'FIELD_RESULT', 'Field', 'Lab')),
+                      ifelse(month(df_all$`Observed DateTime`) <= 6, 'JanJun', 'JulDec'),
+                      ifelse(df_all$`Data Classification` == 'FIELD_RESULT', 'Field', 'Lab')),
                  drop = TRUE)
 
 # # split the dataframe
-lapply(names(df_list), function(name) {
+invisible(lapply(names(df_list), function(name) {
   name_parts <- unlist(strsplit(name, '\\.'))
   year <- name_parts[1]
   half_year <- name_parts[2]
-  # data_class <- name_parts[3]
+  data_class <- name_parts[3]
 
-  fp_exp <- paste0(fp_export, '/', year, '-', half_year, '_EMP-DWQ.csv')
+  fp_exp <- paste0(fp_export, '/', year, '-', half_year, '-',data_class, '_EMP-DWQ.csv')
 
   # write to .csv
-  write_csv(df_list[[name]], file = fp_exp, na = '') 
-})
+  if (year >= 2021){
+    write_csv(df_list[[name]], file = fp_exp, na = '')
+  }
+}))
 ```
 

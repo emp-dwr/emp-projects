@@ -84,6 +84,15 @@ def standardize_date(date_str):
 
     return None
 
+def process_filename(filename):
+    filename = str(filename)
+    parts = filename.split()
+    
+    if len(parts) > 1:
+        return parts[1].replace('.pdf', '')
+    else:
+        return parts[0].replace('.pdf', '')
+
 # clean dates
 def clean_dates(df, col_name, notes_col='Notes'):
     if '_orig_notes' not in df.columns:
@@ -203,6 +212,7 @@ def clean_data(df, mode='2023'):
                 hach_ver = block0_dict.get(hach_key_1) or block0_dict.get(hach_key_2)
 
                 row = {
+                    'FileName': temp_df['file_name'],
                     'Stock125PrepName': block0_dict.get('Stock solution 125 mgL prepared by full name'),
                     'Stock125PrepDate': block0_dict.get('Stock solution 125 mgL prepared by full nameDate'),
                     'Cal625PrepName': block0_dict.get('Calibration standard 0625 mgL prepared by full name'),
@@ -241,7 +251,7 @@ def clean_data(df, mode='2023'):
     df_final = clean_dates(df_final, 'CalibDate')
 
     col_order = [
-        'Stock125PrepName', 'Stock125PrepDate', 'Cal625PrepName', 'Cal625PrepDate',
+        'FileName','Stock125PrepName', 'Stock125PrepDate', 'Cal625PrepName', 'Cal625PrepDate',
         'Hach625VerAbs', 'CalibratorName', 'CalibDate', 'ProcDCN', 'ProcVer',
         'CTSensorSN', 'OrigSondeID', 'TALSensorSN', 'Standard', 'Parameter', 'Units',
         'ExpectVal', 'PreCalVal', 'PostCalVal', 'SensorTemp', 'Notes'
@@ -252,5 +262,7 @@ def clean_data(df, mode='2023'):
 
     for col in ['SensorTemp', 'PreCalVal', 'PostCalVal']:
         df_final[col] = pd.to_numeric(df_final[col], errors='coerce')
+
+    df_final['FileName'] = df_final['FileName'].apply(process_filename)
 
     return df_final
