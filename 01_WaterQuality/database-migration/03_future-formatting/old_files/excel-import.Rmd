@@ -5,6 +5,28 @@
 # Part 1: Import from Sheets
 
 ```{r}
+# Set top-level folder path
+folder_path <- abs_path_emp('Water Quality/00 - Monthly Run Docs/Raw Field Data/Water Quality 2025/')
+
+# Find all .xlsx files in subfolders
+xlsx_files <- list.files(path = folder_path, pattern = "\\.xlsx$", recursive = TRUE, full.names = TRUE)
+
+# Initialize empty list to store individual dataframes
+df_list <- list()
+
+# Loop through each file
+for (file in xlsx_files) {
+  message("Reading: ", file)
+  df <- read_excel(file, col_names = FALSE)
+  df_list[[file]] <- df  # use file name as list element name
+}
+
+# Combine all dataframes into one
+final_df <- bind_rows(df_list, .id = "source_file")
+```
+
+
+```{r}
 library(readxl)
 library(stringr)
 library(tidyverse)

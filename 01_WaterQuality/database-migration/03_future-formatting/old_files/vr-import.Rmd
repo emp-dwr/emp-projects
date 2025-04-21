@@ -1,0 +1,316 @@
+```{python}
+import fitz
+import PyPDF2
+
+pdf_path = 'C:/Users/sperry/Downloads/Van Run Field Data Sheet_Jan25.pdf'
+
+# Extract filled form fields (widget values)
+def extract_form_fields(path):
+    doc = fitz.open(path)
+    form_fields = {}
+    for page in doc:
+        for widget in page.widgets():
+            key = widget.field_name
+            val = widget.field_value
+            if key:  # only include fields that have names
+                form_fields[key] = val
+    doc.close()
+    return form_fields
+
+# Run both extractions
+form_data = extract_form_fields(pdf_path)
+```
+
+```{r}
+library(tidyverse)
+library(lubridate)
+library(reticulate)
+source('00_GlobalFunctions/functions.R')
+
+process_form_csv <- function(df) {
+  df <- py$form_data %>% 
+    as_tibble() %>% 
+    pivot_longer(everything(), names_to = 'param', values_to = 'value') %>% 
+    filter(!is.na(value) & value != '')
+
+  df_clean <- df %>%
+    filter(!param %in% c('Crew', 'Run Name')) %>%
+    mutate(
+      is_blank = str_detect(param, '^Blank'),
+      is_global_meta = str_detect(param, '^(Sonde ID|Date)$'),
+      
+      # Batch assignment
+      batch_id = case_when(
+        is_blank ~ 999,
+        is_global_meta ~ 0,
+        TRUE ~ str_extract(param, '_\\d+$') %>% str_remove('_') %>% as.integer()
+      ),
+      batch_id = replace_na(batch_id, 1),
+  
+      # Surface/bottom flag
+      SurfBot = case_when(
+        str_detect(param, 'Bottom') ~ 'bottom',
+        str_detect(param, 'Surface') ~ 'surface',
+        TRUE ~ NA_character_
+      ),
+  
+      # QC type assignment
+      `QC: Type` = case_when(
+        is_blank ~ 'Blank',
+        str_detect(param, '^Dup') ~ 'Replicate',
+        TRUE ~ NA_character_
+      ),
+  
+      # Base param cleaning
+      param_base_raw = param %>%
+        str_remove('^Blank ') %>%
+        str_remove('^Dup Check Box_\\d+$') %>%
+        str_remove('_[0-9]+$') %>%
+        str_squish(),
+  
+      # Normalize param names using case_when
+      param_base = case_when(
+        str_detect(param_base_raw, 'Lab ID') ~ 'Lab ID',
+        str_detect(param_base_raw, 'Churn Bucket') ~ 'Churn Bucket',
+        TRUE ~ param_base_raw
+      )
+    )
+
+  station_vals <- df_clean %>%
+    filter(str_detect(param, '^Station_\\d+$')) %>%
+    transmute(batch_id, `Location ID` = value)
+
+  df_out <- df_clean %>%
+    left_join(station_vals, by = 'batch_id') %>%
+    mutate(
+      `Location ID` = case_when(
+        `QC: Type` == 'Blank' ~ 'Equipment Blank',
+        batch_id == 0 & is_global_meta ~ NA_character_,
+        batch_id == 0 ~ 'Equipment Blank',
+        TRUE ~ `Location ID`
+      )
+    ) %>%
+    filter(!str_detect(param, '^Station_\\d+$')) %>%
+    filter(!(param_base == 'Dup Check Box')) %>%
+    select(batch_id, param = param_base, value, SurfBot, `QC: Type`, `Location ID`)
+
+  return(df_out)
+}
+```
+
+```{r}
+format_final_df <- function(df_final) {
+  # Date and Sonde ID from batch 0
+  date_value <- df_final %>%
+    filter(batch_id == 0, param == 'Date') %>%
+    pull(value) %>%
+    mdy()
+
+  sonde_id <- df_final %>%
+    filter(batch_id == 0, param == 'Sonde ID') %>%
+    pull(value)
+
+  # Assign times to batch_id groups
+  df_final <- df_final %>%
+    mutate(`Observed DateTime` = case_when(
+      param == 'Time' ~ date_value + hms(paste0(value, ':00')),
+      TRUE ~ NA_POSIXct_
+    )) %>%
+    group_by(batch_id) %>%
+    fill(`Observed DateTime`, .direction = 'downup') %>%
+    ungroup()
+
+  # Assign device ID
+  df_final <- df_final %>%
+    mutate(`Field: Device ID` = sonde_id)
+
+  # Extract station names
+  station_vals <- df_final %>%
+    filter(param == 'Station') %>%
+    select(batch_id, `Location ID` = value)
+
+  # Get Lab IDs
+  lab_ids <- df_final %>%
+    filter(param == 'Lab ID') %>%
+    select(batch_id, `QC: Type`, `Activity Name` = value)
+
+  # Join identifiers
+  df_final <- df_final %>%
+    left_join(station_vals, by = c('batch_id','Location ID')) %>%
+    left_join(lab_ids, by = c('batch_id', 'QC: Type'))
+
+  # Estimate depth
+  df_final <- df_final %>%
+    mutate(water_depth = case_when(
+      param == 'Depth' ~ as.numeric(value),
+      TRUE ~ NA_real_
+    )) %>%
+    group_by(batch_id) %>%
+    fill(water_depth, .direction = 'downup') %>%
+    ungroup() %>%
+    mutate(Depth = case_when(
+      SurfBot == 'bottom' ~ water_depth - 3,
+      SurfBot == 'surface' ~ 3,
+      param == 'MC Score' ~ 0,
+      TRUE ~ NA_real_
+    )) %>%
+    select(-water_depth)
+
+  jug_and_notes <- df_final %>%
+    filter(param == 'Notes') %>%
+    mutate(
+      standard_jug = str_match(value, '(?i)filter jug:?[ ]*([^;\\s]+)')[,2],
+      duplicate_jug = str_match(value, '(?i)duplicate filter jug:?[ ]*([^;\\s]+)')[,2],
+      blank_jug = str_match(value, '(?i)blank filter jug:?[ ]*([^;\\s]+)')[,2],
+      `Field: Comment` = str_remove_all(
+        value,
+        '(?i)filter jug:?[ ]*[^;\\s]+;?\\s*|duplicate filter jug:?[ ]*[^;\\s]+;?\\s*|blank filter jug:?[ ]*[^;\\s]+;?\\s*'
+      ) %>%
+        str_remove('^;\\s*') %>%
+        str_remove(';\\s*$') %>%
+        str_trim()
+    ) %>%
+    select(batch_id, standard_jug, duplicate_jug, blank_jug, `Field: Comment`)
+  
+  # Join comments and jug IDs back to main df
+  df_final <- df_final %>%
+    left_join(jug_and_notes, by = 'batch_id')
+  
+  # Create new rows for Filter Container ID based on QC type
+  filter_container_rows <- df_final %>%
+    filter(!is.na(standard_jug) | !is.na(duplicate_jug) | !is.na(blank_jug)) %>%
+    distinct(batch_id, `QC: Type`, `Location ID`, `Observed DateTime`, standard_jug, duplicate_jug, blank_jug) %>%
+    mutate(
+      value = case_when(
+        `QC: Type` == 'Replicate' ~ duplicate_jug,
+        `QC: Type` == 'Blank' ~ blank_jug,
+        is.na(`QC: Type`) ~ standard_jug
+      ),
+      param = 'Filter Container ID',
+      SurfBot = NA_character_
+    ) %>%
+    filter(!is.na(value))
+  
+  # Pull in the correct Activity ID
+  activity_ids <- df_final %>%
+    distinct(batch_id, `QC: Type`, `Activity Name`)
+  
+  # Join Activity ID to filter_container_rows
+  filter_container_rows <- filter_container_rows %>%
+    left_join(activity_ids, by = c("batch_id", "QC: Type")) %>%
+    select(batch_id, param, value, SurfBot, `QC: Type`, `Location ID`, `Observed DateTime`, `Activity Name`)
+  
+  # Bind rows to df_final
+  df_final <- df_final %>%
+    bind_rows(filter_container_rows) %>%
+    select(-standard_jug, -duplicate_jug, -blank_jug)
+  
+  # Remove meta
+  df_final <- df_final %>%
+    filter(!param %in% c('Date', 'Sonde ID', 'Station', 'Time', 'Lab ID', 'Notes')) %>%
+    relocate(SurfBot, .after = param)
+
+  # Add churn bucket → filter jug linkage
+  churn_rows <- df_final %>%
+    group_by(batch_id, `QC: Type`) %>%
+    filter(param == 'Churn Bucket #') %>%
+    select(-value) %>%
+    ungroup()
+
+  # Remap codes
+  df_final <- df_final %>%
+    mutate(value = case_when(
+      param == 'Sky' & value == 'S' ~ 'Sunny',
+      param == 'Sky' & value == 'PC' ~ 'Partly Cloudy',
+      param == 'Sky' & value == 'C' ~ 'Cloudy',
+      param == 'Sky' & value == 'O' ~ 'Overcast',
+      param == 'Sky' & value == 'F' ~ 'Foggy',
+      param == 'Rain' & value == 'N' ~ 'None',
+      param == 'Rain' & value == 'L' ~ 'Light',
+      param == 'Rain' & value == 'M' ~ 'Medium',
+      param == 'Rain' & value == 'H' ~ 'Heavy',
+      TRUE ~ value
+    ))
+
+  # Round values
+  df_final <- df_final %>%
+    mutate(value = case_when(
+      param == 'Turbidity (FNU)' ~ as.character(round(as.numeric(value), 1)),
+      param == 'DO (mg/L)' ~ as.character(round(as.numeric(value), 2)),
+      TRUE ~ value
+    ))
+
+  # Add parent sample IDs
+  df_final <- df_final %>%
+    group_by(`Location ID`) %>% 
+    mutate(
+      `EA_Parent Sample ID` = case_when(
+        `QC: Type` == 'Replicate' ~ first(`Activity Name`[is.na(`QC: Type`)]),
+        TRUE ~ NA_character_),
+      `QC: Source Sample ID` = `EA_Parent Sample ID`
+    ) %>%
+    ungroup() %>%
+    rename(`Result Value` = value)
+
+  df_final <- df_final %>%
+    filter(!is.na(`Result Value`))
+
+  # Water depth and sampling depth
+  df_final <- df_final %>% 
+    rename(`EA_Sampling Depth` = Depth) %>%
+    mutate(Depth = if_else(str_detect(param, '(?i)Depth'), `Result Value`, NA)) %>%
+    group_by(`Location ID`, `Observed DateTime`) %>%
+    fill(Depth, .direction = 'downup') %>%
+    ungroup()
+
+  # Merge with metadata
+  fp_meta <- abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration/Lists to Import/Final Imports/Import_FDS Metadata.csv')
+  df_meta <- read_csv(fp_meta, show_col_types = FALSE) %>%
+    mutate(param = str_replace_all(param, '[\\u00A0\\u2000-\\u200B\\uFEFF]', ' ') %>% str_squish())
+
+  df_final <- df_final %>%
+    mutate(param = str_replace_all(param, '[\\u00A0\\u2000-\\u200B\\uFEFF]', ' ') %>% str_squish())
+  
+  df_final <- right_join(df_meta, df_final, by = c('param', 'SurfBot')) %>%
+    select(-c(param, SurfBot))
+
+  # Format datetime
+  df_final <- df_final %>%
+    mutate(`Analyzed DateTime` = format(mdy_hm(`Analyzed DateTime`), '%Y-%m-%d %H:%M:%S'))
+
+  df_final <- df_final %>%
+    mutate(across(contains('DateTime'), ~ ifelse(is.na(.), NA, paste0(.x, ' [PST]'))))
+
+  # Assign depth unit
+  df_final <- df_final %>%
+    mutate(`Depth Unit` = if_else(`Location ID` == 'Equipment Blank', NA, 'ft'))
+
+  col_order <- c(
+    'Observation ID', 'Location ID', 'Observed Property ID', 'Observed DateTime', 'Analyzed DateTime', 
+    'Depth', 'Depth Unit', 'Data Classification', 'Result Value', 'Result Unit', 'Result Status', 
+    'Result Grade', 'Medium', 'Activity Name', 'Activity ID', 'Collection Method', 'Field: Device ID', 
+    'Field: Device Type', 'Field: Comment', 'Lab: Specimen Name', 'Lab: Analysis Method', 
+    'Lab: Detection Condition', 'Lab: Limit Type', 'Lab: MDL', 'Lab: MRL', 'Lab: Quality Flag', 
+    'Lab: Received DateTime', 'Lab: Prepared DateTime', 'Lab: Sample Fraction', 'Lab: From Laboratory', 
+    'Lab: Sample ID', 'Lab: Dilution Factor', 'Lab: Comment', 'QC: Type', 'QC: Source Sample ID', 
+    'EA_Modified Method', 'EA_Profile Type', 'EA_Project Type', 'EA_Reports To', 
+    'EA_Parent Sample ID', 'EA_Data Review Flag', 'EA_Sampling Depth'
+  )
+
+  df_final <- df_final %>%
+    select(all_of(col_order)) %>%
+    arrange(`Location ID`, desc(is.na(`QC: Type`)))
+
+  return(df_final)
+}
+```
+
+
+```{r}
+df_form <- process_form_csv()
+df_final <- format_final_df(df_form)
+
+write_csv(df_final,'C:/Users/sperry/Desktop/VR_test.csv', na = '')
+```
+
+
