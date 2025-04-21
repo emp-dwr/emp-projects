@@ -1,4 +1,5 @@
 # Import data from Excel Field Data Sheets
+
 # 2/11/25
 
 # Part 1: Import from Sheets
@@ -7,6 +8,7 @@
 library(readxl)
 library(stringr)
 library(tidyverse)
+library(lubridate)
 source('00_GlobalFunctions/functions.R')
 
 fp <- abs_path_emp('Water Quality/00 - Monthly Run Docs/Raw Field Data/Water Quality 2025/01 - January/EMP Field Data Sheet_SB_Jan25.xlsx')
@@ -433,6 +435,21 @@ rm(churn_rows, filter_vals, lab_ids, new_rows, station_vals)
 ```
 
 ```{r}
+# fix depth
+
+# re-format water and sampling depth
+df_final <- df_final %>% 
+  rename(`EA_Sampling Depth` = Depth) %>%
+  mutate(Depth = case_when(
+    grepl('Water Depth', param, ignore.case = TRUE) ~ `Result Value`,
+    TRUE ~ NA)) %>%
+  group_by(`Location ID`, `Observed DateTime`) %>%
+  fill(Depth, .direction = 'downup') %>%
+  ungroup()
+```
+
+
+```{r}
 # combine with metadata
 fp_meta <- abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration/Lists to Import/Final Imports/Import_FDS Metadata.csv')
 df_meta <- read_csv(fp_meta, show_col_types = FALSE)
@@ -440,25 +457,58 @@ df_meta <- read_csv(fp_meta, show_col_types = FALSE)
 df_final <- full_join(df_meta, df_final, by = c('param', 'SurfBot')) %>%
   select(-c(param, SurfBot))
 
+# fix analyzed datetime
+df_final <- df_final %>%
+  mutate(`Analyzed DateTime` = format(mdy_hm(`Analyzed DateTime`), '%Y-%m-%d %H:%M:%S'))
+
+# add PST to all DateTimes
+df_final <- df_final %>%
+  mutate(across(contains('DateTime'), ~ ifelse(is.na(.x), NA, paste0(.x, ' [PST]'))))
+
+# have depth unit be ft except for blank
+df_final <- df_final %>%
+  mutate(`Depth Unit` = case_when(
+    `Location ID` == 'Equipment Blank' ~ NA,
+    TRUE ~ 'ft'
+  ))
 
 col_order <- c(
-  "Observation ID", "Location ID", "Observed Property ID", "Observed DateTime", "Analyzed DateTime", 
-  "Depth", "Depth Unit", "Data Classification", "Result Value", "Result Unit", "Result Status", 
-  "Result Grade", "Medium", "Activity Name", "Activity ID", "Collection Method", "Field: Device ID", 
-  "Field: Device Type", "Field: Comment", "Lab: Specimen Name", "Lab: Analysis Method", 
-  "Lab: Detection Condition", "Lab: Limit Type", "Lab: MDL", "Lab: MRL", "Lab: Quality Flag", 
-  "Lab: Received DateTime", "Lab: Prepared DateTime", "Lab: Sample Fraction", "Lab: From Laboratory", 
-  "Lab: Sample ID", "Lab: Dilution Factor", "Lab: Comment", "QC: Type", "QC: Source Sample ID", 
-  "EA_Modified Method", "EA_Profile Type", "EA_Project Type", "EA_Reports To", 
-  "EA_Parent Sample ID", "EA_Data Review Flag"
+  'Observation ID', 'Location ID', 'Observed Property ID', 'Observed DateTime', 'Analyzed DateTime', 
+  'Depth', 'Depth Unit', 'Data Classification', 'Result Value', 'Result Unit', 'Result Status', 
+  'Result Grade', 'Medium', 'Activity Name', 'Activity ID', 'Collection Method', 'Field: Device ID', 
+  'Field: Device Type', 'Field: Comment', 'Lab: Specimen Name', 'Lab: Analysis Method', 
+  'Lab: Detection Condition', 'Lab: Limit Type', 'Lab: MDL', 'Lab: MRL', 'Lab: Quality Flag', 
+  'Lab: Received DateTime', 'Lab: Prepared DateTime', 'Lab: Sample Fraction', 'Lab: From Laboratory', 
+  'Lab: Sample ID', 'Lab: Dilution Factor', 'Lab: Comment', 'QC: Type', 'QC: Source Sample ID', 
+  'EA_Modified Method', 'EA_Profile Type', 'EA_Project Type', 'EA_Reports To', 
+  'EA_Parent Sample ID', 'EA_Data Review Flag', 'EA_Sampling Depth'
 )
 
 # Rearrange the dataframe `df` to match the specified column order
 df_final <- df_final %>% select(all_of(col_order)) %>%
     arrange(`Activity Name`, `Data Classification`)
 
-write_csv(df_final,'C:/Users/sperry/Desktop/test_fds_file.csv', na = '')
+# define the filepath for saving
+fp_export <- abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration/Formatted FDS Data')
+
+df_list <- split(df_final,
+                 list(year(df_final$`Observed DateTime`),
+                      ifelse(month(df_final$`Observed DateTime`) <= 6, 'JanJun', 'JulDec'),
+                      ifelse(df_final$`Data Classification` == 'FIELD_RESULT', 'Field', 'Lab'),
+                      month(df_final$`Observed DateTime`, label = TRUE, abbr = TRUE)),
+                 drop = TRUE)
+
+# # split the dataframe
+invisible(lapply(names(df_list), function(name) {
+  name_parts <- unlist(strsplit(name, '\\.'))
+  year <- name_parts[1]
+  half_year <- name_parts[2]
+  data_class <- name_parts[3]
+  month <- name_parts[4]
+
+  fp_exp <- paste0(fp_export, '/', year, '-', half_year, '-',data_class,'_EMP-DWQ','_',month,'.csv')
+
+  # write to .csv
+  write_csv(df_list[[name]], file = fp_exp, na = '')
+}))
 ```
-
-
-

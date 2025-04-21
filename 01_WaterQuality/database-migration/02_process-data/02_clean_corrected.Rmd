@@ -464,8 +464,8 @@ rm(df_analysis, df_depth, df_long, df_mdl, df_method, df_old, df_stations, df_ta
 
 # add PST to DateTime
 
-# df_all <- df_all %>%
-#   mutate(across(contains('DateTime'), ~ ifelse(is.na(.x), NA, paste0(.x, ' [PST]'))))
+df_all <- df_all %>%
+  mutate(across(contains('DateTime'), ~ ifelse(is.na(.x), NA, paste0(.x, ' [PST]'))))
 ```
 
 # PART 5: EXPORT
@@ -473,11 +473,11 @@ rm(df_analysis, df_depth, df_long, df_mdl, df_method, df_old, df_stations, df_ta
 ```{r}
 # export
 # Define the filepath for saving
-fp_export <- abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration')
-
-# write_csv(df_all, file = paste0(fp_export, '/prelim_data.csv'), na = '')
-
-df_list <- split(df_all, year(df_all$`Observed DateTime`))
+# fp_export <- abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration')
+# 
+# # write_csv(df_all, file = paste0(fp_export, '/prelim_data.csv'), na = '')
+# 
+# df_list <- split(df_all, year(df_all$`Observed DateTime`))
 
 # define the filepath for saving
 fp_export <- abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration/Formatted WDL Data')
