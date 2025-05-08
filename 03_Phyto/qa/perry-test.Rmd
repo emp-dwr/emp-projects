@@ -1,0 +1,817 @@
+```{r}
+library(tidyverse)
+library(lubridate)
+library(broom)
+
+df_res <- read_csv('C:/Users/sperry/Desktop/results_cleaned.csv')
+
+approx_pwr <- function(n1, n2 = NULL, delta, pooled_sd = 1, alpha = 0.05, paired = FALSE) {
+  n_eff <- if (paired) {
+    n1  # for paired, it's the number of pairs
+  } else {
+    2 / (1/n1 + 1/n2)  # harmonic mean for unequal sample sizes
+  }
+
+  tryCatch({
+    power.t.test(
+      n = n_eff,
+      delta = abs(delta),
+      sd = pooled_sd,
+      sig.level = alpha,
+      type = if (paired) "paired" else "two.sample",
+      alternative = "two.sided"
+    )$power
+  }, error = function(e) NA_real_)
+}
+```
+
+```{r}
+num_words <- c("one", "two")
+
+df_res <- df_res %>%
+  filter(Standard == "Rhodamine") %>%
+  mutate(Parameter = paste0(Parameter,'-',Units)) %>%
+  filter(!grepl("factory", Notes, ignore.case = TRUE)) %>%
+  group_by(Parameter, TALSensorSN) %>%
+  arrange(CalibDate) %>%
+  mutate(CalType = num_words[row_number()]) %>%
+  ungroup()
+```
+
+```{r}
+df_stats <- df_res %>%
+  mutate(CalDif = PreCalVal - PostCalVal) %>%
+  select(Parameter, CalType, CalDif, TALSensorSN)
+```
+
+```{r}
+ggplot(df_stats, aes(x = CalDif, fill = Parameter)) +
+  geom_histogram(bins = 50, color = "black") +
+  geom_vline(xintercept = 0, color = "red", linewidth = 1, linetype = 'dashed') +
+  facet_grid(Parameter ~ CalType, scales = 'free_y') +
+  labs(
+    title = "Histogram of Calibration Differences",
+    x = "Calibration Difference (CalDif)",
+    y = "Count"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
+```{r}
+ggplot(df_stats, aes(x = "", y = CalDif, fill = Parameter)) +
+  geom_violin(color = "black", alpha = 0.6, fill = 'gray') +
+  geom_boxplot(width = 0.2, color = "black") +
+  geom_hline(yintercept = 0, color = "red", linewidth = 1, linetype = 'dashed') +
+  facet_grid(Parameter ~ CalType, scales = 'free_y') +
+  labs(
+    title = "Boxplot of Calibration Differences",
+    y = "Calibration Difference (CalDif)",
+    x = NULL
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_blank(),
+    axis.ticks.x = element_blank(),
+    legend.position = "none"
+  )
+```
+
+```{r}
+by(df_stats$CalDif, list(df_stats$CalType, df_stats$Parameter), summary)
+```
+
+```{r}
+df_summary <- df_stats %>%
+  group_by(CalType, Parameter) %>%
+  summarise(
+    n = n(),
+    mean_CalDif = round(mean(CalDif, na.rm = TRUE),3),
+    median_CalDif = round(median(CalDif, na.rm = TRUE),3),
+    sd_CalDif = round(sd(CalDif, na.rm = TRUE),3),
+    min_CalDif = min(CalDif, na.rm = TRUE),
+    max_CalDif = max(CalDif, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+df_summary
+```
+
+```{r}
+df_paired <- df_stats %>%
+  group_by(Parameter, TALSensorSN, CalType) %>%
+  filter(n() == 1) %>%
+  ungroup() %>%
+  group_by(Parameter, TALSensorSN) %>%
+  filter(n() == 2) %>%
+  ungroup() %>%
+  pivot_wider(id_cols = c(Parameter, TALSensorSN), names_from = CalType, names_prefix = 'CalDif_', values_from = CalDif)
+
+df_pairedl <- df_paired %>%
+  pivot_longer(
+    cols = starts_with('CalDif'),
+    names_to = 'CalType',
+    names_prefix = 'CalDif_',
+    values_to = 'CalDif'
+  )
+
+df_pairedl %>%
+  group_by(CalType, Parameter) %>%
+  summarise(
+    n = n(),
+    mean_CalDif = round(mean(CalDif, na.rm = TRUE),3),
+    median_CalDif = round(median(CalDif, na.rm = TRUE),3),
+    sd_CalDif = round(sd(CalDif, na.rm = TRUE),3),
+    min_CalDif = min(CalDif, na.rm = TRUE),
+    max_CalDif = max(CalDif, na.rm = TRUE),
+    .groups = "drop"
+  )
+```
+
+```{r}
+ggplot(df_pairedl, aes(x = CalDif, fill = Parameter)) +
+  geom_histogram(bins = 30, color = "black") +
+  geom_vline(xintercept = 0, color = "red", linewidth = 1, linetype = 'dashed') +
+  facet_grid(Parameter ~ CalType, scales = 'free_y') +
+  labs(
+    title = "Histogram of Calibration Differences",
+    x = "Calibration Difference (CalDif)",
+    y = "Count"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+```{r}
+ggplot(df_pairedl, aes(x = "", y = CalDif, fill = Parameter)) +
+  geom_violin(color = "black", alpha = 0.6, fill = 'gray') +
+  geom_boxplot(width = 0.2, color = "black") +
+  geom_hline(yintercept = 0, color = "red", linewidth = 1, linetype = 'dashed') +
+  facet_grid(Parameter ~ CalType, scales = 'free_y') +
+  labs(
+    title = "Boxplot of Calibration Differences",
+    y = "Calibration Difference (CalDif)",
+    x = NULL
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_blank(),
+    axis.ticks.x = element_blank(),
+    legend.position = "none"
+  )
+```
+
+
+```{r}
+ggplot(df_paired, aes(y = CalDif_two-CalDif_one)) +
+  geom_boxplot() +
+  geom_vline(xintercept = 0, color = "red", linetype = "dashed") +
+  facet_grid(. ~ Parameter, scales = "free_y") +
+  theme_minimal()
+```
+
+```{r}
+common_parameters <- unique(df_res$Parameter)
+
+ttest_unpaired <- map_df(common_parameters, function(param) {
+  dat_two <- df_stats %>% filter(Parameter == param & CalType == 'two') %>% pull(CalDif)
+  dat_one <- df_stats %>% filter(Parameter == param & CalType == 'one') %>% pull(CalDif)
+
+  n1 <- length(dat_one)
+  n2 <- length(dat_two)
+  delta <- mean(dat_two, na.rm = TRUE) - mean(dat_one, na.rm = TRUE)
+  pooled_sd <- sqrt(((n1 - 1) * var(dat_one, na.rm = TRUE) + (n2 - 1) * var(dat_two, na.rm = TRUE)) / (n1 + n2 - 2))
+  power_est <- approx_pwr(n1 = n1, n2 = n2, delta = delta, pooled_sd = pooled_sd)
+
+  test <- t.test(y = dat_two, x = dat_one, paired = FALSE)
+  tidy_test <- tidy(test)
+  tidy_test$parameter <- param
+  tidy_test$power <- power_est
+  tidy_test
+}) %>%
+  mutate(across(where(is.numeric), ~ round(.x, 3))) %>%
+  select(parameter, estimate, statistic, p.value, power, conf.low, conf.high)
+
+ttest_unpaired
+```
+
+```{r}
+ttest_paired <- map_df(common_parameters, function(param) {
+  dat_two <- df_pairedl %>% filter(Parameter == param & CalType == 'two') %>% pull(CalDif)
+  dat_one <- df_pairedl %>% filter(Parameter == param & CalType == 'one') %>% pull(CalDif)
+
+  n1 <- length(dat_one)
+  n2 <- length(dat_two)
+  delta <- mean(dat_two-dat_one, na.rm = TRUE)
+  pooled_sd <- sd(dat_two-dat_one, na.rm = TRUE)
+  power_est <- approx_pwr(n1 = n1, n2 = n2, delta = delta, pooled_sd = pooled_sd)
+
+  test <- t.test(y = dat_two, x = dat_one, paired = TRUE)
+  tidy_test <- tidy(test)
+  tidy_test$parameter <- param
+  tidy_test$power <- power_est
+  tidy_test
+}) %>%
+  mutate(across(where(is.numeric), ~ round(.x, 3))) %>%
+  select(parameter, estimate, statistic, p.value, power, conf.low, conf.high)
+
+ttest_paired
+```
+
+```{r}
+common_parameters <- unique(df_res$Parameter)
+library(WRS2)
+library(MKpower)
+wilcox_paired <- map_df(common_parameters, function(param) {
+  dat_two <- df_pairedl %>% filter(Parameter == param & CalType == 'two') %>% pull(CalDif)
+  dat_one <- df_pairedl %>% filter(Parameter == param & CalType == 'one') %>% pull(CalDif)
+
+  diff_vals <- dat_two - dat_one
+  diff_vals <- diff_vals[!is.na(diff_vals)]
+  n <- length(diff_vals)
+
+  # Estimate effect size for Wilcoxon test
+  # Effect size is defined as:
+  #   r = Z / sqrt(N)
+  # But WRS2::pwr.wilcox.test uses Cohen's d as a rough input
+  delta <- median(diff_vals)
+  sd_diff <- sd(diff_vals)
+  cohen_d <- delta / sd_diff
+  
+  print(n)
+  print(cohen_d)
+  
+  ## two-sample
+  # pwr <- sim.ssize.wilcox.test(rx = dat_one, ry = dat_two, n.max = 100, iter = 1000)
+  # print(pwr)
+
+  test <- wilcox.test(dat_one, dat_two, paired = TRUE)
+  tidy_test <- tidy(test)
+  tidy_test$parameter <- param
+  # tidy_test$power <- if (!is.na(power_obj)) round(power_obj$power, 3) else NA
+  tidy_test$estimate <- delta 
+  tidy_test
+}) %>%
+  mutate(across(where(is.numeric), ~ round(.x, 3))) %>%
+  select(parameter, estimate, statistic, p.value)#, conf.low, conf.high)
+
+wilcox_paired
+```
+
+
+```{r}
+n_sim = 1000
+
+sim_pwr <- function(n1, n2 = NULL, delta, pooled_sd, alpha = 0.05, n_boot = 1000, paired = FALSE, conf_level = 0.95) {
+  if (pooled_sd <= 0 || is.na(pooled_sd)) return(list(power = 0, n_valid = 0, ci_lower = NA, ci_upper = NA))
+
+  if (paired) {
+    n <- n1
+    pvals <- replicate(n_boot, {
+      diffs <- rnorm(n, mean = delta, sd = pooled_sd)
+      x <- rnorm(n, mean = 0, sd = pooled_sd)
+      y <- x + diffs
+      tryCatch(t.test(x, y, paired = TRUE)$p.value, error = function(e) NA_real_)
+    })
+  } else {
+    if (is.null(n2)) stop("n2 must be provided for unpaired test")
+    pvals <- replicate(n_boot, {
+      g1 <- rnorm(n1, mean = 0, sd = pooled_sd)
+      g2 <- rnorm(n2, mean = delta, sd = pooled_sd)
+      tryCatch(t.test(g1, g2, paired = FALSE)$p.value, error = function(e) NA_real_)
+    })
+  }
+
+  valid_pvals <- !is.na(pvals)
+  power_est <- mean(pvals[valid_pvals] < alpha)
+  n_valid <- sum(valid_pvals)
+
+  # Binomial confidence interval
+  ci <- binom.test(sum(pvals[valid_pvals] < alpha), n_valid, conf.level = conf_level)$conf.int
+
+  list(
+    power = round(power_est, 3),
+    n_valid = n_valid,
+    ci_lower = round(ci[1], 3),
+    ci_upper = round(ci[2], 3)
+  )
+}
+
+run_bootstrap_analysis <- function(params, df_stats, paired = FALSE, n_samp = 20, n_boot = n_sim, seed = 42) {
+  set.seed(seed)
+
+  # Helper to get data per param
+  get_bootstrap_data <- function(param) {
+    df1_sub <- df_stats %>% filter(Parameter == param & CalType == 'one') %>%
+      slice_sample(n = n_samp)
+    df2_sub <- df_stats %>% filter(Parameter == param & CalType == 'two')
+
+    combined <- c(df1_sub$CalDif, df2_sub$CalDif)
+    n1 <- nrow(df1_sub)
+    n2 <- nrow(df2_sub)
+
+    list(
+      df1 = df1_sub,
+      df2 = df2_sub,
+      combined = combined,
+      n1 = n1,
+      n2 = n2
+    )
+  }
+
+  # Step 1: Get data for all parameters
+  boot_data_list <- map(params, ~ get_bootstrap_data(.x))
+  names(boot_data_list) <- params
+
+  # Step 2: Generate bootstrap sample indices
+  bootstrap_indices <- map(params, function(param) {
+    boot_data <- boot_data_list[[param]]
+    n1 <- boot_data$n1
+    n2 <- boot_data$n2
+    map(1:n_boot, ~ list(
+      sample1 = sample(1:(n1 + n2), n1, replace = TRUE),
+      sample2 = sample(1:(n1 + n2), n2, replace = TRUE)
+    ))
+  })
+  names(bootstrap_indices) <- params
+
+  # Step 3: Define bootstrap test
+  bootstrap_test <- function(df1, df2, sample_indices, combined) {
+    obs_diff <- mean(df2$CalDif) - mean(df1$CalDif)
+
+    boot_diffs <- map_dbl(sample_indices, function(idx) {
+      sample1 <- combined[idx$sample1]
+      sample2 <- combined[idx$sample2]
+      mean(sample2) - mean(sample1)
+    })
+
+    p_value <- mean(abs(boot_diffs) >= abs(obs_diff))
+    ci <- quantile(boot_diffs, c(0.025, 0.975))
+
+    return(list(
+      p_value = round(p_value,3),
+      obs_diff = round(obs_diff,3),
+      ci_lower = round(ci[1],3),
+      ci_upper = round(ci[2],3),
+      boot_diffs = boot_diffs 
+    ))
+  }
+  
+  # Step 4: Compute results
+  results <- map_df(params, function(param) {
+    boot_data <- boot_data_list[[param]]
+
+    result <- bootstrap_test(
+      df1 = boot_data$df1,
+      df2 = boot_data$df2,
+      sample_indices = bootstrap_indices[[param]],
+      combined = boot_data$combined
+    )
+
+    result_tbl <- as_tibble(result[names(result) != "boot_diffs"])
+
+    var_one <- var(boot_data$df1$CalDif)
+    var_two <- var(boot_data$df2$CalDif)
+    
+    if(paired == FALSE){
+      pooled_var <- ((boot_data$n1 - 1) * var_one + (boot_data$n2 - 1) * var_two) / (boot_data$n1 + boot_data$n2 - 2) 
+    } else if (paired == TRUE){
+      pooled_var <- var(boot_data$df2$CalDif-boot_data$df1$CalDif)
+    }
+    
+    cohen_d <- result$obs_diff / sqrt(pooled_var)
+  
+    power_approx <- sim_pwr(
+      n1 = boot_data$n1,
+      n2 = boot_data$n2,
+      delta = result$obs_diff,
+      pooled_sd = sqrt(pooled_var),
+      alpha = 0.05,
+      n_boot = n_boot,
+      paired = paired
+    )
+
+    bind_cols(
+      tibble(
+        Parameter = param,
+        n1 = boot_data$n1,
+        n2 = boot_data$n2,
+        mean_one = round(mean(boot_data$df1$CalDif), 3),
+        mean_two = round(mean(boot_data$df2$CalDif), 3),
+        mean_dif = mean_two-mean_one,
+        var_one = round(var_one, 3),
+        var_two = round(var_two, 3),
+        pooled_var = round(pooled_var, 3),
+        cohen_d = round(cohen_d, 3),
+        pwr_est = round(power_approx$power, 3),
+        pwr_ci.l = round(power_approx$ci_lower,3),
+        pwr_ci.u = round(power_approx$ci_upper,3),
+        pwr_count = power_approx$n_valid
+      ),
+      result_tbl
+    )
+  })
+
+  # Step 5: Gather all bootstrap differences for plotting or histograms
+  boot_dist_all <- map_df(params, function(param) {
+    boot_data <- boot_data_list[[param]]
+
+    boot_diffs <- map_dbl(bootstrap_indices[[param]], function(idx) {
+      sample1 <- boot_data$combined[idx$sample1]
+      sample2 <- boot_data$combined[idx$sample2]
+      mean(sample2) - mean(sample1)
+    })
+
+    tibble(
+      Parameter = param,
+      Diff = boot_diffs
+    )
+  })
+
+  # Step 6: Join observed diffs into boot_dist_all
+  boot_dist_all <- boot_dist_all %>%
+    left_join(results %>% select(Parameter, obs_diff), by = 'Parameter')
+
+  plt_dist <- ggplot(output$boot_dist_all, aes(x = Diff)) +
+    geom_histogram(fill = "lightblue", color = "white", bins = 50) +
+    geom_vline(aes(xintercept = obs_diff), color = "red", linetype = "solid", linewidth = 1) +
+    geom_vline(xintercept = 0, color = "darkgreen", linetype = "dashed", linewidth = 1) +
+    facet_wrap(~ Parameter, scales = "free_y") +
+    theme_minimal() +
+    theme(strip.text = element_text(face = "bold")) +
+    labs(
+      title = "Bootstrap Distribution of Calibration Differences",
+      x = "Bootstrapped Difference in mu(CalDif)",
+      y = "Freq"
+    )
+  
+    list(
+      results = results,
+      boot_dist_all = boot_dist_all,
+      bootstrap_indices = bootstrap_indices,
+      boot_data_list = boot_data_list,
+      plt_dist = plt_dist,
+      n_boot = n_boot
+  )
+}
+
+plt_pwr_curve <- function(n1, n2, delta, pooled_sd, boot_seq = c(100, 500, 1000, 2000, 5000),
+                          paired = FALSE, param_name = NULL, alpha = 0.05) {
+  # Preallocate results
+  results <- map_dfr(boot_seq, function(b) {
+    res <- sim_pwr(
+      n1 = n1,
+      n2 = n2,
+      delta = delta,
+      pooled_sd = pooled_sd,
+      alpha = alpha,
+      n_boot = b,
+      paired = paired
+    )
+
+    tibble(
+      n_boot = b,
+      power = res$power,
+      n_valid = res$n_valid
+    )
+  })
+
+  # Attach parameter name as a column
+  results <- results %>% mutate(Parameter = param_name)
+  return(results)
+}
+```
+
+```{r}
+set.seed(42)
+
+output <- run_bootstrap_analysis(params, df_stats, n_samp = 20, n_boot = 20000)
+
+# Access results:
+output$results
+output$plt_dist
+```
+
+```{r}
+output <- run_bootstrap_analysis(params, df_pairedl, paired = TRUE, n_boot = 15000)
+
+# Access results:
+output$results
+output$plt_dist
+```
+
+```{r}
+boot_seq <- c(1000, 2000, 5000, 10000, 20000, 50000)
+
+all_power_curves <- map_dfr(1:nrow(output$results), function(i) {
+  row <- output$results[i, ]
+
+  plt_pwr_curve(
+    n1 = row$n1,
+    n2 = row$n2,
+    delta = row$mean_dif,
+    pooled_sd = sqrt(row$pooled_var),
+    boot_seq = boot_seq,
+    param_name = row$Parameter[[1]]
+  )
+})
+
+ggplot(all_power_curves, aes(x = n_boot, y = power)) +
+  geom_line(color = "steelblue", linewidth = 1.1) +
+  geom_point(color = "darkblue") +
+  geom_hline(yintercept = 0.3, linetype = "dashed", color = "red") +
+  facet_wrap(~ Parameter, scales = "free_y") +
+  scale_x_continuous(breaks = boot_seq) +
+  theme_minimal() +
+  theme(strip.text = element_text(face = "bold")) +
+  labs(
+    title = "Estimated Power vs Number of Bootstraps (Raw Data)",
+    x = "Number of Bootstraps (n_boot)",
+    y = "Estimated Power"
+  )
+```
+
+
+```{r}
+set.seed(42)
+
+output <- run_bootstrap_analysis(params, df_stats, n_samp = 50, n_boot = 10000)
+
+# Access results:
+output$results
+output$plt_dist
+```
+
+```{r}
+ggplot(df_pairedl, aes(x = CalDif, fill = Parameter)) +
+  geom_histogram(color = "black") +
+  geom_vline(xintercept = 0, color = "red", linewidth = 1, linetype = 'dashed') +
+  facet_grid(Parameter ~ CalType, scales = 'free_y') +
+  labs(
+    title = "Histogram of Calibration Differences",
+    x = "Calibration Difference (CalDif)",
+    y = "Count"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
+```{r}
+output <- run_bootstrap_analysis(params, df_pairedl, n_samp = 20, n_boot = 1000)
+
+# Access results:
+output$results
+output$plt_dist
+```
+
+```{r}
+plot_trace_gg <- function(chain_matrix, param_names = NULL) {
+  chain_df <- as.data.frame(chain_matrix)
+  n_iter <- nrow(chain_df)
+  n_params <- ncol(chain_df)
+  
+  if (is.null(param_names)) {
+    param_names <- paste0("Param", 1:n_params)
+  }
+  
+  colnames(chain_df) <- param_names
+  
+  # Add iteration number for plotting
+  chain_df$Iteration <- 1:n_iter
+  
+  # Convert to long format
+  chain_long <- pivot_longer(chain_df, 
+                             cols = all_of(param_names), 
+                             names_to = "Parameter", 
+                             values_to = "Value")
+  
+  # Plot using ggplot
+  ggplot(chain_long, aes(x = Iteration, y = Value)) +
+    geom_line(color = "steelblue") +
+    facet_wrap(~Parameter, scales = "free", ncol = 2) +
+    theme_minimal() +
+    labs(title = "Trace Plots for MCMC Samples", 
+         y = "Sampled Value") +
+    theme(strip.text = element_text(face = "bold"))
+}
+```
+
+
+```{r}
+library(lme4)
+
+df_pairedl$Parameter <- factor(df_pairedl$Parameter)
+df_pairedl$CalType <- factor(df_pairedl$CalType)
+
+parameters <- unique(df_pairedl$Parameter)
+
+for (param in parameters){
+  df_filt <- df_pairedl %>% filter(Parameter == param)
+  
+  mod <- lm(CalDif ~ CalType, data = df_filt)
+  print(summary(mod))
+  # plot(mod)
+}
+```
+
+```{r}
+# --- Data Preparation ---
+# Choose a parameter group (first unique parameter)
+param <- unique(df_pairedl$Parameter)
+run_sampler_for_param <- function(param, df, n_iter = 10000, burn_in = 2500, proposal_sds = NULL) {
+  
+  # Subset and transform data for this parameter
+  df_sub <- df %>%
+    filter(Parameter == param) %>%
+    mutate(CalType_num = as.integer(as.factor(CalType)))
+  
+  # Define the number of observations and levels
+  N <- nrow(df_sub)
+  K <- n_distinct(df_sub$CalType_num)
+  y <- df_sub$CalDif
+  x <- df_sub$CalType_num
+  data_list <- list(N = N, K = K, y = y, x = x)
+  
+  # Set default proposal standard deviations if not provided
+  if (is.null(proposal_sds)) {
+    proposal_sds <- rep(0.2, K + 1)
+  }
+  
+  # --- Define Initial Parameter Values ---
+  # Parameters: [1] alpha, [2:(K)] beta_raw (for levels 2:K), [K+1] sigma, [K+2] nu
+  init <- rep(0, K + 1)
+  init[1] <- 0         # alpha
+  if (K > 1) init[2:K] <- 0  # beta_raw for levels 2:K
+  init[K + 1] <- 2     # sigma (> 0)
+  
+  # --- Run the Metropolis-Hastings Sampler ---
+  # (The mcmc_sampler function is defined below)
+  set.seed(42)  # For reproducibility; you might want different seeds per param.
+  chain <- mcmc_sampler(data_list, n_iter = n_iter, init = init, proposal_sds = proposal_sds, fixed_df = fixed_df)
+
+  
+  # Discard burn-in iterations
+  chain_post <- chain[(burn_in + 1):n_iter, ]
+  
+  # Trace plots using ggplot2
+  param_names <- c("alpha", paste0("beta_", 2:K), "sigma")
+  plt <- plot_trace_gg(chain, param_names)
+  print(plt)
+  print(coda::effectiveSize(chain))
+  print(acfplot(as.mcmc(chain)))
+  
+  # --- Posterior Summaries for Beta Contrasts (Levels 2:K) ---
+  if (K > 1) {
+    beta_post <- chain_post[, 2:K, drop = FALSE]  # beta_raw for levels 2:K
+    beta_summary <- apply(beta_post, 2, function(x) {
+      # Compute probability that beta > 0
+      p_positive <- mean(x > 0)
+      # Define a two-sided Bayesian "p-value" as 2 * min(p_positive, 1 - p_positive)
+      bayes_p <- 2 * min(p_positive, 1 - p_positive)
+      c(mean = mean(x),
+        ci_lower = quantile(x, 0.025),
+        ci_upper = quantile(x, 0.975),
+        p_bayes = bayes_p)
+    })
+    
+    # print(beta_summary)
+    
+    beta_summary_df <- data.frame(
+      param = param,
+      coef_level = 2:K,
+      mean = round(beta_summary["mean", ],3),
+      ci_lower = round(beta_summary["ci_lower.2.5%", ],3),
+      ci_upper = round(beta_summary["ci_upper.97.5%", ],3),
+      p_bayes = round(beta_summary["p_bayes", ],3),
+      stringsAsFactors = FALSE,
+      row.names = FALSE
+    )
+    
+    rownames(beta_summary_df) <- NULL
+    
+    return(beta_summary_df)
+  } else {
+    return(data.frame(param = param, 
+                      coef_level = NA, 
+                      mean = NA, 
+                      ci_lower = NA, 
+                      ci_upper = NA, 
+                      p_bayes = NA, 
+                      message = "Only one CalType level; no beta contrasts to report.",
+                      stringsAsFactors = FALSE))
+  }
+}
+
+# --- The Log-Posterior Function ---
+log_posterior <- function(params, data, fixed_df = 5) {
+  alpha <- params[1]
+  beta_raw <- params[2:(data$K)]
+  beta <- c(0, beta_raw)  # Set beta_1 = 0
+  sigma <- params[data$K + 1]
+  
+  if (sigma <= 0) return(-Inf)  # remove nu constraint
+
+  mu <- alpha + beta[data$x]
+
+  # Log-likelihood using fixed df
+  loglik <- sum(dt((data$y - mu) / sigma, df = fixed_df, log = TRUE) - log(sigma))
+
+  # Priors
+  logprior_alpha <- dnorm(alpha, mean = 0, sd = 5, log = TRUE)
+  logprior_beta  <- sum(dnorm(beta_raw, mean = 0, sd = 5, log = TRUE))
+  logprior_sigma <- dexp(sigma, rate = 0.25, log = TRUE)
+
+  return(loglik + logprior_alpha + logprior_beta + logprior_sigma)
+}
+
+# --- Metropolis-Hastings Sampler Function ---
+mcmc_sampler <- function(data, n_iter = 5000, init, proposal_sds, fixed_df = 5) {
+  p <- length(init)
+  chain <- matrix(NA, nrow = n_iter, ncol = p)
+  chain[1, ] <- init
+  current_log_post <- log_posterior(init, data, fixed_df = fixed_df)
+  accept_count <- 0
+
+  for (i in 2:n_iter) {
+    proposal <- chain[i - 1, ] + rnorm(p, mean = 0, sd = proposal_sds)
+    prop_log_post <- log_posterior(proposal, data, fixed_df = fixed_df)
+    log_ratio <- prop_log_post - current_log_post
+
+    if (log(runif(1)) < log_ratio) {
+      chain[i, ] <- proposal
+      current_log_post <- prop_log_post
+      accept_count <- accept_count + 1
+    } else {
+      chain[i, ] <- chain[i - 1, ]
+    }
+  }
+
+  cat("Acceptance rate:", accept_count / (n_iter - 1), "\n")
+  return(chain)
+}
+
+# --- Run the Analysis Over All Parameter Groups ---
+params <- unique(df_pairedl$Parameter)
+
+# map_df iterates over each parameter value and returns a combined data frame
+bayes_results <- map_df(params, function(p) {
+  run_sampler_for_param(p, df = df_pairedl)
+})
+
+print(bayes_results)
+```
+
+```{r}
+plan(multisession, workers = 6)  # Reduce workers to 2 for RAM safety
+
+results <- df_pairedl %>%
+  filter(Parameter == 'Chl_RFU')
+  # group_split(Parameter) %>%
+  future_map_dfr(function(df_sub) {
+    param <- unique(df_sub$Parameter)
+    df_sub$CalType <- factor(df_sub$CalType, levels = levels(factor(df_pairedl$CalType)))
+
+    if (n_distinct(df_sub$CalType) < 2) {
+      return(data.frame(
+        Parameter = param,
+        coef = NA, Estimate = NA, Est.Error = NA, Q2.5 = NA, Q97.5 = NA,
+        note = "Only one CalType level"
+      ))
+    }
+
+    fit <- brm(
+      CalDif ~ CalType,
+      family = student(),
+      data = df_sub,
+      prior = c(
+        prior(normal(0, 5), class = "Intercept"),
+        prior(normal(0, 5), class = "b"),
+        prior(exponential(0.25), class = "sigma")
+      ),
+      iter = 50,
+      warmup = 20,
+      chains = 2,
+      cores = 2,
+      seed = 42,
+      silent = FALSE,
+      refresh = 0,
+      save_pars = save_pars(all = FALSE)
+    )
+
+    draws <- posterior_summary(fit)
+    b_rows <- grep("^b_", rownames(draws))
+    coef_df <- as.data.frame(draws[b_rows, , drop = FALSE])
+    coef_df$Parameter <- param
+    coef_df$coef <- rownames(coef_df)
+    rownames(coef_df) <- NULL
+
+    rm(fit); gc()
+    coef_df
+  })
+```
+
+
+
+```{r}
+
+```
+

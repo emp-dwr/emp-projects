@@ -1,0 +1,227 @@
+---
+title: 'Turbidity Post-Cal Exploration'
+author: 'Perry'
+date: '`r Sys.Date()`'
+format:
+    html:
+      toc: true
+      highlight-style: github
+      embed-resources: true
+      self-contained-math: true
+---
+
+# Read in Data
+
+```{r}
+#| message: FALSE
+#| warning: FALSE
+
+library(tidyverse)
+library(lme4)
+library(lmerTest)
+library(lattice)
+library(emmeans)
+```
+
+```{r}
+#| message: FALSE
+#| warning: FALSE
+
+df_turb <- read_csv(here::here('05_SpecialStudies/QA_TurbiditySensors/turbiditysensors.csv'))
+df_turb <- df_turb %>%
+  mutate(PostCalCentered = df_turb$PostCalVal - 124, # center the data at 0
+         PostCalDate = as.Date(PostCalDate, format = '%m/%d/%Y'))
+```
+
+# Assumptions
+
+- sources of error accumulated between calibration and post-calibration are the same for all data points
+  - ie. no significant differences in drift between sondes or sites
+
+- sources of error accumulated between calibration and post-calibration are negligible
+  - ie. the expected value at post-cal remains 124 (the standard)
+  
+- the person doing the calibrations did not significantly affect the values
+
+- all sondes were calibrated in the old standard and post-calibrated in the new standard
+  - **checking this one**
+
+- the post-cal standard was 124 for all sondes
+
+# Plots
+
+## Original
+
+```{r}
+ggplot(df_turb, aes(x = PostCalCentered)) +
+  geom_histogram(bins = 10, fill = 'steelblue', color = 'white') +
+  facet_wrap(~ Program) +
+  theme_bw()
+```
+
+```{r}
+ggplot(df_turb, aes(x = Program, y = PostCalCentered, fill = Program)) +
+  geom_boxplot(alpha = 0.8) +
+  geom_hline(yintercept = 0, color = 'red', linetype = 'dashed', linewidth = 1) +
+  geom_jitter(width = 0.2, shape = 21, size = 2, fill = 'gray') +
+  theme_bw()
+```
+
+**Conclusions:**
+
+WQA looks good. NCRO and CEMP both seem to be bimodal, with two populations: an upper one (that includes 0) and a lower one. Therefore, we will split those populations to investigate metadata.
+
+## Population Split
+
+```{r}
+df_split <- df_turb %>%
+  mutate(
+    ProgramSplit = case_when(
+      Program == 'NCRO' & PostCalCentered < -5 ~ 'NCRO_low',
+      Program == 'NCRO' & PostCalCentered >= -5 ~ 'NCRO_high',
+      Program == 'CEMP' & PostCalCentered < -5 ~ 'CEMP_low',
+      Program == 'CEMP' & PostCalCentered >= -5 ~ 'CEMP_high',
+      Program == 'WQA' ~ 'WQA'
+    )
+  ) %>%
+  mutate(ProgramSplit = factor(ProgramSplit, levels = c('WQA','NCRO_high','NCRO_low','CEMP_high','CEMP_low')))
+```
+
+```{r}
+ggplot(df_split, aes(x = ProgramSplit, y = PostCalCentered, fill = Program)) +
+  geom_boxplot(alpha = 0.8, outliers = FALSE) +
+  geom_hline(yintercept = 0, color = 'red', linetype = 'dashed', linewidth = 1) +
+  geom_jitter(width = 0.2, shape = 21, size = 2, fill = 'gray') +
+  theme_bw()
+```
+
+# Models
+
+## Original (Mod1)
+
+```{r}
+mod1 <- lm(PostCalCentered ~ 1, data = df_turb)
+
+summary(mod1)
+```
+
+```{r}
+#| layout-ncol: 2
+
+plot(mod1)
+```
+
+**Conclusions:**
+
+Clearly a bad model, need to account for some other variable (choosing program).
+
+## Original (Mod2)
+
+```{r}
+mod2r <- lmer(PostCalCentered ~ 1 + (1|Program), data = df_turb, REML = FALSE)
+
+summary(mod2r)
+
+plot(mod2r)
+```
+
+```{r}
+ranef(mod2r)
+dotplot(ranef(mod2r, condVar = TRUE))
+```
+
+```{r}
+mod2f <- lm(PostCalCentered ~ Program, data = df_turb)
+
+summary(mod2f)
+```
+
+```{r}
+#| layout-ncol: 2
+
+plot(mod2f)
+```
+
+```{r}
+emm2f <- emmeans(mod2f, ~ Program)
+summary(emm2f, infer = TRUE)
+```
+
+**Conclusions:**
+
+Post-calibration values were not significantly different from the expected value (124) for CEMP and WQA, but were for NCRO. Note this assumes CEMP and NCRO are unimodal populations, which we know isn't true.
+
+## Split (Mod3)
+
+```{r}
+mod3r <- lmer(PostCalCentered ~ (1|ProgramSplit), data = df_split, REML = FALSE)
+
+summary(mod3r)
+```
+
+```{r}
+ranef(mod3r)
+dotplot(ranef(mod3r, condVar = TRUE))
+```
+
+```{r}
+mod3f <- lm(PostCalCentered ~ ProgramSplit, data = df_split, REML = FALSE)
+
+summary(mod3f)
+```
+
+```{r}
+#| layout-ncol: 2
+
+plot(mod3f)
+```
+
+```{r}
+emm3f <- emmeans(mod3f, ~ ProgramSplit)
+summary(emm3f, infer = TRUE)
+```
+
+**Conclusions:**
+
+When accounting for program-specific effects (random effects model), the grand mean is 124. However, all of the programs have means statistically different from 124 (except maybe WQA).
+
+(Note that, based on these results/the dot plot, this seems to imply that while the NCRO and CEMP data is bimodal and do not include 0, their “unimodal” means are still close to 0. We see that with mod2. Very odd.)
+
+When looking at the fixed-effects model, WQA does not significantly differ from 124, but all the other bimodal programs do.
+
+## Compare models
+
+```{r}
+AIC(mod2f, mod3f)
+BIC(mod2f, mod3f)
+```
+
+**Conclusions:**
+
+We prefer the insight from our models that account for the bimodal nature of the program data.
+
+# More Plots
+
+```{r}
+ggplot(df_split, aes(x = PostCalDate, y = PostCalVal, fill = ProgramSplit)) +
+  geom_hline(yintercept = 124, color = 'black', linetype = 'dashed', linewidth = 0.8) +
+  geom_point(size = 2.5, shape = 21, color = 'black') +
+  facet_wrap(~ Program, ncol = 1) +
+  theme_bw()
+```
+
+# Conclusions
+
+Based on EDA and modeling (particularly mod3), we notice odd bimodal distributions in NCRO and CEMP’s data; when splitting these populations into subgroups, all of them as statistically different from the expected value (124), though they’re balanced enough that removing their effect gives a grand mean that is not statistically different from 124.
+
+It appears that, for CEMP, this is correlated with post-cal timing (low values were recorded earlier than later ones). However, for NCRO, the high values are concentrated in August and low values are evenly distributed throughout the rest of the time span. Further investigation is probably warranted.
+
+Additionally, WQA’s data is not statistically different from 124 and looks otherwise unremarkable.
+
+Recommendation is to further look into the sub-populations for CEMP and NCRO.
+
+(Note using sonde as a predictor was explored but not deemed useful.)
+
+```{r}
+# write_csv(df_split, '05_SpecialStudies/QA_TurbiditySensors/split_data.csv')
+```
