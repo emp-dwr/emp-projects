@@ -66,8 +66,8 @@ D8,NA,Discrete WQ,Suisun Bay off Middle Point nr. Nichols,38.05992,-121.99,Activ
 D9,NA,Discrete WQ,Honker Bay near Wheeler Point,38.07244,-121.9392,Inactive,D9-D9A,Honker Bay,Confluence
 MD10,NA,Discrete WQ,Disappointment Slough @ Bishop Cut,38.04381,-121.4188,Inactive,MD10-MD10A,Disappointment Slough,Central Delta
 MD10A,NA,Discrete WQ,Disapointment Slough @ Bishop Cut,38.04226,-121.4199,Active,MD10-MD10A,Disappointment Slough,Central Delta
-MD6,NA,Discrete WQ,Sycamore Slough near Mouth,38.1415,-121.4687,Inactive,MD6,Sycamore Slough,North Delta
-MD7,NA,Discrete WQ,South Fork Mokelumne below Sycamore Slough,38.12513,-121.497,Inactive,MD7-MD7A,Little Potato Slough,North Delta
+MD6,NA,Discrete WQ,Sycamore Slough near Mouth,38.1415,-121.4687,Inactive,MD6,Sycamore Slough,Central Delta
+MD7,NA,Discrete WQ,South Fork Mokelumne below Sycamore Slough,38.12513,-121.497,Inactive,MD7-MD7A,Little Potato Slough,Central Delta
 MD7A,NA,Discrete WQ,Little Potato Slough @ Terminous,38.11382,-121.498,Inactive,MD7-MD7A,Little Potato Slough,Central Delta
 NZ002,NA,Discrete WQ,Carquinez Strait near Glencove Harbor,38.06529,-122.2152,Active,NZ002,Glencove Harbor,Carquinez Strait
 NZ004,NA,Discrete WQ,Carquinez Strait near Ozol Pier,38.03576,-122.1616,Active,NZ004,Ozol Pier,Carquinez Strait
@@ -127,12 +127,12 @@ D7-R,NA,Benthic,Grizzly bay @ Dolphin nr. Suisun Slough - Right,38.116688,-122.0
 D8-C,NA,Benthic,Suisun Bay off Middle Point near Nichols - Center,38.059913,-121.99,Inactive,D8-D8A,Suisun Bay,Suisun & Grizzly Bay
 D9-C,NA,Benthic,Honker Bay near Wheeler Point - Center,38.079212,-121.930289,Inactive,D9-D9A,Honker Bay,Confluence
 D9-R,NA,Benthic,Honker Bay near Wheeler Point - Right,38.07591,-121.945227,Inactive,D9-D9A,Honker Bay,Confluence
-MD6-C,NA,Benthic,Sycamore Slough near mouth - Center,38.14238,-121.469539,Inactive,MD6,Sycamore Slough,North Delta
-MD6-L,NA,Benthic,Sycamore Slough near mouth - Left,38.141756,-121.470066,Inactive,MD6,Sycamore Slough,North Delta
-MD6-R,NA,Benthic,Sycamore Slough near mouth - Right,38.14295,-121.469002,Inactive,MD6,Sycamore Slough,North Delta
-MD7-C,NA,Benthic,South Fork Mokelumne River - Center,38.125089,-121.496983,Inactive,MD7-MD7A,Little Potato Slough,North Delta
-MD7-L,NA,Benthic,South Fork Mokelumne River - Left,38.125008,-121.496266,Inactive,MD7-MD7A,Little Potato Slough,North Delta
-MD7-R,NA,Benthic,South Fork Mokelumne River - Right,38.125128,-121.497895,Inactive,MD7-MD7A,Little Potato Slough,North Delta
+MD6-C,NA,Benthic,Sycamore Slough near mouth - Center,38.14238,-121.469539,Inactive,MD6,Sycamore Slough,Central Delta
+MD6-L,NA,Benthic,Sycamore Slough near mouth - Left,38.141756,-121.470066,Inactive,MD6,Sycamore Slough,Central Delta
+MD6-R,NA,Benthic,Sycamore Slough near mouth - Right,38.14295,-121.469002,Inactive,MD6,Sycamore Slough,Central Delta
+MD7-C,NA,Benthic,South Fork Mokelumne River - Center,38.125089,-121.496983,Inactive,MD7-MD7A,Little Potato Slough,Central Delta
+MD7-L,NA,Benthic,South Fork Mokelumne River - Left,38.125008,-121.496266,Inactive,MD7-MD7A,Little Potato Slough,Central Delta
+MD7-R,NA,Benthic,South Fork Mokelumne River - Right,38.125128,-121.497895,Inactive,MD7-MD7A,Little Potato Slough,Central Delta
 P8-C,NA,Benthic,San Joaquin River @ Buckley Cove - Center,37.97802,-121.382149,Inactive,P8-P8A,Buckley Cove,South Delta
 P8-L,NA,Benthic,San Joaquin River @ Buckley Cove - Left,37.977611,-121.382511,Inactive,P8-P8A,Buckley Cove,South Delta
 NZ002,NA,Zooplankton,Carquinez Strait at Glencove Harbor.,38.060278,-122.206944,Active,NZ002,Glencove Harbor,Carquinez Strait
@@ -157,7 +157,7 @@ D19,NA,Zooplankton,Franks Tract near Russo's Landing.,38.043889,-121.613611,Acti
 D28A,NA,Zooplankton,"Old River near Rancho Del Oro, south end of Holland Tract.",37.982778,-121.577222,Active,D28A,Rancho Del Rio,Central Delta
 D41,NA,Zooplankton,San Pablo Bay near Point Pinole.,38.030556,-122.370833,Active,D41,Pinole Point,San Pablo Bay
 MD10A,NA,Zooplankton,Disappointment Slough near Bishop Cut (downstream of Rindge Tract Bridge).,38.043611,-121.426389,Active,MD10-MD10A,Disappointment Slough,Central Delta
-P2,NA,Zooplankton,Mokelumne River 1.6 km upstream of fork.,38.233333,-121.488889,Inactive,P2,Franklin Road,North Delta
+P2,NA,Zooplankton,Mokelumne River 1.6 km upstream of fork.,38.233333,-121.488889,Inactive,P2,Franklin Road,Central Delta
 NZS42,NA,Zooplankton,Suisun Slough at mouth of Volanti Slough.,38.180556,-122.047222,Active,S42-NZS42,Volanti Slough,Suisun Marsh
 C10,NA,Phytoplankton,San Joaquin River near Vernalis,37.67575,-121.265,Inactive,C10-C10A,Vernalis,South Delta
 C10A,NA,Phytoplankton,San Joaquin River near Vernalis @ SJR Club,37.67934,-121.2647,Active,C10-C10A,Vernalis,South Delta
@@ -187,8 +187,8 @@ D8,NA,Phytoplankton,Suisun Bay off Middle Point nr. Nichols,38.05992,-121.99,Act
 D9,NA,Phytoplankton,Honker Bay near Wheeler Point,38.07244,-121.9392,Inactive,D9-D9A,Honker Bay,Confluence
 MD10,NA,Phytoplankton,Disappointment Slough @ Bishop Cut,38.04381,-121.4188,Inactive,MD10-MD10A,Disappointment Slough,Central Delta
 MD10A,NA,Phytoplankton,Disappointment Slough @ Bishop Cut,38.04226,-121.4199,Active,MD10-MD10A,Disappointment Slough,Central Delta
-MD6,NA,Phytoplankton,Sycamore Slough near Mouth,38.1415,-121.4687,Inactive,MD6,Sycamore Slough,North Delta
-MD7,NA,Phytoplankton,South Fork Mokelumne below Sycamore Slough,38.12513,-121.497,Inactive,MD7-MD7A,Little Potato Slough,North Delta
+MD6,NA,Phytoplankton,Sycamore Slough near Mouth,38.1415,-121.4687,Inactive,MD6,Sycamore Slough,Central Delta
+MD7,NA,Phytoplankton,South Fork Mokelumne below Sycamore Slough,38.12513,-121.497,Inactive,MD7-MD7A,Little Potato Slough,Central Delta
 MD7A,NA,Phytoplankton,Little Potato Slough @ Terminous,38.11382,-121.498,Inactive,MD7-MD7A,Little Potato Slough,Central Delta
 NZ002,NA,Phytoplankton,Carquinez Strait near Glencove Harbor,38.06529,-122.2152,Active,NZ002,Glencove Harbor,Carquinez Strait
 NZ004,NA,Phytoplankton,Carquinez Strait near Ozol Pier,38.03576,-122.1616,Active,NZ004,Ozol Pier,Carquinez Strait
