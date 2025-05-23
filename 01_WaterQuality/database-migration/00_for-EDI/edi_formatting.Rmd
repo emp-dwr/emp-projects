@@ -1,0 +1,637 @@
+Clean Corrected Data 09/16/2024
+
+# PART 1: GENERAL CLEANING
+
+```{r}
+library(tidyverse)
+library(lubridate)
+source('00_GlobalFunctions/functions.R')
+```
+
+```{r}
+# import data
+fp <- abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration/Corrected WDL Data')
+
+ls_files <- list.files(fp, full.names = TRUE, pattern = '\\.csv$')
+
+ls_data <- lapply(ls_files, function(f) {
+  read_csv(f, col_types = cols(.default = 'c'))
+})
+
+
+ls_cols <- unique(unlist(lapply(ls_data, colnames)))
+
+ls_alldata <- lapply(ls_data, function(df) {
+  missing_cols <- setdiff(ls_cols, colnames(df))
+  df[missing_cols] <- NA
+  df
+})
+
+df_wide <- bind_rows(ls_alldata)
+
+rm(ls_alldata, ls_data)
+```
+
+```{r}
+# standardize station names
+df_stations <- read_csv(abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration/Lists to Import/Station_Names.csv'), show_col_types = FALSE)
+
+df_wide <- left_join(df_wide, df_stations, by = 'Station Name') %>%
+  mutate(
+    `Station Name` = case_when(
+      `Station Number` %in% c('EZ2-SJR','EZ6-SJR') ~ `Station Number`,
+      TRUE ~ `New Station Name`
+    )
+  ) %>%
+  select(-`New Station Name`)
+
+# standardize NA
+df_wide <- df_wide %>%
+  mutate(across(where(is.character), ~ na_if(.x, 'N/A') %>% na_if('N.S.')))
+
+# standardize date
+df_wide <- df_wide %>%
+  separate(`Sample Date`, into = c('Sample Date', 'Sample Time'), sep = ' ') %>%
+  mutate(`Sample Date` = as.Date(`Sample Date`, format = '%m/%d/%Y'))
+```
+
+```{r}
+# checks
+anyNA(df_wide$`Sample Date`)
+anyNA(df_wide$`Sample Time`)
+
+df_check <- df_wide %>%
+  mutate(TimeTest = as.POSIXct(`Sample Time`, format = '%H:%M'))
+
+df_check %>%
+  mutate(TimeRounded = floor_date(TimeTest, '5 minutes')) %>%
+  filter(TimeTest != TimeRounded)
+
+# TODO: Check these (24-12-18)
+df_check %>%
+  mutate(TimeRange = hour(TimeTest) < 5 | hour(TimeTest) >= 20) %>%
+  filter(TimeRange) %>%
+  select(`Station Name`, `Sample Date`, `Sample Time`, TimeRange) %>%
+  arrange(`Sample Date`)
+
+df_wide %>%
+  group_by(`Station Name`, `Sample Date`, `Sample Time`) %>%
+  filter(n() >= 3) %>%
+  ungroup()
+
+df_wide %>%
+  filter(`Sample Type` == 'Equipment Blank') %>%
+  mutate(
+    blank_check = ifelse(`Sample Type` == 'Equipment Blank' & `Station Name` == lag(`Station Name`), TRUE, FALSE)
+  ) %>%
+  filter(blank_check == FALSE)
+```
+
+```{r}
+# convert degC to degF for Air Temperature
+df_wide$`Air Temperature °C Temperature, Air - [1]*` <- as.character((as.numeric(df_wide$`Air Temperature °C Temperature, Air - [1]*`)*(9/5))+32)
+```
+
+```{r}
+# add solids data
+df_solids <- read_csv(abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration/Lists to Import/Import_Solids.csv'), col_types = cols(.default = 'c')) %>%
+  mutate(`Sample Date` = as.Date(`Sample Date`, format = '%Y-%m-%d'))
+
+df_wide <- left_join(df_wide, df_solids, by = c('Station Name','Sample Date'))
+
+# df_check where all data is NA during relevant timeframe
+df_check <- df_wide %>%
+  select('Station Name','Sample Date','Solids (Total Suspended)','Solids (Volatile Suspended)','Solids (Total Dissolved)') %>%
+  filter(`Sample Date` < '1997-11-30')
+
+df_check <- df_check %>%
+  filter(is.na(`Solids (Total Suspended)`) & 
+         is.na(`Solids (Volatile Suspended)`) & 
+         is.na(`Solids (Total Dissolved)`)) %>%
+  mutate(Month = month(`Sample Date`),
+         Year = year(`Sample Date`))
+
+df_solids <- df_solids %>%
+  mutate(Month = month(`Sample Date`),
+         Year = year(`Sample Date`))
+
+df_compare <- left_join(df_check,
+                        df_solids, by = c('Station Name','Month','Year'),
+                        suffix = c('.data', '.solids')) %>%
+  filter(!is.na(`Solids (Total Suspended).solids`) & 
+         !is.na(`Solids (Volatile Suspended).solids`) & 
+         !is.na(`Solids (Total Dissolved).solids`))
+
+
+df_compare <- left_join(df_check, df_solids, 
+                        by = c('Station Name', 'Month', 'Year'), 
+                        suffix = c('.data', '.solids')) %>%
+  group_by(`Station Name`, Month, Year) %>%
+  filter(all(!is.na(`Solids (Total Suspended).solids`) & 
+             !is.na(`Solids (Volatile Suspended).solids`) & 
+             !is.na(`Solids (Total Dissolved).solids`))) %>%
+  ungroup()
+
+# determined these are due to multi-month sampling where TSS/VSS/TDS weren't recorded on the second run
+```
+
+```{r}
+# fix Field Notes colname
+df_wide <- df_wide %>% rename('Field: Comment' = `Field Notes Notes (Field) - [1]*`,
+                              'Lab: Comment' = `Sample Description`)
+
+cols_fixed <- c('Station Name', 'Station Number', 'Sample Date', 'Sample Time', 'Sample Code', 'Sample Depth', 'Lab: Comment', 'Sample Type', 'Parent Sample Code', 'Field: Comment')
+
+# convert from wide to long
+df_long <- df_wide %>%
+  pivot_longer(cols = -all_of(cols_fixed),
+               names_to = 'original_colname',
+               values_to = 'Result Value') %>%
+  filter(!is.na(`Result Value`)) 
+
+rm(df_wide, df_solids, df_compare, df_check)
+```
+
+```{r}
+# assign method metadata
+df_method <- read_csv(abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration/Lists to Import/Analytes_Methods_Units_Bryte.csv'),
+                      show_col_types = FALSE) %>%
+  mutate(modified_first_date = as.Date(modified_first_date, format = '%m/%d/%Y'),
+         modified_last_date = as.Date(modified_last_date, format = '%m/%d/%Y'))
+
+df_long <- left_join(df_long, df_method, by = 'original_colname')
+
+# df_check that all colnames have a match
+unique(df_long$original_colname[is.na(df_long$`Observed Property ID`)])
+
+# add modified column (old way)
+df_old <- df_long %>%
+  mutate(
+    `EA_Modified Method` = case_when(
+      is.na(`Sample Date`) | is.na(modified_first_date) | is.na(modified_last_date) ~ 'FALSE',
+      `Sample Date` >= modified_first_date & `Sample Date` <= modified_last_date ~ 'TRUE')
+    )
+
+# add modified column (new way)
+df_long <- df_long %>%
+  mutate(
+    `EA_Modified Method` = case_when(
+      grepl('Modified', original_colname, ignore.case = TRUE) ~ 'TRUE',
+      TRUE ~ 'FALSE')
+    )
+
+# check
+df_old %>%
+  full_join(df_long, by = c('Station Name', 'Sample Date', 'Sample Code', 'original_colname'), suffix = c('_old', '_new')) %>%
+  filter(`EA_Modified Method_old` != `EA_Modified Method_new`)
+```
+
+```{r}
+# remove extra columns
+df_long <- df_long %>%
+  select(-c(original_colname, modified_first_date, modified_last_date, modified_years, year_range, notes, TA_data))
+
+# rename
+df_long <- df_long %>%
+  rename(`Location ID` = `Station Name`)
+```
+
+```{r}
+# pick values for lab duplicates
+set.seed(42)
+
+pick_val <- function(cell, year) {
+  if (grepl('**', cell, fixed = TRUE) && grepl(',', cell)) {
+    cell_vals <- unlist(strsplit(gsub('\\*\\*', '', cell), ','))
+    select_val <- sample(cell_vals, 1)
+    return(select_val)
+  } else {
+    return(cell)
+  }
+}
+
+df_long <- df_long %>%
+  mutate(
+    `Result Value` = mapply(pick_val, `Result Value`, year(`Sample Date`))
+  )
+```
+
+# PART 2: AI SPECIFIC THINGS (NO TA)
+
+```{r}
+# update Sample Type
+df_long <- df_long %>%
+  mutate(
+    'QC: Type' = case_when(
+      `Sample Type` == 'Normal Sample' ~ NA,
+      `Sample Type` == 'Blank; Equipment' ~ 'Blank',
+      `Sample Type` == 'Blank; Field' ~ 'Blank',
+      `Sample Type` == 'Duplicate, Specific Analyte(s)' ~ 'Replicate',
+      `Sample Type` == 'Replicate (Split), Spec. Analyte(s)' ~ 'Replicate',
+      `Sample Type` == 'Replicate (Split) Sample' ~ 'Replicate'
+    )
+  ) %>%
+  select(-`Sample Type`)
+```
+
+```{r}
+# add RL and Detection columns
+df_long <- df_long %>%
+  mutate(
+    'Lab: MRL' = case_when(
+      grepl('<', `Result Value`) ~ gsub('<', '', `Result Value`),
+      TRUE ~ NA
+    ),
+    'Lab: Detection Condition' = case_when(
+      grepl('<', `Result Value`) ~ 'Not detected',
+      TRUE ~ NA
+    ),
+    'Result Value' = case_when(
+      grepl('<', `Result Value`) ~ NA,
+      TRUE ~ `Result Value`
+    ),
+  )
+
+# add in MDLs
+df_mdl <- read_csv(abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration/Lists to Import/Bryte_MDLs.csv'), show_col_types = FALSE)
+df_long <- df_long %>% mutate(Year = year(`Sample Date`))
+
+df_long <- left_join(df_long, df_mdl, by = join_by(`Observed Property ID`, Year)) %>%
+  select(-Year)
+```
+
+```{r}
+# add lab col
+df_long <- df_long %>%
+  mutate(
+    `Lab: From Laboratory` =
+      case_when(`Data Classification` == 'LAB' ~ 'Bryte',
+                `Data Classification` == 'FIELD_RESULT' ~ NA)
+  )
+
+# add Reports To col
+df_long$`EA_Reports To` <- 'MRL'
+
+# add analyzed date time
+df_long$`Analyzed DateTime` = '1/1/1950 12:00'
+
+# renames
+df_long <- df_long %>%
+  rename(`Activity Name` = `Sample Code`,
+         `QC: Source Sample ID` = `Parent Sample Code`) %>%
+  mutate(
+    `QC: Source Sample ID` =
+    case_when(`QC: Source Sample ID` == '0' ~ NA,
+              TRUE ~ `QC: Source Sample ID`)
+    )
+
+df_long <- df_long %>%
+  mutate(`EA_Parent Sample ID` = `QC: Source Sample ID`)
+```
+
+# PART 3: ADD TEST AMERICA
+
+```{r}
+# read in data
+df_ta <- read_csv(abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration/Prelim WDL Data/prelim_ta.csv'), show_col_types = FALSE) %>%
+  mutate(`Result Value` = as.character(`Result Value`))
+
+# convert time to character for merging
+df_ta <- df_ta %>%
+  mutate(`Sample Time` = as.character(`Sample Time`),
+         `Sample Time` = sub(':00$', '', `Sample Time`),
+         `Sample Date` = as.Date(`Sample Date`, format = '%m/%d/%Y'))
+
+# convert to double for binding; checked the values already
+df_long <- df_long %>%
+  mutate(`Lab: MRL` = as.numeric(`Lab: MRL`),
+         `EA_Modified Method` = as.logical(`EA_Modified Method`))
+
+df_all <- bind_rows(df_long, df_ta)
+```
+
+# PART 4: FINAL THINGS (INCLUDING TA)
+
+```{r}
+# rename EZ to LSZ
+df_all <- df_all %>%
+  mutate(
+    `Location ID` = case_when(
+      `Location ID` == 'EZ6' ~ 'LSZ6',
+      `Location ID` == 'EZ2' ~ 'LSZ2',
+      `Location ID` == 'EZ6-SJR' ~ 'LSZ6-SJR',
+      `Location ID` == 'EZ2-SJR' ~ 'LSZ2-SJR',
+      TRUE ~ `Location ID`)
+    )
+```
+
+```{r}
+no_depths <- c('Air Temperature', 'Light Extinction', 'Latitude', 'Secchi Depth', 'Water Depth', 'Weather Observations', 'Longitude', 'Wind Velocity')
+
+df_depth <- df_all %>%
+  filter(`Observed Property ID` == 'Water Depth') %>%
+  select(`Location ID`, `Sample Date`, `Water Depth Value` = `Result Value`) %>%
+  mutate(`Water Depth Value` = unname(`Water Depth Value`))
+
+df_all <- df_all %>%
+  mutate(`Result Value` = unname(`Result Value`))
+
+# fix depths
+df_all <- df_all %>%
+  left_join(df_depth, by = c('Location ID', 'Sample Date')) %>%
+  mutate(
+    Depth =
+      case_when(`Observed Property ID` %in% no_depths ~ NA_real_,
+                `Observed Property ID` == 'Microcystis aeruginosa' ~ 0,
+                grepl('\\(Bottom\\)', `Observed Property ID`) ~ round(as.numeric(`Water Depth Value`)-3, 1),
+                TRUE ~ 3)
+    ) %>%
+  mutate(Depth = as.numeric(Depth)) %>%
+  select(-`Water Depth Value`)
+
+df_all <- df_all %>%
+  mutate(
+    Depth =
+      case_when(`Activity Name` == 'E0419B0721' & grepl('\\(Bottom\\)', `Observed Property ID`) ~ 10.65,
+                `Activity Name` == 'E0223B0224' & grepl('\\(Bottom\\)', `Observed Property ID`) ~ 8,
+                `Activity Name` == 'E0423B0757' & grepl('\\(Bottom\\)', `Observed Property ID`) ~ 10.3,
+                `Activity Name` == 'E0123B0002' & grepl('\\(Bottom\\)', `Observed Property ID`) ~ 13,
+                `Activity Name` == 'E0223B0222' & grepl('\\(Bottom\\)', `Observed Property ID`) ~ 10,
+                TRUE ~ Depth)
+    )
+
+
+# re-format water and sampling depth
+df_all <- df_all %>% 
+  rename(`EA_Sampling Depth` = Depth) %>%
+  mutate(Depth = if_else(`Observed Property ID` == 'Water Depth', `Result Value`, NA)) %>%
+  group_by(`Location ID`, `Sample Date`) %>%
+  fill(Depth, .direction = 'downup') %>%
+  ungroup() %>%
+  mutate(`Depth Unit` =
+           case_when(!is.na(Depth) ~ 'ft',
+                     is.na(Depth) ~ NA))
+
+# re-format MRL
+df_all <- df_all %>%
+  mutate(`EA_Reports To` =
+           case_when(`Data Classification` == 'LAB' ~ `EA_Reports To`,
+                     TRUE ~ NA)
+         )
+```
+
+
+```{r}
+# create/rename columns
+
+na_cols <- c('Observation ID','Activity ID','Collection Method','Field: Device ID','Lab: Limit Type','Lab: Received DateTime','Lab: Prepared DateTime','Lab: Sample Fraction','EA_Data Review Flag','EA_Filter Container ID')
+
+profile_vals <- c('Water Temperature', '(Bottom) Water Temperature', '(Bottom) Specific Conductance', 'Specific Conductance', '(Bottom) pH', 'pH', 'Turbidity', '(Bottom) Turbidity','Dissolved Oxygen % Saturation', '(Bottom) Dissolved Oxygen % Saturation', 'Dissolved Oxygen mg/L', '(Bottom) Dissolved Oxygen mg/L', 'Chlorophyll Fluorescence RFU', '(Bottom) Chlorophyll Fluorescence RFU', '(Bottom) Chlorophyll Fluorescence ug/L', 'Chlorophyll Fluorescence ug/L') 
+
+df_all <- df_all %>%
+  mutate(`EA_Project Type` = 'Routine Monitoring',
+         `EA_Profile Type` = case_when(
+           `Observed Property ID` %in% profile_vals ~ 'Discrete',
+           TRUE ~ NA_character_
+           ),
+         `EA_Parent Sample ID` = `QC: Source Sample ID`,
+         `Lab: Sample ID` = NA,
+         `Result Status` = 'Reviewed',
+         `Result Grade` = 'Good',
+         `Medium` = 'Water',
+         !!!setNames(rep(list(NA), length(na_cols)), na_cols))
+
+df_all <- df_all %>%
+  mutate(
+    `Lab: Specimen Name` =
+      case_when(`Data Classification` == 'LAB' ~ 'Lab Data',
+                `Data Classification` == 'FIELD_RESULT' ~ 'Field Data')
+  )
+```
+
+```{r}
+# edit analysis method
+df_analysis <- read_csv(abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration/Lists to Import/Final Imports/Import_Analysis Methods.csv'), show_col_types = FALSE) %>%
+  mutate(TrueName = paste(`Lab: Analysis Method`, `Name`, `SourceContext`, sep = ';'))
+
+df_all <- left_join(df_all, df_analysis, by = join_by(`Lab: Analysis Method`)) %>%
+  select(-c(`Lab: Analysis Method`,SourceContext,Name,Description)) %>%
+  rename(`Lab: Analysis Method` = TrueName)
+```
+
+
+```{r}
+# combine DateTime
+df_all <- df_all %>%
+  mutate(`Observed DateTime` = paste(`Sample Date`,`Sample Time`)) %>%
+  select(-c(`Sample Date`,`Sample Time`))
+
+# format Analyzed DateTime
+df_all <- df_all %>%
+  mutate(`Analyzed DateTime` = format(mdy_hm(`Analyzed DateTime`), '%Y-%m-%d %H:%M')
+  )
+
+# remove station number
+df_all <- df_all %>%
+  select(-c('Station Number'))
+
+# remove `Water Depth` observed property
+df_all <- df_all %>%
+  filter(!(`Observed Property ID` == 'Water Depth'))
+```
+
+```{r}
+# arrange columns
+col_order <- c('Observation ID', 'Location ID', 'Observed Property ID', 'Observed DateTime', 'Analyzed DateTime', 
+  'Depth', 'Depth Unit', 'Data Classification', 'Result Value', 'Result Unit', 'Result Status', 
+  'Result Grade', 'Medium', 'Activity Name', 'Activity ID', 'Collection Method', 'Field: Device ID', 
+  'Field: Device Type', 'Field: Comment', 'Lab: Specimen Name', 'Lab: Analysis Method', 
+  'Lab: Detection Condition', 'Lab: Limit Type', 'Lab: MDL', 'Lab: MRL', 'Lab: Quality Flag', 
+  'Lab: Received DateTime','Lab: Prepared DateTime','Lab: Sample Fraction', 'Lab: From Laboratory', 
+  'Lab: Sample ID', 'Lab: Dilution Factor', 'Lab: Comment', 'QC: Type', 'QC: Source Sample ID', 
+  'EA_Modified Method', 'EA_Profile Type', 'EA_Project Type', 'EA_Reports To', 'EA_Parent Sample ID', 
+  'EA_Data Review Flag', 'EA_Filter Container ID', 'EA_Sampling Depth')
+
+   
+df_all <- df_all %>% select(all_of(col_order))
+
+df_all <- df_all %>%
+  arrange(`Observed DateTime`, `Location ID`)
+
+
+rm(df_analysis, df_depth, df_long, df_mdl, df_method, df_old, df_stations, df_ta)
+
+# add PST to DateTime
+
+df_all <- df_all %>%
+  mutate(across(contains('DateTime'), ~ ifelse(is.na(.x), NA, paste0(.x, ' [PST]'))))
+```
+
+# PART 5: EXPORT
+
+```{r}
+# export
+# Define the filepath for saving
+# fp_export <- abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration')
+# 
+# # write_csv(df_all, file = paste0(fp_export, '/prelim_data.csv'), na = '')
+# 
+# df_list <- split(df_all, year(df_all$`Observed DateTime`))
+
+# define the filepath for saving
+# fp_export <- abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration/Formatted WDL Data')
+# 
+# df_list <- split(df_all,
+#                  list(year(df_all$`Observed DateTime`),
+#                       ifelse(month(df_all$`Observed DateTime`) <= 6, 'JanJun', 'JulDec'),
+#                       ifelse(df_all$`Data Classification` == 'FIELD_RESULT', 'Field', 'Lab')),
+#                  drop = TRUE)
+# 
+# # # split the dataframe
+# invisible(lapply(names(df_list), function(name) {
+#   name_parts <- unlist(strsplit(name, '\\.'))
+#   year <- name_parts[1]
+#   half_year <- name_parts[2]
+#   data_class <- name_parts[3]
+# 
+#   fp_exp <- paste0(fp_export, '/', year, '-', half_year, '-',data_class, '_EMP-DWQ.csv')
+# 
+#   # write to .csv
+#   if (year >= 2021){
+#     write_csv(df_list[[name]], file = fp_exp, na = '')
+#   }
+# }))
+```
+
+NEW STUFF
+
+```{r}
+df_all <- df_all %>%
+  rename(`EA_Field Quality Flag` = `EA_Data Review Flag`)
+```
+
+ADD WEATHER
+
+```{r}
+library(lubridate)
+
+df_weather <- read_csv(abs_path_emp('Water Quality/AQUARIUS Samples Database/Data Projects/Weather Observations/AllWeather_Import.csv'), show_col_types = FALSE)
+
+df_weather <- df_weather %>%
+  mutate(
+    `Observed DateTime` = gsub("\\[.*\\]", "", `Observed DateTime`),
+    `Observed DateTime` = as.POSIXct(`Observed DateTime`, format = "%Y-%m-%d %H:%M:%S", tz = "")
+  ) %>%
+  mutate(Depth = as.character(Depth))
+
+df_test <- df_all %>%
+  mutate(`Observed DateTime` = `Observed DateTime` %>%
+      gsub('\\[.*\\]', '', .) %>%  
+      trimws() %>%
+      ymd_hm()
+  ) %>%
+  filter(!(`QC: Type` %in% c('Replicate','Blank')))
+
+weather_key_pairs <- df_weather %>%
+  select(`Location ID`, `Observed DateTime`) %>%
+  distinct() %>%
+  mutate(`Observed Property ID` = "Weather Observations")
+
+df_test <- df_test %>%
+  mutate(`Observed DateTime` = format(`Observed DateTime`, "%Y-%m-%d %H:%M:%S"))
+
+weather_key_pairs  <- weather_key_pairs  %>%
+  mutate(`Observed DateTime` = format(`Observed DateTime`, "%Y-%m-%d %H:%M:%S"))
+
+df_weather <- df_weather %>%
+  mutate(`Observed DateTime` = format(`Observed DateTime`, "%Y-%m-%d %H:%M:%S"))
+
+df_test_filt <- df_test %>%
+  anti_join(weather_key_pairs, by = c("Location ID", "Observed Property ID", "Observed DateTime"))
+
+df_final <- bind_rows(df_test_filt, df_weather)
+```
+
+ADD QC
+
+```{r}
+df_qc <- read_csv(abs_path_emp('Water Quality/AQUARIUS Samples Database/Data Projects/Field Quality Flags/Field_Quality_Flags_Import.csv'), show_col_types = FALSE)
+
+df_qc <- df_qc %>%
+  mutate(
+    `Observed DateTime` = gsub("\\[.*\\]", "", `Observed DateTime`),
+    `Observed DateTime` = as.POSIXct(`Observed DateTime`, format = "%Y-%m-%d %H:%M:%S", tz = "")
+  ) %>%
+  filter(!(`QC: Type` %in% c('REPLICATE','BLANK')))
+
+df_qc <- df_qc %>%
+  mutate(`Observed DateTime` = format(`Observed DateTime`, "%Y-%m-%d %H:%M:%S"))
+
+df_test <- df_final %>%
+  left_join(
+    df_qc %>%
+      select(`Location ID`, `Observed Property ID`, `Observed DateTime`, 
+             EA_Field_Override = `EA_Field Quality Flag`),
+    by = c("Location ID", "Observed Property ID", "Observed DateTime")
+  ) %>%
+  mutate(`EA_Field Quality Flag` = case_when(
+    !is.na(EA_Field_Override) ~ EA_Field_Override,
+    TRUE ~ `EA_Field Quality Flag` 
+  )) %>%
+  select(-EA_Field_Override) 
+
+```
+
+FORMAT FOR EDI
+
+```{r}
+# remove noncompliant TKN
+
+# Remove TKN samples for lab noncompliance: 
+# 	E0124B0109
+# 	E0124B0190
+# 	E0124B0339
+# E0124B0340
+
+
+df_test2 <- df_test %>%
+  filter(!(`Observed Property ID` == 	'Total Kjeldahl Nitrogen' & `Activity Name` %in% c('E0124B0109','E0124B0190','E0124B0339','E0124B0340')))
+
+df_edi <- df_test2 %>%
+  select(`Location ID`, `Observed DateTime`, `Observed Property ID`, `Result Value`, `Result Unit`, `Lab: Detection Condition`, `Lab: MDL`, `Lab: MRL`, `EA_Reports To`, `Lab: Analysis Method`, `Lab: Quality Flag`, `EA_Field Quality Flag`, `Field: Comment`)
+
+df_edi <- df_edi %>%
+  mutate(
+    `Lab: Detection Condition` = 
+      case_when(is.na(`Lab: Detection Condition`) ~ 'Detected',
+                TRUE ~ `Lab: Detection Condition`)
+  )
+
+df_edi <- df_edi %>%
+  rename(
+    Station = `Location ID`,
+    DateTime = `Observed DateTime`,
+    Analyte = `Observed Property ID`,
+    Result_Value = `Result Value`,
+    Result_Unit = `Result Unit`,
+    Detection_Status = `Lab: Detection Condition`,
+    MRL = `Lab: MRL`,
+    MDL = `Lab: MDL`,
+    Reports_To = `EA_Reports To`,
+    Analysis_Method = `Lab: Analysis Method`,
+    Lab_QCFlag = `Lab: Quality Flag`,
+    Field_QCFlag = `EA_Field Quality Flag`,
+    Field_Comment = `Field: Comment`
+  )
+
+df_edi <- df_edi %>%
+  separate(DateTime, into = c('Date', 'Time'), sep = ' ') %>%
+  mutate(Analysis_Method = str_extract(Analysis_Method, '^[^;]+')) %>%
+  arrange(Date, Time, Station, Analyte)
+```
+
+```{r}
+write_csv(df_edi, 'C:/Users/sperry/Desktop/edi_draft.csv', na = '')
+```
+
+

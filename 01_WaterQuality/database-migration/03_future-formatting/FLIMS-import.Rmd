@@ -1,0 +1,43 @@
+```{r}
+library(tidyverse)
+library(lubridate)
+library(janitor)
+library(readxl)
+source('00_GlobalFunctions/functions.R')
+source('01_WaterQuality/database-migration/03_future-formatting/import-functions.R')
+
+# Path to main folder
+fp_rel <- 'Water Quality/00 - Monthly Run Docs/Lab Reports/2025/'
+
+# Path to export folder
+fp_export <- 'Water Quality/00 - Monthly Run Docs/Database Import Data'
+```
+
+```{r}
+# Import Bryte lab files
+fp_xlsx <- list.files(path = abs_path_emp(fp_rel), pattern = '\\.xlsx$', recursive = TRUE, full.names = TRUE)
+
+# Clean Bryte lab files
+df_final <- map_dfr(fp_xlsx, function(fp) {
+  format_bryte(fp)
+})
+```
+
+```{r}
+# Export by month
+fp_export <- abs_path_emp(fp_export)
+
+df_list <- split(df_final,
+                 list(format(as.POSIXct(df_final$`Observed DateTime`), '%Y-%m')),
+                 drop = TRUE)
+
+invisible(lapply(names(df_list), function(name) {
+  name_parts <- unlist(strsplit(name, '\\.'))
+  year_month <- name_parts[1]
+
+  fp_exp <- paste0(fp_export, '/', year_month,'_Bryte_EMP-DWQ.csv')
+
+  write_csv(df_list[[name]], file = fp_exp, na = '')
+}))
+```
+

@@ -1,0 +1,196 @@
+```{r}
+library(tidyverse)
+source('00_GlobalFunctions/functions.R')
+
+fp <- abs_path_emp('Water Quality/EDI Data/2025 Data Publishing/edi_draft.csv')
+df <- read_csv(fp)
+```
+
+```{r}
+shore_stations <- c(
+  'C10', 'C10A', 'C3', 'C3A', 'C7', 'C9', 'D24', 'MD10',
+  'P10', 'P10A', 'P12', 'P12A', 'P2', 'S42'
+)
+
+# Add station type column using case_when
+df <- df %>%
+  mutate(
+    Date = as.Date(Date, format = '%m/%d/%Y'),
+    station_type = case_when(
+      Station %in% shore_stations ~ 'shore',
+      TRUE ~ 'channel'
+    )
+  )
+
+df_summary <- df %>%
+  group_by(Analyte, Result_Unit, Analysis_Method, station_type) %>%
+  summarise(
+    date_start = min(Date, na.rm = TRUE),
+    date_end = max(Date, na.rm = TRUE),
+    .groups = 'drop'
+  ) %>%
+  pivot_wider(
+    names_from = station_type,
+    values_from = c(date_start, date_end),
+    names_glue = '{.value}_{station_type}'
+  ) %>%
+  left_join(
+    df %>%
+      group_by(Analyte, station_type) %>%
+      summarise(
+        max_end = max(Date, na.rm = TRUE),
+        .groups = 'drop'
+      ) %>%
+      pivot_wider(
+        names_from = station_type,
+        values_from = max_end,
+        names_glue = 'max_end_{station_type}'
+      ),
+    by = 'Analyte'
+  ) %>%
+  # mutate(
+  #   date_end_shore = case_when(
+  #     date_end_shore == max_end_shore ~ NA_Date_,
+  #     TRUE ~ date_end_shore
+  #   ),
+  #   date_end_channel = case_when(
+  #     date_end_channel == max_end_channel ~ NA_Date_,
+  #     TRUE ~ date_end_channel
+  #   )
+  # %>%
+  select(-starts_with('max_end_'))
+
+write_csv(df_summary, 'C:/Users/sperry/Desktop/analysis_methods.csv', na = '')
+```
+
+```{r}
+station_summary <- df %>%
+  mutate(
+    Station_Type = case_when(
+      Station %in% shore_stations ~ 'Shore-Based',
+      TRUE ~ 'Mid-Channel'
+    )
+  ) %>%
+  group_by(Station, Station_Type) %>%
+  summarise(
+    First_Date = min(Date, na.rm = TRUE),
+    Last_Date = max(Date, na.rm = TRUE),
+    .groups = 'drop'
+  )
+
+write_csv(station_summary, 'C:/Users/sperry/Desktop/stations_edi.csv', na = '')
+```
+
+
+```{r}
+group_keys <- read_csv('C:/Users/sperry/Desktop/stations_quick.csv')
+```
+
+```{r}
+df_test <- left_join(df, group_keys, by = 'Station')
+
+write_csv(df_test, 'C:/Users/sperry/Desktop/edi_TRUE_draft.csv', na = '')
+```
+
+```{r}
+library(tidyverse)
+
+# Read data
+df <- read_csv('C:/Users/sperry/Desktop/weathers_to_fix.csv')
+
+# Lowercase for pattern matching
+df <- df %>%
+  mutate(result_lower = tolower(`Result_Value`))
+
+# Define keyword groups
+rain_keywords <- c('rain', 'drizzle', 'shower')
+temp_keywords <- c('cool', 'warm', 'hot', 'cold', 'crisp')
+wind_keywords <- c('calm', 'windy', 'breezy', 'breeze')
+weather_keywords <- c('clear', 'sunny', 'cloudy', 'partly cloudy', 'cloud', 'overcast', 'fog', 'haze')
+
+# Extract weather descriptions
+extract_weather <- function(text) {
+  matches <- weather_keywords[str_detect(text, weather_keywords)]
+  if ('partly cloudy' %in% matches && 'cloudy' %in% matches) {
+    matches <- setdiff(matches, 'cloudy')
+  }
+  if (any(c('cloudy', 'partly cloudy') %in% matches) && 'cloud' %in% matches) {
+    matches <- setdiff(matches, 'cloud')
+  }
+  str_c(matches, collapse = '; ')
+}
+
+# Extract windspeed and convert knots to mph
+extract_windspeed <- function(text) {
+  knots_val <- str_extract(text, '\\b\\d+\\s*(?=knots|knts)')
+  mph_val <- str_extract(text, '\\b\\d+\\s*(?=mph)')
+
+  if (!is.na(knots_val)) {
+    # Convert knots to mph
+    knots_num <- as.numeric(str_extract(knots_val, '\\d+'))
+    return(round(knots_num * 1.15078, 1))
+  } else if (!is.na(mph_val)) {
+    return(as.numeric(str_extract(mph_val, '\\d+')))
+  } else {
+    return(NA)
+  }
+}
+
+extract_tempval <- function(text) {
+  match <- str_extract(text, '\\b\\d+\\s*(?=f\\b|degrees?\\b|degf\\b|deg\\b|-degree\\b)')
+  return(trimws(match))
+}
+
+# Apply transformations
+df <- df %>%
+  mutate(
+    Rain = if_else(str_detect(result_lower, str_c(rain_keywords, collapse = '|')), 'yes', ''),
+    temperature = map_chr(result_lower, ~ str_c(temp_keywords[str_detect(.x, temp_keywords)], collapse = '; ')),
+    wind = map_chr(result_lower, ~ str_c(wind_keywords[str_detect(.x, wind_keywords)], collapse = '; ')),
+    weather = map_chr(result_lower, extract_weather),
+    windspeed = map_dbl(result_lower, extract_windspeed),
+    tempval = map_chr(result_lower, extract_tempval)
+  ) %>%
+  select(-result_lower)
+
+
+df_test <- df
+
+cols_to_check <- c('Station', 'Date', 'Time', 'Analyte', 'Result_Value')
+
+# Compare the values row by row
+comparison_result <- all(df[cols_to_check] == df_test[cols_to_check])
+
+# Output result
+if (comparison_result) {
+  message('The selected columns are in the same order and have identical values in both dataframes.')
+} else {
+  message('The selected columns differ in order or content between the two dataframes.')
+}
+```
+```{r}
+write_csv(df_test,'C:/Users/sperry/Desktop/weather_extract.csv', na = '')
+```
+
+```{r}
+df <- read_csv('C:/Users/sperry/Desktop/almost_weather.csv')
+
+# Create "true wind" and "true temp" using case_when
+df <- df %>%
+  mutate(
+    `true wind` = case_when(
+      !is.na(windspeed) ~ as.character(windspeed),
+      TRUE ~ `Wind Velocity`
+    ),
+    `true temp` = case_when(
+      !is.na(tempval) ~ as.character(tempval),
+      TRUE ~ `Air Temperature`
+    )
+  )
+
+# View the result
+print(df)
+
+write_csv(df,'C:/Users/sperry/Desktop/weather_extract_done.csv', na = '')
+```
+

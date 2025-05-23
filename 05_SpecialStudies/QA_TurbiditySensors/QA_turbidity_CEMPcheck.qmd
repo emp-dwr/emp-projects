@@ -1,0 +1,181 @@
+---
+title: 'Turbidity Post-Cal Exploration'
+author: 'Perry'
+date: '`r Sys.Date()`'
+format:
+    html:
+      toc: true
+      highlight-style: github
+      embed-resources: true
+      self-contained-math: true
+---
+
+# Read in Data
+
+```{r}
+#| message: FALSE
+#| warning: FALSE
+
+library(tidyverse)
+library(lme4)
+library(lmerTest)
+library(lattice)
+library(emmeans)
+```
+
+```{r}
+#| message: FALSE
+#| warning: FALSE
+
+df_turb <- read_csv(here::here('05_SpecialStudies/QA_TurbiditySensors/moreturbiditydata.csv'))
+
+df_post <- df_turb %>% filter(Type == 'postcal')
+df_pre <- df_turb %>% filter(Type == 'precal')
+
+# all post-cal is new standard (24E) and all pre-cal is old standard (23F, except for 24B)
+```
+
+```{r}
+df_turb <- df_post %>%
+  mutate(PostCalCentered = Turbidity_FNU - 124, # center the data at 0
+         PostCalDate = as.Date(Date, format = '%m/%d/%Y'))
+```
+
+# Assumptions
+
+- sources of error accumulated between calibration and post-calibration are the same for all data points
+  - ie. no significant differences in drift between sondes or sites
+
+- sources of error accumulated between calibration and post-calibration are negligible
+  - ie. the expected value at post-cal remains 124 (the standard)
+  
+- the person doing the calibrations did not significantly affect the values
+
+- all sondes were calibrated in the old standard and post-calibrated in the new standard
+  - **checking this one**
+
+- the post-cal standard was 124 for all sondes
+
+# Plots
+
+## Original
+
+```{r}
+ggplot(df_turb, aes(x = PostCalCentered)) +
+  geom_histogram(bins = 10, fill = 'steelblue', color = 'white') +
+  theme_bw()
+```
+
+```{r}
+ggplot(df_turb, aes(x = '', y = PostCalCentered)) +
+  geom_boxplot(alpha = 0.8) +
+  geom_hline(yintercept = 0, color = 'red', linetype = 'dashed', linewidth = 1) +
+  geom_jitter(width = 0.2, shape = 21, size = 2, fill = 'gray') +
+  theme_bw()
+```
+
+**Conclusions:**
+Data is lower than expected, looks bimodal again.
+
+## Population Split
+
+```{r}
+df_split <- df_turb %>%
+  mutate(
+    ProgramSplit = case_when(
+      PostCalCentered < -5 ~ 'CEMP_low',
+      PostCalCentered >= -5 ~ 'CEMP_high',
+    )
+  ) %>%
+  mutate(ProgramSplit = factor(ProgramSplit, levels = c('CEMP_high','CEMP_low')))
+```
+
+```{r}
+ggplot(df_split, aes(x = ProgramSplit, y = PostCalCentered)) +
+  geom_boxplot(alpha = 0.8, outliers = FALSE) +
+  geom_hline(yintercept = 0, color = 'red', linetype = 'dashed', linewidth = 1) +
+  geom_jitter(width = 0.2, shape = 21, size = 2, fill = 'gray') +
+  theme_bw()
+```
+
+# Models
+
+## Original (Mod1)
+
+```{r}
+mod1 <- lm(PostCalCentered ~ 1, data = df_turb)
+
+summary(mod1)
+```
+
+```{r}
+#| layout-ncol: 2
+
+plot(mod1)
+```
+
+**Conclusions:**
+
+Not a great fit, look into split model.
+
+## Split (Mod3)
+
+```{r}
+mod2r <- lmer(PostCalCentered ~ (1|ProgramSplit), data = df_split, REML = FALSE)
+
+summary(mod2r)
+```
+
+```{r}
+ranef(mod2r)
+dotplot(ranef(mod2r, condVar = TRUE))
+```
+
+```{r}
+mod2f <- lm(PostCalCentered ~ ProgramSplit, data = df_split)
+
+summary(mod2f)
+```
+
+```{r}
+#| layout-ncol: 2
+
+plot(mod2f)
+```
+
+```{r}
+emm3f <- emmeans(mod2f, ~ ProgramSplit)
+summary(emm3f, infer = TRUE)
+```
+
+**Conclusions:**
+
+The high-valued data is not statistically different from 124, but the low-valued data is.
+
+## Compare models
+
+```{r}
+AIC(mod1, mod2f)
+BIC(mod1, mod2f)
+```
+
+**Conclusions:**
+
+We prefer the insight from our models that account for the bimodal nature of the program data.
+
+# More Plots
+
+```{r}
+ggplot(df_split, aes(x = PostCalDate, y = PostCalCentered+124, fill = ProgramSplit)) +
+  geom_hline(yintercept = 124, color = 'black', linetype = 'dashed', linewidth = 0.8) +
+  geom_point(size = 2.5, shape = 21, color = 'black') +
+  theme_bw()
+```
+
+# Conclusions
+
+Something appears to have happened after July.
+
+```{r}
+# write_csv(df_split, '05_SpecialStudies/QA_TurbiditySensors/split_data.csv')
+```

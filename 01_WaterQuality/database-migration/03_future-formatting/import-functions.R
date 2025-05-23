@@ -252,7 +252,8 @@ format_VR <- function(df_final) {
   
   # Assign depth unit
   df_final <- df_final %>%
-    mutate(`Depth Unit` = if_else(`Location ID` == 'Equipment Blank', NA, 'ft'))
+    mutate(`Depth Unit` = if_else(`Location ID` == 'Equipment Blank', NA, 'ft')) %>%
+    mutate(Depth = as.character(round(as.numeric(Depth), 1)))
   
   col_order <- c(
     'Observation ID', 'Location ID', 'Observed Property ID', 'Observed DateTime', 'Analyzed DateTime', 
@@ -263,7 +264,7 @@ format_VR <- function(df_final) {
     'Lab: Received DateTime', 'Lab: Prepared DateTime', 'Lab: Sample Fraction', 'Lab: From Laboratory', 
     'Lab: Sample ID', 'Lab: Dilution Factor', 'Lab: Comment', 'QC: Type', 'QC: Source Sample ID', 
     'EA_Modified Method', 'EA_Profile Type', 'EA_Project Type', 'EA_Reports To', 
-    'EA_Parent Sample ID', 'EA_Data Review Flag', 'EA_Sampling Depth'
+    'EA_Parent Sample ID', 'EA_Field Quality Flag', 'EA_Sampling Depth'
   )
   
   df_final <- df_final %>%
@@ -276,7 +277,7 @@ format_VR <- function(df_final) {
 # process FDS -------------------------------------------------------------
 
 process_FDS <- function(fp) {
-  df <- read_excel(fp, col_names = FALSE)
+  df <- suppressMessages(read_excel(fp, col_names = FALSE))
   
   # Main batch
   df_head <- df %>%
@@ -358,8 +359,8 @@ process_FDS <- function(fp) {
     mutate(
       is_header1 = str_detect(...1, 'Station:'),
       is_horz = str_detect(...1, 'Horizontal'),
-      is_pretow_surf = str_detect(...1, 'Pre-Tow Surf'),
-      is_pretow_bot = str_detect(...1, 'Pre-Tow Bot'),
+      is_pretow_surf = str_detect(...1, 'Pre-Tow Surf|No-Tow Surf|Post-Tow Surf'), #TODO: GIVE WARNING IF POST-TOW OR IF MULTIPLE
+      is_pretow_bot = str_detect(...1, 'Pre-Tow Bot|No-Tow Bot|Post-Tow Bot'),
       is_header2 = str_detect(...1, 'Lab ID'),
       is_discval = case_when(lag(is_header2, default = FALSE) & !is.na(...1) ~ TRUE, TRUE ~ FALSE),
       is_notes = str_detect(...1, 'Notes:'),
@@ -655,7 +656,8 @@ format_FDS <- function(df_final) {
     mutate(`Depth Unit` = case_when(
       `Location ID` == 'Equipment Blank' ~ NA,
       TRUE ~ 'ft'
-    ))
+    )) %>%
+    mutate(Depth = as.character(round(as.numeric(Depth), 1)))
   
   # Rearrange
   col_order <- c(
@@ -667,7 +669,7 @@ format_FDS <- function(df_final) {
     'Lab: Received DateTime', 'Lab: Prepared DateTime', 'Lab: Sample Fraction', 'Lab: From Laboratory', 
     'Lab: Sample ID', 'Lab: Dilution Factor', 'Lab: Comment', 'QC: Type', 'QC: Source Sample ID', 
     'EA_Modified Method', 'EA_Profile Type', 'EA_Project Type', 'EA_Reports To', 
-    'EA_Parent Sample ID', 'EA_Data Review Flag', 'EA_Sampling Depth'
+    'EA_Parent Sample ID', 'EA_Field Quality Flag', 'EA_Sampling Depth'
   )
   
   df_final <- df_final %>% select(all_of(col_order)) %>%
@@ -676,7 +678,111 @@ format_FDS <- function(df_final) {
   df_final <- df_final %>%
     filter(!(`Observed Property ID` %in% c('Latitude', 'Longitude', 'Filter Container ID') & is.na(`Result Value`)))
   
+  df_final <- df_final %>%
+    filter(!(is.na(`Observed Property ID`) & `Result Value` == 'Yes'))
+  
   return(df_final)
 }
 
-
+format_bryte <- function(fp){
+  # Read in lab and field data (for depth)
+  df_lab <- suppressMessages(read_excel(fp, sheet = 'Lab_Results'))
+  df_field <- suppressMessages(read_excel(fp, sheet = 'Field_Results'))
+  
+  # Rename lab columns
+  rename_map <- c(
+    'Location ID' = 'Station Name',
+    'param' = 'Analyte',
+    'Result Value' = 'Sample Result',
+    'Observed DateTime' = 'Collected',
+    'Analyzed DateTime' = 'Analyzed',
+    'Activity Name' = 'Sample Code',
+    'Lab: Dilution Factor' = 'Dilution',
+    'Lab: Comment' = 'Result Note',
+    'Lab: Received DateTime' = 'Received',
+    'Lab: MRL' = 'RL',
+    'Lab: Quality Flag' = 'Result Flag',
+    'EA_Parent Sample ID' = 'Parent Sample',
+    'QC: Type' = 'Sample Type'
+  )
+  
+  df_lab <- rename_cols(df_lab, rename_map, verbose = FALSE)
+  
+  # Filter out unneeded parameters
+  df_lab <- df_lab %>% filter(!(param %in% c('Specific Conductance','pH')))
+  
+  # Add in depth (from df_field)
+  df_field <- df_field %>%
+    select(`Station Name`, Measure, Result) %>%
+    distinct() %>%
+    filter(Measure == 'Water Depth at Station') %>%
+    pivot_wider(
+      names_from = Measure,
+      values_from = Result
+    ) %>%
+    rename('Depth' = 'Water Depth at Station',
+           'Location ID' = 'Station Name')
+  
+  df_final <- left_join(df_lab, df_field, by = 'Location ID')
+  
+  # Combine with metadata
+  fp_meta <- abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration/Lists to Import/Final Imports/Import_Bryte Metadata.csv')
+  df_meta <- read_csv(fp_meta, show_col_types = FALSE)
+  
+  df_final <- right_join(df_meta, df_final, by = c('param')) %>%
+    select(-c(param))
+  
+  # Format columns
+  df_final <- df_final %>%
+    mutate(
+      `Location ID` = str_remove(`Location ID`, ' -.*'),
+      `Location ID` = case_when(
+        `Location ID` == 'Blank; Equipment' ~ 'Equipment Blank',
+        TRUE ~ `Location ID`
+      ),
+      `EA_Parent Sample ID` = case_when(
+        `EA_Parent Sample ID` == '0' ~ NA_character_,
+        TRUE ~ `EA_Parent Sample ID`
+      ),
+      `QC: Source Sample ID` = `EA_Parent Sample ID`,
+      `QC: Type` = case_when(
+        `QC: Type` == 'Normal Sample' ~ NA_character_,
+        `QC: Type` == 'Blank; Equipment' ~ 'Blank',
+        `QC: Type` == 'Duplicate, Specific Analyte(s)' ~ 'Replicate'
+      ),
+      `Lab: Detection Condition` = case_when(
+        `Result Value` == '< R.L.' ~ 'Not detected',
+        TRUE ~ NA_character_),
+      `Result Value` = case_when(
+        `Result Value` == '< R.L.' ~ NA_character_,
+        TRUE ~ `Result Value`),
+      `Depth Unit` = case_when(
+        `Location ID` == 'Equipment Blank' ~ NA_character_,
+        TRUE ~ 'ft')
+    )
+  
+  # Format DateTimes
+  df_final <- df_final %>%
+    mutate(across(contains('DateTime'), ~ format(mdy_hm(`Analyzed DateTime`), '%Y-%m-%d %H:%M:%S')))
+  
+  df_final <- df_final %>%
+    mutate(across(contains('DateTime'), ~ ifelse(is.na(.x), NA, paste0(.x, ' [PST]'))))
+  
+  # Rearrange
+  col_order <- c(
+    'Observation ID', 'Location ID', 'Observed Property ID', 'Observed DateTime', 'Analyzed DateTime', 
+    'Depth', 'Depth Unit', 'Data Classification', 'Result Value', 'Result Unit', 'Result Status', 
+    'Result Grade', 'Medium', 'Activity Name', 'Activity ID', 'Collection Method', 'Field: Device ID', 
+    'Field: Device Type', 'Field: Comment', 'Lab: Specimen Name', 'Lab: Analysis Method', 
+    'Lab: Detection Condition', 'Lab: Limit Type', 'Lab: MDL', 'Lab: MRL', 'Lab: Quality Flag', 
+    'Lab: Received DateTime', 'Lab: Prepared DateTime', 'Lab: Sample Fraction', 'Lab: From Laboratory', 
+    'Lab: Sample ID', 'Lab: Dilution Factor', 'Lab: Comment', 'QC: Type', 'QC: Source Sample ID', 
+    'EA_Modified Method', 'EA_Profile Type', 'EA_Project Type', 'EA_Reports To', 
+    'EA_Parent Sample ID', 'EA_Field Quality Flag', 'EA_Sampling Depth'
+  )
+  
+  df_final <- df_final %>% select(all_of(col_order)) %>%
+    arrange(`Activity Name`, `Data Classification`)
+  
+  return(df_final)
+}
