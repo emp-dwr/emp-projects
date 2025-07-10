@@ -1,0 +1,575 @@
+```{r results='asis', message=FALSE, echo=FALSE}
+library(kableExtra)
+library(tibble)
+
+df <- tribble(
+  ~Design, ~Sample_Size, ~Recommended_Test, ~R_Functions, ~Why,
+
+  # LM
+  "Balanced", "Any", "F-test (classical ANOVA)", "anova(lm(...))",
+  "Sums of squares partition cleanly due to orthogonality",
+
+  "Unbalanced", "Any", "LRT (nested models)", "anova(lm1, lm2)",
+  "More robust than contrast-dependent F-tests; handles imbalance",
+
+  # LMM
+  "Balanced", "Large", "LRT (ML fits) or Kenward–Roger", "anova(...), KRmodcomp()",
+  "Both valid under large n; KR adjusts df, LRT compares nested models",
+
+  "Balanced", "Small", "Kenward–Roger F-test", "lmerTest::anova(), KRmodcomp()",
+  "Adjusts for small-sample bias in denominator df",
+
+  "Unbalanced", "Large", "LRT (ML fits)", "anova(..., REML = FALSE)",
+  "Robust if model is large and well-estimated",
+
+  "Unbalanced", "Small", "Kenward–Roger or Bootstrap LRT", "KRmodcomp(), PBmodcomp()",
+  "LRT may be anti-conservative; KR/bootstrap fix small-sample bias",
+
+  # GLM
+  "Balanced", "Large", "Wald or LRT", "anova(glm(...), test = \"Chisq\")",
+  "Wald test matches LRT under regularity; both valid",
+
+  "Unbalanced", "Large", "LRT (nested models)", "anova(glm1, glm2, test = \"Chisq\")",
+  "More reliable than Wald under imbalance",
+
+  "Any", "Small", "Avoid Wald; cautious LRT", "anova(glm1, glm2)",
+  "Wald test has inflated Type I error in small samples",
+
+  # GLMM
+  "Balanced", "Large", "LRT (ML fits)", "anova(glmm1, glmm2)",
+  "Valid for nested models; REML not allowed for fixed effect testing",
+
+  "Balanced", "Small", "LRT (caution)", "anova(...)",
+  "Works better than Wald, but not perfect at small n",
+
+  "Unbalanced", "Large", "LRT or AIC", "anova(...), AIC()",
+  "Handles complex structures; bootstrapping safer",
+
+  "Unbalanced", "Small", "Parametric bootstrap LRT", "PBmodcomp(), afex::mixed()",
+  "Wald and LRT unreliable near boundary; bootstrap gives correct null distribution"
+)
+
+kbl(df, format = "html", escape = FALSE,
+    col.names = c("Design", "Sample Size", "Recommended Test", "R Function", "Why"),
+    align = "l") %>%
+  kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover")) %>%
+  row_spec(0, bold = TRUE) %>%
+  pack_rows("LM", 1, 2, background = "lightgray") %>%
+  pack_rows("LMM", 3, 6, background = "white") %>%
+  pack_rows("GLM", 7, 9, background = "lightgray") %>%
+  pack_rows("GLMM", 10, 13, background = "white")
+```
+
+# Additional Notes
+
+## Type III ANOVA vs. LRT
+
+Type III ANOVA
+Type III ANOVA tests the marginal effect of each term after adjusting for all other terms in the model, including interactions.
+
+It is commonly used in software like SAS and in car::Anova(..., type = 3) in R.
+
+It is sometimes recommended for unbalanced designs because it ensures each term is tested in the full model context, regardless of order.
+
+However:
+
+Results depend critically on contrast coding:
+
+For Type III ANOVA to work sensibly in R, you must set sum-to-zero contrasts, e.g.:
+
+r
+Copy
+Edit
+options(contrasts = c("contr.sum", "contr.poly"))
+If you use treatment (default) contrasts, Type III tests lose interpretability, especially for interactions.
+
+Even with proper contrasts, Type III tests can produce F-statistics that don't correspond to clear model comparisons, especially when design is unbalanced and effects are not orthogonal.
+
+In mixed models, Type III ANOVA assumes denominator degrees of freedom in complex, often heuristic ways — e.g., via Satterthwaite or Kenward–Roger approximations.
+
+Likelihood Ratio Tests (LRTs)
+LRTs compare nested models: one full model, and one reduced model without the effect of interest.
+
+They ask: "Does removing this term significantly worsen model fit?"
+
+In R, this is done via:
+
+Advantages:
+
+Contrast coding is irrelevant — the test compares overall model fit.
+
+More robust to imbalance, especially when models are nested.
+
+Interpretable: it answers the exact question of whether the effect improves the model.
+
+Preferred for testing fixed effects in unbalanced or complex models, or when you want reproducibility across software environments.
+
+Limitations:
+
+Must use ML (REML = FALSE) — REML is only valid when fixed effects are identical.
+
+Only applicable for nested model comparisons.
+
+The LRT is asymptotic — small samples can lead to anti-conservative p-values (especially for random effects or boundary parameters).
+
+So Which to Prefer?
+Scenario	Preferred Test	Why
+Balanced design	Type III ANOVA (with correct contrasts) or LRT	Either is fine; orthogonality makes results align
+Unbalanced design	LRT	Type III depends on contrasts; LRT compares real models
+Mixed models (LMM/GLMM)	LRT or Kenward–Roger, not Type III	Type III less reliable for mixed models, LRT is clearer
+Complex interactions	LRT	Avoid Type III’s ambiguous marginal tests
+
+Final Recommendation
+If you’ve set contrasts correctly (e.g., contr.sum) and the design is not too messy, Type III ANOVA can be used cautiously.
+But for general-purpose, model-based inference, especially with unbalanced designs or mixed models, Likelihood Ratio Tests are more robust, easier to interpret, and not contrast-dependent.
+
+Note
+If you want to use Type III ANOVA, make sure to set cont.sum correctly.
+
+## REML
+
+Use REML = FALSE (i.e., maximum likelihood) when comparing nested models with different fixed effects, such as in likelihood ratio tests (LRTs).
+
+Use REML = TRUE (i.e., restricted maximum likelihood) when testing fixed effects within a single model, especially when using Kenward–Roger adjusted F-tests.
+
+REML is only valid for comparing models with the same fixed-effects structure — otherwise, the likelihoods are not comparable.
+
+**Summary: REML = TRUE is only for Kenward-Roger adjusted F-tests**
+
+## Kenward-Roger vs Satterthwaite
+
+Both Kenward–Roger and Satterthwaite approximations are used to estimate denominator degrees of freedom for F-tests or t-tests in linear mixed models, particularly when sample sizes are small or unbalanced.
+
+Satterthwaite is:
+
+Simpler and faster
+
+Used in lmerTest::anova() by default for t-tests
+
+Based on approximating the distribution of a ratio of variances
+
+Often sufficient for random-intercept models or balanced data
+
+Kenward–Roger is:
+
+More computationally intensive, but more accurate
+
+Adjusts both the degrees of freedom and the estimated covariance matrix
+
+Preferred in small samples, complex random effects, or when testing F-statistics
+
+Used via pbkrtest::KRmodcomp() or lmerTest::anova(type = 3)
+
+✅ Use Kenward–Roger when precision matters (especially for F-tests);
+✅ Use Satterthwaite for quicker, approximate inference (especially for t-tests).
+
+
+## Stepwise Selection
+
+📌 Note on Stepwise Selection, dredge(), and Variable Screening
+Stepwise Selection
+Stepwise model selection procedures (e.g., forward, backward, or both) automatically add or remove predictors based on criteria like AIC, BIC, or p-values.
+
+Though widely used, stepwise selection has serious limitations:
+
+Inflated Type I error rates
+
+Biased parameter estimates
+
+Overfitting and unstable model structure
+
+Results highly dependent on the data at hand and on variable entry order
+
+It’s often data-driven rather than theory-driven, which undermines reproducibility and interpretability.
+
+Alternative: MuMIn::dredge()
+The dredge() function (from the MuMIn package) fits all possible subsets of a global model and ranks them by information criteria (e.g., AICc).
+
+Advantages:
+
+Provides a global view of model fit across variable combinations
+
+Allows model averaging for uncertainty in variable selection
+
+Caveats:
+
+Can be computationally expensive
+
+Not immune to the overfitting risks of stepwise procedures
+
+Should be used with care and a limited, theory-justified set of predictors
+
+Preliminary Variable Screening
+In large datasets or models with many potential predictors, it’s common to:
+
+Perform univariate tests or visual exploration to filter irrelevant variables
+
+Use domain knowledge to pre-specify likely important variables
+
+Assess multicollinearity (e.g., via VIF) before modeling
+
+✅ Preliminary screening is acceptable if transparently reported and justified — it helps reduce noise and computational burden, especially before fitting complex models (e.g., GLMMs).
+
+✅ Best Practices
+Prefer theory-driven model building over automated selection.
+
+If variable selection is necessary:
+
+Use information criteria (AIC/AICc) over p-values
+
+Report the full set of candidate models and selection process
+
+Consider model averaging to account for model uncertainty
+
+Always assess the stability and interpretability of the final model.
+
+
+```{r}
+# Load required package
+library(car)
+```
+
+
+```{r}
+# Set contrasts to contr.sum to allow Type III SS
+options(contrasts = c("contr.sum", "contr.poly"))
+
+# Fit a linear model
+model <- lm(Sepal.Length ~ Species + Petal.Width + Species:Petal.Width, data = iris)
+
+# Perform Type III ANOVA
+Anova(model, type = 3, test = 'F')
+```
+
+```{r}
+summary(model)
+```
+```{r}
+m1 <- glm(Sepal.Length ~ Petal.Width + Species, data = iris, family = gaussian())
+m2 <- glm(Sepal.Length ~ Species + Petal.Width + Species:Petal.Width, data = iris, family = gaussian())
+
+anova(m1, m2, test = "LRT")
+```
+
+```{r}
+drop1(m1)
+```
+
+
+```{r}
+summary(m2)
+```
+
+```{r}
+# Set contrasts to contr.sum to allow Type III SS
+options(contrasts = c("contr.sum", "contr.poly"))
+
+# Fit a linear model
+model <- lm(Sepal.Length ~ Species + Petal.Width, data = iris)
+
+# Perform Type III ANOVA
+Anova(model, type = 3, test = 'F')
+```
+
+```{r}
+# Set contrasts to contr.sum to allow Type III SS
+options(contrasts = c("contr.sum", "contr.poly"))
+
+# Fit a linear model
+model <- lm(Sepal.Length ~ Species + Petal.Width, data = iris)
+
+# Perform Type III ANOVA
+Anova(model, type = 3, test = 'Chisq')
+```
+
+```{r}
+m1 <- glm(Sepal.Length ~ Petal.Width, data = iris, family = gaussian())
+m2 <- glm(Sepal.Length ~ Species + Petal.Width, data = iris, family = gaussian())
+
+library(lme4)
+anova(m1, m2)
+```
+
+```{r}
+library(MuMIn)
+m2 <- glm(Sepal.Length ~ Species + Petal.Width + Species:Petal.Width, data = iris, family = gaussian(), na.action = 'na.fail')
+
+dredge(m2, extra = alist(AIC, BIC, ICOMP, Cp))
+```
+
+
+```{r}
+anova(m2)
+```
+
+```{r}
+anova(model)
+```
+
+
+```{r}
+summary(model)
+```
+
+```{r}
+summary(m2)
+```
+
+```{r}
+mtcars$cyl <- factor(mtcars$cyl)
+mtcars$am  <- factor(mtcars$am, labels = c("auto", "manual"))
+
+m <- glm(mpg ~ cyl * wt + hp + qsec + am, data = mtcars,
+         family = gaussian(), na.action = na.fail)
+
+summary(m)
+```
+```{r}
+m <- lm(mpg ~ cyl * wt + hp + qsec + am, data = mtcars, na.action = na.fail)
+
+anova(m)
+```
+```{r}
+dredge(m, extra = c(BIC, Cp))
+```
+
+```{r}
+me <- lm(mpg ~ wt + qsec + am, data = mtcars, na.action = na.fail)
+
+summary(me)
+```
+
+```{r}
+Anova(m2, type = 3)
+Anova(me, type = 3)
+```
+
+```{r}
+Anova(m, type = 3)
+```
+```{r}
+Anova(m2, type = 3)
+```
+```{r}
+dredge(m2)
+```
+
+```{r}
+mlme <- lmer(mpg ~ wt + qsec + am + (1|1), data = mtcars, na.action = na.fail)
+
+lmerTest::anova(m2)
+```
+```{r}
+library(pbkrtest)
+KRmodcomp(m2)
+
+m2
+```
+
+
+
+
+```{r}
+dredge(m2)
+```
+
+```{r}
+m2 <- glm(mpg ~ wt + qsec + am, data = mtcars, na.action = na.fail)
+m3 <- glm(mpg ~ wt + qsec, data = mtcars, na.action = na.fail)
+m4 <- glm(mpg ~ wt + am, data = mtcars, na.action = na.fail)
+m5 <- glm(mpg ~ qsec + am, data = mtcars, na.action = na.fail)
+```
+
+```{r}
+# ensure correct contrasts
+options(contrasts = c("contr.sum", "contr.poly"))
+
+# fit model
+m2 <- lm(mpg ~ wt + qsec + am, data = mtcars)
+
+# get Type III ANOVA
+a3 <- Anova(m2, type = "III")
+
+# extract sums of squares
+ss_term <- a3["am", "Sum Sq"]
+ss_res  <- a3["Residuals", "Sum Sq"]
+
+# compute f^2
+f2_am <- ss_term / ss_res
+
+# degrees of freedom
+df_term <- a3["am", "Df"]
+df_res  <- a3["Residuals", "Df"]
+
+# compute power
+pwr.f2.test(u = df_term, v = df_res, f2 = f2_am, sig.level = 0.042)
+```
+
+
+```{r}
+drop1(m2, )
+```
+
+```{r}
+library(effectsize)
+eta_squared(m2, partial = TRUE, type = 3)
+```
+```{r}
+true_beta_am <- coef(m2)['am']
+
+library(MASS)
+
+simulate_lrt_power <- function(n = nrow(mtcars), B = 1000) {
+  design <- model.matrix(~ wt + qsec + am, data = mtcars)
+  beta <- coef(m2)
+  sigma <- sigma(m2)
+  pvals <- numeric(B)
+
+  for (b in 1:B) {
+    y_sim <- rnorm(n, mean = design %*% beta, sd = sigma)
+    full_sim <- lm(y_sim ~ wt + qsec + am, data = mtcars)
+    red_sim  <- lm(y_sim ~ wt + qsec, data = mtcars)
+
+    lrt <- -2 * (logLik(red_sim)[1] - logLik(full_sim)[1])
+    pvals[b] <- pchisq(lrt, df = 1, lower.tail = FALSE)
+  }
+
+  power_estimate <- mean(pvals < 0.05)
+  return(power_estimate)
+}
+
+simulate_type3_power <- function(model_full, term = "am", B = 1000, alpha_nominal = 0.05) {
+  X <- model.matrix(model_full)
+  beta <- coef(model_full)
+  sigma <- sigma(model_full)
+  n <- nrow(X)
+
+  pvals <- numeric(B)
+
+  for (b in 1:B) {
+    y_sim <- rnorm(n, mean = X %*% beta, sd = sigma)
+    data_sim <- model.frame(model_full)
+    data_sim[[as.character(formula(model_full)[[2]])]] <- y_sim
+
+    model_b <- update(model_full, data = data_sim)
+    a3 <- car::Anova(model_b, type = "III")
+    pvals[b] <- a3[term, "Pr(>F)"]
+  }
+
+  mean(pvals < alpha_nominal)  # empirical power
+}
+
+simulate_type3_power(m2)
+simulate_lrt_power()
+```
+
+```{r}
+m2 <- lm(mpg ~ wt + qsec + am, data = mtcars)
+m3 <- lm(mpg ~ wt + qsec, data = mtcars)  # null model (no am)
+
+simulate_lrt_alpha <- function(full_model, reduced_model, B = 1000, alpha_nominal = 0.05) {
+  # design matrix and parameters from reduced model (null)
+  X <- model.matrix(reduced_model)
+  beta <- coef(reduced_model)
+  sigma <- sigma(reduced_model)
+  n <- nrow(X)
+
+  pvals <- numeric(B)
+
+  for (b in 1:B) {
+    # simulate new response under null
+    y_sim <- rnorm(n, mean = X %*% beta, sd = sigma)
+
+    # refit models with simulated data
+    full_sim <- update(full_model, data = transform(mtcars, mpg = y_sim))
+    red_sim  <- update(reduced_model, data = transform(mtcars, mpg = y_sim))
+
+    # compute LRT
+    lrt <- -2 * (logLik(red_sim)[1] - logLik(full_sim)[1])
+    pvals[b] <- pchisq(lrt, df = 1, lower.tail = FALSE)
+  }
+
+  # return estimated alpha (false positive rate)
+  list(
+    estimated_alpha = mean(pvals < alpha_nominal),
+    nominal_alpha = alpha_nominal
+  )
+}
+
+simulate_type3_alpha(m2, B = 1000)
+simulate_lrt_alpha(m2,m3, B = 1000)
+```
+```{r}
+Anova(m2, type = 3)
+```
+```{r}
+library(pwr)
+pwr.f2.test(u = 1, v = 28, f2 = 0.1547, sig.level = 0.05)
+```
+
+```{r}
+simulate_type3_alpha <- function(model_full, term = "am", B = 1000, alpha_nominal = 0.05) {
+  # 1. Fit null model without the target term
+  terms_all <- attr(terms(model_full), "term.labels")
+  terms_null <- setdiff(terms_all, term)
+  formula_null <- reformulate(terms_null, response = all.vars(formula(model_full))[1])
+  model_null <- update(model_full, formula_null)
+
+  # 2. Extract design matrix, coefficients, and sigma from null model
+  X <- model.matrix(model_null)
+  beta <- coef(model_null)
+  sigma <- sigma(model_null)
+  n <- nrow(X)
+
+  # 3. Run simulation
+  pvals <- numeric(B)
+
+  for (b in 1:B) {
+    y_sim <- rnorm(n, mean = X %*% beta, sd = sigma)
+    data_sim <- model.frame(model_full)
+    data_sim[[as.character(formula(model_full)[[2]])]] <- y_sim
+
+    model_b <- update(model_full, data = data_sim)
+    a3 <- Anova(model_b, type = "III")
+    pvals[b] <- a3[term, "Pr(>F)"]
+  }
+
+  # Return estimated alpha
+  list(
+    estimated_alpha = mean(pvals < alpha_nominal),
+    nominal_alpha = alpha_nominal
+  )
+}
+```
+
+
+```{r}
+anova(m2, m3)
+anova(m2, m4)
+anova(m2, m5)
+```
+
+
+```{r}
+Anova(m2, type = 3)
+```
+```{r}
+library(glmnet)
+
+# Prepare the design matrix (X) and response vector (y)
+X <- model.matrix(mpg ~ wt + qsec + am, data = mtcars)[, -1]  # remove intercept column
+y <- mtcars$mpg
+
+```
+```{r}
+ridge_fit <- glmnet(X, y, alpha = 0)
+```
+
+```{r}
+cv_ridge <- cv.glmnet(X, y, alpha = 0)
+best_lambda <- cv_ridge$lambda.min
+
+# Coefficients at optimal lambda
+coef(cv_ridge, s = 'lambda.min')
+```
+

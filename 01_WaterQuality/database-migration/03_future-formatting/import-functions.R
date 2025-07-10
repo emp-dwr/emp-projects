@@ -41,7 +41,7 @@ process_VR <- function(df_raw) {
         str_remove('_[0-9]+$') %>%
         str_squish(),
       
-      # Normalize param names using case_when
+      # Normalize param names
       param_base = case_when(
         str_detect(param_base_raw, 'Lab ID') ~ 'Lab ID',
         str_detect(param_base_raw, 'Churn Bucket') ~ 'Churn Bucket',
@@ -85,12 +85,12 @@ format_VR <- function(df_final) {
   
   # Assign times
   df_final <- df_final %>%
-    mutate(`Observed DateTime` = case_when(
-      param == 'Time' ~ date_value + hms(paste0(value, ':00')),
-      TRUE ~ NA_POSIXct_
-    )) %>%
     group_by(batch_id) %>%
-    fill(`Observed DateTime`, .direction = 'downup') %>%
+    mutate(
+      batch_time = first(value[param == 'Time' & !is.na(value)]),
+      `Observed DateTime` = date_value + hms(paste0(batch_time, ':00'))
+    ) %>%
+    select(-batch_time) %>%
     ungroup()
   
   # Assign device ID
@@ -243,12 +243,18 @@ format_VR <- function(df_final) {
   df_final <- right_join(df_meta, df_final, by = c('param', 'SurfBot')) %>%
     select(-c(param, SurfBot))
   
-  # Format datetime
-  df_final <- df_final %>%
-    mutate(`Analyzed DateTime` = format(mdy_hm(`Analyzed DateTime`), '%Y-%m-%d %H:%M:%S'))
+  # Format DateTimes
+  # df_final <- df_final %>%
+  #   mutate(across(contains('DateTime'), ~ format(mdy_hm(.x), '%Y-%m-%d %H:%M:%S')))
+  
+  # df_final <- df_final %>%
+  #   mutate(across(contains('DateTime'), ~ as.POSIXct(round_date(mdy_hm(.x), unit = '5 minutes'))))
   
   df_final <- df_final %>%
-    mutate(across(contains('DateTime'), ~ ifelse(is.na(.), NA, paste0(.x, ' [PST]'))))
+    mutate(across(contains('DateTime'), ~ ifelse(is.na(.x), NA, paste0(.x, ' [PST]'))))
+  
+  df_final <- df_final %>%
+    filter(is.na(`Observed Property ID`) == FALSE | `Result Value` != 'Yes')
   
   # Assign depth unit
   df_final <- df_final %>%
@@ -256,7 +262,7 @@ format_VR <- function(df_final) {
     mutate(Depth = as.character(round(as.numeric(Depth), 1)))
   
   col_order <- c(
-    'Observation ID', 'Location ID', 'Observed Property ID', 'Observed DateTime', 'Analyzed DateTime', 
+    'Observation ID', 'Location ID', 'Observed Property ID', 'Observed DateTime', 'Analyzed DateTime',
     'Depth', 'Depth Unit', 'Data Classification', 'Result Value', 'Result Unit', 'Result Status', 
     'Result Grade', 'Medium', 'Activity Name', 'Activity ID', 'Collection Method', 'Field: Device ID', 
     'Field: Device Type', 'Field: Comment', 'Lab: Specimen Name', 'Lab: Analysis Method', 
@@ -269,7 +275,7 @@ format_VR <- function(df_final) {
   
   df_final <- df_final %>%
     select(all_of(col_order)) %>%
-    arrange(`Location ID`, desc(is.na(`QC: Type`)))
+    arrange(`Observed DateTime`, `Location ID`, desc(is.na(`QC: Type`)))
   
   return(df_final)
 }
@@ -659,6 +665,30 @@ format_FDS <- function(df_final) {
     )) %>%
     mutate(Depth = as.character(round(as.numeric(Depth), 1)))
   
+  # Remove depth observed property
+  df_final <- df_final %>%
+    filter(`Observed Property ID` != 'Water Depth')
+      
+  # Round some more (TODO: make more efficient)
+  df_final <- df_final %>%
+    mutate(
+      `Result Value` = case_when(
+        `Observed Property ID` == 'Turbidity' ~ as.character(round(as.numeric(`Result Value`), 1)),
+        `Observed Property ID` == 'Chlorophyll Fluorescence RFU' ~ as.character(round(as.numeric(`Result Value`), 2)),
+        TRUE ~ `Result Value`
+        ),
+      `EA_Sampling Depth` = round(as.numeric(`EA_Sampling Depth`), 1)
+      )
+  
+  # Remove Device ID for unneeded properties (TODO: make more efficient)
+  df_final <- df_final %>%
+    mutate(
+      `Field: Device ID` = case_when(
+        `Observed Property ID` %in% c('Filter Container ID','Sky Conditions','Rain','Microcystis aeruginosa','Churn Bucket ID','Air Temperature','Wind Velocity','Wave Scale') ~ NA,
+        TRUE ~ `Field: Device ID`
+      )
+    )
+  
   # Rearrange
   col_order <- c(
     'Observation ID', 'Location ID', 'Observed Property ID', 'Observed DateTime', 'Analyzed DateTime', 
@@ -679,7 +709,7 @@ format_FDS <- function(df_final) {
     filter(!(`Observed Property ID` %in% c('Latitude', 'Longitude', 'Filter Container ID') & is.na(`Result Value`)))
   
   df_final <- df_final %>%
-    filter(!(is.na(`Observed Property ID`) & `Result Value` == 'Yes'))
+    filter(!(is.na(`Observed Property ID`)))
   
   return(df_final)
 }
@@ -708,9 +738,11 @@ format_bryte <- function(fp){
   
   df_lab <- rename_cols(df_lab, rename_map, verbose = FALSE)
   
+  # Filter out lab duplicates
+  df_lab <- df_lab %>% filter(is.na(`Sample Lab Code`))
+  
   # Filter out unneeded parameters
   df_lab <- df_lab %>% filter(!(param %in% c('Specific Conductance','pH')))
-  
   # Add in depth (from df_field)
   df_field <- df_field %>%
     select(`Station Name`, Measure, Result) %>%
@@ -731,13 +763,16 @@ format_bryte <- function(fp){
   
   df_final <- right_join(df_meta, df_final, by = c('param')) %>%
     select(-c(param))
-  
   # Format columns
   df_final <- df_final %>%
     mutate(
       `Location ID` = str_remove(`Location ID`, ' -.*'),
       `Location ID` = case_when(
         `Location ID` == 'Blank; Equipment' ~ 'Equipment Blank',
+        `Location ID` == 'EZ6' ~ 'LSZ6',
+        `Location ID` == 'EZ2' ~ 'LSZ2',
+        `Location ID` == 'EZ6-SJR' ~ 'LSZ6-SJR',
+        `Location ID` == 'EZ2-SJR' ~ 'LSZ2-SJR',
         TRUE ~ `Location ID`
       ),
       `EA_Parent Sample ID` = case_when(
@@ -762,8 +797,11 @@ format_bryte <- function(fp){
     )
   
   # Format DateTimes
+  # df_final <- df_final %>%
+  #   mutate(across(contains('DateTime'), ~ format(mdy_hm(.x), '%Y-%m-%d %H:%M:%S')))
+  
   df_final <- df_final %>%
-    mutate(across(contains('DateTime'), ~ format(mdy_hm(`Analyzed DateTime`), '%Y-%m-%d %H:%M:%S')))
+    mutate(across(contains('DateTime'), ~ as.POSIXct(round_date(mdy_hm(.x), unit = '5 minutes'))))
   
   df_final <- df_final %>%
     mutate(across(contains('DateTime'), ~ ifelse(is.na(.x), NA, paste0(.x, ' [PST]'))))
@@ -781,8 +819,9 @@ format_bryte <- function(fp){
     'EA_Parent Sample ID', 'EA_Field Quality Flag', 'EA_Sampling Depth'
   )
   
-  df_final <- df_final %>% select(all_of(col_order)) %>%
-    arrange(`Activity Name`, `Data Classification`)
+  df_final <- df_final %>%
+    select(all_of(col_order)) %>%
+    arrange(`Observed DateTime`, `Location ID`, desc(is.na(`QC: Type`)))
   
   return(df_final)
 }

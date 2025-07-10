@@ -27,18 +27,70 @@ library(emmeans)
 #| message: FALSE
 #| warning: FALSE
 
-df_turb <- read_csv(here::here('05_SpecialStudies/QA_TurbiditySensors/moreturbiditydata.csv'))
+df_emp <- read_csv(here::here('05_SpecialStudies/QA_TurbiditySensors/moreturbiditydata.csv')) %>%
+  rename(sonde_name = Instrument_ID,
+         postcal = Turbidity_FNU,
+         lot_number = Turbidity_Std) %>%
+  mutate(Date = as.Date(Date, format = '%m/%d/%Y'))#  %>%
+  # filter(Type == 'postcal')
 
-df_post <- df_turb %>% filter(Type == 'postcal')
-df_pre <- df_turb %>% filter(Type == 'precal')
+df_emp2 <- df_emp %>%
+  mutate(
+    StdAge = case_when(
+      grepl('^24[E-Z]', lot_number) ~ 'new',
+      TRUE ~ 'old'
+    )
+  ) %>%
+  group_by(sonde_name) %>%
+  filter(n_distinct(Type) == 2) %>%
+  mutate(
+    Compare = case_when(
+      n_distinct(StdAge) == 1 ~ first(StdAge),
+      n_distinct(StdAge) > 1 ~ 'Dif'
+    )
+  ) %>%
+  ungroup()
+
+
+df_emp_post <- read_csv(here::here('05_SpecialStudies/QA_TurbiditySensors/moreturbiditydata.csv')) %>%
+  rename(sonde_name = Instrument_ID,
+         postcal = Turbidity_FNU,
+         lot_number = Turbidity_Std) %>%
+  mutate(Date = as.Date(Date, format = '%m/%d/%Y'))  %>%
+  filter(Type == 'postcal')
+
+df_mwqi <- read_csv(here::here('05_SpecialStudies/QA_TurbiditySensors/Data/MWQI Turbidity Lot Numbers WY2024.csv')) %>%
+  rename(postcal = postdeploy_reading_2) %>%
+  mutate(Date = as.Date(postdeploy_time, format = '%m/%d/%Y %H:%M'))
+
+df_smb <- read_csv(here::here('05_SpecialStudies/QA_TurbiditySensors/Data/SMB Turbidity Lot Numbers WY2024.csv')) %>%
+  rename(postcal = postdeploy_reading_2) %>%
+  mutate(Date = as.Date(postdeploy_time, format = '%m/%d/%Y %H:%M'))
+
+df_comb <- bind_rows(
+  df_smb %>% mutate(ProgramName = 'SMB'),
+  df_mwqi %>% mutate(ProgramName = 'MWQI'),
+  df_emp_post %>% mutate(ProgramName = 'EMP')
+) %>%
+  select(ProgramName, sonde_name, Date, postcal, lot_number)
+
+df_comb <- df_comb %>% mutate(PostCalCentered = postcal - 124)
+
 
 # all post-cal is new standard (24E) and all pre-cal is old standard (23F, except for 24B)
 ```
 
 ```{r}
-df_turb <- df_post %>%
-  mutate(PostCalCentered = Turbidity_FNU - 124, # center the data at 0
-         PostCalDate = as.Date(Date, format = '%m/%d/%Y'))
+df_comb <- df_comb %>%
+  mutate(
+    StdAge = case_when(
+      grepl('^24[E-Z]', lot_number) ~ 'new',
+      TRUE ~ 'old'
+    )
+  )
+
+# remove outliers
+df_comb <- df_comb %>% filter(PostCalCentered < 30)
 ```
 
 # Assumptions
@@ -59,6 +111,21 @@ df_turb <- df_post %>%
 # Plots
 
 ## Original
+
+```{r}
+ggplot(df_comb, aes(x = PostCalCentered)) +
+  geom_histogram(bins = 10, fill = 'steelblue', color = 'white') +
+  theme_bw()
+```
+
+```{r}
+ggplot(df_comb, aes(x = '', y = PostCalCentered)) +
+  geom_boxplot(alpha = 0.8) +
+  geom_hline(yintercept = 0, color = 'red', linetype = 'dashed', linewidth = 1) +
+  geom_jitter(width = 0.2, shape = 21, size = 2, fill = 'gray') +
+  theme_bw()
+```
+
 
 ```{r}
 ggplot(df_turb, aes(x = PostCalCentered)) +
@@ -148,6 +215,21 @@ emm3f <- emmeans(mod2f, ~ ProgramSplit)
 summary(emm3f, infer = TRUE)
 ```
 
+# mod for comb data
+
+```{r}
+library(emmeans)
+mod4 <- lmer(PostCalCentered ~ StdAge + (1|ProgramName), data = df_comb)
+
+summary(mod4)
+emmeans(mod4, ~ StdAge)
+```
+
+```{r}
+var.test(PostCalCentered ~ StdAge, data = df_smb)
+```
+
+
 **Conclusions:**
 
 The high-valued data is not statistically different from 124, but the low-valued data is.
@@ -166,11 +248,553 @@ We prefer the insight from our models that account for the bimodal nature of the
 # More Plots
 
 ```{r}
+df_emp_comp <- df_emp2 %>%
+  filter(!is.na(Compare), Type == 'postcal') %>%
+  mutate(PostCalCentered = postcal - 124)
+
+ggplot(df_emp_comp, aes(x = Date, y = PostCalCentered,
+                    fill = Compare)) +
+  geom_hline(yintercept = 0, color = 'black', linetype = 'dashed', linewidth = 0.8) +
+  geom_point(size = 3, color = 'black', shape = 21) +
+  theme_bw() +
+  labs(title = 'EMP post-cal for formulation used') +
+  scale_fill_manual(values = c('Dif' = 'purple', 'old' = 'orange'))
+```
+
+```{r}
+
+library(scales)
+
+df_smb <- df_comb %>%
+  filter(ProgramName != 'EMP')
+
+ggplot(df_smb, aes(x = Date, y = PostCalCentered,
+                   fill = StdAge, shape = ProgramName)) +
+  geom_hline(yintercept = 0, color = 'black', linetype = 'dashed', linewidth = 0.8) +
+  geom_point(size = 3, color = 'black') +
+  scale_shape_manual(values = c('new' = 21, 'old' = 24)) +
+  scale_fill_manual(values = c('SMB' = 'yellow', 'MWQI' = 'red', 'EMP' = 'steelblue')) +
+  scale_x_date(
+    date_breaks = '1 month',
+    date_labels = '%b %Y'  # or '%b' if you prefer shorter labels
+  ) +
+  scale_x_date(
+    date_breaks = '1 month',
+    date_labels = '%b %Y'  # or use '%b' for just Jan, Feb, etc.
+  ) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = 'SMB post-cal data (var difference significant)')
+```
+
+```{r}
+ggplot(df_comb, aes(x = Date, y = PostCalCentered,
+                    fill = ProgramName, shape = StdAge)) +
+  geom_hline(yintercept = 0, color = 'black', linetype = 'dashed', linewidth = 0.8) +
+  geom_point(size = 3, color = 'black') +
+  scale_shape_manual(values = c('new' = 21, 'old' = 24)) +
+  scale_fill_manual(values = c('SMB' = 'yellow', 'MWQI' = 'red', 'EMP' = 'steelblue')) +
+  scale_x_date(
+    date_breaks = '1 month',
+    date_labels = '%b %Y'  # or '%b' if you prefer shorter labels
+  ) +
+  guides(
+    fill = guide_legend(override.aes = list(shape = 21, color = 'black')),
+    shape = guide_legend(override.aes = list(fill = 'white', color = 'black'))
+  ) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = 'All post-cal data (sign preserved)')
+```
+
+```{r}
+ggplot(df_comb, aes(x = Date, y = abs(PostCalCentered),
+                    fill = ProgramName, shape = StdAge)) +
+  geom_hline(yintercept = 0, color = 'black', linetype = 'dashed', linewidth = 0.8) +
+  geom_point(size = 3, color = 'black') +
+  scale_shape_manual(values = c('new' = 21, 'old' = 24)) +
+  scale_fill_manual(values = c('SMB' = 'yellow', 'MWQI' = 'red', 'EMP' = 'steelblue')) +
+  scale_x_date(
+    date_breaks = '1 month',
+    date_labels = '%b %Y'
+  ) +
+  guides(
+    fill = guide_legend(override.aes = list(shape = 21, color = 'black')),
+    shape = guide_legend(override.aes = list(fill = 'white', color = 'black'))
+  ) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = 'All post-cal data (abs value)')
+```
+
+
+```{r}
+ggplot(df_comb, aes(x = Date, y = PostCalCentered,
+                    fill = StdAge, shape = ProgramName)) +
+  geom_hline(yintercept = 0, color = 'black', linetype = 'dashed', linewidth = 0.8) +
+  geom_point(size = 3, color = 'black') +
+  scale_shape_manual(values = c('SMB' = 21, 'MWQI' = 22, 'EMP' = 24)) +
+  scale_fill_manual(values = c('new' = 'green', 'old' = 'pink')) +
+  scale_x_date(
+    date_breaks = '1 month',
+    date_labels = '%b %Y'
+  ) +
+  guides(
+    fill = guide_legend(override.aes = list(shape = 21, color = 'black')),
+    shape = guide_legend(override.aes = list(fill = 'white', color = 'black'))
+  ) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = 'All post-cal data (sign preserved)')
+```
+
+```{r}
+ggplot(df_comb, aes(x = Date, y = abs(PostCalCentered),
+                    fill = StdAge, shape = ProgramName)) +
+  geom_hline(yintercept = 0, color = 'black', linetype = 'dashed', linewidth = 0.8) +
+  geom_point(size = 3, color = 'black') +
+  scale_shape_manual(values = c('SMB' = 21, 'MWQI' = 22, 'EMP' = 24)) +
+  scale_fill_manual(values = c('new' = 'green', 'old' = 'pink')) +
+  scale_x_date(
+    date_breaks = '1 month',
+    date_labels = '%b %Y'
+  ) +
+  guides(
+    fill = guide_legend(override.aes = list(shape = 21, color = 'black')),
+    shape = guide_legend(override.aes = list(fill = 'white', color = 'black'))
+  ) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = 'All post-cal data (abs value)')
+```
+
+
+```{r}
 ggplot(df_split, aes(x = PostCalDate, y = PostCalCentered+124, fill = ProgramSplit)) +
   geom_hline(yintercept = 124, color = 'black', linetype = 'dashed', linewidth = 0.8) +
   geom_point(size = 2.5, shape = 21, color = 'black') +
   theme_bw()
 ```
+
+```{r}
+library(changepoint)
+
+# Step 1: Prepare data (absolute value)
+df_comb <- df_comb %>%
+  mutate(PostCalAbs = abs(PostCalCentered)) %>%
+  arrange(Date)  # ensure ordered by time
+
+# Step 2: Run change point detection (mean shifts in absolute values)
+cpt_result <- cpt.mean(df_comb$PostCalAbs, method = 'PELT', penalty = 'MBIC')
+
+# Get change point indices and convert to Dates
+change_indices <- cpts(cpt_result)
+change_dates <- df_comb$Date[change_indices]
+
+# Step 3: Plot
+ggplot(df_comb, aes(x = Date, y = PostCalAbs, fill = ProgramName)) +
+  geom_vline(xintercept = change_dates, linetype = 'dashed', color = 'red', linewidth = 0.8) +
+  geom_line(color = 'steelblue', linewidth = 0.5) +
+  geom_point(color = 'black', size = 2.5, shape = 21) +
+  scale_fill_manual(values = c('SMB' = 'yellow', 'MWQI' = 'red', 'EMP' = 'steelblue')) +
+  labs(title = 'Change Point Analysis on abs(PostCal)',
+       y = 'abs(PostCalCentered)',
+       x = 'Date') +
+  scale_x_date(
+    date_breaks = '1 month',
+    date_labels = '%b %Y'
+  ) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+```{r}
+# Step 1: Prepare data (absolute value)
+df_smb <- df_smb %>%
+  mutate(PostCalAbs = abs(PostCalCentered)) %>%
+  arrange(Date)  # ensure ordered by time
+
+# Step 2: Run change point detection (mean shifts in absolute values)
+cpt_result <- cpt.mean(df_smb$PostCalAbs, method = 'PELT', penalty = 'MBIC')
+
+# Get change point indices and convert to Dates
+change_indices <- cpts(cpt_result)
+change_dates <- df_smb$Date[change_indices]
+
+# Step 3: Plot
+ggplot(df_smb, aes(x = Date, y = PostCalAbs, fill = ProgramName)) +
+  geom_vline(xintercept = change_dates, linetype = 'dashed', color = 'red', linewidth = 0.8) +
+  geom_line(color = 'steelblue', linewidth = 0.5) +
+  geom_point(color = 'black', size = 2.5, shape = 21) +
+  scale_fill_manual(values = c('SMB' = 'yellow', 'MWQI' = 'red', 'EMP' = 'steelblue')) +
+  labs(title = 'SMB Change Point Analysis on abs(PostCal)',
+       y = 'abs(PostCalCentered)',
+       x = 'Date') +
+  scale_x_date(
+    date_breaks = '1 month',
+    date_labels = '%b %Y'
+  ) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+```{r}
+df_test <- df_comb %>%
+  filter(Date < '2024-09-20' & Date > '2024-06-01')
+
+ggplot(df_test, aes(x = Date, y = abs(PostCalCentered),
+                    fill = lot_number, shape = ProgramName)) +
+  geom_hline(yintercept = 0, color = 'black', linetype = 'dashed', linewidth = 0.8) +
+  geom_point(size = 3, color = 'black') +
+  scale_shape_manual(values = c('SMB' = 21, 'MWQI' = 22, 'EMP' = 24)) +
+  # scale_fill_manual(values = c('new' = 'green', 'old' = 'pink')) +
+  scale_x_date(
+    date_breaks = '1 month',
+    date_labels = '%b %Y'
+  ) +
+  guides(
+    fill = guide_legend(override.aes = list(shape = 21, color = 'black')),
+    shape = guide_legend(override.aes = list(fill = 'white', color = 'black'))
+  ) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = 'Lot Number Check')
+```
+
+```{r}
+df_comb <- df_comb %>%
+  mutate(
+    badlots = case_when(
+      lot_number %in% c(
+        '22E24001726',
+        '23F24003259',
+        '23G24003826',
+        '24B24009095',
+        '24E24011758',
+        '24E24012288'
+      ) ~ lot_number,
+      TRUE ~ 'good'
+    )
+  )
+
+ggplot(df_comb, aes(x = Date, y = abs(PostCalCentered),
+                    fill = badlots, shape = ProgramName)) +
+  geom_hline(yintercept = 0, color = 'black', linetype = 'dashed', linewidth = 0.8) +
+  geom_point(size = 3, color = 'black') +
+  scale_shape_manual(values = c('SMB' = 21, 'MWQI' = 22, 'EMP' = 24)) +
+  scale_fill_manual(
+    values = c(
+      '22E24001726' = 'red',
+      '23F24003259' = 'orange',
+      '23G24003826' = 'green',
+      '24B24009095' = 'cyan',
+      '24E24011758' = 'blue',
+      '24E24012288' = 'magenta',
+      'good' = 'white'
+    )
+  ) +
+  scale_x_date(
+    date_breaks = '1 month',
+    date_labels = '%b %Y'
+  ) +
+  guides(
+    fill = guide_legend(override.aes = list(shape = 21, color = 'black')),
+    shape = guide_legend(override.aes = list(fill = 'white', color = 'black'))
+  ) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = 'All post-cal data (abs value)')
+```
+
+```{r}
+df_comb <- df_comb %>%
+  mutate(
+    badlots = case_when(
+      lot_number %in% c(
+        '22E24001726',
+        '23F24003259',
+        '23G24003826',
+        '24B24009095',
+        '24E24011758',
+        '24E24012288'
+      ) ~ lot_number,
+      TRUE ~ 'good'
+    )
+  )
+
+ggplot(df_comb, aes(x = Date, y = PostCalCentered,
+                    fill = badlots, shape = ProgramName)) +
+  geom_hline(yintercept = 0, color = 'black', linetype = 'dashed', linewidth = 0.8) +
+  geom_point(size = 3, color = 'black') +
+  scale_shape_manual(values = c('SMB' = 21, 'MWQI' = 22, 'EMP' = 24)) +
+  scale_fill_manual(
+    values = c(
+      '22E24001726' = 'red',
+      '23F24003259' = 'orange',
+      '23G24003826' = 'green',
+      '24B24009095' = 'cyan',
+      '24E24011758' = 'blue',
+      '24E24012288' = 'magenta',
+      na.value = 'gray',
+      'good' = 'white'
+    ),
+    na.value = 'gray' 
+  ) +
+  scale_x_date(
+    date_breaks = '1 month',
+    date_labels = '%b %Y'
+  ) +
+  guides(
+    fill = guide_legend(override.aes = list(shape = 21, color = 'black')),
+    shape = guide_legend(override.aes = list(fill = 'white', color = 'black'))
+  ) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = 'All post-cal data (abs value)')
+```
+
+```{r}
+df_comb <- df_comb %>%
+  mutate(
+    badlots = case_when(
+      lot_number %in% c(
+        '22E24001726',
+        '23F24003259',
+        '23G24003826',
+        '24B24009095',
+        '24E24011758',
+        '24E24012288'
+      ) ~ lot_number,
+      TRUE ~ 'good'
+    )
+  )
+
+ggplot(df_comb, aes(x = Date, y = abs(PostCalCentered),
+                    fill = badlots, shape = ProgramName)) +
+  geom_hline(yintercept = 0, color = 'black', linetype = 'dashed', linewidth = 0.8) +
+  geom_point(size = 3, color = 'black') +
+  scale_shape_manual(values = c('SMB' = 21, 'MWQI' = 22, 'EMP' = 24)) +
+  scale_fill_manual(
+    values = c(
+      '22E24001726' = 'red',
+      '23F24003259' = 'orange',
+      '23G24003826' = 'green',
+      '24B24009095' = 'cyan',
+      '24E24011758' = 'blue',
+      '24E24012288' = 'magenta',
+      na.value = 'gray',
+      'good' = 'white'
+    ),
+    na.value = 'gray' 
+  ) +
+  scale_x_date(
+    date_breaks = '1 month',
+    date_labels = '%b %Y'
+  ) +
+  guides(
+    fill = guide_legend(override.aes = list(shape = 21, color = 'black')),
+    shape = guide_legend(override.aes = list(fill = 'white', color = 'black'))
+  ) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = 'All post-cal data (abs value)')
+```
+
+```{r}
+em_orig <- emmeans(mod1, ~ lot_number)
+summary(em_orig, infer = c(TRUE, TRUE), null = 0, side = ">")
+```
+
+```{r}
+mod5 <- lm(abs(PostCalCentered) ~ lot_number, data = df_comb)
+
+em1 <- emmeans(mod5, ~lot_number)
+
+em1
+```
+```{r}
+summary(em1, infer = c(TRUE, TRUE), null = 0, side = ">")
+```
+
+```{r}
+mod6 <- lm(PostCalCentered ~ lot_number, data = df_comb)
+
+em2 <- emmeans(mod6, ~lot_number)
+
+em2
+
+em2_sum <- summary(em2, infer = c(TRUE, TRUE), null = 0)
+
+df_emm <- as.data.frame(em2_sum)
+
+ggplot(df_emm, aes(x = emmean, y = lot_number)) +
+  geom_point(size = 2.5, color = 'black') +
+  geom_errorbarh(aes(xmin = lower.CL, xmax = upper.CL), height = 0.2, color = 'gray40') +
+  geom_vline(xintercept = 0, linetype = 'dashed', color = 'red') +
+  labs(
+    x = 'PostCalCentered Mean',
+    y = 'Lot Number',
+    title = 'Means and 95% CIs by Lot'
+  ) +
+  theme_bw() +
+  theme(
+    axis.text.y = element_text(size = 10),
+    axis.text.x = element_text(size = 10),
+    plot.title = element_text(hjust = 0.5)
+  )
+```
+```{r}
+mod6 <- lm(PostCalCentered ~ lot_number, data = df_comb)
+mod5 <- lm(abs(PostCalCentered) ~ lot_number, data = df_comb)
+
+em1 <- emmeans(mod5, ~lot_number)
+
+em1_sum <- summary(em1, infer = c(TRUE, TRUE), null = 0, sign = '>')
+em2_sum
+df_emm1 <- as.data.frame(em1_sum)
+
+ggplot(df_emm1, aes(x = emmean, y = lot_number)) +
+  geom_point(size = 2.5, color = 'black') +
+  geom_errorbarh(aes(xmin = lower.CL, xmax = upper.CL), height = 0.2, color = 'gray40') +
+  geom_vline(xintercept = 0, linetype = 'dashed', color = 'red') +
+  labs(
+    x = 'PostCalCentered Mean',
+    y = 'Lot Number',
+    title = 'Means and 95% CIs by Lot'
+  ) +
+  theme_bw() +
+  theme(
+    axis.text.y = element_text(size = 10),
+    axis.text.x = element_text(size = 10),
+    plot.title = element_text(hjust = 0.5)
+  )
+
+# Step 1: Create fill color column
+df_emm <- df_emm %>%
+  mutate(fill_color = case_when(
+    grepl('23G|24B|24E', lot_number) ~ 'green',
+    TRUE ~ 'black'
+  ))
+
+# Step 2: Plot with shape = 21 and custom fill
+ggplot(df_emm, aes(x = emmean, y = lot_number)) +
+  geom_errorbarh(aes(xmin = lower.CL, xmax = upper.CL), height = 0.2, color = 'gray40') +
+  geom_vline(xintercept = 0, linetype = 'dashed', color = 'red') +
+  geom_point(aes(fill = fill_color), shape = 21, size = 3, color = 'black') +
+  scale_fill_identity() +  # use values in fill_color as actual colors
+  labs(
+    x = 'PostCalCentered Mean',
+    y = 'Lot Number',
+    title = 'Means and 95% CIs by Lot'
+  ) +
+  theme_bw()
+```
+```{r}
+mod6 <- lm(PostCalCentered ~ lot_number, data = df_comb)
+mod5 <- lm(abs(PostCalCentered) ~ lot_number, data = df_comb)
+
+em1 <- emmeans(mod5, ~lot_number)
+
+em1_sum <- summary(em1, infer = c(TRUE, TRUE), null = 0, sign = '>')
+em2_sum
+df_emm1 <- as.data.frame(em1_sum)
+
+ggplot(df_emm1, aes(x = emmean, y = lot_number)) +
+  geom_point(size = 2.5, color = 'black') +
+  geom_errorbarh(aes(xmin = lower.CL, xmax = upper.CL), height = 0.2, color = 'gray40') +
+  geom_vline(xintercept = 0, linetype = 'dashed', color = 'red') +
+  labs(
+    x = 'PostCalCentered Mean',
+    y = 'Lot Number',
+    title = 'Means and 95% CIs by Lot'
+  ) +
+  theme_bw() +
+  theme(
+    axis.text.y = element_text(size = 10),
+    axis.text.x = element_text(size = 10),
+    plot.title = element_text(hjust = 0.5)
+  )
+
+# Step 1: Create fill color column
+df_emm1 <- df_emm1 %>%
+  mutate(fill_color = case_when(
+    grepl('23G|24B|24E', lot_number) ~ 'green',
+    TRUE ~ 'black'
+  ))
+
+# Step 2: Plot with shape = 21 and custom fill
+ggplot(df_emm1, aes(x = emmean, y = lot_number)) +
+  geom_errorbarh(aes(xmin = lower.CL, xmax = upper.CL), height = 0.2, color = 'gray40') +
+  geom_vline(xintercept = 0, linetype = 'dashed', color = 'red') +
+  geom_point(aes(fill = fill_color), shape = 21, size = 3, color = 'black') +
+  scale_fill_identity() +  # use values in fill_color as actual colors
+  labs(
+    x = 'PostCalCentered Mean',
+    y = 'Lot Number',
+    title = 'Means and 95% CIs by Lot (abs, interpret with caution)'
+  ) +
+  theme_bw() 
+```
+```{r}
+df_emm
+```
+
+```{r}
+library(changepoint)
+
+# Step 1: Prepare data (absolute value)
+df_smb <- df_smb %>%
+  mutate(PostCalAbs = abs(PostCalCentered)) %>%
+  arrange(Date)  # ensure ordered by time
+
+# Step 2: Run change point detection (mean shifts in absolute values)
+cpt_result <- cpt.mean(df_smb$PostCalAbs, method = 'PELT', penalty = 'MBIC')
+
+# Get change point indices and convert to Dates
+change_indices <- cpts(cpt_result)
+change_dates <- df_smb$Date[change_indices]
+
+# Step 3: Plot
+ggplot(df_smb, aes(x = Date, y = PostCalAbs)) +
+  geom_line(color = 'steelblue', linewidth = 0.5) +
+  geom_point(color = 'black', size = 2.5, shape = 21) +
+  geom_vline(xintercept = change_dates, linetype = 'dashed', color = 'red', linewidth = 0.8) +
+  labs(title = 'Change Point Analysis on |PostCalCentered|',
+       y = '|PostCalCentered|',
+       x = 'Date') +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+```{r}
+lot_summary <- df_comb %>%
+  group_by(ProgramName, lot_number) %>%
+  summarise(
+    StartDate = min(Date, na.rm = TRUE),
+    EndDate   = max(Date, na.rm = TRUE),
+    .groups = 'drop'
+  ) %>%
+  arrange(StartDate)
+
+lot_summary
+```
+
+```{r}
+lot_summary <- df_comb %>%
+  group_by(ProgramName, lot_number) %>%
+  summarise(
+    DatesUsed = paste(sort(unique(Date)), collapse = '; '),
+    .groups = 'drop'
+  ) %>%
+  arrange(lot_number, ProgramName)
+
+lot_summary
+```
+
+
+```{r}
+summary(em, infer = c(TRUE, TRUE), null = 0, side = ">")
+```
+
 
 # Conclusions
 

@@ -12,7 +12,7 @@ source('01_WaterQuality/database-migration/03_future-formatting/import-functions
 fp_rel <- 'Water Quality/00 - Monthly Run Docs/Raw Field Data/Water Quality 2025/'
 
 # Path to export folder
-fp_export <- 'Water Quality/00 - Monthly Run Docs/Database Import Data'
+fp_export <- 'Water Quality/00 - Monthly Run Docs/Database Import Data/2025/'
 ```
 
 ```{python}
@@ -54,12 +54,13 @@ for root, dirs, files in os.walk(fp_main):
         ):
             full_path = os.path.join(root, file)
             pdf_files.append(full_path)
+            print(full_path)
             
 all_forms = []
 
 for pdf_path in pdf_files:
-    form_data = extract_VR(pdf_path)
-    all_forms.append(form_data)
+  form_data = extract_VR(pdf_path)
+  all_forms.append(form_data)
 ```
 
 ```{r warning=FALSE}
@@ -91,6 +92,7 @@ df_final <- bind_rows(df_VR_all, df_FDS)
 
 # filter out extra rows
 df_final <- df_final %>% filter(!(is.na(`Observed Property ID`) & `Result Value` == 'Yes'))
+df_final <- df_final %>% filter(`Observed Property ID` != 'Water Depth')
 ```
 
 ```{r}
@@ -106,7 +108,7 @@ invisible(lapply(names(df_list), function(name) {
   year_month <- name_parts[1]
 
   fp_exp <- paste0(fp_export, '/', year_month,'_FDS_EMP-DWQ.csv')
-
+  print(fp_exp)
   write_csv(df_list[[name]], file = fp_exp, na = '')
 }))
 ```

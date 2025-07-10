@@ -1,0 +1,39 @@
+For $X_1,...,X_n \sim N(\mu,\sigma^2)$:
+
+$Z = \frac{\bar{X}-\mu}{\sqrt{\sigma^2/n}}\sim N(0,1)$
+
+For sample mean $\bar{X} = \frac{1}{n}\sum^n_{i=1}X_i$:
+
+$\bar{X} \sim N(\mu, \frac{\sigma^2}{n})$
+
+For sample variance $S^2 = \frac{1}{n-1}\sum^n_{i=1}(X_i-\bar{X}^2)$ with degrees of freedom $d = (n-1)$:
+
+$d\frac{S^2}{\sigma^2} \sim \chi^2_{d}$
+
+or
+
+$U/d \sim \chi^2_{d}$
+
+where $U = S^2/\sigma^2$
+
+When comparing two variances $S^2_1$ and $S^2_2$ with $d_1 = n_1 - 1$ and $d_2 = n_2 - 1$:
+
+$F = \frac{(S^2_1/\sigma^2_1)/d_1}{(S^2_2/\sigma^2_2)/d_2} \sim F_{d_1,d_2}$
+
+or
+
+$F = \frac{U_1/d_1}{U_2/d_2} \sim F_{d_1,d_2}$
+
+For ANOVA with $k$ groups and $n$ total observations:
+
+$F = \frac{\text{between group variation}}{\text{within group variation}}$
+
+where $d_1 = k - 1$ and $d_2 = n-k$.
+
+When $n \rightarrow \infty$:
+
+$F = \frac{U_1/d_1}{U_2/d_2} \rightarrow \frac{U_1}{d_1}$
+
+and, therefore:
+
+$F_{d_1,\infty} \rightarrow \chi^2_{d_1}/d_1$
