@@ -36,4 +36,4 @@ $F = \frac{U_1/d_1}{U_2/d_2} \rightarrow \frac{U_1}{d_1}$
 
 and, therefore:
 
-$F_{d_1,\infty} \rightarrow \chi^2_{d_1}/d_1$
+$F_{d_1,\infty} \rightarrow \chi^2_{d_1}$
