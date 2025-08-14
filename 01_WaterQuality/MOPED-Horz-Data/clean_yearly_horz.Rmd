@@ -12,7 +12,7 @@ By: Perry
 # ---
 
 # declare the run year of interest  
-year <- 2022
+year <- 2023
 ```
 
 ```{r}
@@ -26,12 +26,12 @@ library(lubridate)
 library(readxl)
 library(zoo)
 options(digits = 10)
-source('03_Phyto/phycoprobe/functions/phyco_funcs.R')
+source('03_Phyto/01_routine/phyco-cleaning/functions/phyco_funcs.R')
 
-# read in run names and regions
-df_names <- read_csv('03_Phyto/phycoprobe/supp_files/run_names.csv', show_col_types = FALSE)
+# read in DWQ run names and regions
+df_names <- read_csv('03_Phyto/01_routine/phyco-cleaning/supp_files/run_names.csv', show_col_types = FALSE)
 
-# obtain all file paths and create combo df
+# obtain all archived MOPED file paths for specified year and create combo df
 fp_all_wq <- archive_path(year, 'MOPED')
 
 df_combo <- create_combo_df(fp_all_wq)
@@ -47,36 +47,31 @@ for(i in 1:nrow(df_combo)){
   
   print(glue::glue('month: {month} and run: {run}'))
   
-  # read in WQ data
+  # read in horizontal WQ data
   fp_wq <- data_path(run, month, year, type = 'MOPED')
   
   df_wq <- read_csv(fp_wq,
                     skip = 2,
                     show_col_types = FALSE)
 
-  df_wq <- df_wq %>% filter(Equipment == 'EXO Horizontal')
+  df_wq <- df_wq %>% filter(Equipment == 'EXO Horizontal') #include only EXO Horizontal data
+  #correct date time format for processing
   df_wq$TimeStamp <- parse_date_time(df_wq$TimeStamp, c('mdY HMS', 'mdY HM'))
   df_wq$TimeStamp <- as.POSIXct(df_wq$TimeStamp, format = '%m/%d/%Y %H:%M:%S')
-  
+ 
+  #create an Analyte column combining Header and Unit columns
   df_wq$Analyte <- paste0(df_wq$Header,'_',df_wq$Unit)
 
   # remove rows where Longitude&Latitude OR TimeStamp repeat for a given analyte
-  
-  # df_removed <- df_wq %>%
-  #   group_by(Header) %>%
-  #   filter((Latitude %in% Latitude[duplicated(Latitude)] & 
-  #           Longitude %in% Longitude[duplicated(Longitude)]) | 
-  #          TimeStamp %in% TimeStamp[duplicated(TimeStamp)]) %>%
-  #   ungroup()
-  
-  df_wq <- df_wq %>%
+  df_wq_replicates_rm <- df_wq %>%
     group_by(Header) %>%
     filter(!((Latitude %in% Latitude[duplicated(Latitude)] & 
               Longitude %in% Longitude[duplicated(Longitude)]) | 
              TimeStamp %in% TimeStamp[duplicated(TimeStamp)])) %>%
     ungroup()
 
-  df_wq <- df_wq %>%
+  #convert df from long format to wide format
+  df_wq_wide <- df_wq_replicates_rm %>%
     subset(select = c(Longitude, Latitude, TimeStamp, Analyte, Value)) %>%
     rename(DateTime = TimeStamp) %>%
     pivot_wider(
@@ -88,10 +83,10 @@ for(i in 1:nrow(df_combo)){
   ########Outlier Detection######
   
   # Add a column for the day
-  df_wq$day <- as.Date(df_wq$DateTime)
+  df_wq_wide$day <- as.Date(df_wq_wide$DateTime)
   
   # Define the columns to run the outlier detection on
-  columns_to_check <- c("WT_C", "SPC_uS/cm", "PH_pH Units", "FNU_FNU", "FLUOR_ug/L", "FLUORRFU_RFU", "DO_mg/L", "DOSAT_% SAT")
+  columns_to_check <- c('WT_C', 'SPC_uS/cm', "PH_pH Units", 'FNU_FNU', 'FLUOR_ug/L', 'FLUORRFU_RFU', 'DO_mg/L', "DOSAT_% SAT")
   
   # Function to calculate rolling median and detect outliers for a single column
   detect_outliers <- function(column, window_size = 4) {
@@ -102,7 +97,7 @@ for(i in 1:nrow(df_combo)){
 }
   
   # Apply outlier detection to the specified columns, for each day, creating new outlier result columns
-  df_wq <- df_wq %>%
+  df_wq_outliers <- df_wq_wide %>%
   group_by(day) %>% 
   mutate(across(all_of(columns_to_check), 
                 ~ detect_outliers(.x), 
@@ -113,12 +108,12 @@ for(i in 1:nrow(df_combo)){
   #df_wq[is.na(df_wq)] <- FALSE
   
   #Remove rows where cells equal TRUE
-df_wq <- df_wq_results %>%
+df_wq_outliers_rm <- df_wq_outliers %>%
   filter(!if_any(c("WT_C_outlier", "SPC_uS/cm_outlier", "PH_pH Units_outlier", "FNU_FNU_outlier", "FLUOR_ug/L_outlier", "FLUORRFU_RFU_outlier", "DO_mg/L_outlier", "DOSAT_% SAT_outlier" ), ~ . == TRUE))
   
   #######
   
-  df_wq <- df_wq %>%
+  df_wq_timeround <- df_wq_outliers_rm %>%
     mutate(RoundedDateTime = round_date(DateTime, 'minute')) %>%
     mutate(TimeDiff = abs(as.numeric(difftime(DateTime, RoundedDateTime, units = 'secs')))) %>%
     group_by(RoundedDateTime) %>%
@@ -133,7 +128,7 @@ df_wq <- df_wq_results %>%
   lon_min <- -121.759586
   lon_max <- -121.746626
 
-  df_wq <- df_wq %>%
+  df_wq_antioch_rm <- df_wq_timeround %>%
   filter(!(Latitude >= lat_min & Latitude <= lat_max &
              Longitude >= lon_min & Longitude <= lon_max))
   
@@ -150,10 +145,10 @@ df_wq <- df_wq_results %>%
   #          )
 
   # convert date/time col back to character
-  df_wq$DateTime <- as.character(df_wq$DateTime)
+  df_wq_antioch_rm$DateTime <- as.character(df_wq_antioch_rm$DateTime)
   
   # bind to df list
-  df_list[[i]] <- df_wq
+  df_list[[i]] <- df_wq_antioch_rm
   #df_rmlist[[i]] <- df_removed
 }
 
