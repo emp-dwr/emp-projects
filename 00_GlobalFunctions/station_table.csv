@@ -1,0 +1,90 @@
+﻿Program,Survey,Station,Region
+CWQ,CEMP,C10A,South Delta
+CWQ,USBR,C14,Suisun and Grizzly Bays
+CWQ,USBR,C2,Confluence
+CWQ,CEMP,C3A,North Delta
+CWQ,USBR,C4,Central Delta
+CWQ,USBR,C5,Central Delta
+CWQ,CEMP,C7A,South Delta
+CWQ,USBR,C8,South Delta
+CWQ,CEMP,D10A,Confluence
+CWQ,CEMP,D11A,Confluence
+CWQ,CEMP,D12A,Confluence
+CWQ,CEMP,D16A,Central Delta
+CWQ,CEMP,D19A,Central Delta
+CWQ,USBR,D22,Confluence
+CWQ,CEMP,D24A,North Delta
+CWQ,CEMP,D29,Central Delta
+CWQ,CEMP,D6A,Suisun and Grizzly Bays
+CWQ,CEMP,D7A,Suisun and Grizzly Bays
+CWQ,CEMP,D8A,Suisun and Grizzly Bays
+CWQ,CEMP,D9A,Confluence
+CWQ,USBR,DMC1,South Delta
+CWQ,CEMP,P8A,South Delta
+CWQ,SMWQP,S21,Suisun Marsh
+CWQ,SMWQP,S33,Suisun Marsh
+CWQ,SMWQP,S35,Suisun Marsh
+CWQ,SMWQP,S42,Suisun Marsh
+CWQ,SMWQP,S49,Suisun Marsh
+CWQ,SMWQP,S64,Suisun Marsh
+CWQ,SMWQP,S71,Suisun Marsh
+DWQ,DEMP,C10A,South Delta
+DWQ,DEMP,C3A,North Delta
+DWQ,DEMP,C9,South Delta
+DWQ,DEMP,D10,Confluence
+DWQ,DEMP,D12,Confluence
+DWQ,DEMP,D16,Central Delta
+DWQ,DEMP,D19,Central Delta
+DWQ,DEMP,D22,Confluence
+DWQ,DEMP,D26,Central Delta
+DWQ,DEMP,D28A,Central Delta
+DWQ,DEMP,D4,Confluence
+DWQ,DEMP,D41,San Pablo Bay
+DWQ,DEMP,D41A,San Pablo Bay
+DWQ,DEMP,D6,Suisun and Grizzly Bays
+DWQ,DEMP,D7,Suisun and Grizzly Bays
+DWQ,DEMP,D8,Suisun and Grizzly Bays
+DWQ,DEMP,MD10A,South Delta
+DWQ,DEMP,NZ002,Carquinez
+DWQ,DEMP,NZ004,Carquinez
+DWQ,DEMP,NZ032,Suisun Marsh
+DWQ,DEMP,NZ068,North Delta
+DWQ,DEMP,NZ325,San Pablo Bay
+DWQ,DEMP,NZS42,Suisun Marsh
+DWQ,DEMP,P8,South Delta
+DWQ,DEMP,D24,North Delta
+Phyto,DEMP,C10A,South Delta
+Phyto,DEMP,C3A,North Delta
+Phyto,DEMP,C9,South Delta
+Phyto,DEMP,D10,Confluence
+Phyto,DEMP,D12,Confluence
+Phyto,DEMP,D16,Central Delta
+Phyto,DEMP,D19,Central Delta
+Phyto,DEMP,D22,Confluence
+Phyto,DEMP,D26,Central Delta
+Phyto,DEMP,D28A,Central Delta
+Phyto,DEMP,D4,Confluence
+Phyto,DEMP,D41,San Pablo Bay
+Phyto,DEMP,D41A,San Pablo Bay
+Phyto,DEMP,D6,Suisun and Grizzly Bays
+Phyto,DEMP,D7,Suisun and Grizzly Bays
+Phyto,DEMP,D8,Suisun and Grizzly Bays
+Phyto,DEMP,MD10A,South Delta
+Phyto,DEMP,NZ002,Carquinez
+Phyto,DEMP,NZ004,Carquinez
+Phyto,DEMP,NZ032,Suisun Marsh
+Phyto,DEMP,NZ068,North Delta
+Phyto,DEMP,NZ325,San Pablo Bay
+Phyto,DEMP,NZS42,Suisun Marsh
+Phyto,DEMP,P8,South Delta
+Phyto,DEMP,D24,North Delta
+Benthic,DEMP,C9,South Delta
+Benthic,DEMP,D16,Central Delta
+Benthic,DEMP,D24,North Delta
+Benthic,DEMP,D28A,Central Delta
+Benthic,DEMP,D4,Confluence
+Benthic,DEMP,D41,San Pablo Bay
+Benthic,DEMP,D41A,San Pablo Bay
+Benthic,DEMP,D6,Suisun and Grizzly Bays
+Benthic,DEMP,D7,Suisun and Grizzly Bays
+Benthic,DEMP,P8,South Delta

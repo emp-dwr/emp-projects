@@ -7,7 +7,7 @@ source('00_GlobalFunctions/functions.R')
 source('01_WaterQuality/database-migration/03_future-formatting/import-functions.R')
 
 # Path to main folder
-fp_rel <- 'Water Quality/00 - Monthly Run Docs/Lab Reports/2025'
+fp_rel <- 'Water Quality/00 - Monthly Run Docs/Lab Reports/2025/08 - August'
 
 # Path to export folder
 fp_export <- 'Water Quality/00 - Monthly Run Docs/Database Import Data/2025'
@@ -21,6 +21,22 @@ fp_xlsx <- list.files(path = abs_path_emp(fp_rel), pattern = '\\.xlsx$', recursi
 df_final <- map_dfr(fp_xlsx, function(fp) {
   format_bryte(fp)
 })
+```
+
+Checks
+```{r}
+# check stations
+check_stations(df_final)
+```
+
+```{r}
+# check extra data
+check_extra_data(df_final)
+```
+
+```{r}
+# check analytes
+check_analytes(df_final, type = 'lab')
 ```
 
 ```{r}
