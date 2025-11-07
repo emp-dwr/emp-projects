@@ -197,7 +197,7 @@ format_VR <- function(df_final) {
   df_final <- df_final %>%
     bind_rows(jug_rows) %>%
     select(-standard_jug, -duplicate_jug, -blank_jug)
-  
+
   # Remove metadata
   df_final <- df_final %>%
     filter(!param %in% c('Date', 'Sonde ID', 'Station', 'Time', 'Lab ID', 'Notes')) %>%
@@ -863,6 +863,7 @@ format_FDS_pdf <- function(df_final) {
       TRUE ~ NA_real_
     ))
 
+  df_check <<- df_final
   # filter jugs
   df_final <- df_final %>%
     mutate(
@@ -871,26 +872,69 @@ format_FDS_pdf <- function(df_final) {
       blank_jug     = case_when(param == 'Notes' ~ str_match(value, '(?i)blank filter jug:?[ ]*([^;]+)')[,2])
     ) %>%
     group_by(run_id, station_id) %>%
-    fill(standard_jug, .direction = 'downup') %>%
+    fill(standard_jug, duplicate_jug, blank_jug, .direction = 'downup') %>%
     ungroup() %>%
-    fill(duplicate_jug, blank_jug, .direction = 'downup') %>%
+    # --- check for >1 duplicate or blank jug per run ---
+    {
+      df_temp <- .
+      
+      # get run name lookup
+      run_names <- df_temp %>%
+        filter(param == 'Run Name') %>%
+        select(run_id, run_name = value) %>%
+        distinct()
+      
+      jug_counts <- df_temp %>%
+        filter(param == 'Notes') %>%
+        group_by(run_id) %>%
+        summarise(
+          n_dup   = n_distinct(na.omit(duplicate_jug)),
+          n_blank = n_distinct(na.omit(blank_jug)),
+          .groups = 'drop'
+        ) %>%
+        filter(n_dup > 1 | n_blank > 1) %>%
+        left_join(run_names, by = 'run_id')
+      
+      if (nrow(jug_counts) > 0) {
+        msg <- jug_counts %>%
+          mutate(
+            warning_msg = paste0(
+              run_name,
+              ': ',
+              ifelse(n_dup > 1, paste0(n_dup, ' duplicate jug(s)'), ''),
+              ifelse(n_dup > 1 & n_blank > 1, '; ', ''),
+              ifelse(n_blank > 1, paste0(n_blank, ' blank jug(s)'), '')
+            )
+          ) %>%
+          pull(warning_msg) %>%
+          paste(collapse = '\n  ')
+        message('Multiple filter jugs detected:\n  ', msg,'\n')
+      }
+      
+      df_temp
+    } %>%
+    # --- propagate blank jug for blanks ---
+    group_by(run_id) %>%
+    mutate(blank_jug = ifelse(`QC_Type` == 'Blank',
+                              dplyr::last(na.omit(blank_jug)),
+                              blank_jug)) %>%
+    ungroup() %>%
     mutate(
       `EA_Filter Container ID` = case_when(
         `QC_Type` == 'Replicate' ~ duplicate_jug,
-        `QC_Type` == 'Blank' ~ blank_jug,
-        is.na(`QC_Type`) ~ standard_jug
+        `QC_Type` == 'Blank'     ~ blank_jug,
+        is.na(`QC_Type`)         ~ standard_jug
       ),
       value = case_when(
         param == 'Notes' ~ value %>%
           str_remove_all('(?i)filter jug:?[ ]*[^;\\s]+;?\\s*|duplicate filter jug:?[ ]*[^;\\s]+;?\\s*|blank filter jug:?[ ]*[^;\\s]+;?\\s*') %>%
-          str_remove('^;\\s*') %>%
-          str_remove(';\\s*$') %>%
+          str_remove('^;\\s*|;\\s*$') %>%
           str_trim(),
         TRUE ~ value
       )
     ) %>%
     select(-standard_jug, -duplicate_jug, -blank_jug)
-
+  
   # add field comments from notes
   notes_vals <- df_final %>%
     filter(param == 'Notes') %>%
