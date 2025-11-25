@@ -7,10 +7,10 @@ source('00_GlobalFunctions/functions.R')
 source('01_WaterQuality/database-migration/03_future-formatting/import-functions.R')
 
 # Path to main folder
-fp_rel <- 'Water Quality/00 - Monthly Run Docs/Lab Reports/2025/08 - August'
+fp_rel <- 'Water Quality/00 - Monthly Run Docs/Lab Reports/2024/12 - December'
 
 # Path to export folder
-fp_export <- 'Water Quality/00 - Monthly Run Docs/Database Import Data/2025'
+fp_export <- 'Water Quality/00 - Monthly Run Docs/Database Import Data/2024'
 ```
 
 ```{r}

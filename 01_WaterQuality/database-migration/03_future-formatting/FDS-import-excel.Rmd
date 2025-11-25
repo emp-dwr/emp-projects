@@ -94,7 +94,6 @@ df_final <- bind_rows(df_VR_all, df_FDS)
 df_final <- df_final %>% filter(!(is.na(`Observed Property ID`) & `Result Value` == 'Yes'))
 df_final <- df_final %>% filter(`Observed Property ID` != 'Water Depth')
 ```
-
 Checks
 ```{r}
 # check stations

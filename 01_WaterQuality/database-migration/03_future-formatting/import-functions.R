@@ -318,7 +318,7 @@ format_VR <- function(df_final) {
 
 process_FDS_excel <- function(fp) {
   df <- suppressMessages(read_excel(fp))
- 
+  
   # Main batch
   df_head <- df %>%
     select('...7', '...9', '...18', '...24') %>%
@@ -486,6 +486,7 @@ process_FDS_excel <- function(fp) {
   
   # Combine
   df_final <- bind_rows(df_head, df_station, df_values, df_notes, df_latlong, df_dup, df_blank) %>%
+    filter(!str_detect(param, '^Station:')) %>% # remove extra station/time
     arrange(batch_id) %>%
     relocate(batch_id)
   
@@ -495,6 +496,7 @@ process_FDS_excel <- function(fp) {
 # format FDS --------------------------------------------------------------
 
 format_FDS_excel <- function(df_final) {
+  df_odd <<- df_final
   # Remove extra params
   df_final <- df_final %>%
     filter(!(param %in% c('Vessel:','Crew:','Run Name:','Operator:','Run Type:','Sonde ID (H):','ChloroVol(ml)'))) %>%
@@ -518,13 +520,25 @@ format_FDS_excel <- function(df_final) {
   lab_ids <- df_final %>%
     filter(param == 'Lab ID') %>%
     select(batch_id, `QC: Type`, `Activity Name` = value)
+  
+  # add in Observed DateTimes
+  df_final <- df_final %>%
+    mutate(`Observed DateTime` = case_when(
+      param == 'Time' ~ date_value + hms(paste0(value, ':00')),
+      TRUE ~ NA_POSIXct_
+    )) %>%
+    group_by(batch_id) %>%
+    fill(`Observed DateTime`, .direction = 'downup') %>%
+    ungroup()
 
+  # add in vertical sonde ID
   df_final <- df_final %>%
     mutate(`Field: Device ID` = case_when(
       SondeType == 'vertical' ~ sonde_id,
       TRUE ~ NA_character_
     ))
 
+  # add in station values and lab IDs
   df_final <- df_final %>%
     left_join(station_vals, by = 'batch_id') %>%
     left_join(lab_ids, by = c('batch_id', 'QC: Type'))
@@ -696,6 +710,8 @@ format_FDS_excel <- function(df_final) {
     group_by(`Location ID`, `Observed DateTime`) %>%
     fill(Depth, .direction = 'downup') %>%
     ungroup()
+  
+  df_hm <<- df_final
 
   # combine with metadata
   fp_meta <- abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration/Lists to Import/Final Imports/Import_FDS Metadata.csv')
@@ -704,7 +720,7 @@ format_FDS_excel <- function(df_final) {
   # check for params in df_final not present in df_meta
   missing_params <- setdiff(unique(df_final$param), unique(df_meta$param))
   if (length(missing_params) > 0) {
-    message('Missing ', length(missing_params), ' param(s) not in metadata: ',
+    message('Found ', length(missing_params), ' param(s) not in metadata: ',
             paste(missing_params, collapse = ', '))
   }
 
