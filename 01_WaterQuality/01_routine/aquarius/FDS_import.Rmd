@@ -1,3 +1,33 @@
+### Excel FDS Data Formatting
+
+Format data from Excel FDS for import into Aquarius Samples Database
+
+*Questions: sarah.perry\@water.ca.gov*
+
+------------------------------------------------------------------------
+
+#### Define file paths
+
+Path to import folder
+
+```{r}
+# Path to import folder
+fp_import <- 'Water Quality/00 - Monthly Run Docs/Raw Field Data/Water Quality 2025/09 - September'
+```
+
+Path to export folder
+
+```{r}
+# Path to export folder
+fp_export <- 'Water Quality/00 - Monthly Run Docs/Database Import Data/2025/'
+```
+
+------------------------------------------------------------------------
+
+#### Run next three blocks *without edits*
+
+***Note:** requires both R and Python*
+
 ```{r}
 library(reticulate)
 library(tidyverse)
@@ -5,13 +35,7 @@ library(lubridate)
 library(janitor)
 library(readxl)
 source('00_GlobalFunctions/functions.R')
-source('01_WaterQuality/database-migration/03_future-formatting/import-functions.R')
-
-# Path to main folder
-fp_rel <- 'Water Quality/00 - Monthly Run Docs/Raw Field Data/Water Quality 2025/09 - September'
-
-# Path to export folder
-fp_export <- 'Water Quality/00 - Monthly Run Docs/Database Import Data/2025/'
+source('01_WaterQuality/01_routine/aquarius/aquarius_functions/import-functions.R')
 ```
 
 ```{python}
@@ -19,17 +43,17 @@ from os import environ, walk
 from os.path import join, normpath
 import fitz
 
-fp_rel = r.fp_rel
+fp_import = r.fp_import
 
 # Define path
-def abs_path_emp(fp_rel=None):
+def abs_path_emp(fp_import=None):
     user_profile = os.environ.get('USERPROFILE')
     base_path = os.path.join(user_profile, 'California Department of Water Resources', 'Environmental Monitoring Program - Documents')
-    if fp_rel:
-        return os.path.normpath(os.path.join(base_path, fp_rel))
+    if fp_import:
+        return os.path.normpath(os.path.join(base_path, fp_import))
     return os.path.normpath(base_path)
 
-fp_main = abs_path_emp(fp_rel)
+fp_main = abs_path_emp(fp_import)
 
 # Extract VR pdf
 def extract_VR(path):
@@ -78,7 +102,7 @@ for (i in seq_along(vr_files)) {
 df_VR_all <- do.call(rbind, df_list)
 
 # Import FDS files
-fp_xlsx <- list.files(path = abs_path_emp(fp_rel), pattern = '\\.xlsx$', recursive = TRUE, full.names = TRUE)
+fp_xlsx <- list.files(path = abs_path_emp(fp_import), pattern = '\\.xlsx$', recursive = TRUE, full.names = TRUE)
 
 # Clean FDS files
 df_FDS <- map_dfr(fp_xlsx, function(fp) {
@@ -89,32 +113,46 @@ df_FDS <- map_dfr(fp_xlsx, function(fp) {
 # Combine
 df_final <- bind_rows(df_VR_all, df_FDS)
 
-# filter out extra rows
+# Filter out extra rows
 df_final <- df_final %>% filter(!(is.na(`Observed Property ID`) & `Result Value` == 'Yes'))
 df_final <- df_final %>% filter(`Observed Property ID` != 'Water Depth')
 ```
 
-Checks
+------------------------------------------------------------------------
+
+#### Data Checks
+
+Check stations
 
 ```{r}
 # check stations
 check_stations(df_final)
 ```
 
+Check for any extra data
+
 ```{r}
 # check extra data
 check_extra_data(df_final)
 ```
+
+Check filter container ID is properly formatted
 
 ```{r}
 # check filter container ID
 check_filter_ID(df_final)
 ```
 
+Check all analytes are accounted for
+
 ```{r}
 # check analytes
 check_analytes(df_final, type = 'field')
 ```
+
+------------------------------------------------------------------------
+
+#### Export file(s)
 
 ```{r}
 # Export by month

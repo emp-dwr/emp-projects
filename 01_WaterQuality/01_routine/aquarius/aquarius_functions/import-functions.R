@@ -1,4 +1,8 @@
-# process VR --------------------------------------------------------------
+# TODO: better comment...all of this
+
+# Process VR --------------------------------------------------------------
+# Do preliminary formatting for VR data based on fillable pdf
+# Treat each Station block as a "Batch"; metadata is batch 0 and blank is batch 999
 
 process_VR <- function(df_raw) {
   df <- df_raw %>% 
@@ -134,7 +138,7 @@ format_VR <- function(df_final) {
     mutate(
       standard_jug = str_match(value, '(?i)filter jug:?\\s*([^;\\s]+)')[,2],
       duplicate_jug = str_match(value, '(?i)duplicate filter jug:?\\s*([^;\\s]+)')[,2],
-      blank_jug     = str_match(value, '(?i)blank filter jug:?\\s*([^;\\s]+)')[,2],
+      blank_jug = str_match(value, '(?i)blank filter jug:?\\s*([^;\\s]+)')[,2],
       `Field: Comment` = str_remove_all(
         value,
         '(?i)filter jug:?[ ]*[^;\\s]+;?\\s*|duplicate filter jug:?[ ]*[^;\\s]+;?\\s*|blank filter jug:?[ ]*[^;\\s]+;?\\s*'
@@ -160,7 +164,7 @@ format_VR <- function(df_final) {
     rename(blank_batch = batch_id,
            blank_loc = `Location ID`,
            blank_act = `Activity Name`,
-           blank_dt  = `Observed DateTime`)
+           blank_dt = `Observed DateTime`)
   
   # create jug rows
   jug_rows <- df_final %>%
@@ -709,8 +713,6 @@ format_FDS_excel <- function(df_final) {
     group_by(`Location ID`, `Observed DateTime`) %>%
     fill(Depth, .direction = 'downup') %>%
     ungroup()
-  
-  df_hm <<- df_final
 
   # combine with metadata
   fp_meta <- abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration/Lists to Import/Final Imports/Import_FDS Metadata.csv')
@@ -799,348 +801,8 @@ format_FDS_excel <- function(df_final) {
   return(df_final)
 }
 
-format_FDS_pdf <- function(df_final) {
-  
-  # remove extra data/metadata, fix formatting
-  df_final <- df_final %>%
-    filter(!(param %in% c('Vessel:','Crew:','Run Name:','Operator:','Run Type:','Sonde ID (H):','ChloroVol(ml)'))) %>%
-    filter(SondeType == 'vertical' | is.na(SondeType)) %>%
-    mutate(param = str_squish(param))
-  
-  # add per-run metadata
-  
-  # per-run variables
-  run_dates <- df_final %>%
-    filter(param == 'Date:') %>%
-    group_by(run_id) %>%
-    summarize(run_date = mdy(first(value)), .groups = 'drop')
-  
-  run_sonde <- df_final %>%
-    filter(param == 'Sonde ID (V)') %>%
-    group_by(run_id) %>%
-    summarize(sonde_id = first(value), .groups = 'drop')
-  
-  station_vals <- df_final %>%
-    filter(param == 'Station') %>%
-    select(run_id, station_id, `Location ID` = value)
-  
-  lab_ids <- df_final %>%
-    filter(param == 'Lab ID') %>%
-    select(run_id, station_id, `QC_Type`, `Activity Name` = value)
-  
-  # add them in
-  
-  # datetime
-  df_final <- df_final %>%
-    left_join(run_dates, by = 'run_id') %>%
-    mutate(
-      `Observed DateTime` = case_when(
-        param == 'Time' & !is.na(run_date) ~ as.POSIXct(
-          paste(run_date, value),
-          format = '%Y-%m-%d %H:%M',
-          tz = 'UTC'
-        ),
-        TRUE ~ as.POSIXct(NA)
-      )
-    ) %>%
-    group_by(run_id, station_id) %>%
-    tidyr::fill(`Observed DateTime`, .direction = 'downup') %>%
-    ungroup() %>%
-    select(-run_date)
-  
-  # device ID
-  df_final <- df_final %>%
-    left_join(run_sonde, by = 'run_id') %>%
-    mutate(`Field: Device ID` = case_when(
-      SondeType == 'vertical' ~ sonde_id,
-      TRUE ~ NA_character_
-    )) %>%
-    select(-sonde_id)
 
-  # run/station ID
-  df_final <- df_final %>%
-    left_join(station_vals, by = c('run_id','station_id')) %>%
-    left_join(lab_ids, by = c('run_id','station_id','QC_Type'))
-
-  # water and sampling depth
-  df_final <- df_final %>%
-    mutate(Depth = case_when(
-      param == 'Water Depth(ft)' ~ suppressWarnings(as.numeric(value)),
-      TRUE ~ NA_real_
-    )) %>%
-    group_by(run_id, station_id) %>%
-    fill(Depth, .direction = 'downup') %>%
-    ungroup() %>%
-    mutate(`EA_Sampling Depth` = case_when(
-      SurfBot == 'bottom' ~ as.numeric(Depth) - 3,
-      SurfBot == 'surface' ~ 3,
-      param == 'MC Score(1-5)' ~ 0,
-      TRUE ~ NA_real_
-    ))
-
-  df_check <<- df_final
-  # filter jugs
-  df_final <- df_final %>%
-    mutate(
-      standard_jug  = case_when(param == 'Notes' ~ str_match(value, '(?i)filter jug:?[ ]*([^;]+)')[,2]),
-      duplicate_jug = case_when(param == 'Notes' ~ str_match(value, '(?i)duplicate filter jug:?[ ]*([^;]+)')[,2]),
-      blank_jug     = case_when(param == 'Notes' ~ str_match(value, '(?i)blank filter jug:?[ ]*([^;]+)')[,2])
-    ) %>%
-    group_by(run_id, station_id) %>%
-    fill(standard_jug, duplicate_jug, blank_jug, .direction = 'downup') %>%
-    ungroup() %>%
-    # --- check for >1 duplicate or blank jug per run ---
-    {
-      df_temp <- .
-      
-      # get run name lookup
-      run_names <- df_temp %>%
-        filter(param == 'Run Name') %>%
-        select(run_id, run_name = value) %>%
-        distinct()
-      
-      jug_counts <- df_temp %>%
-        filter(param == 'Notes') %>%
-        group_by(run_id) %>%
-        summarise(
-          n_dup   = n_distinct(na.omit(duplicate_jug)),
-          n_blank = n_distinct(na.omit(blank_jug)),
-          .groups = 'drop'
-        ) %>%
-        filter(n_dup > 1 | n_blank > 1) %>%
-        left_join(run_names, by = 'run_id')
-      
-      if (nrow(jug_counts) > 0) {
-        msg <- jug_counts %>%
-          mutate(
-            warning_msg = paste0(
-              run_name,
-              ': ',
-              ifelse(n_dup > 1, paste0(n_dup, ' duplicate jug(s)'), ''),
-              ifelse(n_dup > 1 & n_blank > 1, '; ', ''),
-              ifelse(n_blank > 1, paste0(n_blank, ' blank jug(s)'), '')
-            )
-          ) %>%
-          pull(warning_msg) %>%
-          paste(collapse = '\n  ')
-        message('Multiple filter jugs detected:\n  ', msg,'\n')
-      }
-      
-      df_temp
-    } %>%
-    # --- propagate blank jug for blanks ---
-    group_by(run_id) %>%
-    mutate(blank_jug = ifelse(`QC_Type` == 'Blank',
-                              dplyr::last(na.omit(blank_jug)),
-                              blank_jug)) %>%
-    ungroup() %>%
-    mutate(
-      `EA_Filter Container ID` = case_when(
-        `QC_Type` == 'Replicate' ~ duplicate_jug,
-        `QC_Type` == 'Blank'     ~ blank_jug,
-        is.na(`QC_Type`)         ~ standard_jug
-      ),
-      value = case_when(
-        param == 'Notes' ~ value %>%
-          str_remove_all('(?i)filter jug:?[ ]*[^;\\s]+;?\\s*|duplicate filter jug:?[ ]*[^;\\s]+;?\\s*|blank filter jug:?[ ]*[^;\\s]+;?\\s*') %>%
-          str_remove('^;\\s*|;\\s*$') %>%
-          str_trim(),
-        TRUE ~ value
-      )
-    ) %>%
-    select(-standard_jug, -duplicate_jug, -blank_jug)
-  
-  # add field comments from notes
-  notes_vals <- df_final %>%
-    filter(param == 'Notes') %>%
-    select(run_id, station_id, `Field: Comment` = value)
-
-  df_final <- df_final %>%
-    left_join(notes_vals, by = c('run_id','station_id'))
-
-  # remove metadata columns that are no longer needed
-  df_final <- df_final %>%
-    filter(!(param %in% c('Date:','Sonde ID (V):','Station','Time','Lab ID','Notes')))
-
-  # add in lat/lons for LSZs only
-  df_final <- df_final %>%
-    mutate(
-      `Location ID`   = if_else(grepl('EZ', `Location ID`), str_replace(`Location ID`, 'EZ', 'LSZ'), `Location ID`),
-      `Field: Comment` = str_remove(`Field: Comment`, ';\\s*$')
-    ) %>%
-    filter(!(param %in% c('latitude', 'longitude') & !grepl('LSZ', `Location ID`))) %>%
-    relocate(SurfBot, .after = param)
-
-  # get churn bucket
-  churn_rows <- df_final %>%
-    group_by(run_id, station_id, `QC_Type`) %>%
-    filter(param == 'Churn Bucket #') %>%
-    select(-value) %>%
-    ungroup()
-
-  # add in filter container
-  filter_vals <- df_final %>%
-    filter(!is.na(`EA_Filter Container ID`)) %>%
-    distinct(run_id, station_id, `QC_Type`, `EA_Filter Container ID`)
-
-  # fix up churn bucket
-  new_rows <- churn_rows %>%
-    dplyr::left_join(
-      filter_vals,
-      by = c('run_id', 'station_id', 'QC_Type', 'EA_Filter Container ID')
-    ) %>%
-    dplyr::mutate(param = 'Filter Container ID', value = `EA_Filter Container ID`) %>%
-    dplyr::select(-`EA_Filter Container ID`)
-
-  # add in churn bucket
-  df_final <- bind_rows(df_final, new_rows) %>%
-    select(-`EA_Filter Container ID`) %>%
-    arrange(run_id, station_id, `QC_Type`, SurfBot)
-
-  # remap weather codes
-  df_final <- df_final %>%
-    mutate(value = case_when(
-      param == 'Sky' & value == 'S'  ~ 'Sunny',
-      param == 'Sky' & value == 'PC' ~ 'Partly Cloudy',
-      param == 'Sky' & value == 'C'  ~ 'Cloudy',
-      param == 'Sky' & value == 'O'  ~ 'Overcast',
-      param == 'Sky' & value == 'F'  ~ 'Foggy',
-      param == 'Rain' & value == 'N' ~ 'None',
-      param == 'Rain' & value == 'L' ~ 'Light',
-      param == 'Rain' & value == 'M' ~ 'Medium',
-      param == 'Rain' & value == 'H' ~ 'Heavy',
-      TRUE ~ value
-    ))
-  
-  # add in parent sample IDs for replicate
-  df_final <- df_final %>%
-    group_by(`Location ID`) %>%
-    mutate(
-      `EA_Parent Sample ID` = case_when(
-        `QC_Type` == 'Replicate' ~ first(`Activity Name`[is.na(`QC_Type`)]),
-        TRUE ~ NA_character_
-      ),
-      `QC: Source Sample ID` = `EA_Parent Sample ID`
-    ) %>%
-    ungroup()
-
-  # remove other helper cols, rename result values
-  df_final <- df_final %>%
-    select(-c(SondeType)) %>%
-    rename(`Result Value` = value) %>%
-    filter(!is.na(`Result Value`))
-
-  # combine with Aquarius metadata
-  fp_meta <- abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration/Lists to Import/Final Imports/Import_FDS Metadata.csv')
-  df_meta <- read_csv(fp_meta, show_col_types = FALSE)
-  
-  # check for params in df_final not present in df_meta
-  missing_params <- setdiff(unique(df_final$param), unique(df_meta$param))
-  missing_params <- setdiff(missing_params, c('Run Name', 'Sonde ID (V)', 'Sonde ID (H)'))
-  if (length(missing_params) > 0) {
-    message(length(missing_params), ' unexpected parameters: ',
-            paste(missing_params, collapse = ', '))
-  }
-
-  df_final <- right_join(df_meta, df_final, by = c('param', 'SurfBot')) %>%
-    select(-c(param, SurfBot))
-
-  # fix times
-  df_final <- df_final %>%
-    mutate(`Analyzed DateTime` = format(mdy_hm(`Analyzed DateTime`), '%Y-%m-%d %H:%M:%S')) %>%
-    mutate(across(contains('DateTime'), ~ ifelse(is.na(.x), NA, paste0(.x, ' [PST]'))))
-
-  # add in depth unit
-  df_final <- df_final %>%
-    mutate(`Depth Unit` = case_when(
-      `Location ID` == 'Equipment Blank' ~ NA_character_,
-      TRUE ~ 'ft'
-    )) %>%
-    mutate(Depth = as.character(round(suppressWarnings(as.numeric(Depth)), 1))) %>%
-    filter(`Observed Property ID` != 'Water Depth')
-  
-  # --- Exclude unwanted stations ---
-  # read in active stations
-  df_stations <- read_csv('00_GlobalFunctions/station_names.csv', show_col_types = FALSE) %>%
-    filter(Status == 'active')
-  
-  valid_stations <- c(unique(df_stations$Station_new), 'Equipment Blank')
-  
-  # alert to excluded stations
-  excluded_ids <- df_final %>%
-    filter(!(`Location ID` %in% valid_stations)) %>%
-    distinct(`Location ID`) %>%
-    pull(`Location ID`)
-  
-  if (length(excluded_ids) > 0) {
-    message('Excluded ', length(excluded_ids), ' Location IDs not in active station list: ',
-            paste(excluded_ids, collapse = ', '))
-  }
-  
-  # filter df_final to only active station matches
-  df_final <- df_final %>%
-    filter(`Location ID` %in% valid_stations)
-
-  # --- Rounding ---
-  # turbidity
-  idx <- df_final$`Observed Property ID` == 'Turbidity'
-  df_final$`Result Value`[idx] <-
-    as.character(round(as.numeric(df_final$`Result Value`[idx]), 1))
-  
-  # DO
-  idx <- df_final$`Observed Property ID` == 'DO (mg/L)'
-  df_final$`Result Value`[idx] <-
-    as.character(round(as.numeric(df_final$`Result Value`[idx]), 2))
-  
-  # chlorophyll
-  idx <- df_final$`Observed Property ID` == 'Chlorophyll Fluorescence RFU'
-  df_final$`Result Value`[idx] <-
-    as.character(round(as.numeric(df_final$`Result Value`[idx]), 2))
-  
-  # sampling depth
-  idx <- df_final$`Observed Property ID` == 'EA_Sampling Depth'
-  df_final$`Result Value`[idx] <-
-    as.character(round(as.numeric(df_final$`Result Value`[idx]), 1))
-
-  # --- Final Things ---
-  # remove device ID for un-needed params
-  df_final <- df_final %>%
-    mutate(
-      `Field: Device ID` = case_when(
-        `Observed Property ID` %in% c('Filter Container ID','Sky Conditions','Rain','MVI','Churn Bucket ID','Air Temperature','Wind Velocity','Wave Scale') ~ NA_character_,
-        TRUE ~ `Field: Device ID`
-      )
-    )
-
-  # rename QC Type
-  df_final <- df_final %>%
-    rename(`QC: Type` = QC_Type)
-
-  # remove Secchi depth rows for C9, C3A, and C10A
-  df_final <- df_final %>%
-    filter(!(grepl('^C9$|^C3A$|^C10A$', `Location ID`) &
-               grepl('Secchi', `Observed Property ID`, ignore.case = TRUE)))
-
-  # final ordering
-  col_order <- c(
-    'Observation ID', 'Location ID', 'Observed Property ID', 'Observed DateTime', 'Analyzed DateTime',
-    'Depth', 'Depth Unit', 'Data Classification', 'Result Value', 'Result Unit', 'Result Status',
-    'Result Grade', 'Medium', 'Activity Name', 'Activity ID', 'Collection Method', 'Field: Device ID',
-    'Field: Device Type', 'Field: Comment', 'Lab: Specimen Name', 'Lab: Analysis Method',
-    'Lab: Detection Condition', 'Lab: Limit Type', 'Lab: MDL', 'Lab: MRL', 'Lab: Quality Flag',
-    'Lab: Received DateTime', 'Lab: Prepared DateTime', 'Lab: Sample Fraction', 'Lab: From Laboratory',
-    'Lab: Sample ID', 'Lab: Dilution Factor', 'Lab: Comment', 'QC: Type', 'QC: Source Sample ID',
-    'EA_Modified Method', 'EA_Profile Type', 'EA_Project Type', 'EA_Reports To',
-    'EA_Parent Sample ID', 'EA_Field Quality Flag', 'EA_Sampling Depth'
-  )
-
-  df_final <- df_final %>% select(any_of(col_order)) %>%
-    arrange(`Activity Name`, `Data Classification`) %>%
-    filter(!(`Observed Property ID` %in% c('Latitude','Longitude','Filter Container ID') & is.na(`Result Value`))) %>%
-    filter(!is.na(`Observed Property ID`))
-
-  return(df_final)
-}
+# Format Bryte ------------------------------------------------------------
 
 format_bryte <- function(fp){
   # Read in lab data
@@ -1272,7 +934,6 @@ format_bryte <- function(fp){
   return(df_final)
 }
 
-
 # Check Functions ---------------------------------------------------------
 
 # no missing stations
@@ -1327,6 +988,7 @@ check_analytes <- function(df, type) {
   )
   
   # --- Rules ---
+  # TODO: move this out of code?
   
   # 1. Shore stations don’t require Secchi
   shore_stations <- df_stations %>%

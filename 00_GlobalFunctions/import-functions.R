@@ -496,7 +496,8 @@ process_FDS_excel <- function(fp) {
 # format FDS --------------------------------------------------------------
 
 format_FDS_excel <- function(df_final) {
-  # remove extra params
+  df_odd <<- df_final
+  # Remove extra params
   df_final <- df_final %>%
     filter(!(param %in% c('Vessel:','Crew:','Run Name:','Operator:','Run Type:','Sonde ID (H):','ChloroVol(ml)'))) %>%
     filter(SondeType == 'vertical' | is.na(SondeType)) %>%
