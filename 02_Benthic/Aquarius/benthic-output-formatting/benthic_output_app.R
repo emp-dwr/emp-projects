@@ -5,11 +5,10 @@ library(DT)
 options(shiny.maxRequestSize = 50 * 1024^2)
 
 # --- Helper Functions ---
-# functions to help with filtering functions
 
 base_data_filter <- function(df, key) {
   df %>%
-    filter(str_detect(.data[['Lab: Specimen Name']], key))
+    filter(str_detect(.data[['Lab: Specimen Name']], regex(key, ignore_case = TRUE)))
 }
 
 add_date_time <- function(df) {
@@ -56,14 +55,13 @@ apply_filter <- function(df, type) {
 }
 
 # --- Filter Functions ---
-# these functions specify how data is filtered/manipulated for each data type
 
 filter_counts <- function(df) {
-  id_cols <- c('Activity Name', 'Date', 'Time', 'Station', 'Latitude', 'Longitude', 'Species', 'Grab Number')
+  id_cols <- c('Activity Name', 'Date', 'Time', 'Station', 'Latitude', 'Longitude', 'Species')
   
   df %>%
     base_data_filter(key = 'count') %>%
-    filter(!.data[['Observed Property ID']] %in% c('Taxon', 'Grab Number')) %>%
+    filter(!.data[['Observed Property ID']] %in% c('Taxon')) %>%
     add_date_time() %>%
     transmute(
       `Activity Name` = .data[['Activity Name']],
@@ -73,7 +71,6 @@ filter_counts <- function(df) {
       Station = .data[['Location ID']],
       Latitude = .data[['Latitude']],
       Longitude = .data[['Longitude']],
-      `Grab Number` = .data[['EA_Grab Number']],
       Species = .data[['Specimen: Taxonomy Element']],
       `Result Value` = .data[['Result Value']],
       `Result Unit` = .data[['Result Unit']]
@@ -84,11 +81,11 @@ filter_counts <- function(df) {
 }
 
 filter_weights <- function(df) {
-  id_cols <- c('Activity Name', 'Date', 'Time', 'Station', 'Latitude', 'Longitude', 'Species', 'Size Bin')
+  id_cols <- c('Activity Name', 'Date', 'Time', 'Station', 'Latitude', 'Longitude', 'Species')
   
   df %>%
     base_data_filter(key = 'weight') %>%
-    filter(!.data[['Observed Property ID']] %in% c('Taxon', 'Size Bin')) %>%
+    filter(!.data[['Observed Property ID']] %in% c('Taxon')) %>%
     add_date_time() %>%
     transmute(
       `Activity Name` = .data[['Activity Name']],
@@ -99,13 +96,14 @@ filter_weights <- function(df) {
       Latitude = .data[['Latitude']],
       Longitude = .data[['Longitude']],
       Species = .data[['Specimen: Taxonomy Element']],
-      `Size Bin` = .data[['EA_Size Bin']],
       `Result Value` = .data[['Result Value']],
       `Result Unit` = .data[['Result Unit']]
     ) %>%
     pivot_results(id_cols = id_cols) %>%
-    select(Date, Time, Station, Latitude, Longitude, Species, TSN, `Size Bin`,
-           `Wet Weight (g)`, `Dry Weight (g)`, `Clam Weight (g)`) %>%
+    select(
+      Date, Time, Station, Latitude, Longitude, Species, TSN, `Size Bin`,
+      `Wet Weight (g)`, `Dry Weight (g)`, `Clam Weight (g)`
+    ) %>%
     arrange(Date, Time, Station, Latitude, Longitude, Species, `Size Bin`)
 }
 
@@ -113,7 +111,7 @@ filter_sediment <- function(df) {
   id_cols <- c('Activity Name', 'Date', 'Time', 'Station', 'Latitude', 'Longitude')
   
   df %>%
-    base_data_filter(key = 'Sediment') %>%
+    base_data_filter(key = 'sediment') %>%
     add_date_time() %>%
     transmute(
       `Activity Name` = .data[['Activity Name']],
@@ -156,50 +154,105 @@ ui <- fluidPage(
     sidebarPanel(
       fileInput('file', 'Upload CSV', accept = c('.csv', 'text/csv')),
       selectInput('type', 'Select Data', choices = c('Counts', 'Weights', 'Sediment', 'Metadata: Species')),
-      downloadButton('download', 'Download CSV')
+      uiOutput('download_ui')
     ),
     mainPanel(
+      uiOutput('status_msg'),
       DTOutput('tbl')
     )
   )
 )
 
 server <- function(input, output, session) {
-  # read in dataframe, check required columns exist
   required_cols <- c(
     'Lab: Specimen Name', 'Observed DateTime', 'Activity Name', 'Location ID',
     'Latitude', 'Longitude', 'Observed Property ID', 'Result Value', 'Result Unit',
-    'EA_Grab Number', 'Specimen: Taxonomy Element', 'EA_Size Bin'
+    'Specimen: Taxonomy Element'
+  )
+  
+  filter_catalog <- tibble(
+    type = c('Counts', 'Weights', 'Sediment', 'Metadata: Species'),
+    key = c('count',  'weight',  'sediment', 'taxa')
   )
   
   df_raw <- reactive({
     req(input$file)
     
-    # check file type
     ext <- tolower(tools::file_ext(input$file$name))
-    validate(
-      need(ext == 'csv', 'Invalid file type. Please upload a .csv file.')
-    )
+    validate(need(ext == 'csv', 'Invalid file type. Please upload a .csv file.'))
     
     df <- read_csv(input$file$datapath, show_col_types = FALSE)
     
-    # check for missing columns
     missing <- setdiff(required_cols, names(df))
     validate(need(length(missing) == 0, paste('Missing columns:', paste(missing, collapse = ', '))))
     
     return(df)
   })
-
+  
+  valid_types <- reactive({
+    req(input$file)
+    df <- df_raw()
+    
+    lab <- df %>%
+      pull(.data[['Lab: Specimen Name']]) %>%
+      as.character()
+    
+    filter_catalog %>%
+      mutate(has_key = map_lgl(key, ~ any(str_detect(lab, regex(.x, ignore_case = TRUE))))) %>%
+      filter(has_key) %>%
+      pull(type)
+  })
+  
+  observeEvent(valid_types(), {
+    choices <- valid_types()
+    
+    updateSelectInput(
+      session,
+      'type',
+      choices = choices,
+      selected = if (length(choices) > 0) choices[[1]] else character(0)
+    )
+  }, ignoreInit = TRUE)
+  
+  output$status_msg <- renderUI({
+    req(input$file)
+    if (length(valid_types()) == 0) {
+      tags$div(
+        style = 'margin-bottom: 10px; font-weight: 600;',
+        'No valid filters in data'
+      )
+    } else {
+      NULL
+    }
+  })
   
   df_filtered <- reactive({
+    req(input$file)
+    validate(need(length(valid_types()) > 0, 'check import file'))
+    req(input$type)
+    
     apply_filter(df = df_raw(), type = input$type)
   })
   
   output$tbl <- renderDT({
+    req(input$file)
     datatable(
       df_filtered(),
       options = list(pageLength = 25, scrollX = TRUE)
     )
+  })
+  
+  output$download_ui <- renderUI({
+    if (is.null(input$file) || length(valid_types()) == 0) {
+      tags$button(
+        'Download CSV',
+        class = 'btn btn-default',
+        disabled = 'disabled',
+        style = 'opacity: 0.6; cursor: not-allowed;'
+      )
+    } else {
+      downloadButton('download', 'Download CSV')
+    }
   })
   
   output$download <- downloadHandler(
