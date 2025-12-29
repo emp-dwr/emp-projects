@@ -87,7 +87,7 @@ for pdf_path in pdf_files:
 ```
 
 ```{r warning=FALSE}
-# Bring in VR files
+# Bring in VR files   
 vr_files <- py$all_forms
 
 df_list <- list()
