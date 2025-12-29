@@ -2,6 +2,8 @@ library(shiny)
 library(tidyverse)
 library(DT)
 
+options(shiny.maxRequestSize = 50 * 1024^2)
+
 # --- Helper Functions ---
 # functions to help with filtering functions
 
@@ -127,10 +129,31 @@ ui <- fluidPage(
 )
 
 server <- function(input, output, session) {
+  # read in dataframe, check required columns exist
+  required_cols <- c(
+    'Lab: Specimen Name', 'Observed DateTime', 'Activity Name', 'Location ID',
+    'Latitude', 'Longitude', 'Observed Property ID', 'Result Value', 'Result Unit',
+    'EA_Grab Number', 'Specimen: Taxonomy Element', 'EA_Size Bin'
+  )
+  
   df_raw <- reactive({
     req(input$file)
-    read_csv(input$file$datapath, show_col_types = FALSE)
+    
+    # check file type
+    ext <- tolower(tools::file_ext(input$file$name))
+    validate(
+      need(ext == 'csv', 'Invalid file type. Please upload a .csv file.')
+    )
+    
+    df <- read_csv(input$file$datapath, show_col_types = FALSE)
+    
+    # check for missing columns
+    missing <- setdiff(required_cols, names(df))
+    validate(need(length(missing) == 0, paste('Missing columns:', paste(missing, collapse = ', '))))
+    
+    return(df)
   })
+
   
   df_filtered <- reactive({
     apply_filter(df = df_raw(), type = input$type)
