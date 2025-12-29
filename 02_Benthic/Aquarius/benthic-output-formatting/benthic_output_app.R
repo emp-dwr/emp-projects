@@ -22,8 +22,20 @@ add_date_time <- function(df) {
 
 pivot_results <- function(df, id_cols) {
   df %>%
-    mutate(.col_name = str_c(.data[['Observed Property ID']], ' (', .data[['Result Unit']], ')')) %>%
-    select(-`Observed Property ID`, -`Result Unit`) %>%
+    mutate(
+      .unit_clean = case_when(
+        is.na(.data[['Result Unit']]) ~ NA_character_,
+        str_trim(as.character(.data[['Result Unit']])) == '' ~ NA_character_,
+        str_to_lower(str_trim(as.character(.data[['Result Unit']]))) %in% c('na', 'n/a') ~ NA_character_,
+        TRUE ~ str_trim(as.character(.data[['Result Unit']]))
+      ),
+      .col_name = if_else(
+        is.na(.unit_clean),
+        as.character(.data[['Observed Property ID']]),
+        str_c(.data[['Observed Property ID']], ' (', .unit_clean, ')')
+      )
+    ) %>%
+    select(-`Observed Property ID`, -`Result Unit`, -.unit_clean) %>%
     pivot_wider(
       id_cols = all_of(id_cols),
       names_from = .col_name,
@@ -38,6 +50,7 @@ apply_filter <- function(df, type) {
     'Counts' = filter_counts(df),
     'Weights' = filter_weights(df),
     'Sediment' = filter_sediment(df),
+    'Metadata: Species' = filter_meta_species(df),
     filter_counts(df)
   )
 }
@@ -46,21 +59,27 @@ apply_filter <- function(df, type) {
 # these functions specify how data is filtered/manipulated for each data type
 
 filter_counts <- function(df) {
+  id_cols <- c('Activity Name', 'Date', 'Time', 'Station', 'Latitude', 'Longitude', 'Species', 'Grab Number')
+  
   df %>%
-    base_data_filter(key = 'specimen') %>%
-    filter(.data[['Observed Property ID']] != 'Taxon') %>%
+    base_data_filter(key = 'count') %>%
+    filter(!.data[['Observed Property ID']] %in% c('Taxon', 'Grab Number')) %>%
     add_date_time() %>%
     transmute(
       `Activity Name` = .data[['Activity Name']],
       Date = Date,
       Time = Time,
+      `Observed Property ID` = .data[['Observed Property ID']],
       Station = .data[['Location ID']],
       Latitude = .data[['Latitude']],
       Longitude = .data[['Longitude']],
       `Grab Number` = .data[['EA_Grab Number']],
       Species = .data[['Specimen: Taxonomy Element']],
-      Count = .data[['Result Value']]
+      `Result Value` = .data[['Result Value']],
+      `Result Unit` = .data[['Result Unit']]
     ) %>%
+    pivot_results(id_cols = id_cols) %>%
+    select(Date, Time, Station, `Grab Number`, Species, TSN, `Count (individuals)`) %>%
     arrange(Date, Time, Station, `Grab Number`, Species)
 }
 
@@ -69,7 +88,7 @@ filter_weights <- function(df) {
   
   df %>%
     base_data_filter(key = 'weight') %>%
-    filter(.data[['Observed Property ID']] != 'Taxon') %>%
+    filter(!.data[['Observed Property ID']] %in% c('Taxon', 'Size Bin')) %>%
     add_date_time() %>%
     transmute(
       `Activity Name` = .data[['Activity Name']],
@@ -85,10 +104,9 @@ filter_weights <- function(df) {
       `Result Unit` = .data[['Result Unit']]
     ) %>%
     pivot_results(id_cols = id_cols) %>%
-    arrange(
-      Date, Time, Station, Latitude, Longitude, Species, `Size Bin`,
-      `Wet Weight (g)`, `Dry Weight (g)`, `Clam Weight (g)`
-    )
+    select(Date, Time, Station, Latitude, Longitude, Species, TSN, `Size Bin`,
+           `Wet Weight (g)`, `Dry Weight (g)`, `Clam Weight (g)`) %>%
+    arrange(Date, Time, Station, Latitude, Longitude, Species, `Size Bin`)
 }
 
 filter_sediment <- function(df) {
@@ -109,7 +127,25 @@ filter_sediment <- function(df) {
       `Result Unit` = .data[['Result Unit']]
     ) %>%
     pivot_results(id_cols = id_cols) %>%
+    select(Date, Time, Station, Latitude, Longitude, `Gravel (percent)`, `Sand (percent)`) %>%
     arrange(Date, Time, Station, Latitude, Longitude)
+}
+
+filter_meta_species <- function(df) {
+  id_cols <- c('Species')
+  
+  df %>%
+    base_data_filter(key = 'taxa') %>%
+    filter(.data[['Observed Property ID']] != 'Taxon') %>%
+    transmute(
+      Species = .data[['Specimen: Taxonomy Element']],
+      `Observed Property ID` = .data[['Observed Property ID']],
+      `Result Value` = .data[['Result Value']],
+      `Result Unit` = .data[['Result Unit']]
+    ) %>%
+    pivot_results(id_cols = id_cols) %>%
+    select(Species, TSN, Habitat) %>%
+    arrange(Species)
 }
 
 # --- Shiny App ---
@@ -119,7 +155,7 @@ ui <- fluidPage(
   sidebarLayout(
     sidebarPanel(
       fileInput('file', 'Upload CSV', accept = c('.csv', 'text/csv')),
-      selectInput('type', 'Select Data', choices = c('Counts', 'Weights', 'Sediment')),
+      selectInput('type', 'Select Data', choices = c('Counts', 'Weights', 'Sediment', 'Metadata: Species')),
       downloadButton('download', 'Download CSV')
     ),
     mainPanel(
