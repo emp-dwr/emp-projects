@@ -81,11 +81,13 @@ pivot_results <- function(df, id_cols) {
 ## These functions define how data cleaning works
 ## Each "filter_<type>" defines the behavior for a different benthic data type
 ## If a new data type is added, add a new filter function
+## Note: "Specimen ID" is needed as a pivot ID column when metadata info is stored in Observed Properties
+## (eg. grab number or bin size)
 
 # Filter function for count data
 filter_counts <- function(df) {
   # define columns for pivot
-  id_cols <- c('Sample ID', 'Date', 'Time', 'Station', 'Latitude', 'Longitude', 'Species')
+  id_cols <- c('Sample ID', 'Specimen ID', 'Date', 'Time', 'Station', 'Latitude', 'Longitude', 'Species')
   
   df %>%
     # filter rows
@@ -97,6 +99,7 @@ filter_counts <- function(df) {
     # choose which columns to keep (and rename)
     transmute(
       `Sample ID` = .data[['Activity Name']],
+      `Specimen ID` = .data[['Lab: Specimen Name']],
       Date = Date,
       Time = Time,
       `Observed Property ID` = .data[['Observed Property ID']],
@@ -116,7 +119,7 @@ filter_counts <- function(df) {
 # Filter function for clam weight data
 filter_weights <- function(df) {
   # define columns for pivot
-  id_cols <- c('Sample ID', 'Date', 'Time', 'Station', 'Latitude', 'Longitude', 'Species')
+  id_cols <- c('Sample ID', 'Specimen ID', 'Date', 'Time', 'Station', 'Latitude', 'Longitude', 'Species')
   
   df %>%
     # filter rows
@@ -128,6 +131,7 @@ filter_weights <- function(df) {
     # choose which columns to keep (and rename)
     transmute(
       `Sample ID` = .data[['Activity Name']],
+      `Specimen ID` = .data[['Lab: Specimen Name']],
       Date = Date,
       Time = Time,
       `Observed Property ID` = .data[['Observed Property ID']],
@@ -274,7 +278,7 @@ server <- function(input, output, session) {
       choices = choices,
       selected = if (length(choices) > 0) choices[[1]] else character(0)
     )
-  }, ignoreInit = TRUE)
+  })
   
   # if no valid types, throw error
   output$status_msg <- renderUI({
