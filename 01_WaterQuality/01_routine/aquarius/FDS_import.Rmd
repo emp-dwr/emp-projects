@@ -12,7 +12,7 @@ Path to import folder
 
 ```{r}
 # Path to import folder
-fp_import <- 'Water Quality/00 - Monthly Run Docs/Raw Field Data/Water Quality 2025/09 - September'
+fp_import <- 'Water Quality/00 - Monthly Run Docs/Raw Field Data/Water Quality 2025/12 - December'
 ```
 
 Path to export folder
