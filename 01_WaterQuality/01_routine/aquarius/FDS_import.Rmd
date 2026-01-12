@@ -12,7 +12,7 @@ Path to import folder
 
 ```{r}
 # Path to import folder
-fp_import <- 'Water Quality/00 - Monthly Run Docs/Raw Field Data/Water Quality 2025/12 - December'
+fp_import <- 'Water Quality/00 - Monthly Run Docs/Raw Field Data/Water Quality 2025/11 - November'
 ```
 
 Path to export folder
@@ -47,11 +47,11 @@ fp_import = r.fp_import
 
 # Define path
 def abs_path_emp(fp_import=None):
-    user_profile = os.environ.get('USERPROFILE')
-    base_path = os.path.join(user_profile, 'California Department of Water Resources', 'Environmental Monitoring Program - Documents')
+    user_profile = environ.get('USERPROFILE')
+    base_path = join(user_profile, 'California Department of Water Resources', 'Environmental Monitoring Program - Documents')
     if fp_import:
-        return os.path.normpath(os.path.join(base_path, fp_import))
-    return os.path.normpath(base_path)
+        return normpath(join(base_path, fp_import))
+    return normpath(base_path)
 
 fp_main = abs_path_emp(fp_import)
 
@@ -70,13 +70,13 @@ def extract_VR(path):
 
 # Store VR files
 pdf_files = []
-for root, dirs, files in os.walk(fp_main):
+for root, dirs, files in walk(fp_main):
     for file in files:
         if (
             file.lower().endswith('.pdf') and 
             'van run field data sheet' in file.lower()
         ):
-            full_path = os.path.join(root, file)
+            full_path = join(root, file)
             pdf_files.append(full_path)
             
 all_forms = []
@@ -170,3 +170,5 @@ invisible(lapply(names(df_list), function(name) {
   write_csv(df_list[[name]], file = fp_exp, na = '')
 }))
 ```
+
+
