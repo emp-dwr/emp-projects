@@ -1,0 +1,51 @@
+﻿Station,Date,Time,Analyte ,Flag
+D26,1/4/2024,11:35:00,Total Organic Carbon,Q2B
+D26,1/4/2024,11:35:00,Dissolved Organic Carbon,Q2B
+D4,1/5/2024,10:55:00,Dissolved Nitrate + Nitrite,Q2B
+D41,1/10/2024,11:30:00,Total Kjeldahl Nitrogen,Q2B
+D41A,2/8/2024,10:15:00,Total Kjeldahl Nitrogen,Q2B
+D12,5/14/2024,8:50:00,Total Suspended Solids,Q2B
+D26,5/15/2024,9:35:00,Total Organic Carbon,Q2B
+D4,5/16/2024,10:00:00,Dissolved Organic Nitrogen,Q2B
+D41A,5/21/2024,11:55:00,Total Kjeldahl Nitrogen,Q2B
+C9,6/11/2024,10:15:00,Total Organic Carbon,Q2B
+D7,6/18/2024,12:40:00,Total Kjeldahl Nitrogen,Q2B
+D22,7/15/2024,12:30:00,Total Kjeldahl Nitrogen,Q2B
+D10,7/16/2024,13:40:00,Total Organic Carbon,Q2B
+NZ032,8/15/2024,14:35:00,Chlorophyll a,Q2B
+D41,8/19/2024,14:05:00,Total Phosphorus,Q2B
+C10A,9/6/2024,11:15:00,Total Suspended Solids,Q2B
+D41A,9/16/2024,11:35:00,Total Suspended Solids,Q2B
+C3A,10/7/2024,9:30:00,Total Phosphorus,Q2B
+D41,10/15/2024,12:20:00,Total Phosphorus,Q2B
+D10,11/12/2024,14:05:00,Total Dissolved Solids,Q2B
+NZS42,11/13/2024,12:55:00,Chlorophyll a,Q2B
+D41,12/16/2024,14:00:00,Chlorophyll a,Q2B
+D4,1/5/2024,10:55:00,Dissolved Chloride,Q2B
+D41A,2/8/2024,10:15:00,Dissolved Chloride,Q2B
+D8,6/17/2024,13:05:00,Dissolved Chloride,Q2B
+P8,8/13/2024,14:45:00,Dissolved Nitrate + Nitrite,Q2B
+D12,3/18/2024,11:25:00,Dissolved Silica,Q2B
+D8,3/22/2024,13:45:00,Dissolved Silica,Q2B
+D22,12/11/2024,14:05:00,Dissolved Silica,Q2B
+D4,1/5/2024,10:55:00,Total Dissolved Solids,Q2B
+D41A,2/8/2024,10:15:00,Total Dissolved Solids,Q2B
+D8,6/17/2024,13:05:00,Total Dissolved Solids,Q2B
+D41A,11/5/2024,13:00:00,Total Dissolved Solids,Q2B
+D8,12/13/2024,13:30:00,Total Dissolved Solids,Q2B
+NZS42,5/20/2024,13:50:00,Total Organic Carbon,Q2B
+NZS42,9/12/2024,12:25:00,Total Organic Carbon,Q2B
+D41A,2/8/2024,10:15:00,Total Phosphorus,Q2B
+D4,1/5/2024,10:55:00,Total Phosphorus,Q1
+D22,1/5/2024,12:35:00,Total Phosphorus,Q1
+NZ068,1/5/2024,13:40:00,Total Phosphorus,Q1
+LSZ2,1/5/2024,10:50:00,Total Phosphorus,Q1
+LSZ6,1/5/2024,10:45:00,Total Phosphorus,Q1
+C3A,7/10/2024,8:15:00,Total Organic Carbon,Q1
+C9,7/10/2024,10:00:00,Total Organic Carbon,Q1
+C10A,7/10/2024,11:30:00,Total Organic Carbon,Q1
+D6,11/12/2024,12:10:00,Total Kjeldahl Nitrogen,Q1
+D8,11/12/2024,13:10:00,Total Kjeldahl Nitrogen,Q1
+D10,11/12/2024,14:05:00,Total Kjeldahl Nitrogen,Q1
+D41A,9/16/2024,11:35:00,Total Phosphorus,Q1
+D41,9/16/2024,12:55:00,Total Phosphorus,Q1

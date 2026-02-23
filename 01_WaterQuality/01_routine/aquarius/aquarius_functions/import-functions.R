@@ -13,8 +13,8 @@ process_VR <- function(df_raw) {
   df_clean <- df %>%
     filter(!param %in% c('Crew', 'Run Name')) %>%
     mutate(
-      is_blank = str_detect(param, '^Blank'),
-      is_global_meta = str_detect(param, '^(Sonde ID|Date)$'),
+      is_blank = str_detect(param, '_Blank$'),
+      is_global_meta = str_detect(param, '^(SondeID|Date)$'),
       
       # Batch assignment
       batch_id = case_when(
@@ -26,8 +26,8 @@ process_VR <- function(df_raw) {
       
       # Surface/bottom flag
       SurfBot = case_when(
-        str_detect(param, 'Bottom') ~ 'bottom',
-        str_detect(param, 'Surface') ~ 'surface',
+        str_detect(param, 'Bot') ~ 'bottom',
+        str_detect(param, 'Surf') ~ 'surface',
         TRUE ~ NA_character_
       ),
       
@@ -40,8 +40,8 @@ process_VR <- function(df_raw) {
       
       # Base param cleaning
       param_base_raw = param %>%
-        str_remove('^Blank ') %>%
-        str_remove('^Dup Check Box_\\d+$') %>%
+        str_remove('_Blank$') %>%
+        str_remove('^Dup') %>%
         str_remove('_[0-9]+$') %>%
         str_squish(),
       
@@ -68,7 +68,7 @@ process_VR <- function(df_raw) {
       )
     ) %>%
     filter(!str_detect(param, '^Station_\\d+$')) %>%
-    filter(!(param_base == 'Dup Check Box')) %>%
+    filter(!(param_base == 'Boolean')) %>%
     select(batch_id, param = param_base, value, SurfBot, `QC: Type`, `Location ID`)
   
   return(df_out)
@@ -84,7 +84,7 @@ format_VR <- function(df_final) {
     mdy()
   
   sonde_id <- df_final %>%
-    filter(batch_id == 0, param == 'Sonde ID') %>%
+    filter(batch_id == 0, param == 'SondeID') %>%
     pull(value)
   
   # Assign times
@@ -99,39 +99,46 @@ format_VR <- function(df_final) {
   
   # Assign device ID
   df_final <- df_final %>%
-    mutate(`Field: Device ID` = sonde_id)
+    mutate(
+      `Field: Device ID` = case_when(
+        !is.na(SurfBot) ~ sonde_id,
+        TRUE ~ NA
+      )
+    )
   
   # Extract station names
   station_vals <- df_final %>%
-    filter(param == 'Station') %>%
-    select(batch_id, `Location ID` = value)
+    filter(param == 'StationName') %>%
+    select(batch_id, `Location ID` = value) %>%
+    bind_rows(
+      tibble(
+        batch_id = 999,
+        `Location ID` = 'Equipment Blank'
+      )
+    )
   
   # Get Lab IDs
   lab_ids <- df_final %>%
-    filter(param == 'Lab ID') %>%
+    filter(param == 'LabID') %>%
     select(batch_id, `QC: Type`, `Activity Name` = value)
-  
-  df_final <- df_final %>%
-    left_join(station_vals, by = c('batch_id','Location ID')) %>%
-    left_join(lab_ids, by = c('batch_id', 'QC: Type'))
-  
-  # Depth
-  df_final <- df_final %>%
-    mutate(water_depth = case_when(
-      param == 'Depth' ~ as.numeric(value),
-      TRUE ~ NA_real_
-    )) %>%
-    group_by(batch_id) %>%
-    fill(water_depth, .direction = 'downup') %>%
-    ungroup() %>%
-    mutate(Depth = case_when(
-      SurfBot == 'bottom' ~ water_depth - 3,
-      SurfBot == 'surface' ~ 3,
-      param == 'MC Score' ~ 0,
-      TRUE ~ NA_real_
-    )) %>%
-    select(-water_depth)
 
+  df_final <- df_final %>%
+    right_join(station_vals, by = 'batch_id', suffix = c('', '_station')) %>%
+    mutate(`Location ID` = coalesce(`Location ID_station`, `Location ID`)) %>%
+    select(-`Location ID_station`)
+  
+  df_final <- df_final %>%
+    left_join(lab_ids, by = c('batch_id', 'QC: Type'))
+
+  # Rename churn bucket
+  df_final <- df_final %>%
+    mutate(
+      param = case_when(
+        param == 'ChurnBucket' ~ 'Churn Bucket ID',
+        TRUE ~ param
+      )
+    )
+  
   # extract jug IDs from Notes
   jug_and_notes <- df_final %>%
     filter(param == 'Notes') %>%
@@ -201,18 +208,26 @@ format_VR <- function(df_final) {
   df_final <- df_final %>%
     bind_rows(jug_rows) %>%
     select(-standard_jug, -duplicate_jug, -blank_jug)
+  
+  # Depth
+  df_final <- df_final %>% 
+    mutate(Depth = if_else(str_detect(param, '(?i)Depth'), value, NA)) %>%
+    group_by(`Location ID`, `Observed DateTime`) %>%
+    fill(Depth, .direction = 'downup') %>%
+    ungroup()
+  
+  df_final <- df_final %>%
+    mutate(`EA_Sampling Depth` = case_when(
+      SurfBot == 'bottom' ~ as.numeric(Depth) - 3,
+      SurfBot == 'surface' ~ 3,
+      param == 'MC Score' ~ 0,
+      TRUE ~ NA_real_
+    ))
 
   # Remove metadata
   df_final <- df_final %>%
-    filter(!param %in% c('Date', 'Sonde ID', 'Station', 'Time', 'Lab ID', 'Notes')) %>%
+    filter(!param %in% c('Date', 'SondeID', 'StationName', 'Time', 'LabID', 'Notes')) %>%
     relocate(SurfBot, .after = param)
-  
-  # Add churn bucket
-  churn_rows <- df_final %>%
-    group_by(batch_id, `QC: Type`) %>%
-    filter(param == 'Churn Bucket #') %>%
-    select(-value) %>%
-    ungroup()
   
   # Remap weather codes
   df_final <- df_final %>%
@@ -251,15 +266,7 @@ format_VR <- function(df_final) {
   
   df_final <- df_final %>%
     filter(!is.na(`Result Value`))
-  
-  # More depth
-  df_final <- df_final %>% 
-    rename(`EA_Sampling Depth` = Depth) %>%
-    mutate(Depth = if_else(str_detect(param, '(?i)Depth'), `Result Value`, NA)) %>%
-    group_by(`Location ID`, `Observed DateTime`) %>%
-    fill(Depth, .direction = 'downup') %>%
-    ungroup()
-  
+
   # Merge with metadata
   fp_meta <- abs_path_emp('Water Quality/AQUARIUS Samples Database/Database Migration/Lists to Import/Final Imports/Import_FDS Metadata.csv')
   df_meta <- read_csv(fp_meta, show_col_types = FALSE) %>%
@@ -288,6 +295,10 @@ format_VR <- function(df_final) {
   df_final <- df_final %>%
     mutate(`Depth Unit` = if_else(`Location ID` == 'Equipment Blank', NA, 'ft')) %>%
     mutate(Depth = as.character(round(as.numeric(Depth), 1)))
+  
+  # Remove secchi
+  df_final <- df_final %>%
+    filter(!(`Observed Property ID` == 'Secchi Depth'))
   
   col_order <- c(
     'Observation ID', 'Location ID', 'Observed Property ID', 'Observed DateTime', 'Analyzed DateTime',
@@ -336,11 +347,13 @@ process_FDS_excel <- function(fp) {
     filter(param_suffix == value_suffix) %>%
     select(param, value) %>%
     filter(!is.na(param) & !is.na(value)) %>%
-    mutate(value = case_when(
-      param == 'Date:' ~ format(as.Date(as.numeric(value), origin = '1899-12-30'), '%m/%d/%Y'),
-      TRUE ~ value
-    ),
-    batch_id = 0)
+    mutate(
+      value = case_when(
+        param == 'Date:' ~ format(as.Date(suppressWarnings(as.numeric(value)), origin = '1899-12-30'), '%m/%d/%Y'),
+        TRUE ~ value
+        ),
+      batch_id = 0
+      )
   
   # Blank batch
   df_blank <- df %>%
@@ -527,7 +540,7 @@ format_FDS_excel <- function(df_final) {
   # add in Observed DateTimes
   df_final <- df_final %>%
     mutate(`Observed DateTime` = case_when(
-      param == 'Time' ~ date_value + hms(paste0(value, ':00')),
+      param == 'Time' ~ date_value + suppressWarnings(hms(paste0(value, ':00'))),
       TRUE ~ NA_POSIXct_
     )) %>%
     group_by(batch_id) %>%
@@ -549,8 +562,8 @@ format_FDS_excel <- function(df_final) {
   # Depth
   df_final <- df_final %>%
     mutate(water_depth = case_when(
-      param == 'Water Depth (ft)' ~ as.numeric(value),
-      TRUE ~ NA_real_
+      param == 'Water Depth (ft)' ~ value,
+      TRUE ~ NA
     )) %>%
     group_by(batch_id) %>%
     fill(water_depth, .direction = 'downup') %>%
@@ -681,8 +694,8 @@ format_FDS_excel <- function(df_final) {
   # Round values
   df_final <- df_final %>%
     mutate(value = case_when(
-      param == 'Turbidity (FNU)' ~ as.character(round(as.numeric(value), 1)),
-      param == 'DO (mg/L)' ~ as.character(round(as.numeric(value), 2)),
+      param == 'Turbidity (FNU)' ~ as.character(round(suppressWarnings(as.numeric(value)), 1)),
+      param == 'DO (mg/L)' ~ as.character(round(suppressWarnings(as.numeric(value)), 2)),
       TRUE ~ value)
     )
 
@@ -751,8 +764,8 @@ format_FDS_excel <- function(df_final) {
   df_final <- df_final %>%
     mutate(
       `Result Value` = case_when(
-        `Observed Property ID` == 'Turbidity' ~ as.character(round(as.numeric(`Result Value`), 1)),
-        `Observed Property ID` == 'Chlorophyll Fluorescence RFU' ~ as.character(round(as.numeric(`Result Value`), 2)),
+        `Observed Property ID` == 'Turbidity' ~ as.character(round(suppressWarnings(as.numeric(`Result Value`)), 1)),
+        `Observed Property ID` == 'Chlorophyll Fluorescence RFU' ~ as.character(round(suppressWarnings(as.numeric(`Result Value`)), 2)),
         TRUE ~ `Result Value`
         ),
       `EA_Sampling Depth` = round(as.numeric(`EA_Sampling Depth`), 1)

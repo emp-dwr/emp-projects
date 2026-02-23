@@ -1,0 +1,208 @@
+Finish Cleaning Corrected Data (pulled from Aquarius)
+
+# PART 2: JULY 24 - PRESENT
+
+```{r}
+library(tidyverse)
+library(lubridate)
+source('00_GlobalFunctions/functions.R')
+```
+
+```{r}
+# import data (bad way of doing this, but doing it quick)
+fp <- ('01_WaterQuality/edi-annual-updates/data/AQS-0724_1224.csv')
+df_newdat <- read_csv(fp,
+                      col_types = cols(
+                        `Lab: MDL` = col_double(),
+                        `Lab: MRL` = col_double()
+                        )
+                      )
+
+df_newdat <- df_newdat %>%
+  filter(is.na(`QC: Type`))
+
+unique(df_newdat$`QC: Type`)
+```
+```{r}
+df_newdat <- df_newdat %>%
+  filter(!`Observed Property ID` %in% c('Churn Bucket ID', 'Filter Container ID'))
+```
+
+
+```{r}
+# format for EDI
+df_newedi <- df_newdat %>%
+  select(`Location ID`, `Observed DateTime`, `Observed Property ID`, `Result Value`, `Result Unit`, `Lab: Detection Condition`, `Lab: MDL`, `Lab: MRL`, `EA_Reports To`, `Lab: Analysis Method`, `Lab: Quality Flag`, `EA_Field Quality Flag`, `EA_Sampling Depth`, `Field: Comment`)
+
+df_newedi <- df_newedi %>%
+  mutate(
+    `Lab: Detection Condition` = 
+      case_when(is.na(`Lab: Detection Condition`) ~ 'Detected',
+                TRUE ~ 'Not detected')
+  )
+
+df_newedi <- df_newedi %>%
+  rename(
+    Station = `Location ID`,
+    DateTime = `Observed DateTime`,
+    Sampling_Depth = `EA_Sampling Depth`,
+    Analyte = `Observed Property ID`,
+    Result_Value = `Result Value`,
+    Result_Unit = `Result Unit`,
+    Detection_Status = `Lab: Detection Condition`,
+    MRL = `Lab: MRL`,
+    MDL = `Lab: MDL`,
+    Reports_To = `EA_Reports To`,
+    Analysis_Method = `Lab: Analysis Method`,
+    Lab_QCFlag = `Lab: Quality Flag`,
+    Field_QCFlag = `EA_Field Quality Flag`,
+    Field_Comment = `Field: Comment`
+  )
+
+df_newedi <- df_newedi %>%
+  separate(DateTime, into = c('Date', 'Time'), sep = ' ') %>%
+  mutate(Analysis_Method = str_extract(Analysis_Method, '^[^;]+')) %>%
+  arrange(Date, Time, Station, Analyte)
+
+# date to datetype
+df_newedi <- df_newedi %>%
+  mutate(Date_raw = as.character(Date),
+         Date = as.Date(Date_raw, format = '%Y-%m-%d'))
+
+df_newedi %>%
+  filter(is.na(Date)) %>%
+  distinct(Date_raw)
+
+df_newedi <- df_newedi %>%
+  select(-Date_raw)
+
+# format times
+df_newedi <- df_newedi %>%
+  mutate(Time = str_extract(as.character(Time), '\\d{2}:\\d{2}:\\d{2}'))
+```
+
+```{r}
+unique(df_newedi$Analyte)
+```
+
+# Part 3: Combine with old data
+
+```{r}
+# read in old data
+fp <- ('01_WaterQuality/edi-annual-updates/data/edi_24_draft_throughjune.csv')
+df_olddat <- read_csv(fp)
+
+df_olddat <- df_olddat %>%
+  mutate(Time = as.character(Time))
+```
+
+```{r}
+stopifnot(setequal(names(df_newedi), names(df_olddat)))
+
+df_olddat <- df_olddat %>% select(all_of(names(df_newedi)))
+
+df_combined <- bind_rows(df_olddat, df_newedi)
+```
+
+# Part 4: 2024 QC additions
+
+```{r}
+# add QC
+df_qc <- read_csv('01_WaterQuality/edi-annual-updates/data/2024 Data Flags_WithCode.csv')
+
+df_qc <- df_qc %>%
+  mutate(Date = as.Date(Date, format = '%m/%d/%Y')) %>%
+  select(-Time)
+```
+
+```{r}
+df_final <- df_combined %>%
+  left_join(df_qc, by = c('Station', 'Date', 'Analyte'))
+
+df_qc_unmatched <- df_qc %>%
+  anti_join(df_combined, by = c('Station', 'Date', 'Analyte'))
+
+df_qc_unmatched
+```
+
+```{r}
+df_final <- df_final %>%
+  mutate(Field_QCFlag = coalesce(Field_QCFlag, Flag)) %>%
+  select(-Flag)
+```
+
+```{r}
+df_final <- df_final %>%
+  mutate(
+    Lab_QCFlag = Lab_QCFlag %>%
+      str_replace_all(fixed('*'), 'M1') %>%
+      str_replace_all('\\bB\\b','B1') %>%
+      str_replace_all('F1|F2|F3', 'M1') %>%
+      str_replace_all(fixed('H3'), 'H1') %>%
+      str_replace_all('\\bH\\b', 'H1') %>%  
+      str_replace_all(fixed('H1 H1'), 'H1') %>%
+      str_replace_all(fixed('M1 M1'), 'M1') %>%
+      na_if('10') %>%
+      str_replace_all(fixed('R4, Analyte reporting limit raised due to high ana'),'R4')
+  )
+
+unique(df_final$Field_QCFlag)
+unique(df_final$Lab_QCFlag)
+```
+
+```{r}
+df_final <- df_final %>%
+  mutate(Analyte = str_replace_all(Analyte, fixed('Microcystis aeruginosa'), 'MVI'))
+
+df_final <- df_final %>%
+  select(-c(MDL, Reports_To))
+
+df_final <- df_final %>%
+  mutate(
+    QC_Flag = case_when(
+      is.na(Field_QCFlag) & is.na(Lab_QCFlag) ~ NA_character_,
+      TRUE ~ str_squish(str_c(coalesce(Field_QCFlag, ''), coalesce(Lab_QCFlag, ''), sep = ' '))
+    )
+  ) %>%
+  select(-Field_QCFlag, -Lab_QCFlag) %>%
+  relocate(QC_Flag, .after = Analysis_Method) %>%
+  relocate(Sampling_Depth, .after = Time)
+
+df_final <- df_final %>%
+  mutate(
+    Result_Value = case_when(
+      str_detect(QC_Flag, 'J') ~ NA_character_,
+      TRUE ~ Result_Value
+    ),
+    Detection_Status = case_when(
+      str_detect(QC_Flag, 'J') ~ 'Not detected',
+      TRUE ~ Detection_Status
+    ),
+    QC_Flag = QC_Flag %>%
+      str_remove_all('J') %>%
+      str_squish() %>%
+      na_if('')
+  )
+
+unique(df_final$QC_Flag)
+```
+
+```{r}
+df_dups <- df_newedi %>%
+  mutate(
+    Year  = year(Date),
+    Month = month(Date)
+  ) %>%
+  count(Station, Year, Month, Analyte, name = 'n') %>%
+  filter(n > 1) %>%
+  arrange(desc(n), Station, Year, Month, Analyte)
+
+df_dups
+```
+
+
+```{r}
+write_csv(df_final, '01_WaterQuality/edi-annual-updates/data/final/edi_2024_update_QCCodes.csv')
+```
+
+

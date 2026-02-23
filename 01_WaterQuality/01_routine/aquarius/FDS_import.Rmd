@@ -12,7 +12,7 @@ Path to import folder
 
 ```{r}
 # Path to import folder
-fp_import <- 'Water Quality/00 - Monthly Run Docs/Raw Field Data/Water Quality 2025/11 - November'
+fp_import <- 'Water Quality/00 - Monthly Run Docs/Raw Field Data/Water Quality 2025/12 - December'
 ```
 
 Path to export folder
@@ -40,7 +40,7 @@ source('01_WaterQuality/01_routine/aquarius/aquarius_functions/import-functions.
 
 ```{python}
 from os import environ, walk
-from os.path import join, normpath
+from os.path import join, normpath, basename
 import fitz
 
 fp_import = r.fp_import
@@ -74,10 +74,16 @@ for root, dirs, files in walk(fp_main):
     for file in files:
         if (
             file.lower().endswith('.pdf') and 
-            'van run field data sheet' in file.lower()
+            (
+              'van run field data sheet' in file.lower() or
+             '_main' in file.lower()
+            )
         ):
             full_path = join(root, file)
             pdf_files.append(full_path)
+            
+
+print('pdf files used:', *[basename(p) for p in pdf_files], sep='\n  - ')
             
 all_forms = []
 
@@ -155,7 +161,7 @@ check_analytes(df_final, type = 'field')
 #### Export file(s)
 
 ```{r}
-# Export by month
+# # Export by month
 fp_export <- abs_path_emp(fp_export)
 
 df_list <- split(df_final,
@@ -170,5 +176,3 @@ invisible(lapply(names(df_list), function(name) {
   write_csv(df_list[[name]], file = fp_exp, na = '')
 }))
 ```
-
-
