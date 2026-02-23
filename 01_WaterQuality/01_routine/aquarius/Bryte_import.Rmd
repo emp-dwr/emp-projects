@@ -74,18 +74,18 @@ check_analytes(df_final, type = 'lab')
 
 ```{r}
 # Export by month(s)
-# fp_export <- abs_path_emp(fp_export)
-# 
-# df_list <- split(df_final,
-#                  list(format(as.POSIXct(df_final$`Observed DateTime`), '%Y-%m')),
-#                  drop = TRUE)
-# 
-# invisible(lapply(names(df_list), function(name) {
-#   name_parts <- unlist(strsplit(name, '\\.'))
-#   year_month <- name_parts[1]
-# 
-#   fp_exp <- paste0(fp_export, '/', year_month,'_Bryte_EMP-DWQ.csv')
-# 
-#   write_csv(df_list[[name]], file = fp_exp, na = '')
-# }))
+fp_export <- abs_path_emp(fp_export)
+
+df_list <- split(df_final,
+                 list(format(as.POSIXct(df_final$`Observed DateTime`), '%Y-%m')),
+                 drop = TRUE)
+
+invisible(lapply(names(df_list), function(name) {
+  name_parts <- unlist(strsplit(name, '\\.'))
+  year_month <- name_parts[1]
+
+  fp_exp <- paste0(fp_export, '/', year_month,'_Bryte_EMP-DWQ.csv')
+
+  write_csv(df_list[[name]], file = fp_exp, na = '')
+}))
 ```
