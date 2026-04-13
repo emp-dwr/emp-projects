@@ -14,7 +14,7 @@ process_VR <- function(df_raw) {
     filter(!param %in% c('Crew', 'Run Name')) %>%
     mutate(
       is_blank = str_detect(param, '_Blank$'),
-      is_global_meta = str_detect(param, '^(SondeID|Date)$'),
+      is_global_meta = str_detect(param, '^(Sonde ?ID|Date)$'),
       
       # Batch assignment
       batch_id = case_when(
@@ -84,7 +84,7 @@ format_VR <- function(df_final) {
     mdy()
   
   sonde_id <- df_final %>%
-    filter(batch_id == 0, param == 'SondeID') %>%
+    filter(batch_id == 0, str_detect(param, '^Sonde ?ID$')) %>%
     pull(value)
   
   # Assign times
@@ -226,7 +226,7 @@ format_VR <- function(df_final) {
 
   # Remove metadata
   df_final <- df_final %>%
-    filter(!param %in% c('Date', 'SondeID', 'StationName', 'Time', 'LabID', 'Notes')) %>%
+    filter(!param %in% c('Date', 'StationName', 'Time', 'LabID', 'Notes') & !str_detect(param, '^Sonde ?ID$')) %>%
     relocate(SurfBot, .after = param)
   
   # Remap weather codes
@@ -277,6 +277,9 @@ format_VR <- function(df_final) {
   
   df_final <- right_join(df_meta, df_final, by = c('param', 'SurfBot')) %>%
     select(-c(param, SurfBot))
+
+  message('Rows after metadata join: ', nrow(df_final))
+  message('Non-NA Observed Property ID: ', sum(!is.na(df_final$`Observed Property ID`)))
   
   # Format DateTimes
   # df_final <- df_final %>%
@@ -994,7 +997,7 @@ check_analytes <- function(df, type) {
     filter(`Location ID` %in% valid_stations | `Location ID` == 'Equipment Blank') %>%
     distinct(`Location ID`, `Observed DateTime`, `QC: Type`)
   
-  # create expected combos (station × analyte × date × QC)
+  # create expected combos (station x analyte x date x QC)
   expected <- expand_grid(
     station_dates,
     `Observed Property ID` = valid_analytes
