@@ -12,14 +12,14 @@ Path to import folder
 
 ```{r}
 # Path to import folder
-fp_import <-  'Water Quality/00 - Monthly Run Docs/Lab Reports/2025/12 - December'
+fp_import <-  'Water Quality/00 - Monthly Run Docs/Lab Reports/2026/01 - January'
 ```
 
 Path to export folder
 
 ```{r}
 # Path to export folder
-fp_export <- 'Water Quality/00 - Monthly Run Docs/Database Import Data/2025'
+fp_export <- 'Water Quality/00 - Monthly Run Docs/Database Import Data/2026'
 ```
 
 ------------------------------------------------------------------------
