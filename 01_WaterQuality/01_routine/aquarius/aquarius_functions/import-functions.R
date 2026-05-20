@@ -362,6 +362,7 @@ process_FDS_excel <- function(fp) {
   df_blank <- df %>%
     select(...38, ...39, ...40, ...41, ...42, ...43, ...44) %>%
     filter(!is.na(...38) | ...38 == 'Equipment Blank') %>%
+    mutate(across(c(...44), as.character)) %>%
     pivot_longer(cols = c(...39, ...40, ...41, ...42, ...43, ...44), values_to = 'value', names_to = 'value_col') %>%
     filter(!is.na(value) | ...38 == 'Equipment Blank') %>%
     mutate(
