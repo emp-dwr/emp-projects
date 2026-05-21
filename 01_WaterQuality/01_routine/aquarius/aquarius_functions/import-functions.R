@@ -1,5 +1,14 @@
 # TODO: better comment...all of this
 
+
+# Helpers -----------------------------------------------------------------
+
+normalize_time <- function(x) {
+  x %>%
+    str_trim() %>%
+    str_replace('^(\\d{1,2}:\\d{2}):\\d{2}$', '\\1')
+}
+
 # Process VR --------------------------------------------------------------
 # Do preliminary formatting for VR data based on fillable pdf
 # Treat each Station block as a "Batch"; metadata is batch 0 and blank is batch 999
@@ -334,13 +343,13 @@ format_VR <- function(df_final) {
 
 # process FDS -------------------------------------------------------------
 
-process_FDS_excel <- function(fp) {
-  df <- suppressMessages(read_excel(fp))
-  
+process_FDS_csv <- function(fp) {
+  df <- read_csv(fp, col_names = FALSE, col_types = cols(.default = 'c'), show_col_types = FALSE)
+    
   # Main batch
   df_head <- df %>%
-    select('...7', '...9', '...18', '...24') %>%
-    rename(param1 = '...7', value1 = '...9', param2 = '...18', value2 = '...24') %>%
+    select('X8', 'X10', 'X19', 'X25') %>%
+    rename(param1 = 'X8', value1 = 'X10', param2 = 'X19', value2 = 'X25') %>%
     pivot_longer(cols = c(param1, param2), values_to = 'param', names_to = 'param_col') %>%
     pivot_longer(cols = c(value1, value2), values_to = 'value', names_to = 'value_col') %>%
     mutate(
@@ -351,27 +360,27 @@ process_FDS_excel <- function(fp) {
     select(param, value) %>%
     filter(!is.na(param) & !is.na(value)) %>%
     mutate(
-      value = case_when(
-        param == 'Date:' ~ format(as.Date(suppressWarnings(as.numeric(value)), origin = '1899-12-30'), '%m/%d/%Y'),
-        TRUE ~ value
-        ),
+      value = if_else(
+        param == 'Date:',
+        format(lubridate::parse_date_time(value, orders = c('ymd HMS', 'mdy', 'ymd')), '%m/%d/%Y'),
+        value
+      ),
       batch_id = 0
-      )
-  
+    )
+
   # Blank batch
   df_blank <- df %>%
-    select(...38, ...39, ...40, ...41, ...42, ...43, ...44) %>%
-    filter(!is.na(...38) | ...38 == 'Equipment Blank') %>%
-    mutate(across(c(...44), as.character)) %>%
-    pivot_longer(cols = c(...39, ...40, ...41, ...42, ...43, ...44), values_to = 'value', names_to = 'value_col') %>%
-    filter(!is.na(value) | ...38 == 'Equipment Blank') %>%
+    select(X39, X40, X41, X42, X43, X44, X45) %>%
+    filter(!is.na(X39) | X39 == 'Equipment Blank') %>%
+    pivot_longer(cols = c(X40, X41, X42, X43, X44, X45), values_to = 'value', names_to = 'value_col') %>%
+    filter(!is.na(value) | X39 == 'Equipment Blank') %>%
     mutate(
       param = case_when(
-        ...38 == 'Equipment Blank' ~ 'Station',
-        TRUE ~ ...38
+        X39 == 'Equipment Blank' ~ 'Station',
+        TRUE ~ X39
       ),
       value = case_when(
-        ...38 == 'Equipment Blank' ~ 'Equipment Blank',
+        X39 == 'Equipment Blank' ~ 'Equipment Blank',
         TRUE ~ value
       ),
       `QC: Type` = 'Blank',
@@ -392,8 +401,8 @@ process_FDS_excel <- function(fp) {
   df_batch <- df %>%
     mutate(across(everything(), ~ str_replace_all(., '[\r\n]', ' '))) %>%
     mutate(
-      batch_start = ifelse(!is.na(...1) & str_detect(...1, 'Station:'), TRUE, FALSE),
-      batch_end = ifelse(!is.na(...1) & str_detect(...1, 'Notes:'), TRUE, FALSE),
+      batch_start = ifelse(!is.na(X2) & str_detect(X2, 'Station:'), TRUE, FALSE),
+      batch_end = ifelse(!is.na(X2) & str_detect(X2, 'Notes:'), TRUE, FALSE),
       batch_id = cumsum(batch_start)
     ) %>%
     fill(batch_id, .direction = 'down') %>%
@@ -408,7 +417,7 @@ process_FDS_excel <- function(fp) {
     filter(rowSums(!is.na(select(., -batch_id))) > 0)
   
   rm_batches <- df_batch %>%
-    filter(str_detect(...1, 'Station:') & str_detect(...1, 'Check')) %>%
+    filter(str_detect(X2, 'Station:') & str_detect(X2, 'Check')) %>%
     pull(batch_id) %>%
     unique()
   
@@ -418,15 +427,15 @@ process_FDS_excel <- function(fp) {
   df_batch <- df_batch %>%
     group_by(batch_id) %>%
     mutate(
-      is_header1 = str_detect(...1, 'Station:'),
-      is_horz = str_detect(...1, 'Horizontal'),
-      is_pretow_surf = str_detect(...1, 'Pre-Tow Surf|No-Tow Surf|Post-Tow Surf'), #TODO: GIVE WARNING IF POST-TOW OR IF MULTIPLE
-      is_pretow_bot = str_detect(...1, 'Pre-Tow Bot|No-Tow Bot|Post-Tow Bot'),
-      is_header2 = str_detect(...1, 'Lab ID'),
-      is_discval = case_when(lag(is_header2, default = FALSE) & !is.na(...1) ~ TRUE, TRUE ~ FALSE),
-      is_notes = str_detect(...1, 'Notes:'),
-      is_lat = str_detect(...39, 'Lat:'),
-      is_long = str_detect(...39, 'Long:')
+      is_header1 = str_detect(X2, 'Station:'),
+      is_horz = str_detect(X2, 'Horizontal'),
+      is_pretow_surf = str_detect(X2, 'Pre-Tow Surf|No-Tow Surf|Post-Tow Surf'), #TODO: GIVE WARNING IF POST-TOW OR IF MULTIPLE
+      is_pretow_bot = str_detect(X2, 'Pre-Tow Bot|No-Tow Bot|Post-Tow Bot'),
+      is_header2 = str_detect(X2, 'Lab ID'),
+      is_discval = case_when(lag(is_header2, default = FALSE) & !is.na(X2) ~ TRUE, TRUE ~ FALSE),
+      is_notes = str_detect(X2, 'Notes:'),
+      is_lat = str_detect(X40, 'Lat:'),
+      is_long = str_detect(X40, 'Long:')
     ) %>%
     ungroup()
   
@@ -508,6 +517,9 @@ process_FDS_excel <- function(fp) {
   # Combine
   df_final <- bind_rows(df_head, df_station, df_values, df_notes, df_latlong, df_dup, df_blank) %>%
     filter(!str_detect(param, '^Station:')) %>% # remove extra station/time
+    mutate(value = case_when(
+      param == 'Time' ~ normalize_time(value), # make sure times are HH:MM
+      TRUE ~ value)) %>%
     arrange(batch_id) %>%
     relocate(batch_id)
   

@@ -43,7 +43,19 @@ from os import environ, walk
 from os.path import join, normpath, basename
 import fitz
 
+# Bring in import fp
 fp_import = r.fp_import
+
+# Define function to sanitize Excel imports later
+def sanitize_excel(xlsx_path, csv_path):
+  from openpyxl import load_workbook
+  import csv
+  wb = load_workbook(xlsx_path, data_only=True)
+  ws = wb.active
+  with open(csv_path, 'w', newline='') as f:
+    writer = csv.writer(f)
+    for row in ws.iter_rows(values_only=True):
+      writer.writerow([str(v) if v is not None else '' for v in row])
 
 # Define path
 def abs_path_emp(fp_import=None):
@@ -73,7 +85,7 @@ pdf_files = []
 for root, dirs, files in walk(fp_main):
     for file in files:
         if (
-            file.lower().endswith('.pdf') and 
+            file.lower().endswith('.pdf') and
             (
               'van run field data sheet' in file.lower() or
              '_main' in file.lower()
@@ -81,10 +93,10 @@ for root, dirs, files in walk(fp_main):
         ):
             full_path = join(root, file)
             pdf_files.append(full_path)
-            
+
 
 print('pdf files used:', *[basename(p) for p in pdf_files], sep='\n  - ')
-            
+
 all_forms = []
 
 for pdf_path in pdf_files:
@@ -110,9 +122,16 @@ df_VR_all <- do.call(rbind, df_list)
 # Import FDS files
 fp_xlsx <- list.files(path = abs_path_emp(fp_import), pattern = '\\.xlsx$', recursive = TRUE, full.names = TRUE)
 
+fp_csv <- map_chr(fp_xlsx, function(fp) {
+  csv_path <- tempfile(fileext = '.csv')
+  reticulate::py$sanitize_excel(fp, csv_path)
+  csv_path
+})
+
+
 # Clean FDS files
-df_FDS <- map_dfr(fp_xlsx, function(fp) {
-  df_raw <- process_FDS_excel(fp)
+df_FDS <- map_dfr(fp_csv, function(fp) {
+  df_raw <- process_FDS_csv(fp)
   format_FDS_excel(df_raw)
 })
 
