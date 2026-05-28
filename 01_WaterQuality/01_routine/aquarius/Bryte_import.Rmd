@@ -1,8 +1,8 @@
 ### Bryte Data Formatting
 
-Format data from Bryte Excel files for import into Aquarius Samples Database
+Format data from Bryte Lab Excel files for import into Aquarius Samples Database
 
-*Questions: sarah.perry\@water.ca.gov*
+*Questions: sarah.perry\@water.ca.gov* 
 
 ------------------------------------------------------------------------
 
