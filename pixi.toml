@@ -1,0 +1,11 @@
+[workspace]
+channels = ["conda-forge"]
+name = "emp-projects"
+platforms = ["win-64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
+python = ">=3.14.5,<3.15"
+pymupdf = ">=1.27.2.2,<2"

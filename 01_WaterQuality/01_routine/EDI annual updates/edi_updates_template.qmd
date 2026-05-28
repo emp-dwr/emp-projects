@@ -4,8 +4,22 @@ Finish Cleaning Corrected Data (pulled from Aquarius)
 
 ```{r}
 edi_year <- 2024
-print('hello')
 ```
+
+
+```{r}
+library(ggplot2)
+
+df <- data.frame(
+  x = 1:10,
+  y = (1:10)^2
+)
+
+ggplot(df, aes(x, y)) +
+  geom_point() +
+  geom_line()
+```
+
 
 # Code Starts Here
 

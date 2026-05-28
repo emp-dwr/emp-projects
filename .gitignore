@@ -170,3 +170,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 .positai
+# pixi environments
+.pixi/*
+!.pixi/config.toml
