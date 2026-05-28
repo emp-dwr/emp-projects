@@ -3,6 +3,9 @@
 .Rhistory
 .Rapp.history
 
+# Profiles...for now???
+.Rprofile
+
 # Session Data files
 .RData
 
