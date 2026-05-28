@@ -1,5 +1,59 @@
 source('00_GlobalFunctions/functions.R')
 
+format_edi <- function(df = df) {
+  
+  # select columns
+  df %>%
+    select(
+      samplingLocation,
+      observedDate,
+      observedTime,
+      observedProperty,
+      result_value,
+      result_unit,
+      detectionCondition,
+      MDL,
+      MRL,
+      `EA_Reports To`,
+      analysis_method,
+      `EA_Field Quality Flag`,
+      `EA_Sampling Depth`,
+      comment
+    )
+
+  # fix detection condition
+  df <- df %>%
+    mutate(
+      detectionCondition = case_when(
+        is.na(detectionCondition) ~ 'Detected',
+        TRUE ~ 'Not detected'
+      )
+    )
+  
+  # rename cols
+  df <- df %>%
+    rename(
+      Station = samplingLocation,
+      Date = observedDate,
+      Time = observedTime,
+      Analyte = observedProperty,
+      Result_Value = result_value,
+      Result_Unit = result_unit,
+      Detection_Status = detectionCondition,
+      Reports_To = `EA_Reports To`,
+      Analysis_Method = analysis_method,
+      Field_QCFlag = `EA_Field Quality Flag`,
+      Sampling_Depth = `EA_Sampling Depth`,
+      Field_Comment = comment
+    )
+  
+  # date to datetype
+  df <- df %>%
+    mutate(
+      Date = as.Date(Date, format = '%Y-%m-%d')
+    )
+}
+
 check_analytes <- function(df, year = 'all', return_df = FALSE) {
   
   # read analyte reference list
@@ -52,7 +106,7 @@ check_analytes <- function(df, year = 'all', return_df = FALSE) {
     message(
       'Stations with no data for entire month(s):\n',
       missing_station_months %>%
-        mutate(row_txt = paste0(Station, ' - ', Month)) %>%
+        mutate(row_txt = paste0(Station, ' - ', month.abb[Month])) %>%
         pull(row_txt) %>%
         paste(collapse = '\n')
     )
@@ -114,6 +168,22 @@ check_analytes <- function(df, year = 'all', return_df = FALSE) {
   ) %>%
     arrange(Date, Station, Analyte)
   
+  # 5. if detailed weather analytes are missing but Weather Observations exists,
+  # do not report Rain, Sky Conditions, or Wave Scale as missing
+  weather_observed <- observed %>%
+    filter(Analyte == 'Weather Observations') %>%
+    distinct(Station, Date) %>%
+    mutate(has_weather_observations = TRUE)
+  
+  missing_combos <- missing_combos %>%
+    left_join(weather_observed, by = c('Station', 'Date')) %>%
+    filter(!(
+      Analyte %in% c('Rain', 'Sky Conditions', 'Wave Scale') &
+        has_weather_observations %in% TRUE
+    )) %>%
+    select(-has_weather_observations) %>%
+    arrange(Date, Station, Analyte)
+  
   # format message
   fmt_row <- function(x) {
     parts <- x[!is.na(x) & x != '']
@@ -132,5 +202,47 @@ check_analytes <- function(df, year = 'all', return_df = FALSE) {
   
   if (return_df) {
     return(missing_combos)
+  }
+}
+
+check_duplicates <- function(df, year = 'all', return_df = FALSE) {
+  
+  df_dups <- df %>%
+    mutate(
+      Year = year(Date),
+      Month = month(Date)
+    ) %>%
+    {
+      if (!identical(year, 'all')) {
+        filter(., Year == as.character(year))
+      } else {
+        .
+      }
+    } %>%
+    group_by(Analyte, Station, Year, Month) %>%
+    filter(n() > 1) %>%
+    arrange(Analyte, Station, Year, Month, Date) %>%
+    ungroup()
+  
+  dup_summary <- df_dups %>%
+    distinct(Analyte, Station, Year, Month)
+  
+  if (nrow(df_dups) > 0) {
+    message(
+      'Found duplicate combinations: ',
+      nrow(dup_summary), '\n',
+      paste0(
+        dup_summary %>%
+          mutate(txt = paste(Analyte, Station, paste0(Year, '-', Month), sep = ' - ')) %>%
+          pull(txt),
+        collapse = '\n'
+      )
+    )
+  } else {
+    message('No duplicate combinations found.')
+  }
+  
+  if (return_df) {
+    return(df_dups)
   }
 }

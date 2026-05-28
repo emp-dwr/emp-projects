@@ -9,6 +9,11 @@ normalize_time <- function(x) {
     str_replace('^(\\d{1,2}:\\d{2}):\\d{2}$', '\\1')
 }
 
+fmt_row <- function(x) {
+  parts <- x[!is.na(x) & x != '']
+  paste(parts, collapse = ' - ')
+}
+
 # Process VR --------------------------------------------------------------
 # Do preliminary formatting for VR data based on fillable pdf
 # Treat each Station block as a "Batch"; metadata is batch 0 and blank is batch 999
@@ -345,7 +350,7 @@ format_VR <- function(df_final) {
 
 process_FDS_csv <- function(fp) {
   df <- read_csv(fp, col_names = FALSE, col_types = cols(.default = 'c'), show_col_types = FALSE)
-    
+  test <<- df  
   # Main batch
   df_head <- df %>%
     select('X8', 'X10', 'X19', 'X25') %>%
@@ -528,7 +533,7 @@ process_FDS_csv <- function(fp) {
 
 # format FDS --------------------------------------------------------------
 
-format_FDS_excel <- function(df_final) {
+format_FDS_csv <- function(df_final) {
   # remove extra params
   df_final <- df_final %>%
     filter(!(param %in% c('Vessel:','Crew:','Run Name:','Operator:','Run Type:','Sonde ID (H):','ChloroVol(ml)'))) %>%
@@ -1028,12 +1033,12 @@ check_analytes <- function(df, type) {
     filter(!( `Location ID` %in% shore_stations &
                 `Observed Property ID` == 'Secchi Depth'))
 
-  # 2. Equipment Blank — only specific analytes
+  # 2. Equipment Blank - only specific analytes
   expected <- expected %>%
     filter(!( `Location ID` == 'Equipment Blank' &
                 !(`Observed Property ID` %in% c('Churn Bucket ID', 'Filter Container ID'))))
   
-  # 3. Replicates — only specific analytes
+  # 3. Replicates - only specific analytes
   expected <- expected %>%
     filter(
       case_when(
@@ -1082,12 +1087,6 @@ check_analytes <- function(df, type) {
   
   missing_combos <- bind_rows(missing_blank, missing_other)
   
-  # --- Format message ---
-  fmt_row <- function(x) {
-    parts <- x[!is.na(x) & x != '']
-    paste(parts, collapse = ' - ')
-  }
-  
   if (nrow(missing_combos) > 0) {
     message(
       'Missing ', nrow(missing_combos),
@@ -1123,13 +1122,7 @@ check_extra_data <- function(df) {
     mutate(`Observed DateTime` = NA_character_)
   
   duplicates <- bind_rows(duplicates_blank, duplicates_other)
-  
-  # format message
-  fmt_row <- function(x) {
-    parts <- x[!is.na(x) & x != '']
-    paste(parts, collapse = ' - ')
-  }
-  
+
   if (nrow(duplicates) > 0) {
     message(
       'Found ', nrow(duplicates), ' duplicate data entries:\n',
@@ -1148,13 +1141,7 @@ check_filter_ID <- function(df) {
   # identify invalid entries (not single A–Z)
   bad_rows <- df_filter %>%
     filter(!str_detect(`Result Value`, '^[A-Z]$'))
-  
-  # helper for message
-  fmt_row <- function(x) {
-    parts <- x[!is.na(x) & x != '']
-    paste(parts, collapse = ' - ')
-  }
-  
+
   if (nrow(bad_rows) > 0) {
     bad_combos <- bad_rows %>%
       mutate(`Observed DateTime` = case_when(
@@ -1174,7 +1161,6 @@ check_filter_ID <- function(df) {
   
   invisible(df)
 }
-
 
 
 

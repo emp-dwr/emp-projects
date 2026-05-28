@@ -12,14 +12,14 @@ Path to import folder
 
 ```{r}
 # Path to import folder
-fp_import <- 'Water Quality/00 - Monthly Run Docs/Raw Field Data/Water Quality 2025/05 - May'
+fp_import <- 'Water Quality/00 - Monthly Run Docs/Raw Field Data/Water Quality 2019-2024/Water Quality 2024/03 - March'
 ```
 
 Path to export folder
 
 ```{r}
 # Path to export folder
-fp_export <- 'Water Quality/00 - Monthly Run Docs/Database Import Data/2025/'
+fp_export <- 'Water Quality/00 - Monthly Run Docs/Database Import Data/2024/'
 ```
 
 ------------------------------------------------------------------------
@@ -132,7 +132,7 @@ fp_csv <- map_chr(fp_xlsx, function(fp) {
 # Clean FDS files
 df_FDS <- map_dfr(fp_csv, function(fp) {
   df_raw <- process_FDS_csv(fp)
-  format_FDS_excel(df_raw)
+  # format_FDS_csv(df_raw)
 })
 
 # Combine

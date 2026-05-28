@@ -61,55 +61,7 @@ colnames(df_year)
 
 ```{r}
 # format for EDI
-
-# select columns
-df_year <- df_year %>%
-  select(
-    samplingLocation,
-    observedDate,
-    observedTime,
-    observedProperty,
-    result_value,
-    result_unit,
-    detectionCondition,
-    MDL,
-    MRL,
-    `EA_Reports To`,
-    analysis_method,
-    `EA_Field Quality Flag`,
-    `EA_Sampling Depth`,
-    comment
-  )
-
-# fix detection condition
-df_year <- df_year %>%
-  mutate(
-    detectionCondition = case_when(
-      is.na(detectionCondition) ~ 'Detected',
-      TRUE ~ 'Not detected')
-    )
-
-# rename cols
-df_year <- df_year %>%
-  rename(
-    Station = samplingLocation,
-    Date = observedDate,
-    Time = observedTime,
-    Analyte = observedProperty,
-    Result_Value = result_value,
-    Result_Unit = result_unit,
-    Detection_Status = detectionCondition,
-    MRL = MRL,
-    MDL = MDL,
-    Reports_To = `EA_Reports To`,
-    Analysis_Method = analysis_method,
-    Field_QCFlag = `EA_Field Quality Flag`,
-    Sampling_Depth = `EA_Sampling Depth`,
-    Field_Comment = comment
-  )
-
-# date to datetype
-df_year<- df_year %>% mutate(Date = as.Date(Date, format = '%Y-%m-%d'))
+df_year <- format_edi(df_year)
 
 # check missing dates
 df_year %>%
@@ -118,20 +70,6 @@ df_year %>%
 
 ```{r}
 unique(df_year$Analyte)
-```
-
-```{r}
-# check for duplicates
-df_dups <- df_year %>%
-  mutate(
-    Year  = year(Date),
-    Month = month(Date)
-  ) %>%
-  count(Station, Year, Month, Analyte, name = 'n') %>%
-  filter(n > 1) %>%
-  arrange(desc(n), Station, Year, Month, Analyte)
-
-df_dups
 ```
 
 ## Fix Depths
@@ -161,49 +99,7 @@ check_analytes(df_year, year = '2024')
 ```
 
 ```{r}
-check_duplicates <- function(df, year = 'all', return_df = FALSE) {
-
-  df_dups <- df %>%
-    mutate(
-      Year = year(Date),
-      Month = month(Date)
-    ) %>%
-    {
-      if (!identical(year, 'all')) {
-        filter(., Year == as.character(year))
-      } else {
-        .
-      }
-    } %>%
-    group_by(Analyte, Station, Year, Month) %>%
-    filter(n() > 1) %>%
-    arrange(Analyte, Station, Year, Month, Date) %>%
-    ungroup()
-
-  dup_summary <- df_dups %>%
-    distinct(Analyte, Station, Year, Month)
-
-  if (nrow(df_dups) > 0) {
-    message(
-      'Found duplicate Analyte/Station/Year/Month combinations: ',
-      nrow(dup_summary), '\n',
-      paste0(
-        dup_summary %>%
-          mutate(txt = paste(Analyte, Station, paste0(Year, '-', Month), sep = ' - ')) %>%
-          pull(txt),
-        collapse = '\n'
-      )
-    )
-  } else {
-    message('No duplicate Analyte/Station/Year/Month combinations found.')
-  }
-
-  if (return_df) {
-    return(df_dups)
-  }
-}
-
-check <- check_duplicates(df_final, year = '2024', return_df = TRUE)
+check <- check_duplicates(df_year, year = '2024', return_df = TRUE)
 ```
 
 # Write file
