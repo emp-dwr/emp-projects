@@ -1,0 +1,41 @@
+```{r}
+# ---
+# EDIT THIS
+# ---
+
+# the folder the current year data is in
+folder_name <- '2019 Data'
+extension <- '.xlsx'
+
+# main file
+main_file <- 'Phyto Data 2008-present.csv'
+```
+
+```{r}
+# ---
+# CODE
+# ---
+
+# packages
+library(tidyverse)
+library(lubridate)
+source('functions/phyto_funcs.R')
+
+# read in data
+fp_cur <- abs_path(fp_rel = folder_name, type = 'BSA')
+
+df_cur <- read_data(fp_cur, extension)
+
+fp_old <- abs_path(fp_rel = main_file, type = 'general')
+df_old <- read_csv(fp_old)
+
+df_all <- merge(df_old, df_cur, all = TRUE)
+
+df_all$SampleDate <- parse_date_time(df_all$SampleDate, orders = c('%m/%d/%Y','%m/%d/%y','%Y-%m-%d'))
+
+df_all <- df_all %>% arrange(SampleDate, StationCode)
+
+fp_write <- paste0(abs_path(type = 'export'),'/Phyto Data 2008-present.csv')
+write_csv(df_all, fp_write)
+```
+

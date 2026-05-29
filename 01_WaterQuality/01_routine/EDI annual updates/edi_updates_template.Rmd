@@ -1,0 +1,109 @@
+Finish Cleaning Corrected Data (pulled from Aquarius)
+
+# Set year
+
+```{r}
+edi_year <- 2024
+```
+
+# Code Starts Here
+
+```{r}
+library(tidyverse)
+library(lubridate)
+library(aqsampr)
+library(purrr)
+set_samples_env(
+  server_env = 'AQS_EMPDWQ_SERVER',
+  token_env = 'AQS_EMPDWQ_TOKEN'
+)
+
+source('00_GlobalFunctions/edi-functions.R')
+```
+
+```{r}
+# read in data from Aquarius (takes about a minute)
+
+get_year_data <- function(year) {
+  map_dfr(1:12, \(m) {
+    start <- as.Date(sprintf('%d-%02d-01', year, m))
+    end <- ceiling_date(start, 'month') - days(1)
+
+    get_observations(
+      startDate = as.character(start),
+      endDate = as.character(end)
+    )
+  })
+}
+
+system.time({
+  df_year <- get_year_data(edi_year)
+})
+
+test <- df_year
+```
+
+Filter out un-needed data
+
+```{r}
+# filter out replicate/blank data
+df_year <- df_year %>%
+  filter(qualityControlType == 'NORMAL')
+
+# filter out Churn Bucket/Filter Container data
+df_year <- df_year %>%
+  filter(!observedProperty %in% c('Churn Bucket ID', 'Filter Container ID'))
+```
+
+```{r}
+colnames(df_year)
+```
+
+```{r}
+# format for EDI
+df_year <- format_edi(df_year)
+
+# check missing dates
+df_year %>%
+  filter(is.na(Date))
+```
+
+```{r}
+unique(df_year$Analyte)
+```
+
+## Fix Depths
+
+```{r}
+df_year$Sampling_Depth <- as.numeric(df_year$Sampling_Depth)
+
+# no depth for MVI
+df_year <- df_year %>%
+  mutate(Sampling_Depth = if_else(Analyte == 'MVI', NA, Sampling_Depth))
+
+# fix bottom depths
+df_year <- df_year %>%
+  mutate(
+    Sampling_Depth = case_when(
+      str_detect(Analyte, 'Bottom') & Station == 'C10A' & Sampling_Depth < 6 ~ Sampling_Depth + 3, # C10A and Depth < 6: Depth + 3
+      str_detect(Analyte, 'Bottom') & Station %in% c('C10A', 'C9', 'C3A') ~ Sampling_Depth, # C3A, C9, C10 & Depth > 6: Depth
+      str_detect(Analyte, 'Bottom') ~ Sampling_Depth + 3, # All other stations: Depth + 3
+    )
+  )
+```
+
+# Checks
+
+```{r}
+check_analytes(df_year, year = '2024')
+```
+
+```{r}
+check <- check_duplicates(df_year, year = '2024', return_df = TRUE)
+```
+
+# Write file
+
+```{r}
+# write_csv(df_final, '01_WaterQuality/edi-annual-updates/data/final/edi_2024_update_QCCodes.csv')
+```

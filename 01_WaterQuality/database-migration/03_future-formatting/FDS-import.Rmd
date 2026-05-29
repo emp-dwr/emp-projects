@@ -1,0 +1,174 @@
+---
+---
+---
+
+Format Field Data Sheets
+
+INSTRUCTIONS:
+
+-   run all code
+
+-   edit values pre-defined sections
+
+-   if checks are failed, fix in archived pdf and then run code again
+
+# Set Up
+
+## import packages
+
+```{r}
+# import packages
+library(reticulate)
+library(tidyverse)
+library(lubridate)
+library(janitor)
+library(readxl)
+source('00_GlobalFunctions/functions.R')
+source('01_WaterQuality/database-migration/03_future-formatting/import-functions.R')
+```
+
+## EDIT: define paths
+
+-   set `fp_rel` to the file path of the datasheets
+
+    -   the "start" folder is the EMP SharePoint, so write out the path relative to that
+
+-   set `fp_export` to the file path the csv should export to
+
+    -   same as above, the "start" folder is the EMP SharePoint
+
+```{r}
+# path to main folder
+fp_rel <- 'Water Quality/00 - Monthly Run Docs/Archived Field Data Sheets/2025/10 - October/'
+
+# path to export folder
+fp_export <- 'Water Quality/00 - Monthly Run Docs/Database Import Data/2025/'
+```
+
+## run file extraction code
+
+```{python}
+from os import environ, walk
+from os.path import join, normpath
+import fitz
+import re
+import pandas as pd
+from datetime import datetime
+from typing import List, Tuple, Dict, Optional
+```
+
+```{python}
+exec(open('01_WaterQuality/database-migration/03_future-formatting/import_functions_py.py').read())
+
+# --- get paths/files ---
+fp_rel = r.fp_rel
+
+fp_main = abs_path_emp(fp_rel)
+
+# --- combine files ---
+pdf_files = []
+for root, dirs, files in os.walk(fp_main):
+    for file in files:
+        if (
+            file.lower().endswith('.pdf') and
+            'field data sheet' in file.lower()
+        ):
+            full_path = os.path.join(root, file)
+            pdf_files.append(full_path)
+
+# --- create df ---
+df = structure_pdf_data(pdf_files[0])
+
+df['value'] = df['value'].apply(to_scalar_string).astype('string')
+```
+
+```{r}
+# write back to R variable
+df <- py$df
+```
+
+# Format data
+
+-   will give a warning if multiple entries are detected for duplicate/blank data in a run
+-   will tell if any stations were excluded (eg. P8_DO)
+
+```{r}
+df_final <- format_FDS_pdf(df)
+```
+
+# Checks
+
+## stations exist
+
+check if stations are missing from pre-defined station list
+
+-   can update file here
+
+```{r}
+# check stations
+check_stations(df_final)
+```
+
+## extra data
+
+check there's no extra data (ie. duplicates)
+
+```{r}
+# check extra data
+check_extra_data(df_final)
+```
+
+## filter ID formatting
+
+check filter IDs are all formatted correctly (one capital letter)
+
+```{r}
+# check filter container ID
+check_filter_ID(df_final)
+```
+
+## analytes exist
+
+check all expected analyte/station pairs exist
+
+-   can update expected analytes here
+
+special rules:
+
+-   shore stations don't require Secchi Depth
+
+-   equipment blank only has Churn Bucket and Filter Container ID
+
+-   replicate only has Churn Bucket and Filter Container ID
+
+-   LSZ stations have Latitude and Longitude
+
+-   only D7, D16, and D19 have Dissolved Bromide
+
+```{r}
+# check analytes
+check_analytes(df_final, type = 'field')
+```
+
+## analyte formatting
+
+check analytes have correct format (eg. numeric vs text)
+
+# Export
+
+```{r}
+# Export by month
+fp_export <- abs_path_emp(fp_export)
+
+df_list <- split(df_final,
+                 list(format(as.POSIXct(df_final$`Observed DateTime`), '%Y-%m')),
+                 drop = TRUE)
+
+invisible(lapply(names(df_list), function(name) {
+  name_parts <- unlist(strsplit(name, '\\.'))
+  year_month <- name_parts[1]
+
+  fp_exp <- paste0(fp_export, '/', year_month,'_FDS_EMP-DWQ.csv')
+  write_csv(df_list[[name]], file = fp_exp, na = '')
+}))
+```

@@ -27,10 +27,10 @@ library(lubridate)
 library(readxl)
 library(zoo)
 options(digits = 10)
-source('03_Phyto/phycoprobe/functions/phyco_funcs.R')
+source('03_Phyto/01_routine/phyco-cleaning/functions/phyco_funcs.R')
 
 # read in run names and regions
-df_names <- read_csv('03_Phyto/phycoprobe/supp_files/run_names.csv', show_col_types = FALSE)
+df_names <- read_csv('03_Phyto/01_routine/phyco-cleaning/supp_files/run_names.csv', show_col_types = FALSE)
 
 # obtain all file paths and create combo df
 fp_all_wq <- archive_path(year, 'MOPED')

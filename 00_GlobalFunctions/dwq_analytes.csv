@@ -1,0 +1,46 @@
+﻿Analyte,DataType
+(Bottom) Chlorophyll Fluorescence RFU,field
+(Bottom) Chlorophyll Fluorescence ug/L,field
+(Bottom) Dissolved Oxygen % Saturation,field
+(Bottom) Dissolved Oxygen mg/L,field
+(Bottom) pH,field
+(Bottom) Specific Conductance,field
+(Bottom) Turbidity,field
+(Bottom) Water Temperature,field
+Air Temperature,field
+Chlorophyll Fluorescence RFU,field
+Chlorophyll Fluorescence ug/L,field
+Churn Bucket ID,field
+Dissolved Oxygen % Saturation,field
+Dissolved Oxygen mg/L,field
+Filter Container ID,field
+Latitude,field
+Longitude,field
+MVI,field
+pH,field
+Rain,field
+Secchi Depth,field
+Sky Conditions,field
+Specific Conductance,field
+Turbidity,field
+Water Temperature,field
+Wave Scale,field
+Wind Velocity,field
+Chlorophyll a,lab
+Dissolved Ammonia,lab
+Dissolved Bromide,lab
+Dissolved Calcium,lab
+Dissolved Chloride,lab
+Dissolved Nitrate + Nitrite,lab
+Dissolved Organic Carbon,lab
+Dissolved Organic Nitrogen,lab
+Dissolved Orthophosphate,lab
+Dissolved Silica,lab
+Pheophytin a,lab
+Total Alkalinity,lab
+Total Dissolved Solids,lab
+Total Kjeldahl Nitrogen,lab
+Total Organic Carbon,lab
+Total Phosphorus,lab
+Total Suspended Solids,lab
+Volatile Suspended Solids,lab

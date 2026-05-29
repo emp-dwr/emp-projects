@@ -1,0 +1,166 @@
+---
+title: "Phytoplankton Annual Report Data Processing - 2022"
+author: "Ted Flynn"
+date: "2023-06-07"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(lubridate)
+library(janitor)
+library(here)
+
+# Set output directory 
+output <- here("03_Phyto","annual-report-2022","output")
+
+# Set visual theme in ggplot
+theme_set(theme_bw())
+
+# Suppress summarise info
+options(tidyverse.quiet = TRUE)
+options(dplyr.summarise.inform = FALSE)
+```
+
+## Import Raw Phyto Data
+
+```{r import}
+df_phyto_raw <- read_csv(here("03_Phyto","annual-report-2022","data", "All 2022 Data.csv"), show_col_types = FALSE)
+
+# Remove empty rows ------------------------------------------------------------
+df_phyto <- df_phyto_raw %>% filter_all(any_vars(!is.na(.)))
+
+# Clean up column names
+df_phyto <- df_phyto %>% clean_names(case = "big_camel")
+
+# Remove GALD columns (won't be used)
+df_phyto <- df_phyto %>% select(!(Gald1:Gald3)) 
+
+```
+
+## Process Data
+```{r process}
+# Average all 10 biovolume measurements for each taxon
+df_phyto <- df_phyto %>% rowwise() %>% 
+  mutate(BV.Avg = mean(c_across(Biovolume1:Biovolume10), na.rm = T)) %>% 
+  select(!(Biovolume1:Biovolume10)) # Remove Individual Biovolume Columns
+
+# Move BV Avg data 
+df_phyto <- df_phyto %>% 
+  relocate(BV.Avg, .after = TotalNumberOfCells)
+  
+# Select data for further analyses
+df_phyto <- df_phyto %>% select(SampleDate,StationCode,Factor:BV.Avg)
+
+# Combine date and time column
+df_phyto$SampleDate <- mdy(df_phyto$SampleDate)
+
+# Rename headers 
+df_phyto <- df_phyto %>%
+  rename("TotalCells" = "TotalNumberOfCells") %>%
+  rename("UnitAbundance" = "UnitAbundanceNumberOfNaturalUnits")
+```
+
+## Calculate Unit Density and Biovolume Density
+```{r calculate}
+# Calculate Unit Density & Biovolume Density
+df_phyto <- df_phyto %>%
+  mutate(Units.per.mL = UnitAbundance * Factor) %>%
+  mutate(BV.um3.per.mL= TotalCells * BV.Avg * Factor)
+
+# Add column for year and month for highlighting data
+df_phyto <- df_phyto %>% 
+  mutate(Year = year(SampleDate)) %>%
+  mutate(Month = month(SampleDate, label = T))
+
+# Reorder date/time columns
+df_phyto <- df_phyto %>% 
+  relocate(Year, .after = SampleDate) %>% 
+  relocate(Month, .after = SampleDate)
+
+```
+
+## Check data quality 
+```{r QA Check}
+# Check EMP site names
+sort(unique(df_phyto$StationCode)) ## 28 stations spelled correctly
+
+
+# Check for missing dates
+df_phyto %>% filter(is.na(SampleDate)) # No missing dates
+```
+
+## Add regional and seasonal metadata
+```{r metadata}
+## Add regional metadata
+regions <- read_csv(here("03_Phyto","annual-report-2022","data","station_regions_EMP.csv"), show_col_types = FALSE)
+
+# Combine region data and phyto data
+df_phyto <- left_join(df_phyto, regions)
+
+# Reorder column
+df_phyto <- df_phyto %>% 
+  relocate(Region, .after = StationCode) %>% 
+  relocate(RegionAbbv, .after = Region)
+
+# check if there are any NAs in Region after the join
+table(is.na(df_phyto$Region)) # no NAs
+
+# Add seasons
+df_phyto <- df_phyto %>% 
+  mutate(Season = case_when(Month %in% c("Dec","Jan","Feb") ~ "Winter",
+                            Month %in% c("Mar","Apr","May") ~ "Spring",
+                            Month %in% c("Jun","Jul","Aug") ~ "Summer",
+                            Month %in% c("Sep","Oct","Nov") ~ "Fall")) %>% 
+  relocate(Season, .after = Year)
+
+# Set display order for regions ------------------------------------------------
+# Display regions E -> W (generally)
+unique(df_phyto$Region)
+
+region.order <- c("Northern Interior Delta",
+                  "Central Delta",
+                  "Southern Interior Delta",
+                  "Confluence",
+                  "Entrapment Zone",
+                  "Grizzly and Suisun Bay",
+                  "San Pablo Bay")
+
+df_phyto$Region <- factor(as.character(df_phyto$Region), levels = region.order)
+
+unique(df_phyto$RegionAbbv)
+
+region.abbv.order <- c("NID","CED","SID","CON","EZ","GSB","SPB")
+
+df_phyto$RegionAbbv <- factor(as.character(df_phyto$RegionAbbv), levels = region.abbv.order)
+
+```
+
+## Combine by genus and Algal Type
+
+```{r combine}
+df_phyto_type <- df_phyto %>% 
+  group_by(SampleDate,StationCode,Month,Year,Season,Region,RegionAbbv,AlgalType) %>% 
+  summarize(across(Units.per.mL:BV.um3.per.mL, ~sum(.x, na.rm = TRUE))) %>% 
+  ungroup()
+
+df_phyto_gen <- df_phyto %>% 
+  group_by(SampleDate,StationCode,Month,Year,Season,Region,RegionAbbv,Genus) %>% 
+  summarize(across(Units.per.mL:BV.um3.per.mL, ~sum(.x, na.rm = TRUE))) %>% 
+  ungroup()
+
+
+```
+
+
+## Export to PRIMER
+
+```{r primer}
+# Write datasets for export into PRIMER
+write_csv(df_phyto_type, file = here("03_Phyto","annual-report-2022","output","df_phyto_type.csv"))
+
+write_csv(df_phyto_gen, file = here("03_Phyto","annual-report-2022","output","df_phyto_gen.csv"))
+```
+

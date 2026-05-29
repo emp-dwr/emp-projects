@@ -173,3 +173,22 @@ remove_labdupes <- function(df, cols = 'all_cols'){
   
   return(df_ret)
 }
+
+# rename map
+rename_cols <- function(df, rename_map, verbose = TRUE) {
+  # Rename columns based on the map
+  df <- df %>%
+    dplyr::rename(!!!rename_map)
+  
+  # Generate message with all rename pairs as bullet points
+  if (verbose){
+    rename_message <- paste(
+      'Renamed columns:',
+      paste0('  • ', rename_map, ' → ', names(rename_map), collapse = '\n'),
+      sep = '\n'
+    )
+    message(rename_message)
+  }
+  
+  return(df)
+}

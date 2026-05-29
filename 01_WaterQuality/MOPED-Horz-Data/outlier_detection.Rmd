@@ -1,0 +1,120 @@
+---
+title: "outlier_detection"
+author: "Craig Stuart"
+date: "2025-08-14"
+output: html_document
+---
+
+#This Rmd is for testing out the outlier detection code - rolling median 
+
+#Load libraries
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(tidyr)
+library(readr)
+library(lubridate)
+library(janitor)
+library(zoo)
+```
+
+#Combine raw annual MOPED Horz data for testing
+```{r}
+#assign directory path to specific year
+directory_path <- "C:/Rcode/Moped_annual_data/data/2023"
+
+#Pull list of files from year folder
+data_year <- list.files(path = directory_path, pattern = ".csv", full.names = TRUE)
+
+#combine list of files after removing first two lines
+combined_data <- data_year %>% 
+  lapply(read_csv,
+         skip = 2,
+          show_col_types = FALSE) %>% 
+  bind_rows()
+```
+
+#Change df to wide format
+```{r}
+df_horizontal <- combined_data %>% filter(Equipment == 'EXO Horizontal')
+
+df_horizontal$Analyte <- paste0(df_horizontal$Header,'_',df_horizontal$Unit)
+
+df_wide <- df_horizontal %>%
+    subset(select = c(Longitude, Latitude, TimeStamp, Analyte, Value)) %>%
+    rename(DateTime = TimeStamp) %>%
+    pivot_wider(
+      names_from = Analyte,
+      values_from = Value
+    ) %>%
+    filter(!if_any(everything(), ~ .x == 0 | is.na(.x)))
+```
+
+
+
+
+
+
+
+
+#Remove unwanted EXO Vertical data, keep only Horizontal data
+```{r}
+df_horizontal <- combined_data %>% filter(Equipment == 'EXO Horizontal')
+
+df_horizontal$TimeStamp <- parse_date_time(df_horizontal$TimeStamp, c('mdY HMS', 'mdY HM'))
+df_horizontal$TimeStamp <- as.POSIXct(df_horizontal$TimeStamp, format = '%m/%d/%Y %H:%M:%S')
+
+   df_horizontal_dups_rm <- df_horizontal %>%
+    group_by(Header) %>%
+    filter(!((Latitude %in% Latitude[duplicated(Latitude)] & 
+              Longitude %in% Longitude[duplicated(Longitude)]) | 
+             TimeStamp %in% TimeStamp[duplicated(TimeStamp)])) %>%
+    ungroup()
+```
+
+#add analyte column combining header and unit to df
+```{r}
+#add analyte column combining header and unit
+df_horizontal_dups_rm$Analyte <- paste0(df_horizontal_dups_rm$Header,'_',df_horizontal_dups_rm$Unit)
+
+```
+
+#Change df to wide format
+```{r}
+df_wide <- df_horizontal_dups_rm %>%
+    subset(select = c(Longitude, Latitude, TimeStamp, Analyte, Value)) %>%
+    rename(DateTime = TimeStamp) %>%
+    pivot_wider(
+      names_from = Analyte,
+      values_from = Value
+    ) %>%
+    filter(!if_any(everything(), ~ .x == 0 | is.na(.x)))
+```
+
+
+
+```{r}
+ # Add a column for the day
+  df_wq_wide$day <- as.Date(df_wq_wide$DateTime)
+  
+  # Define the columns to run the outlier detection on
+  columns_to_check <- c('WT_C', 'SPC_uS/cm', "PH_pH Units", 'FNU_FNU', 'FLUOR_ug/L', 'FLUORRFU_RFU', 'DO_mg/L', "DOSAT_% SAT")
+  
+  # Function to calculate rolling median and detect outliers for a single column
+  detect_outliers <- function(column, window_size = 4) {
+  rolling_median <- rollapply(column, width = window_size, FUN = median, fill = NA, align = "center")
+  threshold <- 1.5 * IQR(column, na.rm = TRUE)
+  outliers <- abs(column - rolling_median) > threshold
+  return(outliers) # Return outlier flags
+}
+  
+  # Apply outlier detection to the specified columns, for each day, creating new outlier result columns
+  df_wq_outliers <- df_wq_wide %>%
+  group_by(day) %>% 
+  mutate(across(all_of(columns_to_check), 
+                ~ detect_outliers(.x), 
+                .names = "{.col}_outlier")) %>% 
+  ungroup()
+  
+```
+

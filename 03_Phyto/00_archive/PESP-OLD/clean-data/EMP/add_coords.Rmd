@@ -1,0 +1,21 @@
+Add EZ Coordinates to current EDI publication (through 2021)
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+df_phyto <- read_csv('https://portal.edirepository.org/nis/dataviewer?packageid=edi.1320.4&entityid=1eee2c2a562a5b856398082c487dc1a7')
+df_wq_raw <- read_csv('https://portal.edirepository.org/nis/dataviewer?packageid=edi.458.9&entityid=cf231071093ac2861893793517db26f3')
+```
+
+```{r}
+df_wq <- df_wq_raw %>%
+  subset(select = c(Station, Date, WestLong, NorthLat)) %>%
+  rename(SampleDate = Date, StationCode = Station)
+
+df_merge <- left_join(df_phyto, df_wq, by = c('StationCode', 'SampleDate')) 
+
+write_csv(df_merge, '03_Phyto/PESP/data/EMP/phytoedi_2022_wcoords.csv')
+```
+

@@ -1,0 +1,277 @@
+# Format EMP phyto data for EDI publication
+## Updated: 06/2023
+## contact: Sarah Perry (sarah.perry@water.ca.gov)
+
+=====
+EDIT HERE
+=====
+```{r}
+# filepath for most recent phyto data (must be linked to SharePoint)
+cur_phyto <- '2022 Annual Report Data/2022_phyto_raw.csv'
+
+# website path of most recent EDI publication
+edi_phyto <- 'https://portal.edirepository.org/nis/dataviewer?packageid=edi.1320.4&entityid=1eee2c2a562a5b856398082c487dc1a7'
+```
+
+
+=====
+CODE STARTS HERE
+=====
+```{r}
+library(tidyverse)
+source('03_Phyto/PESP/functions/phyto_funcs.R')
+```
+
+Read in Data
+```{r message = FALSE}
+# read in data
+# FOR 2022: not using EDI, extra changes
+df_edi_raw <- read_csv(edi_phyto)
+df_edi <- read_csv('03_Phyto/PESP/data/EMP/phytoedi_2022_wcellscoords.csv') # usually df_edi_raw TODO:
+df_edi <- df_edi %>% relocate(c(WestLong, NorthLat), .after = StationCode)
+
+df_cur <- read_csv(abs_path_ar(cur_phyto))
+
+# synonym filepath
+df_syn <- read_csv('03_Phyto/PESP/data/EMP/Phyto Classification.csv', show_col_types = FALSE) # synonym list for comparison
+```
+
+Basic Cleaning
+```{r}
+# remove unnecessary columns/rename
+df_cur <- df_cur %>%
+  select(-c(Taxonomist, `Full Code`, `BSA#`, BSA_TIN, `Percent of Sample Counted`)) %>%
+  rename(Colony_or_FilamentGroupCode = `Colony/Filament/Individual Group Code`,
+         Total_Cells_Counted = `Total Number of Cells`,
+         UnitAbundance = `Unit Abundance (# of Natural Units)`)
+
+# fix dates/times, colony codes
+df_cur$Colony_or_FilamentGroupCode[df_cur$Colony_or_FilamentGroupCode == 'n/p'] <- NA_character_
+df_cur$SampleDate <- as.Date(df_cur$SampleDate, format = '%m/%d/%Y')
+# df_cur<- df_cur %>%
+#   mutate(
+#     SampleTime = case_when(grepl(':', SampleTime) ~ SampleTime,
+#                            is.na(SampleTime) ~ NA_character_,
+#                            TRUE ~ paste0(substr(SampleTime, 1, nchar(SampleTime)-2),':',substr(SampleTime, nchar(SampleTime)-1, nchar(SampleTime)))
+#                            )
+#    )
+```
+
+Standardize dataset
+  -Standardize station names
+```{r}
+df_cur <- df_cur %>%
+  mutate(
+    StationCode = case_when(StationCode == 'C3A-Hood' | StationCode == 'C3A - Hood' | StationCode == 'C3A Hood' ~ 'C3A',
+                            StationCode == 'D16 - Twitchell' | StationCode == 'D16-Twitchell' |StationCode == 'D16 Twitchell' ~ 'D16',
+                            StationCode == 'E22' ~ 'EZ2',
+                            StationCode == 'E26' ~ 'EZ6',
+                            StationCode == 'EZ2 SJR' | StationCode == 'EZ2 - SJR' ~ 'EZ2-SJR',
+                            StationCode == 'EZ6 SJR' | StationCode == 'EZ6 - SJR' ~ 'EZ6-SJR',
+                            TRUE ~ StationCode)
+    )
+
+unique(df_cur$StationCode)
+```
+
+standardize "unknown" identifiers
+```{r}
+unknown_syns <- 'unknown|unidentified|Unidentified|Undetermined|undetermined'
+
+df_cur <- df_cur %>%
+  # update Taxon column to standardize Unknown
+  mutate(
+    Taxon = case_when(grepl(unknown_syns,Taxon,ignore.case = TRUE) ~ str_replace_all(Taxon, unknown_syns, 'Unknown'),
+                      TRUE ~ Taxon)
+    ) %>%
+  # Update Genus column if unknown Species
+  mutate(
+    Genus = case_when(grepl('Unknown', Taxon) ~ 'Unknown',
+                      is.na(Genus) ~ 'Unknown',
+                      Genus == 'Other' ~ 'Unknown',
+                      Genus == 'genus' ~ 'Unknown',
+                      TRUE ~ Genus)
+    ) %>%
+  # Update Species column in unknown
+  mutate(
+      Species = case_when(Genus == 'Unknown' ~ 'Unknown',
+                          is.na(Species) ~ 'Unknown',
+                          TRUE ~ Species)
+  )
+```
+
+### Add in higher level taxa/current names
+```{r}
+# subset synonym/taxon columns
+df_syn <- df_syn %>% select(c('Kingdom':'AlgalGroup','Taxon','CurrentTaxon'))
+
+# standardize spp. to sp.
+df_cur$Taxon <- str_replace_all(df_cur$Taxon, 'spp.', 'sp.')
+df_cur$Species <- str_replace_all(df_cur$Species, 'spp.', 'sp.')
+
+# standardize unknown names before synonym join
+df_cur <- df_cur %>%
+  mutate(
+    Taxon = case_when(Taxon == 'LGBs' ~ 'Little Green Balls',
+                     Taxon == 'Unknown Banana Blue Green' | Taxon == 'Unknown Cyanobacteria sp.' ~ 'Unknown cyanobacterium',
+                     Taxon == 'Unknown centrales sp.' | Taxon == 'Unknown centric sp.' | Taxon == 'Unknown Centric diatom'  ~ 'Unknown centric diatom',
+                     Taxon == 'Unknown Chlorophyte alga sp.' | Taxon == 'Unknown Chlorophyte filament' ~ 'Unknown green alga',
+                     Taxon == 'Unknown dinoflagellate sp.' | Taxon == 'Unknown Dinoflagellate sp.' | Taxon == 'small dinoflagellates'~ 'Unknown dinoflagellate',
+                     Taxon == 'Unknown girdle sp.' | Taxon == 'Unknown pennales sp.' | Taxon == 'Unknown pennate girdle sp.' ~ 'Unknown pennate diatom',
+                     Taxon == 'Small nano-flagellates' | Taxon == 'small nano-flagellates' ~ 'Unknown nanoflagellate',
+                     Taxon == 'Unknown Euglenoids' ~ 'Unknown euglenoid',
+                     Taxon == 'Unknown Genus' ~ 'Unknown genus',
+                     TRUE ~ Taxon)
+    )
+
+# join with main dataset
+df_cur_syn <- df_cur %>%
+  left_join(df_syn, by = 'Taxon') %>%
+  # mutate(Genus = Genus.y) %>%
+  select(-c(ends_with('.y'), ends_with('.x'))) %>%
+  relocate(c(Taxon, CurrentTaxon, Kingdom:AlgalGroup), .after = StationCode) %>%
+  relocate(c(Genus, Species), .after = AlgalGroup)
+```
+
+Update Names with Synonyms
+```{r}
+df_cur_syn <- df_cur_syn %>%
+  mutate(
+    Genus = case_when(Taxon == CurrentTaxon | grepl('None|Unknown',CurrentTaxon) | is.na(CurrentTaxon) ~ Genus,
+                      TRUE ~ str_remove(str_squish(str_remove(CurrentTaxon, 'cf.')), ' .*')),
+    Species = case_when(Taxon == CurrentTaxon | grepl('None|Unknown',CurrentTaxon) | is.na(CurrentTaxon) ~ Species,
+                        TRUE ~ str_remove(str_squish(str_remove(CurrentTaxon, 'cf.')), '.*? ')),
+    OrigTaxon = case_when(Taxon == CurrentTaxon | grepl('None|Unknown',CurrentTaxon) | is.na(CurrentTaxon) ~ NA_character_,
+                         TRUE ~ Taxon),
+    Taxon = case_when(grepl('None|Unknown',CurrentTaxon) | is.na(CurrentTaxon) ~ Taxon,
+                      TRUE ~ CurrentTaxon
+                      )) %>%
+  select(-CurrentTaxon) %>%
+  relocate(OrigTaxon, .after = StationCode)
+
+# standardize specific unknown name cases
+df_cur_syn <- df_cur_syn %>%
+  mutate(
+    AlgalGroup = case_when(Taxon == 'Little Green Balls' ~ 'Unknown',
+                           Taxon == 'Unknown cyanobacteria' ~ 'Cyanobacteria',
+                           Taxon == 'Unknown centric diatom' ~ 'Centric Diatoms',
+                           Taxon == 'Unknown green alga' ~ 'Green Algae',
+                           Taxon == 'Unknown dinoflagellate' ~ 'Dinoflagellates',
+                           Taxon == 'Unknown pennate diatom' ~ 'Pennate Diatoms',
+                           Taxon == 'Unknown nanoflagellate' ~ 'Nanflagellates',
+                           Taxon == 'Unknown euglenoid' ~ 'Euglenoids',
+                           TRUE ~ AlgalGroup)
+  )
+```
+
+Check taxa for errors
+```{r}
+# need to check if both own thing and new; ie. multiple generations ahead are properly flagged in one run
+df_error_check <- df_cur_syn %>% select(c('Taxon':'Species'))
+
+check <- df_error_check %>% subset(is.na(AlgalGroup) | is.na(Class) | is.na(Phylum) | is.na(Kingdom) | is.na(Genus) | is.na(Species))
+check <- check[!duplicated(check),]
+check <- check %>% arrange(Taxon)
+syn_check <- df_error_check %>% subset(is.na(Taxon) | Taxon == 'Unknown')
+syn_check <- syn_check[!duplicated(syn_check),]
+syn_check <- syn_check %>% arrange(Taxon)
+
+write_csv(check, 'C:/Users/sperry/2022_phyto_unknown.csv')
+
+print(check)
+print(syn_check)
+```
+
+```{r}
+test <- df_cur_syn
+df_cur_syn <- test
+# add relevant data columns; ie, standardize to density measurements (see Tiffany's memo)
+df_cur_syn$Total_Cells_Counted <- as.numeric(df_cur_syn$Total_Cells_Counted) # convert to proper type; did check, no issues
+
+df_cur_syn <- df_cur_syn %>%
+  mutate(AverageBiovolume = round(rowMeans(select(., starts_with('Biovolume')), na.rm = TRUE),2),
+         AverageBiovolume_per_mL = round(AverageBiovolume*Factor*Total_Cells_Counted, 2),
+         Cells_per_mL = round(Total_Cells_Counted*Factor, 2),
+         Organisms_per_mL = round(UnitAbundance*Factor, 2)) %>%
+  select(-starts_with('Biovolume_')) %>%
+  relocate(Comments, .after = Shape)
+  # relocate(AverageBiovolume:AverageBiovolume_per_mL, .after = Organisms_per_mL)
+
+df_cur_syn$AverageBiovolume[is.nan(df_cur_syn$AverageBiovolume)] <- NA
+df_cur_syn$AverageBiovolume_per_mL[is.nan(df_cur_syn$AverageBiovolume_per_mL)] <- NA
+
+# take only first GALD column
+df_cur_syn <- df_cur_syn %>% rename('GALD' = 'GALD 1')
+
+# add lab (BSA; TODO: have as variable up top)
+df_cur_syn$Lab <- 'BSA'
+```
+
+Change Comments to QA
+```{r}
+df_cur_syn <- df_cur_syn %>%
+  mutate(
+    QC_1 = case_when(grepl('broken\\.|cannot meet|did not reach|delete', Comments, ignore.case = TRUE) ~ 'BadData'),
+    QC_2 = case_when(grepl('degraded', Comments, ignore.case = TRUE) ~ 'Degraded'),
+    QC_3 = case_when(grepl('poorly preserved', Comments, ignore.case = TRUE) ~ 'PoorlyPreserved'),
+    QC_4 = case_when(grepl('fragment\\.', Comments, ignore.case = TRUE) ~ 'Fragmented')
+  ) %>%
+  unite(QualityCheck, starts_with('QC'), remove = TRUE, na.rm = TRUE, sep = ' ')
+
+df_cur_syn$QualityCheck[df_cur_syn$QualityCheck == ''] <- 'Good'
+```
+
+Merge with Main Data
+```{r}
+df_edi$SampleDate <- as.Date(df_edi$SampleDate, '%m/%d/%Y')
+df_joined <- bind_rows(df_edi, df_cur_syn)
+
+vari_mergecols <- colnames(df_edi %>% select(-c('WestLong','NorthLat')))
+
+df_joined <- df_joined %>% select(vari_mergecols)
+
+# check merge didn't add errors; if so, re-evaluate
+sprintf('When joined, the number of rows is equal to the current dataframe + the EDI dataframe: %s', nrow(df_edi)+nrow(df_cur) == nrow(df_joined))
+```
+
+```{r}
+# add coords (TODO: update)
+df_wq_raw <- read_csv('https://portal.edirepository.org/nis/dataviewer?packageid=edi.458.9&entityid=cf231071093ac2861893793517db26f3')
+
+df_wq <- df_wq_raw %>%
+  subset(select = c(Station, Date, WestLong, NorthLat)) %>%
+  rename(SampleDate = Date, StationCode = Station)
+
+df_export <- left_join(df_joined, df_wq, by = c('StationCode', 'SampleDate')) 
+
+# check merge didn't add errors; if so, re-evaluate
+sprintf('When joined, the number of rows is equal to the current dataframe + the EDI dataframe: %s', nrow(df_export) == nrow(df_joined))
+```
+
+Check against EDI data (ie. that previous years weren't altered) TODO: update with new cols
+```{r}
+df_edi_raw <- df_edi_raw %>%
+  rename('Taxon' = 'Name',
+         'OrigTaxon' = 'OrigName') %>%
+  select(-c('AverageBiovolume'))
+
+df_edi_raw$AlgalGroup <- ifelse(df_edi_raw$AlgalGroup == 'Nanflagellates', 'Nanoflagellates', df_edi_raw$AlgalGroup)
+
+df_check <- df_export %>%
+  select(-c('Cells_per_mL','WestLong','NorthLat')) %>%
+  filter(SampleDate <= '2021-12-31')
+
+all.equal(df_edi_raw, df_check)
+```
+
+
+
+```{r}
+year <- lubridate::year(Sys.Date())-1
+write_csv(df_joined, glue::glue('03_Phyto/PESP/data/EMP/EMP_Phyto_Data_2008-{year}.csv'))
+```
+
+```{r}
+
+```
+
