@@ -1,0 +1,465 @@
+---
+title: "TAL Exploratory Analysis"
+author: "Phoebe Carpenter"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = "C:/Users/pcarpent/OneDrive - California Department of Water Resources/my files/projects/algae sensor calibration data/coding/")
+library(tidyverse)
+library(lubridate)
+library(janitor)
+library(readxl)
+library(dplyr)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r Data Import and Cleaning}
+# Import Data and Add Column for Calibration Session
+
+df <- read_csv("results_cleaned_sorted.csv") |>
+  mutate(
+    CalibDate = mdy(CalibDate),
+    CalibSession = case_when(
+      CalibDate >= mdy("10/01/2023") & CalibDate <= mdy("01/31/2024") ~ "2023",
+      CalibDate >= mdy("10/01/2024") & CalibDate <= mdy("01/31/2025") ~ "2024",
+      TRUE ~ NA_character_
+    )
+  )
+```
+
+```{r Sonde Overview}
+
+# Number of Unique Sondes/Sensors
+df |> summarize(
+    unique_sondes = n_distinct(OrigSondeID),
+    unique_sensors = n_distinct(TALSensorSN)
+  )
+
+# Number of Entries Per Sensor
+df |> count(TALSensorSN, sort = TRUE)
+
+# Notes
+df |> 
+  filter(!is.na(Notes) & Notes != "") |>
+  select(TALSensorSN, Notes)
+
+```
+
+```{r Session Overview}
+# Identifying which sessions each sensor was calibrated during
+sonde_sessions <- df |>
+  distinct(TALSensorSN, CalibSession) |>
+  group_by(TALSensorSN) |>
+  summarize(n_CalibSessions = n(), Sessions = paste(sort(unique(CalibSession)), collapse = ", "))
+
+
+# Adding Difference Columns
+df <- df |>
+  mutate(
+    PreCalDiff = PreCalVal - ExpectVal,
+    PostCalDiff = PostCalVal - ExpectVal
+  )
+
+# data table of first calibrations only
+first_calibrations <- df %>%
+  group_by(TALSensorSN) %>%
+  summarize(FirstCalDate = min(CalibDate), .groups = "drop") %>%
+  left_join(df, by = "TALSensorSN") %>%
+  filter(CalibDate == FirstCalDate)
+
+non_first_calibrations <- df %>%
+  anti_join(first_calibrations, by = c("TALSensorSN", "CalibDate"))
+
+```
+
+```{r}
+# Identify sensors that were calibrated in both 2023 and 2024
+both_sessions <- df |>
+  filter(CalibSession %in% c("2023", "2024")) |>
+  distinct(TALSensorSN, CalibSession) |>
+  count(TALSensorSN) |>
+  filter(n == 2) |> pull(TALSensorSN)
+
+# Filter data for just those sensors
+df_both_sensors <- df |>
+  filter(TALSensorSN %in% both_sessions,
+         CalibSession %in% c("2023", "2024"))
+
+# Pivot longer for plotting
+df_long <- df_both_sensors |>
+  pivot_longer(
+    cols = c(PreCalVal, PostCalVal),
+    names_to = "CalibrationPhase",
+    values_to = "CalValue"
+  )
+```
+
+```{r Calibration Accuracy}
+
+# Checking whether values are within 15%
+df <- df |>
+  mutate(
+    PreCal_Within15 = case_when(
+      ExpectVal == 0 ~ PreCalVal == 0,
+      TRUE ~ abs(PreCalVal - ExpectVal)/ExpectVal <= 0.15),
+    PostCal_Within15 = case_when(
+      ExpectVal == 0 ~ PostCalVal == 0,
+      TRUE ~ abs(PostCalVal - ExpectVal)/ExpectVal <= 0.15
+      )
+)
+
+# Summary by Parameter
+df |> 
+  group_by(Parameter) |>
+  summarize(
+    PreCal = mean(PreCal_Within15, na.rm = TRUE) * 100,
+    PostCal = mean(PostCal_Within15, na.rm = TRUE) * 100,
+    .groups = "drop"
+  ) |> 
+  pivot_longer(cols = c(PreCal, PostCal), names_to = "Calibration", values_to = "PercentWithin15") |>
+  ggplot(aes(x = Calibration, y = PercentWithin15, fill = Parameter)) +
+  geom_col(position = "dodge") +
+  labs(title = "Percent Within 15% by Parameter", y = "Percent", x = "") +
+  theme_minimal() 
+
+# Summary by Group Label
+df |> 
+  mutate(GroupLabel = paste(Parameter, Units, Standard, sep = " - ")) |>
+  group_by(GroupLabel) |>
+  summarize(
+    PreCal = mean(PreCal_Within15, na.rm = TRUE) * 100,
+    PostCal = mean(PostCal_Within15, na.rm = TRUE) * 100,
+    .groups = "drop"
+  ) |> 
+  pivot_longer(cols = c(PreCal, PostCal), names_to = "Calibration", values_to = "PercentWithin15") |>
+  ggplot(aes(x = Calibration, y = PercentWithin15, fill = Calibration)) +
+  geom_col(position = "dodge") +
+  facet_wrap(~ GroupLabel) +
+  labs(title = "Percent Within 15% of Expected Value", y = "Percent Within 15%", x = "") +
+  theme_minimal()
+
+# Summary by TAL Sensor
+df |> 
+  group_by(TALSensorSN) |>
+  summarize(
+    PreCal = mean(PreCal_Within15, na.rm = TRUE) * 100,
+    PostCal = mean(PostCal_Within15, na.rm = TRUE) * 100,
+    .groups = "drop"
+  ) |> 
+  pivot_longer(cols = c(PreCal, PostCal), names_to = "Calibration", values_to = "PercentWithin15") |>
+  ggplot(aes(x = Calibration, y = PercentWithin15, fill = TALSensorSN)) +
+  geom_col(position = "dodge") +
+  labs(title = "Percent Within 15% by TAL Sensor", y = "Percent", x = "") +
+  theme_minimal() 
+
+
+```
+
+```{r }
+
+# Individual sensor boxplots
+ggplot(df_long, aes(x = CalibSession, y = CalValue, fill = CalibrationPhase)) +
+  geom_boxplot() +
+  facet_wrap(~ TALSensorSN, scales = "free_y") +
+  labs(
+    title = "Pre and Post-Cal Values by Calibration Session for Individual Sensors",
+    x = "Calibration Session",
+    y = "Calibration Value",
+    fill = "Phase"
+  ) +
+  theme_minimal()
+
+
+# combined data from all sensors
+df_long <- df_long |>
+  mutate(GroupLabel = paste(Parameter, Units, Standard, sep = " - "))
+ggplot(df_long, aes(x = CalibSession, y = CalValue, fill = CalibrationPhase)) +
+  geom_boxplot() +
+  facet_wrap(~ GroupLabel, scales = "free_y") +
+  labs(
+    title = "Pre and Post-Cal Values by Session and Calibration Conditions",
+    x = "Calibration Session",
+    y = "Calibration Value",
+    fill = "Phase"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+
+# Difference From Expected Value
+df_long_bothsessions_diff <- df_both_sensors |>
+  pivot_longer(
+    cols = c(PreCalDiff, PostCalDiff),
+    names_to = "CalibrationPhase",
+    values_to = "CalValueDiff"
+  ) |>
+  mutate(GroupLabel = paste(Parameter, Units, Standard, sep = " - "))
+
+ggplot(df_long_bothsessions_diff, aes(x = CalibSession, y = CalValueDiff, fill = CalibrationPhase)) +
+  geom_boxplot() +
+  facet_wrap(~ TALSensorSN, scales = "free_y") +
+  labs(
+    title = "Pre and Post-Cal Difference from Expected Value by Calibration Session for Individual Sensors",
+    x = "Calibration Session",
+    y = "Calibration Value",
+    fill = "Phase"
+  ) +
+  theme_minimal()
+
+ggplot(df_long_bothsessions_diff, aes(x = CalibSession, y = CalValueDiff, fill = CalibrationPhase)) +
+  geom_boxplot() +
+  facet_wrap(~ GroupLabel, scales = "free_y") +
+  labs(
+    title = "Pre and Post-Cal Difference from Expected Value by Session and Calibration Conditions",
+    x = "Calibration Session",
+    y = "Calibration Value",
+    fill = "Phase"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+
+```
+
+```{r Combined Boxplots}
+
+# Combined boxplot
+ggplot(df_long, aes(x = CalibSession, y = CalValue, fill = CalibrationPhase)) +
+  geom_boxplot() +
+  labs(
+    title = "Pre- and Post-Cal Values by Calibration Session (Combined Sensors)",
+    x = "Calibration Session",
+    y = "Calibration Value",
+    fill = "Calibration Phase"
+  ) +
+  theme_minimal()
+
+
+ggplot(df_long, aes(x = CalibSession, y = CalValue, fill = CalibrationPhase)) +
+  geom_boxplot() +
+  facet_wrap(Standard ~ Units, scales = "free_y") +
+  labs(
+    title = "Pre- and Post-Cal Values by Session, Standard, and Units",
+    x = "Calibration Session",
+    y = "Calibration Value",
+    fill = "Calibration Phase"
+  ) +
+  theme_minimal()
+
+
+
+
+
+
+# With Difference Values
+df_long_diff <- df_both_sensors |>
+  pivot_longer(
+    cols = c(PreCalDiff, PostCalDiff),
+    names_to = "CalibrationPhase",
+    values_to = "CalValue"
+  )
+ggplot(df_long_diff, aes(x = CalibSession, y = CalValue, fill = CalibrationPhase)) +
+  geom_boxplot() +
+  labs(
+    title = "Pre- and Post-Cal Difference from Expected Value by Calibration Session (Combined Sensors)",
+    x = "Calibration Session",
+    y = "Calibration Value",
+    fill = "Calibration Phase"
+  ) +
+  theme_minimal()
+
+
+ggplot(df_long_diff, aes(x = CalibSession, y = CalValue, fill = CalibrationPhase)) +
+  geom_boxplot() +
+  facet_wrap(Standard ~ Units, scales = "free_y") +
+  labs(
+    title = "Pre- and Post-Cal Difference from Expected Value by Session, Standard, and Units",
+    x = "Calibration Session",
+    y = "Calibration Value",
+    fill = "Calibration Phase"
+  ) +
+  theme_minimal()
+
+```
+
+```{r First and Non-First Calibration (Factory vs Lab-Calibrated) Boxplots}
+
+df_firstcalib_long <- first_calibrations |>
+  pivot_longer(
+    cols = c(PreCalVal, PostCalVal),
+    names_to = "CalibrationPhase",
+    values_to = "CalValue"
+  )
+df_firstcalib_diff_long <- first_calibrations |>
+  pivot_longer(
+    cols = c(PreCalDiff, PostCalDiff),
+    names_to = "CalibrationPhase",
+    values_to = "CalValueDiff"
+  )
+df_nonfirstcalib_long <- non_first_calibrations |>
+  pivot_longer(
+    cols = c(PreCalVal, PostCalVal),
+    names_to = "CalibrationPhase",
+    values_to = "CalValue"
+  )
+df_nonfirstcalib_diff_long <- non_first_calibrations |>
+  pivot_longer(
+    cols = c(PreCalDiff, PostCalDiff),
+    names_to = "CalibrationPhase",
+    values_to = "CalValueDiff"
+  )
+
+
+# First Calibrations
+ggplot(df_firstcalib_long, aes(x = CalibrationPhase, y = CalValue, fill = CalibrationPhase)) +
+  geom_boxplot() +
+  facet_wrap(Standard ~ Units, scales = "free_y") +
+  labs(
+    title = "Pre- and Post-Cal Values (First Calibration/ Factory Only)",
+    x = "Calibration Session",
+    y = "Calibration Value",
+    fill = "Calibration Phase"
+  ) +
+  theme_minimal()
+
+ggplot(df_firstcalib_diff_long, aes(x = CalibrationPhase, y = CalValueDiff, fill = CalibrationPhase)) +
+  geom_boxplot() +
+  facet_wrap(Standard ~ Units, scales = "free_y") +
+  labs(
+    title = "Pre- and Post-Cal Value Difference from Expected Value (First Calibration/ Factory Only)",
+    x = "Calibration Session",
+    y = "Calibration Value",
+    fill = "Calibration Phase"
+  ) +
+  theme_minimal()
+
+
+# Non-First Calibrations
+ggplot(df_nonfirstcalib_long, aes(x = CalibrationPhase, y = CalValue, fill = CalibrationPhase)) +
+  geom_boxplot() +
+  facet_wrap(Standard ~ Units, scales = "free_y") +  # Let y-axis scale vary
+  labs(
+    title = "Pre- and Post-Cal Values (Non-First Calibrations Only)",
+    x = "Calibration Session",
+    y = "Calibration Value",
+    fill = "Calibration Phase"
+  ) +
+  theme_minimal()
+
+ggplot(df_nonfirstcalib_diff_long, aes(x = CalibrationPhase, y = CalValueDiff, fill = CalibrationPhase)) +
+  geom_boxplot() +
+  facet_wrap(Standard ~ Units, scales = "free_y") +  # Let y-axis scale vary
+  labs(
+    title = "Pre- and Post-Cal Value Difference from Expected Values (Non-First Calibrations Only)",
+    x = "Calibration Session",
+    y = "Calibration Value",
+    fill = "Calibration Phase"
+  ) +
+  theme_minimal()
+
+
+
+
+# set 2023 and 2024 on same plot as in previous graphs
+
+```
+
+
+
+```{r Summary Statistics}
+
+# Summary Stats for Pre and Post Cal Values
+summary_by_group <- function(data) {
+  data |> group_by(Standard, Parameter, Units, CalibSession) |>
+    summarize(
+      MeanPreCal = mean(PreCalVal, na.rm = TRUE),
+      SDPreCal = sd(PreCalVal, na.rm = TRUE),
+      MeanPostCal = mean(PostCalVal, na.rm = TRUE),
+      SDPostCal = sd(PostCalVal, na.rm = TRUE),
+      MeanPreCalDiff = mean(PreCalDiff, na.rm = TRUE),
+      SDPreCalDiff = sd(PreCalDiff, na.rm = TRUE),
+      MeanPostCalDiff = mean(PostCalDiff, na.rm = TRUE),
+      SDPostCalDiff = sd(PostCalDiff, na.rm = TRUE),
+      .groups = "drop"
+    )
+}
+
+summary_by_group(df)
+summary_by_group(first_calibrations) # only includes first instance a sensor is calibrated (factory settings)
+summary_by_group(non_first_calibrations) # all calibrations that were not the first for the sensor
+summary_by_group(df_both_sensors) # only includes sondes calibrated in both 2023 and 2024
+
+```
+
+
+
+
+```{r Exploratory Graphs}
+
+
+df_long <- df |>
+  pivot_longer(cols = c(PreCalVal, PostCalVal),
+               names_to = "CalStage",
+               values_to = "Value")
+
+
+
+
+# Sensor Temp. vs. Calibration Values
+ggplot(df_long, aes(x = SensorTemp, y = Value, color = CalStage)) + 
+  geom_point() +
+  labs(title = "Temperature vs. Calibration Value")
+
+#ggplot(df_diff_long, aes(x = SensorTemp, y = Value, color = CalStage)) + 
+#  geom_point() +
+#  labs(title = "Temperature vs. Calibration Difference from Expected Value")
+
+
+
+
+
+library(ggplot2)
+
+# Scatterplot of PreCal and PostCal vs Expected Values with different colors
+ggplot(df, aes(x = ExpectVal)) +
+  geom_point(aes(y = PreCalVal, color = "Pre-Cal"), alpha = 0.6) +
+  geom_point(aes(y = PostCalVal, color = "Post-Cal"), alpha = 0.6) +
+  labs(
+    title = "Pre-Cal and Post-Cal Values vs Expected Values",
+    x = "Expected Value",
+    y = "Calibration Value"
+  ) +
+  scale_color_manual(values = c("Pre-Cal" = "blue", "Post-Cal" = "green")) +  # Custom colors
+  theme_minimal()
+
+
+# Scatterplot of PreCal and PostCal vs Expected Values, faceted by Standard, Parameter, and Units
+ggplot(df, aes(x = ExpectVal)) +
+  geom_point(aes(y = PreCalVal, color = "Pre-Cal"), alpha = 0.6) +
+  geom_point(aes(y = PostCalVal, color = "Post-Cal"), alpha = 0.6) +
+  labs(
+    title = "Pre-Cal and Post-Cal Values vs Expected Values",
+    x = "Expected Value",
+    y = "Calibration Value"
+  ) +
+  scale_color_manual(values = c("Pre-Cal" = "blue", "Post-Cal" = "green")) +  # Custom colors
+  theme_minimal() +
+  facet_wrap(~ Standard + Parameter + Units, scales = "free")  # Facet by Standard, Parameter, and Units
+
+
+
+```
+
+
+
