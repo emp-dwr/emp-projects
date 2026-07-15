@@ -1,8 +1,15 @@
 source(here::here('00_GlobalFunctions/functions.R')) # a bad way to do this
 
+
+# TODO: I believe the only major step left is filtering out un-needed columns;
+# also API -> csv updates
+
 format_edi <- function(df = df) {
   
   # select columns
+  ## TODO: names will differ if using csv
+  ## TODO: API splits "Observed DateTime" into "Observed Date" and "Observed Time";
+  ## will have to add that step in if using csv
   df %>%
     select(
       samplingLocation,
@@ -22,6 +29,7 @@ format_edi <- function(df = df) {
     )
 
   # fix detection condition
+  ## TODO: maybe dif with the csv?
   df <- df %>%
     mutate(
       detectionCondition = case_when(
