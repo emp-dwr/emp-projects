@@ -1,0 +1,61 @@
+```{r}
+library(tidyverse)
+source(here::here('00_GlobalFunctions/functions.R'))
+
+fp_wq24 <- abs_path_emp('Phytoplankton/AQUARIUS Samples Database/Database Migration/Helpful Files/EMP_DWQ_Data_2024.csv')
+
+df_wq24 <- read_csv(fp_wq24, col_types = cols(.default = col_character()))
+```
+
+```{r}
+df_wq24 <- df_wq24 %>%
+  select(Station, Date, Time) %>%
+  distinct() %>%
+  mutate(
+    Date = as.Date(Date, format = "%m/%d/%Y"),
+    Time = str_replace(
+      as.character(Time),
+      "^0?(\\d{1,2}:\\d{2}).*$",
+      "\\1"
+    )
+  )
+
+df_wq24
+```
+
+```{r}
+fp_wq25 <- abs_path_emp('Phytoplankton/AQUARIUS Samples Database/Database Migration/Helpful Files/EMP_DWQ_Dates_2025.csv')
+
+df_wq25 <- read_csv(fp_wq25, col_types = cols(.default = col_character()))
+```
+
+```{r}
+df_wq25 <- df_wq25 %>%
+  mutate(
+    Date = as.Date(str_sub(`Observed DateTime`, 1, 10)),
+    Time = str_remove(
+      str_sub(`Observed DateTime`, 12, 16),
+      '^0'
+    )
+  ) %>%
+  rename(Station = `Location ID`) %>%
+  select(Station, Date, Time)
+
+df_wq25
+```
+
+```{r}
+df_wq %>%
+  filter(Time == '12')
+```
+
+
+```{r}
+df_wq <- bind_rows(df_wq24, df_wq25)
+```
+
+
+```{r}
+save(df_wq, file = here::here('03_Phyto/aquarius/historical-imports/data/dwq_data.rda'))
+```
+

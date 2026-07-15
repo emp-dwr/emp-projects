@@ -6,21 +6,6 @@ Finish Cleaning Corrected Data (pulled from Aquarius)
 edi_year <- 2024
 ```
 
-
-```{r}
-library(ggplot2)
-
-df <- data.frame(
-  x = 1:10,
-  y = (1:10)^2
-)
-
-ggplot(df, aes(x, y)) +
-  geom_point() +
-  geom_line()
-```
-
-
 # Code Starts Here
 
 ```{r}
@@ -33,7 +18,7 @@ set_samples_env(
   token_env = 'AQS_EMPDWQ_TOKEN'
 )
 
-source('00_GlobalFunctions/edi-functions.R')
+source(here::here('00_GlobalFunctions/edi-functions.R'))
 ```
 
 ```{r}
@@ -55,7 +40,7 @@ system.time({
   df_year <- get_year_data(edi_year)
 })
 
-test <- df_year
+df_test <- df_year
 ```
 
 Filter out un-needed data

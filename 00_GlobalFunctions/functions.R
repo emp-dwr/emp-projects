@@ -112,6 +112,19 @@ abs_path_emp <- function(fp_rel = NULL) {
   return(fp_abs)
 }
 
+# abs path
+abs_path <- function(fp_rel = NULL) {
+  fp_emp <- 'California Department of Water Resources/'
+  
+  if (is.null(fp_rel)) {
+    fp_abs <- normalizePath(file.path(Sys.getenv('USERPROFILE'), fp_emp))
+  } else {
+    fp_abs <- normalizePath(file.path(Sys.getenv('USERPROFILE'), fp_emp, fp_rel))
+  }
+  
+  return(fp_abs)
+}
+
 # station renaming
 replace_station <- function(df_data, df_names) {
   df_joined <- df_data %>%

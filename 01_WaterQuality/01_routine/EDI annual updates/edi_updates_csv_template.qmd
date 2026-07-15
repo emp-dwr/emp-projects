@@ -1,0 +1,63 @@
+Finish Cleaning Corrected Data (pulled from Aquarius)
+
+# Set year
+
+```{r}
+edi_year <- 2024
+```
+
+# Code Starts Here
+
+```{r}
+library(tidyverse)
+library(lubridate)
+library(aqsampr)
+library(purrr)
+
+# < add code to import here >
+```
+
+Filter out un-needed data
+
+```{r}
+# filter out replicate/blank data
+df_year <- df_year %>%
+  filter(qualityControlType == 'NORMAL')
+
+# filter out Churn Bucket/Filter Container data
+df_year <- df_year %>%
+  filter(!observedProperty %in% c('Churn Bucket ID', 'Filter Container ID'))
+```
+
+```{r}
+colnames(df_year)
+```
+
+```{r}
+# format for EDI
+df_year <- format_edi(df_year)
+
+# check missing dates
+df_year %>%
+  filter(is.na(Date))
+```
+
+```{r}
+unique(df_year$Analyte)
+```
+
+# Checks
+
+```{r}
+check_analytes(df_year, year = '2024')
+```
+
+```{r}
+check <- check_duplicates(df_year, year = '2024', return_df = TRUE)
+```
+
+# Write file
+
+```{r}
+# write_csv(df_final, '01_WaterQuality/edi-annual-updates/data/final/edi_2024_update_QCCodes.csv')
+```

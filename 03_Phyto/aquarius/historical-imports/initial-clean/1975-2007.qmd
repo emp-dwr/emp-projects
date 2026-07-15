@@ -1,0 +1,542 @@
+# Clean and Format 1975-2007 Phyto Data
+
+# Initial setup
+
+```{r}
+library(pespr)
+library(lubridate)
+library(tidyverse)
+source(here::here('00_GlobalFunctions/functions.R'))
+```
+
+
+## Read in data
+
+```{r}
+# phyto data
+fp_raw <- abs_path_emp('Phytoplankton/AQUARIUS Samples Database/Database Migration/Raw Phyto Data/EMP_Phyto Data 75-07.csv')
+
+df_phyto <- read_csv(fp_raw, col_types = cols(.default = col_character())) %>%
+  rename(Date = SampleDate,
+         Time = SampleTime,
+         Station = StationCode)
+
+
+# tin data
+load(here::here('03_Phyto/aquarius/historical-imports/data/tins.rda'))
+
+# dwq data
+load(here::here('03_Phyto/aquarius/historical-imports/data/dwq_data.rda'))
+
+# phyto taxa data
+df_taxon <- pespr::phyto_taxonomy
+```
+
+# Dates
+
+Convert Dates
+```{r}
+df_phyto <- df_phyto %>%
+  mutate(Date = as.Date(Date, format = '%m/%d/%Y'))
+
+df_phyto <- df_phyto %>%
+  mutate(Time = str_replace(Time, "^0(\\d:)", "\\1"))
+
+df_wq <- df_wq %>%
+  mutate(Date = as.Date(Date, format = '%Y-%m-%d'))
+```
+
+```{r}
+unique(df_phyto$Time)
+```
+# Times
+
+Fix non-military
+
+```{r}
+df_phyto <- df_phyto %>%
+  mutate(Time = ifelse(
+    !is.na(Time) & as.numeric(sub(':.*', '', Time)) < 5,
+    sprintf('%d:%s',
+            as.numeric(sub(':.*', '', Time)) + 12,
+            sub('^[^:]*:', '', Time)),
+    Time
+  ))
+```
+
+Round Times
+
+```{r}
+round_time <- function(x) {
+  out <- rep(NA_character_, length(x))
+  ok <- !is.na(x)
+  out[ok] <- format(round_date(as_datetime(paste0('2000-01-01 ', x[ok], ':00')),
+                               '5 minutes'), '%H:%M')
+  out
+}
+
+df_phyto <- df_phyto %>% mutate(Time = round_time(Time))
+
+unique(df_phyto$Time)
+```
+# Stations
+
+Rename EZs
+```{r}
+df_phyto <- df_phyto %>%
+  mutate(Station = recode(Station, 'EZ2' = 'LSZ2', 'EZ6' = 'LSZ6'))
+```
+
+
+Determine stations that don't match with DWQ
+
+TODO: get metadata from Tiffany on these
+
+```{r}
+setdiff(df_phyto$Station, df_wq$Station)
+```
+
+# Data Checks
+
+## Numeric Metadata
+
+```{r}
+unique(df_phyto$CellArea)
+```
+
+```{r}
+unique(df_phyto$GridArea)
+```
+
+```{r}
+unique(df_phyto$NumberOfFields)
+```
+```{r}
+unique(df_phyto$Magnification)
+```
+
+```{r}
+unique(df_phyto$SettlingVolume)
+```
+
+Looks good, convert to numeric.
+
+```{r}
+df_phyto <- df_phyto %>%
+  mutate(
+    CellArea = as.numeric(CellArea),
+    GridArea = as.numeric(GridArea),
+    NumberOfFields = as.numeric(NumberOfFields),
+    Magnification = as.numeric(Magnification),
+    SettlingVolume = as.numeric(SettlingVolume)
+  )
+```
+
+```{r}
+colnames(df_phyto)
+```
+
+## String Metadata
+
+For group, convert n/p to NA
+
+```{r}
+df_phyto <- df_phyto %>%
+  mutate(Group = na_if(Group, 'n/p'))
+
+unique(df_phyto$Group)
+```
+
+```{r}
+unique(df_phyto$Remark)
+```
+## Check Data
+
+```{r}
+unique(df_phyto$Count)
+```
+
+```{r}
+unique(df_phyto$`Organisms per mL`)
+```
+
+Looks good, convert.
+
+```{r}
+df_phyto <- df_phyto %>%
+  mutate(
+    Count = as.numeric(Count),
+    `Organisms per mL` = as.numeric(`Organisms per mL`)
+  )
+```
+
+Double check numbers.
+
+```{r}
+ggplot(df_phyto, aes(x = "", y = log(Count))) +
+  geom_boxplot(outlier.shape = NA, fill = "lightblue", alpha = 0.5) +
+  geom_jitter(width = 0.15, alpha = 0.5, shape = 21) +
+  theme_minimal()
+```
+
+```{r}
+ggplot(df_phyto, aes(x = "", y = log(`Organisms per mL`))) +
+  geom_boxplot(outlier.shape = NA, fill = "lightblue", alpha = 0.5) +
+  geom_jitter(width = 0.15, alpha = 0.5, shape = 21) +
+  theme_minimal()
+```
+
+## Check Taxon
+
+Correct spellings
+
+```{r}
+taxon_fixes <- tribble(
+  ~Taxon,                        ~new_Taxon,                               ~new_Species,      ~new_Genus,
+  'Diatoma hiemale',             'Diatoma hyemalis',                       'hyemalis',        NA,
+  'Diatoma elongatum',           'Diatoma elongata',                       'elongata',        NA,
+  'Chlorosphaeralean sp.',       'Chlorosphaera sp.',                      NA,                'Chlorosphaera',
+  'Treubaria setigerum',         'Treubaria setigera',                     'setigera',        NA,
+  'Attheya zachariasi',          'Attheya zachariasii',                    'zachariasii',     NA,
+  'Microcystis flosaquae',       'Microcystis flos-aquae',                 'flos-aquae',      'Microcystis',
+  'Bacillaria paxillifer',       'Bacillaria paxillifera',                 'paxillifera',     NA,
+  'Diploneis didyma',            'Diploneis didymus',                      'didymus',         NA,
+  'Chlorallantus sp.',           'Chlorallanthus sp.',                     NA,                'Chlorallanthus',
+  'Anabaena flosaquae',          'Anabaena flos-aquae',                    'flos-aquae',      'Anabaena',
+  'Dolichospermum flosaquae',    'Dolichospermum flos-aquae',              'flos-aquae',      'Dolichospermum',
+  'Aphanizomenon flosaquae',     'Aphanizomenon flos-aquae',               'flos-aquae',      'Aphanizomenon',
+  'Centric Diatom sp.',          'Unidentified Centric Diatom sp. 1',      NA,                NA,
+  'Pennate Diatom sp.',          'Unidentified Pennate Diatom sp. 1',      NA,                NA,
+  'Unidentified flagellate',     'Unidentified Flagellate sp. 1',          NA,                NA,
+  'Nanoflagellates',             'Unidentified Nanoflagellate sp. 1',      NA,                NA,
+  'Chodatella wratislaviensis',  'Chodatella wratislawiensis',             'wratislawiensis', NA,
+  'Eucampia zoodiacus',          'Eucampia zodiacus',                      'zodiacus',        NA,
+  'NONE NONE',                   'No organisms found',                     NA,                NA,
+  'Unidentified sp.',            'Unidentified sp. 1',                     NA,                NA,
+  'Unknown unknown',             'Unidentified sp. 1',                     NA,                NA,
+)
+
+df_phyto <- df_phyto %>%
+  left_join(taxon_fixes, by = 'Taxon') %>%
+  mutate(
+    Species = coalesce(new_Species, Species),
+    Genus   = coalesce(new_Genus, Genus),
+    Taxon   = coalesce(new_Taxon, Taxon)
+  ) %>%
+  select(-new_Taxon, -new_Species, -new_Genus)
+```
+
+Compare to TIN code list
+
+```{r}
+df_eataxa <- anti_join(df_phyto, df_codes, by = 'Taxon') %>% distinct(Taxon)
+
+df_eataxa
+```
+
+Compare ones not in TIN codes to taxonomy list
+
+```{r}
+df_newinfo <- inner_join(df_taxon, df_eataxa, by = 'Taxon') %>%
+  select(Taxon, CurrentTaxon)
+```
+
+See what's left
+
+```{r}
+df_missing <- anti_join(df_eataxa, df_taxon, by = 'Taxon')
+
+df_missing
+```
+
+# Special Study Data
+
+```{r}
+df_special <- df_phyto %>%
+  filter(MethodCode == 'SPECIAL')
+```
+
+Check unique dates and stations
+```{r}
+df_special %>%
+  distinct(Date, Station) %>%
+  group_by(Date) %>%
+  summarise(Station = paste(sort(Station), collapse = ", "), .groups = "drop")
+```
+
+Check dates that match with routine data
+```{r}
+special_wq_matches <- df_special %>%
+  distinct(Station, Date) %>%
+  inner_join(df_wq %>% distinct(Station, Date), by = c("Station", "Date")) %>%
+  arrange(Station, Date)
+
+special_wq_routine_check <- special_wq_matches %>%
+  left_join(
+    df_routine %>% distinct(Station, Date) %>% mutate(has_routine = TRUE),
+    by = c("Station", "Date")
+  ) %>%
+  mutate(has_routine = if_else(is.na(has_routine), FALSE, has_routine))
+
+special_wq_routine_check
+```
+
+```{r}
+special_wq_routine_check_month <- df_special %>%
+  mutate(Year = year(Date), Month = month(Date)) %>%
+  group_by(Station, Year, Month) %>%
+  summarise(special_dates = paste(sort(unique(Date)), collapse = ", "), .groups = "drop") %>%
+  inner_join(
+    df_wq %>%
+      mutate(Year = year(Date), Month = month(Date)) %>%
+      group_by(Station, Year, Month) %>%
+      summarise(wq_dates = paste(sort(unique(Date)), collapse = ", "), .groups = "drop"),
+    by = c("Station", "Year", "Month")
+  ) %>%
+  left_join(
+    df_routine %>%
+      mutate(Year = year(Date), Month = month(Date)) %>%
+      distinct(Station, Year, Month) %>%
+      mutate(has_routine_month = TRUE),
+    by = c("Station", "Year", "Month")
+  ) %>%
+  mutate(has_routine_month = if_else(is.na(has_routine_month), FALSE, has_routine_month)) %>%
+  arrange(Station, Year, Month)
+
+special_wq_routine_check_month
+```
+
+# Routine Data
+
+```{r}
+df_routine <- df_phyto %>%
+  filter(MethodCode == 'PHYTO') %>%
+  mutate(Time = paste0(Time, ":00"))
+
+
+df_routine <- df_routine %>%
+  mutate(Time = str_replace(Time, "^0(\\d:)", "\\1"))
+```
+
+## Check stations
+
+Stations that have phyto data but no corresponding DWQ data
+
+TODO: get some sort of info on these
+
+```{r}
+setdiff(df_routine$Station, df_wq$Station)
+```
+
+```{r}
+missing_stations <- setdiff(df_routine$Station, df_wq$Station)
+
+df_routine %>%
+  filter(Station %in% missing_stations) %>%
+  mutate(Year = format(Date, "%Y"), Month = format(Date, "%m")) %>%
+  distinct(Station, Year, Month) %>%
+  arrange(Station, Year, Month)
+```
+
+## Check Dates
+
+Compare against DWQ
+
+```{r}
+missing_stations <- setdiff(df_routine$Station, df_wq$Station)
+
+wq_events <- df_wq %>%
+  mutate(Year = year(Date), Month = month(Date)) %>%
+  distinct(Year, Month, Station, Date) %>%
+  group_by(Year, Month, Station) %>%
+  summarise(
+    n_events_wq = n(),
+    wq_dates = paste(sort(Date), collapse = ", "),
+    .groups = "drop"
+  )
+
+phyto_events <- df_routine %>%
+  filter(!Station %in% missing_stations) %>%      # exclude stations that were never in df_wq to begin with
+  mutate(Year = year(Date), Month = month(Date)) %>%
+  distinct(Year, Month, Station, Date) %>%
+  group_by(Year, Month, Station) %>%
+  summarise(
+    n_events_phyto = n(),
+    phyto_dates = paste(sort(Date), collapse = ", "),
+    .groups = "drop"
+  )
+
+comparison <- wq_events %>%
+  full_join(phyto_events, by = c("Year", "Month", "Station")) %>%
+  mutate(
+    status = case_when(
+      is.na(n_events_wq)             ~ "phyto only",
+      is.na(n_events_phyto)          ~ "wq only (missing in phyto)",
+      n_events_wq != n_events_phyto  ~ "mismatch in # events",
+      TRUE                           ~ "match"
+    )
+  ) %>%
+  arrange(status, Year, Month, Station)
+
+problems <- comparison %>% filter(status != "match")
+problems %>%
+  arrange(Year, Month, Station) %>%
+  filter(status != 'wq only (missing in phyto)')
+```
+
+Apply fixes
+```{r}
+df_routine <- df_routine %>%
+
+  mutate(Time = if_else(Date == as.Date('2004-07-30') & Station == 'C3',
+                         '16:55', Time)) %>%
+
+  filter(!(Date == as.Date('1987-08-19') & Station == 'D7' & Taxon == 'NONE')) %>%
+  
+  mutate(Date = if_else(Date == as.Date('1994-11-29') & Station == 'D7',
+                         as.Date('1994-11-16'), Date)) %>%
+  
+  mutate(Date = if_else(Date == as.Date('1998-07-15') & 
+                           Station %in% c('D26', 'MD10A', 'P8', 'D28A'),
+                         as.Date('1998-07-16'), Date))
+```
+
+Check and update mismatched dates (one event per Month/Year/Station in each)
+- update to DWQ dates
+
+```{r}
+wq_single <- df_wq %>%
+  mutate(Year = year(Date), Month = month(Date)) %>%
+  distinct(Year, Month, Station, Date) %>%
+  group_by(Year, Month, Station) %>%
+  summarise(
+    n_wq = n(),
+    date_wq = paste(sort(Date), collapse = ", "),
+    .groups = "drop"
+  ) %>%
+  filter(n_wq == 1)
+
+routine_single <- df_routine %>%
+  mutate(Year = year(Date), Month = month(Date)) %>%
+  distinct(Year, Month, Station, Date) %>%
+  group_by(Year, Month, Station) %>%
+  summarise(
+    n_routine = n(),
+    date_routine = paste(sort(Date), collapse = ", "),
+    .groups = "drop"
+  ) %>%
+  filter(n_routine == 1)
+
+single_event_mismatches <- wq_single %>%
+  inner_join(routine_single, by = c("Year", "Month", "Station")) %>%
+  filter(date_wq != date_routine) %>%
+  arrange(Year, Month, Station)
+
+single_event_mismatches
+```
+
+```{r}
+df_routine <- df_routine %>%
+  mutate(Year = year(Date), Month = month(Date)) %>%
+  left_join(
+    single_event_mismatches %>%
+      transmute(Year, Month, Station, new_date = as.Date(date_wq)),
+    by = c("Year", "Month", "Station")
+  ) %>%
+  mutate(Date = if_else(!is.na(new_date), new_date, Date)) %>%
+  select(-Year, -Month, -new_date)
+```
+
+Check Times
+
+```{r}
+wq_times <- df_wq %>%
+  distinct(Station, Date, Time) %>%
+  rename(Time_wq = Time)
+
+routine_times <- df_routine %>%
+  distinct(Station, Date, Time) %>%
+  rename(Time_routine = Time)
+
+time_mismatches <- wq_times %>%
+  inner_join(routine_times, by = c("Station", "Date")) %>%
+  filter(Time_wq != Time_routine | (is.na(Time_wq) != is.na(Time_routine))) %>%
+  arrange(Station, Date)
+```
+
+Check which Dates have > Time
+```{r}
+routine_times %>% count(Station, Date) %>% filter(n > 1)
+```
+
+Fix those
+```{r}
+df_routine <- df_routine %>%
+  filter(!(Date == '1992-03-26' & Station == 'D7' & Time == '9:15:00')) %>%
+  filter(!(Date == '1994-10-26' & Station == 'D7' & Time == '8:35:00')) %>%
+  mutate(
+    Taxon = if_else(
+      Date == '1994-11-23' & Station == 'C3' & Time == '13:30:00' & Taxon == 'Unidentified Flagellate sp. 1',
+      'Unidentified Flagellate sp. 2',
+      Taxon
+    )
+  )
+```
+
+Update Times
+```{r}
+df_routine <- df_routine %>%
+  left_join(
+    time_mismatches %>%
+      select(Station, Date, Time_routine, Time_wq),
+    by = c("Station", "Date", "Time" = "Time_routine")
+  ) %>%
+  mutate(Time = if_else(!is.na(Time_wq), Time_wq, Time)) %>%
+  select(-Time_wq)
+```
+
+## Check missing data
+
+```{r}
+# build the full Month x Year grid, then flag presence/absence
+routine_coverage <- df_routine %>%
+  mutate(Year = year(Date), Month = month(Date)) %>%
+  distinct(Year, Month) %>%
+  mutate(has_data = TRUE) %>%
+  right_join(
+    expand_grid(Year = 1975:2007, Month = 1:12),
+    by = c("Year", "Month")
+  ) %>%
+  mutate(has_data = if_else(is.na(has_data), FALSE, has_data))
+
+ggplot(routine_coverage, aes(x = factor(Month), y = factor(Year), fill = has_data)) +
+  geom_tile(color = "white", linewidth = 0.2) +
+  scale_fill_manual(values = c("TRUE" = "steelblue", "FALSE" = "grey90"),
+                     labels = c("TRUE" = "Data", "FALSE" = "No data"),
+                     name = NULL) +
+  scale_x_discrete(labels = month.abb) +
+  scale_y_discrete(limits = rev(as.character(1975:2007))) +
+  labs(x = "Month", y = "Year", title = "df_routine data coverage, 1975–2007") +
+  theme_minimal() +
+  theme(panel.grid = element_blank())
+```
+# Format Data
+TODO: add lab column, format for DB
+
+# Save data
+Combine routine and special
+```{r}
+df_newphyto <- bind_rows(df_routine, df_special)
+```
+
+Remove trailing zeros in Time
+```{r}
+df_newphyto <- df_newphyto %>%
+  mutate(Time = str_replace(Time, ":00$", ""))
+```
+
+Write data
+```{r}
+save(df_newphyto, file = here::here('03_Phyto/aquarius/historical-imports/data/1975-2007.rda'))
+```
+

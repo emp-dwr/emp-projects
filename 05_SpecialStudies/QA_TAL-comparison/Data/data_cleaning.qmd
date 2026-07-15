@@ -1,0 +1,68 @@
+```{r}
+library(tidyverse)
+source(here::here('00_GlobalFunctions/functions.R'))
+```
+
+```{r}
+fp <- abs_path('DWR-COI-QA - QASP09-Total Algae Sensor 2-Point Calibration Effectiveness Study/02_Data/Results-CleanedFile/results_cleaned.csv')
+
+df_raw <- read_csv(fp)
+
+df_raw <- df_raw %>%
+  select(CalibDate, TALSensorSN, Standard, Parameter, Units, ExpectVal, PreCalVal, PostCalVal, SensorTemp) %>%
+  mutate(
+    Units = case_when(
+      Units == 'RFU' ~ 'RFU',
+      Units == 'ug_L' ~ 'ugL'
+    ),
+    Parameter = paste0(Parameter, '_', Units)
+  ) %>%
+  select(-Units) %>%
+  filter(Standard == 'Rhodamine')
+```
+
+```{r}
+df_upper <- df_raw %>%
+  mutate(
+    CalDiff = PreCalVal - ExpectVal,
+    CalRatio = PreCalVal / ExpectVal,
+    CalPctError = 100 * (CalRatio - 1)
+  )
+
+df_upper <- df_upper %>%
+  mutate(
+    CalRatio = round(CalRatio, 2),
+    CalPctError = round(CalPctError, 2)
+  )
+```
+
+
+```{r}
+write_csv(df_upper, here::here('05_SpecialStudies/QA_TAL-comparison/Data/tal_data.csv'))
+```
+
+
+```{r}
+ggplot(df_upper, aes(x = ExpectVal, y = CalDiff)) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  geom_point(alpha = 0.6) +
+  facet_wrap(~ Parameter, scales = 'free') +
+  theme_bw()
+```
+
+```{r}
+ggplot(df_upper, aes(x = ExpectVal, y = CalRatio)) +
+  geom_hline(yintercept = 1, linetype = "dashed") +
+  geom_point(alpha = 0.6) +
+  facet_wrap(~ Parameter, scales = 'free') +
+  theme_bw()
+```
+
+```{r}
+ggplot(df_upper, aes(x = ExpectVal, y = CalPctError)) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  geom_point(alpha = 0.6) +
+  facet_wrap(~ Parameter, scales = 'free') +
+  theme_bw()
+```
+

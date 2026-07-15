@@ -1,0 +1,540 @@
+
+# Load packages/read in data
+
+```{r}
+library(tidyverse)
+library(lubridate)
+source(here::here('00_GlobalFunctions/functions.R'))
+
+rda_files <- list.files('data', pattern = '\\.rda$', full.names = TRUE, ignore.case = TRUE)
+
+for (f in rda_files) load(f, envir = .GlobalEnv)
+```
+
+```{r}
+# load missing sampling events
+fp_dates <- abs_path_emp('Benthic/AQUARIUS Samples Database/Database Migration/Raw Benthic Data/Metadata/benthic_not_sampled.csv')
+
+df_dates <- read_csv(fp_dates)
+```
+
+```{r}
+dfs <- list(df_clamlen, df_count, df_samp, df_field, df_ls, df_sed)
+
+dfs <- lapply(dfs, function(df) {
+  df %>% mutate(
+    Date = as.Date(`Observed DateTime`),
+    MainStation = sub('-.*', '', `Location ID`)
+  )
+})
+
+list2env(setNames(dfs, c('df_clamlen', 'df_count', 'df_samp', 'df_field', 'df_ls', 'df_sed')),
+         envir = .GlobalEnv)
+
+dfs <- list(df_clamlen = df_clamlen, df_count = df_count, df_samp = df_samp,
+            df_field = df_field, df_ls = df_ls, df_sed = df_sed)
+```
+
+## Split live sort data
+
+main data vs grts (number stations vs not)
+
+```{r}
+df_grts <- df_ls %>% filter(grepl('^[0-9]+$', `Location ID`))
+df_mls  <- df_ls %>% filter(!grepl('^[0-9]+$', `Location ID`))
+```
+
+```{r}
+df_sed %>%
+  filter(is.na(EA_Year) | is.na(EA_Month)) %>%
+  select(`Location ID`, Date, EA_Year, EA_Month) %>%
+  distinct()
+```
+
+
+remove these for now, easier to compare
+```{r}
+df_fullsed <- df_sed %>%
+  filter(!(is.na(EA_Year) | is.na(EA_Month)))
+```
+
+```{r}
+dfs <- list(df_clamlen = df_clamlen, df_count = df_count, df_samp = df_samp,
+            df_field = df_field, df_ls = df_mls, df_sed = df_sed)
+```
+
+# LS stations
+
+base on field data
+```{r}
+# Build field lookup: unique Location ID per (EA_Month, EA_Year, Date, MainStation)
+field_lookup <- df_field %>%
+  distinct(EA_Month, EA_Year, Date, MainStation, `Location ID`)
+
+# any (EA_Month, EA_Year, Date, MainStation) with >1 Location ID in df_field?
+ambiguous <- field_lookup %>%
+  group_by(EA_Month, EA_Year, Date, MainStation) %>%
+  filter(n() > 1) %>%
+  arrange(EA_Year, EA_Month, MainStation, Date)
+
+# Rows in df_mls with no matching event in df_field
+no_field_match <- df_mls %>%
+  distinct(EA_Month, EA_Year, Date, MainStation, `Location ID`) %>%
+  anti_join(df_field %>% distinct(EA_Month, EA_Year, Date, MainStation),
+            by = c('EA_Month', 'EA_Year', 'Date', 'MainStation'))
+
+date_disagree <- df_mls %>%
+  distinct(EA_Month, EA_Year, MainStation, mls_Date = Date) %>%
+  inner_join(
+    df_field %>% distinct(EA_Month, EA_Year, MainStation, field_Date = Date),
+    by = c('EA_Month', 'EA_Year', 'MainStation')
+  ) %>%
+  filter(mls_Date != field_Date) %>%
+  arrange(EA_Year, EA_Month, MainStation)
+
+ambiguous
+no_field_match
+date_disagree
+```
+
+check dates per main station that disagree with each other/df_ls
+
+```{r}
+events <- imap_dfr(dfs, ~ .x %>%
+                     distinct(EA_Month, EA_Year, MainStation, Date) %>%
+                     mutate(df = .y)) %>%
+  mutate(df = factor(df, levels = names(dfs)))
+
+date_disagree <- events %>%
+  group_by(EA_Month, EA_Year, MainStation) %>%
+  filter(n_distinct(Date) > 1) %>%
+  ungroup() %>%
+  pivot_wider(names_from = df, values_from = Date,
+              values_fn = ~ paste(sort(unique(.x)), collapse = ', ')) %>%
+  arrange(EA_Year, EA_Month, MainStation)
+
+date_disagree
+```
+
+```{r}
+
+```
+
+
+
+```{r}
+df_samp %>%
+  filter(Date == '1988-04-01') %>%
+  distinct(MainStation)
+
+df_samp %>%
+  filter(Date == '1988-04-28') %>%
+  distinct(MainStation)
+```
+
+```{r}
+df_sed %>%
+  filter(Date == '1988-04-28') %>%
+  distinct(MainStation)
+```
+
+
+
+
+for non-ls dfs, check for any discrepancies that would affect ls dates (none after corrections)
+
+```{r}
+# Compute agreed date per row from non-ls cols
+analyzed <- date_disagree %>%
+  rowwise() %>%
+  mutate(
+    other_dates = list(unique(unlist(
+      str_split(c(df_clamlen, df_count, df_samp, df_field, df_sed), ',\\s*')
+    ))),
+    other_dates = list(other_dates[!is.na(other_dates) & other_dates != '']),
+    agreed_date = ifelse(length(other_dates) == 1, other_dates[[1]], NA_character_)
+  ) %>%
+  ungroup() %>%
+  select(-other_dates) %>%
+  mutate(disposition = case_when(
+    is.na(df_ls)         ~ 'NA ls',
+    is.na(agreed_date)   ~ 'dfs disagree',
+    df_ls == agreed_date ~ 'all good',
+    TRUE                 ~ 'will be fixed'
+  ))
+
+fixes <- analyzed %>%
+  filter(disposition == 'will be fixed') %>%
+  select(EA_Month, EA_Year, MainStation, from_date = df_ls, to_date = agreed_date)
+
+unfixed <- analyzed %>%
+  filter(disposition != 'will be fixed') %>%
+  select(EA_Month, EA_Year, MainStation, df_clamlen, df_count, df_samp,
+         df_field, df_ls, df_sed, disposition)
+
+df_mls <- df_mls %>%
+  mutate(EA_Year_chr = as.character(EA_Year)) %>%
+  left_join(
+    fixes %>% mutate(EA_Year = as.character(EA_Year),
+                     from_date = as.Date(from_date),
+                     to_date   = as.Date(to_date)),
+    by = c('EA_Month', 'EA_Year_chr' = 'EA_Year',
+           'MainStation', 'Date' = 'from_date')
+  ) %>%
+  mutate(Date = coalesce(to_date, Date)) %>%
+  select(-EA_Year_chr, -to_date)
+
+dfs <- list(df_clamlen = df_clamlen, df_count = df_count, df_samp = df_samp,
+            df_field = df_field, df_ls = df_mls, df_sed = df_fullsed)
+
+fixes
+unfixed
+```
+
+# Update LS stations
+
+no disagreement in stations (with L/R/C) since live sort started, so can set to others
+
+```{r}
+events_loc <- imap_dfr(dfs[setdiff(names(dfs), 'df_ls')],
+                       ~ .x %>%
+                         distinct(EA_Month, EA_Year, MainStation, `Location ID`) %>%
+                         mutate(df = .y)) %>%
+  mutate(df = factor(df, levels = setdiff(names(dfs), 'df_ls')))
+
+loc_disagree <- events_loc %>%
+  group_by(EA_Month, EA_Year, MainStation) %>%
+  filter(n_distinct(`Location ID`) > 1) %>%
+  ungroup() %>%
+  pivot_wider(names_from = df, values_from = `Location ID`,
+              values_fn = ~ paste(sort(unique(.x)), collapse = ', ')) %>%
+  arrange(EA_Year, EA_Month, MainStation)
+
+loc_disagree
+```
+
+```{r}
+# Pool Location IDs from all dfs except df_ls
+other_locs <- imap_dfr(dfs[setdiff(names(dfs), 'df_ls')],
+                       ~ .x %>%
+                         distinct(Date, MainStation, `Location ID`) %>%
+                         mutate(df = .y))
+
+# Per (Date, MainStation), unique Location IDs across the other dfs
+loc_lookup <- other_locs %>%
+  group_by(Date, MainStation) %>%
+  summarise(
+    locs = list(sort(unique(`Location ID`))),
+    n_locs = n_distinct(`Location ID`),
+    .groups = 'drop'
+  )
+
+conflicts <- loc_lookup %>%
+  filter(n_locs > 1) %>%
+  semi_join(df_mls %>% distinct(Date, MainStation), by = c('Date', 'MainStation')) %>%
+  mutate(locations = map_chr(locs, ~ paste(.x, collapse = ', '))) %>%
+  select(Date, MainStation, locations)
+
+clean_lookup <- loc_lookup %>%
+  filter(n_locs == 1) %>%
+  mutate(new_LocationID = map_chr(locs, 1)) %>%
+  select(Date, MainStation, new_LocationID)
+
+# Apply to df_mls
+df_mls <- df_mls %>%
+  left_join(clean_lookup, by = c('Date', 'MainStation')) %>%
+  mutate(`Location ID` = coalesce(new_LocationID, `Location ID`)) %>%
+  select(-new_LocationID)
+
+conflicts
+
+unmatched <- df_mls %>%
+  distinct(Date, MainStation, `Location ID`) %>%
+  anti_join(loc_lookup, by = c('Date', 'MainStation'))
+
+unmatched
+
+clean_lookup_mls <- loc_lookup %>%
+  filter(n_locs == 1) %>%
+  semi_join(df_mls %>% distinct(Date, MainStation), by = c('Date', 'MainStation')) %>%
+  mutate(new_LocationID = map_chr(locs, 1)) %>%
+  select(Date, MainStation, new_LocationID)
+
+clean_lookup_mls
+```
+
+also fix 2026, checking there's only one option per main station
+
+```{r}
+location_map <- map_dfr(dfs[setdiff(names(dfs), 'df_ls')],
+        ~ .x %>%
+          filter(EA_Year %in% c(2023,2024,2025)) %>%
+          distinct(MainStation, `Location ID`)) %>%
+  distinct() %>%
+  arrange(MainStation, `Location ID`) %>%
+  rename(new_LocationID = `Location ID`)
+
+location_map
+```
+
+```{r}
+unchanged <- df_mls %>%
+  filter(EA_Year == 2026) %>%
+  distinct(MainStation, `Location ID`) %>%
+  anti_join(location_map, by = 'MainStation')
+
+# Apply the update
+df_mls <- df_mls %>%
+  left_join(location_map, by = 'MainStation') %>%
+  mutate(`Location ID` = if_else(EA_Year == 2026 & !is.na(new_LocationID),
+                                 new_LocationID, `Location ID`)) %>%
+  select(-new_LocationID)
+```
+
+re-update station position
+```{r}
+df_mls <- df_mls %>%
+  mutate(
+    `EA_Main Station` = sub('-.*', '', `Location ID`),
+    `EA_Station Position` = ifelse(grepl('-', `Location ID`),
+                                   sub('.*-', '', `Location ID`),
+                                   NA_character_)
+  )
+```
+
+
+update main dfs
+```{r}
+dfs <- list(df_clamlen = df_clamlen, df_count = df_count, df_samp = df_samp,
+            df_field = df_field, df_ls = df_mls, df_sed = df_fullsed)
+```
+
+```{r}
+map_dfr(dfs, ~ .x %>% select(`Location ID`)) %>%
+  count(`Location ID`, name = 'n', sort = TRUE)
+```
+
+check all stations have coordinates
+
+```{r}
+fp_stations <- abs_path_emp('Benthic/AQUARIUS Samples Database/Metadata/Station_Coords_Benthic.csv')
+
+df_stations <- read_csv(fp_stations)
+```
+
+```{r}
+all_locs <- map_dfr(dfs, ~ .x %>% select(`Location ID`))
+
+in_dfs_not_stations <- all_locs %>%
+  anti_join(df_stations, by = 'Location ID')
+
+in_stations_not_dfs <- df_stations %>%
+  anti_join(all_locs, by = 'Location ID')
+
+in_dfs_not_stations
+in_stations_not_dfs
+```
+
+
+# Dates
+
+
+## check no sampling
+
+None should have data where sampling didn't occur
+
+```{r}
+flagged <- lapply(dfs, function(df) {
+  df %>% filter(Date %in% df_dates$Date)
+})
+
+sapply(flagged, nrow)
+```
+
+# check multiple stations per "main station"
+
+```{r}
+multi_station <- imap_dfr(dfs, ~ .x %>%
+  distinct(Date, MainStation, `Location ID`) %>%
+  group_by(Date, MainStation) %>%
+  filter(n() > 1) %>%
+  ungroup() %>%
+  mutate(df = .y))
+
+multi_station
+```
+
+
+```{r}
+cross_df_mismatch <- imap_dfr(dfs, ~ .x %>%
+    distinct(Date, MainStation, `Location ID`) %>%
+    mutate(df = .y)) %>%
+  group_by(Date, MainStation) %>%
+  filter(n_distinct(`Location ID`) > 1) %>%
+  ungroup() %>%
+  arrange(Date, MainStation, df)
+
+cross_df_mismatch
+```
+
+
+# check mismatched Dates
+
+```{r}
+dfs <- lapply(dfs, function(df) {
+  df %>% mutate(
+    Date = as.Date(`Observed DateTime`),
+    MainStation = sub('-.*', '', `Location ID`)
+  )
+})
+
+station_combos <- imap_dfr(dfs, ~ .x %>%
+                             distinct(Date, MainStation, `Location ID`) %>%
+                             mutate(df = .y)) %>%
+  mutate(df = factor(df, levels = names(dfs))) %>%
+  pivot_wider(names_from = df, values_from = `Location ID`,
+              values_fn = ~ paste(sort(unique(.x)), collapse = ', ')) %>%
+  relocate(Date, MainStation)
+
+disagreements <- station_combos %>%
+  rowwise() %>%
+  filter({
+    vals <- c_across(c(df_clamlen, df_count, df_samp, df_field, df_ls, df_sed))
+    n_distinct(vals[!is.na(vals)]) > 1
+  }) %>%
+  ungroup()
+
+disagreements
+```
+
+# check missing seds
+```{r}
+combos <- imap_dfr(dfs, ~ .x %>%
+                     distinct(Date, `Location ID`, EA_Month, EA_Year) %>%
+                     mutate(df = .y)) %>%
+  mutate(present = TRUE,
+         df = factor(df, levels = names(dfs))) %>%
+  pivot_wider(names_from = df, values_from = present, values_fill = FALSE) %>%
+  relocate(EA_Month, EA_Year, Date, `Location ID`)
+
+mismatches <- combos %>%
+  filter(!if_all(all_of(names(dfs)), ~ replace_na(.x, FALSE)))
+
+mismatches
+```
+
+```{r}
+sed_missing <- mismatches %>%
+  filter(!df_sed) %>%
+  select(Date, EA_Month, EA_Year, `Location ID`)
+
+df_field %>%
+  filter(`Observed Property ID` == 'Comments (Field)') %>%
+  inner_join(sed_missing, by = c('Date', 'EA_Month', 'EA_Year', 'Location ID')) %>%
+  select(Date, EA_Month, EA_Year, `Location ID`, `Result Value`) %>%
+  mutate(has_no_sed_note = grepl('no sediment', `Result Value`, ignore.case = TRUE))
+```
+
+## check IDs
+
+```{r}
+issues <- df_mls %>%
+  group_by(`EA_Sample Event ID`, `EA_Grab Number`, `EA_Size Bin`,
+           `Location ID`, `Observed DateTime`, `Activity Name`,
+           `Observed Property ID`) %>%
+  filter(n() > 1) %>%
+  ungroup() %>%
+  arrange(`EA_Sample Event ID`, `Observed DateTime`, `Location ID`,
+          `EA_Grab Number`, `EA_Size Bin`, `Activity Name`,
+          `Observed Property ID`)
+
+issues
+```
+
+```{r}
+unique(issues$`Observed Property ID`)
+```
+
+# heat maps
+
+
+```{r}
+heat_data <- imap_dfr(dfs, ~ .x %>%
+                       distinct(`Location ID`, Date) %>%
+                       mutate(Year = year(Date), Month = month(Date), df = .y)) %>%
+  distinct(df, Year, Month, `Location ID`) %>%
+  mutate(present = TRUE) %>%
+  pivot_wider(names_from = df, values_from = present, values_fill = FALSE) %>%
+  pivot_longer(all_of(names(dfs)), names_to = 'df', values_to = 'present') %>%
+  group_by(df, Year, Month) %>%
+  summarise(pct_present = mean(present) * 100, .groups = 'drop')
+
+for (d in unique(heat_data$df)) {
+  p <- ggplot(heat_data %>% filter(df == d),
+              aes(Month, Year, fill = pct_present)) +
+    geom_tile(color = 'black', linewidth = 0.5) +
+    scale_fill_viridis_c(limits = c(0, 100), name = '% present') +
+    scale_x_continuous(breaks = 1:12) +
+    ggtitle(d) +
+    theme_minimal()
+  print(p)
+  
+  ggsave(
+    filename = paste0('C:/Users/sperry/Desktop/', d, '_coverage.jpg'),
+    plot = p,
+    width = 8, height = 6, dpi = 300
+  )
+}
+```
+
+```{r}
+combos %>%
+  filter(year(Date) %in% c(2007), month(Date) %in% c(7)) %>%
+  rowwise() %>%
+  mutate(any_present = any(c_across(all_of(names(dfs))), na.rm = TRUE)) %>%
+  ungroup() #%>%
+  #filter(!any_present)
+```
+
+
+# Export
+
+```{r}
+df_final <- bind_rows(dfs) %>%
+  select(-MainStation, Date)
+```
+
+fix activity names sigh
+```{r}
+df_final <- df_final %>%
+  mutate(`Activity Name` = paste0(
+    `Activity Name`, ' (',
+    gsub('-', '', `Location ID`),
+    sprintf('%02d', match(EA_Month, month.name)),
+    substr(EA_Year, 3, 4),
+    ')'
+  ))
+```
+
+and woops fix Data Classification
+
+```{r}
+df_final <- df_final %>%
+  mutate(`Data Classification` = ifelse(
+    grepl('Metadata|Field Data|Sediment', `Activity Name`),
+    'LAB',
+    `Data Classification`
+  ))
+```
+
+
+
+```{r}
+cur_export <- df_final %>%
+  filter(EA_Year == 2022, EA_Month %in% c('March'))#,'February','March'))#,'April','May','June'))
+```
+
+```{r}
+write_csv(cur_export, 'C:/Users/sperry/Desktop/cur_ben.csv', na = '')
+```
+

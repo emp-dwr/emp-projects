@@ -1,0 +1,205 @@
+# Load Packages/Read in Data
+
+```{r}
+library(tidyverse)
+source(here::here('00_GlobalFunctions/functions.R'))
+```
+
+Read in data from SharePoint
+```{r}
+# Sediment Data
+df_raw <- abs_path_emp('Benthic/AQUARIUS Samples Database/Database Migration/Raw Benthic Data/Sediment Data/COMPILED DWR EMP Sediment Data 1975-2022.csv')
+
+df_raw <- read_csv(df_raw, col_types = cols(.default = col_character()))
+```
+
+# Format
+
+```{r}
+load(here::here('02_Benthic/Aquarius/historical-imports/data/field_data.Rda'))
+```
+
+```{r}
+df_field %>%
+  filter(!is.na(`Observed DateTime`)) %>%
+  distinct(EA_Month, EA_Year, `Location ID`, `Observed DateTime`) %>%
+  count(EA_Month, EA_Year, `Location ID`) %>%
+  filter(n > 1)
+```
+
+Check stations
+
+```{r}
+sort(unique(df_raw$Station))
+```
+
+Missing Dates
+
+check which are missing
+```{r}
+missing <- df_raw %>%
+  filter(is.na(Date)) %>%
+  count(Month, Year, Station, name = 'n_rows') %>%
+  inner_join(
+    df_field %>%
+      filter(!is.na(`Observed DateTime`)) %>%
+      mutate(Date = as.Date(`Observed DateTime`)) %>%
+      distinct(EA_Month, EA_Year, `Location ID`, Date),
+    by = c('Month' = 'EA_Month', 'Year' = 'EA_Year', 'Station' = 'Location ID')
+  ) %>%
+  rename(Field_Date = Date)
+
+missing
+```
+
+```{r}
+missing %>% filter(n_rows > 1)
+```
+
+remove one for now
+```{r}
+target_rows <- which(df_raw$Month == 'April' & df_raw$Year == '2022' &
+                     df_raw$Station == 'D7-C' & is.na(df_raw$Date))
+df_raw <- df_raw[-target_rows[2], ]
+```
+
+
+```{r}
+date_lookup <- df_field %>%
+  filter(!is.na(`Observed DateTime`)) %>%
+  mutate(Date = as.character(as.Date(`Observed DateTime`))) %>%
+  distinct(EA_Month, EA_Year, `Location ID`, Date)
+
+date_lookup %>% count(EA_Month, EA_Year, `Location ID`) %>% filter(n > 1)
+
+df_raw <- df_raw %>%
+  left_join(date_lookup,
+            by = c('Month' = 'EA_Month', 'Year' = 'EA_Year', 'Station' = 'Location ID'),
+            suffix = c('', '_fill')) %>%
+  mutate(Date = coalesce(Date, Date_fill)) %>%
+  select(-Date_fill)
+
+df_raw %>% filter(is.na(Date))
+```
+
+
+```{r}
+df_raw %>% filter(
+  Year == 2022, Month == 'February', is.na(Station)
+)
+```
+
+
+## Fix Manual Dates
+
+```{r}
+df_raw <- df_raw %>%
+  mutate(
+    Date = case_when(
+      Year == 2022 & Month == 'February' & is.na(Station) ~ '2022-02-09',
+      TRUE ~ Date
+    ),
+    Station = case_when(
+      Date == '2022-02-09' & is.na(Station) ~ 'P8-R',
+      TRUE ~ Station
+    )
+  )
+```
+
+
+Fix Months
+```{r}
+df_raw <- df_raw %>%
+  mutate(Month = ifelse(Date == as.Date('1988-04-01') &
+                          Station %in% c('D11-C', 'D19-C', 'D28A-L', 'D28A-R',
+                                               'D4-C', 'D4-L', 'D4-R', 'D7-C'),
+                        'March', Month))
+
+df_raw <- df_raw %>%
+  mutate(Month = ifelse(Date == as.Date('1988-04-28') &
+                          Station %in% c('D11-C', 'D19-C', 'D4-C', 'D4-L'),
+                        'April', Month))
+```
+
+
+Format dates
+```{r}
+missing_more <- df_raw %>% filter(is.na(Date))
+```
+
+# Format for Export
+```{r}
+target_cols <- c(
+  'Observation ID', 'Location ID', 'Observed Property ID', 'Observed DateTime',
+  'Analyzed DateTime', 'Depth', 'Depth Unit', 'Data Classification', 'Result Value',
+  'Result Unit', 'Result Status', 'Result Grade', 'Medium', 'Activity Name',
+  'Activity ID', 'Collection Method', 'Field: Device ID', 'Field: Device Type',
+  'Field: Comment', 'Lab: Specimen Name', 'Lab: Analysis Method',
+  'Lab: Detection Condition', 'Lab: Limit Type', 'Lab: MDL', 'Lab: MRL',
+  'Lab: Quality Flag', 'Lab: Received DateTime', 'Lab: Prepared DateTime',
+  'Lab: Sample Fraction', 'Lab: From Laboratory', 'Lab: Sample ID',
+  'Lab: Dilution Factor', 'Lab: Comment', 'QC: Type', 'QC: Source Sample ID',
+  'EA_Sample Event ID', 'EA_Month', 'EA_Year', 'EA_Taxa Sample ID',
+  'EA_Grab Number', 'EA_Size Bin', 'EA_Main Station', 'EA_Station Position'
+)
+
+# col -> obs property map
+prop_map <- c(
+  'Percent_Organic'      = 'Organic Matter (Lab)',
+  'Sediment_Description' = 'Sediment Description (Lab)'
+)
+
+df_format <- df_raw %>%
+  mutate(
+    `Location ID` = Station,
+    `Observed DateTime` = paste0(format(as.Date(Date), '%Y-%m-%d'), ' 12:00 [PST]'),
+    `Analyzed DateTime` = '1950-01-01 12:00 [PST]',
+    Depth = 3,
+    `Depth Unit` = 'ft',
+    `Data Classification` = 'FIELD_SURVEY',
+    `Result Status` = 'Reviewed',
+    `Result Grade` = 'Good',
+    Medium = 'Water',
+    `Activity Name` = 'Sediment',
+    `Collection Method` = 'Ponar Grab',
+    `Lab: Specimen Name` = 'Lab',
+    `EA_Sample Event ID` = paste0(
+      format(as.Date(Date), '%m%y'), '_',
+      gsub('-', '', Station), '_01'
+    ),
+    EA_Month = Month,
+    EA_Year = Year,
+    `EA_Grab Number` = 'Sediment',
+    `EA_Main Station` = sub('-.*', '', `Location ID`),
+    `EA_Station Position` = ifelse(grepl('-', `Location ID`),
+                                   sub('.*-', '', `Location ID`),
+                                   NA_character_)
+  ) %>%
+  pivot_longer(
+    cols = c(Sieve76200, Sieve38100, Sieve19050, Sieve09525, Sieve04750,
+             Sieve02360, Sieve01180, Sieve00600, Sieve00300, Sieve00150,
+             Sieve00075, Percent_Organic, Sediment_Description),
+    names_to = 'Observed Property ID',
+    values_to = 'Result Value',
+    values_transform = list(`Result Value` = as.character)
+  ) %>%
+  mutate(
+    `Observed Property ID` = ifelse(`Observed Property ID` %in% names(prop_map),
+                                    unname(prop_map[`Observed Property ID`]),
+                                    `Observed Property ID`),
+    `Result Unit` = ifelse(`Observed Property ID` == 'Sediment Description (Lab)', NA, 'percent')
+  ) %>%
+  filter(!is.na(`Result Value`))
+
+# add cols
+missing_cols <- setdiff(target_cols, colnames(df_format))
+df_format[missing_cols] <- NA
+df_format <- df_format[, target_cols]
+```
+
+
+```{r}
+df_sed <- df_format
+
+save(df_sed, file = here::here('02_Benthic/Aquarius/historical-imports/data/sed_data.rda'))
+```

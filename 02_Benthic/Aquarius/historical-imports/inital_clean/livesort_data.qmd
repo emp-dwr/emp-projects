@@ -1,0 +1,313 @@
+# Load Packages/Read in Data
+
+```{r}
+library(tidyverse)
+source(here::here('00_GlobalFunctions/functions.R'))
+options(scipen = 999)
+```
+
+Read in data from SharePoint
+```{r}
+# Sediment Data
+fp_raw <- abs_path_emp('Benthic/AQUARIUS Samples Database/Database Migration/Raw Benthic Data/Bin Weight Data/COMPILEDlive_sort_biomass_for_database.csv')
+
+df_raw <- read_csv(fp_raw, col_types = cols(.default = col_character()))
+```
+
+# Format
+
+```{r}
+df_ls <- df_raw %>%
+  mutate(across(c(Dry_pan_mass, Pan_mass, Count, Ash_pan_mass), as.numeric))
+```
+
+
+```{r}
+df_ls <- df_ls  %>%
+  mutate(Date = as.Date(Date, format = '%Y-%m-%dT%H:%M:%SZ'))
+```
+
+fix date
+```{r}
+df_ls <- df_ls %>%
+  mutate(Date = if_else(Year == 2024 & Month == 'May' & Station == 'D7' & Date == as.Date('2024-05-23'),
+                        as.Date('2024-05-20'), Date))
+```
+
+
+## issues
+
+multiple events per Date/Station/Species/Size bin; flag
+```{r}
+issues <- df_ls %>%
+  group_by(Date, Station, Species_name, Size_class) %>%
+  filter(n() > 1) %>%
+  ungroup() %>%
+  arrange(Date, Station, Species_name, Size_class)
+```
+
+also multiple no clams (some have comments)
+```{r}
+df_ls %>%
+  filter(Species_name == 'No clams') %>%
+  group_by(Date, Station) %>%
+  filter(n() > 1) %>%
+  ungroup() %>%
+  arrange(Date, Station)
+```
+
+remove the rows without comments (or just the duplciate)
+```{r}
+no_clams_deduped <- df_ls %>%
+  filter(Species_name == 'No clams') %>%
+  arrange(desc(!is.na(Comments) & Comments != '')) %>%  # comment-having rows first
+  distinct(Date, Station, .keep_all = TRUE)
+
+df_ls <- df_ls %>%
+  filter(Species_name != 'No clams') %>%
+  bind_rows(no_clams_deduped)
+```
+
+and for now, just add a letter after for the others
+```{r}
+df_ls <- df_ls %>%
+  group_by(Date, Station, Species_name, Size_class) %>%
+  mutate(
+    .n = n(),
+    .idx = row_number(),
+    Size_class = ifelse(.n > 1,
+                        paste0(Size_class, letters[.idx]),
+                        Size_class)
+  ) %>%
+  ungroup() %>%
+  select(-.n, -.idx)
+```
+
+## format (again)
+
+```{r}
+df_ls <- df_ls %>%
+  rename(
+    'Count (Live Clams)' = Count,
+    'Pan Mass' = Pan_mass,
+    'Dried Pan Mass' = Dry_pan_mass,
+    'Ashed Pan Mass' = Ash_pan_mass,
+    'Size Bin' = Size_class
+  ) %>%
+  mutate(
+    `Total Clam Mass` = round(`Dried Pan Mass` - `Ashed Pan Mass`, 4),
+    `Average Clam Mass` = round(`Total Clam Mass` / `Count (Live Clams)`, 4),
+    `Pan Mass` = round(`Pan Mass`, 3),
+    `Dried Pan Mass` = round(`Dried Pan Mass`, 3),
+    `Ashed Pan Mass` = round(`Ashed Pan Mass`, 3),
+  )
+
+df_ls <- df_ls %>%
+  mutate(
+    Species_name = case_when(
+      Species_name == 'Corbicula fluminea' ~ '6730',
+      Species_name == 'Potamocorbula amurensis' ~ '6890',
+      TRUE ~ Species_name
+    )
+  )
+```
+
+TODO: Are no record and no clams the same??
+
+```{r}
+df_ls %>%
+  filter(Species_name == 'No record')
+```
+
+```{r}
+df_ls <- df_ls %>%
+  filter(!(Species_name == 'No record'))
+```
+
+Mass should be NA if no clams
+
+```{r}
+df_ls <- df_ls %>%
+  mutate(
+    across(
+      c(`Pan Mass`, `Dried Pan Mass`, `Ashed Pan Mass`, `Total Clam Mass`, `Average Clam Mass`),
+      ~ ifelse(Species_name == 'No clams', NA, .)
+    ),
+    `Count (Live Clams)` = ifelse(Species_name == 'No clams', 0, `Count (Live Clams)`)
+  )
+```
+
+# Fix Station
+```{r}
+df_ls <- df_ls %>%
+  mutate(Station = case_when(
+    Date == as.Date('2011-12-07') & Station == 'D28' ~ 'D28A',
+    Month == 'November' & Year == '2025' & Station == 'P9' ~ 'P8',
+    Date == as.Date('2016-03-10') & Station == 'D14' ~ 'D4',
+    TRUE ~ Station
+  ))
+```
+
+
+# Fix Dates
+
+```{r}
+df_ls <- df_ls %>%
+  mutate(Date = case_when(
+    Date == as.Date('2019-08-14') & Station == 'D24'  ~ as.Date('2019-08-15'),
+    Date == as.Date('2026-01-20') & Station == 'D24'  ~ as.Date('2026-01-21'),
+    Date == as.Date('2016-05-18') & Station == 'D28A' ~ as.Date('2016-05-19'),
+    Date == as.Date('2020-02-11') & Station == 'D4'   ~ as.Date('2020-02-10'),
+    Date == as.Date('2017-10-05') & Station == 'D41'  ~ as.Date('2017-10-04'),
+    Date == as.Date('2019-11-13') & Station == 'D6'   ~ as.Date('2019-11-12'),
+    Date == as.Date('2019-10-16') & Station == 'D6'   ~ as.Date('2019-10-15'),
+    Date == as.Date('2023-08-16') & Station == 'D6'   ~ as.Date('2023-08-15'),
+    Date == as.Date('2025-10-21') & Station == 'D6'   ~ as.Date('2025-10-20'),
+    Date == as.Date('2008-11-19') & Station == 'D7'   ~ as.Date('2008-11-18'),
+    Date == as.Date('2024-05-23') & Station == 'D7'   ~ as.Date('2024-05-20'),
+    TRUE ~ Date
+  ))
+```
+
+## remove for now
+
+```{r}
+df_ls <- df_ls %>%
+  filter(!(Date == as.Date('2008-10-01') & Station %in% c('D16', 'D41', 'D41A')))
+```
+
+```{r}
+df_ls %>%
+  filter(Month == 'November', Year == '2025', Station %in% c('P8','C9','P9'))
+```
+
+
+# Format for Export
+
+```{r}
+target_cols <- c(
+  'Observation ID', 'Location ID', 'Observed Property ID', 'Observed DateTime',
+  'Analyzed DateTime', 'Depth', 'Depth Unit', 'Data Classification', 'Result Value',
+  'Result Unit', 'Result Status', 'Result Grade', 'Medium', 'Activity Name',
+  'Activity ID', 'Collection Method', 'Field: Device ID', 'Field: Device Type',
+  'Field: Comment', 'Lab: Specimen Name', 'Lab: Analysis Method',
+  'Lab: Detection Condition', 'Lab: Limit Type', 'Lab: MDL', 'Lab: MRL',
+  'Lab: Quality Flag', 'Lab: Received DateTime', 'Lab: Prepared DateTime',
+  'Lab: Sample Fraction', 'Lab: From Laboratory', 'Lab: Sample ID',
+  'Lab: Dilution Factor', 'Lab: Comment', 'QC: Type', 'QC: Source Sample ID',
+  'EA_Sample Event ID', 'EA_Month', 'EA_Year', 'EA_Taxa Sample ID',
+  'EA_Grab Number', 'EA_Size Bin', 'EA_Main Station', 'EA_Station Position'
+)
+
+# Column -> Observed Property ID + Result Unit
+prop_units <- list(
+  Species_name         = list(prop = 'Organism Number',     unit = NA),
+  `Count (Live Clams)` = list(prop = 'Count (Live Clams)',  unit = 'individuals'),
+  `Pan Mass`           = list(prop = 'Pan Mass',            unit = 'g'),
+  `Dried Pan Mass`     = list(prop = 'Dried Pan Mass',      unit = 'g'),
+  `Ashed Pan Mass`     = list(prop = 'Ashed Pan Mass',      unit = 'g'),
+  `Total Clam Mass`    = list(prop = 'Total Clam Mass',     unit = 'g'),
+  `Average Clam Mass`  = list(prop = 'Average Clam Mass',   unit = 'g')
+)
+prop_map <- sapply(prop_units, function(x) x$prop)
+unit_map <- sapply(prop_units, function(x) x$unit)
+
+# Expand 'No_clams' into two rows (6730 + 6890), Count=0, Size Bin='None'
+no_clams <- df_ls %>%
+  filter(Species_name == 'No clams')
+
+if (nrow(no_clams) > 0) {
+  no_clams_expanded <- no_clams %>%
+    slice(rep(1:n(), each = 2)) %>%
+    mutate(
+      Species_name = rep(c('6730', '6890'), times = nrow(no_clams)),
+      `Count (Live Clams)` = 0,
+      `Size Bin` = 'None'
+    )
+  df_ls <- df_ls %>%
+    filter(Species_name != 'No clams') %>%
+    bind_rows(no_clams_expanded)
+}
+
+# format
+df_format <- df_ls %>%
+  mutate(
+    `Location ID` = Station,
+    `Observed DateTime` = paste0(format(as.Date(Date), '%Y-%m-%d'), ' 12:00 [PST]'),
+    `Analyzed DateTime` = '1950-01-01 12:00 [PST]',
+    Depth = 3,
+    `Depth Unit` = 'ft',
+    `Data Classification` = 'FIELD_SURVEY',
+    `Result Status` = 'Reviewed',
+    `EA_Grab Number` = 'Live Sort',
+    Medium = 'Water',
+    `Activity Name` = paste0(Species_name, ': Live Sort'),
+    `Collection Method` = 'Ponar Grab',
+    `Lab: Specimen Name` = paste('Size Bin', `Size Bin`),
+    `Field: Comment` = Comments,
+    `EA_Sample Event ID` = paste0(
+      format(as.Date(Date), '%m%y'), '_',
+      gsub('-', '', Station), '_01'
+    ),
+    EA_Month = Month,
+    EA_Year = Year,
+    `EA_Size Bin` = `Size Bin`,
+    `Result Grade` = case_when(
+      QC_flag == 'y' & QC_exclude == 'y' ~ 'Bad',
+      QC_flag == 'y' & QC_exclude == 'n' ~ 'Suspect',
+      QC_flag == 'n' & QC_exclude == 'y' ~ 'Bad',
+      QC_flag == 'n' & QC_exclude == 'n' ~ 'Good'
+    ),
+    `EA_Main Station` = sub('-.*', '', `Location ID`),
+    `EA_Station Position` = ifelse(grepl('-', `Location ID`),
+                                   sub('.*-', '', `Location ID`),
+                                   NA_character_)
+  ) %>%
+  pivot_longer(
+    cols = c(Species_name, `Count (Live Clams)`, `Pan Mass`, `Dried Pan Mass`,
+             `Ashed Pan Mass`, `Total Clam Mass`, `Average Clam Mass`),
+    names_to = '_src_col',
+    values_to = 'Result Value',
+    values_transform = list(`Result Value` = as.character)
+  ) %>%
+  mutate(
+    `Observed Property ID` = unname(prop_map[`_src_col`]),
+    `Result Unit` = unname(unit_map[`_src_col`])
+  ) %>%
+  select(-`_src_col`) %>%
+  filter(!is.na(`Result Value`))
+
+# Add any missing cols as NA
+missing_cols <- setdiff(target_cols, colnames(df_format))
+df_format[missing_cols] <- NA
+df_format <- df_format[, target_cols]
+```
+
+```{r}
+issues <- df_format %>%
+  group_by(`EA_Sample Event ID`, `EA_Grab Number`, `EA_Size Bin`,
+           `Location ID`, `Observed DateTime`, `Activity Name`,
+           `Observed Property ID`) %>%
+  filter(n() > 1) %>%
+  ungroup() %>%
+  arrange(`EA_Sample Event ID`, `Observed DateTime`, `Location ID`,
+          `EA_Grab Number`, `EA_Size Bin`, `Activity Name`,
+          `Observed Property ID`)
+
+issues
+```
+
+```{r}
+df_ls %>%
+  group_by(Date, Station, Species_name, `Size Bin`) %>%
+  filter(n() > 1) %>%
+  ungroup() %>%
+  arrange(Date, Station, Species_name, `Size Bin`)
+```
+
+
+```{r}
+df_ls <- df_format
+
+save(df_ls, file = here::here('02_Benthic/Aquarius/historical-imports/data/ls_data.rda'))
+```

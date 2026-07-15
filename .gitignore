@@ -1,4 +1,7 @@
 # R
+# Library
+renv/library/
+
 # History files
 .Rhistory
 .Rapp.history

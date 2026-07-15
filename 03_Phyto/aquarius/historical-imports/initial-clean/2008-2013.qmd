@@ -1,0 +1,764 @@
+# Clean and Format 2008-2013 Phyto Data
+
+Special Studies aren't already marked.
+
+# Initial setup
+
+```{r}
+library(pespr)
+library(lubridate)
+library(tidyverse)
+source(here::here('00_GlobalFunctions/functions.R'))
+```
+
+
+## Read in data
+
+```{r}
+# phyto data
+fp_raw <- abs_path_emp('Phytoplankton/AQUARIUS Samples Database/Database Migration/Raw Phyto Data/EMP_Phyto Data 08-13.csv')
+
+df_phyto <- read_csv(fp_raw, col_types = cols(.default = col_character())) %>%
+  rename(Date = SampleDate,
+         Time = SampleTime,
+         Station = StationCode,
+         Taxon = TAXON)
+
+
+# tin data
+load(here::here('03_Phyto/aquarius/historical-imports/data/tins.rda'))
+
+# dwq data
+load(here::here('03_Phyto/aquarius/historical-imports/data/dwq_data.rda'))
+
+# phyto taxa data
+df_taxon <- pespr::phyto_taxonomy
+```
+
+# Dates
+
+Convert Dates
+```{r}
+df_phyto <- df_phyto %>%
+  mutate(Date = as.Date(Date, format = '%m/%d/%Y'))
+
+df_phyto <- df_phyto %>%
+  mutate(Time = str_replace(Time, '^0(\\d:)', '\\1'))
+
+df_wq <- df_wq %>%
+  mutate(Date = as.Date(Date, format = '%Y-%m-%d'))
+
+start_date <- as.Date('2008-01-01')
+end_date   <- as.Date('2013-12-30')
+
+df_wq <- df_wq %>%
+  filter(between(Date, start_date, end_date))
+```
+
+```{r}
+unique(df_phyto$Time)
+```
+# Times
+
+Add in colons
+
+```{r}
+fix_time <- function(x) {
+  case_when(
+    is.na(x)                      ~ NA_character_,
+    str_detect(x, ':')            ~ x, 
+    nchar(x) == 3                  ~ str_replace(x, '^(\\d)(\\d{2})$', '\\1:\\2'),
+    nchar(x) == 4                  ~ str_replace(x, '^(\\d{2})(\\d{2})$', '\\1:\\2'),
+    TRUE                            ~ x
+    )
+}
+
+df_phyto <- df_phyto %>%
+  mutate(Time = fix_time(Time))
+
+unique(df_phyto$Time)
+```
+
+
+Fix non-military
+
+```{r}
+df_phyto <- df_phyto %>%
+  mutate(Time = ifelse(
+    !is.na(Time) & as.numeric(sub(':.*', '', Time)) < 5,
+    sprintf('%d:%s',
+            as.numeric(sub(':.*', '', Time)) + 12,
+            sub('^[^:]*:', '', Time)),
+    Time
+  ))
+```
+
+Round Times
+
+```{r}
+round_time <- function(x) {
+  out <- rep(NA_character_, length(x))
+  ok <- !is.na(x)
+
+  rounded <- round_date(
+    as_datetime(paste0('2000-01-01 ', x[ok], ':00')),
+    '5 minutes'
+  )
+
+  out[ok] <- sub('^0', '', format(rounded, '%H:%M'))
+  out
+}
+
+df_phyto <- df_phyto %>% mutate(Time = round_time(Time))
+
+unique(df_phyto$Time)
+```
+
+# Stations
+
+```{r}
+unique(df_phyto$Station)
+```
+
+
+Rename EZs
+```{r}
+df_phyto <- df_phyto %>%
+  mutate(Station = recode(Station, 'EZ2' = 'LSZ2', 'EZ6' = 'LSZ6'))
+```
+
+
+Determine stations that don't match with DWQ
+
+```{r}
+setdiff(df_phyto$Station, df_wq$Station)
+```
+
+# Data Checks
+
+## Numeric Metadata
+
+```{r}
+unique(df_phyto$`Volume Received (mL)`)
+```
+
+```{r}
+unique(df_phyto$`Volume Analyzed (mL)`)
+
+df_phyto <- df_phyto %>%
+  mutate(`Volume Analyzed (mL)` = round(as.numeric(`Volume Analyzed (mL)`), 2))
+```
+
+```{r}
+unique(df_phyto$`Percent of Sample Counted`)
+
+# remove percent sign
+df_phyto <- df_phyto %>%
+  mutate(`Percent of Sample Counted` = str_remove(`Percent of Sample Counted`, '%'))
+```
+
+```{r}
+unique(df_phyto$`Field-of-view (mm2)`)
+
+df_phyto <- df_phyto %>%
+  mutate(`Field-of-view (mm2)` = round(as.numeric(`Field-of-view (mm2)`), 3))
+```
+
+```{r}
+unique(df_phyto$`Slide Chamber Area (mm2)`)
+```
+```{r}
+unique(df_phyto$`Number of Transects Counted`)
+
+df_phyto <- df_phyto %>%
+  mutate(`Number of Transects Counted` = round(as.numeric(`Number of Transects Counted`), 2))
+```
+```{r}
+unique(df_phyto$`Number of Fields Counted`)
+
+df_phyto <- df_phyto %>%
+  mutate(`Number of Fields Counted` = if_else(
+    !is.na(`Number of Fields Counted`) & str_detect(`Number of Fields Counted`, '\\.\\d{3,}'),
+    as.character(round(as.numeric(`Number of Fields Counted`), 2)),
+    `Number of Fields Counted`
+  ))
+```
+```{r}
+unique(df_phyto$`Number of Fields Counted`)
+
+df_phyto <- df_phyto %>%
+  mutate(`Number of Fields Counted` = if_else(
+    !is.na(`Number of Fields Counted`) & str_detect(`Number of Fields Counted`, '\\.\\d{3,}'),
+    as.character(round(as.numeric(`Number of Fields Counted`), 2)),
+    `Number of Fields Counted`
+  ))
+```
+
+```{r}
+unique(df_phyto$`Total Number of Fields`)
+```
+
+```{r}
+df_phyto %>%
+  filter(`Total Number of Fields` == '6050')
+```
+
+
+
+Looks good, convert to numeric.
+
+```{r}
+colnames(df_phyto)
+```
+
+## String Metadata
+
+For group, convert n/p to NA
+
+```{r}
+unique(df_phyto$`Diatom or SoftBody`)
+```
+Fix Filament Group Codes
+
+```{r}
+df_phyto <- df_phyto %>%
+  mutate(`Colony or Filament Group Code` = str_to_lower(`Colony or Filament Group Code`)) %>%
+  mutate(`Colony or Filament Group Code` = case_when(
+    `Colony or Filament Group Code` %in% c('0', 'n/p', '#n/a') ~ NA_character_,
+    `Colony or Filament Group Code` == '1' ~ 'i',
+    TRUE ~ `Colony or Filament Group Code`
+  ))
+
+unique(df_phyto$`Colony or Filament Group Code`)
+```
+Shape
+
+```{r}
+unique(df_phyto$Shape)
+```
+
+```{r}
+shape_lookup <- c(
+  'cuboid'                                = 'cuboid',
+  'ellipsoid'                             = 'ellipsoid',
+  'other: achnanthes type'                = 'other: achnanthes type',
+  'other: achnanthes'                     = 'other: achnanthes type',
+  'cylinder'                               = 'cylinder',
+  'sphere'                                 = 'sphere',
+  'ellipsoid + cone'                       = 'ellipsoid + cone',
+  'ellipsoid+cone'                         = 'ellipsoid + cone',
+  'ellipsoid with cone'                    = 'ellipsoid + cone',
+  'ellipsoid + 2 cones + cylinder'         = 'ellipsoid + two cones + cylinder',
+  'ellipsoid + two cones + cylinder'       = 'ellipsoid + two cones + cylinder',
+  'peridinium'                             = 'other: peridinium type',
+  'other: peridinium type'                 = 'other: peridinium type',
+  'two cones'                              = 'two cones',
+  'other: crucigenia tetrapedia type'      = 'other: crucigenia tetrapedia type',
+  'box'                                    = 'box',
+  'ovoid'                                  = 'ovoid',
+  'two wedges'                             = 'two wedges',
+  'prism on elliptic base'                 = 'prism on elliptical base',
+  'prism on elliptical base'               = 'prism on elliptical base',
+  'prism on ellptical base'                = 'prism on elliptical base',
+  'prism on eliiptical base'               = 'prism on elliptical base',
+  'ellipsoid/prolate spheroid'             = 'ellipsoid/prolate spheroid',
+  'cylinder + two cones'                   = 'cylinder + two cones',
+  'cylinder with two cones'                = 'cylinder + two cones',
+  '2 half ellipsoids'                      = 'two half ellipsoids',
+  'two half ellipsoids'                    = 'two half ellipsoids',
+  'wedge'                                  = 'wedge',
+  'rectangular pyramid'                    = 'rectangular pyramid',
+  'prolate spheriod'                       = 'prolate spheroid',
+  'prolate spheroid'                       = 'prolate spheroid',
+  'cone + half sphere'                     = 'cone + half sphere',
+  'cone+ half sphere'                      = 'cone + half sphere',
+  'cone with half sphere'                  = 'cone + half sphere',
+  'cone with 1/2 sphere'                   = 'cone + half sphere',
+  'cube'                                   = 'cube',
+  'prism on triangle base'                 = 'prism on triangular base',
+  'three cones'                            = 'three cones',
+  'triangular pyramid'                     = 'triangular pyramid',
+  'monoraphidioid'                         = 'other: monoraphidium type',
+  'cone'                                   = 'cone'
+)
+
+df_phyto <- df_phyto %>%
+  mutate(
+    Shape = str_to_lower(str_trim(Shape)),
+    Shape = recode(Shape, !!!shape_lookup, .default = Shape)
+  )
+
+unique(df_phyto$Shape)
+```
+
+Comments
+
+TODO: determine what to do with 'delete' ones
+
+```{r}
+unique(df_phyto$Comments)
+```
+
+## Check Data
+
+Check non-numeric values in numeric columns
+
+```{r}
+nonnum_vals <- df_phyto %>%
+  select(`Organisms per mL`, `Unit Abundance`, `Cells per Unit`) %>%
+  pivot_longer(
+    everything(),
+    names_to = 'column',
+    values_to = 'raw_value'
+  ) %>%
+  mutate(
+    raw_value = as.character(raw_value),
+    cleaned_value = str_trim(raw_value),
+    valid_numeric = str_detect(
+      cleaned_value,
+      '^[+-]?(\\d+\\.?\\d*|\\.\\d+)([eE][+-]?\\d+)?$'
+    )
+  ) %>%
+  filter(
+    !is.na(cleaned_value),
+    cleaned_value != '',
+    !valid_numeric
+  ) %>%
+  count(column, raw_value, sort = TRUE)
+
+nonnum_vals
+```
+
+Fix the Cells per Unit col
+
+```{r}
+df_phyto <- df_phyto %>%
+  mutate(
+    standardized_note = case_when(
+      `Cells per Unit` %in% c(
+        '10 microns/unit',
+        '10microns/unit',
+        '10 micron unit'
+      ) ~ '10 microns per unit',
+
+      `Cells per Unit` == '.315 - 10 micron sections' ~
+        '.315-10 microns per unit',
+
+      `Cells per Unit` == '6 - 10micron units' ~
+        '6-10 microns per unit',
+
+      `Cells per Unit` == '9 -10 micron units' ~
+        '9-10 microns per unit',
+
+      TRUE ~ NA_character_
+    ),
+
+    Comments = case_when(
+      is.na(standardized_note) ~ Comments,
+      is.na(Comments) | trimws(Comments) == '' ~ standardized_note,
+      TRUE ~ paste(Comments, standardized_note)
+    ),
+
+    `Cells per Unit` = if_else(
+      !is.na(standardized_note),
+      NA_character_,
+      `Cells per Unit`
+    )
+  ) %>%
+  select(-standardized_note)
+```
+
+```{r}
+df_phyto %>%
+  filter(is.na(`Cells per Unit`))
+```
+
+
+Looks good, convert.
+
+```{r}
+df_phyto <- df_phyto %>%
+  mutate(`Organisms per mL` = as.numeric(`Organisms per mL`),
+         `Unit Abundance` = as.numeric(`Unit Abundance`),
+         `Cells per Unit` = as.numeric(`Cells per Unit`))
+```
+
+## Check Taxon
+
+Correct spellings
+
+```{r}
+taxon_fixes <- tribble(
+  ~Taxon,                        ~new_Taxon,                               ~new_Species,      ~new_Genus,
+  'Diatoma hiemale',             'Diatoma hyemalis',                       'hyemalis',        NA,
+  'Diatoma elongatum',           'Diatoma elongata',                       'elongata',        NA,
+  'Chlorosphaeralean sp.',       'Chlorosphaera sp.',                      'sp.',             'Chlorosphaera',
+  'Treubaria setigerum',         'Treubaria setigera',                     'setigera',        NA,
+  'Attheya zachariasi',          'Attheya zachariasii',                    'zachariasii',     NA,
+  'Bacillaria paxillifer',       'Bacillaria paxillifera',                 'paxillifera',     NA,
+  'Microcystis flosaquae',       'Microcystis flos-aquae',                 'flos-aquae',      'Microcystis',
+  'Diploneis didyma',            'Diploneis didymus',                      'didymus',         NA,
+  'Chlorallantus sp.',           'Chlorallanthus sp.',                     'sp.',             'Chlorallanthus',
+  'Centric Diatom sp.',          'Unidentified Centric Diatom sp. 1',      NA,                NA,
+  'unknown centric sp.',         'Unidentified Centric Diatom sp. 1',      NA,                NA, 
+  'unknown Centric diatom',      'Unidentified Centric Diatom sp. 1',      NA,                NA,
+  'Pennate Diatom sp.',          'Unidentified Pennate Diatom sp. 1',      NA,                NA,
+  'Unidentified flagellate',     'Unidentified Flagellate sp. 1',          NA,                NA,
+  'chrysophyte',                 'Unidentified Chrysophyte sp. 1',         NA,                NA,
+  'Gomphonema constricta',       'Gomphonema constrictum',                 'constrictum',     'Gomphonema',
+  'Merismopedia warmigiana',     'Merismopedia warmingiana',               'warmingiana',     'Merismopedia',
+  'Gonyaulax digitale',          'Gonyaulax digitalis',                    'digitalis',       'Gonyaulax',
+  'Leptolyngbya foveolara',      'Leptolyngbya foveolarum',                'foveolarum',      'Leptolyngbya',
+  'Nanoflagellates',             'Unidentified Nanoflagellate sp. 1',      NA,                NA,
+  'crysophyte',                  'Unidentified Chrysophyte sp. 1',         NA,                NA,
+  'unknown crysophyte',          'Unidentified Chrysophyte sp. 1',         NA,                NA,
+  'unknown chrysophyte',         'Unidentified Chrysophyte sp. 1',         NA,                NA,
+  'small nano-flagellates',      'Unidentified Nanoflagellate sp. 1',      NA,                NA,
+  'small dinoflagellates',       'Unidentified Dinoflagellate sp. 1',      NA,                NA,
+  'unknown girdle sp.',          'Unidentified sp. (girdle) 1',            NA,                NA,
+  'unknown pennate girdle sp.',  'Unidentified Pennate Diatom sp. (girdle) 1',    NA,         NA,
+  'Unknown Chlorophyte alga sp.','Unidentified Green Alga sp. 1',          NA,                NA,
+  'unknown Chlorophyte filament','Unidentified Green Alga sp. 1',          NA,                NA,
+  'Undetermined Euglenoids',     'Unidentified Euglenoid sp. 1',          NA,                NA,
+  'Chodatella wratislaviensis',  'Chodatella wratislawiensis',             'wratislawiensis', 'Chodatella',
+  'Eucampia zoodiacus',          'Eucampia zodiacus',                      'zodiacus',        'Eucampia',
+  'Schroederia',                 'Schroederia sp.',                        'sp.',             'Schroederia',
+  'NONE NONE',                   'No organisms found',                     NA,                NA,
+  'Unidentified sp.',            'Unidentified sp. 1',                     NA,                NA,
+  'Unknown unknown',             'Unidentified sp. 1',                     NA,                NA,
+  'Pseudoanabaena sp.',          'Pseudanabaena sp.',                      'sp.',             'Pseudanabaena',
+  'Tetraedron',                  'Tetraedron sp.',                         'sp.',             'Tetraedron',
+  'Didymosphenia sp',            'Didymosphenia sp.',                      'sp.',             'Didymosphenia',
+  'Chrysochromulina parva cf.',  'Chrysochromulina cf. parva',             'parva',           'Chrysochromulina',
+  'Pseudonitzschia sp.',         'Pseudo-nitzschia sp.',                   'sp.',             'Pseudo-nitzschia',
+  'Alexandrium sp. 2',           'Alexandrium sp.',                        'sp.',             'Alexandrium',
+  'LGBs',                        'Little Green Balls',                     NA,                NA,
+  'Tetraedron trigonum var. gracile', 'Tetraedron trigonum f. gracile', 'trigonum',         'Tetraedron',
+  'Hemidiscus cuneiforme var. ventricosa', 'Hemidiscus cuneiformis var. ventricosus', 'cuneiformis var. ventricosus', 'Hemidiscus',
+  'Scenedesmus quadricauda var. longispina fo. Granulatus', 'Scenedesmus quadricauda var. longispina f. granulatus', 'quadricauda var. longispina', 'Scenedesmus'
+  
+)
+
+df_phyto <- df_phyto %>%
+  left_join(taxon_fixes, by = 'Taxon') %>%
+  mutate(
+    Species = coalesce(new_Species, Species),
+    Genus   = coalesce(new_Genus, Genus),
+    Taxon   = coalesce(new_Taxon, Taxon)
+  ) %>%
+  select(-new_Taxon, -new_Species, -new_Genus)
+```
+
+Compare to TIN code list
+
+```{r}
+df_eataxa <- anti_join(df_phyto, df_codes, by = 'Taxon') %>% distinct(Taxon)
+
+df_eataxa
+```
+
+Compare ones not in TIN codes to taxonomy list
+
+```{r}
+df_newinfo <- inner_join(df_taxon, df_eataxa, by = 'Taxon') %>%
+  select(Taxon, CurrentTaxon)
+```
+
+See what's left
+
+```{r}
+df_missing <- anti_join(df_eataxa, df_taxon, by = 'Taxon')
+
+df_missing
+```
+
+## Fixes
+
+Filter out missing data (broken vial)
+
+```{r}
+df_phyto <- df_phyto %>%
+  filter(!is.na(Taxon))
+```
+
+Combine the Melosira sp. 2
+
+```{r}
+df_phyto %>%
+  filter(
+    Date == as.Date('2009-04-16'),
+    Station == 'P8',
+    str_detect(Taxon, regex('Melosira', ignore_case = TRUE))
+  )
+```
+
+```{r}
+rows_to_combine <- df_phyto %>%
+  mutate(.row_id = row_number()) %>%
+  filter(
+    Date == as.Date('2009-04-16'),
+    Station == 'P8',
+    Taxon %in% c('Melosira sp.', 'Melosira sp. 2')
+  )
+
+# Use the Melosira sp. row as the template, including its EcoA_TIN.
+combined_row <- rows_to_combine %>%
+  filter(Taxon == 'Melosira sp.') %>%
+  slice(1) %>%
+  mutate(
+    `Organisms per mL` = sum(
+      rows_to_combine$`Organisms per mL`,
+      na.rm = TRUE
+    ),
+    `Unit Abundance` = sum(
+      rows_to_combine$`Unit Abundance`,
+      na.rm = TRUE
+    )
+  ) %>%
+  select(-.row_id)
+
+# Remove the two original rows and insert the combined row.
+df_phyto <- df_phyto %>%
+  mutate(.row_id = row_number()) %>%
+  filter(!.row_id %in% rows_to_combine$.row_id) %>%
+  select(-.row_id) %>%
+  bind_rows(combined_row)
+```
+
+
+## Check stations
+
+Stations that have phyto data but no corresponding DWQ data
+
+TODO: get some sort of info on these
+
+```{r}
+setdiff(df_phyto$Station, df_wq$Station)
+```
+
+```{r}
+missing_stations <- setdiff(df_phyto$Station, df_wq$Station)
+
+df_phyto %>%
+  filter(Station %in% missing_stations) %>%
+  mutate(Year = format(Date, '%Y'), Month = format(Date, '%m'), Day = format(Date, '%d')) %>%
+  distinct(Station, Year, Month, Day) %>%
+  arrange(Station, Year, Month, Day)
+```
+
+assign the TB data to SPECIAL MethodCode
+
+TODO: is this right?
+
+```{r}
+df_phyto <- df_phyto %>%
+  mutate(
+    MethodCode = if_else(
+      Station == 'TB',
+      'SPECIAL',
+      'PHYTO'
+    )
+  )
+```
+
+
+## Check Dates
+
+Compare against DWQ
+
+```{r}
+missing_stations <- setdiff(
+  df_phyto$Station,
+  df_wq$Station
+)
+
+wq_events <- df_wq %>%
+  mutate(
+    Year = year(Date),
+    Month = month(Date)
+  ) %>%
+  distinct(Year, Month, Station, Date) %>%
+  group_by(Year, Month, Station) %>%
+  summarise(
+    n_events_wq = n(),
+    wq_dates = paste(sort(Date), collapse = ', '),
+    .groups = 'drop'
+  )
+
+phyto_events <- df_phyto %>%
+  filter(!Station %in% missing_stations) %>%
+  mutate(
+    Year = year(Date),
+    Month = month(Date)
+  ) %>%
+  distinct(Year, Month, Station, Date) %>%
+  group_by(Year, Month, Station) %>%
+  summarise(
+    n_events_phyto = n(),
+    phyto_dates = paste(sort(Date), collapse = ', '),
+    .groups = 'drop'
+  )
+
+comparison <- wq_events %>%
+  full_join(
+    phyto_events,
+    by = c('Year', 'Month', 'Station')
+  ) %>%
+  mutate(
+    status = case_when(
+      is.na(n_events_wq)            ~ 'phyto only',
+      is.na(n_events_phyto)         ~ 'wq only (missing in phyto)',
+      n_events_wq != n_events_phyto ~ 'mismatch in # events',
+      TRUE                          ~ 'match'
+    )
+  ) %>%
+  arrange(status, Year, Month, Station)
+
+problems <- comparison %>%
+  filter(status != 'match') %>%
+  arrange(Year, Month, Station)
+
+problems
+```
+
+```{r}
+problem_station_summary <- problems %>%
+  count(Station, name = 'n_times', sort = TRUE)
+
+problem_station_summary
+```
+
+Check for multiple events per month/year
+
+```{r}
+multiple_phyto_events <- phyto_events %>%
+  filter(n_events_phyto > 1) %>%
+  arrange(Station, Year, Month)
+
+multiple_phyto_events
+```
+
+
+Check and update mismatched dates (one event per Month/Year/Station in each)
+- update to DWQ dates
+
+```{r}
+wq_single <- df_wq %>%
+  mutate(Year = year(Date), Month = month(Date)) %>%
+  distinct(Year, Month, Station, Date) %>%
+  group_by(Year, Month, Station) %>%
+  summarise(
+    n_wq = n(),
+    date_wq = paste(sort(Date), collapse = ', '),
+    .groups = 'drop'
+  ) %>%
+  filter(n_wq == 1)
+
+routine_single <- df_phyto %>%
+  mutate(Year = year(Date), Month = month(Date)) %>%
+  distinct(Year, Month, Station, Date) %>%
+  group_by(Year, Month, Station) %>%
+  summarise(
+    n_routine = n(),
+    date_routine = paste(sort(Date), collapse = ', '),
+    .groups = 'drop'
+  ) %>%
+  filter(n_routine == 1)
+
+single_event_mismatches <- wq_single %>%
+  inner_join(routine_single, by = c('Year', 'Month', 'Station')) %>%
+  filter(date_wq != date_routine) %>%
+  arrange(Year, Month, Station)
+
+single_event_mismatches
+```
+
+
+```{r}
+df_phyto <- df_phyto %>%
+  mutate(Year = year(Date), Month = month(Date)) %>%
+  left_join(
+    single_event_mismatches %>%
+      transmute(Year, Month, Station, new_date = as.Date(date_wq)),
+    by = c('Year', 'Month', 'Station')
+  ) %>%
+  mutate(Date = if_else(!is.na(new_date), new_date, Date)) %>%
+  select(-Year, -Month, -new_date)
+```
+
+## Check Times
+
+```{r}
+wq_times <- df_wq %>%
+  distinct(Station, Date, Time) %>%
+  mutate(Time = sub(':00$', '', Time)) %>%
+  rename(Time_wq = Time)
+
+routine_times <- df_phyto %>%
+  distinct(Station, Date, Time) %>%
+  rename(Time_routine = Time)
+
+time_mismatches <- wq_times %>%
+  inner_join(routine_times, by = c('Station', 'Date')) %>%
+  filter(Time_wq != Time_routine | (is.na(Time_wq) != is.na(Time_routine))) %>%
+  arrange(Station, Date)
+
+time_mismatches
+```
+
+Check which Dates have > Time
+```{r}
+routine_times %>% count(Station, Date) %>% filter(n > 1)
+```
+
+Update Times
+```{r}
+df_phyto <- df_phyto %>%
+  left_join(
+    time_mismatches %>%
+      select(Station, Date, Time_routine, Time_wq),
+    by = c('Station', 'Date', 'Time' = 'Time_routine')
+  ) %>%
+  mutate(Time = if_else(!is.na(Time_wq), Time_wq, Time)) %>%
+  select(-Time_wq)
+```
+
+## Check missing data
+
+```{r}
+# build the full Month x Year grid, then flag presence/absence
+routine_coverage <- df_phyto %>%
+  mutate(Year = year(Date), Month = month(Date)) %>%
+  distinct(Year, Month) %>%
+  mutate(has_data = TRUE) %>%
+  right_join(
+    expand_grid(Year = 2008:2013, Month = 1:12),
+    by = c('Year', 'Month')
+  ) %>%
+  mutate(has_data = if_else(is.na(has_data), FALSE, has_data))
+
+ggplot(routine_coverage, aes(x = factor(Month), y = factor(Year), fill = has_data)) +
+  geom_tile(color = 'white', linewidth = 0.2) +
+  scale_fill_manual(values = c('TRUE' = 'steelblue', 'FALSE' = 'grey90'),
+                     labels = c('TRUE' = 'Data', 'FALSE' = 'No data'),
+                     name = NULL) +
+  scale_x_discrete(labels = month.abb) +
+  scale_y_discrete(limits = rev(as.character(2008:2013))) +
+  labs(x = 'Month', y = 'Year', title = 'df_phyto data coverage, 2008–2013') +
+  theme_minimal() +
+  theme(panel.grid = element_blank())
+```
+
+# Format Data
+TODO: add lab column, format for DB (here, Ecoanalysts)
+
+# Save data
+
+Write data
+
+```{r}
+save(df_phyto, file = here::here('03_Phyto/aquarius/historical-imports/data/2008-2013.rda'))
+```
+
+
+

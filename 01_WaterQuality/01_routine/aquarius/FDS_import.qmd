@@ -12,14 +12,14 @@ Path to import folder
 
 ```{r}
 # Path to import folder
-fp_import <- 'Water Quality/00 - Monthly Run Docs/Raw Field Data/Water Quality 2019-2024/Water Quality 2024/03 - March'
+fp_import <- 'Water Quality/00 - Monthly Run Docs/Raw Field Data/Water Quality 2019-2024/Water Quality 2025/11 - November'
 ```
 
 Path to export folder
 
 ```{r}
 # Path to export folder
-fp_export <- 'Water Quality/00 - Monthly Run Docs/Database Import Data/2024/'
+fp_export <- 'Water Quality/00 - Monthly Run Docs/Database Import Data/2025/'
 ```
 
 ------------------------------------------------------------------------
@@ -34,17 +34,29 @@ library(tidyverse)
 library(lubridate)
 library(janitor)
 library(readxl)
-source('00_GlobalFunctions/functions.R')
-source('01_WaterQuality/01_routine/aquarius/aquarius_functions/import-functions.R')
+library(here)
+source(here('00_GlobalFunctions/functions.R'))
+source(here('01_WaterQuality/01_routine/aquarius/aquarius_functions/import-functions.R'))
+reticulate::repl_python()
 ```
 
 ```{python}
 from os import environ, walk
 from os.path import join, normpath, basename
 import fitz
+```
 
+```{python}
 # Bring in import fp
 fp_import = r.fp_import
+```
+
+```{python}
+reticulate::py_available()
+```
+
+```{python}
+reticulate::py_config()
 ```
 
 ```{python}

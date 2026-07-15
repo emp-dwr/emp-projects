@@ -1,0 +1,30 @@
+# Load Packages/Read in Data
+
+```{r}
+library(tidyverse)
+source(here::here('00_GlobalFunctions/functions.R'))
+```
+
+Read in data from Sharepoint
+```{r}
+fp_codes <- abs_path_emp('Benthic/AQUARIUS Samples Database/Database Migration/Raw Benthic Data/Benthic organism keylist 2026.csv')
+
+df_codes <- read_csv(fp_codes, col_types = cols(.default = col_character()))
+```
+
+```{r}
+df_taxa <- df_codes %>%
+  mutate(Taxa = paste(Genus, Species)) %>%
+  select(OrganismCode, Taxa)
+```
+
+```{r}
+# Repeated OrganismCodes
+df_taxa %>% group_by(OrganismCode) %>% filter(n() > 1)
+
+# Repeated Taxa
+df_taxa %>% group_by(Taxa) %>% filter(n() > 1)
+
+write_csv(df_taxa, 'C:/Users/sperry/Desktop/taxa_import.csv')
+```
+
