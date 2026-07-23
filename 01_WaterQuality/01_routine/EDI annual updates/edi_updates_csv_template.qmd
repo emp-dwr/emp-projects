@@ -40,12 +40,12 @@ View(df_year)
 # Code to format dataset for EDI (function)
 
 ```{r}
+source(here::here('00_GlobalFunctions/functions.R'))
+
 format_edi <- function(df = df) {
   
   # select columns
   ## TODO: names will differ if using csv
-  ## TODO: API splits "Observed DateTime" into "Observed Date" and "Observed Time";
-  ## will have to add that step in if using csv
   df %>%
     select(
       Location.ID,
@@ -66,11 +66,11 @@ format_edi <- function(df = df) {
 
   # fix detection condition
   ## TODO: maybe dif with the csv?
-  df <- df %>%
+   df <- df %>%
     mutate(
       Lab..Detection.Condition = case_when(
         is.na(Lab..Detection.Condition) ~ 'Detected',
-        TRUE ~ 'Not_Detected'
+        TRUE ~ 'Not detected'
       )
     )
   
@@ -78,8 +78,8 @@ format_edi <- function(df = df) {
   df <- df %>%
     rename(
       Station = Location.ID,
-      Date = Observed Date,
-      Time = Observed Time,
+      Date = ObservedDate,
+      Time = ObservedTime,
       Analyte = Observed.Property.ID,
       Result_Value = Result.Value,
       Result_Unit = Result.Unit,
@@ -303,7 +303,7 @@ colnames(df_year)
 
 ```{r}
 # format for EDI
-df_year <- format_edi(df_year)
+df_year <- format_edi_2(df_year)
 
 # check missing dates
 df_year %>%
