@@ -1,0 +1,129 @@
+Clean BSA Tins
+
+```{r}
+library(pespr)
+library(readxl)
+library(tidyverse)
+source(here::here('00_GlobalFunctions/functions.R'))
+```
+
+```{r}
+# read in codes
+fp_codes <- abs_path_emp('Phytoplankton/AQUARIUS Samples Database/Database Migration/Helpful Files/BSA Species List.csv')
+
+df_codes <- read_csv(fp_codes, col_types = cols(.default = col_character()))
+
+# read in taxonomy
+df_taxa <- pespr::phyto_taxonomy
+
+# read in BSA TINs
+fp_bsa <- abs_path_emp('Phytoplankton/AQUARIUS Samples Database/Database Migration/Helpful Files/BSA Species List.xlsx')
+df_bsa <- read_excel(fp_bsa, col_types = 'text')
+```
+
+# Synonym Issues
+
+Check for mis-matches with current taxonomy list
+(Staurosira pinnata -> need to check)
+(Pediastrum simplex var. duodenarium -> real (but maybe check))
+(Scenedesmus falcatus -> real)
+
+
+```{r}
+mismatches <- df_codes %>%
+  inner_join(df_taxa, by = 'Taxon') %>%
+  mutate(
+    nn_clean = case_when(
+      is.na(NewTaxon) | NewTaxon == 'None' ~ '___NA___',
+      TRUE ~ NewTaxon
+    ),
+    ct_clean = case_when(
+      is.na(CurrentTaxon) | CurrentTaxon == 'None' ~ '___NA___',
+      TRUE ~ CurrentTaxon
+    )
+  ) %>%
+  filter(nn_clean != ct_clean) %>%
+  select(Taxon, NewTaxon, CurrentTaxon)
+
+mismatches
+```
+
+## Check names per TIN
+
+Check all TINs have a current name and all older names have the correct current name
+
+```{r}
+check <- df_codes %>%
+  group_by(TIN) %>%
+  summarise(
+    current_name = Taxon[is.na(NewTaxon)][1],
+    n_current = sum(is.na(NewTaxon)),
+    newest_values = paste(unique(na.omit(NewTaxon)), collapse = '; '),
+    .groups = 'drop'
+  ) %>%
+  mutate(
+    matches_current = newest_values == '' | newest_values == current_name
+  )
+
+problem_tins <- check %>%
+  filter(n_current != 1 | !matches_current)
+
+problem_tins
+```
+## Check 
+```{r}
+problem_tins <- df_codes %>%
+  mutate(
+    effective_name = coalesce(NewTaxon, Taxon)
+  ) %>%
+  group_by(TIN) %>%
+  summarise(
+    n_names = n_distinct(effective_name, na.rm = TRUE),
+    names = paste(sort(unique(na.omit(effective_name))), collapse = "; "),
+    .groups = "drop"
+  ) %>%
+  filter(n_names > 1)
+
+problem_tins
+```
+
+
+# Check BSA TINs
+
+```{r}
+df_codes <- df_codes %>%
+  left_join(df_bsa %>% select(Taxon, BSA_TIN = BSA_TIN), by = 'Taxon')
+```
+
+```{r}
+mismatches <- df_codes %>%
+  filter(!is.na(BSA_TIN), BSA_TIN != Old_BSA_TIN)
+
+mismatches
+```
+
+Looks good, clean up
+```{r}
+df_codes <- df_codes %>%
+  select(-Old_BSA_TIN)
+```
+
+```{r}
+# remove # signs (bad for code)
+df_codes <- df_codes %>%
+  mutate(Taxon = trimws(gsub('\\s*#\\s*', ' ', Taxon))) %>%
+  mutate(NewTaxon = trimws(gsub('\\s*#\\s*', ' ', NewTaxon)))
+```
+
+```{r}
+df_codes <- df_codes %>%
+  mutate(TIN = as.numeric(TIN))
+```
+
+
+# Save
+
+```{r}
+save(df_codes, file = here::here('03_Phyto/aquarius/historical-imports/data/tins.rda'))
+```
+

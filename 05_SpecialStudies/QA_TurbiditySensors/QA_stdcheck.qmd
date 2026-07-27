@@ -1,0 +1,681 @@
+---
+title: 'Turbidity Post-Cal (With Lots) Exploration'
+author: 'Perry'
+date: '`r Sys.Date()`'
+execute:
+  echo: false
+format:
+    html:
+      toc: true
+      highlight-style: github
+      embed-resources: true
+      self-contained-math: true
+---
+
+```{r}
+#| include: FALSE
+
+library(tidyverse)
+library(lme4)
+library(lmerTest)
+library(lattice)
+library(emmeans)
+library(knitr)
+```
+
+```{r}
+#| include: FALSE
+
+df_turb <- read_csv(here::here('05_SpecialStudies/QA_TurbiditySensors/Data/final_turbiditydata.csv'))
+```
+
+# Assumptions
+
+- sources of error accumulated between calibration and post-calibration are the same for all data points
+  - ie. no significant differences in drift between sondes or sites
+
+- sources of error accumulated between calibration and post-calibration are negligible
+  - ie. the expected value at post-cal remains 124 (the standard)
+  
+- the person doing the calibrations did not significantly affect the values
+
+- all sondes were calibrated in the old standard and post-calibrated in either old/new standard
+  - **need to check this one**
+
+- the post-cal standard was 124 for all sondes
+  - mostly working with centered data (post-cal standard = 0 instead)
+
+- for Std_Age, `Old` is before lot number 24E, `New` is after and including
+
+# Plots
+
+## All Data
+
+Checking for any major outliers/data quality issues.
+
+```{r}
+#| echo: FALSE
+
+ggplot(df_turb, aes(x = '', y = PostCalCentered)) +
+  geom_boxplot(
+    color = 'black',
+    alpha = 0.35,
+    outlier.shape = NA,
+  ) +
+  geom_jitter(
+    shape = 21,
+    color = 'black',
+    fill = 'gray',
+    alpha = 0.8,
+    width = 0.15,
+    size = 2
+  ) +
+  geom_hline(
+    yintercept = 0,
+    linetype = 'dashed',
+    linewidth = 0.8,
+    color = 'red'
+  ) +
+  labs(
+    x = NULL,
+    y = 'PostCal (Centered)'
+  ) +
+  theme_bw()
+```
+
+**Conclusions**
+
+There are two extreme outliers in the data. These are removed for future analyses. They are:
+
+```{r}
+#| echo: FALSE
+
+df_out <- df_turb %>% filter(PostCalCentered > 30)
+df_out <- df_out %>% select(Program, Instrument_ID, Turbidity_Std, Turbidity_FNU, PostCalCentered, PostCalDate, Std_Age)
+
+df_turb <- df_turb %>% filter(PostCalCentered < 30)
+
+kable(df_out)
+
+```
+
+
+## By Program
+
+Get a sense of the difference between programs.
+
+```{r}
+#| echo: FALSE
+
+ggplot(df_turb, aes(x = PostCalCentered)) +
+  geom_histogram(bins = 15, fill = 'steelblue', color = 'white') +
+  geom_vline(xintercept = 0, linetype = 'dashed', linewidth = 0.8, color = 'red') +
+  facet_wrap(~ Program) +
+  theme_bw() +
+  labs(
+    x = 'PostCal (Centered)',
+    y = 'Count'
+  )
+```
+
+```{r}
+#| echo: FALSE
+
+ggplot(df_turb, aes(x = Program, y = PostCalCentered)) +
+  geom_boxplot(
+    aes(fill = Program),
+    color = 'black',
+    alpha = 0.35,
+    outlier.shape = NA
+  ) +
+  geom_jitter(
+    aes(fill = Program),
+    shape = 21,
+    color = 'black',
+    width = 0.15,
+    size = 2,
+    alpha = 0.8
+  ) +
+  geom_hline(
+    yintercept = 0,
+    linetype = 'dashed',
+    linewidth = 0.8,
+    color = 'red'
+  ) +
+  theme_bw() +
+  labs(
+    x = 'Program',
+    y = 'PostCal (Centered)',
+  ) +
+  theme(legend.position = 'none')
+```
+```{r}
+#| echo: FALSE
+
+df_out <- df_turb %>%
+  count(Program, name = 'n') %>%
+  arrange(n)
+
+kable(df_out)
+```
+
+**Conclusions**
+
+WQA has substantially more data than CEMP. CEMP averaged lower values, but again, there was significantly less data. CEMP also appears to have a bimodal distribution while WQA appears unimodal.
+
+## By Std Age
+
+Get a sense of the difference between the age of the post-cal standards.
+
+```{r}
+#| echo: FALSE
+
+ggplot(df_turb, aes(x = Std_Age, y = PostCalCentered)) +
+  geom_boxplot(
+    aes(fill = Std_Age),
+    color = 'black',
+    alpha = 0.35,
+    outlier.shape = NA
+  ) +
+  geom_jitter(
+    aes(fill = Std_Age),
+    shape = 21,
+    color = 'black',
+    width = 0.15,
+    size = 2,
+    alpha = 0.8
+  ) +
+  geom_hline(
+    yintercept = 0,
+    linetype = 'dashed',
+    linewidth = 0.8,
+    color = 'red'
+  ) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  labs(
+    x = 'Standard Age',
+    y = 'PostCal (Centered)',
+  ) +
+  theme(legend.position = 'none')
+```
+
+```{r}
+#| echo: FALSE
+
+df_out <- df_turb %>%
+  group_by(Std_Age) %>%
+  summarise(
+    n_points = n(),
+    n_stds = n_distinct(Turbidity_Std),
+    .groups = 'drop'
+  ) %>%
+  arrange(n_points)
+
+kable(df_out)
+```
+
+**Conclusions**
+
+There are roughly an equal number of data points between the old and new standards, though `Old` utilized more lots than `New`.
+
+## By Lot Number
+
+Further break down differences between Program/Age based on the lot numbers of the standards.
+
+```{r}
+#| echo: FALSE
+
+ggplot(df_turb, aes(x = factor(Turbidity_Std), y = PostCalCentered)) +
+  geom_boxplot(
+    aes(fill = factor(Program)),
+    color = 'black',
+    alpha = 0.35,
+    outlier.shape = NA
+  ) +
+  geom_jitter(
+    aes(fill = factor(Program)),
+    shape = 21,
+    color = 'black',
+    width = 0.15,
+    size = 2,
+    alpha = 0.8
+  ) +
+  geom_hline(
+    yintercept = 0,
+    linetype = 'dashed',
+    linewidth = 0.8,
+    color = 'red'
+  ) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  labs(
+    x = 'Lot Number',
+    y = 'PostCal (Centered)',
+    fill = 'Program'
+  )
+```
+
+```{r}
+#| echo: FALSE
+
+ggplot(df_turb, aes(x = factor(Turbidity_Std), y = PostCalCentered)) +
+  geom_boxplot(
+    aes(fill = factor(Std_Age)),
+    color = 'black',
+    alpha = 0.35,
+    outlier.shape = NA
+  ) +
+  geom_jitter(
+    aes(fill = factor(Std_Age)),
+    shape = 21,
+    color = 'black',
+    width = 0.15,
+    size = 2,
+    alpha = 0.8
+  ) +
+  geom_hline(
+    yintercept = 0,
+    linetype = 'dashed',
+    linewidth = 0.8,
+    color = 'red'
+  ) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  labs(
+    x = 'Lot Number',
+    y = 'PostCal (Centered)',
+    fill = 'Std Age'
+  )
+```
+
+```{r}
+#| echo: FALSE
+
+df_out <- df_turb %>%
+  count(Turbidity_Std, name = 'n') %>%
+  arrange(n)
+
+kable(df_out)
+```
+
+**Conclusions**
+
+All lots were exclusive to one program. Aside from 23G24003826, which had a wide spread (and the most data), anomalous values were associated with lot numbers:
+
+- 24E24012288 (13 points)
+- 24B24011758 (2 points)
+
+24E24012288 has strong evidence of being a "bad" lot; there's a decent amount of data centered on a value much lower than zero. 24B24011758 only has two points, so it's harder to make a conclusion, but both those values are far from the expected mean. For these purposes we'll also attribute this to a bad lot issue.
+
+22G22290213 also had a high "mean", but with only one slightly high data point, it's impossible to say if the lot is truly problematic.
+
+Note that the two extreme outlier points came from 23G24003826 (which has a wide spread) and 24E24011758 (otherwise un-problematic).
+
+Therefore, we concluded lot number at least partially explained anomalous data. To ensure there wasn't further issues associated with `Old` vs `New` standard, we continued with a filtered data set.
+
+# Filtered "Good" Data
+
+Here, we filtered the data to remove lots 24B24009095 (strong evidence of issues) and 24E24012288 (weaker evidence, but still some evidence of issues).
+
+```{r}
+#| echo: FALSE
+
+df_good <- df_turb %>%
+  filter(!(Turbidity_Std %in% c('24B24009095', '24E24012288'))) #%>%
+  # filter(Turbidity_Std != '22E24001726') # only one point
+
+df_bad <- df_turb %>%
+  filter((Turbidity_Std %in% c('24E24012288', '24B24009095')))
+```
+
+```{r}
+#| echo: FALSE
+
+ggplot(df_good, aes(x = factor(Turbidity_Std), y = PostCalCentered)) +
+  geom_boxplot(
+    aes(fill = factor(Std_Age)),
+    color = 'black',
+    alpha = 0.35,
+    outlier.shape = NA
+  ) +
+  geom_jitter(
+    aes(fill = factor(Std_Age)),
+    shape = 21,
+    color = 'black',
+    width = 0.15,
+    size = 2,
+    alpha = 0.8
+  ) +
+  geom_hline(
+    yintercept = 0,
+    linetype = 'dashed',
+    linewidth = 0.8,
+    color = 'red'
+  ) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  labs(
+    x = 'Lot Number',
+    y = 'PostCal (Centered)',
+    fill = 'Std Age'
+  )
+```
+
+```{r}
+#| echo: FALSE
+
+ggplot(df_good, aes(x = factor(Std_Age), y = PostCalCentered)) +
+  geom_boxplot(
+    aes(fill = factor(Std_Age)),
+    color = 'black',
+    alpha = 0.35,
+    outlier.shape = NA
+  ) +
+  geom_jitter(
+    aes(fill = factor(Std_Age)),
+    shape = 21,
+    color = 'black',
+    width = 0.15,
+    size = 2,
+    alpha = 0.8
+  ) +
+  geom_hline(
+    yintercept = 0,
+    linetype = 'dashed',
+    linewidth = 0.8,
+    color = 'red'
+  ) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  labs(
+    x = 'Lot Number',
+    y = 'Std Age'
+  ) +
+  theme(legend.position = 'none')
+```
+
+```{r}
+#| echo: FALSE
+
+df_out <- df_good %>%
+  group_by(Std_Age) %>%
+  summarise(
+    n_points = n(),
+    n_stds = n_distinct(Turbidity_Std),
+    .groups = 'drop'
+  ) %>%
+  arrange(n_points)
+
+kable(df_out)
+```
+
+**Conclusions**
+
+With the problematic lots filtered out, the difference between `Old` and `New` standard (and their differences from the true standard value, here centered at 0) appear significantly lessened. The number of data points within each group are also now almost exactly equal, though `Old` still includes more lots than `New`. `Old` also has a few more outliers than `New`.
+
+# Model
+
+Next we do a simple linear model to check for differences in mean post-cal values:
+
+- between Std Ages (is the `Old` mean different from `New`?)
+- from the true standard value (are `Old`/`New` means different from 124?)
+
+**Model Results**
+
+```{r}
+#| echo: FALSE
+
+mod <- lm(PostCalCentered ~ Std_Age, data = df_good)
+
+summary(mod)
+```
+
+```{r}
+#| echo: FALSE
+#| layout-ncol: 2
+
+plot(mod)
+```
+
+**EMM Results**
+
+```{r}
+#| echo: FALSE
+
+emm <- emmeans(mod, ~ Std_Age)
+
+kable(pairs(emm))
+kable(confint(emm))
+```
+
+**Testing Mean = 0**
+
+```{r}
+#| echo: FALSE
+
+kable(test(emm, null = 0))
+```
+
+***Conclusions***
+
+We modeled the Post Cal differences by the Standard Age with the problematic lot batches removed. The main model gave weak evidence against a significant difference between the two Age groups. Furthermore, neither group has a significant difference from 0; this conclusion is stronger for `Old` and weaker for `New`.
+
+However, even for `New`, the mean difference is only 0.8 units below 0 (ie. a mean of ~123 instead of 124). Even if this was considered real, it's not a large enough difference to worry about.
+
+# Data Variance
+
+We conclude that, once "bad" lots are removed, all post cal data (both with `Old` and `New` standard) are centered around the standard value of 124. However, if the variance around this mean is large, a high percentage of data could still be flagged anomalous. We graph this to check: 
+
+```{r}
+#| echo: FALSE
+#| layout-ncol: 2
+
+df_old <- df_good %>% filter(Std_Age == 'Old')
+
+x <- df_old$PostCalCentered
+
+q1 <- quantile(x, 0.25, na.rm = TRUE)
+q3 <- quantile(x, 0.75, na.rm = TRUE)
+iqr <- q3 - q1
+
+lower_fence <- q1 - 1.5 * iqr
+upper_fence <- q3 + 1.5 * iqr
+
+lower_whisker <- min(x[x >= lower_fence], na.rm = TRUE)
+upper_whisker <- max(x[x <= upper_fence], na.rm = TRUE)
+
+box_vals <- tibble(
+  q1 = q1,
+  median = median(x, na.rm = TRUE),
+  q3 = q3,
+  iqr = iqr,
+  lower_whisker = lower_whisker,
+  upper_whisker = upper_whisker,
+  lower_whisker_pct = mean(x <= lower_whisker, na.rm = TRUE) * 100,
+  upper_whisker_pct = mean(x <= upper_whisker, na.rm = TRUE) * 100
+)
+
+ggplot(df_old, aes(x = 1, y = PostCalCentered)) +
+  geom_boxplot(
+    color = 'black',
+    fill = 'grey',
+    alpha = 0.35,
+    outlier.shape = NA,
+    width = 0.35
+  ) +
+  geom_hline(
+    yintercept = 0,
+    linetype = 'dashed',
+    linewidth = 0.8,
+    color = 'red'
+  ) +
+  geom_text(
+    data = box_vals,
+    aes(
+      x = 0.955,
+      y = q1 - 0.5,
+      label = paste0('25th: ', round(q1, 2))
+    ),
+    color = 'blue',
+    inherit.aes = FALSE,
+    hjust = 0
+  ) +
+  geom_text(
+    data = box_vals,
+    aes(
+      x = 0.955,
+      y = q3 + 0.5,
+      label = paste0('75th: ', round(q3, 2))
+    ),
+    color = 'blue',
+    inherit.aes = FALSE,
+    hjust = 0
+  ) +
+  geom_text(
+    data = box_vals,
+    aes(
+      x = 0.955,
+      y = lower_whisker,
+      label = paste0(
+      round(lower_whisker_pct, 0),
+      "th: ",
+      round(lower_whisker, 2)
+      )
+    ),
+    color = 'blue',
+    inherit.aes = FALSE,
+    hjust = 0
+  ) +
+  geom_text(
+    data = box_vals,
+    aes(
+      x = 0.955,
+      y = upper_whisker,
+      label = paste0(
+      round(upper_whisker_pct, 0),
+      "th: ",
+      round(upper_whisker, 2)
+      )
+    ),
+    color = 'blue',
+    inherit.aes = FALSE,
+    hjust = 0
+  ) +
+  labs(
+    x = 'Old Std',
+    y = 'PostCal (Centered)'
+  ) +
+  theme_bw() +
+  coord_cartesian(ylim = c(-5, 5))
+
+df_new <- df_good %>% filter(Std_Age == 'New')
+
+x <- df_new$PostCalCentered
+
+q1 <- quantile(x, 0.25, na.rm = TRUE)
+q3 <- quantile(x, 0.75, na.rm = TRUE)
+iqr <- q3 - q1
+
+lower_fence <- q1 - 1.5 * iqr
+upper_fence <- q3 + 1.5 * iqr
+
+lower_whisker <- min(x[x >= lower_fence], na.rm = TRUE)
+upper_whisker <- max(x[x <= upper_fence], na.rm = TRUE)
+
+box_vals <- tibble(
+  q1 = q1,
+  median = median(x, na.rm = TRUE),
+  q3 = q3,
+  iqr = iqr,
+  lower_whisker = lower_whisker,
+  upper_whisker = upper_whisker,
+  lower_whisker_pct = mean(x <= lower_whisker, na.rm = TRUE) * 100,
+  upper_whisker_pct = mean(x <= upper_whisker, na.rm = TRUE) * 100
+)
+
+ggplot(df_new, aes(x = 1, y = PostCalCentered)) +
+  geom_boxplot(
+    color = 'black',
+    fill = 'grey',
+    alpha = 0.35,
+    outlier.shape = NA,
+    width = 0.35
+  ) +
+  geom_hline(
+    yintercept = 0,
+    linetype = 'dashed',
+    linewidth = 0.8,
+    color = 'red'
+  ) +
+  geom_text(
+    data = box_vals,
+    aes(
+      x = 0.955,
+      y = q1 - 0.4,
+      label = paste0('25th: ', round(q1, 2))
+    ),
+    color = 'blue',
+    inherit.aes = FALSE,
+    hjust = 0
+  ) +
+  geom_text(
+    data = box_vals,
+    aes(
+      x = 0.955,
+      y = q3 + 0.4,
+      label = paste0('75th: ', round(q3, 2))
+    ),
+    color = 'blue',
+    inherit.aes = FALSE,
+    hjust = 0
+  ) +
+  geom_text(
+    data = box_vals,
+    aes(
+      x = 0.955,
+      y = lower_whisker,
+      label = paste0(
+      round(lower_whisker_pct, 0),
+      "th: ",
+      round(lower_whisker, 2)
+      )
+    ),
+    color = 'blue',
+    inherit.aes = FALSE,
+    hjust = 0
+  ) +
+  geom_text(
+    data = box_vals,
+    aes(
+      x = 0.955,
+      y = upper_whisker,
+      label = paste0(
+      round(upper_whisker_pct, 0),
+      "th: ",
+      round(upper_whisker, 2)
+      )
+    ),
+    color = 'blue',
+    inherit.aes = FALSE,
+    hjust = 0
+  ) +
+  labs(
+    x = 'New Std',
+    y = 'PostCal (Centered)'
+  ) +
+  theme_bw() +
+  coord_cartesian(ylim = c(-5, 5))
+```
+
+**Conclusions**
+
+Both `Old` and `New` standard data look similar. For `Old`, 50% of the centered data lies between (-0.59, 1.73). For `New`, it's between (-1.62, 0.88). Conservatively, this implies half the data lies between ~(122, 126). Furthermore, for both, ~90% of the centered data lies, conservatively, between (-5,5), meaning that post cal values below/above (119, 129) are rare. 
+
+# Overall Conclusions
+
+Lot Numbers explain the majority of issues with post-calibration results. Two lots, 24E24012288 and 24B24011758, produced post-cal values that were far from the true standard value, indicating those batches had quality issues. After accounting for these lots, there was no significant difference between `Old` and `New` standard and neither significantly differed from the true value.
+
+We also looked at the variance around the remaining "good" data. Conservatively, 50% was within 2 units of the true standard value (122, 126) and 90% of the data was still within 5 (119, 129).
+
+

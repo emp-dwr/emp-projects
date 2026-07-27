@@ -55,6 +55,7 @@ df_turb <- df_turb %>%
 ```{r}
 ggplot(df_turb, aes(x = PostCalCentered)) +
   geom_histogram(bins = 10, fill = 'steelblue', color = 'white') +
+  geom_vline(xintercept = 0, linetype = 'dashed', linewidth = 0.8, color = 'red') +
   facet_wrap(~ Program) +
   theme_bw()
 ```
@@ -70,6 +71,8 @@ ggplot(df_turb, aes(x = Program, y = PostCalCentered, fill = Program)) +
 **Conclusions:**
 
 WQA looks good. NCRO and CEMP both seem to be bimodal, with two populations: an upper one (that includes 0) and a lower one. Therefore, we will split those populations to investigate metadata.
+
+Note that, despite WQA having a more unimodal and tighter distribution, all three programs have roughly the same data range (-10,10)
 
 ## Population Split
 

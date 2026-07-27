@@ -1,0 +1,71 @@
+```{r}
+library(tidyverse)
+library(lubridate)
+```
+
+```{r}
+df_mwqi <- read_csv(here::here('05_SpecialStudies/QA_TurbiditySensors/Data/MWQI Turbidity Lot Numbers WY2024.csv'))
+df_smb <- read_csv(here::here('05_SpecialStudies/QA_TurbiditySensors/Data/SMB Turbidity Lot Numbers WY2024.csv'))
+df_cempwqa <- read_csv(here::here('05_SpecialStudies/QA_TurbiditySensors/Data/final_CEMPWQAturbiditydata.csv'))
+```
+
+```{r}
+df_mwqi <- df_mwqi %>%
+  mutate(Program = 'MWQI',
+         Type = 'postcal',
+         Filename = 'MWQI Turbidity Lot Numbers WY2024') %>%
+  rename(`Instrument ID` = sonde_name,
+         Date = postdeploy_time,
+         Turbidity_FNU = postdeploy_reading_2,
+         Turbidity_Std = lot_number) %>%
+  select(Program, Filename, `Instrument ID`, Turbidity_Std, Turbidity_FNU, Type, Date) %>%
+  mutate(PostCalDate = as_date(mdy_hm(Date)))
+         
+
+df_smb <- df_smb %>%
+  mutate(Program = 'SMB',
+         Type = 'postcal',
+         Filename = 'SMB Turbidity Lot Numbers WY2024') %>%
+  rename(`Instrument ID` = sonde_name,
+         Date = postdeploy_time,
+         Turbidity_FNU = postdeploy_reading_2,
+         Turbidity_Std = lot_number) %>%
+  select(Program, Filename, `Instrument ID`, Turbidity_Std, Turbidity_FNU, Type, Date) %>%
+  mutate(PostCalDate = as_date(mdy_hm(Date)))
+         
+
+df_cempwqa <- df_cempwqa %>%
+  filter(Type == 'postcal') %>%
+  mutate(PostCalDate = as.Date(Date, format = '%m/%d/%Y'))
+
+df_final <- bind_rows(df_cempwqa, df_mwqi, df_smb)
+
+df_final <- df_final %>%
+  mutate(PostCalCentered = Turbidity_FNU - 124) %>% # center the data at 0
+  filter(!is.na(Turbidity_Std),
+         !is.na(Turbidity_FNU))
+         
+
+df_final <- df_final %>%
+  mutate(
+    Std_prefix = stringr::str_sub(Turbidity_Std, 1, 3),
+    Std_Age = case_when(
+      Std_prefix < "24E" ~ "Old",
+      Std_prefix >= "24E" ~ "New",
+      TRUE ~ NA_character_
+    )
+  )
+
+# remove duplicates
+df_final <- df_final %>%
+  group_by(Turbidity_Std, PostCalCentered, PostCalDate, Type) %>%
+  slice_max(
+    order_by = !is.na(Instrument_ID),
+    n = 1,
+    with_ties = FALSE
+  ) %>%
+  ungroup()
+
+write_csv(df_final, here::here('05_SpecialStudies/QA_TurbiditySensors/Data/final_turbiditydata.csv'))
+```
+

@@ -3,12 +3,7 @@ Finish Cleaning Corrected Data (pulled from Aquarius)
 # Set year
 
 ```{r}
-<<<<<<< HEAD
-edi_year <- 2025
-=======
 edi_year <- 2024
-print('hello')
->>>>>>> f9bc5f5105046766ac46b854b14047aa353cd219
 ```
 
 # Code Starts Here
@@ -23,7 +18,7 @@ set_samples_env(
   token_env = 'AQS_EMPDWQ_TOKEN'
 )
 
-source('00_GlobalFunctions/edi-functions.R')
+source(here::here('00_GlobalFunctions/edi-functions.R'))
 ```
 
 ```{r}
@@ -45,7 +40,7 @@ system.time({
   df_year <- get_year_data(edi_year)
 })
 
-test <- df_year
+df_test <- df_year
 ```
 
 Filter out un-needed data

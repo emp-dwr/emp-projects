@@ -1,0 +1,460 @@
+---
+title: 'TAL 2-Point Calibration Exploration'
+author: 'Perry'
+date: '`r Sys.Date()`'
+execute:
+  echo: false
+  message: false
+  warning: false
+format:
+    html:
+      toc: true
+      highlight-style: github
+      embed-resources: true
+      self-contained-math: true
+---
+
+```{r}
+#| include: FALSE
+
+library(tidyverse)
+library(knitr)
+```
+
+```{r}
+#| include: FALSE
+
+df_tal <- read_csv(here::here('05_SpecialStudies/QA_TAL-comparison/Data/tal_data.csv'))
+```
+
+
+# Assumptions
+
+- 2-point calibration calibrates 0 and a standard value which (per parameter) varies slightly
+  - first point corrects intercept, the second the slope
+- calibrations are sequential; the first point is fully calibrated, then the second point is
+- primary question: what's the slope drift (error) and is it 'significant'?
+  - ie. the error around the second calibration point
+- null: post deployment pre-cal values = expected values, magnitude of the errors is 'small'
+
+# Best Error Metric
+
+We can define error in two ways: raw difference ($precal - expected$) or percent error ($\frac{precal - expected}{expected}$). Since the expected value is not always the same, even within parameters, the difference *may* matter. We graph to see if it does.
+
+```{r}
+ggplot(df_tal, aes(x = ExpectVal, y = CalDiff)) +
+  geom_hline(yintercept = 0, linetype = 'dashed') +
+  geom_point(alpha = 0.6) +
+  facet_wrap(~ Parameter, scales = 'free') +
+  theme_bw() +
+  labs(
+    x = 'Expected Val',
+    y = 'Difference'
+  )
+```
+
+```{r}
+ggplot(df_tal, aes(x = ExpectVal, y = CalPctError)) +
+  geom_hline(yintercept = 0, linetype = 'dashed') +
+  geom_point(alpha = 0.6) +
+  facet_wrap(~ Parameter, scales = 'free') +
+  theme_bw() +
+  labs(
+    x = 'Expected Val',
+    y = 'Percent Error'
+  )
+```
+
+**Conclusion**
+
+Per parameter, the expected values are are fairly similar. Therefore, there's little difference between using raw difference or percent error. For ease of comparability between parameters, we'll use **percent error**.
+
+We do note, however, that there is one outlier in Chl_RFU with respect to the expected value. We remove it going forward for ease of analysis.
+
+```{r}
+df_tal <- df_tal %>% filter(!(Parameter == 'Chl_RFU' & ExpectVal < 14))
+```
+
+
+# Plots
+
+## All Data
+
+We plot all data to note general trends and outliers.
+
+```{r}
+ggplot(df_tal, aes(x = CalPctError)) +
+  geom_histogram(
+    bins = 30,
+    color = 'black',
+    fill = 'gray80'
+  ) +
+  geom_vline(xintercept = 0, linetype = 'dashed') +
+  facet_wrap(~ Parameter, scales = 'free_y') +
+  theme_bw() +
+  labs(
+    x = 'Percent Error',
+    y = 'Count'
+  )
+```
+
+```{r}
+ggplot(df_tal, aes(x = Parameter, y = CalPctError)) +
+  geom_boxplot(
+    aes(fill = Parameter),
+    color = 'black',
+    alpha = 0.35,
+    outlier.shape = NA
+  ) +
+  geom_jitter(
+    aes(fill = Parameter),
+    shape = 21,
+    color = 'black',
+    alpha = 0.5,
+    width = 0.15,
+    size = 2
+  ) +
+  geom_hline(yintercept = 0, linetype = 'dashed') +
+  theme_bw() +
+  theme(
+    legend.position = 'none'
+  ) +
+  labs(
+    x = 'Parameter',
+    y = 'Percent Error'
+  )
+```
+
+**Conclusions**
+
+We note that there are a few outliers, particularly for Chl, but nothing extreme. The typical value for all four parameters appears to be below 0, meaning that, on average, the sonde's pre-cal value is below what's expected. Additionally, the Chl parameters, in particular, appear negatively skewed.
+
+## Temperature
+
+Since fluorescence is inversely related to temperature, we graph the % error and temperature to see if there's any relationship.
+
+```{r}
+ggplot(df_tal, aes(x = SensorTemp, y = CalPctError)) +
+  geom_point() +
+  facet_wrap(~ Parameter, scales = 'free') +
+  theme_bw() +
+  labs(
+    x = 'Sensor Temp',
+    y = 'Percent Error'
+  )
+```
+
+**Conclusions**
+
+No parameter seems to have a relationship with temp, which is good. We won't account for temp in this analysis.
+
+## Sensor IDs
+
+We check if we can look at differences between individual sensors.
+
+```{r}
+df_out <- df_tal %>%
+  group_by(Parameter) %>%
+  summarize(
+    n_points = n(),
+    n_sensors = n_distinct(TALSensorSN),
+    n_rep = round(n_points/n_sensors, 2),
+    .groups = 'drop'
+  )
+
+kable(df_out)
+```
+
+**Conclusions**
+
+Since there's only ~1 data point per sensor per parameter, we cannot.
+
+## Expected Value
+
+Though the error metric graphs already suggest that the magnitude of the expected value doesn't influence the expected percent error or the variance around it, we graph to check.
+
+```{r}
+ggplot(df_tal, aes(x = ExpectVal, y = CalPctError)) +
+  geom_point() +
+  geom_smooth(method = 'lm', se = TRUE) +
+  facet_wrap(~ Parameter, scales = 'free') +
+  theme_bw() +
+  labs(
+    x = 'Expected Value',
+    y = 'Percent Error'
+  )
+```
+
+**Conclusions**
+
+We confirm that percent error and and its variance do not seem to be influenced by the expected value.
+
+# Mean Value
+
+We can use a linear model (t-test) to answer 'does the average percent error differ from zero, and what is it?'
+
+```{r}
+library(tidyverse)
+library(knitr)
+
+params <- unique(df_tal$Parameter)
+
+coef_tbl <- map_dfr(params, function(p) {
+  
+  df_p <- df_tal %>%
+    filter(Parameter == p)
+  
+  mod <- lm(CalPctError ~ 1, data = df_p)
+  
+  coef(summary(mod)) %>%
+    as.data.frame() %>%
+    rownames_to_column('term') %>%
+    mutate(
+      Parameter = p,
+      n = nobs(mod),
+      sigma = sigma(mod),
+      .before = 1
+    ) %>%
+    select(-term)
+})
+
+kable(coef_tbl)
+```
+
+**Conclusions**
+
+For all four parameters, the mean percent error is significantly different from zero. Additionally, for all four, the mean percent error is about -5% with a standard deviation of ~7%. This means, on average, the pre-cal values are 5% less than they should be.
+
+Note that model checks were performed but are not shown to reduce clutter.
+
+
+# Data Variance
+
+We're interested not only in the mean difference from the expected value, but the variance around it.
+
+## Signed Variance
+
+First we look at the signed variance.
+
+```{r}
+df_out <- df_tal %>%
+  group_by(Parameter) %>%
+  summarize(
+    n = n(),
+    mean = mean(CalPctError, na.rm = TRUE),
+    sd = sd(CalPctError, na.rm = TRUE),
+    median = median(CalPctError, na.rm = TRUE),
+    q05 = quantile(CalPctError, 0.05, na.rm = TRUE),
+    q12.5 = quantile(CalPctError, 0.125, na.rm = TRUE),
+    q25 = quantile(CalPctError, 0.25, na.rm = TRUE),
+    q75 = quantile(CalPctError, 0.75, na.rm = TRUE),
+    q87.5 = quantile(CalPctError, 0.875, na.rm = TRUE),
+    q95 = quantile(CalPctError, 0.95, na.rm = TRUE),
+    .groups = 'drop'
+  )
+
+ggplot(df_out, aes(y = reorder(Parameter, median))) +
+  geom_vline(xintercept = 0, linetype = 'dashed', color = 'black') +
+  geom_segment(
+    aes(x = q05, xend = q95, yend = reorder(Parameter, median)),
+    linewidth = 2.0,
+    color = 'black',
+    lineend = 'round',
+    show.legend = FALSE
+  ) +
+  geom_segment(
+    aes(x = q05, xend = q95, yend = reorder(Parameter, median),
+        color = 'Middle 90%'),
+    linewidth = 1.2,
+    lineend = 'round'
+  ) +
+  geom_segment(
+    aes(x = q12.5, xend = q87.5, yend = reorder(Parameter, median)),
+    linewidth = 4.8,
+    color = 'black',
+    lineend = 'round',
+    show.legend = FALSE
+  ) +
+  geom_segment(
+    aes(x = q12.5, xend = q87.5, yend = reorder(Parameter, median),
+        color = 'Middle 75%'),
+    linewidth = 4,
+    lineend = 'round'
+  ) +
+  geom_segment(
+    aes(x = q25, xend = q75, yend = reorder(Parameter, median)),
+    linewidth = 7.8,
+    color = 'black',
+    lineend = 'round',
+    show.legend = FALSE
+  ) +
+  geom_segment(
+    aes(x = q25, xend = q75, yend = reorder(Parameter, median),
+        color = 'Middle 50%'),
+    linewidth = 7,
+    lineend = 'round'
+  ) +
+
+  # median outline
+  geom_point(
+    aes(x = median),
+    size = 4,
+    color = 'black',
+    show.legend = FALSE
+  ) +
+  geom_point(
+    aes(x = median, color = 'Median'),
+    size = 3
+  ) +
+  scale_color_manual(
+    name = NULL,
+    values = c(
+      'Middle 90%' = 'gray80',
+      'Middle 75%' = 'pink',
+      'Middle 50%' = 'lightblue',
+      'Median' = 'red'
+    ),
+    breaks = c('Middle 90%', 'Middle 75%', 'Middle 50%', 'Median')
+  ) +
+
+  theme_bw() +
+  labs(
+    x = 'Percent Error',
+    y = 'Parameter'
+  )
+```
+
+```{r}
+df_out <- df_tal %>%
+  group_by(Parameter) %>%
+  summarize(
+    n = n(),
+    mean = mean(CalPctError, na.rm = TRUE),
+    sd = sd(CalPctError, na.rm = TRUE),
+    median = median(CalPctError, na.rm = TRUE),
+    q05 = quantile(CalPctError, 0.05, na.rm = TRUE),
+    q12.5 = quantile(CalPctError, 0.125, na.rm = TRUE),
+    q25 = quantile(CalPctError, 0.25, na.rm = TRUE),
+    q75 = quantile(CalPctError, 0.75, na.rm = TRUE),
+    q87.5 = quantile(CalPctError, 0.875, na.rm = TRUE),
+    q95 = quantile(CalPctError, 0.95, na.rm = TRUE),
+    .groups = 'drop'
+  )
+
+kable(df_out, digits = 2)
+```
+
+**Conclusions**
+
+For all parameters, ~50% of the data is between (9,0) percent less than the expected value. All parameters appear negatively skewed.
+
+## Absolute Variance
+
+We're also interested, in absolute terms, what the percent errors for the data are.
+
+```{r}
+ggplot(df_tal, aes(x = abs(CalPctError))) +
+  geom_histogram(
+    bins = 30,
+    color = 'black',
+    fill = 'gray80'
+  ) +
+  facet_wrap(~ Parameter, scales = 'free_y') +
+  theme_bw() +
+  labs(
+    x = 'Absolute Percent Error',
+    y = 'Count'
+  )
+```
+
+```{r}
+df_tal <- df_tal %>%
+  mutate(AbsCalPctError = abs(CalPctError))
+
+q_tbl <- df_tal %>%
+  group_by(Parameter) %>%
+  summarize(
+    q25 = quantile(AbsCalPctError, 0.25, na.rm = TRUE),
+    q50 = quantile(AbsCalPctError, 0.50, na.rm = TRUE),
+    q75 = quantile(AbsCalPctError, 0.75, na.rm = TRUE),
+    q90 = quantile(AbsCalPctError, 0.90, na.rm = TRUE),
+    .groups = 'drop'
+  ) %>%
+  pivot_longer(
+    cols = c(q25, q50, q75, q90),
+    names_to = 'quantile',
+    values_to = 'xval'
+  ) %>%
+  mutate(
+    cum = case_when(
+      quantile == 'q25' ~ 0.25,
+      quantile == 'q50' ~ 0.50,
+      quantile == 'q75' ~ 0.75,
+      quantile == 'q90' ~ 0.90
+    ),
+    label = paste0(quantile, ' = ', round(xval, 1), '%')
+  )
+
+ggplot(df_tal, aes(x = AbsCalPctError)) +
+  stat_ecdf(geom = 'step') +
+  geom_segment(
+    data = q_tbl,
+    aes(x = 0, xend = xval, y = cum, yend = cum),
+    inherit.aes = FALSE,
+    linetype = 'dashed',
+    color = 'gray40'
+  ) +
+  geom_segment(
+    data = q_tbl,
+    aes(x = xval, xend = xval, y = 0, yend = cum),
+    inherit.aes = FALSE,
+    linetype = 'dashed',
+    color = 'gray40'
+  ) +
+  geom_point(
+    data = q_tbl,
+    aes(x = xval, y = cum),
+    inherit.aes = FALSE,
+    shape = 21,
+    fill = 'pink',
+    color = 'red',
+    size = 2
+  ) +
+  facet_wrap(~ Parameter, scales = 'free_x') +
+  theme_bw() +
+  labs(
+    x = 'Absolute Percent Error',
+    y = 'Cumulative Proportion'
+  )
+```
+
+```{r}
+q_tbl %>%
+  select(Parameter, quantile, xval) %>%
+  pivot_wider(
+    names_from = quantile,
+    values_from = xval
+  ) %>%
+  kable(digits = 2)
+```
+
+Across parameters, 25% of observations had absolute percent error within ~2% of the expected value. The median absolute percent error was ~5.5%, meaning half the observations had an absolute error greater than/less than that. 75% of observations were within ~10% and 90% were within ~14%, meaning 10% of the data had absolute errors greater than 14%.
+
+For reference, for each parameter, these error percentages would convert to:
+
+```{r}
+df_tal %>%
+  group_by(Parameter) %>%
+  summarize(
+    mean = mean(ExpectVal, na.rm = TRUE),
+    five_pct = 0.05 * mean,
+    ten_pct = 0.10 * mean,
+    fifteen_pct = 0.15 * mean,
+    .groups = 'drop'
+  ) %>%
+  kable(digits = 2)
+```
+
+# Overall Conclusions
+
+If the 2-point calibration wasn't needed, we'd assume the percent error of the upper calibration point would be, on average, ~0, and that most data would have an error percentage close to that value. We found that the pre-cal values were systematically biased downward, and that 90% of the data are within ~14% absolute error from the standard value. How severe this result is is dependent on what the tolerable level of error is for each parameter, though the clear bias across all parameters should definitely be noted.

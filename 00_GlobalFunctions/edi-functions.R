@@ -1,8 +1,15 @@
-source('00_GlobalFunctions/functions.R')
+source(here::here('00_GlobalFunctions/functions.R')) # a bad way to do this
+
+
+# TODO: I believe the only major step left is filtering out un-needed columns;
+# also API -> csv updates
 
 format_edi <- function(df = df) {
   
   # select columns
+  ## TODO: names will differ if using csv
+  ## TODO: API splits "Observed DateTime" into "Observed Date" and "Observed Time";
+  ## will have to add that step in if using csv
   df %>%
     select(
       samplingLocation,
@@ -22,6 +29,7 @@ format_edi <- function(df = df) {
     )
 
   # fix detection condition
+  ## TODO: maybe dif with the csv?
   df <- df %>%
     mutate(
       detectionCondition = case_when(
@@ -31,6 +39,7 @@ format_edi <- function(df = df) {
     )
   
   # rename cols
+  ## TODO: assumes you pulled from API; names will differ if not
   df <- df %>%
     rename(
       Station = samplingLocation,
@@ -48,6 +57,7 @@ format_edi <- function(df = df) {
     )
   
   # date to datetype
+  # TODO: if directly from csv, "Date" doesn't exist, need to seperate Observed DateTime first
   df <- df %>%
     mutate(
       Date = as.Date(Date, format = '%Y-%m-%d')
@@ -57,10 +67,10 @@ format_edi <- function(df = df) {
 check_analytes <- function(df, year = 'all', return_df = FALSE) {
   
   # read analyte reference list
-  df_analytes <- read_csv('00_GlobalFunctions/dwq_analytes.csv', show_col_types = FALSE)
+  df_analytes <- read_csv(here::here('00_GlobalFunctions/dwq_analytes.csv'), show_col_types = FALSE)
   
   # read active stations
-  df_stations <- read_csv('00_GlobalFunctions/station_names.csv', show_col_types = FALSE) %>%
+  df_stations <- read_csv(here::here('00_GlobalFunctions/station_names.csv'), show_col_types = FALSE) %>%
     filter(Status == 'active')
   
   valid_analytes <- unique(df_analytes$Analyte)

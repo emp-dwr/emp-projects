@@ -1,0 +1,405 @@
+# Load Packages/Read in Data
+
+```{r}
+library(tidyverse)
+source(here::here('00_GlobalFunctions/functions.R'))
+```
+
+Read in data from SharePoint
+```{r}
+# Count Data
+df_count <- abs_path_emp('Benthic/AQUARIUS Samples Database/Database Migration/Raw Benthic Data/Count Data/COMPILED Benthic data 1975-2025 for EDI input.csv')
+
+df_count <- read_csv(df_count, col_types = cols(.default = col_character()))
+
+# Taxonomist Sample Data
+df_samp <- abs_path_emp('Benthic/AQUARIUS Samples Database/Database Migration/Raw Benthic Data/Sample Data/COMPILED Benthic sample data 1975-2025.csv')
+
+df_samp <- read_csv(df_samp, col_types = cols(.default = col_character()))
+
+# Taxa Data
+fp_codes <- abs_path_emp('Benthic/AQUARIUS Samples Database/Database Migration/Raw Benthic Data/Benthic organism keylist 2026.csv')
+
+df_codes <- read_csv(fp_codes, col_types = cols(.default = col_character()))
+```
+
+# Format
+
+Format dates
+```{r}
+df_samp <- df_samp %>%
+  mutate(Date = as.Date(Date, format = '%m/%d/%Y'))
+
+df_count <- df_count %>%
+  mutate(Date = as.Date(Date))
+```
+
+Add Main Station
+```{r}
+df_samp <- df_samp %>%
+  mutate(MainStation = sub('-.*', '', Station))
+
+df_count <- df_count %>%
+  mutate(MainStation = sub('-.*', '', Station))
+```
+
+
+# Remove bad samples
+```{r}
+df_samp %>%
+  filter((Date == '2023-10-10' & Station == 'D41A-C') |
+           (Date == '2022-12-21' & Station == 'P8-R'))
+```
+
+```{r}
+df_samp <- df_samp %>%
+  filter(!((Date == '2023-10-10' & Station == 'D41A-C') |
+           (Date == '2022-12-21' & Station == 'P8-R')))
+```
+
+# Check Codes
+
+All codes are in keylist
+```{r}
+setdiff(df_count$OrganismCode, df_codes$OrganismCode)
+```
+
+Only one code per lab ID
+```{r}
+df_count %>% group_by(LabSampleNumber, OrganismCode) %>% filter(n() > 1)
+```
+
+Only one code per Date/Station/Grab
+```{r}
+df_count %>% group_by(Date, Station, Grab) %>% filter(duplicated(OrganismCode))
+```
+
+# Check multiple dates per station
+
+```{r}
+df_samp %>%
+  distinct(Station, Year, Month, Date) %>%
+  group_by(Station, Year, Month) %>%
+  filter(n() > 1) %>%
+  summarize(dates = paste(sort(Date), collapse = ', '), n = n(), .groups = 'drop')
+
+df_count %>%
+  distinct(Station, Year, Month, Date) %>%
+  group_by(Station, Year, Month) %>%
+  filter(n() > 1) %>%
+  summarize(dates = paste(sort(Date), collapse = ', '), n = n(), .groups = 'drop')
+```
+
+```{r}
+df_samp %>%
+  filter(Date == '1988-04-01') %>%
+  select(Station, Month) %>%
+  distinct()
+```
+
+```{r}
+# fix samp issues
+df_samp <- df_samp %>%
+  # Remove specified rows
+  filter(!(Date == as.Date('2006-06-09') & Station == 'C9-L')) %>%
+  filter(!(Date == as.Date('2006-08-08') & Station == 'C9-L')) %>%
+  # Change Month from "April" to "March" for 1988-04-01 rows at specific stations
+  mutate(Month = ifelse(Date == as.Date('1988-04-01') &
+                          Station %in% c('D28A-L', 'D28A-R', 'D7-C', 'D4-R', 'D4-C','D4-L'),
+                        'March', Month)) %>%
+  # Change Date for specific (Date, Station, Grab) rows
+  mutate(Date = case_when(
+    Date == as.Date('2020-02-10') & Station == 'D41A-C' ~ as.Date('2020-02-11'),
+    Date == as.Date('2024-11-14') & Station == 'D7-C' ~ as.Date('2024-11-13'),
+    Date == as.Date('2025-02-11') & Station == 'D6-R' & Grab == 4 ~ as.Date('2025-02-12'),
+    Date == as.Date('2025-11-19') & Station == 'D7-C' & Grab == 4 ~ as.Date('2025-11-18'),
+    TRUE ~ Date
+  ))
+```
+
+```{r}
+# fix count dates
+df_count <- df_count %>%
+   mutate(Date = case_when(
+     Date == as.Date('2020-02-10') & Station == 'D41A-C' ~ as.Date('2020-02-11'),
+    Date == as.Date('2024-11-14') & Station == 'D7-C' ~ as.Date('2024-11-13'),
+    Date == as.Date('2025-02-11') & Station == 'D6-R' & Grab == 4 ~ as.Date('2025-02-12'),
+    Date == as.Date('2025-11-19') & Station == 'D7-C' & Grab == 4 ~ as.Date('2025-11-18'),
+    TRUE ~ Date
+  ))
+```
+
+check again
+```{r}
+df_samp %>%
+  distinct(Station, Year, Month, Date) %>%
+  group_by(Station, Year, Month) %>%
+  filter(n() > 1) %>%
+  summarize(dates = paste(sort(Date), collapse = ', '), n = n(), .groups = 'drop')
+
+df_count %>%
+  distinct(Station, Year, Month, Date) %>%
+  group_by(Station, Year, Month) %>%
+  filter(n() > 1) %>%
+  summarize(dates = paste(sort(Date), collapse = ', '), n = n(), .groups = 'drop')
+```
+
+# check multiple stations per main station
+
+Keep for now
+```{r}
+df_samp %>%
+  distinct(MainStation, Station, Year, Month) %>%
+  group_by(MainStation, Year, Month) %>%
+  filter(n_distinct(Station) > 1) %>%
+  summarise(stations = paste(sort(unique(Station)), collapse = ', '),
+            n = n_distinct(Station),
+            .groups = 'drop') %>%
+  arrange(Year, Month, MainStation)
+```
+
+```{r}
+df_count %>%
+  distinct(MainStation, Station, Year, Month) %>%
+  group_by(MainStation, Year, Month) %>%
+  filter(n_distinct(Station) > 1) %>%
+  summarise(stations = paste(sort(unique(Station)), collapse = ', '),
+            n = n_distinct(Station),
+            .groups = 'drop') %>%
+  arrange(Year, Month, MainStation)
+```
+
+# Check Count/Samp
+
+## check mismatched lab samples
+
+```{r}
+bind_rows(
+  df_samp  %>% distinct(LabSampleNumber, Date, Station) %>% mutate(src = 'df_samp'),
+  df_count %>% distinct(LabSampleNumber, Date, Station) %>% mutate(src = 'df_count')
+) %>%
+  group_by(LabSampleNumber, Station) %>%
+  filter(n_distinct(Date) > 1) %>%
+  ungroup() %>%
+  pivot_wider(names_from = src, values_from = Date,
+              values_fn = ~ paste(sort(unique(.x)), collapse = ', '))
+```
+
+Fix D6 count date
+
+```{r}
+df_count <- df_count %>%
+  mutate(Date = if_else(Station == 'D6-R' & Date == as.Date('2023-01-20'),
+                        as.Date('2023-01-19'), Date))
+```
+
+
+## Check if there's missing events
+
+```{r}
+# in count but not samp
+df_miss_samp <- anti_join(
+  df_count %>% distinct(Date, Station, Grab),
+  df_samp  %>% distinct(Date, Station, Grab),
+  by = c('Date', 'Station', 'Grab')
+)
+
+# in samp but not count
+df_miss_count <- anti_join(
+  df_samp  %>% distinct(Date, Station, Grab),
+  df_count %>% distinct(Date, Station, Grab),
+  by = c('Date', 'Station', 'Grab')
+)
+
+df_miss_samp
+df_miss_count
+```
+
+```{r}
+df_count %>%
+  distinct(Date, Station, Grab, LabSampleNumber) %>%
+  full_join(
+    df_samp %>% distinct(Date, Station, Grab, LabSampleNumber),
+    by = c('Date', 'Station', 'Grab'),
+    suffix = c('_count', '_samp')
+  ) %>%
+  filter(LabSampleNumber_count != LabSampleNumber_samp |
+         is.na(LabSampleNumber_count) | is.na(LabSampleNumber_samp))
+```
+
+
+Might be real?
+
+
+# Format for Export
+
+```{r}
+target_cols <- c(
+  'Observation ID', 'Location ID', 'Observed Property ID', 'Observed DateTime',
+  'Analyzed DateTime', 'Depth', 'Depth Unit', 'Data Classification', 'Result Value',
+  'Result Unit', 'Result Status', 'Result Grade', 'Medium', 'Activity Name',
+  'Activity ID', 'Collection Method', 'Field: Device ID', 'Field: Device Type',
+  'Field: Comment', 'Lab: Specimen Name', 'Lab: Analysis Method',
+  'Lab: Detection Condition', 'Lab: Limit Type', 'Lab: MDL', 'Lab: MRL',
+  'Lab: Quality Flag', 'Lab: Received DateTime', 'Lab: Prepared DateTime',
+  'Lab: Sample Fraction', 'Lab: From Laboratory', 'Lab: Sample ID',
+  'Lab: Dilution Factor', 'Lab: Comment', 'QC: Type', 'QC: Source Sample ID',
+  'EA_Sample Event ID', 'EA_Month', 'EA_Year', 'EA_Taxa Sample ID',
+  'EA_Grab Number', 'EA_Size Bin', 'EA_Main Station', 'EA_Station Position'
+)
+
+add_common <- function(df) {
+  df %>% mutate(
+    `Location ID` = Station,
+    `Observed DateTime` = format(as.Date(Date), '%Y-%m-%d 12:00 [PST]'),
+    `Analyzed DateTime` = '1950-01-01 12:00 [PST]',
+    Depth = 3,
+    `Depth Unit` = 'ft',
+    `Data Classification` = 'FIELD_SURVEY',
+    `Result Status` = 'Reviewed',
+    `Result Grade` = 'Good',
+    Medium = 'Water',
+    `EA_Sample Event ID` = paste0(
+      format(as.Date(Date), '%m%y'), '_',
+      gsub('-', '', Station), '_01'
+    ),
+    EA_Month = Month,
+    EA_Year = Year,
+    `EA_Grab Number` = Grab,
+    `EA_Main Station` = sub('-.*', '', `Location ID`),
+    `EA_Station Position` = ifelse(grepl('-', `Location ID`),
+                                   sub('.*-', '', `Location ID`),
+                                   NA_character_)
+  )
+}
+
+# format df_count
+# Organism/Count rows — one per organism per grab
+df_count_organism <- df_count %>%
+  add_common() %>%
+  mutate(
+    `Activity Name` = paste('All: Taxa Grab', Grab),
+    `Lab: Specimen Name` = OrganismCode
+  ) %>%
+  pivot_longer(
+    cols = c(OrganismCode, Count),
+    names_to = 'Observed Property ID',
+    values_to = 'Result Value'
+  ) %>%
+  mutate(
+    `Observed Property ID` = recode(`Observed Property ID`,
+      'OrganismCode' = 'Organism Number',
+      'Count'        = 'Count (Taxa All)'
+    ),
+    `Result Unit` = ifelse(`Observed Property ID` == 'Count (Taxa All)', 'individuals', NA),
+    `Result Value` = as.character(`Result Value`)
+  ) %>%
+  filter(!is.na(`Result Value`))
+
+# Taxa Sample ID rows — one per grab
+df_count_sampleid <- df_count %>%
+  distinct(Date, Station, Month, Year, Grab, LabSampleNumber) %>%
+  add_common() %>%
+  mutate(
+    `Observed Property ID` = 'Taxa Sample ID',
+    `Result Value` = as.character(LabSampleNumber),
+    `Result Unit` = NA_character_,
+    `Activity Name` = 'Metadata',
+    `Lab: Specimen Name` = paste('Taxa Grab', Grab)
+  ) %>%
+  filter(!is.na(`Result Value`))
+
+df_count_format <- bind_rows(df_count_organism, df_count_sampleid)
+
+# format df_samp (sediment + comment + sample volume + subsample size + Taxa Sample ID rows)
+sediment_map <- c(
+  VegDetritus_Lab   = 'Vegetative Detritus (Taxa)',
+  ShellFragment_Lab = 'Shell Fragment (Taxa)',
+  Sand_Lab          = 'Sand (Taxa)',
+  Peat_Lab          = 'Peat (Taxa)',
+  Mica_Lab          = 'Mica (Taxa)',
+  Gravel_Lab        = 'Gravel (Taxa)',
+  HardClay_Lab      = 'Hard Clay (Taxa)',
+  WormTubes_Lab     = 'Worm Tubes (Taxa)',
+  Other_Lab         = 'Other (Taxa)'
+)
+
+df_samp_format <- df_samp %>%
+  add_common() %>%
+  mutate(
+    Comment_Lab = ifelse(Comment_Lab == 'n/p', NA, Comment_Lab)
+  ) %>%
+  pivot_longer(
+    cols = c(all_of(names(sediment_map)), Comment_Lab,
+             BenthicSampleVol, SubSampleSize, LabSampleNumber),
+    names_to = 'Observed Property ID',
+    values_to = 'Result Value',
+    values_transform = list(`Result Value` = as.character)
+  ) %>%
+  mutate(
+    `Observed Property ID` = recode(`Observed Property ID`,
+      !!!sediment_map,
+      'Comment_Lab'      = 'Sediment Description (Taxa)',
+      'BenthicSampleVol' = 'Sample Volume',
+      'SubSampleSize'    = 'SubSample Size',
+      'LabSampleNumber'  = 'Taxa Sample ID'
+    ),
+    `Activity Name` = ifelse(`Observed Property ID` %in% c('Sample Volume', 'SubSample Size', 'Taxa Sample ID'),
+                             'Metadata', 'Sediment'),
+    `Lab: Specimen Name` = paste('Taxa Grab', Grab),
+    `Result Unit` = case_when(
+      `Observed Property ID` == 'Sediment Description (Taxa)' ~ NA_character_,
+      `Observed Property ID` == 'SubSample Size'              ~ NA_character_,
+      `Observed Property ID` == 'Taxa Sample ID'              ~ NA_character_,
+      `Observed Property ID` == 'Sample Volume'               ~ 'mL',
+      TRUE                                                    ~ 'percent'
+    )
+  ) %>%
+  filter(!is.na(`Result Value`))
+
+missing_cols_count <- setdiff(target_cols, colnames(df_count_format))
+df_count_format[missing_cols_count] <- NA
+df_count_format <- df_count_format[, target_cols]
+
+missing_cols_samp <- setdiff(target_cols, colnames(df_samp_format))
+df_samp_format[missing_cols_samp] <- NA
+df_samp_format <- df_samp_format[, target_cols]
+```
+
+## Check
+
+all the lab sample numbers agree
+```{r}
+df_count_sampleids <- df_count %>%
+  distinct(Date, Station, Grab, count_id = LabSampleNumber)
+
+df_samp_sampleids <- df_samp %>%
+  distinct(Date, Station, Grab, samp_id = LabSampleNumber)
+
+comparison <- full_join(df_count_sampleids, df_samp_sampleids,
+                        by = c('Date', 'Station', 'Grab')) %>%
+  mutate(status = case_when(
+    is.na(count_id) & !is.na(samp_id) ~ 'only in samp',
+    !is.na(count_id) & is.na(samp_id) ~ 'only in count',
+    count_id == samp_id                ~ 'agree',
+    TRUE                               ~ 'disagree'
+  ))
+
+comparison %>% filter(status != 'agree')
+```
+
+all agree. can get rid of one in df_count
+
+```{r}
+df_count_format <- df_count_format %>%
+  filter(`Observed Property ID` != 'Taxa Sample ID')
+```
+
+
+```{r}
+df_count <- df_count_format
+df_samp <- df_samp_format
+
+save(df_count, file = here::here('02_Benthic/Aquarius/historical-imports/data/count_data.rda'))
+save(df_samp, file = here::here('02_Benthic/Aquarius/historical-imports/data/samp_data.rda'))
+```

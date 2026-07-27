@@ -1,7 +1,13 @@
 # R
+# Library
+renv/library/
+
 # History files
 .Rhistory
 .Rapp.history
+
+# Profiles...for now???
+.Rprofile
 
 # Session Data files
 .RData
@@ -170,3 +176,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 .positai
+# pixi environments
+.pixi/*
+!.pixi/config.toml

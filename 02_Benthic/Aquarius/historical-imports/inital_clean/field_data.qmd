@@ -1,0 +1,856 @@
+# Load Packages/Read in Data
+
+```{r}
+library(tidyverse)
+source(here::here('00_GlobalFunctions/functions.R'))
+```
+
+Read in data from Sharepoint
+```{r}
+fp_raw <- abs_path_emp('Benthic/AQUARIUS Samples Database/Database Migration/Raw Benthic Data/Field Data/COMPILED Benthic field data 1975-2024.csv')
+
+df_raw <- read_csv(fp_raw, col_types = cols(.default = col_character()))
+```
+
+# Initial Clean
+
+Remove unneeded columns
+```{r}
+# saved in location data
+df_field <- df_raw %>%
+  select(-c(Survey, StationName, StationPosition))
+
+# no data
+df_field <- df_field %>%
+  select(-starts_with('...'))
+```
+
+Check/Fix Stations
+```{r}
+unique(df_field$Station)
+
+df_field %>%
+  filter(Station == 'D41-A')
+
+
+# fix D41-A to D41A-C
+df_field <- df_field %>%
+  mutate(Station = ifelse(Station == 'D41-A', 'D41A-C', Station))
+```
+
+Convert Date
+```{r}
+df_field$Date <- as.Date(df_field$Date, format = '%m/%d/%Y')
+
+# unique(df_field$Date)
+```
+
+Fix bad date
+```{r}
+df_field <- df_field %>%
+  mutate(Date = if_else(Month == 'September' & Year == 2024 & Station == 'D7-C',
+                        as.Date('2024-09-12'), Date))
+```
+
+
+
+Remove row with NA date (not sampled)
+```{r}
+df_field <- df_field %>%
+  filter(!is.na(Date))
+```
+
+
+# Ask Betsy
+
+## Time_PST
+
+Should it be rounded to nearest 5 minutes like WQ?
+
+Fix '12:10 PST' to '12:10'. ALso '.' to ':'
+
+```{r}
+df_field <- df_field %>%
+  mutate(
+    Time_PST = case_when(
+      Time_PST == '12:10 PST' ~ '12:10',
+      TRUE ~ Time_PST
+    )
+  )
+
+df_field <- df_field %>%
+  mutate(Time_PST = gsub('\\.', ':', Time_PST))
+```
+
+Fix non-military
+
+```{r}
+df_field <- df_field %>%
+  mutate(Time_PST = ifelse(
+    !is.na(Time_PST) & as.numeric(sub(':.*', '', Time_PST)) < 3,
+    sprintf('%d:%s',
+            as.numeric(sub(':.*', '', Time_PST)) + 12,
+            sub('^[^:]*:', '', Time_PST)),
+    Time_PST
+  ))
+```
+
+
+```{r}
+unique(df_field$Time_PST)
+```
+
+```{r}
+round_time <- function(x) {
+  out <- rep(NA_character_, length(x))
+  ok <- !is.na(x)
+  out[ok] <- format(round_date(as_datetime(paste0('2000-01-01 ', x[ok], ':00')),
+                               '5 minutes'), '%H:%M')
+  out
+}
+
+df_field <- df_field %>% mutate(Time_PST = round_time(Time_PST))
+
+unique(df_field$Time_PST)
+```
+
+## Tide
+
+Should tide be saved? Would you default to 'high' after a certain point? Ignore for current data? 96% NA.
+
+```{r}
+df_field <- df_field %>%
+  mutate(
+    Tide = tolower(Tide),
+    Tide = case_when(
+      Tide == 'flooding' ~ 'flood',
+      TRUE ~ Tide
+    )
+  )
+
+df_field %>% count(Tide)
+```
+
+## Sampling Staff
+
+Keep? Extended attribute? Part of sampling event? 72% NA.
+
+```{r}
+# remove \n's
+df_field$SamplingStaff <- gsub('\\s*\n\\s*', ' ', df_field$SamplingStaff)
+df_field$SamplingStaff <- gsub(' +', ' ', df_field$SamplingStaff)
+
+# unique(df_field$SamplingStaff)
+```
+
+
+## WQ Data taken on benthic
+
+Keep? Maybe at sampling event level? Or field metadata observation? 0% NA
+
+```{r}
+unique(df_field$WQ_data_taken_on_benthic)
+```
+
+## WQ benthic combined run 
+
+Keep? Maybe sampling event level? Or field metadata observation? < 1 % NA (only one NA).
+
+Set to "TRUE", "FALSE", and NA
+
+```{r}
+unique(df_field$WQ_benthic_combined_run)
+
+df_field <- df_field %>%
+  mutate(WQ_benthic_combined_run = case_when(
+    WQ_benthic_combined_run == 'yes' ~ TRUE,
+    WQ_benthic_combined_run == 'no' ~ FALSE,
+    WQ_benthic_combined_run == 'unknown' ~ NA,
+    TRUE ~ NA 
+  ))
+```
+
+## DO percent
+
+Lots of missing DO percent data, even when other data was taken:
+
+```{r}
+missing_doperc <- df_field %>% filter(is.na(DO_perc) & !is.na(DO_ugL))
+```
+
+## Missing Metadata
+
+Missing things like preservative and ponar size when I'm fairly sure it should be known.
+
+## Comments
+
+Field Comments commonly seem to be Sediment Comments + Biota combined.
+
+eg.:
+
+```{r}
+df_field %>%
+  filter(Comments_Field == 'Sediment was observed to be primarily silt with some fine clay on bottom.  Samples mostly contained shell fragments and worms. One corbula and one isopod were also observed in the samples.')
+```
+
+```{r}
+df_field %>%
+  filter(Comments_Field == 'Sand and mica.Worms, Corbicula')
+```
+
+Also sometimes exactly the same as Sediment Description, eg.:
+
+```{r}
+df_field %>%
+  filter(Comments_Field == 'Sediment was silt with sand and organics. Sediment was uniform throughout grab')
+```
+
+```{r}
+df_field %>%
+  filter(Comments_Field == 'Gray sand and tough peat, lots of amphipods, Corbicula (some small ~3 mm, a few v. large)')
+```
+
+Should this be addressed?
+
+Either way, remove the newlines:
+
+```{r}
+df_field$Comments_Field <- gsub('\\s*\n\\s*', ' ', df_field$Comments_Field)
+df_field$Comments_Field <- gsub(' +', ' ', df_field$Comments_Field)
+df_field$SedDesc_Field <- gsub('\\s*\n\\s*', ' ', df_field$SedDesc_Field)
+df_field$SedDesc_Field <- gsub(' +', ' ', df_field$SedDesc_Field)
+```
+
+
+# Metadata Check
+
+## Collection Method
+
+One odd value.
+
+```{r}
+unique(df_field$CollectionMethod)
+```
+
+Change F to PO and PO to 'Ponar Grab'
+
+```{r}
+df_field <- df_field %>%
+  mutate(
+    CollectionMethod = case_when(
+      CollectionMethod == 'PO' | CollectionMethod == 'F' ~ 'Ponar Grab',
+      TRUE ~ CollectionMethod
+    )
+  )
+```
+
+## Station, Ponar Size, Preservative, Year, Month
+
+All look good; change 'FO' to formalin.
+
+```{r}
+unique(df_field$Station)
+```
+
+```{r}
+unique(df_field$PonarSize)
+```
+fill in missing ponar size/preservative
+```{r}
+df_field <- df_field %>%
+  mutate(
+    PonarSize = ifelse(is.na(PonarSize), '0.052', PonarSize),
+    Preservative = ifelse(is.na(Preservative), 'FO', Preservative)
+  )
+```
+
+
+```{r}
+unique(df_field$Preservative)
+
+df_field <- df_field %>%
+  mutate(
+    Preservative = case_when(
+      Preservative == 'FO' ~ 'formalin',
+      TRUE ~ Preservative
+    )
+  )
+
+unique(df_field$Preservative)
+```
+
+
+
+```{r}
+unique(df_field$Year)
+unique(df_field$Month)
+```
+
+# Sediment Check
+
+Most seem plausible. However, a few don't add to 100 (or are NA).
+
+```{r}
+# no error; all good
+df_field <- df_field %>%
+  mutate(across(c(OrgMatter_Field, FineSand_Field, CoarseSand_Field,
+                  Mica_Field, Gravel_Field, Clay_Field, Silt_Field), 
+                as.numeric))
+
+unique(df_field$OrgMatter_Field)
+unique(df_field$FineSand_Field)
+unique(df_field$CoarseSand_Field)
+unique(df_field$Mica_Field)
+unique(df_field$Gravel_Field)
+unique(df_field$Clay_Field)
+unique(df_field$Silt_Field)
+```
+
+Odd rows:
+
+```{r}
+df_field %>%
+  mutate(row_sum = rowSums(pick(OrgMatter_Field, FineSand_Field, CoarseSand_Field,
+                                Mica_Field, Gravel_Field, Clay_Field, Silt_Field), 
+                           na.rm = TRUE)) %>%
+  count(row_sum)
+```
+
+
+```{r}
+odd_sed_counts <- df_field %>%
+  mutate(row_sum = rowSums(pick(OrgMatter_Field, FineSand_Field, CoarseSand_Field,
+                                Mica_Field, Gravel_Field, Clay_Field, Silt_Field), 
+                           na.rm = TRUE)) %>%
+  filter(!row_sum %in% c(0, 100))
+```
+
+Biota loook good.
+
+```{r}
+# unique(df_field$Biota)
+
+# remove newline characters
+df_field$Biota <- gsub('\\s*\n\\s*', ' ', df_field$Biota)
+df_field$Biota <- gsub(' +', ' ', df_field$Biota)
+```
+
+# Analyte Check
+
+Ones that are numeric are assumed okay (spot checked). Looking more into logical ones
+
+```{r}
+str(df_field)
+```
+
+## Temperature
+
+Convert to numeric.
+
+```{r}
+df_field <- df_field %>%
+  mutate(across(c(Temp_C), 
+                as.numeric))
+
+unique(df_field$Temp_C)
+```
+
+## pH
+
+Correct two values (7073 and 707).
+
+```{r}
+df_field <- df_field %>%
+  mutate(across(c(pH), as.numeric)) %>%
+  mutate(pH = round(pH, 2)) %>%
+  mutate(pH = case_when(
+    pH == 7073 ~ 7.73,
+    pH == 707 ~ 7.07,
+    TRUE ~ pH
+  ))
+
+unique(df_field$pH)
+```
+
+## Turbidity
+
+Fix a double decimal, round to 2 like DWQ
+
+```{r}
+df_field$Turb_FNU <- gsub('4\\.\\.3', '4.3', df_field$Turb_FNU)
+
+df_field <- df_field %>%
+  mutate(across(c(Turb_FNU), as.numeric)) %>%
+  mutate(Turb_FNU = round(Turb_FNU, 2))
+
+unique(df_field$Turb_FNU)
+```
+## Chla
+
+Round to 2 like DWQ
+
+```{r}
+df_field <- df_field %>%
+  mutate(across(c(Chla_mgL), as.numeric)) %>%
+  mutate(Chla_mgL = round(Chla_mgL, 2))
+```
+
+## DO mg/L
+
+Round to 2 like DWQ
+
+```{r}
+df_field <- df_field %>%
+  mutate(across(c(DO_ugL), as.numeric)) %>%
+  mutate(DO_ugL = round(DO_ugL,2))
+
+unique(df_field$DO_ugL)
+```
+
+## DO %
+
+Round to 1 like DWQ
+
+```{r}
+df_field <- df_field %>%
+  mutate(across(c(DO_perc), as.numeric)) %>%
+  mutate(DO_perc = round(DO_perc, 1))
+
+unique(df_field$DO_perc)
+```
+
+## Water Depth
+
+Round 1 like DWQ
+
+```{r}
+df_field <- df_field %>%
+  mutate(across(c(WaterDepth_ft), as.numeric)) %>%
+  mutate(WaterDepth_ft = round(WaterDepth_ft, 1))
+
+unique(df_field$WaterDepth_ft)
+```
+
+## Air Temp
+
+Round 1 like DWQ
+
+```{r}
+df_field <- df_field %>%
+  mutate(across(c(AirTemp_F), as.numeric)) %>%
+  mutate(AirTemp_F = round(AirTemp_F, 1))
+
+unique(df_field$AirTemp_F)
+```
+
+## Wind
+
+Check 'PC' value. Sky is 1, so a typo. Wind should be 15.5 here.
+
+Also note that Rain (1 -> N), WaveScale (N -> 1), Water Depth (50.9 -> 7.5),
+Air Temp (15.5 -> 50.9), DO percent (NA -> 89.8), and MC Score (NA -> 1) are wrong, so fixing those here as well.
+
+```{r}
+df_field %>%
+  filter(Wind_mph == 'PC')
+```
+
+```{r}
+df_field <- df_field %>%
+  mutate(
+    Wind_mph = case_when(
+      Station == 'D7-C' & Date == '2022-01-05' ~ '15.5',
+      TRUE ~ Wind_mph
+    ),
+    Sky = case_when(
+      Station == 'D7-C' & Date == '2022-01-05' ~ 'PC',
+      TRUE ~ Sky
+    ),
+    WaveScale = case_when(
+      Station == 'D7-C' & Date == '2022-01-05' ~ '1',
+      TRUE ~ WaveScale
+    ),
+    Rain = case_when(
+      Station == 'D7-C' & Date == '2022-01-05' ~ 'N',
+      TRUE ~ Rain
+    ),
+    MicrocystisScore = case_when(
+      Station == 'D7-C' & Date == '2022-01-05' ~ '1',
+      TRUE ~ MicrocystisScore
+    ),
+    AirTemp_F = case_when(
+      Station == 'D7-C' & Date == '2022-01-05' ~ 50.9,
+      TRUE ~ AirTemp_F
+    ),
+    WaterDepth_ft = case_when(
+      Station == 'D7-C' & Date == '2022-01-05' ~ 7.5,
+      TRUE ~ WaterDepth_ft
+    ),
+    DO_perc = case_when(
+      Station == 'D7-C' & Date == '2022-01-05' ~ 89.8,
+      TRUE ~ DO_perc
+    )
+  )
+```
+
+```{r}
+df_field %>%
+  filter(Station == 'D7-C' & Date == '2022-01-05')
+```
+
+Convert to numeric, round to 1 like DWQ
+
+```{r}
+df_field <- df_field %>%
+  mutate(across(c(Wind_mph), as.numeric)) %>%
+  mutate(Wind_mph = round(Wind_mph, 1))
+
+unique(df_field$Wind_mph)
+```
+
+## SpC
+
+Has commas, so fix that first. Round to nearest whole number as with DWQ.
+
+```{r}
+df_field$SC_uScm <- gsub(',', '', df_field$SC_uScm)
+df_field$SC_uScm <- as.integer(df_field$SC_uScm)
+
+unique(df_field$SC_uScm)
+```
+
+# Environment Variables
+
+## Sky
+
+D24 on 8/20/2024, change:
+- Sky (2 -> PC)
+- WaveScale (N -> 2)
+- Rain (1 -> N)
+- MC Score (NA -> 1)
+
+```{r}
+unique(df_field$Sky)
+
+df_field %>%
+  filter(Sky == '2')
+```
+
+```{r}
+df_field <- df_field %>%
+  mutate(
+    Sky = case_when(
+      Station == 'D24-L' & Date == '2024-08-20' ~ 'PC',
+      TRUE ~ Sky
+    ),
+    WaveScale = case_when(
+      Station == 'D24-L' & Date == '2024-08-20' ~ '2',
+      TRUE ~ WaveScale
+    ),
+    Rain = case_when(
+      Station == 'D24-L' & Date == '2024-08-20' ~ 'N',
+      TRUE ~ Rain
+    ),
+    MicrocystisScore = case_when(
+      Station == 'D24-L' & Date == '2024-08-20' ~ '1',
+      TRUE ~ MicrocystisScore
+    )
+  )
+```
+
+```{r}
+df_field %>%
+  filter(Station == 'D24-L' & Date == '2024-08-20')
+```
+
+## WaveScale
+
+Looks good.
+
+```{r}
+unique(df_field$WaveScale)
+```
+
+## Rain
+
+Looks good.
+
+```{r}
+unique(df_field$Rain)
+```
+## Microcystis Score
+
+Looks good.
+
+```{r}
+unique(df_field$MicrocystisScore)
+```
+# Plot numeric variables
+
+```{r}
+vars <- c("Temp_C", "SC_uScm", "pH", "Turb_FNU", "Chla_mgL", "DO_ugL", "DO_perc", "WaterDepth_ft", "AirTemp_F", "Wind_mph")
+
+for (var in vars) {
+  p <- df_field %>%
+    ggplot(aes(x = "", y = .data[[var]])) +
+    geom_boxplot(outlier.shape = NA) +
+    geom_jitter(alpha = 0.7, width = 0.2, size = 1, color = "steelblue") +
+    theme_bw() +
+    labs(x = NULL, y = var, title = var)
+  
+  print(p)
+}
+```
+
+```{r}
+df_field <- df_field %>%
+  mutate(AirTemp_F = case_when(
+    AirTemp_F == 798 ~ 79.8,
+    TRUE ~ AirTemp_F
+  ))
+
+df_field <- df_field %>%
+  mutate(Temp_C = case_when(
+    Temp_C == 927 ~ NA,
+    Temp_C == 3.34 ~ 9.34,
+    TRUE ~ Temp_C
+  ))
+
+df_field <- df_field %>%
+  mutate(SC_uScm = case_when(
+    Station == 'D16-L' & Date == '2021-06-21' ~ 927,
+    TRUE ~ SC_uScm
+  ))
+
+df_field <- df_field %>%
+  mutate(SC_uScm = case_when(
+    SC_uScm < 5 ~ NA,
+    TRUE ~ SC_uScm
+  ))
+```
+
+```{r}
+vars <- c("Temp_C", "SC_uScm", "pH", "Turb_FNU", "Chla_mgL", "DO_ugL", "DO_perc", "WaterDepth_ft", "AirTemp_F", "Wind_mph")
+
+for (var in vars) {
+  p <- df_field %>%
+    ggplot(aes(x = "", y = .data[[var]])) +
+    geom_boxplot(outlier.shape = NA) +
+    geom_jitter(alpha = 0.7, width = 0.2, size = 1, color = "steelblue") +
+    theme_bw() +
+    labs(x = NULL, y = var, title = var)
+  
+  print(p)
+}
+```
+
+```{r}
+# zoomed SC_uScm
+df_field %>%
+  ggplot(aes(x = "", y = SC_uScm)) +
+  geom_boxplot(outlier.shape = NA) +
+  geom_jitter(alpha = 0.7, width = 0.2, size = 2, color = "steelblue") +
+  coord_cartesian(ylim = c(0, 500)) +
+  theme_bw()
+```
+
+
+```{r}
+for (var in vars) {
+  p <- df_field %>%
+    mutate(Month = month(Date, label = TRUE),
+           Year = factor(year(Date))) %>%
+    filter(year(Date) >= 2005) %>%
+    group_by(Year, Month) %>%
+    summarise(has_data = any(!is.na(.data[[var]])), .groups = "drop") %>%
+    ggplot(aes(x = Month, y = fct_rev(Year), fill = has_data)) +
+    geom_tile(color = "white") +
+    scale_fill_manual(values = c("TRUE" = "steelblue", "FALSE" = "grey90")) +
+    theme_bw() +
+    labs(title = var, fill = "Has Data", y = "Year")
+  
+  print(p)
+}
+```
+
+
+
+
+# Rename columns
+
+```{r}
+names(df_field)
+```
+
+
+
+```{r}
+df_field <- df_field %>%
+  rename(
+    'Air Temperature' = AirTemp_F,
+    'Chlorophyll a' = Chla_mgL,
+    'Sediment Description (Field)' = SedDesc_Field,
+    'Water Temperature' = Temp_C,
+    'Water Depth' = WaterDepth_ft,
+    'Specific Conductance' = SC_uScm,
+    'Turbidity' = Turb_FNU,
+    'Dissolved Oxygen' = DO_ugL,
+    'Dissolved Oxygen (percent)' = DO_perc,
+    'Sky Conditions' = Sky,
+    'MVI' = MicrocystisScore,
+    'Wind Speed' = Wind_mph,
+    'Wave Scale' = WaveScale,
+    'Fine Sand (Field)' = FineSand_Field,
+    'Coarse Sand (Field)' = CoarseSand_Field,
+    'Gravel (Field)' = Gravel_Field,
+    'Mica (Field)' = Mica_Field,
+    'Clay (Field)' = Clay_Field,
+    'Silt (Field)' = Silt_Field,
+    'Organic Matter (Field)' = OrgMatter_Field,
+    'Comments (Field)' = Comments_Field,
+    'Ponar Size' = PonarSize
+  )
+
+# remove
+df_field <- df_field %>% select(-c(WQ_data_taken_on_benthic))
+```
+
+```{r}
+names(df_field)
+```
+
+
+```{r}
+target_cols <- c(
+  'Observation ID', 'Location ID', 'Observed Property ID', 'Observed DateTime',
+  'Analyzed DateTime', 'Depth', 'Depth Unit', 'Data Classification', 'Result Value',
+  'Result Unit', 'Result Status', 'Result Grade', 'Medium', 'Activity Name',
+  'Activity ID', 'Collection Method', 'Field: Device ID', 'Field: Device Type',
+  'Field: Comment', 'Lab: Specimen Name', 'Lab: Analysis Method',
+  'Lab: Detection Condition', 'Lab: Limit Type', 'Lab: MDL', 'Lab: MRL',
+  'Lab: Quality Flag', 'Lab: Received DateTime', 'Lab: Prepared DateTime',
+  'Lab: Sample Fraction', 'Lab: From Laboratory', 'Lab: Sample ID',
+  'Lab: Dilution Factor', 'Lab: Comment', 'QC: Type', 'QC: Source Sample ID',
+  'EA_Sample Event ID', 'EA_Month', 'EA_Year', 'EA_Taxa Sample ID',
+  'EA_Grab Number', 'EA_Size Bin', 'EA_Main Station', 'EA_Station Position'
+)
+
+# Property groups
+metadata_field_props <- c('Ponar Size', 'Preservative', 'Water Depth',
+                          'Sampling Staff', 'Combined Run', 'Time', 'Comments (Field)')
+sediment_props <- c('Organic Matter (Field)', 'Fine Sand (Field)', 'Coarse Sand (Field)',
+                    'Mica (Field)', 'Gravel (Field)', 'Clay (Field)', 'Silt (Field)',
+                    'Sediment Description (Field)', 'Biota')
+wq_props <- c('Water Temperature', 'Specific Conductance', 'pH', 'Turbidity',
+              'Chlorophyll a', 'Dissolved Oxygen', 'MVI')
+weather_props <- c('Air Temperature', 'Wind Speed', 'Sky Conditions', 'Wave Scale', 'Rain')
+
+# Property -> Result Unit
+unit_map <- c(
+  'Ponar Size'                   = 'mm',
+  'Preservative'                 = NA,
+  'Water Depth'                  = 'ft',
+  'Sampling Staff'               = NA,
+  'Combined Run'                 = NA,
+  'Time'                         = NA,
+  'Organic Matter (Field)'       = 'percent',
+  'Fine Sand (Field)'            = 'percent',
+  'Coarse Sand (Field)'          = 'percent',
+  'Mica (Field)'                 = 'percent',
+  'Gravel (Field)'               = 'percent',
+  'Clay (Field)'                 = 'percent',
+  'Silt (Field)'                 = 'percent',
+  'Sediment Description (Field)' = NA,
+  'Comments (Field)'             = NA,
+  'Biota'                        = NA,
+  'Water Temperature'            = 'degC',
+  'Specific Conductance'         = 'uS/cm',
+  'pH'                           = 'unitless',
+  'Turbidity'                    = 'NTU',
+  'Chlorophyll a'                = 'mg/L',
+  'Dissolved Oxygen'             = 'ug/L',
+  'Air Temperature'              = 'degF',
+  'Wind Speed'                   = 'mph',
+  'Sky Conditions'               = NA,
+  'Wave Scale'                   = NA,
+  'Rain'                         = NA,
+  'MVI'                          = NA
+)
+
+df_format <- df_field %>%
+  mutate(
+    `Location ID` = Station,
+    `Observed DateTime` = paste0(format(as.Date(Date), '%Y-%m-%d'), ' 12:00 [PST]'),
+    `Analyzed DateTime` = '1950-01-01 12:00 [PST]',
+    Depth = 3,
+    `Depth Unit` = 'ft',
+    `Data Classification` = 'FIELD_SURVEY',
+    `Result Status` = 'Reviewed',
+    `Result Grade` = 'Good',
+    Medium = 'Water',
+    `EA_Sample Event ID` = paste0(
+      format(as.Date(Date), '%m%y'), '_',
+      gsub('-', '', Station), '_01'
+    ),
+    EA_Month = Month,
+    EA_Year = Year,
+    `EA_Main Station` = sub('-.*', '', `Location ID`),
+    `EA_Station Position` = ifelse(grepl('-', `Location ID`),
+                                   sub('.*-', '', `Location ID`),
+                                   NA_character_)
+  ) %>%
+  rename(
+    `Sampling Staff` = SamplingStaff,
+    `Combined Run`   = WQ_benthic_combined_run,
+    `Time`           = Time_PST
+  ) %>%
+  pivot_longer(
+    cols = c(`Ponar Size`, `Preservative`, `Water Depth`,
+             `Sampling Staff`, `Combined Run`, `Time`,
+             `Organic Matter (Field)`, `Fine Sand (Field)`, `Coarse Sand (Field)`,
+             `Mica (Field)`, `Gravel (Field)`, `Clay (Field)`, `Silt (Field)`,
+             `Comments (Field)`, `Sediment Description (Field)`,
+             `Biota`, `Water Temperature`, `Specific Conductance`, `pH`,
+             `Turbidity`, `Chlorophyll a`, `Dissolved Oxygen`, `Air Temperature`,
+             `Wind Speed`, `Sky Conditions`, `Wave Scale`, `Rain`, `MVI`),
+    names_to = 'Observed Property ID',
+    values_to = 'Result Value',
+    values_transform = list(`Result Value` = as.character)
+  ) %>%
+  mutate(
+    `Activity Name` = case_when(
+      `Observed Property ID` %in% sediment_props        ~ 'Sediment',
+      `Observed Property ID` %in% metadata_field_props  ~ 'Metadata',
+      TRUE                                              ~ 'Field Data'
+    ),
+    `Lab: Specimen Name` = case_when(
+      `Activity Name` == 'Sediment'                    ~ 'Field',
+      `Observed Property ID` %in% metadata_field_props ~ 'Field',
+      `Observed Property ID` %in% wq_props             ~ 'Water Quality',
+      `Observed Property ID` %in% weather_props        ~ 'Weather',
+      TRUE                                             ~ NA_character_
+    ),
+    `Collection Method` = case_when(
+      `Observed Property ID` == 'Comments (Field)'      ~ NA_character_,
+      `Observed Property ID` %in% weather_props         ~ NA_character_,
+      `Observed Property ID` %in% metadata_field_props  ~ NA_character_,
+      `Observed Property ID` == 'MVI'                   ~ NA_character_,
+      `Lab: Specimen Name` == 'Water Quality'           ~ 'YSI Sonde',
+      TRUE                                              ~ 'Ponar Grab'
+    ),
+    `Result Unit` = unname(unit_map[`Observed Property ID`])
+  ) %>%
+  filter(!is.na(`Result Value`))
+
+# Add any missing cols as NA
+missing_cols <- setdiff(target_cols, colnames(df_format))
+df_format[missing_cols] <- NA
+df_format <- df_format[, target_cols]
+```
+
+```{r}
+df_field <- df_format
+
+save(df_field, file = here::here('02_Benthic/Aquarius/historical-imports/data/field_data.rda'))
+```
+

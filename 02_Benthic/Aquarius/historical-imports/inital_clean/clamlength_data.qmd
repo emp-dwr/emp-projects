@@ -1,0 +1,128 @@
+# Load Packages/Read in Data
+
+```{r}
+library(tidyverse)
+source(here::here('00_GlobalFunctions/functions.R'))
+```
+
+Read in data from Sharepoint
+```{r}
+fp_raw <- abs_path_emp('Benthic/AQUARIUS Samples Database/Database Migration/Raw Benthic Data/Clam Length Data/COMPILED sizes_for_database.csv')
+
+df_raw <- read_csv(fp_raw, col_types = cols(.default = col_character()))
+
+fp_codes <- abs_path_emp('Benthic/AQUARIUS Samples Database/Database Migration/Raw Benthic Data/Benthic organism keylist 2026.csv')
+
+df_codes <- read_csv(fp_codes, col_types = cols(.default = col_character()))
+```
+
+# Check Codes
+
+All codes are in keylist
+```{r}
+setdiff(df_raw$OrganismCode, df_codes$OrganismCode)
+```
+
+Only one Code per Date/Station/Grab/Size class
+
+```{r}
+df_raw %>% group_by(Date, Station, Grab) %>% filter(duplicated(paste(OrganismCode, Size_class)))
+```
+
+Check there's only the two types of clams
+
+```{r}
+unique(df_raw$OrganismCode)
+```
+```{r}
+str(df_raw)
+```
+
+## fix the two wrong dates
+```{r}
+# fix count dates
+df_raw <- df_raw %>%
+   mutate(Date = case_when(
+    Date == '2020-02-10' & Station == 'D41A-C' ~ '2020-02-11',
+    Date == '2024-11-14' & Station == 'D7-C' ~ '2024-11-13',
+    Date == '2025-02-11' & Station == 'D6-R' & Grab == 4 ~ '2025-02-12',
+    Date == '2025-11-19' & Station == 'D7-C' & Grab == 4 ~ '2025-11-18',
+    TRUE ~ Date
+  ))
+```
+
+
+# Format for Export
+
+```{r}
+target_cols <- c(
+  'Observation ID', 'Location ID', 'Observed Property ID', 'Observed DateTime',
+  'Analyzed DateTime', 'Depth', 'Depth Unit', 'Data Classification', 'Result Value',
+  'Result Unit', 'Result Status', 'Result Grade', 'Medium', 'Activity Name',
+  'Activity ID', 'Collection Method', 'Field: Device ID', 'Field: Device Type',
+  'Field: Comment', 'Lab: Specimen Name', 'Lab: Analysis Method',
+  'Lab: Detection Condition', 'Lab: Limit Type', 'Lab: MDL', 'Lab: MRL',
+  'Lab: Quality Flag', 'Lab: Received DateTime', 'Lab: Prepared DateTime',
+  'Lab: Sample Fraction', 'Lab: From Laboratory', 'Lab: Sample ID',
+  'Lab: Dilution Factor', 'Lab: Comment', 'QC: Type', 'QC: Source Sample ID',
+  'EA_Sample Event ID', 'EA_Month', 'EA_Year', 'EA_Taxa Sample ID', 'EA_Grab Number', 'EA_Size Bin',
+  'EA_Main Station', 'EA_Station Position'
+)
+
+df_format <- df_raw %>%
+  mutate(
+    `Location ID` = Station,
+    `Observed DateTime` = format(as.Date(Date), '%Y-%m-%d 12:00 [PST]'),
+    `Analyzed DateTime` = '1950-01-01 12:00 [PST]',
+    Depth = 3,
+    `Depth Unit` = 'ft',
+    `Data Classification` = 'FIELD_SURVEY',
+    `Result Status` = 'Reviewed',
+    `Result Grade` = 'Good',
+    Medium = 'Water',
+    `Activity Name` = paste0(OrganismCode,': Taxa Grab ', Grab),
+    `Lab: Specimen Name` = ifelse(OrganismCode == 'No clams',
+                                  'No clams',
+                                  paste('Size Bin', Size_class)),
+    `EA_Sample Event ID` = paste0(
+      format(as.Date(Date), '%m%y'), '_',
+      gsub('-', '', Station), '_01'
+    ),
+    EA_Month = Month,
+    EA_Year = Year,
+    `EA_Grab Number` = Grab,
+    `EA_Size Bin` = Size_class,
+    `EA_Main Station` = sub('-.*', '', `Location ID`),
+    `EA_Station Position` = ifelse(grepl('-', `Location ID`),
+                                   sub('.*-', '', `Location ID`),
+                                   NA_character_)
+  ) %>%
+  pivot_longer(
+    cols = c(OrganismCode, Count),
+    names_to = 'Observed Property ID',
+    values_to = 'Result Value'
+  ) %>%
+  mutate(
+    `Observed Property ID` = recode(`Observed Property ID`,
+      'OrganismCode' = 'Organism Number',
+      'Count' = 'Count (Taxa Clams)'
+    ),
+    `Result Unit` = ifelse(`Observed Property ID` == 'Count (Taxa Clams)', 'individuals', NA)
+  )
+
+# Add any missing cols as NA
+missing_cols <- setdiff(target_cols, colnames(df_format))
+df_format[missing_cols] <- NA
+
+df_format <- df_format[, target_cols]
+```
+
+
+```{r}
+df_clamlen <- df_format
+
+save(df_clamlen, file = here::here('02_Benthic/Aquarius/historical-imports/data/clamlength_data.rda'))
+```
+
+
+
