@@ -24,7 +24,7 @@ getwd()
 #second, move the downloaded csv file from aquarius to the folder of your working directory
 
 #third, import the data (replacing everything in brackets with your own working directory and the file name)
-df_aqui <- read.csv("[YourWorkingDirectory]/[FileName.csv]")
+df_aqui <- read.csv("C:/Rcode/EDI Data/2025 annual EDI raw.csv")
 #Example: df_aqui <- read.csv("c:/Users/mpagliar/OneDrive - California Department of Water Resources/Documents/Github/emp-projects/AQS-observations-2025.csv")
 
 #Run if want to do a visual check
@@ -341,6 +341,6 @@ check <- check_duplicates(df_year, year = '2025', return_df = TRUE)
 df_year[df_year == ""] <- NA
 
 #Second, run the write.csv code replacing the brackets with your working directory and a new name for the file
-write_csv(df_year, "[YourWorkingDirectory]/[NewNameForFile.csv")
+write_csv(df_year, "C:/Rcode/EDI Data/DWQ_2025_EDI_Publish.csv")
 #Example: write_csv(df_year,"c:/Users/mpagliar/OneDrive - California Department of Water Resources/Documents/Github/emp-projects/edi_2025Data_CreatedJul072426.csv")
-
+```
