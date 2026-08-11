@@ -11,6 +11,11 @@ Read in data from SharePoint
 df_raw <- abs_path_emp('Benthic/AQUARIUS Samples Database/Database Migration/Raw Benthic Data/Sediment Data/COMPILED DWR EMP Sediment Data 1975-2022.csv')
 
 df_raw <- read_csv(df_raw, col_types = cols(.default = col_character()))
+
+# Missing Data
+df_miss <- abs_path_emp('Benthic/AQUARIUS Samples Database/Database Migration/Raw Benthic Data/Metadata/benthic_missing_data.csv')
+
+df_miss <- read_csv(df_miss, col_types = cols(.default = col_character()))
 ```
 
 # Format
@@ -33,7 +38,92 @@ Check stations
 sort(unique(df_raw$Station))
 ```
 
-Missing Dates
+# Dates
+
+## Field/Sed Dates
+
+```{r}
+field_dates <- df_field %>%
+  mutate(Field_Date = as.Date(`Observed DateTime`)) %>%
+  group_by(`Location ID`, EA_Month, EA_Year) %>%
+  filter(n_distinct(Field_Date) == 1) %>%
+  distinct(
+    Station = `Location ID`,
+    Month = month(Field_Date, label = TRUE, abbr = FALSE),
+    Year = as.character(year(Field_Date)),
+    Field_Date
+  ) %>%
+  ungroup()
+
+raw_dates <- df_raw %>%
+  mutate(
+    Raw_Date = as.Date(Date),
+    Month = month(Raw_Date, label = TRUE, abbr = FALSE) |> as.character(),
+    Year = as.character(year(Raw_Date))
+  ) %>%
+  group_by(Station, Month, Year) %>%
+  filter(n_distinct(Raw_Date) == 1) %>%
+  distinct(Station, Month, Year, Raw_Date) %>%
+  ungroup()
+
+field_dates %>%
+  inner_join(raw_dates, by = c('Station', 'Month', 'Year')) %>%
+  filter(Field_Date != Raw_Date) %>%
+  arrange(Year, Month, Station)
+
+date_mismatches <- field_dates %>%
+  inner_join(
+    raw_dates,
+    by = c('Station', 'Month', 'Year')
+  ) %>%
+  filter(Field_Date != Raw_Date) %>%
+  arrange(Station) %>%
+  select(-c(Month, Year, `Location ID`))
+
+date_mismatches
+```
+
+```{r}
+date_updates <- field_dates %>%
+  mutate(
+    Month_Join = month(Field_Date, label = TRUE, abbr = FALSE) %>% 
+      as.character(),
+    Year_Join = year(Field_Date)
+  ) %>%
+  inner_join(
+    df_raw %>%
+      mutate(
+        Raw_Date = as.Date(Date),
+        Month_Join = month(Raw_Date, label = TRUE, abbr = FALSE) %>%
+          as.character(),
+        Year_Join = year(Raw_Date)
+      ) %>%
+      group_by(Station, Month_Join, Year_Join) %>%
+      filter(n_distinct(Raw_Date) == 1) %>%
+      distinct(Station, Month_Join, Year_Join, Raw_Date) %>%
+      ungroup(),
+    by = c('Station', 'Month_Join', 'Year_Join')
+  ) %>%
+  select(Station, Month_Join, Year_Join, Field_Date)
+
+df_raw <- df_raw %>%
+  mutate(
+    Raw_Date = as.Date(Date),
+    Month_Join = month(Raw_Date, label = TRUE, abbr = FALSE) %>%
+      as.character(),
+    Year_Join = year(Raw_Date)
+  ) %>%
+  left_join(
+    date_updates,
+    by = c('Station', 'Month_Join', 'Year_Join')
+  ) %>%
+  mutate(
+    Date = coalesce(as.character(Field_Date), Date)
+  ) %>%
+  select(-Raw_Date, -Month_Join, -Year_Join, -Field_Date)
+```
+
+## Missing Dates
 
 check which are missing
 ```{r}
@@ -89,7 +179,6 @@ df_raw %>% filter(
 )
 ```
 
-
 ## Fix Manual Dates
 
 ```{r}
@@ -106,26 +195,179 @@ df_raw <- df_raw %>%
   )
 ```
 
+## All 100 Sieves
+Usually missing data
 
-Fix Months
+```{r}
+df_hund <- df_raw %>%
+  filter(
+    if_all(starts_with('Sieve'), ~ .x == 100),
+    is.na(Percent_Organic)
+  ) %>%
+  arrange(Date)
+```
+
+## Duplicates (no 100s)
+
+```{r}
+df_dups <- df_raw %>%
+  mutate(
+    Month_Join = month(Date),
+    Year_Join = year(Date)
+  ) %>%
+  group_by(Station, Month, Month_Join, Year_Join) %>%
+  filter(n() > 1) %>%
+  ungroup()
+
+df_dups_100 <- df_dups %>%
+  group_by(Station, Month, Month_Join, Year_Join) %>%
+  filter(
+    any(
+      if_all(starts_with('Sieve'), ~ .x == 100) &
+        is.na(Percent_Organic)
+    )
+  ) %>%
+  ungroup() %>%
+  arrange(Year_Join, Month_Join, Station)
+
+df_dups_not_100 <- df_dups %>%
+  anti_join(
+    df_dups_100 %>%
+      distinct(Station, Month, Month_Join, Year_Join),
+    by = c('Station', 'Month', 'Month_Join', 'Year_Join')
+  ) %>%
+  arrange(Year_Join, Month_Join, Station)
+
+field_lookup <- df_field %>%
+  transmute(
+    Station = `Location ID`,
+    Date_Join = as.Date(`Observed DateTime`)
+  ) %>%
+  distinct()
+
+df_dups_not_100 <- df_dups_not_100 %>%
+  mutate(Date_Join = as.Date(Date)) %>%
+  left_join(
+    field_lookup %>%
+      mutate(has_field_data = TRUE),
+    by = c('Station', 'Date_Join')
+  ) %>%
+  mutate(
+    has_field_data = coalesce(has_field_data, FALSE)
+  ) %>%
+  select(-Date_Join) %>%
+  relocate(has_field_data, .before = 1)
+
+df_dups_not_100
+```
+
+
+## Fix Months
+
 ```{r}
 df_raw <- df_raw %>%
   mutate(Month = ifelse(Date == as.Date('1988-04-01') &
                           Station %in% c('D11-C', 'D19-C', 'D28A-L', 'D28A-R',
                                                'D4-C', 'D4-L', 'D4-R', 'D7-C'),
                         'March', Month))
+```
+
+# Check Missing Month-Year
+Further check if they correspond to field data
+
+```{r}
+df_missing_month_year <- df_raw %>%
+  filter(is.na(Month) | is.na(Year)) %>%
+  mutate(Date_Join = as.Date(Date)) %>%
+  left_join(
+    df_field %>%
+      transmute(
+        Station = `Location ID`,
+        Date_Join = as.Date(`Observed DateTime`),
+        has_field_data = TRUE
+      ) %>%
+      distinct(),
+    by = c('Station', 'Date_Join')
+  ) %>%
+  mutate(
+    has_field_data = coalesce(has_field_data, FALSE)
+  ) %>%
+  select(-Date_Join) %>%
+  relocate(has_field_data, .before = 1) %>%
+  arrange(Date, Station)
+
+df_missing_month_year
+```
+
+Update Month-Year for ones with Field Data
+```{r}
+field_lookup <- df_field %>%
+  transmute(
+    Station = `Location ID`,
+    Date_Join = as.Date(`Observed DateTime`),
+    EA_Month,
+    EA_Year
+  ) %>%
+  distinct()
 
 df_raw <- df_raw %>%
-  mutate(Month = ifelse(Date == as.Date('1988-04-28') &
-                          Station %in% c('D11-C', 'D19-C', 'D4-C', 'D4-L'),
-                        'April', Month))
+  mutate(
+    Date_Join = as.Date(Date),
+    missing_month_year = is.na(Month) | is.na(Year)
+  ) %>%
+  left_join(
+    field_lookup,
+    by = c('Station', 'Date_Join')
+  ) %>%
+  mutate(
+    Month = if_else(
+      missing_month_year & !is.na(EA_Month),
+      EA_Month,
+      Month
+    ),
+    Year = if_else(
+      missing_month_year & !is.na(EA_Year),
+      EA_Year,
+      Year
+    )
+  ) %>%
+  select(-Date_Join, -missing_month_year, -EA_Month, -EA_Year)
 ```
 
-
-Format dates
+Check sieve logic
 ```{r}
-missing_more <- df_raw %>% filter(is.na(Date))
+sieve_cols <- c(
+  'Sieve76200', 'Sieve38100', 'Sieve19050', 'Sieve09525',
+  'Sieve04750', 'Sieve02360', 'Sieve01180', 'Sieve00600',
+  'Sieve00300', 'Sieve00150', 'Sieve00075'
+)
+
+df_sieve_flag <- df_raw %>%
+  rowwise() %>%
+  mutate(
+    sieve_order_flag = {
+      x <- suppressWarnings(
+        as.numeric(c_across(all_of(sieve_cols)))
+      )
+      
+      any(x[-1] > x[-length(x)], na.rm = TRUE)
+    }
+  ) %>%
+  ungroup() %>%
+  filter(sieve_order_flag) %>%
+  select(
+    Date,
+    Station,
+    all_of(sieve_cols)
+  )
+
+df_sieve_flag
 ```
+
+```{r}
+unique(df_raw$Sieve76200)
+```
+
 
 # Format for Export
 ```{r}

@@ -43,6 +43,13 @@ df_count <- df_count %>%
   mutate(MainStation = sub('-.*', '', Station))
 ```
 
+Remove 'n/p' comments
+```{r}
+df_samp <- df_samp %>%
+  mutate(
+    Comment_Lab = na_if(Comment_Lab, 'n/p')
+  )
+```
 
 # Remove bad samples
 ```{r}
@@ -103,7 +110,7 @@ df_samp <- df_samp %>%
   # Remove specified rows
   filter(!(Date == as.Date('2006-06-09') & Station == 'C9-L')) %>%
   filter(!(Date == as.Date('2006-08-08') & Station == 'C9-L')) %>%
-  # Change Month from "April" to "March" for 1988-04-01 rows at specific stations
+  # Change Month from 'April' to 'March' for 1988-04-01 rows at specific stations
   mutate(Month = ifelse(Date == as.Date('1988-04-01') &
                           Station %in% c('D28A-L', 'D28A-R', 'D7-C', 'D4-R', 'D4-C','D4-L'),
                         'March', Month)) %>%
@@ -219,16 +226,48 @@ df_miss_count
 df_count %>%
   distinct(Date, Station, Grab, LabSampleNumber) %>%
   full_join(
-    df_samp %>% distinct(Date, Station, Grab, LabSampleNumber),
+    df_samp %>%
+      distinct(Date, Station, Grab, LabSampleNumber, Comment_Lab),
     by = c('Date', 'Station', 'Grab'),
     suffix = c('_count', '_samp')
   ) %>%
-  filter(LabSampleNumber_count != LabSampleNumber_samp |
-         is.na(LabSampleNumber_count) | is.na(LabSampleNumber_samp))
+  filter(
+    LabSampleNumber_count != LabSampleNumber_samp |
+      is.na(LabSampleNumber_count) |
+      is.na(LabSampleNumber_samp)
+  )
 ```
 
 
 Might be real?
+
+# Check Sed
+
+```{r}
+lab_cols <- c(
+  'VegDetritus_Lab', 'ShellFragment_Lab', 'Sand_Lab',
+  'Peat_Lab', 'Mica_Lab', 'Gravel_Lab', 'HardClay_Lab',
+  'WormTubes_Lab', 'Other_Lab'
+)
+
+df_lab_flag <- df_samp %>%
+  mutate(
+    lab_sum = rowSums(
+      across(
+        all_of(lab_cols),
+        ~ suppressWarnings(as.numeric(.x))
+      ),
+      na.rm = TRUE
+    )
+  ) %>%
+  filter(
+    if_any(all_of(lab_cols), ~ !is.na(.x)),
+    is.na(lab_sum) | lab_sum > 100 | lab_sum < 100
+  ) %>%
+  select(Date, Station, Grab, LabSampleNumber, all_of(lab_cols))
+
+df_lab_flag
+```
 
 
 # Format for Export
