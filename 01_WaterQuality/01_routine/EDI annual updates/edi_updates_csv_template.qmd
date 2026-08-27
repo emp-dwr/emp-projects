@@ -348,4 +348,4 @@ df_year[df_year == ""] <- NA
 #Second, run the write.csv code replacing the brackets with your working directory and a new name for the file
 write_csv(df_year, "[YourWorkingDirectory]/[NewNameForFile.csv")
 #Example: write_csv(df_year,"c:/Users/mpagliar/OneDrive - California Department of Water Resources/Documents/Github/emp-projects/edi_2025Data_CreatedJul072426.csv")
-
+```
