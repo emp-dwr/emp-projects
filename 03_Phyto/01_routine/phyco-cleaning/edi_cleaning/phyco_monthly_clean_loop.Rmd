@@ -12,7 +12,7 @@ Date: 11/2023
 # ---
 
 # declare the run year of interest
-year <- 2023
+year <- 2024
 ```
 
 ```{r}
@@ -27,15 +27,15 @@ library(deltamapr)
 library(readxl)
 library(sf)
 library(sp)
-source('03_Phyto/phycoprobe/functions/phyco_funcs.R')
+source(here::here('03_Phyto/01_routine/phyco-cleaning/functions/phyco_funcs.R'))
 
 # read in run names and regions
-df_names <- read_csv('03_Phyto/phycoprobe/supp_files/run_names.csv', show_col_types = FALSE)
-df_regions <- read_csv('03_Phyto/phycoprobe/supp_files/regions_fluoro.csv', show_col_types = FALSE)
+df_names <- read_csv(here::here('03_Phyto/01_routine/phyco-cleaning/supp_files/run_names.csv'), show_col_types = FALSE)
+df_regions <- read_csv(here::here('03_Phyto/01_routine/phyco-cleaning/supp_files/regions_fluoro.csv'), show_col_types = FALSE)
 
 # obtain all filepaths and create combo df
-fp_all_phy <- archive_path(2023, 'phyco')
-fp_all_wq <- archive_path(2023, 'MOPED')
+fp_all_phy <- archive_path(year, 'phyco')
+fp_all_wq <- archive_path(year, 'MOPED')
 
 df_combo_phy <- create_combo_df(fp_all_phy)
 df_combo_wq <- create_combo_df(fp_all_wq)
@@ -52,43 +52,113 @@ for(i in 1:nrow(df_combo)){
   
   # read in data
   fp_phy <- data_path(run, month, year, type = 'phyco')
-  df_phy <- read_tsv(fp_phy, show_col_types = FALSE)
+  df_phy <- read_tsv(fp_phy, show_col_types = FALSE, name_repair = 'unique_quiet')
+  
+  # stop for inspection if there are parsing problems
+  parse_probs <- problems(df_phy)
+  
+  if(nrow(parse_probs) > 0){
+    print(parse_probs)
+    browser()
+  }
   
   # remove first row and save for later
   first_row <- df_phy[1,]
   df_phy <- df_phy[-1,]
   
-  # change col types to relevant ones
-  df_phy$`Date/Time` <- as.POSIXct(df_phy$`Date/Time`, format = '%m/%d/%Y %H:%M:%S')
-  df_phy <- df_phy %>% mutate_if(is.character,as.numeric)
+  # change col types
+  df_phy$`Date/Time` <- parse_date_time(
+    df_phy$`Date/Time`,
+    c('mdY HMS', 'mdY IMS p')
+  )
   
-  # round to nearest 10 mins and calc average
   df_phy <- df_phy %>%
-    mutate(`Date/Time` = round_date(`Date/Time`, unit='1 minute')) %>%
+    mutate(across(where(is.character), ~na_if(., '--'))) %>%
+    mutate(across(where(is.character), as.numeric))
+
+  # round to nearest minute and calculate average
+  df_phy <- df_phy %>%
+    mutate(`Date/Time` = round_date(`Date/Time`, unit = '1 minute')) %>%
     group_by(`Date/Time`) %>%
-    summarize_all(~round(mean(., na.rm = TRUE),2))
+    summarize_all(~round(mean(., na.rm = TRUE), 2))
   
-  # convert date/time col back to character
-  df_phy$`Date/Time` <- as.character(df_phy$`Date/Time`)
+  # get units corresponding to each column
+  units <- first_row[1, colnames(df_phy)] %>%
+    unlist(use.names = FALSE) %>%
+    as.character()
   
-  # clean up col names
-  colnames(df_phy) <- paste(colnames(df_phy), first_row, sep='_')
-  colnames(df_phy) <- colnames(df_phy) %>% str_replace('_1_', '_')
-  colnames(df_phy) <- colnames(df_phy) %>% str_replace('�g', 'ug')
-  colnames(df_phy) <- colnames(df_phy) %>% str_replace('�C', 'degC')
-  colnames(df_phy) <- colnames(df_phy) %>% str_replace('\\.\\.\\.', '-')
-  colnames(df_phy) <- colnames(df_phy) %>% str_replace_all('\\.|\\[|\\]|#', '')
-  df_phy <- df_phy %>% rename(DateTime = `Date/Time_date`, Temp_degC = `Temp Sample_degC`)
+  # construct cleaned column names
+  new_names <- str_remove(colnames(df_phy), '\\.\\.\\.\\d+$')
+  new_names <- paste(new_names, units, sep = '_')
+  
+  new_names <- new_names %>%
+    str_replace_all('µg|�g', 'ug') %>%
+    str_replace_all('°C|�C', 'degC') %>%
+    str_replace_all('\\.|\\[|\\]|#', '')
+  
+  # resolve duplicated final column names
+  dup_names <- unique(new_names[duplicated(new_names)])
+  drop_cols <- integer(0)
+  
+  for(nm in dup_names){
+    idx <- which(new_names == nm)
+    
+    all_zero <- sapply(idx, function(j){
+      x <- df_phy[[j]]
+      is.numeric(x) &&
+        any(!is.na(x)) &&
+        all(x[!is.na(x)] == 0)
+    })
+    
+    # more than one non-zero version means we do not know which is correct
+    if(sum(!all_zero) > 1){
+      stop(
+        glue::glue(
+          'duplicate column "{nm}" has more than one non-zero version ',
+          'for month {month}, run {run}'
+        )
+      )
+    }
+    
+    # if one is non-zero, remove the zero version(s)
+    if(sum(!all_zero) == 1){
+      drop_cols <- c(drop_cols, idx[all_zero])
+    }
+    
+    # if all versions are zero, keep the first one
+    if(all(all_zero)){
+      drop_cols <- c(drop_cols, idx[-1])
+    }
+  }
+  
+  if(length(drop_cols) > 0){
+    df_phy <- df_phy[, -drop_cols]
+    new_names <- new_names[-drop_cols]
+  }
+  
+  colnames(df_phy) <- new_names
+  
+  df_phy <- df_phy %>%
+    rename(
+      DateTime = `Date/Time_date`,
+      Temp_degC = `Temp Sample_degC`
+    )
   
   # keep relevant columns
-  keep_cols <- c(colnames(df_phy)[grepl('Green Algae|Bluegreen|Diatoms|Cryptophyta', colnames(df_phy))],'Temp_degC','DateTime')
-  
-  df_phy <- subset(df_phy, select = keep_cols)
+  keep_cols <- c(
+    colnames(df_phy)[grepl('Green Algae|Bluegreen|Diatoms|Cryptophyta', colnames(df_phy))],
+    'Temp_degC',
+    'DateTime'
+  )
   
   df_phy <- df_phy %>%
-    mutate(Year = year(df_phy$DateTime),
-           Month = month.abb[month(df_phy$DateTime)],
-           Date = as.Date(df_phy$DateTime, format = '%Y-%m-%d %H:%M:%S'))
+    select(all_of(keep_cols)) %>%
+    mutate(
+      Year = year(DateTime),
+      Month = month.abb[month(DateTime)],
+      Date = as.Date(DateTime),
+      DateTime = as.character(DateTime)
+    )
   
   # read in WQ data
   fp_wq <- data_path(run, month, year, type = 'MOPED')
@@ -118,52 +188,82 @@ for(i in 1:nrow(df_combo)){
   
   # add label col
   df_comb$Label <- paste(df_comb$Month, df_comb$Year, run, row_number(df_comb$Month))
-  df_comb <- df_comb %>% relocate(Label)
+  df_comb <- df_comb %>%
+    relocate(Label)
   
   # import delta sf
   sf_delta <- R_EDSM_Subregions_Mahardja
   
+  # convert coordinates to numeric
+  df_comb <- df_comb %>%
+    mutate(
+      Longitude = as.numeric(Longitude),
+      Latitude = as.numeric(Latitude)
+    )
+  
   # convert wq to spdf
-  coords <- df_comb[,c('Longitude', 'Latitude')]
-  data   <- subset(df_comb, select = -c(Latitude, Longitude))
-  crs    <- CRS('EPSG:4326')
-  spdf_wq <- SpatialPointsDataFrame(coords = coords,
-                                 data = data, 
-                                 proj4string = crs)
+  coords <- df_comb[, c('Longitude', 'Latitude')]
+  data <- subset(df_comb, select = -c(Latitude, Longitude))
+  crs <- CRS('EPSG:4326')
+  
+  spdf_wq <- SpatialPointsDataFrame(
+    coords = coords,
+    data = data,
+    proj4string = crs
+  )
   
   # convert delta to spdf
   spdf_delta <- as(sf_delta, 'Spatial')
-  spdf_delta <- spTransform(spdf_delta, CRS('EPSG:4326'))
+  spdf_delta <- spTransform(
+    spdf_delta,
+    CRS('EPSG:4326')
+  )
   
   # add subregion to df
-  col_sr <- sp::over(spdf_wq, spdf_delta[,'SubRegion'])
+  col_sr <- sp::over(
+    spdf_wq,
+    spdf_delta[, 'SubRegion']
+  )
+  
   spdf_wq$SubRegion <- col_sr$SubRegion
   
-  # convert to shapefile
+  # convert to sf
   sf_wq <- st_as_sf(spdf_wq)
-  sf_wq <- st_transform(sf_wq, st_crs = sf_delta)
-  sf_wq <- sf_wq %>% filter(!is.na(SubRegion))
+  sf_wq <- st_transform(sf_wq, crs = st_crs(sf_delta))
+  sf_wq <- sf_wq %>%
+    filter(!is.na(SubRegion))
   
   # check data
   # ggplot() +
   #   geom_sf(data = sf_delta) +
   #   geom_sf(data = sf_wq, color = 'red')
   
-  # clean up regions in final df
-  df_final <- as_tibble(sf_wq)
-  df_final <- left_join(df_final, df_regions, 'SubRegion')
+  # add final regions
+  df_final <- sf_wq %>%
+    left_join(df_regions, by = 'SubRegion')
   
+  # extract longitude/latitude in EPSG:4326
+  coords <- df_final %>%
+    st_transform(4326) %>%
+    st_coordinates()
+  
+  test <<- df_final
   df_final <- df_final %>%
-    extract(geometry, c('Latitude', 'Longitude'), '\\((.*), (.*)\\)', convert = TRUE) %>%
-    select(-c(SubRegion, SONDEDEPTH_ft, Date, Month, Year)) %>%
-    relocate(c(Label, DateTime, Latitude, Longitude, Region))
-  
+    mutate(
+      Longitude = coords[, 'X'],
+      Latitude = coords[, 'Y']
+    ) %>%
+    st_drop_geometry() %>%
+    select(-any_of(c('SubRegion', 'VPOSITION_ft', 'DEPTH_ft', 'Date', 'Month', 'Year'))) %>%
+    relocate(Label, DateTime, Latitude, Longitude, Region)
   
   # export
   fn_exp <- str_remove(str_extract(fp_phy, '[^/]*$'), '.txt')
   
   fp_folder <- create_dir(year)
   fp_exp <- paste0(fp_folder,'/',fn_exp,'_summary.csv')
+  
+  fp_exp
   
   write_csv(df_final, fp_exp)
 }

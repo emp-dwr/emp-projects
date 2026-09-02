@@ -13,7 +13,7 @@ Date: 11/2023
 # ---
 
 # define year of interest
-year <- 2023
+year <- 2024
 ```
 
 ```{r}
@@ -24,17 +24,17 @@ year <- 2023
 # read in packages
 library(tidyverse)
 library(data.table)
-source('03_Phyto/phycoprobe/functions/phyco_funcs.R')
+source(here::here('03_Phyto/01_routine/phyco-cleaning/functions/phyco_funcs.R'))
 
-fp_phyco <- clean_path(2023)
+fp_phyco <- clean_path(year)
 
 df_comb <- rbindlist(lapply(fp_phyco, fread), fill = TRUE) %>%
   arrange(DateTime)
 
 df_comb <- df_comb %>%
   mutate(Date = as.Date(DateTime),
-         Time = format(DateTime, format = "%H:%M:%S")) %>%
-  select(-c(DateTime,Year))
+         Time = format(DateTime, format = '%H:%M:%S')) %>%
+  select(-any_of(c(DateTime,Year)))
 
 write_csv(df_comb, fp_main_export(year))
 ```

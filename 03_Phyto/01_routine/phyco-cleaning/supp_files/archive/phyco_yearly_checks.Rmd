@@ -9,7 +9,7 @@ library(deltamapr)
 library(readxl)
 library(sf)
 library(sp)
-source('03_Phyto/phycoprobe/functions/phyco_funcs.R')
+source(here::here('03_Phyto/01_routine/phyco-cleaning/functions/phyco_funcs.R'))
 
 # declare the run year of interest
 year <- 2023

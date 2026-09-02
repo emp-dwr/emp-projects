@@ -350,7 +350,7 @@ format_VR <- function(df_final) {
 
 process_FDS_csv <- function(fp) {
   df <- read_csv(fp, col_names = FALSE, col_types = cols(.default = 'c'), show_col_types = FALSE)
-  test <<- df  
+
   # Main batch
   df_head <- df %>%
     select('X8', 'X10', 'X19', 'X25') %>%

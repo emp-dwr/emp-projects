@@ -7,7 +7,7 @@ create_dir <- function(year){
 
 fp_main_export <- function(year){
   fp_emp <- '/California Department of Water Resources/Environmental Monitoring Program - Documents/Water Quality/'
-  fp_full <- paste0(Sys.getenv('USERPROFILE'),fp_emp,'EDI Data/',year,' Data Publishing/EMP_Phycoprobe_',year)
+  fp_full <- paste0(Sys.getenv('USERPROFILE'),fp_emp,'EDI Data/',year,' Data Publishing/EMP_Phycoprobe_',year,'.csv')
   return(fp_full)
 }
 
@@ -23,50 +23,97 @@ month_num <- function(name){
 
 norm_month <- function(month, type = 'name'){
   # create df of months
-  df_month <- data.frame(name = array(month.name), abbrv = array(month.abb), num = 1:12)
+  df_month <- data.frame(
+    name = month.name,
+    abbrv = month.abb,
+    num = 1:12
+  )
   
   # extract current month's row
   if(type == 'name'){
-    df_cur <- df_month[tolower(df_month$name) == tolower(month),]    
+    df_cur <- df_month[tolower(df_month$name) == tolower(month),]
   } else if(type == 'number'){
-    df_cur <- df_month[df_month$num == month,]    
+    df_cur <- df_month[df_month$num == month,]
   } else if(type == 'abbrv'){
-    df_cur <- df_month[tolower(df_month$abbrv) == tolower(month),]    
+    df_cur <- df_month[tolower(df_month$abbrv) == tolower(month),]
   } else{
-    stop('"type" must be one of c("name", "abbrv", "number"')
+    stop('"type" must be one of c("name", "abbrv", "number")')
   }
-
+  
   if(nrow(df_cur) == 0){
     stop('wrong input month for norm_month')
   }
   
-  # create fp
-  fp_month <- glue::glue('/{df_cur$num} - {df_cur$name}/')
-  
-  return(fp_month)
+  # return month information
+  return(df_cur)
 }
 
 data_path <- function(run, month, year, type = NULL){
   fp_emp <- 'California Department of Water Resources/Environmental Monitoring Program - Documents/Water Quality/'
   
-  if (run %in% df_names$ShortName){
+  if(run %in% df_names$ShortName){
     runname <- run
   } else{
     runname <- df_names$LongName[grepl(run, df_names$LongName)]
   }
   
-  if(runname == 0){
+  if(length(runname) == 0){
     stop('run name not valid')
   }
-
-  if (type == 'phyco') {
-    fp <- normalizePath(file.path(Sys.getenv('USERPROFILE'),fp_emp, 'Phycoprobe/Archived Data/', year, norm_month(month)))
+  
+  # get month information
+  df_month <- norm_month(month)
+  
+  # work with "1" and "01"-type folder names
+  month_folders <- unique(c(
+    paste0(df_month$num, ' - ', df_month$name),
+    paste0(sprintf('%02d', df_month$num), ' - ', df_month$name)
+  ))
+  
+  if(type == 'phyco'){
+    fp_base <- file.path(
+      Sys.getenv('USERPROFILE'),
+      fp_emp,
+      'Phycoprobe/Archived Data',
+      year
+    )
+  } else if(type == 'MOPED'){
+    fp_base <- file.path(
+      Sys.getenv('USERPROFILE'),
+      fp_emp,
+      'MOPED Data',
+      year
+    )
+  } else{
+    stop('"type" must be one of c("phyco", "MOPED")')
   }
-  if (type == 'MOPED') {
-    fp <- normalizePath(file.path(Sys.getenv('USERPROFILE'),fp_emp, 'MOPED Data/', year, norm_month(month)))
+  
+  # check possible month folder formats
+  fp_options <- file.path(fp_base, month_folders)
+  fp <- fp_options[dir.exists(fp_options)]
+  
+  if(length(fp) == 0){
+    stop(
+      paste0(
+        'month folder not found. Checked:\n',
+        paste(fp_options, collapse = '\n')
+      )
+    )
   }
-
-  fp_file <- list.files(fp, full.names = TRUE)[grepl(runname, list.files(fp))]
+  
+  if(length(fp) > 1){
+    stop(
+      paste0(
+        'multiple month folders found:\n',
+        paste(fp, collapse = '\n')
+      )
+    )
+  }
+  
+  fp <- normalizePath(fp)
+  
+  files <- list.files(fp)
+  fp_file <- list.files(fp, full.names = TRUE)[grepl(runname, files)]
   
   return(fp_file)
 }

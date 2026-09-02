@@ -1,7 +1,7 @@
 ---
 title: 'TAL 2-Point Calibration Exploration'
-author: 'Perry'
-date: '`r Sys.Date()`'
+author: 'S. Perry'
+
 execute:
   echo: false
   message: false
@@ -69,7 +69,7 @@ ggplot(df_tal, aes(x = ExpectVal, y = CalPctError)) +
 
 Per parameter, the expected values are are fairly similar. Therefore, there's little difference between using raw difference or percent error. For ease of comparability between parameters, we'll use **percent error**.
 
-We do note, however, that there is one outlier in Chl_RFU with respect to the expected value. We remove it going forward for ease of analysis.
+We note, however, that one Chl_RFU observation was an extreme outlier. It was excluded from the primary analysis to avoid undue influence on comparisons within the parameter.
 
 ```{r}
 df_tal <- df_tal %>% filter(!(Parameter == 'Chl_RFU' & ExpectVal < 14))
@@ -146,7 +146,7 @@ ggplot(df_tal, aes(x = SensorTemp, y = CalPctError)) +
 
 **Conclusions**
 
-No parameter seems to have a relationship with temp, which is good. We won't account for temp in this analysis.
+There was no clear association between temperature and percent error for any parameter. Temperature is therefore not included in subsequent analyses.
 
 ## Sensor IDs
 
@@ -187,7 +187,7 @@ ggplot(df_tal, aes(x = ExpectVal, y = CalPctError)) +
 
 **Conclusions**
 
-We confirm that percent error and and its variance do not seem to be influenced by the expected value.
+There was no clear association between expected value and either the magnitude or variability of percent error.
 
 # Mean Value
 
@@ -228,7 +228,7 @@ For all four parameters, the mean percent error is significantly different from 
 Note that model checks were performed but are not shown to reduce clutter.
 
 
-# Data Variance
+# Error Distribution
 
 We're interested not only in the mean difference from the expected value, but the variance around it.
 
