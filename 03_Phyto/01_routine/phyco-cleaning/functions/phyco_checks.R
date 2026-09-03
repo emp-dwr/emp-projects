@@ -14,7 +14,7 @@ check_negative_values <- function(df, data_cols){
 
 check_duplicate_datetime <- function(df){
   df %>%
-    filter(duplicated(paste(Date, Time,)) | duplicated(paste(Date, Time), fromLast = TRUE)) %>%
+    filter(duplicated(paste(Date, Time)) | duplicated(paste(Date, Time), fromLast = TRUE)) %>%
     ungroup() %>%
     select(Date, Time) %>%
     arrange(Date, Time)

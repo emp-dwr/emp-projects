@@ -2,6 +2,7 @@
 
 library(lubridate)
 library(deltamapr)
+library(data.table)
 library(readxl)
 library(sf)
 library(sp)
@@ -448,10 +449,13 @@ clean_phyco_wq_run <- function(month, run, year, df_regions, df_names){
   data_cols <- setdiff(colnames(df_final), id_cols)
   
   # Export ------------------------------------------------------------------
-  fn_exp <- str_remove(str_extract(fp_wq, '[^/]*$'), '.csv')
-  fp_folder <- create_dir(year)
-  fp_exp <- paste0(fp_folder,'/',fn_exp,'_summary.csv')
+  mon_abb <- month.abb[match(month, month.name)]
+  yr_short <- str_sub(as.character(year), -2)
   
+  fn_exp <- str_extract(tools::file_path_sans_ext(basename(fp_wq)), '[^_]*$')
+  fp_folder <- create_dir(year)
+  fp_exp <- paste0(fp_folder, '/', 'Phycoprobe_', fn_exp, '_', mon_abb, yr_short, '_summary.csv')
+
   write_csv(df_final, fp_exp)
   
   list(
