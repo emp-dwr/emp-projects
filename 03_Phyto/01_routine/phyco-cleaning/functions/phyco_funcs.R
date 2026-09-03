@@ -7,7 +7,7 @@ create_dir <- function(year){
 
 fp_main_export <- function(year){
   fp_emp <- '/California Department of Water Resources/Environmental Monitoring Program - Documents/Water Quality/'
-  fp_full <- paste0(Sys.getenv('USERPROFILE'),fp_emp,'EDI Data/',year,' Data Publishing/EMP_Phycoprobe_',year,'.csv')
+  fp_full <- paste0(Sys.getenv('USERPROFILE'),fp_emp,'Phycoprobe/EDI Publication Data/EMP_Phycoprobe_',year,'.csv')
   return(fp_full)
 }
 
@@ -48,7 +48,7 @@ norm_month <- function(month, type = 'name'){
   return(df_cur)
 }
 
-data_path <- function(run, month, year, type = NULL){
+data_path <- function(run, month, year, df_names, type = NULL){
   fp_emp <- 'California Department of Water Resources/Environmental Monitoring Program - Documents/Water Quality/'
   
   if(run %in% df_names$ShortName){
@@ -180,7 +180,7 @@ abs_path <- function(fp_rel, type = NULL, year = NULL) {
   return(fp_abs)
 }
 
-create_combo_df <- function(fp_data){
+create_combo_df <- function(fp_data, df_names){
   # two steps to lower df size
   df_one <- crossing(month = month.name, fp = fp_data)
   
