@@ -8,22 +8,25 @@
 #run packages
 library(tidyverse)
 library(lubridate)
-library(aqsampr)
 library(purrr)
 library(dplyr)
 library(stringr)
 ```
 
 # Import data
+##STOP## You will need to personalize code below
+
 ```{r}
 #code to import
 
 #first get your working directory
 getwd()
+#code to set working directory incase it is helpful:
+#setwd()
 
 #second, move the downloaded csv file from aquarius to the folder of your working directory
 
-#third, import the data (replacing everything in brackets with your own working directory and the file name)
+#third, import the data (replacing everything in brackets (and remove the brackets themselves) with your own working directory and the file name)
 df_aqui <- read.csv("[YourWorkingDirectory]/[FileName.csv]")
 #Example: df_aqui <- read.csv("c:/Users/mpagliar/OneDrive - California Department of Water Resources/Documents/Github/emp-projects/AQS-observations-2025.csv")
 
@@ -65,7 +68,7 @@ df_year <- df_year %>%
     Lab..Detection.Condition,
     Lab..MRL,
     Lab..Analysis.Method,
-    EA_Field.Quality.Flag,
+    Lab..Quality.Flag,
     Field..Comment
   )
 
@@ -92,7 +95,7 @@ df_year <- df_year %>%
     Detection_Status = Lab..Detection.Condition,
     MRL = Lab..MRL,
     Analysis_Method = Lab..Analysis.Method,
-    QC_Flag = EA_Field.Quality.Flag,
+    QC_Flag = Lab..Quality.Flag,
     Field_Comment = Field..Comment
   )
   
@@ -333,7 +336,9 @@ check <- check_duplicates(df_year, year = '2025', return_df = TRUE)
 
 ```
 
+
 # Write file and convert to CSV
+##STOP## You need to personalize code below
 
 ```{r}
 
@@ -343,4 +348,4 @@ df_year[df_year == ""] <- NA
 #Second, run the write.csv code replacing the brackets with your working directory and a new name for the file
 write_csv(df_year, "[YourWorkingDirectory]/[NewNameForFile.csv")
 #Example: write_csv(df_year,"c:/Users/mpagliar/OneDrive - California Department of Water Resources/Documents/Github/emp-projects/edi_2025Data_CreatedJul072426.csv")
-
+```
