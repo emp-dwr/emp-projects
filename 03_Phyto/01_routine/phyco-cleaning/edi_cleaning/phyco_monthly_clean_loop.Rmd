@@ -15,11 +15,37 @@ year <- 2024
 
 # Run Code (w/o Edits)
 
+## Process individual files
+
 ```{r}
 # import packages
 library(tidyverse)
 source(here::here('03_Phyto/01_routine/phyco-cleaning/functions/monthly_loop.R'))
+source(here::here('03_Phyto/01_routine/phyco-cleaning/functions/phyco_checks.R'))
 
+# clean files
 clean_phyco_wq_summaries(year)
 ```
+
+## Combine/check them
+
+```{r}
+# combine files
+df_phyco <- combine_files(year)
+
+id_cols <- c('Month', 'Run', 'Date', 'Time', 'Latitude', 'Longitude', 'Region', 'PhycoLabel')
+data_cols <- setdiff(colnames(df_phyco), id_cols)
+
+# check files
+phyco_checks(df_phyco, data_cols)
+```
+
+## Write file
+
+```{r}
+write_csv(df_phyco, fp_main_export(year))
+```
+
+
+
 

@@ -1,30 +1,29 @@
 check_blank_rows <- function(df, data_cols){
   all_blank <- apply(df[data_cols], 1, function(x) all(is.na(x) | x == 0))
   
-  df[all_blank, c('Month', 'Run', 'DateTime', data_cols)] %>%
+  df[all_blank, c('Date', 'Time', data_cols)] %>%
     pivot_longer(cols = all_of(data_cols), names_to = 'Analyte', values_to = 'Value')
 }
 
 check_negative_values <- function(df, data_cols){
   df %>%
-    select(Month, Run, DateTime, all_of(data_cols)) %>%
+    select(Date, Time, all_of(data_cols)) %>%
     pivot_longer(cols = all_of(data_cols), names_to = 'Analyte', values_to = 'Value') %>%
     filter(Value < 0)
 }
 
 check_duplicate_datetime <- function(df){
   df %>%
-    group_by(Month, Run) %>%
-    filter(duplicated(DateTime) | duplicated(DateTime, fromLast = TRUE)) %>%
+    filter(duplicated(paste(Date, Time,)) | duplicated(paste(Date, Time), fromLast = TRUE)) %>%
     ungroup() %>%
-    select(Month, Run, DateTime) %>%
-    arrange(Month, Run, DateTime)
+    select(Date, Time) %>%
+    arrange(Date, Time)
 }
 
 check_midnight <- function(df){
   df %>%
-    filter(grepl('00:00:00$', DateTime)) %>%
-    select(Month, Run, DateTime)
+    filter(Time == '00:00:00') %>%
+    select(Date, Time)
 }
 
 check_geo_bounds <- function(df){
@@ -35,10 +34,10 @@ check_geo_bounds <- function(df){
   
   df %>%
     filter(Latitude < lat_s | Latitude > lat_n | Longitude < lon_w | Longitude > lon_e) %>%
-    select(Month, Run, DateTime, Latitude, Longitude)
+    select(Date, Time, Latitude, Longitude)
 }
 
-data_checks <- function(df, data_cols){
+phyco_checks <- function(df, data_cols){
   blank <- check_blank_rows(df, data_cols)
   negative <- check_negative_values(df, data_cols)
   duplicates <- check_duplicate_datetime(df)
@@ -51,11 +50,15 @@ data_checks <- function(df, data_cols){
   message(glue::glue('{nrow(midnight)} midnight-timestamp row(s) flagged'))
   message(glue::glue('{nrow(geo_bounds)} out-of-bounds lat/lon row(s) flagged'))
   
-  list(
+  issues <- list(
     blank = blank,
     negative = negative,
     duplicates = duplicates,
     midnight = midnight,
     geo_bounds = geo_bounds
   )
+  
+  issues <- issues[sapply(issues, nrow) > 0]
+  
+  issues
 }

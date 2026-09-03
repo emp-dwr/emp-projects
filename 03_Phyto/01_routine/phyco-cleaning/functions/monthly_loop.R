@@ -7,6 +7,26 @@ library(sf)
 library(sp)
 source(here::here('03_Phyto/01_routine/phyco-cleaning/functions/phyco_funcs.R'))
 
+combine_files <- function(year){
+  fp_phyco <- clean_path(year)
+  
+  df_comb <- rbindlist(lapply(fp_phyco, fread), fill = TRUE) %>%
+    arrange(DateTime) %>%
+    as_tibble() %>%
+    distinct()
+  
+  df_comb <- df_comb %>%
+    mutate(
+      DateTime_parsed = as.POSIXct(DateTime),
+      Date = as.Date(DateTime_parsed),
+      Time = format(DateTime_parsed, format = '%H:%M:%S')
+    ) %>%
+    select(-any_of(c('DateTime', 'DateTime_parsed', 'Year'))) %>%
+    relocate(Date, Time, Region, Latitude, Longitude)
+  
+  df_comb
+}
+
 clean_phyco_wq_summaries <- function(year){
   options(warn = 1)
   
