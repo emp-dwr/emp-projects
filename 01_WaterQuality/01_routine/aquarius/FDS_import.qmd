@@ -12,14 +12,14 @@ Path to import folder
 
 ```{r}
 # Path to import folder
-fp_import <- 'Water Quality/00 - Monthly Run Docs/Raw Field Data/Water Quality 2019-2024/Water Quality 2025/11 - November'
+fp_import <- 'Water Quality/00 - Monthly Run Docs/Raw Field Data/Water Quality 2026/05 - May'
 ```
 
 Path to export folder
 
 ```{r}
 # Path to export folder
-fp_export <- 'Water Quality/00 - Monthly Run Docs/Database Import Data/2025/'
+fp_export <- 'Water Quality/00 - Monthly Run Docs/Test'
 ```
 
 ------------------------------------------------------------------------
@@ -43,20 +43,12 @@ reticulate::repl_python()
 ```{python}
 from os import environ, walk
 from os.path import join, normpath, basename
-import fitz
+import pymupdf
 ```
 
 ```{python}
 # Bring in import fp
 fp_import = r.fp_import
-```
-
-```{python}
-reticulate::py_available()
-```
-
-```{python}
-reticulate::py_config()
 ```
 
 ```{python}
@@ -83,7 +75,7 @@ fp_main = abs_path_emp(fp_import)
 
 # Extract VR pdf
 def extract_VR(path):
-    doc = fitz.open(path)
+    doc = pymupdf.open(path)
     form_fields = {}
     for page in doc:
         for widget in page.widgets():
@@ -142,11 +134,10 @@ fp_csv <- map_chr(fp_xlsx, function(fp) {
   csv_path
 })
 
-
 # Clean FDS files
 df_FDS <- map_dfr(fp_csv, function(fp) {
   df_raw <- process_FDS_csv(fp)
-  # format_FDS_csv(df_raw)
+  format_FDS_csv(df_raw)
 })
 
 # Combine
@@ -154,7 +145,9 @@ df_final <- bind_rows(df_VR_all, df_FDS)
 
 # Filter out extra rows
 df_final <- df_final %>% filter(!(is.na(`Observed Property ID`) & `Result Value` == 'Yes'))
+
 df_final <- df_final %>% filter(`Observed Property ID` != 'Water Depth')
+
 ```
 
 ------------------------------------------------------------------------

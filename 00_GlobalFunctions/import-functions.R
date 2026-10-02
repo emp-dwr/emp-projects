@@ -654,9 +654,9 @@ format_FDS_excel <- function(df_final) {
 
   # --- Exclude unwanted stations ---
   # read in active stations
-  df_stations <- read_csv('00_GlobalFunctions/station_names.csv', show_col_types = FALSE) %>%
+  df_stations <- read_csv(here::here('00_GlobalFunctions', 'station_names.csv'), show_col_types = FALSE) %>%
     filter(Status == 'active')
-
+  
   valid_stations <- c(unique(df_stations$Station_new), 'Equipment Blank')
 
   # alert to excluded stations
@@ -1062,7 +1062,7 @@ format_FDS_pdf <- function(df_final) {
   
   # --- Exclude unwanted stations ---
   # read in active stations
-  df_stations <- read_csv('00_GlobalFunctions/station_names.csv', show_col_types = FALSE) %>%
+  df_stations <- read_csv(here::here('00_GlobalFunctions/station_names.csv'), show_col_types = FALSE) %>%
     filter(Status == 'active')
   
   valid_stations <- c(unique(df_stations$Station_new), 'Equipment Blank')
@@ -1279,7 +1279,7 @@ format_bryte <- function(fp){
 # no missing stations
 check_stations <- function(df){
   # read active stations
-  df_stations <- read_csv('00_GlobalFunctions/station_names.csv', show_col_types = FALSE) %>%
+  df_stations <- read_csv(here::here('00_GlobalFunctions/station_names.csv'), show_col_types = FALSE) %>%
     filter(Status == 'active')
   
   valid_stations <- unique(df_stations$Station_new)
@@ -1301,7 +1301,7 @@ check_analytes <- function(df, type) {
     filter(DataType == type)
   
   # read active stations
-  df_stations <- read_csv('00_GlobalFunctions/station_names.csv', show_col_types = FALSE) %>%
+  df_stations <- read_csv(here::here('00_GlobalFunctions/station_names.csv'), show_col_types = FALSE) %>%
     filter(Status == 'active')
   
   valid_analytes <- unique(df_analytes$Analyte)

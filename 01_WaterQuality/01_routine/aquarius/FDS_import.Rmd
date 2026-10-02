@@ -134,7 +134,7 @@ fp_csv <- map_chr(fp_xlsx, function(fp) {
 # Clean FDS files
 df_FDS <- map_dfr(fp_csv, function(fp) {
   df_raw <- process_FDS_csv(fp)
-  # format_FDS_csv(df_raw)
+  format_FDS_csv(df_raw)
 })
 
 # Combine
